@@ -1,0 +1,221 @@
+\doxysection{codegentemp/\+Cy\+Flash.c File Reference}
+\hypertarget{codegentemp_2_cy_flash_8c}{}\label{codegentemp_2_cy_flash_8c}\index{codegentemp/CyFlash.c@{codegentemp/CyFlash.c}}
+
+
+Provides an API for the FLASH/\+EEPROM.  
+
+
+{\ttfamily \#include "{}Cy\+Flash.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8c_a220b8340b3546a515a576c96e1480060}\label{codegentemp_2_cy_flash_8c_a220b8340b3546a515a576c96e1480060} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+EEPROM\+\_\+\+NUMBER\+\_\+\+ARRAYS}~(1u)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a038bc984a4e08721a6676b90e8c6f734}{Cy\+Flash\+\_\+\+Start}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a916031017ac7b062563d46ba24271273}{Cy\+Flash\+\_\+\+Stop}} (void)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a58c3f6345497748cae9842ff7660fc67}{Cy\+Flash\+\_\+\+Erase\+Row}} (uint8 array\+Id, uint16 row\+Address)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8c_abfacbfb66a3f2b885a39e450734a3af6}{Cy\+Flash\+Get\+Spc\+Algorithm}} (void)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a89aa4f28c55a9bbc5a537babef38f502}{Cy\+Set\+Temp}} (void)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8c_aa07d857fa45995cce73b7e01b44c5f8f}{Cy\+Set\+Flash\+EEBuffer}} (uint8 \texorpdfstring{$\ast$}{*}buffer)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a0492dac4dca5aed89ee6cc39f17ef6b5}{Cy\+Write\+Row\+Data}} (uint8 array\+Id, uint16 row\+Address, const uint8 \texorpdfstring{$\ast$}{*}row\+Data)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a50f366b4bee3a0a64f5e2ad06677c3ff}{Cy\+Write\+Row\+Full}} (uint8 array\+Id, uint16 row\+Number, const uint8 \texorpdfstring{$\ast$}{*}row\+Data, uint16 row\+Size)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles}} (uint8 freq)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a7c2089d99e34b294581ffc67c22f926a}{Cy\+EEPROM\+\_\+\+Start}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_afc2d4c001de595ac172da33e5ab33e2e}{Cy\+EEPROM\+\_\+\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_a841e9a71f6345811535525707c87fa58}{Cy\+EEPROM\+\_\+\+Read\+Reserve}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8c_aae3dfde59119024a2f1a108bd551c15e}{Cy\+EEPROM\+\_\+\+Read\+Release}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8c_aec55c54e563d81d3d7e26a5b9e91ab0e}\label{codegentemp_2_cy_flash_8c_aec55c54e563d81d3d7e26a5b9e91ab0e} 
+uint8 {\bfseries die\+Temperature} \mbox{[}CY\+\_\+\+FLASH\+\_\+\+DIE\+\_\+\+TEMP\+\_\+\+DATA\+\_\+\+SIZE\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides an API for the FLASH/\+EEPROM. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+This code is endian agnostic.
+
+Documentation of the API\textquotesingle{}s in this file is located in the System Reference Guide provided with PSoC Creator.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{codegentemp_2_cy_flash_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{codegentemp_2_cy_flash_8c_aae3dfde59119024a2f1a108bd551c15e}\index{CyFlash.c@{CyFlash.c}!CyEEPROM\_ReadRelease@{CyEEPROM\_ReadRelease}}
+\index{CyEEPROM\_ReadRelease@{CyEEPROM\_ReadRelease}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_ReadRelease()}{CyEEPROM\_ReadRelease()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_aae3dfde59119024a2f1a108bd551c15e} 
+void Cy\+EEPROM\+\_\+\+Read\+Release (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Release the read reservation of the EEPROM. \Hypertarget{codegentemp_2_cy_flash_8c_a841e9a71f6345811535525707c87fa58}\index{CyFlash.c@{CyFlash.c}!CyEEPROM\_ReadReserve@{CyEEPROM\_ReadReserve}}
+\index{CyEEPROM\_ReadReserve@{CyEEPROM\_ReadReserve}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_ReadReserve()}{CyEEPROM\_ReadReserve()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a841e9a71f6345811535525707c87fa58} 
+void Cy\+EEPROM\+\_\+\+Read\+Reserve (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Request access to the EEPROM for reading and wait until access is available. \Hypertarget{codegentemp_2_cy_flash_8c_a7c2089d99e34b294581ffc67c22f926a}\index{CyFlash.c@{CyFlash.c}!CyEEPROM\_Start@{CyEEPROM\_Start}}
+\index{CyEEPROM\_Start@{CyEEPROM\_Start}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_Start()}{CyEEPROM\_Start()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a7c2089d99e34b294581ffc67c22f926a} 
+void Cy\+EEPROM\+\_\+\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enable the EEPROM. \Hypertarget{codegentemp_2_cy_flash_8c_afc2d4c001de595ac172da33e5ab33e2e}\index{CyFlash.c@{CyFlash.c}!CyEEPROM\_Stop@{CyEEPROM\_Stop}}
+\index{CyEEPROM\_Stop@{CyEEPROM\_Stop}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_Stop()}{CyEEPROM\_Stop()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_afc2d4c001de595ac172da33e5ab33e2e} 
+void Cy\+EEPROM\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disable the EEPROM. \Hypertarget{codegentemp_2_cy_flash_8c_a58c3f6345497748cae9842ff7660fc67}\index{CyFlash.c@{CyFlash.c}!CyFlash\_EraseRow@{CyFlash\_EraseRow}}
+\index{CyFlash\_EraseRow@{CyFlash\_EraseRow}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_EraseRow()}{CyFlash\_EraseRow()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a58c3f6345497748cae9842ff7660fc67} 
+cystatus Cy\+Flash\+\_\+\+Erase\+Row (\begin{DoxyParamCaption}\item[{uint8}]{array\+Id}{, }\item[{uint16}]{row\+Address}{}\end{DoxyParamCaption})}
+
+Erases a single row of flash. Reports success or reason for failure. The API does not return until the erase operation is complete.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+ID} & ID of the array to erase. The arrays in the part are sequential starting at the first ID for the Flash memory type. \\
+\hline
+{\em row\+Address} & Row address within the specified array\+Id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if the SPC is already in use. CYRET\+\_\+\+CANCELED if command not accepted CYRET\+\_\+\+UNKNOWN if there was an SPC error. CYRET\+\_\+\+BAD\+\_\+\+PARAM if one or more invalid parameters 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}\index{CyFlash.c@{CyFlash.c}!CyFlash\_SetWaitCycles@{CyFlash\_SetWaitCycles}}
+\index{CyFlash\_SetWaitCycles@{CyFlash\_SetWaitCycles}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_SetWaitCycles()}{CyFlash\_SetWaitCycles()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a} 
+void Cy\+Flash\+\_\+\+Set\+Wait\+Cycles (\begin{DoxyParamCaption}\item[{uint8}]{freq}{}\end{DoxyParamCaption})}
+
+Sets the number of clock cycles the cache will wait before it samples data coming back from the Flash. This function must be called before increasing the CPU clock frequency. It can optionally be called after lowering the CPU clock frequency in order to improve the CPU performance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & freq\+: Frequency of operation in Megahertz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{codegentemp_2_cy_flash_8c_a038bc984a4e08721a6676b90e8c6f734}\index{CyFlash.c@{CyFlash.c}!CyFlash\_Start@{CyFlash\_Start}}
+\index{CyFlash\_Start@{CyFlash\_Start}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_Start()}{CyFlash\_Start()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a038bc984a4e08721a6676b90e8c6f734} 
+void Cy\+Flash\+\_\+\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enable the Flash. \Hypertarget{codegentemp_2_cy_flash_8c_a916031017ac7b062563d46ba24271273}\index{CyFlash.c@{CyFlash.c}!CyFlash\_Stop@{CyFlash\_Stop}}
+\index{CyFlash\_Stop@{CyFlash\_Stop}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_Stop()}{CyFlash\_Stop()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a916031017ac7b062563d46ba24271273} 
+void Cy\+Flash\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disable the Flash.
+
+\textbackslash{}sideeffect This setting is ignored as long as the CPU is currently running. This will only take effect when the CPU is later disabled. \Hypertarget{codegentemp_2_cy_flash_8c_abfacbfb66a3f2b885a39e450734a3af6}\index{CyFlash.c@{CyFlash.c}!CyFlashGetSpcAlgorithm@{CyFlashGetSpcAlgorithm}}
+\index{CyFlashGetSpcAlgorithm@{CyFlashGetSpcAlgorithm}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyFlashGetSpcAlgorithm()}{CyFlashGetSpcAlgorithm()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_abfacbfb66a3f2b885a39e450734a3af6} 
+cystatus Cy\+Flash\+Get\+Spc\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Sends a command to the SPC to download code into RAM.
+
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS -\/ if successful CYRET\+\_\+\+LOCKED -\/ if Flash writing already in use CYRET\+\_\+\+UNKNOWN -\/ if there was an SPC error 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8c_aa07d857fa45995cce73b7e01b44c5f8f}\index{CyFlash.c@{CyFlash.c}!CySetFlashEEBuffer@{CySetFlashEEBuffer}}
+\index{CySetFlashEEBuffer@{CySetFlashEEBuffer}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CySetFlashEEBuffer()}{CySetFlashEEBuffer()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_aa07d857fa45995cce73b7e01b44c5f8f} 
+cystatus Cy\+Set\+Flash\+EEBuffer (\begin{DoxyParamCaption}\item[{uint8 \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+Sets the user supplied temporary buffer to store SPC data while performing Flash and EEPROM commands. This buffer is only necessary when the Flash ECC is disabled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The address of a block of memory to store temporary memory. The size of the block of memory is CYDEV\+\_\+\+FLS\+\_\+\+ROW\+\_\+\+SIZE + CYDEV\+\_\+\+ECC\+\_\+\+ROW\+\_\+\+SIZE.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if the buffer is NULL 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8c_a89aa4f28c55a9bbc5a537babef38f502}\index{CyFlash.c@{CyFlash.c}!CySetTemp@{CySetTemp}}
+\index{CySetTemp@{CySetTemp}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CySetTemp()}{CySetTemp()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a89aa4f28c55a9bbc5a537babef38f502} 
+cystatus Cy\+Set\+Temp (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This is a wraparound for Cy\+Set\+Temp\+Int(). It is used to return the second successful read of the temperature value.
+
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if Flash writing already in use CYRET\+\_\+\+UNKNOWN if there was an SPC error.
+\end{DoxyReturn}
+uint8 die\+Temperature\mbox{[}2\mbox{]}\+: Holds the die temperature for the flash writing algorithm. The first byte is the sign of the temperature (0 = negative, 1 = positive). The second byte is the magnitude. \Hypertarget{codegentemp_2_cy_flash_8c_a0492dac4dca5aed89ee6cc39f17ef6b5}\index{CyFlash.c@{CyFlash.c}!CyWriteRowData@{CyWriteRowData}}
+\index{CyWriteRowData@{CyWriteRowData}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyWriteRowData()}{CyWriteRowData()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a0492dac4dca5aed89ee6cc39f17ef6b5} 
+cystatus Cy\+Write\+Row\+Data (\begin{DoxyParamCaption}\item[{uint8}]{array\+Id}{, }\item[{uint16}]{row\+Address}{, }\item[{const uint8 \texorpdfstring{$\ast$}{*}}]{row\+Data}{}\end{DoxyParamCaption})}
+
+Sends a command to the SPC to load and program a row of data in Flash or EEPROM.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+ID} & ID of the array to write. The type of write, Flash or EEPROM, is determined from the array ID. The arrays in the part are sequential starting at the first ID for the specific memory type. The array ID for the Flash memory lasts from 0x00 to 0x3F and for the EEPROM memory it lasts from 0x40 to 0x7F. \\
+\hline
+{\em row\+Address} & row\+Address of flash row to program. \\
+\hline
+{\em row\+Data} & Array of bytes to write.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if the SPC is already in use. CYRET\+\_\+\+CANCELED if command not accepted CYRET\+\_\+\+UNKNOWN if there was an SPC error. 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8c_a50f366b4bee3a0a64f5e2ad06677c3ff}\index{CyFlash.c@{CyFlash.c}!CyWriteRowFull@{CyWriteRowFull}}
+\index{CyWriteRowFull@{CyWriteRowFull}!CyFlash.c@{CyFlash.c}}
+\doxysubsubsection{\texorpdfstring{CyWriteRowFull()}{CyWriteRowFull()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8c_a50f366b4bee3a0a64f5e2ad06677c3ff} 
+cystatus Cy\+Write\+Row\+Full (\begin{DoxyParamCaption}\item[{uint8}]{array\+Id}{, }\item[{uint16}]{row\+Number}{, }\item[{const uint8 \texorpdfstring{$\ast$}{*}}]{row\+Data}{, }\item[{uint16}]{row\+Size}{}\end{DoxyParamCaption})}
+
+Sends a command to the SPC to load and program a row of data in the Flash. row\+Data array is expected to contain Flash and ECC data if needed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Id} & FLASH or EEPROM array id. \\
+\hline
+{\em row\+Data} & Pointer to a row of data to write. \\
+\hline
+{\em row\+Number} & Zero based number of the row. \\
+\hline
+{\em row\+Size} & Size of the row.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if the SPC is already in use. CYRET\+\_\+\+CANCELED if command not accepted CYRET\+\_\+\+UNKNOWN if there was an SPC error. 
+\end{DoxyReturn}

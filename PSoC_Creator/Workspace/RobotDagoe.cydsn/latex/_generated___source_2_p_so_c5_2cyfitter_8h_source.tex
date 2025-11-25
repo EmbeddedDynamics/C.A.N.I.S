@@ -1,0 +1,250 @@
+\doxysection{cyfitter.\+h}
+\hypertarget{_generated___source_2_p_so_c5_2cyfitter_8h_source}{}\label{_generated___source_2_p_so_c5_2cyfitter_8h_source}\index{Generated\_Source/PSoC5/cyfitter.h@{Generated\_Source/PSoC5/cyfitter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File\ Name:\ cyfitter.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ PSoC\ Creator\ \ 4.4}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ Description:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{*\ This\ file\ is\ automatically\ generated\ by\ PSoC\ Creator.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*}}
+\DoxyCodeLine{00010\ \textcolor{comment}{********************************************************************************}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Copyright\ (c)\ 2007-\/2020\ Cypress\ Semiconductor.\ \ All\ rights\ reserved.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ You\ may\ use\ this\ file\ only\ in\ accordance\ with\ the\ license,\ terms,\ conditions,\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ disclaimers,\ and\ limitations\ in\ the\ end\ user\ license\ agreement\ accompanying\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ the\ software\ package\ with\ which\ this\ file\ was\ provided.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{********************************************************************************/}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifndef\ INCLUDED\_CYFITTER\_H}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ INCLUDED\_CYFITTER\_H}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}cydevice.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}cydevice\_trm.h"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{/*\ Miscellaneous\ */}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ BCLK\_\_BUS\_CLK\_\_HZ\ 24000000U}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ BCLK\_\_BUS\_CLK\_\_KHZ\ 24000U}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ BCLK\_\_BUS\_CLK\_\_MHZ\ 24U}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CY\_PROJECT\_NAME\ "{}RobotDagoe"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ CY\_VERSION\ "{}PSoC\ Creator\ \ 4.4"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_LEOPARD\ 1u}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_PSOC4A\ 26u}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_PSOC5LP\ 2u}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_PSOC5TM\ 3u}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_TMA4\ 4u}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_UNKNOWN\ 0u}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_FM0P\ 5u}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_FM3\ 6u}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_FM4\ 7u}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_PSOC3\ 1u}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_PSOC4\ 2u}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_PSOC5\ 3u}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_PSOC6\ 4u}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_UNKNOWN\ 0u}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_FAMILY\_USED\ CYDEV\_CHIP\_FAMILY\_PSOC5}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_JTAG\_ID\ 0x2E161069u}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_3A\ 1u}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4A\ 26u}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4AA\ 25u}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4AB\ 30u}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4AC\ 14u}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4AD\ 15u}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4AE\ 16u}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4D\ 20u}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4E\ 6u}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4F\ 27u}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4G\ 4u}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4H\ 24u}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4I\ 32u}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4J\ 21u}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4K\ 22u}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4L\ 31u}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4M\ 29u}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4N\ 11u}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4O\ 8u}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4P\ 28u}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4Q\ 17u}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4R\ 9u}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4S\ 12u}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4T\ 10u}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4U\ 5u}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4V\ 23u}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4W\ 13u}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4X\ 7u}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4Y\ 18u}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_4Z\ 19u}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_5A\ 3u}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_5B\ 2u}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_6A\ 33u}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_FM3\ 37u}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_FM4\ 38u}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_PDL\_FM0P\_TYPE1\ 34u}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_PDL\_FM0P\_TYPE2\ 35u}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_PDL\_FM0P\_TYPE3\ 36u}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_UNKNOWN\ 0u}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_MEMBER\_USED\ CYDEV\_CHIP\_MEMBER\_5B}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_EXPECT\ CYDEV\_CHIP\_MEMBER\_USED}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_DIE\_ACTUAL\ CYDEV\_CHIP\_DIE\_EXPECT}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_LEOPARD\_ES1\ 0u}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_LEOPARD\_ES2\ 1u}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_LEOPARD\_ES3\ 3u}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_LEOPARD\_PRODUCTION\ 3u}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC4A\_ES0\ 17u}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC4A\_PRODUCTION\ 17u}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC5LP\_ES0\ 0u}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC5LP\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC5TM\_ES0\ 0u}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC5TM\_ES1\ 1u}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_PSOC5TM\_PRODUCTION\ 1u}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_TMA4\_ES\ 17u}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_TMA4\_ES2\ 33u}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_TMA4\_PRODUCTION\ 17u}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_3A\_ES1\ 0u}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_3A\_ES2\ 1u}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_3A\_ES3\ 3u}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_3A\_PRODUCTION\ 3u}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4A\_ES0\ 17u}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4A\_PRODUCTION\ 17u}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4AA\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4AB\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4AC\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4AD\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4AE\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4D\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4E\_CCG2\_NO\_USBPD\ 0u}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4E\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4F\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4F\_PRODUCTION\_256DMA\ 0u}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4F\_PRODUCTION\_256K\ 0u}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4G\_ES\ 17u}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4G\_ES2\ 33u}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4G\_PRODUCTION\ 17u}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4H\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4I\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4J\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4K\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4L\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4M\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4N\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4O\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4P\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4Q\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4R\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4S\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4T\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4U\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4V\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4W\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4X\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4Y\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_4Z\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_5A\_ES0\ 0u}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_5A\_ES1\ 1u}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_5A\_PRODUCTION\ 1u}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_5B\_ES0\ 0u}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_5B\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_6A\_ES\ 17u}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_6A\_NO\_UDB\ 33u}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_6A\_PRODUCTION\ 33u}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_FM3\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_FM4\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_PDL\_FM0P\_TYPE1\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_PDL\_FM0P\_TYPE2\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_PDL\_FM0P\_TYPE3\_PRODUCTION\ 0u}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REVISION\_USED\ CYDEV\_CHIP\_REVISION\_5B\_PRODUCTION}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ CYDEV\_CHIP\_REV\_EXPECT\ CYDEV\_CHIP\_REVISION\_USED}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIG\_FASTBOOT\_ENABLED\ 1}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIG\_UNUSED\_IO\_AllowButWarn\ 0}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIG\_UNUSED\_IO\ CYDEV\_CONFIG\_UNUSED\_IO\_AllowButWarn}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIG\_UNUSED\_IO\_AllowWithInfo\ 1}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIG\_UNUSED\_IO\_Disallowed\ 2}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_COMPRESSED\ 1}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_DMA\ 0}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_ECC\ 1}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_IMOENABLED\ CYDEV\_CONFIG\_FASTBOOT\_ENABLED}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_MODE\_COMPRESSED\ 0}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_MODE\ CYDEV\_CONFIGURATION\_MODE\_COMPRESSED}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_MODE\_DMA\ 2}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ CYDEV\_CONFIGURATION\_MODE\_UNCOMPRESSED\ 1}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUG\_ENABLE\_MASK\ 0x20u}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUG\_ENABLE\_REGISTER\ CYREG\_MLOGIC\_DEBUG}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_DPS\_Disable\ 3}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_DPS\_JTAG\_4\ 1}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_DPS\_JTAG\_5\ 0}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_DPS\_SWD\ 2}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_DPS\_SWD\_SWV\ 6}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_DPS\ CYDEV\_DEBUGGING\_DPS\_SWD\_SWV}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_ENABLE\ 1}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ CYDEV\_DEBUGGING\_XRES\ 0}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ CYDEV\_DMA\_CHANNELS\_AVAILABLE\ 24u}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ CYDEV\_ECC\_ENABLE\ 0}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ CYDEV\_HEAP\_SIZE\ 0x80}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ CYDEV\_INSTRUCT\_CACHE\_ENABLED\ 1}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ CYDEV\_INTR\_RISING\ 0x00000000u}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ CYDEV\_IS\_EXPORTING\_CODE\ 0}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ CYDEV\_IS\_IMPORTING\_CODE\ 0}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\ 0}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\_BOOTLOADER\ 1}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\_LAUNCHER\ 5}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\_LOADABLE\ 2}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\_LOADABLEANDBOOTLOADER\ 4}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\_MULTIAPPBOOTLOADER\ 3}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ CYDEV\_PROJ\_TYPE\_STANDARD\ 0}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ CYDEV\_PROTECTION\_ENABLE\ 0}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#define\ CYDEV\_STACK\_SIZE\ 0x0800}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ CYDEV\_USE\_BUNDLED\_CMSIS\ 1}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ CYDEV\_VARIABLE\_VDDA\ 0}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDA\ 5.0}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDA\_MV\ 5000}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDD\ 5.0}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDD\_MV\ 5000}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO0\ 5.0}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO0\_MV\ 5000}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO1\ 5.0}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO1\_MV\ 5000}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO2\ 5.0}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO2\_MV\ 5000}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO3\ 5.0}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ CYDEV\_VDDIO3\_MV\ 5000}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO0\ 5.0}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO0\_MV\ 5000}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO1\ 5.0}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO1\_MV\ 5000}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO2\ 5.0}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO2\_MV\ 5000}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO3\ 5.0}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ CYDEV\_VIO3\_MV\ 5000}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_ARM\_CM3\_VERSION\ 0}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_ANAIF\_VERSION\ 0}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_CAN\_VERSION\ 0}}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_CAPSENSE\_VERSION\ 0}}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_COMP\_VERSION\ 0}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_DECIMATOR\_VERSION\ 0}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_DFB\_VERSION\ 0}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_DMA\_VERSION\ 0}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_DRQ\_VERSION\ 0}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_DSM\_VERSION\ 0}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_EMIF\_VERSION\ 0}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_I2C\_VERSION\ 0}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_LCD\_VERSION\ 0}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_LPF\_VERSION\ 0}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_OPAMP\_VERSION\ 0}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_PM\_VERSION\ 0}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_SCCT\_VERSION\ 0}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_TIMER\_VERSION\ 0}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_USB\_VERSION\ 0}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_VIDAC\_VERSION\ 0}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_P3\_VREF\_VERSION\ 0}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_S8\_GPIO\_VERSION\ 0}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_S8\_IRQ\_VERSION\ 0}}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_S8\_SAR\_VERSION\ 0}}
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_S8\_SIO\_VERSION\ 0}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ CYIPBLOCK\_S8\_UDB\_VERSION\ 0}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ DMA\_CHANNELS\_USED\_\_MASK0\ 0x00000000u}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#define\ CYDEV\_BOOTLOADER\_ENABLE\ 0}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INCLUDED\_CYFITTER\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

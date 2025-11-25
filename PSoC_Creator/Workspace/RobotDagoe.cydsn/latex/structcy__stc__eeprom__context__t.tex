@@ -1,0 +1,87 @@
+\doxysection{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t Struct Reference}
+\hypertarget{structcy__stc__eeprom__context__t}{}\label{structcy__stc__eeprom__context__t}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+
+
+{\ttfamily \#include $<$cy\+\_\+em\+\_\+eeprom.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__context__t_aaf20e4c711037fee0e239162116fcbfd}{wl\+End\+Addr}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__context__t_aeb75f5467bb20ac007fee1ac52f317b2}{number\+Of\+Rows}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__context__t_afe011259137e5c12d5d8d1023a9e5042}{last\+Wr\+Row\+Addr}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__context__t_a4f4989224d913b3c474fccb0915c6326}{eeprom\+Size}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__context__t_a5cec089ac678275c7164b28122fd5b64}{wear\+Leveling\+Factor}}
+\item 
+uint8 \mbox{\hyperlink{structcy__stc__eeprom__context__t_a292762a4f422093c51cb67f93f4680aa}{redundant\+Copy}}
+\item 
+uint8 \mbox{\hyperlink{structcy__stc__eeprom__context__t_ad54cd1cd61dc71910422979a30a22f73}{blocking\+Write}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__context__t_a469ff9c2d1b1e9a8b4f324766476bdc7}{user\+Flash\+Start\+Addr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The EEPROM context data structure. It is used to store the specific EEPROM context data. 
+
+\label{doc-variable-members}
+\Hypertarget{structcy__stc__eeprom__context__t_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcy__stc__eeprom__context__t_ad54cd1cd61dc71910422979a30a22f73}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!blockingWrite@{blockingWrite}}
+\index{blockingWrite@{blockingWrite}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{blockingWrite}{blockingWrite}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_ad54cd1cd61dc71910422979a30a22f73} 
+uint8 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::blocking\+Write}
+
+If not zero, a blocking write to flash is used. Otherwise non-\/blocking write is used. This parameter is used only for PSoC 6. \Hypertarget{structcy__stc__eeprom__context__t_a4f4989224d913b3c474fccb0915c6326}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!eepromSize@{eepromSize}}
+\index{eepromSize@{eepromSize}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{eepromSize}{eepromSize}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_a4f4989224d913b3c474fccb0915c6326} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::eeprom\+Size}
+
+The number of bytes to store in EEPROM \Hypertarget{structcy__stc__eeprom__context__t_afe011259137e5c12d5d8d1023a9e5042}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!lastWrRowAddr@{lastWrRowAddr}}
+\index{lastWrRowAddr@{lastWrRowAddr}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{lastWrRowAddr}{lastWrRowAddr}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_afe011259137e5c12d5d8d1023a9e5042} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::last\+Wr\+Row\+Addr}
+
+The address of the last written EEPROM row \Hypertarget{structcy__stc__eeprom__context__t_aeb75f5467bb20ac007fee1ac52f317b2}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!numberOfRows@{numberOfRows}}
+\index{numberOfRows@{numberOfRows}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{numberOfRows}{numberOfRows}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_aeb75f5467bb20ac007fee1ac52f317b2} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::number\+Of\+Rows}
+
+The number of flash rows allocated for the EEPROM excluding the number of rows allocated for wear leveling and redundant copy overhead. \Hypertarget{structcy__stc__eeprom__context__t_a292762a4f422093c51cb67f93f4680aa}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!redundantCopy@{redundantCopy}}
+\index{redundantCopy@{redundantCopy}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{redundantCopy}{redundantCopy}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_a292762a4f422093c51cb67f93f4680aa} 
+uint8 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::redundant\+Copy}
+
+If not zero, a redundant copy of the Em\+\_\+\+EEPROM is included. \Hypertarget{structcy__stc__eeprom__context__t_a469ff9c2d1b1e9a8b4f324766476bdc7}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!userFlashStartAddr@{userFlashStartAddr}}
+\index{userFlashStartAddr@{userFlashStartAddr}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{userFlashStartAddr}{userFlashStartAddr}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_a469ff9c2d1b1e9a8b4f324766476bdc7} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::user\+Flash\+Start\+Addr}
+
+The start address for the EEPROM memory in the user\textquotesingle{}s flash. \Hypertarget{structcy__stc__eeprom__context__t_a5cec089ac678275c7164b28122fd5b64}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!wearLevelingFactor@{wearLevelingFactor}}
+\index{wearLevelingFactor@{wearLevelingFactor}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{wearLevelingFactor}{wearLevelingFactor}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_a5cec089ac678275c7164b28122fd5b64} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::wear\+Leveling\+Factor}
+
+The amount of wear leveling from 1 to 10. 1 means no wear leveling is used. \Hypertarget{structcy__stc__eeprom__context__t_aaf20e4c711037fee0e239162116fcbfd}\index{cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}!wlEndAddr@{wlEndAddr}}
+\index{wlEndAddr@{wlEndAddr}!cy\_stc\_eeprom\_context\_t@{cy\_stc\_eeprom\_context\_t}}
+\doxysubsubsection{\texorpdfstring{wlEndAddr}{wlEndAddr}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__context__t_aaf20e4c711037fee0e239162116fcbfd} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t\+::wl\+End\+Addr}
+
+The pointer to the end address of EEPROM including wear leveling overhead and excluding redundant copy overhead. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+codegentemp/cy\+\_\+em\+\_\+eeprom.\+h\item 
+Generated\+\_\+\+Source/\+PSo\+C5/cy\+\_\+em\+\_\+eeprom.\+h\end{DoxyCompactItemize}

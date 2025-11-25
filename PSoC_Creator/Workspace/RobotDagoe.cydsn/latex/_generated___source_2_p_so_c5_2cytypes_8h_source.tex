@@ -1,0 +1,1036 @@
+\doxysection{cytypes.\+h}
+\hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_source}{}\label{_generated___source_2_p_so_c5_2cytypes_8h_source}\index{Generated\_Source/PSoC5/cytypes.h@{Generated\_Source/PSoC5/cytypes.h}}
+\mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/***************************************************************************/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#if\ !defined(CY\_BOOT\_CYTYPES\_H)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_CYTYPES\_H}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#if\ defined(\_\_C51\_\_)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \#include\ <intrins.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (\_\_C51\_\_)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{/*\ ARM\ and\ C99\ or\ later\ */}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_ARMCC\_VERSION)\ ||\ (defined(\_\_STDC\_VERSION\_\_)\ \&\&\ \_\_STDC\_VERSION\_\_\ >=\ 199901L)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdint.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (\_\_GNUC\_\_)\ ||\ defined(\_\_ARMCC\_VERSION)\ ||\ (defined(\_\_STDC\_VERSION\_\_)\ \&\&\ \_\_STDC\_VERSION\_\_\ >=\ 199901L)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}cyfitter.h"{}}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#if\ defined(\ \_\_ICCARM\_\_\ )}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{/*\ Suppress\ warning\ for\ multiple\ volatile\ variables\ in\ an\ expression.\ */}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{/*\ This\ is\ common\ in\ component\ code\ and\ usage\ is\ not\ order\ dependent.\ */}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \#pragma\ diag\_suppress=Pa082}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ defined(\ \_\_ICCARM\_\_\ )\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*\ Conditional\ Compilation\ Parameters}}
+\DoxyCodeLine{00049\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00053\ \textcolor{comment}{*\ FAMILY\ encodes\ the\ overall\ architectural\ family}}
+\DoxyCodeLine{00054\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ CY\_PSOC3\ (CYDEV\_CHIP\_FAMILY\_USED\ ==\ CYDEV\_CHIP\_FAMILY\_PSOC3)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ CY\_PSOC4\ (CYDEV\_CHIP\_FAMILY\_USED\ ==\ CYDEV\_CHIP\_FAMILY\_PSOC4)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ CY\_PSOC5\ (CYDEV\_CHIP\_FAMILY\_USED\ ==\ CYDEV\_CHIP\_FAMILY\_PSOC5)}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00061\ \textcolor{comment}{*\ MEMBER\ encodes\ both\ the\ family\ and\ the\ detailed\ architecture}}
+\DoxyCodeLine{00062\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4D}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4000\ \ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4D)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4000\ \ \ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4D\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ CY\_PSOC4\_4100\ \ \ \ \ \ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4A)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ CY\_PSOC4\_4200\ \ \ \ \ \ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4A)}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4F}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100BL\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4F)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200BL\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4F)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100BL\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200BL\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4F\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4M}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100M\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4M)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200M\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4M)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100M\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200M\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4M\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4H}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200D\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4H)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200D\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4L}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200L\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4L)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200L\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4L\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4U}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4000U\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4U)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4000U\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4U\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4J}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4000S\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4J)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4000S\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4J\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4K}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100S\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4K)}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100S\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4K\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4I}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4400\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4I)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4400\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4I\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4E}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG2\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4E)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG2\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4E\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4O}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG3\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4O)}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG3\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4O\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4R}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG3PA\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4R)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG3PA\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4R\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4N}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG4\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4N)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG4\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4N\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4S}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG5\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4S)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CCG5\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4S\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4P}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100BLII\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4P)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200BLII\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4P)}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100BLII\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4200BLII\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4P\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4V}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100MS\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4V)}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100MS\ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4V)}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100MS\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4\_4100MS\ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4V\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ CY\_IP\_HOBTO\_DEVICE\ \ \ \ \ \ (!(0\ ==\ 1))}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00174\ \textcolor{comment}{*\ IP\ blocks}}
+\DoxyCodeLine{00175\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#if\ (CY\_PSOC4)}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{/*\ Using\ SRSSv2\ or\ SRS-\/Lite\ */}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_SRSSV2\ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_SRSSLT\ \ \ \ \ \ \ \ \ \ \ \ (!CY\_IP\_SRSSV2)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_SRSSV2\ \ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_SRSSLT\ \ \ \ \ \ \ \ \ \ \ \ (!CY\_IP\_SRSSV2)}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSSV3\ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 1)}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSSV2\ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 1)}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 1)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSSV3\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSSV2\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{/*\ CM0\ present\ or\ CM0+\ present\ (1=CM0,\ 0=CM0+)\ */}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_CM0\ \ \ \ \ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_CM0\ \ \ \ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_CM0PLUS\ \ \ \ \ \ \ \ \ (!CY\_IP\_CPUSS\_CM0)}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_CM0\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_CM0PLUS\ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{/*\ Flash\ memory\ present\ or\ not\ (1=Flash\ present,\ 0=Flash\ not\ present)\ */}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_FLASHC\_PRESENT\ \ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_CPUSS\_FLASHC\_PRESENT\ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{comment}{/*\ Product\ uses\ FLASH-\/Lite\ or\ regular\ FLASH\ */}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 0)}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FMLT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 2)}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FSLT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 3)}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 0)}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FMLT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 2)}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FSLT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 3)}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_FM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!CY\_IP\_FMLT)\ \ \ \ \ \ \ }\textcolor{comment}{/*\ Regular\ FLASH\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_FMLT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ FLASH-\/Lite\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_FS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ FS\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_FSLT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ FSLT\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{comment}{/*\ Enable\ simultaneous\ execution/programming\ in\ multi-\/macro\ devices\ */}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FLASH\_PARALLEL\_PGM\_EN\ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FLASH\_PARALLEL\_PGM\_EN\ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_FLASH\_PARALLEL\_PGM\_EN\ \ \ \ \ (0u\ !=\ 0u)}}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{comment}{/*\ Number\ of\ Flash\ macros\ used\ in\ the\ device\ (0,\ 1\ or\ 2)\ */}}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FLASH\_MACROS\ (-\/1u)}}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_FLASH\_MACROS\ (-\/1u)}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_FLASH\_MACROS\ \ \ \ \ (1u)}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{comment}{/*\ Number\ of\ interrupt\ request\ inputs\ to\ CM0\ */}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_INT\_NR\ \ \ \ \ \ \ \ \ \ \ \ (-\/1u)}}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_INT\_NR\ \ \ \ \ \ \ \ \ \ \ \ (-\/1u)}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_INT\_NR\ \ \ \ \ \ \ \ \ \ \ \ (32u)}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{comment}{/*\ Presence\ of\ the\ BLESS\ IP\ block\ */}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_BLESS\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_BLESSV3\ \ \ \ \ \ \ \ \ \ \ (CYIPBLOCK\_m0s8bless\_VERSION\ ==\ 3)}}
+\DoxyCodeLine{00279\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_BLESS\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_BLESSV3\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00282\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00285\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_USBDEV\ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00286\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_USBDEV\ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00288\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \textcolor{comment}{\ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ \ *\ Devices\ with\ the\ SPCIF\_SYNCHRONOUS\ parameter\ set\ to\ one\ will\ not\ use}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ \ *\ the\ 36MHz\ Oscillator\ for\ Flash\ operation.\ Instead,\ flash\ write\ function}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ \ *\ ensures\ that\ the\ charge\ pump\ clock\ and\ the\ higher\ frequency\ clock\ (HFCLK)}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ \ *\ are\ set\ to\ the\ IMO\ at\ 48MHz\ prior\ to\ writing\ the\ flash.}}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_SPCIF\_SYNCHRONOUS\ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00301\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_SPCIF\_SYNCHRONOUS\ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00302\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00303\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00304\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_SPCIF\_SYNCHRONOUS\ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{comment}{/*\ Watch\ Crystal\ Oscillator\ (WCO)\ is\ present\ (32kHz)\ */}}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00309\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_BLESS)}}
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCO\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_SRSSV2\ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00312\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#if\ (CY\_IP\_BLESSV3)}}
+\DoxyCodeLine{00313\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCOV2\ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00314\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_BLESS\ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCOV2\ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_BLESS\ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00318\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00319\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00320\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_BLESS\ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00321\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCO\ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 1)}}
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCOV2\ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00323\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_SRSSV2\ \ \ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_BLESS)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00325\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00326\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_BLESS\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00327\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00328\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_WCOV2\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00329\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_WCO\_SRSSV2\ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00330\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_IP\_WCO\ \ \ (CY\_IP\_WCO\_BLESS\ ||\ CY\_IP\_WCO\_WCO\ ||\ CY\_IP\_WCO\_WCOV2\ ||\ CY\_IP\_WCO\_SRSSV2)}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{comment}{/*\ External\ Crystal\ Oscillator\ is\ present\ (high\ frequency)\ */}}
+\DoxyCodeLine{00335\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00336\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_BLESS)}}
+\DoxyCodeLine{00337\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_SRSSV2\ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00338\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_SRSSLT\ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#if\ (CY\_IP\_BLESSV3)}}
+\DoxyCodeLine{00341\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESS\ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00342\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESSV3\ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00343\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00344\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESS\ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00345\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESSV3\ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00346\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00347\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESS\ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00349\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESSV3\ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00350\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_SRSSV2\ \ \ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_SRSSLT\ \ \ \ \ \ \ \ ((0\ !=\ 0)\ \&\&\ (0\ !=\ 0))}}
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_BLESS)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00354\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESS\ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00355\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_BLESSV3\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00356\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_SRSSV2\ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00357\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_ECO\_SRSSLT\ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_IP\_ECO\ \ \ (CY\_IP\_ECO\_BLESS\ ||\ CY\_IP\_ECO\_SRSSV2\ ||\ CY\_IP\_ECO\_BLESSV3\ ||\ CY\_IP\_ECO\_SRSSLT)}}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{comment}{/*\ PLL\ is\ present\ */}}
+\DoxyCodeLine{00363\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00364\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if(CY\_IP\_SRSSV2)}}
+\DoxyCodeLine{00365\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\ \ \ \ \ \ \ \ \ \ \ ((-\/1\ !=\ 0)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00366\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1\ !=\ 0))}}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\_NR\ \ \ \ \ \ \ \ (-\/1u\ +\ \(\backslash\)}}
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1u)}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#elif\ (CY\_IP\_SRSSLT)}}
+\DoxyCodeLine{00372\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\ \ \ \ \ \ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\_NR\ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{00375\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00377\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\_NR\ \ \ \ \ \ \ \ (0)}}
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ }\textcolor{comment}{/*\ (CY\_IP\_SRSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00379\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00380\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00381\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_PLL\_NR\ \ \ \ \ \ \ \ (0)}}
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{comment}{/*\ Clock\ Source\ clk\_lf\ implemented\ in\ SysTick\ Counter.\ When\ 0,\ not\ implemented,\ 1=implemented\ */}}
+\DoxyCodeLine{00385\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00386\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_SYSTICK\_LFCLK\_SOURCE\ \ \ \ \ (-\/1\ !=\ 0)}}
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else\ \ \ }\textcolor{comment}{/*\ CY\_IP\_CPUSSV3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00389\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_SYSTICK\_LFCLK\_SOURCE\ \ \ \ \ (-\/1\ !=\ 0)}}
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00392\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_SYSTICK\_LFCLK\_SOURCE\ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00393\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{comment}{/*\ Flash\ Macro\ 0\ has\ extra\ rows\ */}}
+\DoxyCodeLine{00397\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00398\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ CYREG\_SFLASH\_MACRO\_0\_FREE\_SFLASH0}}
+\DoxyCodeLine{00399\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_SFLASH\_XTRA\_ROWS\ \ \ \ \ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00400\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00401\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_SFLASH\_XTRA\_ROWS\ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00402\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ }\textcolor{comment}{/*\ CYREG\_SFLASH\_MACRO\_0\_FREE\_SFLASH0\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00405\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_SFLASH\_XTRA\_ROWS\ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00406\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_USBDEV)}}
+\DoxyCodeLine{00410\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_IMO\_TRIMMABLE\_BY\_USB\ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00411\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00412\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_IMO\_TRIMMABLE\_BY\_USB\ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_USBDEV)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_WCO\_WCO\ ||\ CY\_IP\_WCO\_SRSSV2)}}
+\DoxyCodeLine{00417\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_IMO\_TRIMMABLE\_BY\_WCO\ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00418\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00419\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_IMO\_TRIMMABLE\_BY\_WCO\ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00420\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_WCO\_WCO\ ||\ CY\_IP\_WCO\_SRSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{comment}{/*\ DW/DMA\ Controller\ present\ (0=No,\ 1=Yes)\ */}}
+\DoxyCodeLine{00424\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00425\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00426\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_DMAC\_PRESENT\ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00427\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00428\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_DMAC\_PRESENT\ \ \ \ \ \ (-\/1\ ==\ 1)}}
+\DoxyCodeLine{00429\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00430\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00431\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_DMAC\_PRESENT\ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00432\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00435\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_PASS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0\ ==\ 1)}}
+\DoxyCodeLine{00436\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00437\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_PASS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00438\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{comment}{/*\ Number\ of\ external\ slave\ ports\ on\ System\ Interconnect\ */}}
+\DoxyCodeLine{00443\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_IP\_HOBTO\_DEVICE)}}
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (CY\_IP\_CPUSSV2)}}
+\DoxyCodeLine{00445\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_SL\_NR\ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1)}}
+\DoxyCodeLine{00446\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00447\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#define\ CY\_IP\_SL\_NR\ \ \ \ \ \ \ \ \ \ \ \ \ (-\/1)}}
+\DoxyCodeLine{00448\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_CPUSSV2)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00450\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_IP\_SL\_NR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0)}}
+\DoxyCodeLine{00451\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_IP\_HOBTO\_DEVICE)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00455\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_PSOC3)}}
+\DoxyCodeLine{00456\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_SYSTICK\_LFCLK\_SOURCE\ \ \ \ \ (0\ !=\ 0)}}
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\ \ \ \ \#else\ }\textcolor{comment}{/*\ PSoC\ 5LP\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00458\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_SYSTICK\_LFCLK\_SOURCE\ \ \ \ \ (0\ ==\ 0)}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\ \ \ \ \#endif\ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC4)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00465\ \textcolor{comment}{*\ The\ components\ version\ defines.\ Available\ started\ from\ cy\_boot\ 4.20}}
+\DoxyCodeLine{00466\ \textcolor{comment}{*\ Use\ the\ following\ construction\ in\ order\ to\ identify\ cy\_boot\ version:}}
+\DoxyCodeLine{00467\ \textcolor{comment}{*\ (defined(CY\_BOOT\_VERSION)\ \&\&\ CY\_BOOT\_VERSION\ >=\ CY\_BOOT\_4\_20)}}
+\DoxyCodeLine{00468\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00469\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_4\_20\ \ \ \ \ \ \ \ \ \ \ \ (420u)}}
+\DoxyCodeLine{00470\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_0\ \ \ \ \ \ \ \ \ \ \ \ \ (500u)}}
+\DoxyCodeLine{00471\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_10\ \ \ \ \ \ \ \ \ \ \ \ (510u)}}
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_20\ \ \ \ \ \ \ \ \ \ \ \ (520u)}}
+\DoxyCodeLine{00473\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_30\ \ \ \ \ \ \ \ \ \ \ \ (530u)}}
+\DoxyCodeLine{00474\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_40\ \ \ \ \ \ \ \ \ \ \ \ (540u)}}
+\DoxyCodeLine{00475\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_50\ \ \ \ \ \ \ \ \ \ \ \ (550u)}}
+\DoxyCodeLine{00476\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_60\ \ \ \ \ \ \ \ \ \ \ \ (560u)}}
+\DoxyCodeLine{00477\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_70\ \ \ \ \ \ \ \ \ \ \ \ (570u)}}
+\DoxyCodeLine{00478\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_80\ \ \ \ \ \ \ \ \ \ \ \ (580u)}}
+\DoxyCodeLine{00479\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_81\ \ \ \ \ \ \ \ \ \ \ \ (581u)}}
+\DoxyCodeLine{00480\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_5\_90\ \ \ \ \ \ \ \ \ \ \ \ (590u)}}
+\DoxyCodeLine{00481\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_6\_0\ \ \ \ \ \ \ \ \ \ \ \ \ (600u)}}
+\DoxyCodeLine{00482\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_VERSION\ \ \ \ \ \ \ \ \ (CY\_BOOT\_6\_0)}}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00486\ \textcolor{comment}{*\ \ \ Base\ Types.\ Acceptable\ types\ from\ MISRA-\/C\ specifying\ signedness\ and\ size.}}
+\DoxyCodeLine{00487\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00488\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \ \ uint8;}
+\DoxyCodeLine{00489\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \ uint16;}
+\DoxyCodeLine{00490\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ uint32;}
+\DoxyCodeLine{00491\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{char}\ \ \ int8;}
+\DoxyCodeLine{00492\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{short}\ \ int16;}
+\DoxyCodeLine{00493\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{long}\ \ \ int32;}
+\DoxyCodeLine{00494\ \textcolor{keyword}{typedef}\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ float32;}
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00496\ \textcolor{preprocessor}{\#if(!CY\_PSOC3)}}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{keyword}{typedef}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ float64;}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keyword}{typedef}\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \ \ int64;}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \ \ uint64;}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (!CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \textcolor{comment}{/*\ Signed\ or\ unsigned\ depending\ on\ compiler\ selection\ */}}
+\DoxyCodeLine{00505\ \textcolor{keyword}{typedef}\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ char8;}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00508\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00509\ \textcolor{comment}{*\ \ \ Memory\ address\ functions\ prototypes}}
+\DoxyCodeLine{00510\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00511\ \textcolor{preprocessor}{\#if(CY\_PSOC3)}}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00513\ \textcolor{comment}{\ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00514\ \textcolor{comment}{\ \ \ \ *\ Prototypes\ for\ absolute\ memory\ address\ functions\ (cymem.a51)\ with\ built-\/in}}
+\DoxyCodeLine{00515\ \textcolor{comment}{\ \ \ \ *\ endian\ conversion.\ These\ functions\ should\ be\ called\ through\ the}}
+\DoxyCodeLine{00516\ \textcolor{comment}{\ \ \ \ *\ CY\_GET\_XTND\_REGxx\ and\ CY\_SET\_XTND\_REGxx\ macros.}}
+\DoxyCodeLine{00517\ \textcolor{comment}{\ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keyword}{extern}\ uint8\ \ cyread8\ \ \ \ \ \ \ (\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite8\ \ \ \ \ \ (\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint8\ value);}
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keyword}{extern}\ uint16\ cyread16\ \ \ \ \ \ (\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keyword}{extern}\ uint16\ cyread16\_nodpx(\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite16\ \ \ \ \ \ (\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint16\ value);}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite16\_nodpx(\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint16\ value);}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{keyword}{extern}\ uint32\ cyread24\ \ \ \ \ \ (\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keyword}{extern}\ uint32\ cyread24\_nodpx(\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite24\ \ \ \ \ \ (\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint32\ value);}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite24\_nodpx(\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint32\ value);}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \ \ \ \ \textcolor{keyword}{extern}\ uint32\ cyread32\ \ \ \ \ \ (\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keyword}{extern}\ uint32\ cyread32\_nodpx(\textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr);}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite32\ \ \ \ \ \ (\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint32\ value);}
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ cywrite32\_nodpx(\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{void}\ far\ *addr,\ uint32\ value);}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ \textcolor{comment}{\ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00541\ \textcolor{comment}{\ \ \ \ *\ Memory\ access\ routines\ from\ cymem.a51\ for\ the\ generated\ device}}
+\DoxyCodeLine{00542\ \textcolor{comment}{\ \ \ \ *\ configuration\ code.\ These\ functions\ may\ be\ subject\ to\ change\ in\ future}}
+\DoxyCodeLine{00543\ \textcolor{comment}{\ \ \ \ *\ revisions\ of\ the\ cy\_boot\ component\ and\ they\ are\ not\ available\ for\ all}}
+\DoxyCodeLine{00544\ \textcolor{comment}{\ \ \ \ *\ devices.\ Most\ code\ should\ use\ memset\ or\ memcpy\ instead.}}
+\DoxyCodeLine{00545\ \textcolor{comment}{\ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00546\ \ \ \ \ \textcolor{keywordtype}{void}\ cymemzero(\textcolor{keywordtype}{void}\ far\ *addr,\ uint16\ size);}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keywordtype}{void}\ cyconfigcpy(uint16\ size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ far\ *src,\ \textcolor{keywordtype}{void}\ far\ *dest)\ large;}
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{keywordtype}{void}\ cyconfigcpycode(uint16\ size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ code\ *src,\ \textcolor{keywordtype}{void}\ far\ *dest);}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYCONFIGCPY\_DECLARED\ \ \ \ (1)}}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ \ \ \ \ \textcolor{comment}{/*\ Prototype\ for\ function\ to\ set\ 24-\/bit\ register.\ Located\ at\ cyutils.c\ */}}
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \mbox{\hyperlink{codegentemp_2cytypes_8h_a05d84060e6f66025c2dac3dfc12c8f52}{CySetReg24}}(uint32\ \textcolor{keyword}{volatile}\ *\ addr,\ uint32\ value);}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00557\ \textcolor{preprocessor}{\ \ \ \ \#if(CY\_PSOC4)}}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \textcolor{keyword}{extern}\ uint32\ CyGetReg24(uint32\ \textcolor{keyword}{const}\ \textcolor{keyword}{volatile}\ *\ addr);}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00561\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC4)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00562\ }
+\DoxyCodeLine{00563\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00564\ }
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00567\ \textcolor{comment}{*\ \ \ Memory\ model\ definitions.\ To\ allow\ code\ to\ be\ 8051-\/ARM\ agnostic.}}
+\DoxyCodeLine{00568\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00569\ \textcolor{preprocessor}{\#if(CY\_PSOC3)}}
+\DoxyCodeLine{00570\ }
+\DoxyCodeLine{00571\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYBDATA\ \ \ \ \ bdata}}
+\DoxyCodeLine{00572\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYBIT\ \ \ \ \ \ \ bit}}
+\DoxyCodeLine{00573\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYCODE\ \ \ \ \ \ code}}
+\DoxyCodeLine{00574\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYCOMPACT\ \ \ compact}}
+\DoxyCodeLine{00575\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYDATA\ \ \ \ \ \ data}}
+\DoxyCodeLine{00576\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYFAR\ \ \ \ \ \ \ far}}
+\DoxyCodeLine{00577\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYIDATA\ \ \ \ \ idata}}
+\DoxyCodeLine{00578\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYLARGE\ \ \ \ \ large}}
+\DoxyCodeLine{00579\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYPDATA\ \ \ \ \ pdata}}
+\DoxyCodeLine{00580\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYREENTRANT\ reentrant}}
+\DoxyCodeLine{00581\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYSMALL\ \ \ \ \ small}}
+\DoxyCodeLine{00582\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYXDATA\ \ \ \ \ xdata}}
+\DoxyCodeLine{00583\ \textcolor{preprocessor}{\ \ \ \ \#define\ XDATA\ \ \ \ \ \ \ xdata}}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_NOINIT}}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00587\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00589\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYBDATA}}
+\DoxyCodeLine{00590\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYBIT\ \ \ \ \ \ uint8}}
+\DoxyCodeLine{00591\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYCODE}}
+\DoxyCodeLine{00592\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYCOMPACT}}
+\DoxyCodeLine{00593\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYDATA}}
+\DoxyCodeLine{00594\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYFAR}}
+\DoxyCodeLine{00595\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYIDATA}}
+\DoxyCodeLine{00596\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYLARGE}}
+\DoxyCodeLine{00597\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYPDATA}}
+\DoxyCodeLine{00598\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYREENTRANT}}
+\DoxyCodeLine{00599\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYSMALL}}
+\DoxyCodeLine{00600\ \textcolor{preprocessor}{\ \ \ \ \#define\ CYXDATA}}
+\DoxyCodeLine{00601\ \textcolor{preprocessor}{\ \ \ \ \#define\ XDATA}}
+\DoxyCodeLine{00602\ }
+\DoxyCodeLine{00603\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_\_ARMCC\_VERSION)}}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NOINIT\ \ \ \ \ \ \ \ \ \ \ \_\_attribute\_\_\ ((section("{}.noinit"{}),\ zero\_init))}}
+\DoxyCodeLine{00606\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NORETURN\ \ \ \ \ \ \ \ \ \_\_attribute\_\_\ ((noreturn))}}
+\DoxyCodeLine{00607\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_SECTION(name)\ \ \ \ \_\_attribute\_\_\ ((section(name)))}}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Specifies\ a\ minimum\ alignment\ (in\ bytes)\ for\ variables\ of\ the}}
+\DoxyCodeLine{00610\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ \ specified\ type.}}
+\DoxyCodeLine{00611\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00612\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_ALIGN(align)\ \ \ \ \ \_\_align(align)}}
+\DoxyCodeLine{00613\ }
+\DoxyCodeLine{00614\ }
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Attached\ to\ an\ enum,\ struct,\ or\ union\ type\ definition,\ specified\ that}}
+\DoxyCodeLine{00616\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ \ the\ minimum\ required\ memory\ be\ used\ to\ represent\ the\ type.}}
+\DoxyCodeLine{00617\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00618\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_PACKED}}
+\DoxyCodeLine{00619\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_PACKED\_ATTR\ \ \ \ \ \ \_\_attribute\_\_\ ((packed))}}
+\DoxyCodeLine{00620\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_INLINE\ \ \ \ \ \ \ \ \ \ \ \_\_inline}}
+\DoxyCodeLine{00621\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined\ (\_\_GNUC\_\_)}}
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00623\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NOINIT\ \ \ \ \ \ \ \ \ \ \ \_\_attribute\_\_\ ((section("{}.noinit"{})))}}
+\DoxyCodeLine{00624\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NORETURN\ \ \ \ \ \ \ \ \ \_\_attribute\_\_\ ((noreturn))}}
+\DoxyCodeLine{00625\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_SECTION(name)\ \ \ \ \_\_attribute\_\_\ ((section(name)))}}
+\DoxyCodeLine{00626\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_ALIGN(align)\ \ \ \ \ \_\_attribute\_\_\ ((aligned(align)))}}
+\DoxyCodeLine{00627\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_PACKED}}
+\DoxyCodeLine{00628\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_PACKED\_ATTR\ \ \ \ \ \ \_\_attribute\_\_\ ((packed))}}
+\DoxyCodeLine{00629\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_INLINE\ \ \ \ \ \ \ \ \ \ \ inline}}
+\DoxyCodeLine{00630\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined\ (\_\_ICCARM\_\_)}}
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00632\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NOINIT\ \ \ \ \ \ \ \ \ \ \ \_\_no\_init}}
+\DoxyCodeLine{00633\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NORETURN\ \ \ \ \ \ \ \ \ \_\_noreturn}}
+\DoxyCodeLine{00634\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_PACKED\ \ \ \ \ \ \ \ \ \ \ \_\_packed}}
+\DoxyCodeLine{00635\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_PACKED\_ATTR}}
+\DoxyCodeLine{00636\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_INLINE\ \ \ \ \ \ \ \ \ \ \ inline}}
+\DoxyCodeLine{00637\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (\_\_ARMCC\_VERSION)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00640\ }
+\DoxyCodeLine{00641\ }
+\DoxyCodeLine{00642\ \textcolor{preprocessor}{\#if(CY\_PSOC3)}}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \ \ \textcolor{comment}{/*\ 8051\ naturally\ returns\ 8\ bit\ value.\ */}}
+\DoxyCodeLine{00645\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ cystatus;}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00647\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00648\ }
+\DoxyCodeLine{00649\ \ \ \ \ \textcolor{comment}{/*\ ARM\ naturally\ returns\ 32\ bit\ value.\ */}}
+\DoxyCodeLine{00650\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ cystatus;}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ }
+\DoxyCodeLine{00655\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00656\ \textcolor{comment}{*\ \ Hardware\ Register\ Types.}}
+\DoxyCodeLine{00657\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00658\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{volatile}\ uint8\ \ CYXDATA\ reg8;}
+\DoxyCodeLine{00659\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{volatile}\ uint16\ CYXDATA\ reg16;}
+\DoxyCodeLine{00660\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{volatile}\ uint32\ CYXDATA\ reg32;}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ }
+\DoxyCodeLine{00663\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00664\ \textcolor{comment}{*\ \ Interrupt\ Types\ and\ Macros}}
+\DoxyCodeLine{00665\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00666\ \textcolor{preprocessor}{\#if(CY\_PSOC3)}}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_ISR(FuncName)\ \ \ \ \ \ \ \ void\ FuncName\ (void)\ interrupt\ 0}}
+\DoxyCodeLine{00669\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_ISR\_PROTO(FuncName)\ \ void\ FuncName\ (void)}}
+\DoxyCodeLine{00670\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (CYCODE\ *\ cyisraddress)(void);}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00674\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_ISR(FuncName)\ \ \ \ \ \ \ \ void\ FuncName\ (void)}}
+\DoxyCodeLine{00675\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_ISR\_PROTO(FuncName)\ \ void\ FuncName\ (void)}}
+\DoxyCodeLine{00676\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (*\ cyisraddress)(void);}
+\DoxyCodeLine{00677\ }
+\DoxyCodeLine{00678\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined\ (\_\_ICCARM\_\_)}}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{\ cyisraddress\ \_\_fun;\ \textcolor{keywordtype}{void}\ *\ \_\_ptr;\ \}\ intvec\_elem;}
+\DoxyCodeLine{00680\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ defined\ (\_\_ICCARM\_\_)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00681\ }
+\DoxyCodeLine{00682\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00683\ }
+\DoxyCodeLine{00684\ }
+\DoxyCodeLine{00685\ \textcolor{preprocessor}{\#define\ CY\_M\_PI\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (3.14159265358979323846264338327)}}
+\DoxyCodeLine{00686\ }
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \textcolor{preprocessor}{\#if(CY\_PSOC3)}}
+\DoxyCodeLine{00720\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00721\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG8(addr)}}
+\DoxyCodeLine{00722\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00731\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG8(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*((const\ reg8\ *)(addr)))}}
+\DoxyCodeLine{00732\ }
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00734\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00735\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG8(addr,\ value)}}
+\DoxyCodeLine{00736\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00744\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG8(addr,\ value)\ \ \ \ \ \ \ \ (*((reg8\ *)(addr))\ \ =\ (uint8)(value))}}
+\DoxyCodeLine{00745\ }
+\DoxyCodeLine{00746\ }
+\DoxyCodeLine{00747\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00748\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG16(addr)}}
+\DoxyCodeLine{00749\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00759\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG16(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ cyread16\_nodpx\ ((const\ volatile\ void\ far\ *)(const\ reg16\ *)(addr))}}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00761\ }
+\DoxyCodeLine{00762\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00763\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG16(addr,\ value)}}
+\DoxyCodeLine{00764\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00773\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG16(addr,\ value)\ \ \ \ \ \ \ cywrite16\_nodpx((volatile\ void\ far\ *)(reg16\ *)(addr),\ value)}}
+\DoxyCodeLine{00774\ }
+\DoxyCodeLine{00775\ }
+\DoxyCodeLine{00776\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00777\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG24(addr)}}
+\DoxyCodeLine{00778\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00788\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG24(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ cyread24\_nodpx\ ((const\ volatile\ void\ far\ *)(const\ reg32\ *)(addr))}}
+\DoxyCodeLine{00789\ }
+\DoxyCodeLine{00790\ }
+\DoxyCodeLine{00791\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00792\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG24(addr,\ value)}}
+\DoxyCodeLine{00793\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00802\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG24(addr,\ value)\ \ \ \ \ \ \ cywrite24\_nodpx((volatile\ void\ far\ *)(reg32\ *)(addr),value)}}
+\DoxyCodeLine{00803\ }
+\DoxyCodeLine{00804\ }
+\DoxyCodeLine{00805\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00806\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG32(addr)}}
+\DoxyCodeLine{00807\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00817\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG32(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ cyread32\_nodpx\ ((const\ volatile\ void\ far\ *)(const\ reg32\ *)(addr))}}
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00819\ }
+\DoxyCodeLine{00820\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00821\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG32(addr,\ value)}}
+\DoxyCodeLine{00822\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00831\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG32(addr,\ value)\ \ \ \ \ \ \ cywrite32\_nodpx((volatile\ void\ far\ *)(reg32\ *)(addr),\ value)}}
+\DoxyCodeLine{00832\ }
+\DoxyCodeLine{00833\ }
+\DoxyCodeLine{00834\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00835\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_XTND\_REG8(addr)}}
+\DoxyCodeLine{00836\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00846\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG8(addr)\ \ \ \ \ \ \ \ \ \ cyread8((const\ volatile\ void\ far\ *)(addr))}}
+\DoxyCodeLine{00847\ }
+\DoxyCodeLine{00848\ }
+\DoxyCodeLine{00849\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00850\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_XTND\_REG8(addr,\ value)}}
+\DoxyCodeLine{00851\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00860\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG8(addr,\ value)\ \ \ cywrite8((volatile\ void\ far\ *)(addr),\ value)}}
+\DoxyCodeLine{00861\ }
+\DoxyCodeLine{00862\ }
+\DoxyCodeLine{00863\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_XTND\_REG16(addr)}}
+\DoxyCodeLine{00865\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00876\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG16(addr)\ \ \ \ \ \ \ \ \ cyread16((const\ volatile\ void\ far\ *)(addr))}}
+\DoxyCodeLine{00877\ }
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00880\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_XTND\_REG16(addr,\ value)}}
+\DoxyCodeLine{00881\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00891\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG16(addr,\ value)\ \ cywrite16((volatile\ void\ far\ *)(addr),\ value)}}
+\DoxyCodeLine{00892\ }
+\DoxyCodeLine{00893\ }
+\DoxyCodeLine{00894\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00895\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_XTND\_REG24(addr)}}
+\DoxyCodeLine{00896\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00907\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG24(addr)\ \ \ \ \ \ \ \ \ cyread24((const\ volatile\ void\ far\ *)(addr))}}
+\DoxyCodeLine{00908\ }
+\DoxyCodeLine{00909\ }
+\DoxyCodeLine{00910\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00911\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_XTND\_REG24(addr,\ value)}}
+\DoxyCodeLine{00912\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00922\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG24(addr,\ value)\ \ cywrite24((volatile\ void\ far\ *)(addr),\ value)}}
+\DoxyCodeLine{00923\ }
+\DoxyCodeLine{00924\ }
+\DoxyCodeLine{00925\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00926\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_XTND\_REG32(addr)}}
+\DoxyCodeLine{00927\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00938\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG32(addr)\ \ \ \ \ \ \ \ \ cyread32((const\ volatile\ void\ far\ *)(addr))}}
+\DoxyCodeLine{00939\ }
+\DoxyCodeLine{00940\ }
+\DoxyCodeLine{00941\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{00942\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_XTND\_REG32(addr,\ value)}}
+\DoxyCodeLine{00943\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{00953\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG32(addr,\ value)\ \ cywrite32((volatile\ void\ far\ *)(addr),\ value)}}
+\DoxyCodeLine{00954\ }
+\DoxyCodeLine{00955\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00956\ }
+\DoxyCodeLine{00957\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG8(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*((const\ reg8\ *)(addr)))}}
+\DoxyCodeLine{00958\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG8(addr,\ value)\ \ \ \ \ \ \ \ (*((reg8\ *)(addr))\ \ =\ (uint8)(value))}}
+\DoxyCodeLine{00959\ }
+\DoxyCodeLine{00960\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG16(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ (*((const\ reg16\ *)(addr)))}}
+\DoxyCodeLine{00961\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG16(addr,\ value)\ \ \ \ \ \ \ (*((reg16\ *)(addr))\ =\ (uint16)(value))}}
+\DoxyCodeLine{00962\ }
+\DoxyCodeLine{00963\ }
+\DoxyCodeLine{00964\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG24(addr,\ value)\ \ \ \ \ \ \ CySetReg24((reg32\ *)\ (addr),\ (value))}}
+\DoxyCodeLine{00965\ \textcolor{preprocessor}{\ \ \ \ \#if(CY\_PSOC4)}}
+\DoxyCodeLine{00966\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_GET\_REG24(addr)\ \ \ \ \ \ \ \ \ \ CyGetReg24((const\ reg32\ *)\ (addr))}}
+\DoxyCodeLine{00967\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00968\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_GET\_REG24(addr)\ \ \ \ \ \ \ \ \ \ (*((const\ reg32\ *)(addr))\ \&\ 0x00FFFFFFu)}}
+\DoxyCodeLine{00969\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC4)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00970\ }
+\DoxyCodeLine{00971\ }
+\DoxyCodeLine{00972\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG32(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ (*((const\ reg32\ *)(addr)))}}
+\DoxyCodeLine{00973\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG32(addr,\ value)\ \ \ \ \ \ \ (*((reg32\ *)(addr))\ =\ (uint32)(value))}}
+\DoxyCodeLine{00974\ }
+\DoxyCodeLine{00975\ \ \ \ \ \textcolor{comment}{/*\ To\ allow\ code\ to\ be\ 8051-\/ARM\ agnostic.\ */}}
+\DoxyCodeLine{00976\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG8(addr)\ \ \ \ \ \ \ \ \ \ CY\_GET\_REG8(addr)}}
+\DoxyCodeLine{00977\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG8(addr,\ value)\ \ \ CY\_SET\_REG8(addr,\ value)}}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00979\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG16(addr)\ \ \ \ \ \ \ \ \ CY\_GET\_REG16(addr)}}
+\DoxyCodeLine{00980\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG16(addr,\ value)\ \ CY\_SET\_REG16(addr,\ value)}}
+\DoxyCodeLine{00981\ }
+\DoxyCodeLine{00982\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG24(addr)\ \ \ \ \ \ \ \ \ CY\_GET\_REG24(addr)}}
+\DoxyCodeLine{00983\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG24(addr,\ value)\ \ CY\_SET\_REG24(addr,\ value)}}
+\DoxyCodeLine{00984\ }
+\DoxyCodeLine{00985\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_XTND\_REG32(addr)\ \ \ \ \ \ \ \ \ CY\_GET\_REG32(addr)}}
+\DoxyCodeLine{00986\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_XTND\_REG32(addr,\ value)\ \ CY\_SET\_REG32(addr,\ value)}}
+\DoxyCodeLine{00987\ }
+\DoxyCodeLine{00988\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00990\ }
+\DoxyCodeLine{00991\ }
+\DoxyCodeLine{00997\ }
+\DoxyCodeLine{00998\ \textcolor{preprocessor}{\#if(CY\_PSOC4)}}
+\DoxyCodeLine{00999\ }
+\DoxyCodeLine{01000\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01001\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_FIELD\_MASK(regSize,\ bitFieldName)}}
+\DoxyCodeLine{01002\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01014\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_FIELD\_MASK(regSize,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01015\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((((uint\ \#\#\ regSize)\ 0xFFFFFFFFu\ <<\ ((uint32)(regSize)\ -\/\ bitFieldName\ \#\#\ \_\_SIZE\ -\/\ bitFieldName\ \#\#\ \_\_OFFSET))\ >>\(\backslash\)}}
+\DoxyCodeLine{01016\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ ((uint32)(regSize)\ -\/\ bitFieldName\ \#\#\ \_\_SIZE))\ <<\ bitFieldName\ \#\#\ \_\_OFFSET)}}
+\DoxyCodeLine{01017\ }
+\DoxyCodeLine{01018\ }
+\DoxyCodeLine{01019\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01020\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG8\_FIELD(registerName,\ bitFieldName)}}
+\DoxyCodeLine{01021\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01047\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG8\_FIELD(registerName,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ ((CY\_GET\_REG8((registerName))\ >>\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ (\string~(0xFFu\ <<\ bitFieldName\ \#\#\ \_\_SIZE)))}}
+\DoxyCodeLine{01049\ }
+\DoxyCodeLine{01050\ }
+\DoxyCodeLine{01051\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01052\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG8\_FIELD(registerName,\ bitFieldName,\ value)}}
+\DoxyCodeLine{01053\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01078\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG8\_FIELD(registerName,\ bitFieldName,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{01079\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ CY\_SET\_REG8((registerName),\ \(\backslash\)}}
+\DoxyCodeLine{01080\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((CY\_GET\_REG8((registerName))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\ \string~CY\_GET\_FIELD\_MASK(8,\ bitFieldName))\ |\ \(\backslash\)}}
+\DoxyCodeLine{01081\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (((uint8)(value)\ <<\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ \ CY\_GET\_FIELD\_MASK(8,\ bitFieldName))))}}
+\DoxyCodeLine{01082\ }
+\DoxyCodeLine{01083\ }
+\DoxyCodeLine{01084\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01085\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_CLEAR\_REG8\_FIELD(registerName,\ bitFieldName)}}
+\DoxyCodeLine{01086\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01109\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CLEAR\_REG8\_FIELD(registerName,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01110\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CY\_SET\_REG8((registerName),\ (CY\_GET\_REG8((registerName))\ \&\ \string~CY\_GET\_FIELD\_MASK(8,\ bitFieldName))))}}
+\DoxyCodeLine{01111\ }
+\DoxyCodeLine{01112\ }
+\DoxyCodeLine{01113\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01114\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG16\_FIELD(registerName,\ bitFieldName)}}
+\DoxyCodeLine{01115\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01141\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG16\_FIELD(registerName,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01142\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ ((CY\_GET\_REG16((registerName))\ >>\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ (\string~(0xFFFFu\ <<\ bitFieldName\ \#\#\ \_\_SIZE)))}}
+\DoxyCodeLine{01143\ }
+\DoxyCodeLine{01144\ }
+\DoxyCodeLine{01145\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01146\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG16\_FIELD(registerName,\ bitFieldName,\ value)}}
+\DoxyCodeLine{01147\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01172\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG16\_FIELD(registerName,\ bitFieldName,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{01173\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ CY\_SET\_REG16((registerName),\ \(\backslash\)}}
+\DoxyCodeLine{01174\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((CY\_GET\_REG16((registerName))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\ \string~CY\_GET\_FIELD\_MASK(16,\ bitFieldName))\ |\ \(\backslash\)}}
+\DoxyCodeLine{01175\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (((uint16)(value)\ <<\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ \ CY\_GET\_FIELD\_MASK(16,\ bitFieldName))))}}
+\DoxyCodeLine{01176\ }
+\DoxyCodeLine{01177\ }
+\DoxyCodeLine{01178\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01179\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_CLEAR\_REG16\_FIELD(registerName,\ bitFieldName)}}
+\DoxyCodeLine{01180\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01203\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CLEAR\_REG16\_FIELD(registerName,\ bitFieldName)\(\backslash\)}}
+\DoxyCodeLine{01204\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CY\_SET\_REG16((registerName),\ (CY\_GET\_REG16((registerName))\ \&\ \string~CY\_GET\_FIELD\_MASK(16,\ bitFieldName))))}}
+\DoxyCodeLine{01205\ }
+\DoxyCodeLine{01206\ }
+\DoxyCodeLine{01207\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01208\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_REG32\_FIELD(registerName,\ bitFieldName)}}
+\DoxyCodeLine{01209\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01235\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_REG32\_FIELD(registerName,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01236\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ ((CY\_GET\_REG32((registerName))\ >>\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ (\string~(0xFFFFFFFFu\ <<\ bitFieldName\ \#\#\ \_\_SIZE)))}}
+\DoxyCodeLine{01237\ }
+\DoxyCodeLine{01238\ }
+\DoxyCodeLine{01239\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01240\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_REG32\_FIELD(registerName,\ bitFieldName,\ value)}}
+\DoxyCodeLine{01241\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01267\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_REG32\_FIELD(registerName,\ bitFieldName,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{01268\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ CY\_SET\_REG32((registerName),\ \(\backslash\)}}
+\DoxyCodeLine{01269\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((CY\_GET\_REG32((registerName))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\ \string~CY\_GET\_FIELD\_MASK(32,\ bitFieldName))\ |\ \(\backslash\)}}
+\DoxyCodeLine{01270\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (((uint32)(value)\ <<\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ \ CY\_GET\_FIELD\_MASK(32,\ bitFieldName))))}}
+\DoxyCodeLine{01271\ }
+\DoxyCodeLine{01272\ }
+\DoxyCodeLine{01273\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01274\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_CLEAR\_REG32\_FIELD(registerName,\ bitFieldName)}}
+\DoxyCodeLine{01275\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01299\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_CLEAR\_REG32\_FIELD(registerName,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01300\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CY\_SET\_REG32((registerName),\ (CY\_GET\_REG32((registerName))\ \&\ \string~CY\_GET\_FIELD\_MASK(32,\ bitFieldName))))}}
+\DoxyCodeLine{01301\ }
+\DoxyCodeLine{01302\ }
+\DoxyCodeLine{01303\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01304\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_GET\_FIELD(regValue,\ bitFieldName)}}
+\DoxyCodeLine{01305\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01331\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_GET\_FIELD(regValue,\ bitFieldName)\ \(\backslash\)}}
+\DoxyCodeLine{01332\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (((regValue)\ >>\ bitFieldName\ \#\#\ \_\_OFFSET)\ \&\ (\string~(0xFFFFFFFFu\ <<\ bitFieldName\ \#\#\ \_\_SIZE)))}}
+\DoxyCodeLine{01333\ }
+\DoxyCodeLine{01334\ }
+\DoxyCodeLine{01335\ \textcolor{comment}{\ \ \ \ /*******************************************************************************}}
+\DoxyCodeLine{01336\ \textcolor{comment}{\ \ \ \ *\ Macro\ Name:\ CY\_SET\_FIELD(regValue,\ bitFieldName,\ value)}}
+\DoxyCodeLine{01337\ \textcolor{comment}{\ \ \ \ ****************************************************************************/}}
+\DoxyCodeLine{01361\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_SET\_FIELD(regValue,\ bitFieldName,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{01362\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((regValue)\ =\ \(\backslash\)}}
+\DoxyCodeLine{01363\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((((uint32)(value)\ \&\ (\string~(0xFFFFFFu\ <<\ bitFieldName\ \#\#\ \_\_SIZE)))\ <<\ bitFieldName\ \#\#\ \_\_OFFSET))\ |\ \(\backslash\)}}
+\DoxyCodeLine{01364\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((uint32)(regValue)\ \&\ (((\string~(0xFFu\ <<\ bitFieldName\ \#\#\ \_\_SIZE)))\ <<\ bitFieldName\ \#\#\ \_\_OFFSET)))}}
+\DoxyCodeLine{01365\ }
+\DoxyCodeLine{01366\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC4)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01367\ }
+\DoxyCodeLine{01369\ }
+\DoxyCodeLine{01370\ }
+\DoxyCodeLine{01371\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{01372\ \textcolor{comment}{*\ \ Data\ manipulation\ defines}}
+\DoxyCodeLine{01373\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{01374\ }
+\DoxyCodeLine{01375\ \textcolor{comment}{/*\ Get\ 8\ bits\ of\ 16\ bit\ value.\ */}}
+\DoxyCodeLine{01376\ \textcolor{preprocessor}{\#define\ LO8(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8)\ ((x)\ \&\ 0xFFu))}}
+\DoxyCodeLine{01377\ \textcolor{preprocessor}{\#define\ HI8(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8)\ ((uint16)(x)\ >>\ 8))}}
+\DoxyCodeLine{01378\ }
+\DoxyCodeLine{01379\ \textcolor{comment}{/*\ Get\ 16\ bits\ of\ 32\ bit\ value.\ */}}
+\DoxyCodeLine{01380\ \textcolor{preprocessor}{\#define\ LO16(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint16)\ ((x)\ \&\ 0xFFFFu))}}
+\DoxyCodeLine{01381\ \textcolor{preprocessor}{\#define\ HI16(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint16)\ ((uint32)(x)\ >>\ 16))}}
+\DoxyCodeLine{01382\ }
+\DoxyCodeLine{01383\ \textcolor{comment}{/*\ Swap\ the\ byte\ ordering\ of\ 32\ bit\ value\ */}}
+\DoxyCodeLine{01384\ \textcolor{preprocessor}{\#define\ CYSWAP\_ENDIAN32(x)\ \ \(\backslash\)}}
+\DoxyCodeLine{01385\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((uint32)((((x)\ >>\ 24)\ \&\ 0x000000FFu)\ |\ (((x)\ \&\ 0x00FF0000u)\ >>\ 8)\ |\ (((x)\ \&\ 0x0000FF00u)\ <<\ 8)\ |\ ((x)\ <<\ 24)))}}
+\DoxyCodeLine{01386\ }
+\DoxyCodeLine{01387\ \textcolor{comment}{/*\ Swap\ the\ byte\ ordering\ of\ 16\ bit\ value\ */}}
+\DoxyCodeLine{01388\ \textcolor{preprocessor}{\#define\ CYSWAP\_ENDIAN16(x)\ \ \ \ \ \ ((uint16)(((x)\ <<\ 8)\ |\ (((x)\ >>\ 8)\ \&\ 0x00FFu)))}}
+\DoxyCodeLine{01389\ }
+\DoxyCodeLine{01390\ }
+\DoxyCodeLine{01391\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{01392\ \textcolor{comment}{*\ Defines\ the\ standard\ return\ values\ used\ in\ PSoC\ content.\ A\ function\ is}}
+\DoxyCodeLine{01393\ \textcolor{comment}{*\ not\ limited\ to\ these\ return\ values\ but\ can\ use\ them\ when\ returning\ standard}}
+\DoxyCodeLine{01394\ \textcolor{comment}{*\ error\ values.\ Return\ values\ can\ be\ overloaded\ if\ documented\ in\ the\ function}}
+\DoxyCodeLine{01395\ \textcolor{comment}{*\ header.\ On\ the\ 8051\ a\ function\ can\ use\ a\ larger\ return\ type\ but\ still\ use\ the}}
+\DoxyCodeLine{01396\ \textcolor{comment}{*\ defined\ return\ codes.}}
+\DoxyCodeLine{01397\ \textcolor{comment}{*}}
+\DoxyCodeLine{01398\ \textcolor{comment}{*\ Zero\ is\ successful,\ all\ other\ values\ indicate\ some\ form\ of\ failure.\ 1\ -\/\ 0x7F\ -\/}}
+\DoxyCodeLine{01399\ \textcolor{comment}{*\ standard\ defined\ values;\ 0x80\ -\/\ ...\ \ -\/\ user\ or\ content\ defined\ values.}}
+\DoxyCodeLine{01400\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{01401\ \textcolor{preprocessor}{\#define\ CYRET\_SUCCESS\ \ \ \ \ \ \ \ \ \ \ (0x00u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Successful\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01402\ \textcolor{preprocessor}{\#define\ CYRET\_BAD\_PARAM\ \ \ \ \ \ \ \ \ (0x01u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ One\ or\ more\ invalid\ parameters\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01403\ \textcolor{preprocessor}{\#define\ CYRET\_INVALID\_OBJECT\ \ \ \ (0x02u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Invalid\ object\ specified\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01404\ \textcolor{preprocessor}{\#define\ CYRET\_MEMORY\ \ \ \ \ \ \ \ \ \ \ \ (0x03u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Memory\ related\ failure\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01405\ \textcolor{preprocessor}{\#define\ CYRET\_LOCKED\ \ \ \ \ \ \ \ \ \ \ \ (0x04u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Resource\ lock\ failure\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01406\ \textcolor{preprocessor}{\#define\ CYRET\_EMPTY\ \ \ \ \ \ \ \ \ \ \ \ \ (0x05u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ No\ more\ objects\ available\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01407\ \textcolor{preprocessor}{\#define\ CYRET\_BAD\_DATA\ \ \ \ \ \ \ \ \ \ (0x06u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Bad\ data\ received\ (CRC\ or\ other\ error\ check)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01408\ \textcolor{preprocessor}{\#define\ CYRET\_STARTED\ \ \ \ \ \ \ \ \ \ \ (0x07u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Operation\ started,\ but\ not\ necessarily\ completed\ yet\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01409\ \textcolor{preprocessor}{\#define\ CYRET\_FINISHED\ \ \ \ \ \ \ \ \ \ (0x08u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Operation\ completed\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01410\ \textcolor{preprocessor}{\#define\ CYRET\_CANCELED\ \ \ \ \ \ \ \ \ \ (0x09u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Operation\ canceled\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01411\ \textcolor{preprocessor}{\#define\ CYRET\_TIMEOUT\ \ \ \ \ \ \ \ \ \ \ (0x10u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Operation\ timed\ out\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01412\ \textcolor{preprocessor}{\#define\ CYRET\_INVALID\_STATE\ \ \ \ \ (0x11u)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Operation\ not\ setup\ or\ is\ in\ an\ improper\ state\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01413\ \textcolor{preprocessor}{\#define\ CYRET\_UNKNOWN\ \ \ \ \ \ \ \ \ \ \ ((cystatus)\ 0xFFFFFFFFu)\ \ \ \ }\textcolor{comment}{/*\ Unknown\ failure\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01414\ }
+\DoxyCodeLine{01415\ }
+\DoxyCodeLine{01416\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{01417\ \textcolor{comment}{*\ \ \ Intrinsic\ Defines:\ Processor\ NOP\ instruction}}
+\DoxyCodeLine{01418\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{01419\ \textcolor{preprocessor}{\#if(CY\_PSOC3)}}
+\DoxyCodeLine{01420\ }
+\DoxyCodeLine{01421\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_NOP\ \ \ \ \ \ \ \ \ \ \_nop\_()}}
+\DoxyCodeLine{01422\ }
+\DoxyCodeLine{01423\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{01424\ }
+\DoxyCodeLine{01425\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_\_ARMCC\_VERSION)}}
+\DoxyCodeLine{01426\ }
+\DoxyCodeLine{01427\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ RealView\ */}}
+\DoxyCodeLine{01428\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NOP\ \ \ \ \ \ \_\_nop()}}
+\DoxyCodeLine{01429\ }
+\DoxyCodeLine{01430\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{01431\ }
+\DoxyCodeLine{01432\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ GCC\ */}}
+\DoxyCodeLine{01433\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_NOP\ \ \ \ \ \ \_\_asm("{}NOP\(\backslash\)n"{})}}
+\DoxyCodeLine{01434\ }
+\DoxyCodeLine{01435\ \textcolor{preprocessor}{\ \ \ \ \#endif\ \ }\textcolor{comment}{/*\ defined(\_\_ARMCC\_VERSION)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01436\ }
+\DoxyCodeLine{01437\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01438\ }
+\DoxyCodeLine{01439\ }
+\DoxyCodeLine{01440\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{01441\ \textcolor{comment}{*\ The\ following\ code\ is\ OBSOLETE\ and\ must\ not\ be\ used\ starting\ from\ cy\_boot\ 5.10}}
+\DoxyCodeLine{01442\ \textcolor{comment}{*}}
+\DoxyCodeLine{01443\ \textcolor{comment}{*\ If\ the\ obsoleted\ macro\ definitions\ intended\ for\ use\ in\ the\ application\ use\ the}}
+\DoxyCodeLine{01444\ \textcolor{comment}{*\ following\ scheme,\ redefine\ your\ own\ versions\ of\ these\ definitions:}}
+\DoxyCodeLine{01445\ \textcolor{comment}{*\ \ \ \ \#ifdef\ <OBSOLETED\_DEFINE>}}
+\DoxyCodeLine{01446\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \#undef\ \ <OBSOLETED\_DEFINE>}}
+\DoxyCodeLine{01447\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \#define\ <OBSOLETED\_DEFINE>\ \ \ \ \ \ (<New\ Value>)}}
+\DoxyCodeLine{01448\ \textcolor{comment}{*\ \ \ \ \#endif}}
+\DoxyCodeLine{01449\ \textcolor{comment}{*}}
+\DoxyCodeLine{01450\ \textcolor{comment}{*\ Note:\ Redefine\ obsoleted\ macro\ definitions\ with\ caution.\ They\ might\ still\ be}}
+\DoxyCodeLine{01451\ \textcolor{comment}{*\ \ \ \ \ \ \ used\ in\ the\ application\ and\ their\ modification\ might\ lead\ to\ unexpected}}
+\DoxyCodeLine{01452\ \textcolor{comment}{*\ \ \ \ \ \ \ consequences.}}
+\DoxyCodeLine{01453\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{01454\ \textcolor{preprocessor}{\#define\ CY\_IP\_S8FS\ \ \ \ \ \ CY\_IP\_FS}}
+\DoxyCodeLine{01455\ }
+\DoxyCodeLine{01456\ }
+\DoxyCodeLine{01457\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{01458\ \textcolor{comment}{*\ The\ following\ code\ is\ OBSOLETE\ and\ must\ not\ be\ used\ starting\ from\ cy\_boot\ 3.10}}
+\DoxyCodeLine{01459\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{01460\ \textcolor{preprocessor}{\#define\ CY\_UDB\_V0\ \ \ \ \ \ \ \ \ \ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_5A)}}
+\DoxyCodeLine{01461\ \textcolor{preprocessor}{\#define\ CY\_UDB\_V1\ \ \ \ \ \ \ \ \ \ \ (!CY\_UDB\_V0)}}
+\DoxyCodeLine{01462\ \textcolor{preprocessor}{\#define\ CY\_PSOC4A\ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4A)}}
+\DoxyCodeLine{01463\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_4D}}
+\DoxyCodeLine{01464\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4D\ \ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_4D)}}
+\DoxyCodeLine{01465\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4SF\ \ (CY\_PSOC4D)}}
+\DoxyCodeLine{01466\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{01467\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4D\ \ \ (0u\ !=\ 0u)}}
+\DoxyCodeLine{01468\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC4SF\ \ (CY\_PSOC4D)}}
+\DoxyCodeLine{01469\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_4D\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01470\ \textcolor{preprocessor}{\#define\ CY\_PSOC5A\ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_5A)}}
+\DoxyCodeLine{01471\ \textcolor{preprocessor}{\#ifdef\ CYDEV\_CHIP\_MEMBER\_5B}}
+\DoxyCodeLine{01472\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC5LP\ \ (CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_5B)}}
+\DoxyCodeLine{01473\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{01474\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC5LP\ \ (0u\ !=\ 0u)}}
+\DoxyCodeLine{01475\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CYDEV\_CHIP\_MEMBER\_5B\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01476\ }
+\DoxyCodeLine{01477\ \textcolor{preprocessor}{\#if\ (!CY\_PSOC4)}}
+\DoxyCodeLine{01478\ }
+\DoxyCodeLine{01479\ \ \ \ \ \textcolor{comment}{/*\ Device\ is\ PSoC\ 3\ and\ the\ revision\ is\ ES2\ or\ earlier\ */}}
+\DoxyCodeLine{01480\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC3\_ES2\ ((CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_3A)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{01481\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ <=\ CYDEV\_CHIP\_REVISION\_3A\_ES2))}}
+\DoxyCodeLine{01482\ }
+\DoxyCodeLine{01483\ \ \ \ \ \textcolor{comment}{/*\ Device\ is\ PSoC\ 3\ and\ the\ revision\ is\ ES3\ or\ later\ */}}
+\DoxyCodeLine{01484\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC3\_ES3\ ((CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_3A)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{01485\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ >=\ CYDEV\_CHIP\_REVISION\_3A\_ES3))}}
+\DoxyCodeLine{01486\ }
+\DoxyCodeLine{01487\ \ \ \ \ \textcolor{comment}{/*\ Device\ is\ PSoC\ 5\ and\ the\ revision\ is\ ES1\ or\ earlier\ */}}
+\DoxyCodeLine{01488\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC5\_ES1\ (CY\_PSOC5A\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{01489\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ <=\ CYDEV\_CHIP\_REVISION\_5A\_ES1))}}
+\DoxyCodeLine{01490\ }
+\DoxyCodeLine{01491\ \ \ \ \ \textcolor{comment}{/*\ Device\ is\ PSoC\ 5\ and\ the\ revision\ is\ ES2\ or\ later\ */}}
+\DoxyCodeLine{01492\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_PSOC5\_ES2\ (CY\_PSOC5A\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{01493\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ >\ CYDEV\_CHIP\_REVISION\_5A\_ES1))}}
+\DoxyCodeLine{01494\ }
+\DoxyCodeLine{01495\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (!CY\_PSOC4)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01496\ }
+\DoxyCodeLine{01497\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ CY\_BOOT\_CYTYPES\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01498\ }
+\DoxyCodeLine{01499\ }
+\DoxyCodeLine{01500\ \textcolor{comment}{/*\ []\ END\ OF\ FILE\ */}}
+
+\end{DoxyCode}

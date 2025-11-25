@@ -1,0 +1,368 @@
+\doxysection{codegentemp/cypins.h File Reference}
+\hypertarget{codegentemp_2cypins_8h}{}\label{codegentemp_2cypins_8h}\index{codegentemp/cypins.h@{codegentemp/cypins.h}}
+
+
+This file contains the function prototypes and constants used for a port/pin in access and control.  
+
+
+{\ttfamily \#include "{}cyfitter.\+h"{}}\newline
+{\ttfamily \#include "{}cytypes.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a168e58ecf98db2ff7b729e470c410e7d}\label{codegentemp_2cypins_8h_a168e58ecf98db2ff7b729e470c410e7d} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT}~(0x01u)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a0cd36978ef50783fc5467bfd27f8b162}\label{codegentemp_2cypins_8h_a0cd36978ef50783fc5467bfd27f8b162} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+MASK}~((uint8)(0x07u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a34290cece7ef9884ad7d28d65ee97184}\label{codegentemp_2cypins_8h_a34290cece7ef9884ad7d28d65ee97184} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+0}~((uint8)(0x00u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ab87ef8db6cb33d97c6aa547c29136692}\label{codegentemp_2cypins_8h_ab87ef8db6cb33d97c6aa547c29136692} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+1}~((uint8)(0x01u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a62d44ec5ef9f2c09947fea97c700a008}\label{codegentemp_2cypins_8h_a62d44ec5ef9f2c09947fea97c700a008} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+2}~((uint8)(0x02u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_abad16f6a1aef44cdb0c35e2df58c8690}\label{codegentemp_2cypins_8h_abad16f6a1aef44cdb0c35e2df58c8690} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+3}~((uint8)(0x03u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_af06e9b1cd13e1ebaa8093fd56ece742c}\label{codegentemp_2cypins_8h_af06e9b1cd13e1ebaa8093fd56ece742c} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+4}~((uint8)(0x04u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a594bd38d115614bf6bb2a9f7f0bc28a8}\label{codegentemp_2cypins_8h_a594bd38d115614bf6bb2a9f7f0bc28a8} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+5}~((uint8)(0x05u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ae054f22d27750e6b7df1d303e853806a}\label{codegentemp_2cypins_8h_ae054f22d27750e6b7df1d303e853806a} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+6}~((uint8)(0x06u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a315a86d57fecae8749cdc7c3738f2a75}\label{codegentemp_2cypins_8h_a315a86d57fecae8749cdc7c3738f2a75} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+7}~((uint8)(0x07u $<$$<$ CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT))
+\item 
+\Hypertarget{codegentemp_2cypins_8h_aec7b2dbe5368fef8b919f0c3b544515f}\label{codegentemp_2cypins_8h_aec7b2dbe5368fef8b919f0c3b544515f} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+ALG\+\_\+\+HIZ}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+0)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a6c6d1338ad866086c75c90e730402b0b}\label{codegentemp_2cypins_8h_a6c6d1338ad866086c75c90e730402b0b} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+DIG\+\_\+\+HIZ}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+1)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a66e1a9952f1dadc8dc9e87879b08aa3e}\label{codegentemp_2cypins_8h_a66e1a9952f1dadc8dc9e87879b08aa3e} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+RES\+\_\+\+UP}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+2)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_afc04c0729315d7bab767bf86bc038069}\label{codegentemp_2cypins_8h_afc04c0729315d7bab767bf86bc038069} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+RES\+\_\+\+DWN}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+3)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ac8eaa0f8ec17e60430aef714c8b3cc13}\label{codegentemp_2cypins_8h_ac8eaa0f8ec17e60430aef714c8b3cc13} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+OD\+\_\+\+LO}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+4)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a8dcbb8fc90ed2f7a613e4ded0aa5fbac}\label{codegentemp_2cypins_8h_a8dcbb8fc90ed2f7a613e4ded0aa5fbac} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+OD\+\_\+\+HI}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+5)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a7ef4aa3f02e0e2933ca067cc67a2e00a}\label{codegentemp_2cypins_8h_a7ef4aa3f02e0e2933ca067cc67a2e00a} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+STRONG}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+6)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_acf57fd5588d0b18715dac713bc4b4b20}\label{codegentemp_2cypins_8h_acf57fd5588d0b18715dac713bc4b4b20} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+RES\+\_\+\+UPDWN}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+7)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a76341700ea559c7f29292284af943046}\label{codegentemp_2cypins_8h_a76341700ea559c7f29292284af943046} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DATAOUT}~(0x01u)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a3726b587f04e9954d7a8c361b50baba5}\label{codegentemp_2cypins_8h_a3726b587f04e9954d7a8c361b50baba5} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+PIN\+\_\+\+FASTSLEW}~(0x\+BFu)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a337a8c6a045d93d7578e7b00b0b11616}\label{codegentemp_2cypins_8h_a337a8c6a045d93d7578e7b00b0b11616} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+PIN\+\_\+\+SLOWSLEW}~(0x40u)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a7689f124b2d1ed2225c642f0600ad5c8}\label{codegentemp_2cypins_8h_a7689f124b2d1ed2225c642f0600ad5c8} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+PIN\+\_\+\+STATE}~(0x10u)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_aea549db5957c2d498a6f652ac51cfb1b}\label{codegentemp_2cypins_8h_aea549db5957c2d498a6f652ac51cfb1b} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+BIDIR\+\_\+\+EN}~(0x20u)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a6999bc05e46ad966d4e7450bc387ad23}\label{codegentemp_2cypins_8h_a6999bc05e46ad966d4e7450bc387ad23} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+SLEW}~(0x40u)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ad82512debb6d06c961a80ea9af4a0774}\label{codegentemp_2cypins_8h_ad82512debb6d06c961a80ea9af4a0774} 
+\#define {\bfseries CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+BYPASS}~(0x80u)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_adc4aa72c8e3f19b5b9058caad4603735}{Cy\+Pins\+\_\+\+Read\+Pin}}(pin\+PC)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_a78b88da605c23bc2e1fa91e0e90e35d8}{Cy\+Pins\+\_\+\+Set\+Pin}}(pin\+PC)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_a6712238a61c618cbc4b5ff35fe76f032}{Cy\+Pins\+\_\+\+Clear\+Pin}}(pin\+PC)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_a50d1cd61ca9b43eb74370643063f836a}{Cy\+Pins\+\_\+\+Set\+Pin\+Drive\+Mode}}(pin\+PC,  mode)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_a8ad7d1000a15f547b74881a9992068ef}{Cy\+Pins\+\_\+\+Read\+Pin\+Drive\+Mode}}(pin\+PC)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_aaa0e5540596ce3b20a4a8619c6bf6f90}{Cy\+Pins\+\_\+\+Fast\+Slew}}(pin\+PC)
+\item 
+\#define \mbox{\hyperlink{codegentemp_2cypins_8h_a46e211744259ee55168260a7e5609c79}{Cy\+Pins\+\_\+\+Slow\+Slew}}(pin\+PC)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a2ddbcaae2866fdf3a0ecc15bd8cd1f2d}\label{codegentemp_2cypins_8h_a2ddbcaae2866fdf3a0ecc15bd8cd1f2d} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+SHIFT)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ab2208d6a04107ff0a4965abc6f13294b}\label{codegentemp_2cypins_8h_ab2208d6a04107ff0a4965abc6f13294b} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+MASK}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+\+MASK)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ac5c14f3ac453b01de6afc87de1a881dc}\label{codegentemp_2cypins_8h_ac5c14f3ac453b01de6afc87de1a881dc} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+0}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+0)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a97d4e9d89b5754399be5b511f5cc692c}\label{codegentemp_2cypins_8h_a97d4e9d89b5754399be5b511f5cc692c} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+1}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+1)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a3e253f7ce57dd3f4c7c0b5d1022238e2}\label{codegentemp_2cypins_8h_a3e253f7ce57dd3f4c7c0b5d1022238e2} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+2}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+2)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a2047c848ef659101d1e3ea419bfb824e}\label{codegentemp_2cypins_8h_a2047c848ef659101d1e3ea419bfb824e} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+3}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+3)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a3222859a48f2d671a7681892f5070d69}\label{codegentemp_2cypins_8h_a3222859a48f2d671a7681892f5070d69} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+4}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+4)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_aaee23f00f725e282f6afc19a50468ec3}\label{codegentemp_2cypins_8h_aaee23f00f725e282f6afc19a50468ec3} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+5}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+5)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ab1d60f0da6f4c821b120cbf769cc2457}\label{codegentemp_2cypins_8h_ab1d60f0da6f4c821b120cbf769cc2457} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+6}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+6)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a836dd5c840da705b464ed7a9f18b99ac}\label{codegentemp_2cypins_8h_a836dd5c840da705b464ed7a9f18b99ac} 
+\#define {\bfseries PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+7}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DRIVE\+\_\+\+MODE\+\_\+7)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a0e4e0c72da2d79538eb241d585d9c79e}\label{codegentemp_2cypins_8h_a0e4e0c72da2d79538eb241d585d9c79e} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+ALG\+\_\+\+HIZ}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+ALG\+\_\+\+HIZ)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a13477419859bf8b069f6de6797755b26}\label{codegentemp_2cypins_8h_a13477419859bf8b069f6de6797755b26} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+DIG\+\_\+\+HIZ}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+DIG\+\_\+\+HIZ)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a9777a19ba2faf375e7db3646c1d75a9d}\label{codegentemp_2cypins_8h_a9777a19ba2faf375e7db3646c1d75a9d} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+UP}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+RES\+\_\+\+UP)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a2019e45f1c95b6bd443c23d30c69f076}\label{codegentemp_2cypins_8h_a2019e45f1c95b6bd443c23d30c69f076} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+DWN}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+RES\+\_\+\+DWN)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a57c08d21e268970b38e299b3dcf5a60c}\label{codegentemp_2cypins_8h_a57c08d21e268970b38e299b3dcf5a60c} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+OD\+\_\+\+LO}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+OD\+\_\+\+LO)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a3cb3d3bc3eb4d013a625e32a89b20824}\label{codegentemp_2cypins_8h_a3cb3d3bc3eb4d013a625e32a89b20824} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+OD\+\_\+\+HI}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+OD\+\_\+\+HI)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a51c40552bdf5714e2ef7f0c9c3bdcbfd}\label{codegentemp_2cypins_8h_a51c40552bdf5714e2ef7f0c9c3bdcbfd} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+STRONG}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+STRONG)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a9ee34f0ca6c44beb30a2732ae25cf3a2}\label{codegentemp_2cypins_8h_a9ee34f0ca6c44beb30a2732ae25cf3a2} 
+\#define {\bfseries PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+UPDWN}~(CY\+\_\+\+PINS\+\_\+\+DM\+\_\+\+RES\+\_\+\+UPDWN)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a620d99aee6570db79f98a65b8b40a1a3}\label{codegentemp_2cypins_8h_a620d99aee6570db79f98a65b8b40a1a3} 
+\#define {\bfseries PC\+\_\+\+DATAOUT}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+DATAOUT)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_a54e5904d9b0927d099cf9debc3a4a4ca}\label{codegentemp_2cypins_8h_a54e5904d9b0927d099cf9debc3a4a4ca} 
+\#define {\bfseries PC\+\_\+\+PIN\+\_\+\+FASTSLEW}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+PIN\+\_\+\+FASTSLEW)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_aed86ac54c06cce081c8e26c9b2db1539}\label{codegentemp_2cypins_8h_aed86ac54c06cce081c8e26c9b2db1539} 
+\#define {\bfseries PC\+\_\+\+PIN\+\_\+\+SLOWSLEW}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+PIN\+\_\+\+SLOWSLEW)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_adb43ee55e1d3173200a3857218c5b79e}\label{codegentemp_2cypins_8h_adb43ee55e1d3173200a3857218c5b79e} 
+\#define {\bfseries PC\+\_\+\+PIN\+\_\+\+STATE}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+PIN\+\_\+\+STATE)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_aa49e9c1277528696cc70ccf358105af5}\label{codegentemp_2cypins_8h_aa49e9c1277528696cc70ccf358105af5} 
+\#define {\bfseries PC\+\_\+\+BIDIR\+\_\+\+EN}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+BIDIR\+\_\+\+EN)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_ab04da0b117b67c8356921b99253a91b6}\label{codegentemp_2cypins_8h_ab04da0b117b67c8356921b99253a91b6} 
+\#define {\bfseries PC\+\_\+\+SLEW}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+SLEW)
+\item 
+\Hypertarget{codegentemp_2cypins_8h_aa202c29ed2e781d523d288c49a169766}\label{codegentemp_2cypins_8h_aa202c29ed2e781d523d288c49a169766} 
+\#define {\bfseries PC\+\_\+\+BYPASS}~(CY\+\_\+\+PINS\+\_\+\+PC\+\_\+\+BYPASS)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the function prototypes and constants used for a port/pin in access and control. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+Documentation of the API\textquotesingle{}s in this file is located in the System Reference Guide provided with PSoC Creator.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-define-members}
+\Hypertarget{codegentemp_2cypins_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{codegentemp_2cypins_8h_a6712238a61c618cbc4b5ff35fe76f032}\index{cypins.h@{cypins.h}!CyPins\_ClearPin@{CyPins\_ClearPin}}
+\index{CyPins\_ClearPin@{CyPins\_ClearPin}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_ClearPin}{CyPins\_ClearPin}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_a6712238a61c618cbc4b5ff35fe76f032} 
+\#define Cy\+Pins\+\_\+\+Clear\+Pin(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ *(reg8\ *)(pinPC)\ \&=\ ((uint8)(\string~CY\_PINS\_PC\_DATAOUT)))}
+
+\end{DoxyCode}
+This macro sets the state of the specified pin to 0.
+
+The macro operation is not atomic. It is not guaranteed that shared register will remain uncorrupted during simultaneous read-\/modify-\/write operations performed by two threads (main and interrupt threads). To guarantee data integrity in such cases, the macro should be invoked while the specific interrupt is disabled or within critical section (all interrupts are disabled).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & address of a Pin Configuration register. \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7 \Hypertarget{codegentemp_2cypins_8h_aaa0e5540596ce3b20a4a8619c6bf6f90}\index{cypins.h@{cypins.h}!CyPins\_FastSlew@{CyPins\_FastSlew}}
+\index{CyPins\_FastSlew@{CyPins\_FastSlew}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_FastSlew}{CyPins\_FastSlew}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_aaa0e5540596ce3b20a4a8619c6bf6f90} 
+\#define Cy\+Pins\+\_\+\+Fast\+Slew(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*(reg8\ *)(pinPC)\ =\ (*(reg8\ *)(pinPC)\ \&\ CY\_PINS\_PC\_PIN\_FASTSLEW))}
+
+\end{DoxyCode}
+Set the slew rate for the pin to fast the edge rate. Note that this only applies for pins in strong output drive modes, not to resistive drive modes.
+
+The macro operation is not atomic. It is not guaranteed that shared register will remain uncorrupted during simultaneous read-\/modify-\/write operations performed by two threads (main and interrupt threads). To guarantee data integrity in such cases, the macro should be invoked while the specific interrupt is disabled or within critical section (all interrupts are disabled).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & address of a Pin Configuration register. \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7 \Hypertarget{codegentemp_2cypins_8h_adc4aa72c8e3f19b5b9058caad4603735}\index{cypins.h@{cypins.h}!CyPins\_ReadPin@{CyPins\_ReadPin}}
+\index{CyPins\_ReadPin@{CyPins\_ReadPin}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_ReadPin}{CyPins\_ReadPin}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_adc4aa72c8e3f19b5b9058caad4603735} 
+\#define Cy\+Pins\+\_\+\+Read\+Pin(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ *(reg8\ *)(pinPC)\ \&\ CY\_PINS\_PC\_PIN\_STATE\ )}
+
+\end{DoxyCode}
+Reads the current value on the pin (pin state, PS).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & Port pin configuration register (uint16). \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7
+
+\begin{DoxyReturn}{Returns}
+Pin state 0\+: Logic low value Non-\/0\+: Logic high value 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2cypins_8h_a8ad7d1000a15f547b74881a9992068ef}\index{cypins.h@{cypins.h}!CyPins\_ReadPinDriveMode@{CyPins\_ReadPinDriveMode}}
+\index{CyPins\_ReadPinDriveMode@{CyPins\_ReadPinDriveMode}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_ReadPinDriveMode}{CyPins\_ReadPinDriveMode}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_a8ad7d1000a15f547b74881a9992068ef} 
+\#define Cy\+Pins\+\_\+\+Read\+Pin\+Drive\+Mode(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*(reg8\ *)(pinPC)\ \&\ CY\_PINS\_PC\_DRIVE\_MODE\_MASK)}
+
+\end{DoxyCode}
+Reads the drive mode for the pin (DM).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & Port pin configuration register (uint16) \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7
+
+\begin{DoxyReturn}{Returns}
+mode\+: The current drive mode for the pin
+\end{DoxyReturn}
+Define Source PIN\+\_\+\+DM\+\_\+\+ALG\+\_\+\+HIZ Analog HiZ PIN\+\_\+\+DM\+\_\+\+DIG\+\_\+\+HIZ Digital HiZ PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+UP Resistive pull up PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+DWN Resistive pull down PIN\+\_\+\+DM\+\_\+\+OD\+\_\+\+LO Open drain -\/ drive low PIN\+\_\+\+DM\+\_\+\+OD\+\_\+\+HI Open drain -\/ drive high PIN\+\_\+\+DM\+\_\+\+STRONG Strong CMOS Output PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+UPDWN Resistive pull up/down \Hypertarget{codegentemp_2cypins_8h_a78b88da605c23bc2e1fa91e0e90e35d8}\index{cypins.h@{cypins.h}!CyPins\_SetPin@{CyPins\_SetPin}}
+\index{CyPins\_SetPin@{CyPins\_SetPin}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_SetPin}{CyPins\_SetPin}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_a78b88da605c23bc2e1fa91e0e90e35d8} 
+\#define Cy\+Pins\+\_\+\+Set\+Pin(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ *(reg8\ *)(pinPC)\ |=\ CY\_PINS\_PC\_DATAOUT)}
+
+\end{DoxyCode}
+Set the output value for the pin (data register, DR) to a logic high.
+
+Note that this only has an effect for pins configured as software pins that are not driven by hardware.
+
+The macro operation is not atomic. It is not guaranteed that shared register will remain uncorrupted during simultaneous read-\/modify-\/write operations performed by two threads (main and interrupt threads). To guarantee data integrity in such cases, the macro should be invoked while the specific interrupt is disabled or within critical section (all interrupts are disabled).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & Port pin configuration register (uint16). \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7 \Hypertarget{codegentemp_2cypins_8h_a50d1cd61ca9b43eb74370643063f836a}\index{cypins.h@{cypins.h}!CyPins\_SetPinDriveMode@{CyPins\_SetPinDriveMode}}
+\index{CyPins\_SetPinDriveMode@{CyPins\_SetPinDriveMode}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_SetPinDriveMode}{CyPins\_SetPinDriveMode}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_a50d1cd61ca9b43eb74370643063f836a} 
+\#define Cy\+Pins\+\_\+\+Set\+Pin\+Drive\+Mode(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{, }\item[{}]{mode}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (\ *(reg8\ *)(pinPC)\ =\ (*(reg8\ *)(pinPC)\ \&\ ((uint8)(\string~CY\_PINS\_PC\_DRIVE\_MODE\_MASK)))\ |\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ((mode)\ \&\ CY\_PINS\_PC\_DRIVE\_MODE\_MASK))}
+
+\end{DoxyCode}
+Sets the drive mode for the pin (DM).
+
+The macro operation is not atomic. It is not guaranteed that shared register will remain uncorrupted during simultaneous read-\/modify-\/write operations performed by two threads (main and interrupt threads). To guarantee data integrity in such cases, the macro should be invoked while the specific interrupt is disabled or within critical section (all interrupts are disabled).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & Port pin configuration register (uint16) \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Desired drive mode\\
+\hline
+\end{DoxyParams}
+Define Source PIN\+\_\+\+DM\+\_\+\+ALG\+\_\+\+HIZ Analog HiZ PIN\+\_\+\+DM\+\_\+\+DIG\+\_\+\+HIZ Digital HiZ PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+UP Resistive pull up PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+DWN Resistive pull down PIN\+\_\+\+DM\+\_\+\+OD\+\_\+\+LO Open drain -\/ drive low PIN\+\_\+\+DM\+\_\+\+OD\+\_\+\+HI Open drain -\/ drive high PIN\+\_\+\+DM\+\_\+\+STRONG Strong CMOS Output PIN\+\_\+\+DM\+\_\+\+RES\+\_\+\+UPDWN Resistive pull up/down \Hypertarget{codegentemp_2cypins_8h_a46e211744259ee55168260a7e5609c79}\index{cypins.h@{cypins.h}!CyPins\_SlowSlew@{CyPins\_SlowSlew}}
+\index{CyPins\_SlowSlew@{CyPins\_SlowSlew}!cypins.h@{cypins.h}}
+\doxysubsubsection{\texorpdfstring{CyPins\_SlowSlew}{CyPins\_SlowSlew}}
+{\footnotesize\ttfamily \label{codegentemp_2cypins_8h_a46e211744259ee55168260a7e5609c79} 
+\#define Cy\+Pins\+\_\+\+Slow\+Slew(\begin{DoxyParamCaption}\item[{}]{pin\+PC}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*(reg8\ *)(pinPC)\ =\ (*(reg8\ *)(pinPC)\ |\ CY\_PINS\_PC\_PIN\_SLOWSLEW))}
+
+\end{DoxyCode}
+Set the slew rate for the pin to slow the edge rate. Note that this only applies for pins in strong output drive modes, not to resistive drive modes.
+
+The macro operation is not atomic. It is not guaranteed that shared register will remain uncorrupted during simultaneous read-\/modify-\/write operations performed by two threads (main and interrupt threads). To guarantee data integrity in such cases, the macro should be invoked while the specific interrupt is disabled or within critical section (all interrupts are disabled).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+PC} & address of a Pin Configuration register. \#defines for each pin on a chip are provided in the cydevice\+\_\+trm.\+h file \\
+\hline
+{\em in} & the form\+: CYREG\+\_\+\+PRTx\+\_\+\+PCy\\
+\hline
+\end{DoxyParams}
+where x is a port number 0 -\/ 15 and y is a pin number 0 -\/ 7 

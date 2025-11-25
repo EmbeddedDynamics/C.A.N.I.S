@@ -1,0 +1,34 @@
+\doxysection{Group\+\_\+register\+\_\+access }
+\hypertarget{group__group__register__access}{}\label{group__group__register__access}\index{Group\_register\_access@{Group\_register\_access}}
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\item \contentsline{section}{Register Access }{\pageref{group__group__register__access__macros}}{}
+
+\item 
+\item \contentsline{section}{Bit Manipulation }{\pageref{group__group__register__access__bits}}{}
+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A library of macros provides read and write access to the registers of the device. These macros are used with the defined values made available in the generated cydevice\+\_\+trm.\+h and cyfitter.\+h files. Access to registers should be made using these macros and not the functions that are used to implement the macros. This allows for device independent code generation.
+
+The PSoC 4 processor architecture use little endian ordering.
+
+SRAM and Flash storage in all architectures is done using the endianness of the architecture and compilers. However, the registers in all these chips are laid out in little endian order. These macros allow register accesses to match this little endian ordering. If you perform operations on multi-\/byte registers without using these macros, you must consider the byte ordering of the specific architecture. Examples include usage of DMA to transfer between memory and registers, as well as function calls that are passed an array of bytes in memory.
+
+The PSoC 4 requires these accesses to be aligned to the width of the transaction.
+
+The PSoC 4 requires peripheral register accesses to match the hardware register size. Otherwise, the peripheral might ignore the transfer and Hard Fault exception will be generated.
+
+A library of macros provides read and write access to the registers of the device. These macros are used with the defined values made available in the generated cydevice\+\_\+trm.\+h and cyfitter.\+h files. Access to registers should be made using these macros and not the functions that are used to implement the macros. This allows for device independent code generation.
+
+The PSoC 4 processor architecture use little endian ordering.
+
+SRAM and Flash storage in all architectures is done using the endianness of the architecture and compilers. However, the registers in all these chips are laid out in little endian order. These macros allow register accesses to match this little endian ordering. If you perform operations on multi-\/byte registers without using these macros, you must consider the byte ordering of the specific architecture. Examples include usage of DMA to transfer between memory and registers, as well as function calls that are passed an array of bytes in memory.
+
+The PSoC 4 requires these accesses to be aligned to the width of the transaction.
+
+The PSoC 4 requires peripheral register accesses to match the hardware register size. Otherwise, the peripheral might ignore the transfer and Hard Fault exception will be generated. \input{group__group__register__access__macros}
+\input{group__group__register__access__bits}

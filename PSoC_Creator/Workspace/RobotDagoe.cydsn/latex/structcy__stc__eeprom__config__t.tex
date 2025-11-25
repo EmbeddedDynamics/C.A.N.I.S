@@ -1,0 +1,63 @@
+\doxysection{cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t Struct Reference}
+\hypertarget{structcy__stc__eeprom__config__t}{}\label{structcy__stc__eeprom__config__t}\index{cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}}
+
+
+{\ttfamily \#include $<$cy\+\_\+em\+\_\+eeprom.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__config__t_aa9ae2d13b233fabb35ab53780032ce20}{eeprom\+Size}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__config__t_afff9b6d9f7ffccc93c244e0518ef2916}{wear\+Leveling\+Factor}}
+\item 
+uint8 \mbox{\hyperlink{structcy__stc__eeprom__config__t_a7b03db77feffed895e4a82b78e6c79c8}{redundant\+Copy}}
+\item 
+uint8 \mbox{\hyperlink{structcy__stc__eeprom__config__t_ae34d083e0c53c7775cb60c1bc5822276}{blocking\+Write}}
+\item 
+uint32 \mbox{\hyperlink{structcy__stc__eeprom__config__t_a455e24b6652805784c4e9a9f25a59d3c}{user\+Flash\+Start\+Addr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+EEPROM configuration structure 
+
+\label{doc-variable-members}
+\Hypertarget{structcy__stc__eeprom__config__t_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcy__stc__eeprom__config__t_ae34d083e0c53c7775cb60c1bc5822276}\index{cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}!blockingWrite@{blockingWrite}}
+\index{blockingWrite@{blockingWrite}!cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}}
+\doxysubsubsection{\texorpdfstring{blockingWrite}{blockingWrite}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__config__t_ae34d083e0c53c7775cb60c1bc5822276} 
+uint8 cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t\+::blocking\+Write}
+
+If not zero, a blocking write to flash is used. Otherwise non-\/blocking write is used. This parameter is used only for PSoC 6. \Hypertarget{structcy__stc__eeprom__config__t_aa9ae2d13b233fabb35ab53780032ce20}\index{cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}!eepromSize@{eepromSize}}
+\index{eepromSize@{eepromSize}!cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}}
+\doxysubsubsection{\texorpdfstring{eepromSize}{eepromSize}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__config__t_aa9ae2d13b233fabb35ab53780032ce20} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t\+::eeprom\+Size}
+
+The number of bytes to store in EEPROM \Hypertarget{structcy__stc__eeprom__config__t_a7b03db77feffed895e4a82b78e6c79c8}\index{cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}!redundantCopy@{redundantCopy}}
+\index{redundantCopy@{redundantCopy}!cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}}
+\doxysubsubsection{\texorpdfstring{redundantCopy}{redundantCopy}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__config__t_a7b03db77feffed895e4a82b78e6c79c8} 
+uint8 cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t\+::redundant\+Copy}
+
+If not zero, a redundant copy of the Em\+\_\+\+EEPROM is included. \Hypertarget{structcy__stc__eeprom__config__t_a455e24b6652805784c4e9a9f25a59d3c}\index{cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}!userFlashStartAddr@{userFlashStartAddr}}
+\index{userFlashStartAddr@{userFlashStartAddr}!cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}}
+\doxysubsubsection{\texorpdfstring{userFlashStartAddr}{userFlashStartAddr}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__config__t_a455e24b6652805784c4e9a9f25a59d3c} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t\+::user\+Flash\+Start\+Addr}
+
+The start address for the EEPROM memory in the user\textquotesingle{}s flash. \Hypertarget{structcy__stc__eeprom__config__t_afff9b6d9f7ffccc93c244e0518ef2916}\index{cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}!wearLevelingFactor@{wearLevelingFactor}}
+\index{wearLevelingFactor@{wearLevelingFactor}!cy\_stc\_eeprom\_config\_t@{cy\_stc\_eeprom\_config\_t}}
+\doxysubsubsection{\texorpdfstring{wearLevelingFactor}{wearLevelingFactor}}
+{\footnotesize\ttfamily \label{structcy__stc__eeprom__config__t_afff9b6d9f7ffccc93c244e0518ef2916} 
+uint32 cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t\+::wear\+Leveling\+Factor}
+
+The amount of wear leveling from 1 to 10. 1 means no wear leveling is used. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+codegentemp/cy\+\_\+em\+\_\+eeprom.\+h\item 
+Generated\+\_\+\+Source/\+PSo\+C5/cy\+\_\+em\+\_\+eeprom.\+h\end{DoxyCompactItemize}

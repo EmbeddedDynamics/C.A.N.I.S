@@ -1,0 +1,489 @@
+\doxysection{Generated\+\_\+\+Source/\+PSo\+C5/cytypes.h File Reference}
+\hypertarget{_generated___source_2_p_so_c5_2cytypes_8h}{}\label{_generated___source_2_p_so_c5_2cytypes_8h}\index{Generated\_Source/PSoC5/cytypes.h@{Generated\_Source/PSoC5/cytypes.h}}
+
+
+Cy\+Types provides register access macros and approved types for use in firmware.  
+
+
+{\ttfamily \#include "{}cyfitter.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a6bf1da4545071f6257a9b4127cdb2103}\label{_generated___source_2_p_so_c5_2cytypes_8h_a6bf1da4545071f6257a9b4127cdb2103} 
+\#define {\bfseries CY\+\_\+\+PSOC3}~(CYDEV\+\_\+\+CHIP\+\_\+\+FAMILY\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+FAMILY\+\_\+\+PSOC3)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae6a7149cc5f97cfa4b356d4e475f854e}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae6a7149cc5f97cfa4b356d4e475f854e} 
+\#define {\bfseries CY\+\_\+\+PSOC4}~(CYDEV\+\_\+\+CHIP\+\_\+\+FAMILY\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+FAMILY\+\_\+\+PSOC4)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a16e06625083c258b125d5f0f7ce7f479}\label{_generated___source_2_p_so_c5_2cytypes_8h_a16e06625083c258b125d5f0f7ce7f479} 
+\#define {\bfseries CY\+\_\+\+PSOC5}~(CYDEV\+\_\+\+CHIP\+\_\+\+FAMILY\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+FAMILY\+\_\+\+PSOC5)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae3fd45d8a23c58dee8c959d6070f88d2}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae3fd45d8a23c58dee8c959d6070f88d2} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4000}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4D)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a18c1a14c90596ac318d42c8fec0fcf89}\label{_generated___source_2_p_so_c5_2cytypes_8h_a18c1a14c90596ac318d42c8fec0fcf89} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4A)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ab3387083cfc7f4ef1391b5c04ec6e8f1}\label{_generated___source_2_p_so_c5_2cytypes_8h_ab3387083cfc7f4ef1391b5c04ec6e8f1} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4200}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4A)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1b524f82931de4edfff5feb4610fa0a4}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1b524f82931de4edfff5feb4610fa0a4} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100\+BL}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4F)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a2bbfa1c36849be64f2d2bfe67edd1af9}\label{_generated___source_2_p_so_c5_2cytypes_8h_a2bbfa1c36849be64f2d2bfe67edd1af9} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4200\+BL}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4F)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aded323b699d5ca710ed04360bbcfc742}\label{_generated___source_2_p_so_c5_2cytypes_8h_aded323b699d5ca710ed04360bbcfc742} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100M}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4M)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a24de5626a0979d1d1fb15e83d8201980}\label{_generated___source_2_p_so_c5_2cytypes_8h_a24de5626a0979d1d1fb15e83d8201980} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4200M}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4M)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a4061c8285c4425cc9b289c621adfb555}\label{_generated___source_2_p_so_c5_2cytypes_8h_a4061c8285c4425cc9b289c621adfb555} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4200D}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4H)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a82315c0f2bba4e214f1e901fff41029b}\label{_generated___source_2_p_so_c5_2cytypes_8h_a82315c0f2bba4e214f1e901fff41029b} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4200L}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4L)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1295093a3c006c1306b79dd03629c525}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1295093a3c006c1306b79dd03629c525} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4000U}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4U)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae4a2f9c5b479675aa47ae57d9ace40d4}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae4a2f9c5b479675aa47ae57d9ace40d4} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4000S}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4J)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a4874dda23357bf6b0bb2b242586403e3}\label{_generated___source_2_p_so_c5_2cytypes_8h_a4874dda23357bf6b0bb2b242586403e3} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100S}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4K)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aed76026ac627eed642b22e706e3c50d5}\label{_generated___source_2_p_so_c5_2cytypes_8h_aed76026ac627eed642b22e706e3c50d5} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4400}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4I)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a2ca76d9c4155f06108e89428fb83e3c7}\label{_generated___source_2_p_so_c5_2cytypes_8h_a2ca76d9c4155f06108e89428fb83e3c7} 
+\#define {\bfseries CY\+\_\+\+CCG2}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4E)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aee88987d55bf5d50f5c08f5c6645c815}\label{_generated___source_2_p_so_c5_2cytypes_8h_aee88987d55bf5d50f5c08f5c6645c815} 
+\#define {\bfseries CY\+\_\+\+CCG3}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4O)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a646b38917e960eb3eac9f89310ba0a32}\label{_generated___source_2_p_so_c5_2cytypes_8h_a646b38917e960eb3eac9f89310ba0a32} 
+\#define {\bfseries CY\+\_\+\+CCG3\+PA}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4R)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_afdc1819e493b05b628360cd8db7f91cf}\label{_generated___source_2_p_so_c5_2cytypes_8h_afdc1819e493b05b628360cd8db7f91cf} 
+\#define {\bfseries CY\+\_\+\+CCG4}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4N)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae98f771ad56c86021258dbfd21788223}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae98f771ad56c86021258dbfd21788223} 
+\#define {\bfseries CY\+\_\+\+CCG5}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4S)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1b6ccde83ef8adf42b15e63b27c0842d}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1b6ccde83ef8adf42b15e63b27c0842d} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100\+BLII}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4P)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1cee394866b9bf00188aaf32089a6711}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1cee394866b9bf00188aaf32089a6711} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4200\+BLII}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4P)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a7b196af685a4b98c8204a468c649d318}\label{_generated___source_2_p_so_c5_2cytypes_8h_a7b196af685a4b98c8204a468c649d318} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100\+MS}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4V)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_af51c60205a49d9c782d9d75586cb9354}\label{_generated___source_2_p_so_c5_2cytypes_8h_af51c60205a49d9c782d9d75586cb9354} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+\_\+4100\+MS}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4V)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a296c448432fa84f6006d31116930e55a}\label{_generated___source_2_p_so_c5_2cytypes_8h_a296c448432fa84f6006d31116930e55a} 
+\#define {\bfseries CY\+\_\+\+IP\+\_\+\+HOBTO\+\_\+\+DEVICE}~(!(0 == 1))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aeea946c826c79896979c3963ccaef7bf}\label{_generated___source_2_p_so_c5_2cytypes_8h_aeea946c826c79896979c3963ccaef7bf} 
+\#define {\bfseries CY\+\_\+\+SYSTICK\+\_\+\+LFCLK\+\_\+\+SOURCE}~(0 == 0)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aceaed9eb98f923e8a93af7c04ae92fea}\label{_generated___source_2_p_so_c5_2cytypes_8h_aceaed9eb98f923e8a93af7c04ae92fea} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+4\+\_\+20}~(420u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aab80a852e50b817430319a87e02f5230}\label{_generated___source_2_p_so_c5_2cytypes_8h_aab80a852e50b817430319a87e02f5230} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+0}~(500u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a9a282f1e8b0f3520e6c1ec08eafd7ce0}\label{_generated___source_2_p_so_c5_2cytypes_8h_a9a282f1e8b0f3520e6c1ec08eafd7ce0} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+10}~(510u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a8321cfcb3a9df74512f513b8271a77cf}\label{_generated___source_2_p_so_c5_2cytypes_8h_a8321cfcb3a9df74512f513b8271a77cf} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+20}~(520u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a971a30513471cf4f1afa0b87e2f8a68f}\label{_generated___source_2_p_so_c5_2cytypes_8h_a971a30513471cf4f1afa0b87e2f8a68f} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+30}~(530u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae6b3cba9b445c82892a251e98b64ed75}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae6b3cba9b445c82892a251e98b64ed75} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+40}~(540u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aeb7989bded8012c5de6ece03bc3e3c5d}\label{_generated___source_2_p_so_c5_2cytypes_8h_aeb7989bded8012c5de6ece03bc3e3c5d} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+50}~(550u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ad45a823dc82e4fa5e74f5f0b05515a9f}\label{_generated___source_2_p_so_c5_2cytypes_8h_ad45a823dc82e4fa5e74f5f0b05515a9f} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+60}~(560u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ab03e1c24411c38fb96374cf32269b486}\label{_generated___source_2_p_so_c5_2cytypes_8h_ab03e1c24411c38fb96374cf32269b486} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+70}~(570u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ac1e2d6d9aa4c0937168745d851b5f0e9}\label{_generated___source_2_p_so_c5_2cytypes_8h_ac1e2d6d9aa4c0937168745d851b5f0e9} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+80}~(580u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a08eb08404ab6180f67e2eb9be88c0f93}\label{_generated___source_2_p_so_c5_2cytypes_8h_a08eb08404ab6180f67e2eb9be88c0f93} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+81}~(581u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_addb8de06df59b1b94bfc59470943f331}\label{_generated___source_2_p_so_c5_2cytypes_8h_addb8de06df59b1b94bfc59470943f331} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+5\+\_\+90}~(590u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a25ff15d9b1d30206672642c9cdfc6ec1}\label{_generated___source_2_p_so_c5_2cytypes_8h_a25ff15d9b1d30206672642c9cdfc6ec1} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+6\+\_\+0}~(600u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a64f3ddaa04dd8fed2bf96bb71b1e89ef}\label{_generated___source_2_p_so_c5_2cytypes_8h_a64f3ddaa04dd8fed2bf96bb71b1e89ef} 
+\#define {\bfseries CY\+\_\+\+BOOT\+\_\+\+VERSION}~(CY\+\_\+\+BOOT\+\_\+6\+\_\+0)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a32807c1f566ed975f94cad98a1b05545}\label{_generated___source_2_p_so_c5_2cytypes_8h_a32807c1f566ed975f94cad98a1b05545} 
+\#define {\bfseries CYBDATA}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae2739125a10741b91357e94e38575b28}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae2739125a10741b91357e94e38575b28} 
+\#define {\bfseries CYBIT}~uint8
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a58f16c65b62c18e0ba2d9389c821b926}\label{_generated___source_2_p_so_c5_2cytypes_8h_a58f16c65b62c18e0ba2d9389c821b926} 
+\#define {\bfseries CYCODE}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae4847f09c52964457d12feb7107be561}\label{_generated___source_2_p_so_c5_2cytypes_8h_ae4847f09c52964457d12feb7107be561} 
+\#define {\bfseries CYCOMPACT}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a96b670b146c824e8dbd3d803a4c028dc}\label{_generated___source_2_p_so_c5_2cytypes_8h_a96b670b146c824e8dbd3d803a4c028dc} 
+\#define {\bfseries CYDATA}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a8a048f98e87e3780137bb3db7a4c3626}\label{_generated___source_2_p_so_c5_2cytypes_8h_a8a048f98e87e3780137bb3db7a4c3626} 
+\#define {\bfseries CYFAR}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1452630abc039ad8a82104d2bdfe612a}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1452630abc039ad8a82104d2bdfe612a} 
+\#define {\bfseries CYIDATA}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aaa787516ee750fdc7b19f3b6528ff0e0}\label{_generated___source_2_p_so_c5_2cytypes_8h_aaa787516ee750fdc7b19f3b6528ff0e0} 
+\#define {\bfseries CYLARGE}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a61ab980778709dd4c359523eabbab1c4}\label{_generated___source_2_p_so_c5_2cytypes_8h_a61ab980778709dd4c359523eabbab1c4} 
+\#define {\bfseries CYPDATA}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a53508756e971dbfd04a6be4b31866720}\label{_generated___source_2_p_so_c5_2cytypes_8h_a53508756e971dbfd04a6be4b31866720} 
+\#define {\bfseries CYREENTRANT}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a800d28e4f233585dfc3daa01167130ea}\label{_generated___source_2_p_so_c5_2cytypes_8h_a800d28e4f233585dfc3daa01167130ea} 
+\#define {\bfseries CYSMALL}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a6112b5d035669e53fc6acbf0f9d17b1e}\label{_generated___source_2_p_so_c5_2cytypes_8h_a6112b5d035669e53fc6acbf0f9d17b1e} 
+\#define {\bfseries CYXDATA}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a40236c8c1d02f94f1fb4669ca607769d}\label{_generated___source_2_p_so_c5_2cytypes_8h_a40236c8c1d02f94f1fb4669ca607769d} 
+\#define {\bfseries XDATA}
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_ad544ccaf8859b0ffc34b272770ec646d}{CY\+\_\+\+ISR}}(Func\+Name)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_af6e3b0c8724c0d352c0da6e17c8e3cdf}{CY\+\_\+\+ISR\+\_\+\+PROTO}}(Func\+Name)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_af84b326f7ab12dde07de6a1a05bf57b2}\label{_generated___source_2_p_so_c5_2cytypes_8h_af84b326f7ab12dde07de6a1a05bf57b2} 
+\#define {\bfseries CY\+\_\+\+M\+\_\+\+PI}~(3.\+14159265358979323846264338327)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga34975c78bf005e734701b46d04811c98}{CY\+\_\+\+GET\+\_\+\+REG8}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_gaeca2bcb3d8be3de33fe86b610bf86b90}{CY\+\_\+\+SET\+\_\+\+REG8}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga21359444986c07db7fdb6993f313b472}{CY\+\_\+\+GET\+\_\+\+REG16}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_gaf6fdd73b6a193e60b1b8d11d6cbfcb13}{CY\+\_\+\+SET\+\_\+\+REG16}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga749ab39829e9caf8955d91dd355fe8b3}{CY\+\_\+\+SET\+\_\+\+REG24}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga08558965aa9ed40b40be2e03382e866d}{CY\+\_\+\+GET\+\_\+\+REG24}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga99c7cedf249c18295512d896086dc64f}{CY\+\_\+\+GET\+\_\+\+REG32}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_gafc826bc60da53abdb37e1e12c91d148a}{CY\+\_\+\+SET\+\_\+\+REG32}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_gac155f668b4fdbf64ffda1e6d608a9842}{CY\+\_\+\+GET\+\_\+\+XTND\+\_\+\+REG8}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_gac625dfc0504c41a43dcde02fff0eb1f9}{CY\+\_\+\+SET\+\_\+\+XTND\+\_\+\+REG8}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_gadff48464a65c0dbde98a4aa42f04add3}{CY\+\_\+\+GET\+\_\+\+XTND\+\_\+\+REG16}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga9a3e4720baa74b5be1b1d509da9869a0}{CY\+\_\+\+SET\+\_\+\+XTND\+\_\+\+REG16}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga0c15f9e16d828664a88420ad6b70e4e9}{CY\+\_\+\+GET\+\_\+\+XTND\+\_\+\+REG24}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga35024a80464d8038d97018bdfd8f0aeb}{CY\+\_\+\+SET\+\_\+\+XTND\+\_\+\+REG24}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga8436ed95fd9c213f8485fa133b2f6797}{CY\+\_\+\+GET\+\_\+\+XTND\+\_\+\+REG32}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__group__register__access__macros_ga3929e20a3abc9c3a5f0bd1778e018bbf}{CY\+\_\+\+SET\+\_\+\+XTND\+\_\+\+REG32}}(addr,  value)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a15943ab208c7c2f3035bf6d4454a83bf}{LO8}}(x)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_afcb3dd525c646f9cf35c411d791b8c37}{HI8}}(x)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a4869076e18c9b9422a69a28f38e04478}{LO16}}(x)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a5a82452de17502177235772e8345ce47}{HI16}}(x)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a83da09ea13dc3db1f07291d8a7a02715}{CYSWAP\+\_\+\+ENDIAN32}}(x)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a3f11d3629d84f468e52f4b1c0550cf8b}{CYSWAP\+\_\+\+ENDIAN16}}(x)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a02cbf0c43e652e08e9182f6ae106fbee}\label{_generated___source_2_p_so_c5_2cytypes_8h_a02cbf0c43e652e08e9182f6ae106fbee} 
+\#define {\bfseries CYRET\+\_\+\+SUCCESS}~(0x00u)           /\texorpdfstring{$\ast$}{*} Successful \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a2cf60d0bebcff3b28b6994d25715ef3b}\label{_generated___source_2_p_so_c5_2cytypes_8h_a2cf60d0bebcff3b28b6994d25715ef3b} 
+\#define {\bfseries CYRET\+\_\+\+BAD\+\_\+\+PARAM}~(0x01u)           /\texorpdfstring{$\ast$}{*} One or more invalid parameters \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a214646d7204905a6866b0c34031fc62d}\label{_generated___source_2_p_so_c5_2cytypes_8h_a214646d7204905a6866b0c34031fc62d} 
+\#define {\bfseries CYRET\+\_\+\+INVALID\+\_\+\+OBJECT}~(0x02u)           /\texorpdfstring{$\ast$}{*} Invalid object specified \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a8e474aff72a040efe5f482c40c6f755b}\label{_generated___source_2_p_so_c5_2cytypes_8h_a8e474aff72a040efe5f482c40c6f755b} 
+\#define {\bfseries CYRET\+\_\+\+MEMORY}~(0x03u)           /\texorpdfstring{$\ast$}{*} Memory related failure \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ac26d832b19a213d0db818599e175771f}\label{_generated___source_2_p_so_c5_2cytypes_8h_ac26d832b19a213d0db818599e175771f} 
+\#define {\bfseries CYRET\+\_\+\+LOCKED}~(0x04u)           /\texorpdfstring{$\ast$}{*} Resource lock failure \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a9578c1f97c387a9fb6f2862e3a2bd608}\label{_generated___source_2_p_so_c5_2cytypes_8h_a9578c1f97c387a9fb6f2862e3a2bd608} 
+\#define {\bfseries CYRET\+\_\+\+EMPTY}~(0x05u)           /\texorpdfstring{$\ast$}{*} No more objects available \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a8a2485c5356b1ea7e78ebb80ee76e034}\label{_generated___source_2_p_so_c5_2cytypes_8h_a8a2485c5356b1ea7e78ebb80ee76e034} 
+\#define {\bfseries CYRET\+\_\+\+BAD\+\_\+\+DATA}~(0x06u)           /\texorpdfstring{$\ast$}{*} Bad data received (CRC or other error check) \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ad94f75a3d0769b194408956ec706456a}\label{_generated___source_2_p_so_c5_2cytypes_8h_ad94f75a3d0769b194408956ec706456a} 
+\#define {\bfseries CYRET\+\_\+\+STARTED}~(0x07u)           /\texorpdfstring{$\ast$}{*} Operation started, but not necessarily completed yet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a8f00308f4e398e6fd792d0f673faf5ac}\label{_generated___source_2_p_so_c5_2cytypes_8h_a8f00308f4e398e6fd792d0f673faf5ac} 
+\#define {\bfseries CYRET\+\_\+\+FINISHED}~(0x08u)           /\texorpdfstring{$\ast$}{*} Operation completed \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a720d9cfab182c97a599324b1ba4f0889}\label{_generated___source_2_p_so_c5_2cytypes_8h_a720d9cfab182c97a599324b1ba4f0889} 
+\#define {\bfseries CYRET\+\_\+\+CANCELED}~(0x09u)           /\texorpdfstring{$\ast$}{*} Operation canceled \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ab42fef9bf3aa59c1e8cdc8150352195b}\label{_generated___source_2_p_so_c5_2cytypes_8h_ab42fef9bf3aa59c1e8cdc8150352195b} 
+\#define {\bfseries CYRET\+\_\+\+TIMEOUT}~(0x10u)           /\texorpdfstring{$\ast$}{*} Operation timed out \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a46e51d0495a54d74ba7cb87a44c45064}\label{_generated___source_2_p_so_c5_2cytypes_8h_a46e51d0495a54d74ba7cb87a44c45064} 
+\#define {\bfseries CYRET\+\_\+\+INVALID\+\_\+\+STATE}~(0x11u)           /\texorpdfstring{$\ast$}{*} Operation not setup or is in an improper state \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a09c885cd2d6c55f06947ab6d046e302d}\label{_generated___source_2_p_so_c5_2cytypes_8h_a09c885cd2d6c55f06947ab6d046e302d} 
+\#define {\bfseries CYRET\+\_\+\+UNKNOWN}~((cystatus) 0x\+FFFFFFFFu)    /\texorpdfstring{$\ast$}{*} Unknown failure \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a93ac0624cdf9ff47770271a5cf01cb82}\label{_generated___source_2_p_so_c5_2cytypes_8h_a93ac0624cdf9ff47770271a5cf01cb82} 
+\#define {\bfseries CY\+\_\+\+NOP}~\+\_\+\+\_\+asm("{}NOP\textbackslash{}n"{})
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a40260d4081610876aaf77a0b40d6c973}\label{_generated___source_2_p_so_c5_2cytypes_8h_a40260d4081610876aaf77a0b40d6c973} 
+\#define {\bfseries CY\+\_\+\+IP\+\_\+\+S8\+FS}~CY\+\_\+\+IP\+\_\+\+FS
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a83f42537dfa4213052a9e14ba0815ccc}\label{_generated___source_2_p_so_c5_2cytypes_8h_a83f42537dfa4213052a9e14ba0815ccc} 
+\#define {\bfseries CY\+\_\+\+UDB\+\_\+\+V0}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+5A)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ab2086b3fae23339e9ab4a8eb5f586ac9}\label{_generated___source_2_p_so_c5_2cytypes_8h_ab2086b3fae23339e9ab4a8eb5f586ac9} 
+\#define {\bfseries CY\+\_\+\+UDB\+\_\+\+V1}~(!CY\+\_\+\+UDB\+\_\+\+V0)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a70944587a2fc92f44e932ef2b090a6a1}\label{_generated___source_2_p_so_c5_2cytypes_8h_a70944587a2fc92f44e932ef2b090a6a1} 
+\#define {\bfseries CY\+\_\+\+PSOC4A}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4A)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1b6a884f07fd57da02ffd64a82785e6a}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1b6a884f07fd57da02ffd64a82785e6a} 
+\#define {\bfseries CY\+\_\+\+PSOC4D}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+4D)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a62e91e44bbaf5f56b972b1bd3137ac1b}\label{_generated___source_2_p_so_c5_2cytypes_8h_a62e91e44bbaf5f56b972b1bd3137ac1b} 
+\#define {\bfseries CY\+\_\+\+PSOC4\+SF}~(CY\+\_\+\+PSOC4D)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a1d57ab2c04af9b51aabebacd94f4962d}\label{_generated___source_2_p_so_c5_2cytypes_8h_a1d57ab2c04af9b51aabebacd94f4962d} 
+\#define {\bfseries CY\+\_\+\+PSOC5A}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+5A)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a50a6e6da9954b63e5befce203cac73eb}\label{_generated___source_2_p_so_c5_2cytypes_8h_a50a6e6da9954b63e5befce203cac73eb} 
+\#define {\bfseries CY\+\_\+\+PSOC5\+LP}~(CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+\+USED == CYDEV\+\_\+\+CHIP\+\_\+\+MEMBER\+\_\+5B)
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_ae6ca90c0c03c9314e78e590057174356}{CY\+\_\+\+PSOC3\+\_\+\+ES2}}
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_aba6071cf3f680159503eb56e9657e587}{CY\+\_\+\+PSOC3\+\_\+\+ES3}}
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a3fefb2ac5ed5e0842e5d40f74f9667da}{CY\+\_\+\+PSOC5\+\_\+\+ES1}}
+\item 
+\#define \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a016f6a78d8546ca591cf11db7f89764d}{CY\+\_\+\+PSOC5\+\_\+\+ES2}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a9208855f8600a3146f2f0c1fdeee7b45}\label{_generated___source_2_p_so_c5_2cytypes_8h_a9208855f8600a3146f2f0c1fdeee7b45} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries cyisraddress}) (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h_a05d84060e6f66025c2dac3dfc12c8f52}{Cy\+Set\+Reg24}} (uint32 volatile \texorpdfstring{$\ast$}{*}addr, uint32 value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cy\+Types provides register access macros and approved types for use in firmware. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+Due to endiannesses of the hardware and some compilers, the register access macros for big endian compilers use some library calls to arrange data the correct way.
+\end{DoxyNote}
+Register Access macros and functions perform their operations on an input of the type pointer to void. The arguments passed to it should be pointers to the type associated with the register size. (i.\+e. a "{}uint8 \texorpdfstring{$\ast$}{*}"{} shouldn\textquotesingle{}t be passed to obtain a 16-\/bit register value)
+
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2020, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-define-members}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ad544ccaf8859b0ffc34b272770ec646d}\index{cytypes.h@{cytypes.h}!CY\_ISR@{CY\_ISR}}
+\index{CY\_ISR@{CY\_ISR}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CY\_ISR}{CY\_ISR}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_ad544ccaf8859b0ffc34b272770ec646d} 
+\#define CY\+\_\+\+ISR(\begin{DoxyParamCaption}\item[{}]{Func\+Name}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ FuncName\ (\textcolor{keywordtype}{void})}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_af6e3b0c8724c0d352c0da6e17c8e3cdf}\index{cytypes.h@{cytypes.h}!CY\_ISR\_PROTO@{CY\_ISR\_PROTO}}
+\index{CY\_ISR\_PROTO@{CY\_ISR\_PROTO}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CY\_ISR\_PROTO}{CY\_ISR\_PROTO}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_af6e3b0c8724c0d352c0da6e17c8e3cdf} 
+\#define CY\+\_\+\+ISR\+\_\+\+PROTO(\begin{DoxyParamCaption}\item[{}]{Func\+Name}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ FuncName\ (\textcolor{keywordtype}{void})}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_ae6ca90c0c03c9314e78e590057174356}\index{cytypes.h@{cytypes.h}!CY\_PSOC3\_ES2@{CY\_PSOC3\_ES2}}
+\index{CY\_PSOC3\_ES2@{CY\_PSOC3\_ES2}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CY\_PSOC3\_ES2}{CY\_PSOC3\_ES2}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_ae6ca90c0c03c9314e78e590057174356} 
+\#define CY\+\_\+\+PSOC3\+\_\+\+ES2}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_3A)\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ <=\ CYDEV\_CHIP\_REVISION\_3A\_ES2))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_aba6071cf3f680159503eb56e9657e587}\index{cytypes.h@{cytypes.h}!CY\_PSOC3\_ES3@{CY\_PSOC3\_ES3}}
+\index{CY\_PSOC3\_ES3@{CY\_PSOC3\_ES3}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CY\_PSOC3\_ES3}{CY\_PSOC3\_ES3}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_aba6071cf3f680159503eb56e9657e587} 
+\#define CY\+\_\+\+PSOC3\+\_\+\+ES3}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((CYDEV\_CHIP\_MEMBER\_USED\ ==\ CYDEV\_CHIP\_MEMBER\_3A)\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ >=\ CYDEV\_CHIP\_REVISION\_3A\_ES3))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a3fefb2ac5ed5e0842e5d40f74f9667da}\index{cytypes.h@{cytypes.h}!CY\_PSOC5\_ES1@{CY\_PSOC5\_ES1}}
+\index{CY\_PSOC5\_ES1@{CY\_PSOC5\_ES1}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CY\_PSOC5\_ES1}{CY\_PSOC5\_ES1}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a3fefb2ac5ed5e0842e5d40f74f9667da} 
+\#define CY\+\_\+\+PSOC5\+\_\+\+ES1}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (CY\_PSOC5A\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ <=\ CYDEV\_CHIP\_REVISION\_5A\_ES1))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a016f6a78d8546ca591cf11db7f89764d}\index{cytypes.h@{cytypes.h}!CY\_PSOC5\_ES2@{CY\_PSOC5\_ES2}}
+\index{CY\_PSOC5\_ES2@{CY\_PSOC5\_ES2}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CY\_PSOC5\_ES2}{CY\_PSOC5\_ES2}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a016f6a78d8546ca591cf11db7f89764d} 
+\#define CY\+\_\+\+PSOC5\+\_\+\+ES2}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (CY\_PSOC5A\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (CYDEV\_CHIP\_REVISION\_USED\ >\ CYDEV\_CHIP\_REVISION\_5A\_ES1))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a3f11d3629d84f468e52f4b1c0550cf8b}\index{cytypes.h@{cytypes.h}!CYSWAP\_ENDIAN16@{CYSWAP\_ENDIAN16}}
+\index{CYSWAP\_ENDIAN16@{CYSWAP\_ENDIAN16}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CYSWAP\_ENDIAN16}{CYSWAP\_ENDIAN16}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a3f11d3629d84f468e52f4b1c0550cf8b} 
+\#define CYSWAP\+\_\+\+ENDIAN16(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint16)(((x)\ <<\ 8)\ |\ (((x)\ >>\ 8)\ \&\ 0x00FFu)))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a83da09ea13dc3db1f07291d8a7a02715}\index{cytypes.h@{cytypes.h}!CYSWAP\_ENDIAN32@{CYSWAP\_ENDIAN32}}
+\index{CYSWAP\_ENDIAN32@{CYSWAP\_ENDIAN32}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CYSWAP\_ENDIAN32}{CYSWAP\_ENDIAN32}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a83da09ea13dc3db1f07291d8a7a02715} 
+\#define CYSWAP\+\_\+\+ENDIAN32(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((uint32)((((x)\ >>\ 24)\ \&\ 0x000000FFu)\ |\ (((x)\ \&\ 0x00FF0000u)\ >>\ 8)\ |\ (((x)\ \&\ 0x0000FF00u)\ <<\ 8)\ |\ ((x)\ <<\ 24)))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a5a82452de17502177235772e8345ce47}\index{cytypes.h@{cytypes.h}!HI16@{HI16}}
+\index{HI16@{HI16}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{HI16}{HI16}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a5a82452de17502177235772e8345ce47} 
+\#define HI16(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint16)\ ((uint32)(x)\ >>\ 16))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_afcb3dd525c646f9cf35c411d791b8c37}\index{cytypes.h@{cytypes.h}!HI8@{HI8}}
+\index{HI8@{HI8}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{HI8}{HI8}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_afcb3dd525c646f9cf35c411d791b8c37} 
+\#define HI8(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint8)\ ((uint16)(x)\ >>\ 8))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a4869076e18c9b9422a69a28f38e04478}\index{cytypes.h@{cytypes.h}!LO16@{LO16}}
+\index{LO16@{LO16}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{LO16}{LO16}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a4869076e18c9b9422a69a28f38e04478} 
+\#define LO16(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint16)\ ((x)\ \&\ 0xFFFFu))}
+
+\end{DoxyCode}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a15943ab208c7c2f3035bf6d4454a83bf}\index{cytypes.h@{cytypes.h}!LO8@{LO8}}
+\index{LO8@{LO8}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{LO8}{LO8}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a15943ab208c7c2f3035bf6d4454a83bf} 
+\#define LO8(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint8)\ ((x)\ \&\ 0xFFu))}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_generated___source_2_p_so_c5_2cytypes_8h_a05d84060e6f66025c2dac3dfc12c8f52}\index{cytypes.h@{cytypes.h}!CySetReg24@{CySetReg24}}
+\index{CySetReg24@{CySetReg24}!cytypes.h@{cytypes.h}}
+\doxysubsubsection{\texorpdfstring{CySetReg24()}{CySetReg24()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cytypes_8h_a05d84060e6f66025c2dac3dfc12c8f52} 
+void Cy\+Set\+Reg24 (\begin{DoxyParamCaption}\item[{uint32 volatile \texorpdfstring{$\ast$}{*}}]{addr}{, }\item[{uint32}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+Writes a 24-\/bit value to the specified register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em add} & The address where data must be written. \\
+\hline
+{\em value} & The data that must be written.\\
+\hline
+\end{DoxyParams}
+Reentrant\+: No 

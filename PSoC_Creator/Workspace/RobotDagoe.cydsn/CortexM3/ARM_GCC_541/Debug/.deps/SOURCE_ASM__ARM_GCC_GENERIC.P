@@ -1,0 +1,10 @@
+C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/CortexM3/ARM_GCC_541/Debug/CyBootAsmGnu.o : C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/cydevicegnu.inc C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/cyfittergnu.inc 
+
+C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s : 
+
+C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/cydevicegnu.inc : 
+
+C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc : 
+
+C:/Users/Perij/Documents/PSoC\ Creator/Workspace/RobotDagoe.cydsn/Generated_Source/PSoC5/cyfittergnu.inc : 
+

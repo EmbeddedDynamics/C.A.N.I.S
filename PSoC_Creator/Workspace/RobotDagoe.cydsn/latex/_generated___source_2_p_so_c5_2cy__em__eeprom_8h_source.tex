@@ -1,0 +1,288 @@
+\doxysection{cy\+\_\+em\+\_\+eeprom.\+h}
+\hypertarget{_generated___source_2_p_so_c5_2cy__em__eeprom_8h_source}{}\label{_generated___source_2_p_so_c5_2cy__em__eeprom_8h_source}\index{Generated\_Source/PSoC5/cy\_em\_eeprom.h@{Generated\_Source/PSoC5/cy\_em\_eeprom.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ \(\backslash\)file\ cy\_em\_eeprom.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ \(\backslash\)version\ 2.20}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ \(\backslash\)brief}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ \ This\ file\ provides\ the\ function\ prototypes\ and\ constants\ for\ the\ Emulated}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ \ EEPROM\ middleware\ library.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{********************************************************************************}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ Copyright\ 2017,\ Cypress\ Semiconductor\ Corporation.\ \ All\ rights\ reserved.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ You\ may\ use\ this\ file\ only\ in\ accordance\ with\ the\ license,\ terms,\ conditions,}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ disclaimers,\ and\ limitations\ in\ the\ end\ user\ license\ agreement\ accompanying}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ the\ software\ package\ with\ which\ this\ file\ was\ provided.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#if\ !defined(CY\_EM\_EEPROM\_H)}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_H}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h}{cytypes.h}}"{}}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#if\ (CYDEV\_CHIP\_FAMILY\_USED\ ==\ CYDEV\_CHIP\_FAMILY\_PSOC6)}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cy\_device\_headers.h>}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}syslib/cy\_syslib.h"{}}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}flash/cy\_flash.h"{}}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_flash_8h}{CyFlash.h}}"{}}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cyfitter.h>}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ (CYDEV\_CHIP\_FAMILY\_USED\ ==\ CYDEV\_CHIP\_FAMILY\_PSOC6)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{comment}{/*\ The\ C\ binding\ of\ definitions\ if\ building\ with\ the\ C++\ compiler\ */}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00232\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00237\ \textcolor{comment}{*\ Conditional\ Compilation\ Parameters}}
+\DoxyCodeLine{00238\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#define\ CY\_PSOC6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CYDEV\_CHIP\_FAMILY\_USED\ ==\ CYDEV\_CHIP\_FAMILY\_PSOC6)}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00243\ \textcolor{comment}{*\ Data\ Structure\ definitions}}
+\DoxyCodeLine{00244\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00251\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00252\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ uint32\ eepromSize;}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00259\ \ \ \ \ uint32\ wearLevelingFactor;}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00262\ \ \ \ \ uint8\ redundantCopy;}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00267\ \ \ \ \ uint8\ blockingWrite;}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00270\ \ \ \ \ uint32\ userFlashStartAddr;}
+\DoxyCodeLine{00271\ \}\ \mbox{\hyperlink{structcy__stc__eeprom__config__t}{cy\_stc\_eeprom\_config\_t}};}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00278\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00279\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ uint32\ wlEndAddr;}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00288\ \ \ \ \ uint32\ numberOfRows;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00291\ \ \ \ \ uint32\ lastWrRowAddr;}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00294\ \ \ \ \ uint32\ eepromSize;}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00299\ \ \ \ \ uint32\ wearLevelingFactor;}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00302\ \ \ \ \ uint8\ redundantCopy;}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00307\ \ \ \ \ uint8\ blockingWrite;}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00310\ \ \ \ \ uint32\ userFlashStartAddr;}
+\DoxyCodeLine{00311\ \}\ \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\_stc\_eeprom\_context\_t}};}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \textcolor{preprocessor}{\#if\ (CY\_PSOC6)}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_ID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_PDL\_DRV\_ID(0x1BuL))\ \ }\textcolor{preprocessor}{}\textcolor{preprocessor}{}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_ID\_ERROR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint32\_t)(CY\_EM\_EEPROM\_ID\ |\ CY\_PDL\_STATUS\_ERROR)}}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00329\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_ID\_ERROR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0uL)}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ (CY\_PSOC6)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00335\ \textcolor{comment}{*\ Enumerated\ Types\ and\ Parameters}}
+\DoxyCodeLine{00336\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00339\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00340\ \{}
+\DoxyCodeLine{00341\ \ \ \ \ CY\_EM\_EEPROM\_SUCCESS\ \ \ \ \ \ =\ 0x00uL,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ CY\_EM\_EEPROM\_BAD\_PARAM\ \ \ \ =\ (CY\_EM\_EEPROM\_ID\_ERROR\ +\ 1uL),\ \ \ \ \ \ }
+\DoxyCodeLine{00343\ \ \ \ \ CY\_EM\_EEPROM\_BAD\_CHECKSUM\ =\ (CY\_EM\_EEPROM\_ID\_ERROR\ +\ 2uL),\ \ \ \ \ \ }
+\DoxyCodeLine{00344\ \ \ \ \ CY\_EM\_EEPROM\_BAD\_DATA\ \ \ \ \ =\ (CY\_EM\_EEPROM\_ID\_ERROR\ +\ 3uL),\ \ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ CY\_EM\_EEPROM\_WRITE\_FAIL\ \ \ =\ (CY\_EM\_EEPROM\_ID\_ERROR\ +\ 4uL)\ \ \ \ \ \ \ }
+\DoxyCodeLine{00346\ \}\ cy\_en\_em\_eeprom\_status\_t;}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00352\ \textcolor{comment}{*\ \ \ \ \ \ \ \ Function\ Prototypes}}
+\DoxyCodeLine{00353\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00359\ cy\_en\_em\_eeprom\_status\_t\ \mbox{\hyperlink{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0}{Cy\_Em\_EEPROM\_Init}}(\mbox{\hyperlink{structcy__stc__eeprom__config__t}{cy\_stc\_eeprom\_config\_t}}*\ config,\ \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\_stc\_eeprom\_context\_t}}\ *\ context);}
+\DoxyCodeLine{00360\ cy\_en\_em\_eeprom\_status\_t\ \mbox{\hyperlink{group__group__em__eeprom__functions_gab5c9597b71a54279de831842d7f7840e}{Cy\_Em\_EEPROM\_Read}}(uint32\ addr,}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\ eepromData,}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\ size,}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\_stc\_eeprom\_context\_t}}\ *\ context);}
+\DoxyCodeLine{00364\ cy\_en\_em\_eeprom\_status\_t\ \mbox{\hyperlink{group__group__em__eeprom__functions_gaf463c335f865e8b3b27d60cb17326c8f}{Cy\_Em\_EEPROM\_Write}}(uint32\ addr,}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\ eepromData,}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\ size,}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\_stc\_eeprom\_context\_t}}\ *\ context);}
+\DoxyCodeLine{00368\ cy\_en\_em\_eeprom\_status\_t\ \mbox{\hyperlink{group__group__em__eeprom__functions_gad61dbc3c01d2bbf96e0c0d5b6d2e0b61}{Cy\_Em\_EEPROM\_Erase}}(\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\_stc\_eeprom\_context\_t}}\ *\ context);}
+\DoxyCodeLine{00369\ uint32\ \mbox{\hyperlink{group__group__em__eeprom__functions_ga799b04577ad8925061627f392a551fbc}{Cy\_Em\_EEPROM\_NumWrites}}(\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\_stc\_eeprom\_context\_t}}\ *\ context);}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00374\ \textcolor{comment}{*\ API\ Constants}}
+\DoxyCodeLine{00375\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00381\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_VERSION\_MAJOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (2)}}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00384\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_VERSION\_MINOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (20)}}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_EEPROM\_DATA\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ /\ 2u)}}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00393\ \textcolor{comment}{*\ Macro\ definitions}}
+\DoxyCodeLine{00394\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ \textcolor{comment}{/*\ Defines\ the\ size\ of\ flash\ row\ */}}
+\DoxyCodeLine{00398\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_FLASH\_SIZEOF\_ROW)}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \textcolor{comment}{/*\ Device\ specific\ flash\ constants\ */}}
+\DoxyCodeLine{00401\ \textcolor{preprocessor}{\#if\ (!CY\_PSOC6)}}
+\DoxyCodeLine{00402\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_FLASH\_BASE\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CYDEV\_FLASH\_BASE)}}
+\DoxyCodeLine{00403\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_FLASH\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CYDEV\_FLASH\_SIZE)}}
+\DoxyCodeLine{00404\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_ROWS\_IN\_ARRAY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_FLASH\_SIZEOF\_ARRAY\ /\ CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW)}}
+\DoxyCodeLine{00405\ \textcolor{preprocessor}{\ \ \ \ \#if\ (CY\_PSOC3)}}
+\DoxyCodeLine{00406\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_EM\_EEPROM\_CODE\_MEM\_CLASS\_PREFIX\ \ \ \ \ \ \ \ \ \ (0xff0000uL)}}
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_EM\_EEPROM\_CODE\_ADDR\_END\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00408\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_CODE\_MEM\_CLASS\_PREFIX\ +\ (CY\_EM\_EEPROM\_FLASH\_SIZE\ -\/\ 1u))}}
+\DoxyCodeLine{00409\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_EM\_EEPROM\_CODE\_ADDR\_MASK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0xffffu)}}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Checks\ if\ the\ EEPROM\ is\ in\ flash\ range\ */}}
+\DoxyCodeLine{00411\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_EM\_EEPROM\_IS\_IN\_FLASH\_RANGE(startAddr,\ endAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00412\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((startAddr)\ >\ CY\_EM\_EEPROM\_CODE\_MEM\_CLASS\_PREFIX)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((endAddr)\ <=\ CY\_EM\_EEPROM\_CODE\_ADDR\_END))}}
+\DoxyCodeLine{00414\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Checks\ is\ the\ EEPROM\ is\ in\ flash\ range\ */}}
+\DoxyCodeLine{00416\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CY\_EM\_EEPROM\_IS\_IN\_FLASH\_RANGE(startAddr,\ endAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00417\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((startAddr)\ >\ CY\_EM\_EEPROM\_FLASH\_BASE\_ADDR)\ \&\&\ ((endAddr)\ <=\ CY\_EM\_EEPROM\_FLASH\_END\_ADDR))}}
+\DoxyCodeLine{00418\ \textcolor{preprocessor}{\ \ \ \ \#endif\ }\textcolor{comment}{/*\ (CY\_PSOC3)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00419\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00420\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_FLASH\_BASE\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_FLASH\_BASE)}}
+\DoxyCodeLine{00421\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_FLASH\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_FLASH\_SIZE)}}
+\DoxyCodeLine{00422\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_EM\_EEPROM\_BASE\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_BASE)}}
+\DoxyCodeLine{00423\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_EM\_EEPROM\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_SIZE)}}
+\DoxyCodeLine{00424\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_EM\_EEPROM\_END\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_EM\_EEPROM\_BASE\_ADDR\ +\ CY\_EM\_EEPROM\_EM\_EEPROM\_SIZE)}}
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{comment}{/*\ Checks\ is\ the\ EEPROM\ is\ in\ flash\ range\ */}}
+\DoxyCodeLine{00426\ \textcolor{preprocessor}{\ \ \ \ \#define\ CY\_EM\_EEPROM\_IS\_IN\_FLASH\_RANGE(startAddr,\ endAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00427\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((((startAddr)\ >\ CY\_EM\_EEPROM\_FLASH\_BASE\_ADDR)\ \&\&\ ((endAddr)\ <=\ CY\_EM\_EEPROM\_FLASH\_END\_ADDR))\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00428\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((startAddr)\ >=\ CY\_EM\_EEPROM\_EM\_EEPROM\_BASE\_ADDR)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00429\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((endAddr)\ <=\ CY\_EM\_EEPROM\_EM\_EEPROM\_END\_ADDR))))}}
+\DoxyCodeLine{00430\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ (!CY\_PSOC6)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_FLASH\_END\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_FLASH\_BASE\_ADDR\ +\ CY\_EM\_EEPROM\_FLASH\_SIZE)}}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ \textcolor{comment}{/*\ Defines\ the\ length\ of\ EEPROM\ data\ that\ can\ be\ stored\ in\ Em\_EEPROM\ header\ */}}
+\DoxyCodeLine{00435\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_DATA\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ /\ 2u)\ -\/\ 16u)}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_ADDR\_IN\_RANGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1u)}}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \textcolor{comment}{/*\ Return\ CY\_EM\_EEPROM\_ADDR\_IN\_RANGE\ if\ addr\ exceeded\ the\ upper\ range\ of}}
+\DoxyCodeLine{00440\ \textcolor{comment}{*\ EEPROM.\ The\ wear\ leveling\ overhead\ is\ included\ in\ the\ range\ but\ redundant\ copy}}
+\DoxyCodeLine{00441\ \textcolor{comment}{*\ is\ excluded.}}
+\DoxyCodeLine{00442\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00443\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_IS\_ADDR\_EXCEED\_RANGE(addr,\ endEepromAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((addr)\ >=\ (endEepromAddr))\ ?\ (0u)\ :\ (CY\_EM\_EEPROM\_ADDR\_IN\_RANGE))}}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \textcolor{comment}{/*\ Check\ to\ see\ if\ the\ specified\ address\ is\ present\ in\ the\ EEPROM\ */}}
+\DoxyCodeLine{00447\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_IS\_ADDR\_IN\_RANGE(addr,\ startEepromAddr,\ endEepromAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00448\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((addr)\ >\ (startEepromAddr))\ ?\ \(\backslash\)}}
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((addr)\ <\ (endEepromAddr))\ ?\ (CY\_EM\_EEPROM\_ADDR\_IN\_RANGE)\ :\ (0u))\ :\ (0u))}}
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ \textcolor{comment}{/*\ Check\ if\ the\ EEPROM\ address\ locations\ from\ startAddr1\ to\ endAddr1}}
+\DoxyCodeLine{00452\ \textcolor{comment}{*\ are\ crossed\ with\ EEPROM\ address\ locations\ from\ startAddr2\ to\ endAddr2.}}
+\DoxyCodeLine{00453\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00454\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_IS\_ADDRESES\_CROSSING(startAddr1,\ endAddr1\ ,\ startAddr2,\ endAddr2)\ \(\backslash\)}}
+\DoxyCodeLine{00455\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((startAddr1)\ >\ (startAddr2))\ ?\ (((startAddr1)\ >=\ (endAddr2))\ ?\ (0u)\ :\ (1u)\ )\ :\ \(\backslash\)}}
+\DoxyCodeLine{00456\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((startAddr2)\ >=\ (endAddr1))\ ?\ (0u)\ :\ (1u)))}}
+\DoxyCodeLine{00457\ }
+\DoxyCodeLine{00458\ \textcolor{comment}{/*\ Return\ the\ pointer\ to\ the\ start\ of\ the\ redundant\ copy\ of\ the\ EEPROM\ */}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_GET\_REDNT\_COPY\_ADDR\_BASE(numRows,\ wearLeveling,\ eepromStartAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((((numRows)\ *\ CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW)\ *\ (wearLeveling))\ +\ (eepromStartAddr))}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \textcolor{comment}{/*\ Return\ the\ number\ of\ the\ row\ in\ EM\_EEPROM\ which\ contains\ an\ address\ defined\ by}}
+\DoxyCodeLine{00463\ \textcolor{comment}{*\ rowAddr.}}
+\DoxyCodeLine{00464\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00465\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_GET\_ACT\_ROW\_NUM\_FROM\_ADDR(rowAddr,\ maxRows,\ eepromStartAddr)\ \(\backslash\)}}
+\DoxyCodeLine{00466\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((((rowAddr)\ -\/\ (eepromStartAddr))\ /\ CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW)\ \%\ (maxRows))}}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_GET\_EEPROM\_SIZE(numRows)\ \ \ \ \ \ \ ((numRows)\ *\ CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW)}}
+\DoxyCodeLine{00473\ }
+\DoxyCodeLine{00474\ \textcolor{comment}{/*\ Check\ if\ the\ given\ address\ belongs\ to\ the\ EEPROM\ address\ of\ the\ row}}
+\DoxyCodeLine{00475\ \textcolor{comment}{*\ specified\ by\ rowNum.}}
+\DoxyCodeLine{00476\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00477\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_IS\_ADDR\_IN\_ROW\_RANGE(addr,\ rowNum)\ \(\backslash\)}}
+\DoxyCodeLine{00478\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((addr)\ <\ ((rowNum)\ *\ (CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ /\ 2u)))\ ?\ (0u)\ :\ \(\backslash\)}}
+\DoxyCodeLine{00479\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((addr)\ >\ ((((rowNum)\ +\ 1u)\ *\ (CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ /\ 2u))\ -\/\ 1u))\ ?\ \(\backslash\)}}
+\DoxyCodeLine{00480\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0u)\ :\ (1u)))}}
+\DoxyCodeLine{00481\ }
+\DoxyCodeLine{00482\ \textcolor{comment}{/*\ CRC-\/8\ constants\ */}}
+\DoxyCodeLine{00483\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_CRC8\_POLYNOM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8)(0x31u))}}
+\DoxyCodeLine{00484\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_CRC8\_POLYNOM\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (8u)}}
+\DoxyCodeLine{00485\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_CRC8\_SEED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0xFFu)}}
+\DoxyCodeLine{00486\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_CRC8\_XOR\_VAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8)\ (0x80u))}}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_CALCULATE\_CRC8(crc)\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00489\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((CY\_EM\_EEPROM\_CRC8\_XOR\_VAL\ ==\ ((crc)\ \&\ CY\_EM\_EEPROM\_CRC8\_XOR\_VAL))\ ?\ \(\backslash\)}}
+\DoxyCodeLine{00490\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8)(((uint8)((uint8)((crc)\ <<\ 1u)))\ \string^\ CY\_EM\_EEPROM\_CRC8\_POLYNOM))\ :\ ((uint8)((crc)\ <<\ 1u)))}}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_GET\_SEQ\_NUM(addr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*(uint32*)(addr))}}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00504\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_GET\_NUM\_ROWS\_IN\_EEPROM(dataSize)\ \(\backslash\)}}
+\DoxyCodeLine{00505\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((dataSize)\ /\ (CY\_EM\_EEPROM\_EEPROM\_DATA\_LEN))\ +\ \(\backslash\)}}
+\DoxyCodeLine{00506\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((((dataSize)\ \%\ (CY\_EM\_EEPROM\_EEPROM\_DATA\_LEN))\ !=\ 0u)\ ?\ 1U\ :\ 0U))}}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00511\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_GET\_PHYSICAL\_SIZE(dataSize,\ wearLeveling,\ redundantCopy)\ \(\backslash\)}}
+\DoxyCodeLine{00512\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (((CY\_EM\_EEPROM\_GET\_NUM\_ROWS\_IN\_EEPROM(dataSize)\ *\ \(\backslash\)}}
+\DoxyCodeLine{00513\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW)\ *\ \(\backslash\)}}
+\DoxyCodeLine{00514\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (wearLeveling))\ *\ (1uL\ +\ (redundantCopy)))}}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ \textcolor{comment}{/******************************************************************************}}
+\DoxyCodeLine{00520\ \textcolor{comment}{*\ Local\ definitions}}
+\DoxyCodeLine{00521\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \textcolor{comment}{/*\ Offsets\ for\ 32-\/bit\ RAM\ buffer\ addressing\ */}}
+\DoxyCodeLine{00525\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_EEPROM\_DATA\_OFFSET\_U32\ \ \ \ \ \ \ \ \ ((CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ /\ 2u)\ /\ 4u)}}
+\DoxyCodeLine{00526\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_SEQ\_NUM\_OFFSET\_U32\ \ \ \ \ \ (0u)}}
+\DoxyCodeLine{00527\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_ADDR\_OFFSET\_U32\ \ \ \ \ \ \ \ \ (1u)}}
+\DoxyCodeLine{00528\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_LEN\_OFFSET\_U32\ \ \ \ \ \ \ \ \ \ (2u)}}
+\DoxyCodeLine{00529\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_DATA\_OFFSET\_U32\ \ \ \ \ \ \ \ \ (3u)}}
+\DoxyCodeLine{00530\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_CHECKSUM\_OFFSET\_U32\ \ \ \ \ (CY\_EM\_EEPROM\_EEPROM\_DATA\_OFFSET\_U32\ -\/\ 1u)}}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00532\ \textcolor{comment}{/*\ The\ same\ offsets\ as\ above\ used\ for\ direct\ memory\ addressing\ */}}
+\DoxyCodeLine{00533\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_EEPROM\_DATA\_OFFSET\ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_FLASH\_SIZEOF\_ROW\ /\ 2u)}}
+\DoxyCodeLine{00534\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_ADDR\_OFFSET\ \ \ \ \ \ \ \ \ \ \ \ \ (4u)}}
+\DoxyCodeLine{00535\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_LEN\_OFFSET\ \ \ \ \ \ \ \ \ \ \ \ \ \ (8u)}}
+\DoxyCodeLine{00536\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_DATA\_OFFSET\ \ \ \ \ \ \ \ \ \ \ \ \ (12u)}}
+\DoxyCodeLine{00537\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_HEADER\_CHECKSUM\_OFFSET\ \ \ \ \ \ \ \ \ (CY\_EM\_EEPROM\_EEPROM\_DATA\_OFFSET\ -\/\ 4u)}}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_U32\_DIV\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (4u)}}
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ \textcolor{comment}{/*\ Maximum\ wear\ leveling\ value\ */}}
+\DoxyCodeLine{00542\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_MAX\_WEAR\_LEVELING\_FACTOR\ \ \ \ \ \ \ (10u)}}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \textcolor{comment}{/*\ Maximum\ allowed\ flash\ row\ write/erase\ operation\ duration\ */}}
+\DoxyCodeLine{00545\ \textcolor{preprocessor}{\#define\ CY\_EM\_EEPROM\_MAX\_WRITE\_DURATION\_MS\ \ \ \ \ \ \ \ \ \ (50u)}}
+\DoxyCodeLine{00546\ }
+\DoxyCodeLine{00548\ }
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00551\ \}}
+\DoxyCodeLine{00552\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00553\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CY\_EM\_EEPROM\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00556\ \textcolor{comment}{/*\ []\ END\ OF\ FILE\ */}}
+
+\end{DoxyCode}

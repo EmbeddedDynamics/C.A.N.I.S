@@ -1,0 +1,147 @@
+\doxysection{Functions }
+\hypertarget{group__group__em__eeprom__functions}{}\label{group__group__em__eeprom__functions}\index{Functions@{Functions}}
+
+
+This section describes the Emulated EEPROM Function Prototypes.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Init}} (\mbox{\hyperlink{structcy__stc__eeprom__config__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_gab5c9597b71a54279de831842d7f7840e}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Read}} (uint32 addr, void \texorpdfstring{$\ast$}{*}eeprom\+Data, uint32 size, \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_gaf463c335f865e8b3b27d60cb17326c8f}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Write}} (uint32 addr, void \texorpdfstring{$\ast$}{*}eeprom\+Data, uint32 size, \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_gad61dbc3c01d2bbf96e0c0d5b6d2e0b61}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Erase}} (\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+uint32 \mbox{\hyperlink{group__group__em__eeprom__functions_ga799b04577ad8925061627f392a551fbc}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Num\+Writes}} (\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This section describes the Emulated EEPROM Function Prototypes. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group__group__em__eeprom__functions_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__group__em__eeprom__functions_gad61dbc3c01d2bbf96e0c0d5b6d2e0b61}\index{Functions@{Functions}!Cy\_Em\_EEPROM\_Erase@{Cy\_Em\_EEPROM\_Erase}}
+\index{Cy\_Em\_EEPROM\_Erase@{Cy\_Em\_EEPROM\_Erase}!Functions@{Functions}}
+\doxysubsubsection{\texorpdfstring{Cy\_Em\_EEPROM\_Erase()}{Cy\_Em\_EEPROM\_Erase()}}
+{\footnotesize\ttfamily \label{group__group__em__eeprom__functions_gad61dbc3c01d2bbf96e0c0d5b6d2e0b61} 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+This function erases the entire contents of the EEPROM. Erased values are all zeros. This is a blocking function and it does not return until the write operation is completed. The user firmware should not enter Hibernate mode until erase is completed. The erase operation is allowed in Sleep and Deep-\/\+Sleep modes. During the flash operation, the device should not be reset, including the XRES pin, a software reset, and watchdog reset sources. Also, low-\/voltage detect circuits should be configured to generate an interrupt instead of a reset. Otherwise, portions of flash may undergo unexpected changes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The pointer to the EEPROM context structure \doxylink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This function returns cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+For all non PSoC 6 devices the erase operation is performed by clearing the EEPROM data using flash write. This affects the flash durability. So it is recommended to use this function in utmost case to prolongate flash life.
+
+This function uses a buffer of the flash row size to perform erase operation. For the size of the row refer to the specific PSoC device datasheet.
+\end{DoxyNote}
+\textbackslash{}sideeffect In case when blocking write option is used, if this function is called by the CM4 the user code on CM0P and the user code on CM4 are blocked until erase flash row operation is finished. If this function is called by the CM0P the user code on CM4 is not blocked and the user code on CM0P is blocked until erase flash row operation is finished. Plan your task allocation accordingly.
+
+\textbackslash{}sideeffect In case if non-\/blocking write option is used and when user flash is used as an EEPROM storage care should be taken to prevent the read while write (RWW) exception. To prevent the RWW exception the user flash macro that includes the EEPROM storage should not be read while the EEPROM erase is not completed. The read also means the user code execution from the respective flash macro. \Hypertarget{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0}\index{Functions@{Functions}!Cy\_Em\_EEPROM\_Init@{Cy\_Em\_EEPROM\_Init}}
+\index{Cy\_Em\_EEPROM\_Init@{Cy\_Em\_EEPROM\_Init}!Functions@{Functions}}
+\doxysubsubsection{\texorpdfstring{Cy\_Em\_EEPROM\_Init()}{Cy\_Em\_EEPROM\_Init()}}
+{\footnotesize\ttfamily \label{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0} 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcy__stc__eeprom__config__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{config}{, }\item[{\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+Initializes the Emulated EEPROM library by filling the context structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & The pointer to a configuration structure. See \doxylink{structcy__stc__eeprom__config__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t}.\\
+\hline
+{\em context} & The pointer to the EEPROM context structure to be filled by the function. \doxylink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error / status code. See cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The context structure should not be modified by the user after it is filled with this function. Modification of context structure may cause the unexpected behavior of the Cy\+\_\+\+Em\+\_\+\+EEPROM API functions which rely on it.
+
+This function uses a buffer of the flash row size to perform read operation. For the size of the row refer to the specific PSoC device datasheet.
+\end{DoxyNote}
+\textbackslash{}sideeffect If the "{}\+Redundant Copy"{} option is used, the function performs a number of write operations to the EEPROM to initialize flash rows checksums. Therefore, \doxylink{group__group__em__eeprom__functions_ga799b04577ad8925061627f392a551fbc}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Num\+Writes()}, when it is called right after \doxylink{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Init()}, will return a non-\/zero value that identifies the number of writes performed by \doxylink{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Init()}. \Hypertarget{group__group__em__eeprom__functions_ga799b04577ad8925061627f392a551fbc}\index{Functions@{Functions}!Cy\_Em\_EEPROM\_NumWrites@{Cy\_Em\_EEPROM\_NumWrites}}
+\index{Cy\_Em\_EEPROM\_NumWrites@{Cy\_Em\_EEPROM\_NumWrites}!Functions@{Functions}}
+\doxysubsubsection{\texorpdfstring{Cy\_Em\_EEPROM\_NumWrites()}{Cy\_Em\_EEPROM\_NumWrites()}}
+{\footnotesize\ttfamily \label{group__group__em__eeprom__functions_ga799b04577ad8925061627f392a551fbc} 
+uint32 Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Num\+Writes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+Returns the number of the EEPROM writes completed so far.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The pointer to the EEPROM context structure \doxylink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of writes performed to the EEPROM. 
+\end{DoxyReturn}
+\Hypertarget{group__group__em__eeprom__functions_gab5c9597b71a54279de831842d7f7840e}\index{Functions@{Functions}!Cy\_Em\_EEPROM\_Read@{Cy\_Em\_EEPROM\_Read}}
+\index{Cy\_Em\_EEPROM\_Read@{Cy\_Em\_EEPROM\_Read}!Functions@{Functions}}
+\doxysubsubsection{\texorpdfstring{Cy\_Em\_EEPROM\_Read()}{Cy\_Em\_EEPROM\_Read()}}
+{\footnotesize\ttfamily \label{group__group__em__eeprom__functions_gab5c9597b71a54279de831842d7f7840e} 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint32}]{addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{eeprom\+Data}{, }\item[{uint32}]{size}{, }\item[{\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+This function takes the logical EEPROM address, converts it to the actual physical address where the data is stored and returns the data to the user.
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & The logical start address in EEPROM to start reading data from.\\
+\hline
+{\em eeprom\+Data} & The pointer to a user array to write data to.\\
+\hline
+{\em size} & The amount of data to read.\\
+\hline
+{\em context} & The pointer to the EEPROM context structure \doxylink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This function returns cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function uses a buffer of the flash row size to perform read operation. For the size of the row refer to the specific PSoC device datasheet.
+
+In case if redundant copy option is enabled the function may perform writes to EEPROM. This is done in case if the data in the EEPPROM is corrupted and the data in redundant copy is valid based on CRC-\/8 data integrity check. 
+\end{DoxyNote}
+\Hypertarget{group__group__em__eeprom__functions_gaf463c335f865e8b3b27d60cb17326c8f}\index{Functions@{Functions}!Cy\_Em\_EEPROM\_Write@{Cy\_Em\_EEPROM\_Write}}
+\index{Cy\_Em\_EEPROM\_Write@{Cy\_Em\_EEPROM\_Write}!Functions@{Functions}}
+\doxysubsubsection{\texorpdfstring{Cy\_Em\_EEPROM\_Write()}{Cy\_Em\_EEPROM\_Write()}}
+{\footnotesize\ttfamily \label{group__group__em__eeprom__functions_gaf463c335f865e8b3b27d60cb17326c8f} 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Write (\begin{DoxyParamCaption}\item[{uint32}]{addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{eeprom\+Data}{, }\item[{uint32}]{size}{, }\item[{\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+This function takes the logical EEPROM address and converts it to the actual physical address and writes data there. If wear leveling is implemented, the writing process will use the wear leveling techniques. This is a blocking function and it does not return until the write operation is completed. The user firmware should not enter Hibernate mode until write is completed. The write operation is allowed in Sleep and Deep-\/\+Sleep modes. During the flash operation, the device should not be reset, including the XRES pin, a software reset, and watchdog reset sources. Also, low-\/voltage detect circuits should be configured to generate an interrupt instead of a reset. Otherwise, portions of flash may undergo unexpected changes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & The logical start address in EEPROM to start writing data from.\\
+\hline
+{\em eeprom\+Data} & Data to write to EEPROM.\\
+\hline
+{\em size} & The amount of data to write to EEPROM.\\
+\hline
+{\em context} & The pointer to the EEPROM context structure \doxylink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This function returns cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function uses a buffer of the flash row size to perform write operation. For the size of the row refer to the specific PSoC device datasheet.
+\end{DoxyNote}
+\textbackslash{}sideeffect In case when blocking write option is used, if this function is called by the CM4 the user code on CM0P and the user code on CM4 are blocked until erase flash row operation is finished. If this function is called by the CM0P the user code on CM4 is not blocked and the user code on CM0P is blocked until erase flash row operation is finished. Plan your task allocation accordingly.
+
+\textbackslash{}sideeffect In case if non-\/blocking write option is used and when user flash is used as an EEPROM storage care should be taken to prevent the read while write (RWW) exception. To prevent the RWW exception the user flash macro that includes the EEPROM storage should not be read while the EEPROM write is not completed. The read also means the user code execution from the respective flash macro. 

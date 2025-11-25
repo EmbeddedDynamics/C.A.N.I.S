@@ -1,0 +1,169 @@
+\doxysection{ODrive.\+h}
+\hypertarget{_o_drive_8h_source}{}\label{_o_drive_8h_source}\mbox{\hyperlink{_o_drive_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/***************************************************************************/}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Include\ guard}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ ODRIVE\_H}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ODRIVE\_H}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Public\ defines}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00026\ \ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ ODRIVE\_BIT(n)\ (1\ <<\ n)}}
+\DoxyCodeLine{00039\ \ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ ODRIVE\_DEFINE\_HANDLE(name)\ typedef\ struct\ name\#\#\_T*\ name}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ uint8\_t\ \mbox{\hyperlink{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061}{CanNodeId}};}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ Public\ Enums}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aae2c00dda349fc1675d2bc0a58a049e9}{CAN\_CMD\_GET\_VERSION}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x000,}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a2b6654bd68eb9be3bbaa8839e011185b}{CAN\_CMD\_HEARTBEAT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x001,}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a30c533228ce9de19ea4347482ae7a2a1}{CAN\_CMD\_ESTOP}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x002,}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a673a3222b1dacd01018153dd92347b9a}{CAN\_CMD\_GET\_ERROR}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x003,}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ab09acffbea9068fccb194bd83595aabc}{CAN\_CMD\_RXSDO}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x004,}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a9564c56ea36e1f11e7348a0daef5c32c}{CAN\_CMD\_TXSDO}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x005,}
+\DoxyCodeLine{00091\ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4fe2dfd3c150286d079f396e7082d81a}{CAN\_CMD\_ADDRESS}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x006,}
+\DoxyCodeLine{00094\ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a05b0db0383964d33632cb9bd35b4d5f1}{CAN\_CMD\_SET\_AXIS\_STATE}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x007,}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a3f961fe98be3610244d5f465eea99ee6}{CAN\_CMD\_GET\_ENCODER\_ESTIMATES}}\ \ \ \ \ \ \ =\ 0x009,}
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aff64a3bdc86726bbe231880bbe73fea2}{CAN\_CMD\_SET\_CONTROLLER\_MODE}}\ \ \ \ \ \ \ \ \ =\ 0x00B,}
+\DoxyCodeLine{00103\ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aa6984bf3359626294fadb403f0a00ed8}{CAN\_CMD\_SET\_INPUT\_POS}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x00C,}
+\DoxyCodeLine{00106\ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a08d7b5e60e50955d0ba7d3376d05b59a}{CAN\_CMD\_SET\_INPUT\_VEL}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x00D,}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a56fdfb2ccab09beb1e760f2e77219a9d}{CAN\_CMD\_SET\_INPUT\_TORQUE}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x00E,}
+\DoxyCodeLine{00112\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aeff1e4c575df27a5a9d2f9f3ed57e08c}{CAN\_CMD\_SET\_LIMITS}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x00F,}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ae78ae909332976a8af09125bc0977102}{CAN\_CMD\_SET\_TRAJ\_VEL\_LIMIT}}\ \ \ \ \ \ \ \ \ \ =\ 0x011,}
+\DoxyCodeLine{00118\ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aec2e8aa4bd1b0fa985ab08abbc299aa0}{CAN\_CMD\_SET\_TRAJ\_ACCEL\_LIMITS}}\ \ \ \ \ \ \ =\ 0x012,}
+\DoxyCodeLine{00121\ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0a967112031f63bf8b3b41b1bc599077}{CAN\_CMD\_SET\_TRAJ\_INERTIA}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x013,}
+\DoxyCodeLine{00124\ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a7f1a2de378fd40184e61584f4528b229}{CAN\_CMD\_GET\_IQ}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x014,}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a238d2a52f05357c1b69ac4446690ec8e}{CAN\_CMD\_GET\_TEMPERATURE}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x015,}
+\DoxyCodeLine{00130\ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4d41b2e96293765e2df8d68721e1ec5f}{CAN\_CMD\_REBOOT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x016,}
+\DoxyCodeLine{00133\ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a18ba39eeb8df80b5d58721c9a5900f0a}{CAN\_CMD\_GET\_BUS\_VOLTAGE\_CURRENT}}\ \ \ \ \ =\ 0x017,}
+\DoxyCodeLine{00136\ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a48e14bf8651e1760fb0662c869656ae8}{CAN\_CMD\_CLEAR\_ERRORS}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x018,}
+\DoxyCodeLine{00139\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac463379860edeb7a25c84d6e9a0ad0c1}{CAN\_CMD\_SET\_ABSOLUTE\_POSITION}}\ \ \ \ \ \ \ =\ 0x019,}
+\DoxyCodeLine{00142\ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac9c220abc5ebdfbfd28f128e19aa3aa9}{CAN\_CMD\_SET\_POS\_GAIN}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x01A,}
+\DoxyCodeLine{00145\ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781af27009d783a94502a920ed5ccdc99bb1}{CAN\_CMD\_SET\_VEL\_GAINS}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x01B,}
+\DoxyCodeLine{00148\ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0c449c873749b77f45480efe319d0bd1}{CAN\_CMD\_GET\_TORQUES}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x01C,}
+\DoxyCodeLine{00151\ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac6780cb92430dc56f6496dd74a914b5c}{CAN\_CMD\_GET\_POWERS}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x01D,}
+\DoxyCodeLine{00154\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ CAN\_CMD\_ENTER\_DFU\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x01F,}
+\DoxyCodeLine{00157\ \}\ \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781}{ODriveCanCommandId}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00170\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9d0060711bec852aec2ad5615596105b}{ODRIVE\_RESULT\_OK}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x0000,}
+\DoxyCodeLine{00173\ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ General\ operation\ errors\ (0x2000-\/0x2FFF)}}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca25e7125387f8ada63d187f1a63b2af41}{ODRIVE\_GENERAL\_ERROR}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2000,}
+\DoxyCodeLine{00178\ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca89c93f8d946cdc76bea6743fd7bbc2ab}{ODRIVE\_ERROR\_TIMEOUT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2001,}
+\DoxyCodeLine{00181\ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf16e31b86fac4db496c448c36337772b}{ODRIVE\_ERROR\_NOT\_INITIALIZED}}\ \ \ \ \ \ \ \ =\ 0x2002,}
+\DoxyCodeLine{00184\ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca19db1377d6be0227f18db9817e8f5d57}{ODRIVE\_ERROR\_BUSY}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2003,}
+\DoxyCodeLine{00187\ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca442562cd3a9e235d01b392ce7193be73}{ODRIVE\_ERROR\_OPERATION\_FAILED}}\ \ \ \ \ \ \ =\ 0x2004,}
+\DoxyCodeLine{00190\ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9f558fddee6ddff842e7557a36b5d726}{ODRIVE\_ERROR\_UNSUPPORTED}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2005,}
+\DoxyCodeLine{00193\ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ ODRIVE\_ERROR\_WRONG\_STATE\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2006,}
+\DoxyCodeLine{00196\ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//\ Communication\ errors\ (0x3000-\/0x3FFF)}}
+\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca6ccba3498a9b24545dac3b554e18fbff}{ODRIVE\_ERROR\_INVALID\_CAN\_ID}}\ \ \ \ \ \ \ \ \ =\ 0x3000,}
+\DoxyCodeLine{00201\ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab27e93bec3e5f3cd1d17c328dc71100b}{ODRIVE\_ERROR\_CAN\_TX\_FAILED}}\ \ \ \ \ \ \ \ \ \ =\ 0x3001,}
+\DoxyCodeLine{00204\ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca21ac67a8794a7aa68c6f049df22f66f6}{ODRIVE\_ERROR\_CAN\_RX\_FAILED}}\ \ \ \ \ \ \ \ \ \ =\ 0x3002,}
+\DoxyCodeLine{00207\ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca61980d178f825810d1a7f0e5d4ba7dca}{ODRIVE\_ERROR\_NO\_RESPONSE}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x3003,}
+\DoxyCodeLine{00210\ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0a068031a3220a0bb034fc7af853c5a7}{ODRIVE\_ERROR\_INVALID\_RESPONSE}}\ \ \ \ \ \ \ =\ 0x3004,}
+\DoxyCodeLine{00213\ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0c8918e9cadfb6a1e00686ef9693cd4d}{ODRIVE\_ERROR\_CHECKSUM\_MISMATCH}}\ \ \ \ \ \ =\ 0x3005,}
+\DoxyCodeLine{00216\ \ \ \ \ }
+\DoxyCodeLine{00218\ \ \ \ \ ODRIVE\_ERROR\_BUS\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x3006,}
+\DoxyCodeLine{00219\ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ }
+\DoxyCodeLine{00221\ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{comment}{//\ Parameter/validation\ errors\ (0x4000-\/0x4FFF)}}
+\DoxyCodeLine{00223\ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5757c9d28d4c00700029828d53665d3f}{ODRIVE\_ERROR\_INVALID\_PARAMETER}}\ \ \ \ \ \ =\ 0x4000,}
+\DoxyCodeLine{00226\ \ \ \ \ }
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5fad47cb3ab110fbe9231efcebce5441}{ODRIVE\_ERROR\_NULL\_POINTER}}\ \ \ \ \ \ \ \ \ \ \ =\ 0x4001,}
+\DoxyCodeLine{00229\ \ \ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0462a46d82cce5c7d3dbb968caaf5b73}{ODRIVE\_ERROR\_BUFFER\_OVERFLOW}}\ \ \ \ \ \ \ \ =\ 0x4002,}
+\DoxyCodeLine{00232\ \ \ \ \ }
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab1a43d899dfa1671ca74cec576e39f1d}{ODRIVE\_ERROR\_OUT\_OF\_RANGE}}\ \ \ \ \ \ \ \ \ \ \ =\ 0x4003,}
+\DoxyCodeLine{00235\ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcac15d58475ff85f791c4326360bfdf427}{ODRIVE\_ERROR\_INVALID\_AXIS}}\ \ \ \ \ \ \ \ \ \ \ =\ 0x4004,}
+\DoxyCodeLine{00238\ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ ODRIVE\_ERROR\_INVALID\_MODE\ \ \ \ \ \ \ \ \ \ \ =\ 0x4005,}
+\DoxyCodeLine{00241\ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{comment}{//\ ODrive\ device\ errors\ (0x5000-\/0x5FFF)}}
+\DoxyCodeLine{00243\ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf781ed0abb5cf66903fd35dcdd23a17a}{ODRIVE\_ERROR\_DEVICE\_ERROR}}\ \ \ \ \ \ \ \ \ \ \ =\ 0x5000,}
+\DoxyCodeLine{00246\ \ \ \ \ }
+\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca99fd2d14dfc3e9b9b854c6bb2583841c}{ODRIVE\_ERROR\_MOTOR\_DISARMED}}\ \ \ \ \ \ \ \ \ =\ 0x5001,}
+\DoxyCodeLine{00249\ \ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab78b3b773977abff822c5ce5b6faa113}{ODRIVE\_ERROR\_CALIBRATION\_REQUIRED}}\ \ \ =\ 0x5002,}
+\DoxyCodeLine{00252\ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ ODRIVE\_ERROR\_ESTOP\_ACTIVE\ \ \ \ \ \ \ \ \ \ \ =\ 0x5003,}
+\DoxyCodeLine{00255\ \}\ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}{ODriveResult}};}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00259\ \textcolor{comment}{//\ Public\ Structs}}
+\DoxyCodeLine{00260\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00272\ \mbox{\hyperlink{_o_drive_8h_aedae33eda418637b16a0ebbdda1d766b}{ODRIVE\_DEFINE\_HANDLE}}(\mbox{\hyperlink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODriveDriver}});}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00275\ \textcolor{comment}{//\ Public\ Methods}}
+\DoxyCodeLine{00276\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00289\ \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}{ODriveResult}}\ \mbox{\hyperlink{_o_drive_8h_a2651da61249bc05194bfdb206290364b}{createODriveDriver}}(\mbox{\hyperlink{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061}{CanNodeId}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODriveDriver}}*\ driver);}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !ODRIVE\_H}}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \textcolor{comment}{//\ ========================================================}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \textcolor{comment}{/*\ []\ END\ OF\ FILE\ */}}
+
+\end{DoxyCode}

@@ -1,0 +1,560 @@
+\doxysection{codegentemp/\+Cy\+Flash.h File Reference}
+\hypertarget{codegentemp_2_cy_flash_8h}{}\label{codegentemp_2_cy_flash_8h}\index{codegentemp/CyFlash.h@{codegentemp/CyFlash.h}}
+
+
+Provides the function definitions for the FLASH/\+EEPROM.  
+
+
+{\ttfamily \#include "{}cydevice\+\_\+trm.\+h"{}}\newline
+{\ttfamily \#include "{}cytypes.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Lib.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Spc.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aaedb2382a8006be4060ac88d10a0e4af}\label{codegentemp_2_cy_flash_8h_aaedb2382a8006be4060ac88d10a0e4af} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+DIE\+\_\+\+TEMP\+\_\+\+DATA\+\_\+\+SIZE}~(2u)    /\texorpdfstring{$\ast$}{*} Die temperature data size \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a7f46afde1e6db45bef96d20bb2fa358b}\label{codegentemp_2_cy_flash_8h_a7f46afde1e6db45bef96d20bb2fa358b} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+BASE}~(CYDEV\+\_\+\+FLASH\+\_\+\+BASE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a72f39078d695de058196d23a949cc93e}\label{codegentemp_2_cy_flash_8h_a72f39078d695de058196d23a949cc93e} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SIZE}~(CYDEV\+\_\+\+FLS\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a0fecbc68e7bd8eaadd68c29a7b9a1901}\label{codegentemp_2_cy_flash_8h_a0fecbc68e7bd8eaadd68c29a7b9a1901} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+ARRAY}~(CYDEV\+\_\+\+FLS\+\_\+\+SECTOR\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a407c9c16fafa7275c911133eaf8563a4}\label{codegentemp_2_cy_flash_8h_a407c9c16fafa7275c911133eaf8563a4} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+ROW}~(CYDEV\+\_\+\+FLS\+\_\+\+ROW\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a069eff8b9469de295c10b23cf84e04c8}\label{codegentemp_2_cy_flash_8h_a069eff8b9469de295c10b23cf84e04c8} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+ECC\+\_\+\+ROW}~(CYDEV\+\_\+\+ECC\+\_\+\+ROW\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a72919a89e4ca9c70f685c8854aa7685d}\label{codegentemp_2_cy_flash_8h_a72919a89e4ca9c70f685c8854aa7685d} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+NUMBER\+\_\+\+ROWS}~(CYDEV\+\_\+\+FLS\+\_\+\+SIZE / CYDEV\+\_\+\+FLS\+\_\+\+ROW\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab815240d081d8a67b1cf83db1b2ace78}\label{codegentemp_2_cy_flash_8h_ab815240d081d8a67b1cf83db1b2ace78} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+NUMBER\+\_\+\+ARRAYS}~(CYDEV\+\_\+\+FLS\+\_\+\+SIZE / CYDEV\+\_\+\+FLS\+\_\+\+SECTOR\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aad5e229497943b4f953755ddf3e1f377}\label{codegentemp_2_cy_flash_8h_aad5e229497943b4f953755ddf3e1f377} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+FULL\+\_\+\+ROW}~(CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+ROW + CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+ECC\+\_\+\+ROW)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a712226a2bcf663eb09d66a2baf88a1be}\label{codegentemp_2_cy_flash_8h_a712226a2bcf663eb09d66a2baf88a1be} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+BASE}~(CYDEV\+\_\+\+EE\+\_\+\+BASE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aef080fef79f78e793cd01d5f375943ca}\label{codegentemp_2_cy_flash_8h_aef080fef79f78e793cd01d5f375943ca} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+SIZE}~(CYDEV\+\_\+\+EE\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a7061a9a9bc2cc22000f6c33cd6d78a7d}\label{codegentemp_2_cy_flash_8h_a7061a9a9bc2cc22000f6c33cd6d78a7d} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+SIZEOF\+\_\+\+ARRAY}~(CYDEV\+\_\+\+EE\+\_\+\+SIZE)     /\texorpdfstring{$\ast$}{*} EEPROM has one array \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aecf70e8773385f78e0d70bdd5f53ca75}\label{codegentemp_2_cy_flash_8h_aecf70e8773385f78e0d70bdd5f53ca75} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+SIZEOF\+\_\+\+ROW}~(CYDEV\+\_\+\+EEPROM\+\_\+\+ROW\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab930c0b738175a8edf3b2c0a0e8a75cf}\label{codegentemp_2_cy_flash_8h_ab930c0b738175a8edf3b2c0a0e8a75cf} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+NUMBER\+\_\+\+ROWS}~(CYDEV\+\_\+\+EE\+\_\+\+SIZE / CYDEV\+\_\+\+EEPROM\+\_\+\+ROW\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a9537c24b75b32324fa0678b9e5567a3f}\label{codegentemp_2_cy_flash_8h_a9537c24b75b32324fa0678b9e5567a3f} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+NUMBER\+\_\+\+ARRAYS}~(CYDEV\+\_\+\+EE\+\_\+\+SIZE / CY\+\_\+\+EEPROM\+\_\+\+SIZEOF\+\_\+\+ARRAY)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a0e628544acdc163b959db328ca523bba}\label{codegentemp_2_cy_flash_8h_a0e628544acdc163b959db328ca523bba} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+NUMBER\+\_\+\+SECTORS}~(CYDEV\+\_\+\+EE\+\_\+\+SIZE / CYDEV\+\_\+\+EEPROM\+\_\+\+SECTOR\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a1edd8e6c940fcdcd2253a31525fb0937}\label{codegentemp_2_cy_flash_8h_a1edd8e6c940fcdcd2253a31525fb0937} 
+\#define {\bfseries CY\+\_\+\+EEPROM\+\_\+\+SIZEOF\+\_\+\+SECTOR}~(CYDEV\+\_\+\+EEPROM\+\_\+\+SECTOR\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ae191096705f0335ecd8646961b4d0bc4}\label{codegentemp_2_cy_flash_8h_ae191096705f0335ecd8646961b4d0bc4} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab3b6c702d60add594e8a8b8bb73d00d1}\label{codegentemp_2_cy_flash_8h_ab3b6c702d60add594e8a8b8bb73d00d1} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ae78560169b62408a31e0748bc9e34351}\label{codegentemp_2_cy_flash_8h_ae78560169b62408a31e0748bc9e34351} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+STBY\+\_\+\+CFG0)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a5c86a8e4a1711ec9157715f128743c51}\label{codegentemp_2_cy_flash_8h_a5c86a8e4a1711ec9157715f128743c51} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+STBY\+\_\+\+CFG0)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aa723165fddb129881ccb73e1b6de40cd}\label{codegentemp_2_cy_flash_8h_aa723165fddb129881ccb73e1b6de40cd} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a92bd634c9d2b2ba9a738b430d6afcf33}\label{codegentemp_2_cy_flash_8h_a92bd634c9d2b2ba9a738b430d6afcf33} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a4c54d9d6111e1e15d9fac0e405a51109}\label{codegentemp_2_cy_flash_8h_a4c54d9d6111e1e15d9fac0e405a51109} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG12\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+STBY\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad8b5283e23e9f3d253a784dad550e626}\label{codegentemp_2_cy_flash_8h_ad8b5283e23e9f3d253a784dad550e626} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG12\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+STBY\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a9ca84dd65565af9db58f7bb078fb4a7a}\label{codegentemp_2_cy_flash_8h_a9ca84dd65565af9db58f7bb078fb4a7a} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+WAKE\+\_\+\+CNT\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+WAKE\+\_\+\+CNT)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aa62bf7796ae53918401a825ae46cf756}\label{codegentemp_2_cy_flash_8h_aa62bf7796ae53918401a825ae46cf756} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+WAKE\+\_\+\+CNT\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+WAKE\+\_\+\+CNT)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a9bea85a01ecb732aaf135c30276b0ab3}\label{codegentemp_2_cy_flash_8h_a9bea85a01ecb732aaf135c30276b0ab3} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+CR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+CR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a4705e137c6a19f5f50fd994515c27809}\label{codegentemp_2_cy_flash_8h_a4705e137c6a19f5f50fd994515c27809} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+CR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+CR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a5074b17a09ebdada415d3058e03e5e53}\label{codegentemp_2_cy_flash_8h_a5074b17a09ebdada415d3058e03e5e53} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CONTROL\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CACHE\+\_\+\+CC\+\_\+\+CTL )
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a695aba72071993e2b78e54e0bcbf7c26}\label{codegentemp_2_cy_flash_8h_a695aba72071993e2b78e54e0bcbf7c26} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CONTROL\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CACHE\+\_\+\+CC\+\_\+\+CTL )
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a4c13acde43e2e43f495e212f57e72d87}\label{codegentemp_2_cy_flash_8h_a4c13acde43e2e43f495e212f57e72d87} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+EE\+\_\+\+SCR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SPC\+\_\+\+EE\+\_\+\+SCR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a4fa880cd52eab9bab1b6d28362d3a063}\label{codegentemp_2_cy_flash_8h_a4fa880cd52eab9bab1b6d28362d3a063} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+EE\+\_\+\+SCR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SPC\+\_\+\+EE\+\_\+\+SCR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a60973fe031effee02e302939e2b87977}\label{codegentemp_2_cy_flash_8h_a60973fe031effee02e302939e2b87977} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12\+\_\+\+EN\+\_\+\+EE}~(0x10u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a23e1bd6a17f04c33f93142cc7ad3635c}\label{codegentemp_2_cy_flash_8h_a23e1bd6a17f04c33f93142cc7ad3635c} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG12\+\_\+\+EN\+\_\+\+EE}~(0x10u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a74924b72531657457673a7c723d99cda}\label{codegentemp_2_cy_flash_8h_a74924b72531657457673a7c723d99cda} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12\+\_\+\+EN\+\_\+\+FM}~(0x0\+Fu)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ac75a25677defa4bd2b0af3e4a92bc820}\label{codegentemp_2_cy_flash_8h_ac75a25677defa4bd2b0af3e4a92bc820} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG12\+\_\+\+EN\+\_\+\+FM}~(0x0\+Fu)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a5d3e8fc13db8c88b106ff2a275a3cb9c}\label{codegentemp_2_cy_flash_8h_a5d3e8fc13db8c88b106ff2a275a3cb9c} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+\+VALUE\+\_\+\+MASK}~(0x\+E0u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a89ffd42421a0c539080149fa6769a07e}\label{codegentemp_2_cy_flash_8h_a89ffd42421a0c539080149fa6769a07e} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+1\+\_\+\+VALUE\+\_\+\+MASK}~(0x40u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_af65c15fd376d2ea7cc4ee226b38e6bfd}\label{codegentemp_2_cy_flash_8h_af65c15fd376d2ea7cc4ee226b38e6bfd} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+2\+\_\+\+VALUE\+\_\+\+MASK}~(0x80u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a5eff4e5bc6a72cfed1a02b94e8772cb8}\label{codegentemp_2_cy_flash_8h_a5eff4e5bc6a72cfed1a02b94e8772cb8} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+3\+\_\+\+VALUE\+\_\+\+MASK}~(0x\+C0u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a53afc27233bf3d2e206cfe78255f1846}\label{codegentemp_2_cy_flash_8h_a53afc27233bf3d2e206cfe78255f1846} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+4\+\_\+\+VALUE\+\_\+\+MASK}~(0x00u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_af5a623c883d09e80d4974200bdffbb08}\label{codegentemp_2_cy_flash_8h_af5a623c883d09e80d4974200bdffbb08} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+5\+\_\+\+VALUE\+\_\+\+MASK}~(0x20u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a053e7c33ae9fd7f453695d6a2c1f1399}\label{codegentemp_2_cy_flash_8h_a053e7c33ae9fd7f453695d6a2c1f1399} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+1\+\_\+\+FREQ\+\_\+\+MAX}~(16u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab940209244a4f1c993b9695f6ebe0b49}\label{codegentemp_2_cy_flash_8h_ab940209244a4f1c993b9695f6ebe0b49} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+2\+\_\+\+FREQ\+\_\+\+MAX}~(33u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a8e3742cc8e1ef89bb1291f65d1ac5ac7}\label{codegentemp_2_cy_flash_8h_a8e3742cc8e1ef89bb1291f65d1ac5ac7} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+3\+\_\+\+FREQ\+\_\+\+MAX}~(50u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aeb628019f62e9927c0d4a76aa22637d5}\label{codegentemp_2_cy_flash_8h_aeb628019f62e9927c0d4a76aa22637d5} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+4\+\_\+\+FREQ\+\_\+\+MAX}~(67u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ac54b9f473ca4ebade6d09218bc67e1d9}\label{codegentemp_2_cy_flash_8h_ac54b9f473ca4ebade6d09218bc67e1d9} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CACHE\+\_\+\+WS\+\_\+5\+\_\+\+FREQ\+\_\+\+MAX}~(83u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a7fefcc8d4fdb148009bb12a30730535c}\label{codegentemp_2_cy_flash_8h_a7fefcc8d4fdb148009bb12a30730535c} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CYCLES\+\_\+\+MASK\+\_\+\+SHIFT}~(0x06u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad7312af225f96d09ea2a0eb134939603}\label{codegentemp_2_cy_flash_8h_ad7312af225f96d09ea2a0eb134939603} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+CYCLES\+\_\+\+MASK}~((uint8)(0x03u $<$$<$ (CY\+\_\+\+FLASH\+\_\+\+CYCLES\+\_\+\+MASK\+\_\+\+SHIFT)))
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aa882c7f6ef7ec7188542975493659ee1}\label{codegentemp_2_cy_flash_8h_aa882c7f6ef7ec7188542975493659ee1} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+EE\+\_\+\+SCR\+\_\+\+AHB\+\_\+\+EE\+\_\+\+REQ}~(0x01u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab3246e0462083b585c7d7d619372537a}\label{codegentemp_2_cy_flash_8h_ab3246e0462083b585c7d7d619372537a} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+EE\+\_\+\+SCR\+\_\+\+AHB\+\_\+\+EE\+\_\+\+ACK}~(0x02u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a2377a1818c8f7ddf4126372b10085e65}\label{codegentemp_2_cy_flash_8h_a2377a1818c8f7ddf4126372b10085e65} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+EE\+\_\+\+EE\+\_\+\+AWAKE}~(0x20u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a324c031ab9c66edacb83995b6ed82c5a}\label{codegentemp_2_cy_flash_8h_a324c031ab9c66edacb83995b6ed82c5a} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+SPC\+\_\+\+FM\+\_\+\+EE\+\_\+\+WAKE\+\_\+\+CNT\+\_\+80\+MHZ}~(0x\+C8u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a4c2f87b0f8a9b6f78435ef7cacbc12e1}\label{codegentemp_2_cy_flash_8h_a4c2f87b0f8a9b6f78435ef7cacbc12e1} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0\+\_\+\+EN\+\_\+\+CLK\+\_\+\+SPC}~(0x08u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a0987e4827008d061cc20072078f3a948}\label{codegentemp_2_cy_flash_8h_a0987e4827008d061cc20072078f3a948} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+CFG0\+\_\+\+EN\+\_\+\+CLK\+\_\+\+SPC}~(0x08u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_af94a2e3d3eedf00028ab47302c7294f5}\label{codegentemp_2_cy_flash_8h_af94a2e3d3eedf00028ab47302c7294f5} 
+\#define {\bfseries CY\+\_\+\+TEMP\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+SAMPLES}~(0x1u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a579ac2ee4013b8bb1d8d898789d1ea15}\label{codegentemp_2_cy_flash_8h_a579ac2ee4013b8bb1d8d898789d1ea15} 
+\#define {\bfseries CY\+\_\+\+TEMP\+\_\+\+TIMER\+\_\+\+PERIOD}~(0x\+FFFu)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aa0e3e706f23cd60959d3f40aaca0e9ff}\label{codegentemp_2_cy_flash_8h_aa0e3e706f23cd60959d3f40aaca0e9ff} 
+\#define {\bfseries CY\+\_\+\+TEMP\+\_\+\+CLK\+\_\+\+DIV\+\_\+\+SELECT}~(0x4u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ac5549de0dd269d2a7bbf26f86ba2a88d}\label{codegentemp_2_cy_flash_8h_ac5549de0dd269d2a7bbf26f86ba2a88d} 
+\#define {\bfseries CY\+\_\+\+TEMP\+\_\+\+NUM\+\_\+\+SAMPLES}~(1 $<$$<$ (CY\+\_\+\+TEMP\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+SAMPLES))
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad7745f3216066362b1047cc27254320d}\label{codegentemp_2_cy_flash_8h_ad7745f3216066362b1047cc27254320d} 
+\#define {\bfseries CY\+\_\+\+SPC\+\_\+\+CLK\+\_\+\+PERIOD}~(120u)      /\texorpdfstring{$\ast$}{*} nS \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a2647fde874e0b1c16bbb834bd85d1c2e}\label{codegentemp_2_cy_flash_8h_a2647fde874e0b1c16bbb834bd85d1c2e} 
+\#define {\bfseries CY\+\_\+\+SYS\+\_\+ns\+\_\+\+PER\+\_\+\+TICK}~(1000u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a826748660704f50ee51eeed6facc10db}\label{codegentemp_2_cy_flash_8h_a826748660704f50ee51eeed6facc10db} 
+\#define {\bfseries CY\+\_\+\+FRM\+\_\+\+EXEC\+\_\+\+TIME}~(1000u)     /\texorpdfstring{$\ast$}{*} nS \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{codegentemp_2_cy_flash_8h_ab7801a23152ad7216522b70919964051}{CY\+\_\+\+GET\+\_\+\+TEMP\+\_\+\+TIME}}
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_afb1ee1d7c726fdabfa8d373d8c3663ce}\label{codegentemp_2_cy_flash_8h_afb1ee1d7c726fdabfa8d373d8c3663ce} 
+\#define {\bfseries CY\+\_\+\+TEMP\+\_\+\+MAX\+\_\+\+WAIT}~((CY\+\_\+\+GET\+\_\+\+TEMP\+\_\+\+TIME) / CY\+\_\+\+SYS\+\_\+ns\+\_\+\+PER\+\_\+\+TICK)    /\texorpdfstring{$\ast$}{*} In system ticks. \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_adf5648a890b4238b09a56501e33cceb0}\label{codegentemp_2_cy_flash_8h_adf5648a890b4238b09a56501e33cceb0} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+16\+MHz}~(0x01u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a7de9b43ba4cc537c81982c0c3ee8298d}\label{codegentemp_2_cy_flash_8h_a7de9b43ba4cc537c81982c0c3ee8298d} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+33\+MHz}~(0x02u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad6f4836ce44695e59e7a32e91d2c8d84}\label{codegentemp_2_cy_flash_8h_ad6f4836ce44695e59e7a32e91d2c8d84} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+50\+MHz}~(0x03u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a5b39402695a96ac25c31ffa3820ab724}\label{codegentemp_2_cy_flash_8h_a5b39402695a96ac25c31ffa3820ab724} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+GREATER\+\_\+51\+MHz}~(0x00u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_af628a0bb838b16df8642de31a3f0e2de}\label{codegentemp_2_cy_flash_8h_af628a0bb838b16df8642de31a3f0e2de} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+EEFLASH\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab945d935db21ffab76284d3bb82064c9}\label{codegentemp_2_cy_flash_8h_ab945d935db21ffab76284d3bb82064c9} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+EEFLASH\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a1974eaa7bf4382afb41a5a185af6674a}\label{codegentemp_2_cy_flash_8h_a1974eaa7bf4382afb41a5a185af6674a} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+EEFLASH\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+STBY\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a2253badd352c9ac25eca33257547141a}\label{codegentemp_2_cy_flash_8h_a2253badd352c9ac25eca33257547141a} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+EEFLASH\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+STBY\+\_\+\+CFG12)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a85d9b3d9757f4bbeb7c3edcbc3a2a3fa}\label{codegentemp_2_cy_flash_8h_a85d9b3d9757f4bbeb7c3edcbc3a2a3fa} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+EE\+\_\+\+MASK}~(0x10u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad0395a209e1db6a41bbe3efae141edcd}\label{codegentemp_2_cy_flash_8h_ad0395a209e1db6a41bbe3efae141edcd} 
+\#define {\bfseries CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+FLASH\+\_\+\+MASK}~(0x01u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ae69620948dea1b76e0ab7843ab719db7}\label{codegentemp_2_cy_flash_8h_ae69620948dea1b76e0ab7843ab719db7} 
+\#define {\bfseries FLASH\+\_\+\+SIZE}~(CY\+\_\+\+FLASH\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aa207fb97a78b0223591e7c404e37b949}\label{codegentemp_2_cy_flash_8h_aa207fb97a78b0223591e7c404e37b949} 
+\#define {\bfseries FLASH\+\_\+\+SIZEOF\+\_\+\+SECTOR}~(CY\+\_\+\+FLASH\+\_\+\+SIZEOF\+\_\+\+ARRAY)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a0580b4af5236e2be2553b76d43d26cb0}\label{codegentemp_2_cy_flash_8h_a0580b4af5236e2be2553b76d43d26cb0} 
+\#define {\bfseries FLASH\+\_\+\+NUMBER\+\_\+\+ROWS}~(CY\+\_\+\+FLASH\+\_\+\+NUMBER\+\_\+\+ROWS)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a8619394ef88dcdc05e14eb64edf01d83}\label{codegentemp_2_cy_flash_8h_a8619394ef88dcdc05e14eb64edf01d83} 
+\#define {\bfseries FLASH\+\_\+\+NUMBER\+\_\+\+SECTORS}~(CY\+\_\+\+FLASH\+\_\+\+NUMBER\+\_\+\+ARRAYS)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ae3ef7bba113f663df6996f286b632a3f}\label{codegentemp_2_cy_flash_8h_ae3ef7bba113f663df6996f286b632a3f} 
+\#define {\bfseries EEPROM\+\_\+\+SIZE}~(CY\+\_\+\+EEPROM\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a50c3cd465033f6f7a00b7889025e9bb3}\label{codegentemp_2_cy_flash_8h_a50c3cd465033f6f7a00b7889025e9bb3} 
+\#define {\bfseries EEPROM\+\_\+\+SIZEOF\+\_\+\+SECTOR}~(CYDEV\+\_\+\+EEPROM\+\_\+\+SECTOR\+\_\+\+SIZE)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad71a206e107cc20ba5c3f050c06d7731}\label{codegentemp_2_cy_flash_8h_ad71a206e107cc20ba5c3f050c06d7731} 
+\#define {\bfseries EEPROM\+\_\+\+NUMBER\+\_\+\+ROWS}~(CY\+\_\+\+EEPROM\+\_\+\+NUMBER\+\_\+\+ROWS)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a0185fbb98df373d4c0591cb3be5153a8}\label{codegentemp_2_cy_flash_8h_a0185fbb98df373d4c0591cb3be5153a8} 
+\#define {\bfseries EEPROM\+\_\+\+NUMBER\+\_\+\+SECTORS}~(CY\+\_\+\+EEPROM\+\_\+\+NUMBER\+\_\+\+SECTORS)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_af3ad60f34836b1915609592b69e2c0ab}\label{codegentemp_2_cy_flash_8h_af3ad60f34836b1915609592b69e2c0ab} 
+\#define {\bfseries FLASH\+\_\+\+CYCLES\+\_\+\+PTR}~(CY\+\_\+\+FLASH\+\_\+\+CONTROL\+\_\+\+PTR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aef9b74b0a0bdca02405c1b10bb854aa9}\label{codegentemp_2_cy_flash_8h_aef9b74b0a0bdca02405c1b10bb854aa9} 
+\#define {\bfseries TEMP\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+SAMPLES}~(CY\+\_\+\+TEMP\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+SAMPLES)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab7e2df0a7030eb9e7a5ce668a0542c8c}\label{codegentemp_2_cy_flash_8h_ab7e2df0a7030eb9e7a5ce668a0542c8c} 
+\#define {\bfseries TEMP\+\_\+\+TIMER\+\_\+\+PERIOD}~(CY\+\_\+\+TEMP\+\_\+\+TIMER\+\_\+\+PERIOD)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a79812eba1de938a2ab245b1f4e2bf0fe}\label{codegentemp_2_cy_flash_8h_a79812eba1de938a2ab245b1f4e2bf0fe} 
+\#define {\bfseries TEMP\+\_\+\+CLK\+\_\+\+DIV\+\_\+\+SELECT}~(CY\+\_\+\+TEMP\+\_\+\+CLK\+\_\+\+DIV\+\_\+\+SELECT)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_af0b23eedf2352de4c1eff77e1401730c}\label{codegentemp_2_cy_flash_8h_af0b23eedf2352de4c1eff77e1401730c} 
+\#define {\bfseries NUM\+\_\+\+SAMPLES}~(CY\+\_\+\+TEMP\+\_\+\+NUM\+\_\+\+SAMPLES)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a891f0f5973ded5cdfeba34600ec13f51}\label{codegentemp_2_cy_flash_8h_a891f0f5973ded5cdfeba34600ec13f51} 
+\#define {\bfseries SPC\+\_\+\+CLK\+\_\+\+PERIOD}~(CY\+\_\+\+SPC\+\_\+\+CLK\+\_\+\+PERIOD)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_affbb2f9ab4bcca7df868f786ea8e7ea2}\label{codegentemp_2_cy_flash_8h_affbb2f9ab4bcca7df868f786ea8e7ea2} 
+\#define {\bfseries FRM\+\_\+\+EXEC\+\_\+\+TIME}~(CY\+\_\+\+FRM\+\_\+\+EXEC\+\_\+\+TIME)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad18db5353b8b2060a46d6c55e02bebff}\label{codegentemp_2_cy_flash_8h_ad18db5353b8b2060a46d6c55e02bebff} 
+\#define {\bfseries GET\+\_\+\+TEMP\+\_\+\+TIME}~(CY\+\_\+\+GET\+\_\+\+TEMP\+\_\+\+TIME)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aad7c1dcab92f533c8d15f3941a797afe}\label{codegentemp_2_cy_flash_8h_aad7c1dcab92f533c8d15f3941a797afe} 
+\#define {\bfseries TEMP\+\_\+\+MAX\+\_\+\+WAIT}~(CY\+\_\+\+TEMP\+\_\+\+MAX\+\_\+\+WAIT)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ab5cb9ed95938e2de1ef9b4e7e229fd40}\label{codegentemp_2_cy_flash_8h_ab5cb9ed95938e2de1ef9b4e7e229fd40} 
+\#define {\bfseries ECC\+\_\+\+ADDR}~(0x80u)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a46128315de1beacc27947add23ee7308}\label{codegentemp_2_cy_flash_8h_a46128315de1beacc27947add23ee7308} 
+\#define {\bfseries PM\+\_\+\+ACT\+\_\+\+EE\+\_\+\+PTR}~(CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+EEFLASH\+\_\+\+PTR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_afce40c5d425330f032e336683683e2ab}\label{codegentemp_2_cy_flash_8h_afce40c5d425330f032e336683683e2ab} 
+\#define {\bfseries PM\+\_\+\+ACT\+\_\+\+FLASH\+\_\+\+PTR}~(CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ACT\+\_\+\+EEFLASH\+\_\+\+PTR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad777bd350b82006087ebaee0938790b0}\label{codegentemp_2_cy_flash_8h_ad777bd350b82006087ebaee0938790b0} 
+\#define {\bfseries PM\+\_\+\+STBY\+\_\+\+EE\+\_\+\+PTR}~(CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+EEFLASH\+\_\+\+PTR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a6b1a2be9d5e9a17a279aa65a18305161}\label{codegentemp_2_cy_flash_8h_a6b1a2be9d5e9a17a279aa65a18305161} 
+\#define {\bfseries PM\+\_\+\+STBY\+\_\+\+FLASH\+\_\+\+PTR}~(CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+ALTACT\+\_\+\+EEFLASH\+\_\+\+PTR)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ac31c4581796379d81ea92b001d8ed18c}\label{codegentemp_2_cy_flash_8h_ac31c4581796379d81ea92b001d8ed18c} 
+\#define {\bfseries PM\+\_\+\+EE\+\_\+\+MASK}~(CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+EE\+\_\+\+MASK)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aeaa7b32c0e85871563cd79961e945590}\label{codegentemp_2_cy_flash_8h_aeaa7b32c0e85871563cd79961e945590} 
+\#define {\bfseries PM\+\_\+\+FLASH\+\_\+\+MASK}~(CY\+\_\+\+FLASH\+\_\+\+PM\+\_\+\+FLASH\+\_\+\+MASK)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ad253136338d3f500bb88b941793c30f3}\label{codegentemp_2_cy_flash_8h_ad253136338d3f500bb88b941793c30f3} 
+\#define {\bfseries FLASH\+\_\+\+CYCLES\+\_\+\+MASK\+\_\+\+SHIFT}~(CY\+\_\+\+FLASH\+\_\+\+CYCLES\+\_\+\+MASK\+\_\+\+SHIFT)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a0a28127961465213a1998e60f752c858}\label{codegentemp_2_cy_flash_8h_a0a28127961465213a1998e60f752c858} 
+\#define {\bfseries FLASH\+\_\+\+CYCLES\+\_\+\+MASK}~(CY\+\_\+\+FLASH\+\_\+\+CYCLES\+\_\+\+MASK)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a194923079da4cf10c5e366f8f351d145}\label{codegentemp_2_cy_flash_8h_a194923079da4cf10c5e366f8f351d145} 
+\#define {\bfseries LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+16\+MHz}~(CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+16\+MHz)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a81fe1904312ab59d4acb9fed15be8f1c}\label{codegentemp_2_cy_flash_8h_a81fe1904312ab59d4acb9fed15be8f1c} 
+\#define {\bfseries LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+33\+MHz}~(CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+33\+MHz)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aa0e05ad00e80e5cee135d886c3763b97}\label{codegentemp_2_cy_flash_8h_aa0e05ad00e80e5cee135d886c3763b97} 
+\#define {\bfseries LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+50\+MHz}~(CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+50\+MHz)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a379e43495110277c9cc82576ddebeaad}\label{codegentemp_2_cy_flash_8h_a379e43495110277c9cc82576ddebeaad} 
+\#define {\bfseries LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+67\+MHz}~(CY\+\_\+\+FLASH\+\_\+\+LESSER\+\_\+\+OR\+\_\+\+EQUAL\+\_\+67\+MHz)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a93bbec71d7e9cb6cb1f0c808a38f63dd}\label{codegentemp_2_cy_flash_8h_a93bbec71d7e9cb6cb1f0c808a38f63dd} 
+\#define {\bfseries GREATER\+\_\+67\+MHz}~(CY\+\_\+\+FLASH\+\_\+\+GREATER\+\_\+67\+MHz)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_a399b31b480fc21954b759daf89d8a392}\label{codegentemp_2_cy_flash_8h_a399b31b480fc21954b759daf89d8a392} 
+\#define {\bfseries GREATER\+\_\+51\+MHz}~(CY\+\_\+\+FLASH\+\_\+\+GREATER\+\_\+51\+MHz)
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_ac2306754416dd190cad6d746c86de2fc}\label{codegentemp_2_cy_flash_8h_ac2306754416dd190cad6d746c86de2fc} 
+\#define {\bfseries AHUB\+\_\+\+EE\+\_\+\+REQ\+\_\+\+ACK\+\_\+\+PTR}~(CY\+\_\+\+FLASH\+\_\+\+EE\+\_\+\+SCR\+\_\+\+PTR)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a038bc984a4e08721a6676b90e8c6f734}{Cy\+Flash\+\_\+\+Start}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a916031017ac7b062563d46ba24271273}{Cy\+Flash\+\_\+\+Stop}} (void)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a58c3f6345497748cae9842ff7660fc67}{Cy\+Flash\+\_\+\+Erase\+Row}} (uint8 array\+Id, uint16 row\+Address)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a89aa4f28c55a9bbc5a537babef38f502}{Cy\+Set\+Temp}} (void)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8h_aa07d857fa45995cce73b7e01b44c5f8f}{Cy\+Set\+Flash\+EEBuffer}} (uint8 \texorpdfstring{$\ast$}{*}buffer)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8h_abfacbfb66a3f2b885a39e450734a3af6}{Cy\+Flash\+Get\+Spc\+Algorithm}} (void)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a50f366b4bee3a0a64f5e2ad06677c3ff}{Cy\+Write\+Row\+Full}} (uint8 array\+Id, uint16 row\+Number, const uint8 \texorpdfstring{$\ast$}{*}row\+Data, uint16 row\+Size)
+\item 
+cystatus \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a0492dac4dca5aed89ee6cc39f17ef6b5}{Cy\+Write\+Row\+Data}} (uint8 array\+Id, uint16 row\+Address, const uint8 \texorpdfstring{$\ast$}{*}row\+Data)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles}} (uint8 freq)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a7c2089d99e34b294581ffc67c22f926a}{Cy\+EEPROM\+\_\+\+Start}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_afc2d4c001de595ac172da33e5ab33e2e}{Cy\+EEPROM\+\_\+\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_a841e9a71f6345811535525707c87fa58}{Cy\+EEPROM\+\_\+\+Read\+Reserve}} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cy_flash_8h_aae3dfde59119024a2f1a108bd551c15e}{Cy\+EEPROM\+\_\+\+Read\+Release}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cy_flash_8h_aec55c54e563d81d3d7e26a5b9e91ab0e}\label{codegentemp_2_cy_flash_8h_aec55c54e563d81d3d7e26a5b9e91ab0e} 
+uint8 {\bfseries die\+Temperature} \mbox{[}CY\+\_\+\+FLASH\+\_\+\+DIE\+\_\+\+TEMP\+\_\+\+DATA\+\_\+\+SIZE\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides the function definitions for the FLASH/\+EEPROM. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+Documentation of the API\textquotesingle{}s in this file is located in the System Reference Guide provided with PSoC Creator.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-define-members}
+\Hypertarget{codegentemp_2_cy_flash_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{codegentemp_2_cy_flash_8h_ab7801a23152ad7216522b70919964051}\index{CyFlash.h@{CyFlash.h}!CY\_GET\_TEMP\_TIME@{CY\_GET\_TEMP\_TIME}}
+\index{CY\_GET\_TEMP\_TIME@{CY\_GET\_TEMP\_TIME}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CY\_GET\_TEMP\_TIME}{CY\_GET\_TEMP\_TIME}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_ab7801a23152ad7216522b70919964051} 
+\#define CY\+\_\+\+GET\+\_\+\+TEMP\+\_\+\+TIME}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((1\ <<\ (CY\_TEMP\_NUM\_SAMPLES\ +\ 1))\ *\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_SPC\_CLK\_PERIOD\ *\ CY\_TEMP\_CLK\_DIV\_SELECT)\ *\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CY\_TEMP\_TIMER\_PERIOD\ +\ CY\_FRM\_EXEC\_TIME)}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{codegentemp_2_cy_flash_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{codegentemp_2_cy_flash_8h_aae3dfde59119024a2f1a108bd551c15e}\index{CyFlash.h@{CyFlash.h}!CyEEPROM\_ReadRelease@{CyEEPROM\_ReadRelease}}
+\index{CyEEPROM\_ReadRelease@{CyEEPROM\_ReadRelease}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_ReadRelease()}{CyEEPROM\_ReadRelease()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_aae3dfde59119024a2f1a108bd551c15e} 
+void Cy\+EEPROM\+\_\+\+Read\+Release (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Release the read reservation of the EEPROM. \Hypertarget{codegentemp_2_cy_flash_8h_a841e9a71f6345811535525707c87fa58}\index{CyFlash.h@{CyFlash.h}!CyEEPROM\_ReadReserve@{CyEEPROM\_ReadReserve}}
+\index{CyEEPROM\_ReadReserve@{CyEEPROM\_ReadReserve}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_ReadReserve()}{CyEEPROM\_ReadReserve()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a841e9a71f6345811535525707c87fa58} 
+void Cy\+EEPROM\+\_\+\+Read\+Reserve (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Request access to the EEPROM for reading and wait until access is available. \Hypertarget{codegentemp_2_cy_flash_8h_a7c2089d99e34b294581ffc67c22f926a}\index{CyFlash.h@{CyFlash.h}!CyEEPROM\_Start@{CyEEPROM\_Start}}
+\index{CyEEPROM\_Start@{CyEEPROM\_Start}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_Start()}{CyEEPROM\_Start()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a7c2089d99e34b294581ffc67c22f926a} 
+void Cy\+EEPROM\+\_\+\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enable the EEPROM. \Hypertarget{codegentemp_2_cy_flash_8h_afc2d4c001de595ac172da33e5ab33e2e}\index{CyFlash.h@{CyFlash.h}!CyEEPROM\_Stop@{CyEEPROM\_Stop}}
+\index{CyEEPROM\_Stop@{CyEEPROM\_Stop}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyEEPROM\_Stop()}{CyEEPROM\_Stop()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_afc2d4c001de595ac172da33e5ab33e2e} 
+void Cy\+EEPROM\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disable the EEPROM. \Hypertarget{codegentemp_2_cy_flash_8h_a58c3f6345497748cae9842ff7660fc67}\index{CyFlash.h@{CyFlash.h}!CyFlash\_EraseRow@{CyFlash\_EraseRow}}
+\index{CyFlash\_EraseRow@{CyFlash\_EraseRow}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_EraseRow()}{CyFlash\_EraseRow()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a58c3f6345497748cae9842ff7660fc67} 
+cystatus Cy\+Flash\+\_\+\+Erase\+Row (\begin{DoxyParamCaption}\item[{uint8}]{array\+Id}{, }\item[{uint16}]{row\+Address}{}\end{DoxyParamCaption})}
+
+Erases a single row of flash. Reports success or reason for failure. The API does not return until the erase operation is complete.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+ID} & ID of the array to erase. The arrays in the part are sequential starting at the first ID for the Flash memory type. \\
+\hline
+{\em row\+Address} & Row address within the specified array\+Id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if the SPC is already in use. CYRET\+\_\+\+CANCELED if command not accepted CYRET\+\_\+\+UNKNOWN if there was an SPC error. CYRET\+\_\+\+BAD\+\_\+\+PARAM if one or more invalid parameters 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8h_a0cc8494de94e6c5ac51534c5514ad10a}\index{CyFlash.h@{CyFlash.h}!CyFlash\_SetWaitCycles@{CyFlash\_SetWaitCycles}}
+\index{CyFlash\_SetWaitCycles@{CyFlash\_SetWaitCycles}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_SetWaitCycles()}{CyFlash\_SetWaitCycles()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a0cc8494de94e6c5ac51534c5514ad10a} 
+void Cy\+Flash\+\_\+\+Set\+Wait\+Cycles (\begin{DoxyParamCaption}\item[{uint8}]{freq}{}\end{DoxyParamCaption})}
+
+Sets the number of clock cycles the cache will wait before it samples data coming back from the Flash. This function must be called before increasing the CPU clock frequency. It can optionally be called after lowering the CPU clock frequency in order to improve the CPU performance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & freq\+: Frequency of operation in Megahertz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{codegentemp_2_cy_flash_8h_a038bc984a4e08721a6676b90e8c6f734}\index{CyFlash.h@{CyFlash.h}!CyFlash\_Start@{CyFlash\_Start}}
+\index{CyFlash\_Start@{CyFlash\_Start}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_Start()}{CyFlash\_Start()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a038bc984a4e08721a6676b90e8c6f734} 
+void Cy\+Flash\+\_\+\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enable the Flash. \Hypertarget{codegentemp_2_cy_flash_8h_a916031017ac7b062563d46ba24271273}\index{CyFlash.h@{CyFlash.h}!CyFlash\_Stop@{CyFlash\_Stop}}
+\index{CyFlash\_Stop@{CyFlash\_Stop}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyFlash\_Stop()}{CyFlash\_Stop()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a916031017ac7b062563d46ba24271273} 
+void Cy\+Flash\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disable the Flash.
+
+\textbackslash{}sideeffect This setting is ignored as long as the CPU is currently running. This will only take effect when the CPU is later disabled. \Hypertarget{codegentemp_2_cy_flash_8h_abfacbfb66a3f2b885a39e450734a3af6}\index{CyFlash.h@{CyFlash.h}!CyFlashGetSpcAlgorithm@{CyFlashGetSpcAlgorithm}}
+\index{CyFlashGetSpcAlgorithm@{CyFlashGetSpcAlgorithm}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyFlashGetSpcAlgorithm()}{CyFlashGetSpcAlgorithm()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_abfacbfb66a3f2b885a39e450734a3af6} 
+cystatus Cy\+Flash\+Get\+Spc\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Sends a command to the SPC to download code into RAM.
+
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS -\/ if successful CYRET\+\_\+\+LOCKED -\/ if Flash writing already in use CYRET\+\_\+\+UNKNOWN -\/ if there was an SPC error 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8h_aa07d857fa45995cce73b7e01b44c5f8f}\index{CyFlash.h@{CyFlash.h}!CySetFlashEEBuffer@{CySetFlashEEBuffer}}
+\index{CySetFlashEEBuffer@{CySetFlashEEBuffer}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CySetFlashEEBuffer()}{CySetFlashEEBuffer()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_aa07d857fa45995cce73b7e01b44c5f8f} 
+cystatus Cy\+Set\+Flash\+EEBuffer (\begin{DoxyParamCaption}\item[{uint8 \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+Sets the user supplied temporary buffer to store SPC data while performing Flash and EEPROM commands. This buffer is only necessary when the Flash ECC is disabled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The address of a block of memory to store temporary memory. The size of the block of memory is CYDEV\+\_\+\+FLS\+\_\+\+ROW\+\_\+\+SIZE + CYDEV\+\_\+\+ECC\+\_\+\+ROW\+\_\+\+SIZE.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if the buffer is NULL 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8h_a89aa4f28c55a9bbc5a537babef38f502}\index{CyFlash.h@{CyFlash.h}!CySetTemp@{CySetTemp}}
+\index{CySetTemp@{CySetTemp}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CySetTemp()}{CySetTemp()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a89aa4f28c55a9bbc5a537babef38f502} 
+cystatus Cy\+Set\+Temp (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This is a wraparound for Cy\+Set\+Temp\+Int(). It is used to return the second successful read of the temperature value.
+
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if Flash writing already in use CYRET\+\_\+\+UNKNOWN if there was an SPC error.
+\end{DoxyReturn}
+uint8 die\+Temperature\mbox{[}2\mbox{]}\+: Holds the die temperature for the flash writing algorithm. The first byte is the sign of the temperature (0 = negative, 1 = positive). The second byte is the magnitude. \Hypertarget{codegentemp_2_cy_flash_8h_a0492dac4dca5aed89ee6cc39f17ef6b5}\index{CyFlash.h@{CyFlash.h}!CyWriteRowData@{CyWriteRowData}}
+\index{CyWriteRowData@{CyWriteRowData}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyWriteRowData()}{CyWriteRowData()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a0492dac4dca5aed89ee6cc39f17ef6b5} 
+cystatus Cy\+Write\+Row\+Data (\begin{DoxyParamCaption}\item[{uint8}]{array\+Id}{, }\item[{uint16}]{row\+Address}{, }\item[{const uint8 \texorpdfstring{$\ast$}{*}}]{row\+Data}{}\end{DoxyParamCaption})}
+
+Sends a command to the SPC to load and program a row of data in Flash or EEPROM.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+ID} & ID of the array to write. The type of write, Flash or EEPROM, is determined from the array ID. The arrays in the part are sequential starting at the first ID for the specific memory type. The array ID for the Flash memory lasts from 0x00 to 0x3F and for the EEPROM memory it lasts from 0x40 to 0x7F. \\
+\hline
+{\em row\+Address} & row\+Address of flash row to program. \\
+\hline
+{\em row\+Data} & Array of bytes to write.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+: CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if the SPC is already in use. CYRET\+\_\+\+CANCELED if command not accepted CYRET\+\_\+\+UNKNOWN if there was an SPC error. 
+\end{DoxyReturn}
+\Hypertarget{codegentemp_2_cy_flash_8h_a50f366b4bee3a0a64f5e2ad06677c3ff}\index{CyFlash.h@{CyFlash.h}!CyWriteRowFull@{CyWriteRowFull}}
+\index{CyWriteRowFull@{CyWriteRowFull}!CyFlash.h@{CyFlash.h}}
+\doxysubsubsection{\texorpdfstring{CyWriteRowFull()}{CyWriteRowFull()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cy_flash_8h_a50f366b4bee3a0a64f5e2ad06677c3ff} 
+cystatus Cy\+Write\+Row\+Full (\begin{DoxyParamCaption}\item[{uint8}]{array\+Id}{, }\item[{uint16}]{row\+Number}{, }\item[{const uint8 \texorpdfstring{$\ast$}{*}}]{row\+Data}{, }\item[{uint16}]{row\+Size}{}\end{DoxyParamCaption})}
+
+Sends a command to the SPC to load and program a row of data in the Flash. row\+Data array is expected to contain Flash and ECC data if needed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Id} & FLASH or EEPROM array id. \\
+\hline
+{\em row\+Data} & Pointer to a row of data to write. \\
+\hline
+{\em row\+Number} & Zero based number of the row. \\
+\hline
+{\em row\+Size} & Size of the row.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+LOCKED if the SPC is already in use. CYRET\+\_\+\+CANCELED if command not accepted CYRET\+\_\+\+UNKNOWN if there was an SPC error. 
+\end{DoxyReturn}

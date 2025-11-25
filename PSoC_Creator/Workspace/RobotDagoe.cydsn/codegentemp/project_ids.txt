@@ -1,0 +1,8 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|6a087a20-ed25-4879-83ec-ca75dd790cb2
+C:\Users\Perij\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|676e8427-3bd3-49e5-ac9b-5cc020577811
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8604890d-fba5-4b46-9648-63df49716a88
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|07938606-b7d3-4f19-b9f7-77fa005e4647
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6c9a1767-7804-4a77-84ed-a4d09365d2e2
+C:\Users\Perij\Documents\PSoC Creator\Workspace\RabotDagoe.cydsn\RabotDagoe.cyprj|5a624af6-a7d1-47fe-a499-e60e714982c2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|77e64a93-3988-4b84-b7d4-3989ee114f72
+C:\Users\Perij\Documents\PSoC Creator\Workspace\RobotDagoe.cydsn\RobotDagoe.cyprj|7e4efbd9-bdee-4599-9b58-8157a9ac19e9

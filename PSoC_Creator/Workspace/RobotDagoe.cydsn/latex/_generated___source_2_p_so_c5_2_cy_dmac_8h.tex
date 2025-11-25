@@ -1,0 +1,793 @@
+\doxysection{Generated\+\_\+\+Source/\+PSo\+C5/\+Cy\+Dmac.h File Reference}
+\hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h}{}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h}\index{Generated\_Source/PSoC5/CyDmac.h@{Generated\_Source/PSoC5/CyDmac.h}}
+
+
+Provides the function definitions for the DMA Controller.  
+
+
+{\ttfamily \#include "{}cytypes.\+h"{}}\newline
+{\ttfamily \#include "{}cyfitter.\+h"{}}\newline
+{\ttfamily \#include "{}cydevice\+\_\+trm.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Lib.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdmac__ch__struct}{dmac\+\_\+ch\+\_\+struct}}
+\item 
+struct \mbox{\hyperlink{structdmac__cfgmem__struct}{dmac\+\_\+cfgmem\+\_\+struct}}
+\item 
+struct \mbox{\hyperlink{structdmac__tdmem__struct}{dmac\+\_\+tdmem\+\_\+struct}}
+\item 
+struct \mbox{\hyperlink{structdmac__tdmem2__struct}{dmac\+\_\+tdmem2\+\_\+struct}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a88063954159ae946bcbf9d21f8e9f755}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a88063954159ae946bcbf9d21f8e9f755} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+INVALID\+\_\+\+CHANNEL}~0x\+FFu   /\texorpdfstring{$\ast$}{*} Invalid Channel ID \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_afc294face006dfbc97cc41d268a4c02b}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_afc294face006dfbc97cc41d268a4c02b} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+INVALID\+\_\+\+TD}~0x\+FFu   /\texorpdfstring{$\ast$}{*} Invalid TD \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a256fd7d50c04304fc7488c88172d2f7d}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a256fd7d50c04304fc7488c88172d2f7d} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+END\+\_\+\+CHAIN\+\_\+\+TD}~0x\+FFu   /\texorpdfstring{$\ast$}{*} End of chain TD \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3c005f8569a62bfa394a08e47dbdd70f}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3c005f8569a62bfa394a08e47dbdd70f} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+DISABLE\+\_\+\+TD}~0x\+FEu
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a4c7f4d8854c1a53d159ce55f9d6bc3b3}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a4c7f4d8854c1a53d159ce55f9d6bc3b3} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SIZE}~0x08u
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7fe53c3f48a0e970a18f35413c60a5d3}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7fe53c3f48a0e970a18f35413c60a5d3} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+EN}~0x80
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aef6091b3b094674e3b89e91e053be381}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aef6091b3b094674e3b89e91e053be381} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+SIZE4}~0x40
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1b1e88ee25ddc5794e946ab7f78f3588}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1b1e88ee25ddc5794e946ab7f78f3588} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+AUTO\+\_\+\+EXEC\+\_\+\+NEXT}~0x20
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3a740f0e755eed47149997dd2acc2a41}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3a740f0e755eed47149997dd2acc2a41} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMIN\+\_\+\+EN}~0x10
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a0c8daee792d31a76265d9763754eb2a5}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a0c8daee792d31a76265d9763754eb2a5} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMOUT1\+\_\+\+EN}~0x08
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ad1f71ad9cb4270081e4b878322121a13}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ad1f71ad9cb4270081e4b878322121a13} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMOUT0\+\_\+\+EN}~0x04
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7705575c183d59960693940ec82e0bc7}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7705575c183d59960693940ec82e0bc7} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+DST\+\_\+\+ADR}~0x02
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8504888a8454491d05908309751732b5}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8504888a8454491d05908309751732b5} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+SRC\+\_\+\+ADR}~0x01
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_adabfaa5e9602ebc51539f08228d327d6}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_adabfaa5e9602ebc51539f08228d327d6} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+NUMBEROF\+\_\+\+TDS}~128u
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a9d44ebfaa76cb038adf70e23b659c59c}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a9d44ebfaa76cb038adf70e23b659c59c} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+NUMBEROF\+\_\+\+CHANNELS}~((uint8)(CYDEV\+\_\+\+DMA\+\_\+\+CHANNELS\+\_\+\+AVAILABLE))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8c755179780bbfbf4b9f6efe59a71a87}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8c755179780bbfbf4b9f6efe59a71a87} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CPU\+\_\+\+REQ}~((uint8)(1u $<$$<$ 0u))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ade7771f40d5b8f5986c2e34e5b1692f6}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ade7771f40d5b8f5986c2e34e5b1692f6} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CPU\+\_\+\+TERM\+\_\+\+TD}~((uint8)(1u $<$$<$ 1u))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a51309a075d97784aa287d4a805d8b740}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a51309a075d97784aa287d4a805d8b740} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CPU\+\_\+\+TERM\+\_\+\+CHAIN}~((uint8)(1u $<$$<$ 2u))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aae64cfe38acbf628e5a3c969c54fadc6}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aae64cfe38acbf628e5a3c969c54fadc6} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+STATUS\+\_\+\+CHAIN\+\_\+\+ACTIVE}~((uint8)(1u $<$$<$ 0u))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1fe9fc241ff0ec309ea0d627985a5419}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1fe9fc241ff0ec309ea0d627985a5419} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+STATUS\+\_\+\+TD\+\_\+\+ACTIVE}~((uint8)(1u $<$$<$ 1u))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a99db918ac83ac5fc3bc6b65ecc8db4ae}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a99db918ac83ac5fc3bc6b65ecc8db4ae} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+BUS\+\_\+\+TIMEOUT}~(1u $<$$<$ 1u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6c4f05dbc3bb884c47019eff79fcc39d}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6c4f05dbc3bb884c47019eff79fcc39d} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+UNPOP\+\_\+\+ACC}~(1u $<$$<$ 2u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_abb384984e31d7ce3f83826cadc287881}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_abb384984e31d7ce3f83826cadc287881} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+PERIPH\+\_\+\+ERR}~(1u $<$$<$ 3u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac60ecdf6269cc6e529221f7663116966}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac60ecdf6269cc6e529221f7663116966} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+ROUND\+\_\+\+ROBIN\+\_\+\+ENABLE}~((uint8)(1u $<$$<$ 4u))
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a4ba047a644ec6445670da67db5e88050}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a4ba047a644ec6445670da67db5e88050} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CH\+\_\+\+BASIC\+\_\+\+CFG\+\_\+\+EN}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a485fe2d4bfb1701ce4565732a9bc90df}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a485fe2d4bfb1701ce4565732a9bc90df} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CH\+\_\+\+BASIC\+\_\+\+CFG\+\_\+\+WORK\+\_\+\+SEP}~(0x20u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aaa0bd3fef639a09e62009c520a7c1979}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aaa0bd3fef639a09e62009c520a7c1979} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CFG\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PHUB\+\_\+\+CFG)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6fd93366346bafaa30ff57310e362ad3}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6fd93366346bafaa30ff57310e362ad3} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CFG\+\_\+\+PTR}~( (reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PHUB\+\_\+\+CFG)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac853fc943cf78eedf9b338556cb0edea}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac853fc943cf78eedf9b338556cb0edea} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+ERR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PHUB\+\_\+\+ERR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab5c839a97d959d5d40edf9eca0620552}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab5c839a97d959d5d40edf9eca0620552} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+ERR\+\_\+\+PTR}~( (reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PHUB\+\_\+\+ERR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3e68ec357c972b05348ffb7bd3f69da2}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3e68ec357c972b05348ffb7bd3f69da2} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+ERR\+\_\+\+ADR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PHUB\+\_\+\+ERR\+\_\+\+ADR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6f03f4d6c5783d2f8f15254dd8f2c9fe}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6f03f4d6c5783d2f8f15254dd8f2c9fe} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+ERR\+\_\+\+ADR\+\_\+\+PTR}~( (reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PHUB\+\_\+\+ERR\+\_\+\+ADR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a42246c9f358e8a2c2097b1d1d5a1405c}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a42246c9f358e8a2c2097b1d1d5a1405c} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CH\+\_\+\+STRUCT\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(dmac\+\_\+ch CYXDATA \texorpdfstring{$\ast$}{*}) CYDEV\+\_\+\+PHUB\+\_\+\+CH0\+\_\+\+BASE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a52346edd438fc5615027862a8bb214ad}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a52346edd438fc5615027862a8bb214ad} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CH\+\_\+\+STRUCT\+\_\+\+PTR}~( (dmac\+\_\+ch CYXDATA \texorpdfstring{$\ast$}{*}) CYDEV\+\_\+\+PHUB\+\_\+\+CH0\+\_\+\+BASE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a4b827b6af34de5a908748c6cd2a6e2d3}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a4b827b6af34de5a908748c6cd2a6e2d3} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CFGMEM\+\_\+\+STRUCT\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(dmac\+\_\+cfgmem CYXDATA \texorpdfstring{$\ast$}{*}) CYDEV\+\_\+\+PHUB\+\_\+\+CFGMEM0\+\_\+\+BASE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a46f045c8ee8c9d7b8167d266d1450507}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a46f045c8ee8c9d7b8167d266d1450507} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+CFGMEM\+\_\+\+STRUCT\+\_\+\+PTR}~( (dmac\+\_\+cfgmem CYXDATA \texorpdfstring{$\ast$}{*}) CYDEV\+\_\+\+PHUB\+\_\+\+CFGMEM0\+\_\+\+BASE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1308232580c838c08c8dd5fe153fbce4}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1308232580c838c08c8dd5fe153fbce4} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TDMEM\+\_\+\+STRUCT\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(dmac\+\_\+tdmem  CYXDATA \texorpdfstring{$\ast$}{*}) CYDEV\+\_\+\+PHUB\+\_\+\+TDMEM0\+\_\+\+BASE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aceebce5b0a95f38e3371128022e15ad1}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aceebce5b0a95f38e3371128022e15ad1} 
+\#define {\bfseries CY\+\_\+\+DMA\+\_\+\+TDMEM\+\_\+\+STRUCT\+\_\+\+PTR}~( (dmac\+\_\+tdmem  CYXDATA \texorpdfstring{$\ast$}{*}) CYDEV\+\_\+\+PHUB\+\_\+\+TDMEM0\+\_\+\+BASE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1593e5705a2d54bf599da39018c2e85f}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1593e5705a2d54bf599da39018c2e85f} 
+\#define {\bfseries DMA\+\_\+\+INVALID\+\_\+\+CHANNEL}~(CY\+\_\+\+DMA\+\_\+\+INVALID\+\_\+\+CHANNEL)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a0a81a514e0dc7ca7061f9d91fcba7386}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a0a81a514e0dc7ca7061f9d91fcba7386} 
+\#define {\bfseries DMA\+\_\+\+INVALID\+\_\+\+TD}~(CY\+\_\+\+DMA\+\_\+\+INVALID\+\_\+\+TD)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aeb496db726aa46017e4b57c63699c73b}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aeb496db726aa46017e4b57c63699c73b} 
+\#define {\bfseries DMA\+\_\+\+END\+\_\+\+CHAIN\+\_\+\+TD}~(CY\+\_\+\+DMA\+\_\+\+END\+\_\+\+CHAIN\+\_\+\+TD)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aca69734aec432508cbea901c9205b187}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aca69734aec432508cbea901c9205b187} 
+\#define {\bfseries DMAC\+\_\+\+TD\+\_\+\+SIZE}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SIZE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a69e2474a46c1f6d638018a67fe1cdcdd}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a69e2474a46c1f6d638018a67fe1cdcdd} 
+\#define {\bfseries TD\+\_\+\+SWAP\+\_\+\+EN}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+EN)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_af22fda8d3059599f1181846c3c5c91ed}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_af22fda8d3059599f1181846c3c5c91ed} 
+\#define {\bfseries TD\+\_\+\+SWAP\+\_\+\+SIZE4}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+SIZE4)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_adeae4f228f0ef600c3a3bac6dacdb900}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_adeae4f228f0ef600c3a3bac6dacdb900} 
+\#define {\bfseries TD\+\_\+\+AUTO\+\_\+\+EXEC\+\_\+\+NEXT}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+AUTO\+\_\+\+EXEC\+\_\+\+NEXT)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1a1bc0cd24b94b3a52a08b2201bc7909}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1a1bc0cd24b94b3a52a08b2201bc7909} 
+\#define {\bfseries TD\+\_\+\+TERMIN\+\_\+\+EN}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMIN\+\_\+\+EN)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8d2a83ae4893e89a5ce2808839b0b7e6}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8d2a83ae4893e89a5ce2808839b0b7e6} 
+\#define {\bfseries TD\+\_\+\+TERMOUT1\+\_\+\+EN}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMOUT1\+\_\+\+EN)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae80a12f714d9f406ed783bd144fe9481}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae80a12f714d9f406ed783bd144fe9481} 
+\#define {\bfseries TD\+\_\+\+TERMOUT0\+\_\+\+EN}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMOUT0\+\_\+\+EN)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a86c1caa68073c80617c304a5d0629cc8}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a86c1caa68073c80617c304a5d0629cc8} 
+\#define {\bfseries TD\+\_\+\+INC\+\_\+\+DST\+\_\+\+ADR}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+DST\+\_\+\+ADR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac29cd26f67adfe7eb6b65539c20cf709}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac29cd26f67adfe7eb6b65539c20cf709} 
+\#define {\bfseries TD\+\_\+\+INC\+\_\+\+SRC\+\_\+\+ADR}~(CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+SRC\+\_\+\+ADR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2915c106fba01156fbff334827918b8b}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2915c106fba01156fbff334827918b8b} 
+\#define {\bfseries NUMBEROF\+\_\+\+TDS}~(CY\+\_\+\+DMA\+\_\+\+NUMBEROF\+\_\+\+TDS)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aab5cd80d48af2303e68d41864b178b9d}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aab5cd80d48af2303e68d41864b178b9d} 
+\#define {\bfseries NUMBEROF\+\_\+\+CHANNELS}~(CY\+\_\+\+DMA\+\_\+\+NUMBEROF\+\_\+\+CHANNELS)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_adc459b8bcdf8c1fcaf629c0a8e530945}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_adc459b8bcdf8c1fcaf629c0a8e530945} 
+\#define {\bfseries CPU\+\_\+\+REQ}~(CY\+\_\+\+DMA\+\_\+\+CPU\+\_\+\+REQ)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac1d6d3cc742dd23cf85103db41c1bcbb}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac1d6d3cc742dd23cf85103db41c1bcbb} 
+\#define {\bfseries CPU\+\_\+\+TERM\+\_\+\+TD}~(CY\+\_\+\+DMA\+\_\+\+CPU\+\_\+\+TERM\+\_\+\+TD)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a779d33d9879736fa3602db87bc9dc669}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a779d33d9879736fa3602db87bc9dc669} 
+\#define {\bfseries CPU\+\_\+\+TERM\+\_\+\+CHAIN}~(CY\+\_\+\+DMA\+\_\+\+CPU\+\_\+\+TERM\+\_\+\+CHAIN)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a04ef2064db31b80c18a0c94bb64a0ed5}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a04ef2064db31b80c18a0c94bb64a0ed5} 
+\#define {\bfseries STATUS\+\_\+\+CHAIN\+\_\+\+ACTIVE}~(CY\+\_\+\+DMA\+\_\+\+STATUS\+\_\+\+CHAIN\+\_\+\+ACTIVE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a0180fb6ec881e0e0353f332a9dae6b59}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a0180fb6ec881e0e0353f332a9dae6b59} 
+\#define {\bfseries STATUS\+\_\+\+TD\+\_\+\+ACTIVE}~(CY\+\_\+\+DMA\+\_\+\+STATUS\+\_\+\+TD\+\_\+\+ACTIVE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a86bd908f9c5626f4155258fb59e07876}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a86bd908f9c5626f4155258fb59e07876} 
+\#define {\bfseries DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT}~(CY\+\_\+\+DMA\+\_\+\+BUS\+\_\+\+TIMEOUT)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6dc1efdf58e6a94c2f0b3a9958ba6a9b}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6dc1efdf58e6a94c2f0b3a9958ba6a9b} 
+\#define {\bfseries DMAC\+\_\+\+UNPOP\+\_\+\+ACC}~(CY\+\_\+\+DMA\+\_\+\+UNPOP\+\_\+\+ACC)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a38aae5d19dca0ad170f2a35173601684}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a38aae5d19dca0ad170f2a35173601684} 
+\#define {\bfseries DMAC\+\_\+\+PERIPH\+\_\+\+ERR}~(CY\+\_\+\+DMA\+\_\+\+PERIPH\+\_\+\+ERR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a680b10e1e3074ae0b30b87f4b55a4949}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a680b10e1e3074ae0b30b87f4b55a4949} 
+\#define {\bfseries ROUND\+\_\+\+ROBIN\+\_\+\+ENABLE}~(CY\+\_\+\+DMA\+\_\+\+ROUND\+\_\+\+ROBIN\+\_\+\+ENABLE)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae71ed388cb1478ab2edf5ec48c0ccec5}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae71ed388cb1478ab2edf5ec48c0ccec5} 
+\#define {\bfseries DMA\+\_\+\+DISABLE\+\_\+\+TD}~(CY\+\_\+\+DMA\+\_\+\+DISABLE\+\_\+\+TD)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_acf4f66b6a8a22a0178f4be3a506ff623}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_acf4f66b6a8a22a0178f4be3a506ff623} 
+\#define {\bfseries DMAC\+\_\+\+CFG}~(CY\+\_\+\+DMA\+\_\+\+CFG\+\_\+\+PTR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a62f2254f6f4ede1343a6cbcdcc3931d8}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a62f2254f6f4ede1343a6cbcdcc3931d8} 
+\#define {\bfseries DMAC\+\_\+\+ERR}~(CY\+\_\+\+DMA\+\_\+\+ERR\+\_\+\+PTR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7a1e0b72bc3cae3863ddb17e4a2bc6e1}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7a1e0b72bc3cae3863ddb17e4a2bc6e1} 
+\#define {\bfseries DMAC\+\_\+\+ERR\+\_\+\+ADR}~(CY\+\_\+\+DMA\+\_\+\+ERR\+\_\+\+ADR\+\_\+\+PTR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a52e0d48d0dd763b0cfbdbfa1597d0109}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a52e0d48d0dd763b0cfbdbfa1597d0109} 
+\#define {\bfseries DMAC\+\_\+\+CH}~(CY\+\_\+\+DMA\+\_\+\+CH\+\_\+\+STRUCT\+\_\+\+PTR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae3a1b3bf31d4d913fe3a6f9291c75430}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae3a1b3bf31d4d913fe3a6f9291c75430} 
+\#define {\bfseries DMAC\+\_\+\+CFGMEM}~(CY\+\_\+\+DMA\+\_\+\+CFGMEM\+\_\+\+STRUCT\+\_\+\+PTR)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a580063662e0777e9f7b04d70a8000766}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a580063662e0777e9f7b04d70a8000766} 
+\#define {\bfseries DMAC\+\_\+\+TDMEM}~(CY\+\_\+\+DMA\+\_\+\+TDMEM\+\_\+\+STRUCT\+\_\+\+PTR)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3f1c95966c2ba27e598052a376d32b9b}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3f1c95966c2ba27e598052a376d32b9b} 
+typedef struct \mbox{\hyperlink{structdmac__ch__struct}{dmac\+\_\+ch\+\_\+struct}} {\bfseries dmac\+\_\+ch}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_adcabc080d5f64fb863961e4e315d30ae}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_adcabc080d5f64fb863961e4e315d30ae} 
+typedef struct \mbox{\hyperlink{structdmac__cfgmem__struct}{dmac\+\_\+cfgmem\+\_\+struct}} {\bfseries dmac\+\_\+cfgmem}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae2106e4894048bdddc895094cb50d27c}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae2106e4894048bdddc895094cb50d27c} 
+typedef struct \mbox{\hyperlink{structdmac__tdmem__struct}{dmac\+\_\+tdmem\+\_\+struct}} {\bfseries dmac\+\_\+tdmem}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac3b8d2e129eae6c2de64849d725749ae}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac3b8d2e129eae6c2de64849d725749ae} 
+typedef struct \mbox{\hyperlink{structdmac__tdmem2__struct}{dmac\+\_\+tdmem2\+\_\+struct}} {\bfseries dmac\+\_\+tdmem2}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab7bbe15141740891add85a1ff5797451}{Cy\+Dmac\+Configure}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8aeb1fff411210834f7b8b6f88adbe26}{Cy\+Dmac\+Error}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac41982903fd6796b9eaa45861e8eae2c}{Cy\+Dmac\+Clear\+Error}} (uint8 error)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a22484901bdebb3a264d4be0f51f22e1e}{Cy\+Dmac\+Error\+Address}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc}} (void)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3836f3aa97fd9ca928900d3c07d085f9}{Cy\+Dma\+Ch\+Free}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae9db258ea3738ab93013dbb4206e9820}{Cy\+Dma\+Ch\+Enable}} (uint8 ch\+Handle, uint8 preserve\+Tds)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7faa26471bf6fcfd6aa2a4e97f5b69a4}{Cy\+Dma\+Ch\+Disable}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a73aa9558e09f1f53c7ab37af8ff58f14}{Cy\+Dma\+Clear\+Pending\+Drq}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7392a70300b8061aaf5c37ab8c044bb7}{Cy\+Dma\+Ch\+Priority}} (uint8 ch\+Handle, uint8 priority)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2a1671efe242830f521e58e75eef2e69}{Cy\+Dma\+Ch\+Set\+Extended\+Address}} (uint8 ch\+Handle, uint16 source, uint16 destination)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_aa2f5b7beb329f6bcbc9cf09de83b46ad}{Cy\+Dma\+Ch\+Set\+Initial\+Td}} (uint8 ch\+Handle, uint8 start\+Td)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2f72c3e0c3329e6843dd06073eae2c59}{Cy\+Dma\+Ch\+Set\+Request}} (uint8 ch\+Handle, uint8 request)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a41ba065da0143fc5cd9bbd0f0e5fd4d4}{Cy\+Dma\+Ch\+Get\+Request}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}{Cy\+Dma\+Ch\+Status}} (uint8 ch\+Handle, uint8 \texorpdfstring{$\ast$}{*}current\+Td, uint8 \texorpdfstring{$\ast$}{*}state)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae50db20306edb5bf9527273b190906ec}{Cy\+Dma\+Ch\+Set\+Configuration}} (uint8 ch\+Handle, uint8 burst\+Count, uint8 request\+Per\+Burst, uint8 td\+Done0, uint8 td\+Done1, uint8 td\+Stop)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6a9782a897c8ef6dd1c82aaf9092bef0}{Cy\+Dma\+Ch\+Round\+Robin}} (uint8 ch\+Handle, uint8 enable\+RR)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a15556b634419ca28c6787333c886bfb3}{Cy\+Dma\+Td\+Allocate}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_aa6cb8b3e5f2fe81f313cdba02ebece0e}{Cy\+Dma\+Td\+Free}} (uint8 td\+Handle)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1d2e8024f47d1ab514a1af6c84e03dff}{Cy\+Dma\+Td\+Free\+Count}} (void)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_af27744f8b4f8f564766f3c1064201458}{Cy\+Dma\+Td\+Set\+Configuration}} (uint8 td\+Handle, uint16 transfer\+Count, uint8 next\+Td, uint8 configuration)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_adb4280a3e31f320281a7391aacf11cd1}{Cy\+Dma\+Td\+Get\+Configuration}} (uint8 td\+Handle, uint16 \texorpdfstring{$\ast$}{*}transfer\+Count, uint8 \texorpdfstring{$\ast$}{*}next\+Td, uint8 \texorpdfstring{$\ast$}{*}configuration)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab6921d90d9370ff8cce2194c70a27021}{Cy\+Dma\+Td\+Set\+Address}} (uint8 td\+Handle, uint16 source, uint16 destination)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2c918563c0ea4bf0a864ffc5638cccd5}{Cy\+Dma\+Td\+Get\+Address}} (uint8 td\+Handle, uint16 \texorpdfstring{$\ast$}{*}source, uint16 \texorpdfstring{$\ast$}{*}destination)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides the function definitions for the DMA Controller. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+Documentation of the API\textquotesingle{}s in this file is located in the System Reference Guide provided with PSoC Creator.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac41982903fd6796b9eaa45861e8eae2c}\index{CyDmac.h@{CyDmac.h}!CyDmacClearError@{CyDmacClearError}}
+\index{CyDmacClearError@{CyDmacClearError}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmacClearError()}{CyDmacClearError()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ac41982903fd6796b9eaa45861e8eae2c} 
+void Cy\+Dmac\+Clear\+Error (\begin{DoxyParamCaption}\item[{uint8}]{error}{}\end{DoxyParamCaption})}
+
+Clears the error bits in the error register of the DMAC.
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & Clears the error bits in the DMAC error register.\\
+\hline
+{\em DMAC\+\_\+\+PERIPH\+\_\+\+ERR} & Set to 1 when a peripheral responds to a bus transaction with an error response.\\
+\hline
+{\em DMAC\+\_\+\+UNPOP\+\_\+\+ACC} & Set to 1 when an access is attempted to an invalid address.\\
+\hline
+{\em DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT} & Set to 1 when a bus timeout occurs. Cleared by writing 1. Timeout values are determined by the BUS\+\_\+\+TIMEOUT field in the PHUBCFG register.\\
+\hline
+\end{DoxyParams}
+Theory\+: Once an error occurs the error bits are sticky and are only cleared by writing 1 to the error register. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab7bbe15141740891add85a1ff5797451}\index{CyDmac.h@{CyDmac.h}!CyDmacConfigure@{CyDmacConfigure}}
+\index{CyDmacConfigure@{CyDmacConfigure}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmacConfigure()}{CyDmacConfigure()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab7bbe15141740891add85a1ff5797451} 
+void Cy\+Dmac\+Configure (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Creates a linked list of all the TDs to be allocated. This function is called by the startup code; you do not normally need to call it. You can call this function if all of the DMA channels are inactive. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8aeb1fff411210834f7b8b6f88adbe26}\index{CyDmac.h@{CyDmac.h}!CyDmacError@{CyDmacError}}
+\index{CyDmacError@{CyDmacError}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmacError()}{CyDmacError()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a8aeb1fff411210834f7b8b6f88adbe26} 
+uint8 Cy\+Dmac\+Error (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns errors of the last failed DMA transaction.
+
+\begin{DoxyReturn}{Returns}
+Errors of the last failed DMA transaction.
+\end{DoxyReturn}
+DMAC\+\_\+\+PERIPH\+\_\+\+ERR\+: Set to 1 when a peripheral responds to a bus transaction with an error response.
+
+DMAC\+\_\+\+UNPOP\+\_\+\+ACC\+: Set to 1 when an access is attempted to an invalid address.
+
+DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT\+: Set to 1 when a bus timeout occurs. Cleared by writing a 1. Timeout values are determined by the BUS\+\_\+\+TIMEOUT field in the PHUBCFG register.
+
+Theory\+: Once an error occurs the error bits are sticky and are only cleared by writing 1 to the error register. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a22484901bdebb3a264d4be0f51f22e1e}\index{CyDmac.h@{CyDmac.h}!CyDmacErrorAddress@{CyDmacErrorAddress}}
+\index{CyDmacErrorAddress@{CyDmacErrorAddress}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmacErrorAddress()}{CyDmacErrorAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a22484901bdebb3a264d4be0f51f22e1e} 
+uint32 Cy\+Dmac\+Error\+Address (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+When DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT, DMAC\+\_\+\+UNPOP\+\_\+\+ACC, and DMAC\+\_\+\+PERIPH\+\_\+\+ERR occur the address of the error is written to the error address register and can be read with this function.
+
+If there are multiple errors, only the address of the first is saved.
+
+\begin{DoxyReturn}{Returns}
+The address that caused the error. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_adbfe228cbbce1f6cfacd8239a9f551d2}\index{CyDmac.h@{CyDmac.h}!CyDmaChAlloc@{CyDmaChAlloc}}
+\index{CyDmaChAlloc@{CyDmaChAlloc}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChAlloc()}{CyDmaChAlloc()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_adbfe228cbbce1f6cfacd8239a9f551d2} 
+uint8 Cy\+Dma\+Ch\+Alloc (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Allocates a channel from the DMAC to be used in all functions that require a channel handle.
+
+\begin{DoxyReturn}{Returns}
+The allocated channel number. Zero is a valid channel number. DMA\+\_\+\+INVALID\+\_\+\+CHANNEL is returned if there are no channels available. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7faa26471bf6fcfd6aa2a4e97f5b69a4}\index{CyDmac.h@{CyDmac.h}!CyDmaChDisable@{CyDmaChDisable}}
+\index{CyDmaChDisable@{CyDmaChDisable}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChDisable()}{CyDmaChDisable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7faa26471bf6fcfd6aa2a4e97f5b69a4} 
+cystatus Cy\+Dma\+Ch\+Disable (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+Disables the DMA channel. Once this function is called, \doxylink{codegentemp_2_cy_dmac_8c_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}{Cy\+Dma\+Ch\+Status()} may be called to determine when the channel is disabled and which TDs were being executed.
+
+If it is currently executing it will allow the current burst to finish naturally.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae9db258ea3738ab93013dbb4206e9820}\index{CyDmac.h@{CyDmac.h}!CyDmaChEnable@{CyDmaChEnable}}
+\index{CyDmaChEnable@{CyDmaChEnable}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChEnable()}{CyDmaChEnable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae9db258ea3738ab93013dbb4206e9820} 
+cystatus Cy\+Dma\+Ch\+Enable (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{preserve\+Tds}{}\end{DoxyParamCaption})}
+
+Enables the DMA channel. A software or hardware request still must happen before the channel is executed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em preserve\+Tds} & Preserves the original TD state when the TD has completed. This parameter applies to all TDs in the channel.\\
+\hline
+\end{DoxyParams}
+0 -\/ When TD is completed, the DMAC leaves the TD configuration values in their current state, and does not restore them to their original state.
+
+1 -\/ When TD is completed, the DMAC restores the original configuration values of the TD.
+
+When preserve\+Tds is set, the TD slot that equals the channel number becomes RESERVED and that becomes where the working registers exist. So, for example, if you are using CH06 and preserve\+Tds is set, you are not allowed to use TD slot 6. That is reclaimed by the DMA engine for its private use.
+
+\begin{DoxyNote}{Note}
+Do not chain back to a completed TD if the preserve\+Tds for the channel is set to 0. When a TD has completed preserve\+Tds for the channel set to 0, the transfer count will be at 0. If a TD with a transfer count of 0 is started, the TD will transfer an indefinite amount of data.
+\end{DoxyNote}
+Take extra precautions when using the hardware request (DRQ) option when the preserve\+Tds is set to 0, as you might be requesting the wrong data.
+
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3836f3aa97fd9ca928900d3c07d085f9}\index{CyDmac.h@{CyDmac.h}!CyDmaChFree@{CyDmaChFree}}
+\index{CyDmaChFree@{CyDmaChFree}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChFree()}{CyDmaChFree()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a3836f3aa97fd9ca928900d3c07d085f9} 
+cystatus Cy\+Dma\+Ch\+Free (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+Frees a channel allocated by Dma\+Ch\+Alloc().
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & The handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a41ba065da0143fc5cd9bbd0f0e5fd4d4}\index{CyDmac.h@{CyDmac.h}!CyDmaChGetRequest@{CyDmaChGetRequest}}
+\index{CyDmaChGetRequest@{CyDmaChGetRequest}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChGetRequest()}{CyDmaChGetRequest()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a41ba065da0143fc5cd9bbd0f0e5fd4d4} 
+cystatus Cy\+Dma\+Ch\+Get\+Request (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+This function allows the caller of \doxylink{codegentemp_2_cy_dmac_8c_a2f72c3e0c3329e6843dd06073eae2c59}{Cy\+Dma\+Ch\+Set\+Request()} to determine if the request was completed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a three-\/bit field, corresponding to the three bits of the request, which describes the state of the previously posted request. If the value is zero, the request was completed. CY\+\_\+\+DMA\+\_\+\+INVALID\+\_\+\+CHANNEL if the handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7392a70300b8061aaf5c37ab8c044bb7}\index{CyDmac.h@{CyDmac.h}!CyDmaChPriority@{CyDmaChPriority}}
+\index{CyDmaChPriority@{CyDmaChPriority}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChPriority()}{CyDmaChPriority()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a7392a70300b8061aaf5c37ab8c044bb7} 
+cystatus Cy\+Dma\+Ch\+Priority (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{priority}{}\end{DoxyParamCaption})}
+
+Sets the priority of a DMA channel. You can use this function when you want to change the priority at run time. If the priority remains the same for a DMA channel, then you can configure the priority in the .cydwr file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em priority} & Priority to set the channel to, 0 -\/ 7.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6a9782a897c8ef6dd1c82aaf9092bef0}\index{CyDmac.h@{CyDmac.h}!CyDmaChRoundRobin@{CyDmaChRoundRobin}}
+\index{CyDmaChRoundRobin@{CyDmaChRoundRobin}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChRoundRobin()}{CyDmaChRoundRobin()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a6a9782a897c8ef6dd1c82aaf9092bef0} 
+cystatus Cy\+Dma\+Ch\+Round\+Robin (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{enable\+RR}{}\end{DoxyParamCaption})}
+
+Either enables or disables the Round-\/\+Robin scheduling enforcement algorithm. Within a priority level a Round-\/\+Robin fairness algorithm is enforced.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & ch\+Handle\+: A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or Dma\+\_\+\+Dma\+Initialize().\\
+\hline
+{\em uint8} & enable\+RR\+: \\
+\hline
+{\em 0} & Disable Round-\/\+Robin fairness algorithm \\
+\hline
+{\em 1} & Enable Round-\/\+Robin fairness algorithm\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae50db20306edb5bf9527273b190906ec}\index{CyDmac.h@{CyDmac.h}!CyDmaChSetConfiguration@{CyDmaChSetConfiguration}}
+\index{CyDmaChSetConfiguration@{CyDmaChSetConfiguration}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetConfiguration()}{CyDmaChSetConfiguration()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ae50db20306edb5bf9527273b190906ec} 
+cystatus Cy\+Dma\+Ch\+Set\+Configuration (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{burst\+Count}{, }\item[{uint8}]{request\+Per\+Burst}{, }\item[{uint8}]{td\+Done0}{, }\item[{uint8}]{td\+Done1}{, }\item[{uint8}]{td\+Stop}{}\end{DoxyParamCaption})}
+
+Sets configuration information of the channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & ch\+Handle\+: A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initialize().\\
+\hline
+{\em uint8} & burst\+Count\+: Specifies the size of bursts (1 to 127) the data transfer should be divided into. If this value is zero then the whole transfer is done in one burst.\\
+\hline
+{\em uint8} & request\+Per\+Burst\+: The whole of the data can be split into multiple bursts, if this is \\
+\hline
+{\em required} & to complete the transaction\+: \\
+\hline
+{\em 0} & All subsequent bursts after the first burst will be automatically requested and carried out \\
+\hline
+{\em 1} & All subsequent bursts after the first burst must also be individually requested.\\
+\hline
+{\em uint8} & td\+Done0\+: Selects one of the TERMOUT0 interrupt lines to signal completion. The line connected to the nrq terminal will determine the TERMOUT0\+\_\+\+SEL definition and should be used as supplied by cyfitter.\+h\\
+\hline
+{\em uint8} & td\+Done1\+: Selects one of the TERMOUT1 interrupt lines to signal completion. The line connected to the nrq terminal will determine the TERMOUT1\+\_\+\+SEL definition and should be used as supplied by cyfitter.\+h\\
+\hline
+{\em uint8} & td\+Stop\+: Selects one of the TERMIN interrupt lines to signal to the DMAC that the TD should terminate. The signal connected to the trq terminal will determine which TERMIN (termination request) is used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2a1671efe242830f521e58e75eef2e69}\index{CyDmac.h@{CyDmac.h}!CyDmaChSetExtendedAddress@{CyDmaChSetExtendedAddress}}
+\index{CyDmaChSetExtendedAddress@{CyDmaChSetExtendedAddress}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetExtendedAddress()}{CyDmaChSetExtendedAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2a1671efe242830f521e58e75eef2e69} 
+cystatus Cy\+Dma\+Ch\+Set\+Extended\+Address (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint16}]{source}{, }\item[{uint16}]{destination}{}\end{DoxyParamCaption})}
+
+Sets the high 16 bits of the source and destination addresses for the DMA channel (valid for all TDs in the chain).
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em source} & Upper 16 bit address of the DMA transfer source.\\
+\hline
+{\em destination} & Upper 16 bit address of the DMA transfer destination.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aa2f5b7beb329f6bcbc9cf09de83b46ad}\index{CyDmac.h@{CyDmac.h}!CyDmaChSetInitialTd@{CyDmaChSetInitialTd}}
+\index{CyDmaChSetInitialTd@{CyDmaChSetInitialTd}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetInitialTd()}{CyDmaChSetInitialTd()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aa2f5b7beb329f6bcbc9cf09de83b46ad} 
+cystatus Cy\+Dma\+Ch\+Set\+Initial\+Td (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{start\+Td}{}\end{DoxyParamCaption})}
+
+Sets the initial TD to be executed for the channel when the \doxylink{codegentemp_2_cy_dmac_8c_ae9db258ea3738ab93013dbb4206e9820}{Cy\+Dma\+Ch\+Enable()} function is called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initialize().\\
+\hline
+{\em start\+Td} & Set the TD index as the first TD associated with the channel. Zero is a valid TD index.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2f72c3e0c3329e6843dd06073eae2c59}\index{CyDmac.h@{CyDmac.h}!CyDmaChSetRequest@{CyDmaChSetRequest}}
+\index{CyDmaChSetRequest@{CyDmaChSetRequest}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetRequest()}{CyDmaChSetRequest()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2f72c3e0c3329e6843dd06073eae2c59} 
+cystatus Cy\+Dma\+Ch\+Set\+Request (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{request}{}\end{DoxyParamCaption})}
+
+Allows the caller to terminate a chain of TDs, terminate one TD, or create a direct request to start the DMA channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em request} & One of the following constants. Each of the constants is a three-\/bit value. CPU\+\_\+\+REQ -\/ Create a direct request to start the DMA channel CPU\+\_\+\+TERM\+\_\+\+TD -\/ Terminate one TD CPU\+\_\+\+TERM\+\_\+\+CHAIN -\/ Terminate a chain of TDs\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}\index{CyDmac.h@{CyDmac.h}!CyDmaChStatus@{CyDmaChStatus}}
+\index{CyDmaChStatus@{CyDmaChStatus}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaChStatus()}{CyDmaChStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aaeedbf55d23b2dc8b1dcc8779ffc1ef2} 
+cystatus Cy\+Dma\+Ch\+Status (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{current\+Td}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+Determines the status of the DMA channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em current\+Td} & The address to store the index of the current TD. Can be NULL if the value is not needed.\\
+\hline
+{\em state} & The address to store the state of the channel. Can be NULL if the value is not needed.\\
+\hline
+\end{DoxyParams}
+STATUS\+\_\+\+TD\+\_\+\+ACTIVE 
+\begin{DoxyParams}{Parameters}
+{\em 0} & Channel is not currently being serviced by DMAC \\
+\hline
+{\em 1} & Channel is currently being serviced by DMAC\\
+\hline
+\end{DoxyParams}
+STATUS\+\_\+\+CHAIN\+\_\+\+ACTIVE 
+\begin{DoxyParams}{Parameters}
+{\em 0} & TD chain is inactive; either no DMA requests have triggered a new chain or the previous chain has completed. \\
+\hline
+{\em 1} & TD chain has been triggered by a DMA request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid.
+\end{DoxyReturn}
+Theory\+: The caller can check on the activity of the Current TD and the Chain. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a73aa9558e09f1f53c7ab37af8ff58f14}\index{CyDmac.h@{CyDmac.h}!CyDmaClearPendingDrq@{CyDmaClearPendingDrq}}
+\index{CyDmaClearPendingDrq@{CyDmaClearPendingDrq}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaClearPendingDrq()}{CyDmaClearPendingDrq()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a73aa9558e09f1f53c7ab37af8ff58f14} 
+cystatus Cy\+Dma\+Clear\+Pending\+Drq (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+Clears pending the DMA data request.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & Handle to the dma channel.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a15556b634419ca28c6787333c886bfb3}\index{CyDmac.h@{CyDmac.h}!CyDmaTdAllocate@{CyDmaTdAllocate}}
+\index{CyDmaTdAllocate@{CyDmaTdAllocate}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdAllocate()}{CyDmaTdAllocate()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a15556b634419ca28c6787333c886bfb3} 
+uint8 Cy\+Dma\+Td\+Allocate (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Allocates a TD for use with an allocated DMA channel.
+
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the TD to be used by the caller. Since there are 128 TDs minus the reserved TDs (0 to 23), the value returned would range from 24 to 127 not 24 to 128. DMA\+\_\+\+INVALID\+\_\+\+TD is returned if there are no free TDs available. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_aa6cb8b3e5f2fe81f313cdba02ebece0e}\index{CyDmac.h@{CyDmac.h}!CyDmaTdFree@{CyDmaTdFree}}
+\index{CyDmaTdFree@{CyDmaTdFree}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdFree()}{CyDmaTdFree()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_aa6cb8b3e5f2fe81f313cdba02ebece0e} 
+void Cy\+Dma\+Td\+Free (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{}\end{DoxyParamCaption})}
+
+Returns a TD to the free list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: The TD handle returned by the \doxylink{codegentemp_2_cy_dmac_8c_a15556b634419ca28c6787333c886bfb3}{Cy\+Dma\+Td\+Allocate()}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1d2e8024f47d1ab514a1af6c84e03dff}\index{CyDmac.h@{CyDmac.h}!CyDmaTdFreeCount@{CyDmaTdFreeCount}}
+\index{CyDmaTdFreeCount@{CyDmaTdFreeCount}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdFreeCount()}{CyDmaTdFreeCount()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a1d2e8024f47d1ab514a1af6c84e03dff} 
+uint8 Cy\+Dma\+Td\+Free\+Count (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns the number of free TDs available to be allocated.
+
+\begin{DoxyReturn}{Returns}
+The number of free TDs. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2c918563c0ea4bf0a864ffc5638cccd5}\index{CyDmac.h@{CyDmac.h}!CyDmaTdGetAddress@{CyDmaTdGetAddress}}
+\index{CyDmaTdGetAddress@{CyDmaTdGetAddress}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdGetAddress()}{CyDmaTdGetAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_a2c918563c0ea4bf0a864ffc5638cccd5} 
+cystatus Cy\+Dma\+Td\+Get\+Address (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16 \texorpdfstring{$\ast$}{*}}]{source}{, }\item[{uint16 \texorpdfstring{$\ast$}{*}}]{destination}{}\end{DoxyParamCaption})}
+
+Retrieves the lower 16 bits of the source and/or destination addresses for this TD only. If NULL is passed for a pointer parameter, that value is skipped. You may request only the values of interest.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & \texorpdfstring{$\ast$}{*} source\+: The address to store the lower 16 address bits of the source of the data transfer.\\
+\hline
+{\em uint16} & \texorpdfstring{$\ast$}{*} destination\+: The address to store the lower 16 address bits of the destination of the data transfer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_adb4280a3e31f320281a7391aacf11cd1}\index{CyDmac.h@{CyDmac.h}!CyDmaTdGetConfiguration@{CyDmaTdGetConfiguration}}
+\index{CyDmaTdGetConfiguration@{CyDmaTdGetConfiguration}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdGetConfiguration()}{CyDmaTdGetConfiguration()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_adb4280a3e31f320281a7391aacf11cd1} 
+cystatus Cy\+Dma\+Td\+Get\+Configuration (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16 \texorpdfstring{$\ast$}{*}}]{transfer\+Count}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{next\+Td}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{configuration}{}\end{DoxyParamCaption})}
+
+Retrieves the configuration of the TD. If a NULL pointer is passed as a parameter, that parameter is skipped. You may request only the values you are interested in.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & \texorpdfstring{$\ast$}{*} transfer\+Count\+: The address to store the size of the data transfer (in bytes) for this TD. A size of zero could indicate that the TD has completed its transfer, or that the TD is doing an indefinite transfer.\\
+\hline
+{\em uint8} & \texorpdfstring{$\ast$}{*} next\+Td\+: The address to store the index of the next TD in the TD chain.\\
+\hline
+{\em uint8} & \texorpdfstring{$\ast$}{*} configuration\+: The address to store the Bit field of configuration bits. See \doxylink{codegentemp_2_cy_dmac_8c_af27744f8b4f8f564766f3c1064201458}{Cy\+Dma\+Td\+Set\+Configuration()} function description.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle is invalid.
+\end{DoxyReturn}
+\textbackslash{}sideeffect If TD has a transfer count of N and is executed, the transfer count becomes
+\begin{DoxyEnumerate}
+\item If it is reexecuted, the Transfer count of zero will be interpreted as a request for indefinite transfer. Be careful when requesting TD with a transfer count of zero. 
+\end{DoxyEnumerate}\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab6921d90d9370ff8cce2194c70a27021}\index{CyDmac.h@{CyDmac.h}!CyDmaTdSetAddress@{CyDmaTdSetAddress}}
+\index{CyDmaTdSetAddress@{CyDmaTdSetAddress}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdSetAddress()}{CyDmaTdSetAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_ab6921d90d9370ff8cce2194c70a27021} 
+cystatus Cy\+Dma\+Td\+Set\+Address (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16}]{source}{, }\item[{uint16}]{destination}{}\end{DoxyParamCaption})}
+
+Sets the lower 16 bits of the source and destination addresses for this TD only.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & source\+: The lower 16 address bits of the source of the data transfer.\\
+\hline
+{\em uint16} & destination\+: The lower 16 address bits of the destination of the data transfer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_af27744f8b4f8f564766f3c1064201458}\index{CyDmac.h@{CyDmac.h}!CyDmaTdSetConfiguration@{CyDmaTdSetConfiguration}}
+\index{CyDmaTdSetConfiguration@{CyDmaTdSetConfiguration}!CyDmac.h@{CyDmac.h}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdSetConfiguration()}{CyDmaTdSetConfiguration()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8h_af27744f8b4f8f564766f3c1064201458} 
+cystatus Cy\+Dma\+Td\+Set\+Configuration (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16}]{transfer\+Count}{, }\item[{uint8}]{next\+Td}{, }\item[{uint8}]{configuration}{}\end{DoxyParamCaption})}
+
+Configures the TD.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & transfer\+Count\+: The size of the data transfer (in bytes) for this TD. A size of zero will cause the transfer to continue indefinitely. This parameter is limited to 4095 bytes; the TD is not initialized at all when a higher value is passed.\\
+\hline
+{\em uint8} & next\+Td\+: Zero based index of the next Transfer Descriptor in the TD chain. Zero is a valid pointer to the next TD; DMA\+\_\+\+END\+\_\+\+CHAIN\+\_\+\+TD is the end of the chain. DMA\+\_\+\+DISABLE\+\_\+\+TD indicates an end to the chain and the DMA is disabled. No further TDs are fetched. DMA\+\_\+\+DISABLE\+\_\+\+TD is only supported on PSo\+C3 and PSoC 5LP silicons.\\
+\hline
+{\em uint8} & configuration\+: Stores the Bit field of configuration bits.\\
+\hline
+\end{DoxyParams}
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+EN -\/ Perform endian swap
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+SIZE4 -\/ Swap size = 4 bytes
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+AUTO\+\_\+\+EXEC\+\_\+\+NEXT -\/ The next TD in the chain will trigger automatically when the current TD completes.
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMIN\+\_\+\+EN -\/ Terminate this TD if a positive edge on the trq input line occurs. The positive edge must occur during a burst. That is the only time the DMAC will listen for it.
+
+DMA\+\_\+\+\_\+\+TD\+\_\+\+TERMOUT\+\_\+\+EN -\/ When this TD completes, the TERMOUT signal will generate a pulse. Note that this option is instance specific with the instance name followed by two underscores. In this example, the instance name is DMA.
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+DST\+\_\+\+ADR -\/ Increment DST\+\_\+\+ADR according to the size of each data transaction in the burst.
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+SRC\+\_\+\+ADR -\/ Increment SRC\+\_\+\+ADR according to the size of each data transaction in the burst.
+
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle or transfer\+Count is invalid. 
+\end{DoxyReturn}

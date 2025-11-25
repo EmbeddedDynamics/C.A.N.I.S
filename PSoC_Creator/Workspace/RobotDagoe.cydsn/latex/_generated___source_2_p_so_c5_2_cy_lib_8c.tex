@@ -1,0 +1,1125 @@
+\doxysection{Generated\+\_\+\+Source/\+PSo\+C5/\+Cy\+Lib.c File Reference}
+\hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c}{}\label{_generated___source_2_p_so_c5_2_cy_lib_8c}\index{Generated\_Source/PSoC5/CyLib.c@{Generated\_Source/PSoC5/CyLib.c}}
+
+
+Provides a system API for the clocking, interrupts and watchdog timer.  
+
+
+{\ttfamily \#include "{}Cy\+Lib.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ae92d33416337a7530e82e002631f30b8}{Cy\+PLL\+\_\+\+OUT\+\_\+\+Start}} (uint8 wait)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a7b48cbe71b5c7637e18447a08289bccb}{Cy\+PLL\+\_\+\+OUT\+\_\+\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a301d86059c52e747e0c3c450f35bd8e3}{Cy\+PLL\+\_\+\+OUT\+\_\+\+Set\+PQ}} (uint8 p\+Div, uint8 q\+Div, uint8 current)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a555e94f7f5332dd1c7f3db5d1317d33f}{Cy\+PLL\+\_\+\+OUT\+\_\+\+Set\+Source}} (uint8 source)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_adb85899892bd86b6fa6f1e3f17b8e432}{Cy\+IMO\+\_\+\+Start}} (uint8 wait)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_aa1fb7447dc882b782dc5e06ebf354363}{Cy\+IMO\+\_\+\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a0f0fd84b1d41c4ecc37472c02c3337b4}{Cy\+IMO\+\_\+\+Set\+Freq}} (uint8 freq)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_acd71e0616e7bb3656d9202d3ba76dab8}{Cy\+IMO\+\_\+\+Set\+Source}} (uint8 source)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a48cb21560720396207b75c3df030f816}{Cy\+IMO\+\_\+\+Enable\+Doubler}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_af45cdba5db3f4be84364d3b53dcc8d32}{Cy\+IMO\+\_\+\+Disable\+Doubler}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_af60631e4c4d80b61d64c663c9ab8b018}{Cy\+Master\+Clk\+\_\+\+Set\+Source}} (uint8 source)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_aac8440d48148a1683b8c6725eabd369b}{Cy\+Master\+Clk\+\_\+\+Set\+Divider}} (uint8 divider)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ab4faa885c7fb1f9d2446088dac44f4a0}{Cy\+Bus\+Clk\+\_\+\+Set\+Divider}} (uint16 divider)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a687b8de3bf771252511eac0669071448}{Cy\+Usb\+Clk\+\_\+\+Set\+Source}} (uint8 source)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ab4c9baaaf6103c9e1100790688e2db1c}{Cy\+ILO\+\_\+\+Start1K}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_aacc4d187df759e0e0c7f624234da96ec}{Cy\+ILO\+\_\+\+Stop1K}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a8a1792294e9bae8d317812874bab93c1}{Cy\+ILO\+\_\+\+Start100K}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_afd188023608d1a4c726d4708157dd45d}{Cy\+ILO\+\_\+\+Stop100K}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ae9d8f3855e73db66914f17561215ee7a}{Cy\+ILO\+\_\+\+Enable33K}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ac20539a0426b2f47741925a2f65fe7f0}{Cy\+ILO\+\_\+\+Disable33K}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a10dc69c73f47e1a54e5db4d3f92c4c40}{Cy\+ILO\+\_\+\+Set\+Source}} (uint8 source)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_aad3b9f29716ec8cf93e85d4f835e25ea}{Cy\+ILO\+\_\+\+Set\+Power\+Mode}} (uint8 mode)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a4ef10eb3e7fd34c53dc0a25626be2647}{Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Start}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_af86e111b180026e37f4a0c37d76c3d74}{Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Stop}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ae8238d6f957458a0137ff17cb35379e7}{Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Read\+Status}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a1ae5762a43928f0ae272c03577d10e23}{Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Set\+Power\+Mode}} (uint8 mode)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a74e124d28c39efa187ea34eda93858d2}{Cy\+XTAL\+\_\+\+Start}} (uint8 wait)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_abc31c6a620cad2b290d1220ca98252b0}{Cy\+XTAL\+\_\+\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ad667fcb5cd4be5b5f49b611a68c90d04}{Cy\+XTAL\+\_\+\+Enable\+Err\+Status}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a00bea093bbda5487cc7fbc8f74512db2}{Cy\+XTAL\+\_\+\+Disable\+Err\+Status}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a18c8e9e93ae85143624b103a2ccd5888}{Cy\+XTAL\+\_\+\+Read\+Status}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a385d3d86fca8647d6e4995ebe98b9054}{Cy\+XTAL\+\_\+\+Enable\+Fault\+Recovery}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a94b526c34cf86873400f521efb986d3e}{Cy\+XTAL\+\_\+\+Disable\+Fault\+Recovery}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a0b8b0074d88ab745cc8bad9a57fece65}{Cy\+XTAL\+\_\+\+Set\+Startup}} (uint8 setting)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_aab92c5100db285ae1a3902060b1f5159}{Cy\+XTAL\+\_\+\+Set\+Fb\+Voltage}} (uint8 setting)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a31ca6ee25977eeac2d626556bc787d30}{Cy\+XTAL\+\_\+\+Set\+Wd\+Voltage}} (uint8 setting)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_afe7efed313f7600666b2334114cd9ccc}{Cy\+Halt}} (uint8 reason) CYREENTRANT
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_abd033c30eff6e43dc439a57e30b7160d}{Cy\+Software\+Reset}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ac0df2246105d497b8ac330f1cc7e170c}{Cy\+Delay}} (uint32 milliseconds) CYREENTRANT
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a73aaed025e874c24cb0a4cb15701e4c6}{Cy\+Delay\+Us}} (uint16 microseconds) CYREENTRANT
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a22accda26c0d6d8d1efca71f6fdcf5ed}{Cy\+Delay\+Freq}} (uint32 freq) CYREENTRANT
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a258ffba3305bdba4ac83c309e7bdbc52}{Cy\+Wdt\+Start}} (uint8 ticks, uint8 lp\+Mode)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a162b380c11dc33427fd7286d4eef0166}{Cy\+Wdt\+Clear}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ab8214aa2f0f6beccf8417ad34a72470d}{Cy\+Vd\+Lv\+Digit\+Enable}} (uint8 reset, uint8 threshold)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ac37bddbef25b3fc8b314edaa8a4172ba}{Cy\+Vd\+Lv\+Analog\+Enable}} (uint8 reset, uint8 threshold)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a5a4e655b5519ba9333b327711bc74de0}{Cy\+Vd\+Lv\+Digit\+Disable}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_af79b2b0dd852e68077adaa984db85695}{Cy\+Vd\+Lv\+Analog\+Disable}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a850f1056bda4f238ad5344ec429432d2}{Cy\+Vd\+Hv\+Analog\+Enable}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a97b9243ad8802c8dd3aef483a7fd9223}{Cy\+Vd\+Hv\+Analog\+Disable}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a678a040ec217c51fb1e9075aa3f818d6}{Cy\+Vd\+Sticky\+Status}} (uint8 mask)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a071a5639ef1122ff6f232bb0b8545170}{Cy\+Vd\+Real\+Time\+Status}} (void)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a1b36566c56e66f6ad2e4c2d8cf17a028}{Cy\+Disable\+Ints}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a0c982391aa744b3762c25dc1aa0910b0}{Cy\+Enable\+Ints}} (uint32 mask)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a1489ff02ca90e7cf2a76205d619ad394}{Cy\+Flush\+Cache}} (void)
+\item 
+cyisraddress \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ab8c94a7f8f706f9f80d31d3daf3c783f}{Cy\+Int\+Set\+Sys\+Vector}} (uint8 number, cyisraddress address)
+\item 
+cyisraddress \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a4cc8eec668f2ee01cbaa41aaa18ae7db}{Cy\+Int\+Get\+Sys\+Vector}} (uint8 number)
+\item 
+cyisraddress \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a001b6cd218276b1709d775d49bd6abb0}{Cy\+Int\+Set\+Vector}} (uint8 number, cyisraddress address)
+\item 
+cyisraddress \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ac0c7a65d5d40c9d09d3703b622084253}{Cy\+Int\+Get\+Vector}} (uint8 number)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a08e492aa3eea206bd83ee045e743bd02}{Cy\+Int\+Set\+Priority}} (uint8 number, uint8 priority)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_abfe889a4a3eb5292e6824a3466812735}{Cy\+Int\+Get\+Priority}} (uint8 number)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a43645bfdac5fa2a31f63b82652d4ad75}{Cy\+Int\+Get\+State}} (uint8 number)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a0a5476c2967f2b9b3ef005bae1618d2e}{Cy\+Sys\+Tick\+Start}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ae1ec0dfe8012f9ccda69941bdedf93ea}{Cy\+Sys\+Tick\+Init}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a9204e43a898063aa8a12e4df143ac771}{Cy\+Sys\+Tick\+Enable}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a5b459855c1f540c006efb88a3f8890f3}{Cy\+Sys\+Tick\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a8888597f00b5699033ef5ff0e91ec0a9}{Cy\+Sys\+Tick\+Enable\+Interrupt}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_abe6bff8d1332074ad2e06dcec5a8886f}{Cy\+Sys\+Tick\+Disable\+Interrupt}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a116fd8f7755e48e6a7788ee636451a0c}{Cy\+Sys\+Tick\+Set\+Reload}} (uint32 value)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a16f169a27c7ef0265d8e9c578acfe0e1}{Cy\+Sys\+Tick\+Get\+Reload}} (void)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a46c01193a5ac208558d948984700e09f}{Cy\+Sys\+Tick\+Get\+Value}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a8de4d3094b469bd3a3d79639cd0de4f0}{Cy\+Sys\+Tick\+Set\+Clock\+Source}} (uint32 clock\+Source)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a32ebf0e33392a64c4863b6872b79d01a}{Cy\+Sys\+Tick\+Get\+Clock\+Source}} (void)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_ac86a0f1d927b6d1946e2927dfce898b4}{Cy\+Sys\+Tick\+Get\+Count\+Flag}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_aad30392c3d4d8dcc66c2691f292cf039}{Cy\+Sys\+Tick\+Clear}} (void)
+\item 
+\mbox{\hyperlink{codegentemp_2_cy_lib_8h_a878baaa80a46228d4983c85bad4cdfa0}{cy\+Sys\+Tick\+Callback}} \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a1cd50582bd86a12d2e4e9025da3ddf59}{Cy\+Sys\+Tick\+Set\+Callback}} (uint32 number, \mbox{\hyperlink{codegentemp_2_cy_lib_8h_a878baaa80a46228d4983c85bad4cdfa0}{cy\+Sys\+Tick\+Callback}} function)
+\item 
+\mbox{\hyperlink{codegentemp_2_cy_lib_8h_a878baaa80a46228d4983c85bad4cdfa0}{cy\+Sys\+Tick\+Callback}} \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a4a95809e773eb2370be9df66960da209}{Cy\+Sys\+Tick\+Get\+Callback}} (uint32 number)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8c_a9f2d649e88e1baaeb471e2453aa53d89}{Cy\+Get\+Unique\+Id}} (uint32 \texorpdfstring{$\ast$}{*}unique\+Id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ad203cd8b16b75fb48d3067a48aacda32}\label{_generated___source_2_p_so_c5_2_cy_lib_8c_ad203cd8b16b75fb48d3067a48aacda32} 
+CY\+\_\+\+NOINIT uint8 CYXDATA {\bfseries Cy\+Reset\+Status}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a81af804588677fc037466ff4bac5e515}\label{_generated___source_2_p_so_c5_2_cy_lib_8c_a81af804588677fc037466ff4bac5e515} 
+uint32 {\bfseries cydelay\+\_\+freq\+\_\+hz} = BCLK\+\_\+\+\_\+\+BUS\+\_\+\+CLK\+\_\+\+\_\+\+HZ
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a3f5ebcb1adc54ba3f718d34291ac9cef}\label{_generated___source_2_p_so_c5_2_cy_lib_8c_a3f5ebcb1adc54ba3f718d34291ac9cef} 
+uint32 {\bfseries cydelay\+\_\+freq\+\_\+khz} = (BCLK\+\_\+\+\_\+\+BUS\+\_\+\+CLK\+\_\+\+\_\+\+HZ + 999u) / 1000u
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aa1f4188155b7b8f6ac7821492134433d}\label{_generated___source_2_p_so_c5_2_cy_lib_8c_aa1f4188155b7b8f6ac7821492134433d} 
+uint8 {\bfseries cydelay\+\_\+freq\+\_\+mhz} = (uint8)((BCLK\+\_\+\+\_\+\+BUS\+\_\+\+CLK\+\_\+\+\_\+\+HZ + 999999u) / 1000000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a8c584aceeb0155dc48feb2bb6c344f1d}\label{_generated___source_2_p_so_c5_2_cy_lib_8c_a8c584aceeb0155dc48feb2bb6c344f1d} 
+uint32 {\bfseries cydelay\+\_\+32k\+\_\+ms} = 32768u \texorpdfstring{$\ast$}{*} ((BCLK\+\_\+\+\_\+\+BUS\+\_\+\+CLK\+\_\+\+\_\+\+HZ + 999u) / 1000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ac77871ed3de39c328eb9c858cb848b93}\label{_generated___source_2_p_so_c5_2_cy_lib_8c_ac77871ed3de39c328eb9c858cb848b93} 
+uint32 {\bfseries Cy\+Sys\+Tick\+Init\+Var} = 0u
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides a system API for the clocking, interrupts and watchdog timer. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+Documentation of the API\textquotesingle{}s in this file is located in the System Reference Guide provided with PSoC Creator.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ab4faa885c7fb1f9d2446088dac44f4a0}\index{CyLib.c@{CyLib.c}!CyBusClk\_SetDivider@{CyBusClk\_SetDivider}}
+\index{CyBusClk\_SetDivider@{CyBusClk\_SetDivider}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyBusClk\_SetDivider()}{CyBusClk\_SetDivider()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ab4faa885c7fb1f9d2446088dac44f4a0} 
+void Cy\+Bus\+Clk\+\_\+\+Set\+Divider (\begin{DoxyParamCaption}\item[{uint16}]{divider}{}\end{DoxyParamCaption})}
+
+Sets the divider value used to generate the Bus Clock.
+
+
+\begin{DoxyParams}{Parameters}
+{\em divider} & Valid range \mbox{[}0-\/65535\mbox{]}. The clock will be divided by this value + 1. For example, to divide this parameter by two should be set to 1.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If this function execution resulted in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ac0df2246105d497b8ac330f1cc7e170c}\index{CyLib.c@{CyLib.c}!CyDelay@{CyDelay}}
+\index{CyDelay@{CyDelay}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyDelay()}{CyDelay()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ac0df2246105d497b8ac330f1cc7e170c} 
+void Cy\+Delay (\begin{DoxyParamCaption}\item[{uint32}]{milliseconds}{}\end{DoxyParamCaption})}
+
+Blocks for milliseconds.
+
+Note\+: Cy\+Delay has been implemented with the instruction cache assumed enabled. When the instruction cache is disabled on PSo\+C5, Cy\+Delay will be two times larger. For example, with instruction cache disabled Cy\+Delay(100) would result in about 200 ms delay instead of 100 ms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em milliseconds} & number of milliseconds to delay. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a22accda26c0d6d8d1efca71f6fdcf5ed}\index{CyLib.c@{CyLib.c}!CyDelayFreq@{CyDelayFreq}}
+\index{CyDelayFreq@{CyDelayFreq}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyDelayFreq()}{CyDelayFreq()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a22accda26c0d6d8d1efca71f6fdcf5ed} 
+void Cy\+Delay\+Freq (\begin{DoxyParamCaption}\item[{uint32}]{freq}{}\end{DoxyParamCaption})}
+
+Sets the clock frequency for Cy\+Delay.
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq} & The frequency of the bus clock in Hertz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a73aaed025e874c24cb0a4cb15701e4c6}\index{CyLib.c@{CyLib.c}!CyDelayUs@{CyDelayUs}}
+\index{CyDelayUs@{CyDelayUs}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyDelayUs()}{CyDelayUs()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a73aaed025e874c24cb0a4cb15701e4c6} 
+void Cy\+Delay\+Us (\begin{DoxyParamCaption}\item[{uint16}]{microseconds}{}\end{DoxyParamCaption})}
+
+Blocks for microseconds.
+
+Note\+: Cy\+Delay has been implemented with the instruction cache assumed enabled. When instruction cache is disabled on PSo\+C5, Cy\+Delay\+Us will be two times larger. Ex\+: With instruction cache disabled Cy\+Delay\+Us(100) would result in about 200us delay instead of 100us.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint16} & microseconds\+: number of microseconds to delay.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect Cy\+Delay\+US has been implemented with the instruction cache assumed enabled. When the instruction cache is disabled on PSoC 5, Cy\+Delay\+Us will be two times larger. For example, with the instruction cache disabled Cy\+Delay\+Us(100) would result in about 200 us delay instead of 100 us.
+
+If the bus clock frequency is a small non-\/integer number, the actual delay can be up to twice as long as the nominal value. The actual delay cannot be shorter than the nominal one. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a1b36566c56e66f6ad2e4c2d8cf17a028}\index{CyLib.c@{CyLib.c}!CyDisableInts@{CyDisableInts}}
+\index{CyDisableInts@{CyDisableInts}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyDisableInts()}{CyDisableInts()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a1b36566c56e66f6ad2e4c2d8cf17a028} 
+uint32 Cy\+Disable\+Ints (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the interrupt enable for each interrupt.
+
+\begin{DoxyReturn}{Returns}
+32 bit mask of previously enabled interrupts. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a0c982391aa744b3762c25dc1aa0910b0}\index{CyLib.c@{CyLib.c}!CyEnableInts@{CyEnableInts}}
+\index{CyEnableInts@{CyEnableInts}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyEnableInts()}{CyEnableInts()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a0c982391aa744b3762c25dc1aa0910b0} 
+void Cy\+Enable\+Ints (\begin{DoxyParamCaption}\item[{uint32}]{mask}{}\end{DoxyParamCaption})}
+
+Enables interrupts to a given state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint32} & mask\+: 32 bit mask of interrupts to enable. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a1489ff02ca90e7cf2a76205d619ad394}\index{CyLib.c@{CyLib.c}!CyFlushCache@{CyFlushCache}}
+\index{CyFlushCache@{CyFlushCache}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyFlushCache()}{CyFlushCache()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a1489ff02ca90e7cf2a76205d619ad394} 
+void Cy\+Flush\+Cache (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Call this API after a flash row erase/write operation to invalidate or flush any of that particular flash region content already present in the cache. After a cache flush operation, any access to that flash region after the erase/write operation would reload the cache with the modified data from the flash region. If the flash region update involves multiple flash row write operations, then the flushing of the cache can be done once at the end of the operation as long as the flash data would not be accessed in the middle of the multiple row update process. Else, flush the cache after every flash row write. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a9f2d649e88e1baaeb471e2453aa53d89}\index{CyLib.c@{CyLib.c}!CyGetUniqueId@{CyGetUniqueId}}
+\index{CyGetUniqueId@{CyGetUniqueId}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyGetUniqueId()}{CyGetUniqueId()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a9f2d649e88e1baaeb471e2453aa53d89} 
+void Cy\+Get\+Unique\+Id (\begin{DoxyParamCaption}\item[{uint32 \texorpdfstring{$\ast$}{*}}]{unique\+Id}{}\end{DoxyParamCaption})}
+
+Returns the 64-\/bit unique ID of the device. The uniqueness of the number is guaranteed for 10 years due to the die lot number having a cycle life of 10 years and even after 10 years, the probability of getting two identical numbers is very small.
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Id} & The pointer to a two element 32-\/bit unsigned integer array. Returns the 64-\/bit unique ID of the device by loading them into the integer array pointed to by unique\+Id. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_afe7efed313f7600666b2334114cd9ccc}\index{CyLib.c@{CyLib.c}!CyHalt@{CyHalt}}
+\index{CyHalt@{CyHalt}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyHalt()}{CyHalt()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_afe7efed313f7600666b2334114cd9ccc} 
+void Cy\+Halt (\begin{DoxyParamCaption}\item[{uint8}]{reason}{}\end{DoxyParamCaption})}
+
+Halts the CPU.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & reason\+: Value to be used during debugging. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ac20539a0426b2f47741925a2f65fe7f0}\index{CyLib.c@{CyLib.c}!CyILO\_Disable33K@{CyILO\_Disable33K}}
+\index{CyILO\_Disable33K@{CyILO\_Disable33K}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_Disable33K()}{CyILO\_Disable33K()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ac20539a0426b2f47741925a2f65fe7f0} 
+void Cy\+ILO\+\_\+\+Disable33K (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the ILO 33 KHz divider.
+
+Note that the 33 KHz clock is generated from the 100 KHz oscillator, but this API does not disable the 100 KHz clock. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ae9d8f3855e73db66914f17561215ee7a}\index{CyLib.c@{CyLib.c}!CyILO\_Enable33K@{CyILO\_Enable33K}}
+\index{CyILO\_Enable33K@{CyILO\_Enable33K}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_Enable33K()}{CyILO\_Enable33K()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ae9d8f3855e73db66914f17561215ee7a} 
+void Cy\+ILO\+\_\+\+Enable33K (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the ILO 33 KHz divider.
+
+Note that the 33 KHz clock is generated from the 100 KHz oscillator, so it must also be running in order to generate the 33 KHz output. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aad3b9f29716ec8cf93e85d4f835e25ea}\index{CyLib.c@{CyLib.c}!CyILO\_SetPowerMode@{CyILO\_SetPowerMode}}
+\index{CyILO\_SetPowerMode@{CyILO\_SetPowerMode}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_SetPowerMode()}{CyILO\_SetPowerMode()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_aad3b9f29716ec8cf93e85d4f835e25ea} 
+uint8 Cy\+ILO\+\_\+\+Set\+Power\+Mode (\begin{DoxyParamCaption}\item[{uint8}]{mode}{}\end{DoxyParamCaption})}
+
+Sets the power mode used by the ILO during power down. Allows for lower power down power usage resulting in a slower startup time.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & CY\+\_\+\+ILO\+\_\+\+FAST\+\_\+\+START -\/ Faster start-\/up, internal bias left on when powered down CY\+\_\+\+ILO\+\_\+\+SLOW\+\_\+\+START -\/ Slower start-\/up, internal bias off when powered down\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Prevous power mode state. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a10dc69c73f47e1a54e5db4d3f92c4c40}\index{CyLib.c@{CyLib.c}!CyILO\_SetSource@{CyILO\_SetSource}}
+\index{CyILO\_SetSource@{CyILO\_SetSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_SetSource()}{CyILO\_SetSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a10dc69c73f47e1a54e5db4d3f92c4c40} 
+void Cy\+ILO\+\_\+\+Set\+Source (\begin{DoxyParamCaption}\item[{uint8}]{source}{}\end{DoxyParamCaption})}
+
+Sets the source of the clock output from the ILO block.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & One of the three available ILO output sources Value Define Source 0 CY\+\_\+\+ILO\+\_\+\+SOURCE\+\_\+100K ILO 100 KHz 1 CY\+\_\+\+ILO\+\_\+\+SOURCE\+\_\+33K ILO 33 KHz 2 CY\+\_\+\+ILO\+\_\+\+SOURCE\+\_\+1K ILO 1 KHz \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a8a1792294e9bae8d317812874bab93c1}\index{CyLib.c@{CyLib.c}!CyILO\_Start100K@{CyILO\_Start100K}}
+\index{CyILO\_Start100K@{CyILO\_Start100K}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_Start100K()}{CyILO\_Start100K()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a8a1792294e9bae8d317812874bab93c1} 
+void Cy\+ILO\+\_\+\+Start100K (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the ILO 100 KHz oscillator. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ab4c9baaaf6103c9e1100790688e2db1c}\index{CyLib.c@{CyLib.c}!CyILO\_Start1K@{CyILO\_Start1K}}
+\index{CyILO\_Start1K@{CyILO\_Start1K}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_Start1K()}{CyILO\_Start1K()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ab4c9baaaf6103c9e1100790688e2db1c} 
+void Cy\+ILO\+\_\+\+Start1K (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the ILO 1 KHz oscillator.
+
+Note The ILO 1 KHz oscillator is always enabled by default, regardless of the selection in the Clock Editor. Therefore, this API is only needed if the oscillator was turned off manually. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_afd188023608d1a4c726d4708157dd45d}\index{CyLib.c@{CyLib.c}!CyILO\_Stop100K@{CyILO\_Stop100K}}
+\index{CyILO\_Stop100K@{CyILO\_Stop100K}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_Stop100K()}{CyILO\_Stop100K()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_afd188023608d1a4c726d4708157dd45d} 
+void Cy\+ILO\+\_\+\+Stop100K (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the ILO 100 KHz oscillator. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aacc4d187df759e0e0c7f624234da96ec}\index{CyLib.c@{CyLib.c}!CyILO\_Stop1K@{CyILO\_Stop1K}}
+\index{CyILO\_Stop1K@{CyILO\_Stop1K}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyILO\_Stop1K()}{CyILO\_Stop1K()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_aacc4d187df759e0e0c7f624234da96ec} 
+void Cy\+ILO\+\_\+\+Stop1K (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the ILO 1 KHz oscillator.
+
+Note The ILO 1 KHz oscillator must be enabled if the Sleep or Hibernate low power mode APIs are expected to be used. For more information, refer to the Power Management section of this document.
+
+\textbackslash{}sideeffect PSo\+C5\+: Stopping the ILO 1 k\+Hz could break the active WDT functionality. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_af45cdba5db3f4be84364d3b53dcc8d32}\index{CyLib.c@{CyLib.c}!CyIMO\_DisableDoubler@{CyIMO\_DisableDoubler}}
+\index{CyIMO\_DisableDoubler@{CyIMO\_DisableDoubler}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIMO\_DisableDoubler()}{CyIMO\_DisableDoubler()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_af45cdba5db3f4be84364d3b53dcc8d32} 
+void Cy\+IMO\+\_\+\+Disable\+Doubler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the IMO doubler. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a48cb21560720396207b75c3df030f816}\index{CyLib.c@{CyLib.c}!CyIMO\_EnableDoubler@{CyIMO\_EnableDoubler}}
+\index{CyIMO\_EnableDoubler@{CyIMO\_EnableDoubler}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIMO\_EnableDoubler()}{CyIMO\_EnableDoubler()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a48cb21560720396207b75c3df030f816} 
+void Cy\+IMO\+\_\+\+Enable\+Doubler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the IMO doubler. The 2x frequency clock is used to convert a 24 MHz input to a 48 MHz output for use by the USB block. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a0f0fd84b1d41c4ecc37472c02c3337b4}\index{CyLib.c@{CyLib.c}!CyIMO\_SetFreq@{CyIMO\_SetFreq}}
+\index{CyIMO\_SetFreq@{CyIMO\_SetFreq}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIMO\_SetFreq()}{CyIMO\_SetFreq()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a0f0fd84b1d41c4ecc37472c02c3337b4} 
+void Cy\+IMO\+\_\+\+Set\+Freq (\begin{DoxyParamCaption}\item[{uint8}]{freq}{}\end{DoxyParamCaption})}
+
+Sets the frequency of the IMO. Changes may be made while the IMO is running.
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq} & Frequency of IMO operation CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+3\+MHZ to set 3 MHz CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+6\+MHZ to set 6 MHz CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+12\+MHZ to set 12 MHz CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+24\+MHZ to set 24 MHz CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+48\+MHZ to set 48 MHz CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+62\+MHZ to set 62.\+6 MHz CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+74\+MHZ to set 74.\+7 MHz (not applicable for PSoC 3) CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+\+USB to set 24 MHz (Trimmed for USB operation)\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If this function execution results in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information.
+
+When the USB setting is chosen, the USB clock locking circuit is enabled. Otherwise this circuit is disabled. The USB block must be powered before selecting the USB setting. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_acd71e0616e7bb3656d9202d3ba76dab8}\index{CyLib.c@{CyLib.c}!CyIMO\_SetSource@{CyIMO\_SetSource}}
+\index{CyIMO\_SetSource@{CyIMO\_SetSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIMO\_SetSource()}{CyIMO\_SetSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_acd71e0616e7bb3656d9202d3ba76dab8} 
+void Cy\+IMO\+\_\+\+Set\+Source (\begin{DoxyParamCaption}\item[{uint8}]{source}{}\end{DoxyParamCaption})}
+
+Sets the source of the clock output from the IMO block.
+
+The output from the IMO is by default the IMO itself. Optionally the MHz Crystal or DSI input can be the source of the IMO output instead.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & CY\+\_\+\+IMO\+\_\+\+SOURCE\+\_\+\+DSI to set the DSI as source. CY\+\_\+\+IMO\+\_\+\+SOURCE\+\_\+\+XTAL to set the MHz as source. CY\+\_\+\+IMO\+\_\+\+SOURCE\+\_\+\+IMO to set the IMO itself.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If this function execution resulted in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_adb85899892bd86b6fa6f1e3f17b8e432}\index{CyLib.c@{CyLib.c}!CyIMO\_Start@{CyIMO\_Start}}
+\index{CyIMO\_Start@{CyIMO\_Start}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIMO\_Start()}{CyIMO\_Start()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_adb85899892bd86b6fa6f1e3f17b8e432} 
+void Cy\+IMO\+\_\+\+Start (\begin{DoxyParamCaption}\item[{uint8}]{wait}{}\end{DoxyParamCaption})}
+
+Enables the IMO. Optionally waits at least 6 us for it to settle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & wait\+: \\
+\hline
+{\em 0} & Return immediately after configuration \\
+\hline
+{\em 1} & Wait for at least 6 us for the IMO to settle.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If wait is enabled\+: This function uses the Fast Time Wheel to time the wait. Any other use of the Fast Time Wheel will be stopped during the period of this function and then restored. This function also uses the 100 KHz ILO. If not enabled, this function will enable the 100 KHz ILO for the period of this function.
+
+No changes to the setup of the ILO, Fast Time Wheel, Central Time Wheel or Once Per Second interrupt may be made by interrupt routines during the period of this function execution. The current operation of the ILO, Central Time Wheel and Once Per Second interrupt are maintained during the operation of this function provided the reading of the Power Manager Interrupt Status Register is only done using the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} function. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aa1fb7447dc882b782dc5e06ebf354363}\index{CyLib.c@{CyLib.c}!CyIMO\_Stop@{CyIMO\_Stop}}
+\index{CyIMO\_Stop@{CyIMO\_Stop}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIMO\_Stop()}{CyIMO\_Stop()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_aa1fb7447dc882b782dc5e06ebf354363} 
+void Cy\+IMO\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the IMO. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_abfe889a4a3eb5292e6824a3466812735}\index{CyLib.c@{CyLib.c}!CyIntGetPriority@{CyIntGetPriority}}
+\index{CyIntGetPriority@{CyIntGetPriority}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntGetPriority()}{CyIntGetPriority()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_abfe889a4a3eb5292e6824a3466812735} 
+uint8 Cy\+Int\+Get\+Priority (\begin{DoxyParamCaption}\item[{uint8}]{number}{}\end{DoxyParamCaption})}
+
+Gets the Priority of the Interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The number of the interrupt, 0 -\/ 31.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Priority of the interrupt. 0 -\/ 7, 0 being the highest. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a43645bfdac5fa2a31f63b82652d4ad75}\index{CyLib.c@{CyLib.c}!CyIntGetState@{CyIntGetState}}
+\index{CyIntGetState@{CyIntGetState}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntGetState()}{CyIntGetState()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a43645bfdac5fa2a31f63b82652d4ad75} 
+uint8 Cy\+Int\+Get\+State (\begin{DoxyParamCaption}\item[{uint8}]{number}{}\end{DoxyParamCaption})}
+
+Gets the enable state of the specified interrupt number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & Valid range \mbox{[}0-\/31\mbox{]}. Interrupt number.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Enable status\+: 1 if enabled, 0 if disabled 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a4cc8eec668f2ee01cbaa41aaa18ae7db}\index{CyLib.c@{CyLib.c}!CyIntGetSysVector@{CyIntGetSysVector}}
+\index{CyIntGetSysVector@{CyIntGetSysVector}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntGetSysVector()}{CyIntGetSysVector()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a4cc8eec668f2ee01cbaa41aaa18ae7db} 
+cyisraddress Cy\+Int\+Get\+Sys\+Vector (\begin{DoxyParamCaption}\item[{uint8}]{number}{}\end{DoxyParamCaption})}
+
+Gets the interrupt vector of the specified system interrupt number. System interrupts are present only for the ARM platform. These interrupts are for Sys\+Tick, Pend\+SV and others.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & System interrupt number\+: CY\+\_\+\+INT\+\_\+\+NMI\+\_\+\+IRQN -\/ Non Maskable Interrupt CY\+\_\+\+INT\+\_\+\+HARD\+\_\+\+FAULT\+\_\+\+IRQN -\/ Hard Fault Interrupt CY\+\_\+\+INT\+\_\+\+MEMORY\+\_\+\+MANAGEMENT\+\_\+\+IRQN -\/ Memory Management Interrupt CY\+\_\+\+INT\+\_\+\+BUS\+\_\+\+FAULT\+\_\+\+IRQN -\/ Bus Fault Interrupt CY\+\_\+\+INT\+\_\+\+USAGE\+\_\+\+FAULT\+\_\+\+IRQN -\/ Usage Fault Interrupt CY\+\_\+\+INT\+\_\+\+SVCALL\+\_\+\+IRQN -\/ SV Call Interrupt CY\+\_\+\+INT\+\_\+\+DEBUG\+\_\+\+MONITOR\+\_\+\+IRQN -\/ Debug Monitor Interrupt CY\+\_\+\+INT\+\_\+\+PEND\+\_\+\+SV\+\_\+\+IRQN -\/ Pend SV Interrupt CY\+\_\+\+INT\+\_\+\+SYSTICK\+\_\+\+IRQN -\/ System Tick Interrupt\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Address of the ISR in the interrupt vector table. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ac0c7a65d5d40c9d09d3703b622084253}\index{CyLib.c@{CyLib.c}!CyIntGetVector@{CyIntGetVector}}
+\index{CyIntGetVector@{CyIntGetVector}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntGetVector()}{CyIntGetVector()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ac0c7a65d5d40c9d09d3703b622084253} 
+cyisraddress Cy\+Int\+Get\+Vector (\begin{DoxyParamCaption}\item[{uint8}]{number}{}\end{DoxyParamCaption})}
+
+Gets the interrupt vector of the specified interrupt number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & Valid range \mbox{[}0-\/31\mbox{]}. Interrupt number\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of the ISR in the interrupt vector table. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a08e492aa3eea206bd83ee045e743bd02}\index{CyLib.c@{CyLib.c}!CyIntSetPriority@{CyIntSetPriority}}
+\index{CyIntSetPriority@{CyIntSetPriority}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntSetPriority()}{CyIntSetPriority()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a08e492aa3eea206bd83ee045e743bd02} 
+void Cy\+Int\+Set\+Priority (\begin{DoxyParamCaption}\item[{uint8}]{number}{, }\item[{uint8}]{priority}{}\end{DoxyParamCaption})}
+
+Sets the Priority of the Interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em priority} & Priority of the interrupt. 0 -\/ 7, 0 being the highest. \\
+\hline
+{\em number} & The number of the interrupt, 0 -\/ 31. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ab8c94a7f8f706f9f80d31d3daf3c783f}\index{CyLib.c@{CyLib.c}!CyIntSetSysVector@{CyIntSetSysVector}}
+\index{CyIntSetSysVector@{CyIntSetSysVector}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntSetSysVector()}{CyIntSetSysVector()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ab8c94a7f8f706f9f80d31d3daf3c783f} 
+cyisraddress Cy\+Int\+Set\+Sys\+Vector (\begin{DoxyParamCaption}\item[{uint8}]{number}{, }\item[{cyisraddress}]{address}{}\end{DoxyParamCaption})}
+
+Sets the interrupt vector of the specified system interrupt number. System interrupts are present only for the ARM platform. These interrupts are for Sys\+Tick, Pend\+SV and others.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & System interrupt number\+: CY\+\_\+\+INT\+\_\+\+NMI\+\_\+\+IRQN -\/ Non Maskable Interrupt CY\+\_\+\+INT\+\_\+\+HARD\+\_\+\+FAULT\+\_\+\+IRQN -\/ Hard Fault Interrupt CY\+\_\+\+INT\+\_\+\+MEM\+\_\+\+MANAGE\+\_\+\+IRQN -\/ Memory Management Interrupt CY\+\_\+\+INT\+\_\+\+BUS\+\_\+\+FAULT\+\_\+\+IRQN -\/ Bus Fault Interrupt CY\+\_\+\+INT\+\_\+\+USAGE\+\_\+\+FAULT\+\_\+\+IRQN -\/ Usage Fault Interrupt CY\+\_\+\+INT\+\_\+\+SVCALL\+\_\+\+IRQN -\/ SV Call Interrupt CY\+\_\+\+INT\+\_\+\+DEBUG\+\_\+\+MONITOR\+\_\+\+IRQN -\/ Debug Monitor Interrupt CY\+\_\+\+INT\+\_\+\+PEND\+\_\+\+SV\+\_\+\+IRQN -\/ Pend SV Interrupt CY\+\_\+\+INT\+\_\+\+SYSTICK\+\_\+\+IRQN -\/ System Tick Interrupt\\
+\hline
+{\em address} & Pointer to an interrupt service routine.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The old ISR vector at this location. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a001b6cd218276b1709d775d49bd6abb0}\index{CyLib.c@{CyLib.c}!CyIntSetVector@{CyIntSetVector}}
+\index{CyIntSetVector@{CyIntSetVector}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyIntSetVector()}{CyIntSetVector()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a001b6cd218276b1709d775d49bd6abb0} 
+cyisraddress Cy\+Int\+Set\+Vector (\begin{DoxyParamCaption}\item[{uint8}]{number}{, }\item[{cyisraddress}]{address}{}\end{DoxyParamCaption})}
+
+Sets the interrupt vector of the specified interrupt number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & Valid range \mbox{[}0-\/31\mbox{]}. Interrupt number \\
+\hline
+{\em address} & Pointer to an interrupt service routine\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Previous interrupt vector value. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aac8440d48148a1683b8c6725eabd369b}\index{CyLib.c@{CyLib.c}!CyMasterClk\_SetDivider@{CyMasterClk\_SetDivider}}
+\index{CyMasterClk\_SetDivider@{CyMasterClk\_SetDivider}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyMasterClk\_SetDivider()}{CyMasterClk\_SetDivider()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_aac8440d48148a1683b8c6725eabd369b} 
+void Cy\+Master\+Clk\+\_\+\+Set\+Divider (\begin{DoxyParamCaption}\item[{uint8}]{divider}{}\end{DoxyParamCaption})}
+
+Sets the divider value used to generate Master Clock.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & divider\+: The valid range is \mbox{[}0-\/255\mbox{]}. The clock will be divided by this value + 1. For example to divide this parameter by two should be set to 1.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If this function execution resulted in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information.
+
+When changing the Master or Bus clock divider value from div-\/by-\/n to div-\/by-\/1 the first clock cycle output after the div-\/by-\/1 can be up to 4 ns shorter than the final/expected div-\/by-\/1 period. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_af60631e4c4d80b61d64c663c9ab8b018}\index{CyLib.c@{CyLib.c}!CyMasterClk\_SetSource@{CyMasterClk\_SetSource}}
+\index{CyMasterClk\_SetSource@{CyMasterClk\_SetSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyMasterClk\_SetSource()}{CyMasterClk\_SetSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_af60631e4c4d80b61d64c663c9ab8b018} 
+void Cy\+Master\+Clk\+\_\+\+Set\+Source (\begin{DoxyParamCaption}\item[{uint8}]{source}{}\end{DoxyParamCaption})}
+
+Sets the source of the master clock.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & One of the four available Master clock sources. CY\+\_\+\+MASTER\+\_\+\+SOURCE\+\_\+\+IMO CY\+\_\+\+MASTER\+\_\+\+SOURCE\+\_\+\+PLL CY\+\_\+\+MASTER\+\_\+\+SOURCE\+\_\+\+XTAL CY\+\_\+\+MASTER\+\_\+\+SOURCE\+\_\+\+DSI\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect The current source and the new source must both be running and stable before calling this function.
+
+If this function execution resulted in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a301d86059c52e747e0c3c450f35bd8e3}\index{CyLib.c@{CyLib.c}!CyPLL\_OUT\_SetPQ@{CyPLL\_OUT\_SetPQ}}
+\index{CyPLL\_OUT\_SetPQ@{CyPLL\_OUT\_SetPQ}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyPLL\_OUT\_SetPQ()}{CyPLL\_OUT\_SetPQ()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a301d86059c52e747e0c3c450f35bd8e3} 
+void Cy\+PLL\+\_\+\+OUT\+\_\+\+Set\+PQ (\begin{DoxyParamCaption}\item[{uint8}]{p\+Div}{, }\item[{uint8}]{q\+Div}{, }\item[{uint8}]{current}{}\end{DoxyParamCaption})}
+
+Sets the P and Q dividers and the charge pump current. The Frequency Out will be P/Q \texorpdfstring{$\ast$}{*} Frequency In. The PLL must be disabled before calling this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & p\+Div\+: Valid range \mbox{[}8 -\/ 255\mbox{]}.\\
+\hline
+{\em uint8} & q\+Div\+: Valid range \mbox{[}1 -\/ 16\mbox{]}. Input Frequency / Q must be in range of 1 to 3 MHz.\\
+\hline
+{\em uint8} & current\+: Valid range \mbox{[}1 -\/ 7\mbox{]}. Charge pump current in uA. Refer to the device TRM and datasheet for more information.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If this function execution results in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a555e94f7f5332dd1c7f3db5d1317d33f}\index{CyLib.c@{CyLib.c}!CyPLL\_OUT\_SetSource@{CyPLL\_OUT\_SetSource}}
+\index{CyPLL\_OUT\_SetSource@{CyPLL\_OUT\_SetSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyPLL\_OUT\_SetSource()}{CyPLL\_OUT\_SetSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a555e94f7f5332dd1c7f3db5d1317d33f} 
+void Cy\+PLL\+\_\+\+OUT\+\_\+\+Set\+Source (\begin{DoxyParamCaption}\item[{uint8}]{source}{}\end{DoxyParamCaption})}
+
+Sets the input clock source to the PLL. The PLL must be disabled before calling this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & One of the three available PLL clock sources \\
+\hline
+{\em CY\+\_\+\+PLL\+\_\+\+SOURCE\+\_\+\+IMO} & \+: IMO \\
+\hline
+{\em CY\+\_\+\+PLL\+\_\+\+SOURCE\+\_\+\+XTAL} & \+: MHz Crystal \\
+\hline
+{\em CY\+\_\+\+PLL\+\_\+\+SOURCE\+\_\+\+DSI} & \+: DSI\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect If this function execution results in the CPU clock frequency increasing, then the number of clock cycles the cache will wait before it samples data coming back from the3 Flash must be adjusted by calling \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} with an appropriate parameter. It can be optionally called if the CPU clock frequency is lowered in order to improve the CPU performance. See \doxylink{codegentemp_2_cy_flash_8c_a0cc8494de94e6c5ac51534c5514ad10a}{Cy\+Flash\+\_\+\+Set\+Wait\+Cycles()} description for more information. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ae92d33416337a7530e82e002631f30b8}\index{CyLib.c@{CyLib.c}!CyPLL\_OUT\_Start@{CyPLL\_OUT\_Start}}
+\index{CyPLL\_OUT\_Start@{CyPLL\_OUT\_Start}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyPLL\_OUT\_Start()}{CyPLL\_OUT\_Start()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ae92d33416337a7530e82e002631f30b8} 
+cystatus Cy\+PLL\+\_\+\+OUT\+\_\+\+Start (\begin{DoxyParamCaption}\item[{uint8}]{wait}{}\end{DoxyParamCaption})}
+
+Enables the PLL. Optionally waits for it to become stable. Waits at least 250 us or until it is detected that the PLL is stable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait} & \\
+\hline
+{\em 0} & Return immediately after configuration \\
+\hline
+{\em 1} & Wait for PLL lock or timeout.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status CYRET\+\_\+\+SUCCESS -\/ Completed successfully CYRET\+\_\+\+TIMEOUT -\/ Timeout occurred without detecting a stable clock. If the input source of the clock is jittery, then the lock indication may not occur. However, after the timeout has expired the generated PLL clock can still be used.
+\end{DoxyReturn}
+\textbackslash{}sideeffect If wait is enabled\+: This function uses the Fast Time Wheel to time the wait. Any other use of the Fast Time Wheel will be stopped during the period of this function and then restored. This function also uses the 100 KHz ILO. If not enabled, this function will enable the 100 KHz ILO for the period of this function.
+
+No changes to the setup of the ILO, Fast Time Wheel, Central Time Wheel or Once Per Second interrupt may be made by interrupt routines during the period of this function execution. The current operation of the ILO, Central Time Wheel and Once Per Second interrupt are maintained during the operation of this function provided the reading of the Power Manager Interrupt Status Register is only done using the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} function. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a7b48cbe71b5c7637e18447a08289bccb}\index{CyLib.c@{CyLib.c}!CyPLL\_OUT\_Stop@{CyPLL\_OUT\_Stop}}
+\index{CyPLL\_OUT\_Stop@{CyPLL\_OUT\_Stop}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyPLL\_OUT\_Stop()}{CyPLL\_OUT\_Stop()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a7b48cbe71b5c7637e18447a08289bccb} 
+void Cy\+PLL\+\_\+\+OUT\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the PLL. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_abd033c30eff6e43dc439a57e30b7160d}\index{CyLib.c@{CyLib.c}!CySoftwareReset@{CySoftwareReset}}
+\index{CySoftwareReset@{CySoftwareReset}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySoftwareReset()}{CySoftwareReset()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_abd033c30eff6e43dc439a57e30b7160d} 
+void Cy\+Software\+Reset (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Forces a device software reset. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aad30392c3d4d8dcc66c2691f292cf039}\index{CyLib.c@{CyLib.c}!CySysTickClear@{CySysTickClear}}
+\index{CySysTickClear@{CySysTickClear}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickClear()}{CySysTickClear()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_aad30392c3d4d8dcc66c2691f292cf039} 
+void Cy\+Sys\+Tick\+Clear (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Clears the Sys\+Tick counter for well-\/defined startup. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_abe6bff8d1332074ad2e06dcec5a8886f}\index{CyLib.c@{CyLib.c}!CySysTickDisableInterrupt@{CySysTickDisableInterrupt}}
+\index{CySysTickDisableInterrupt@{CySysTickDisableInterrupt}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickDisableInterrupt()}{CySysTickDisableInterrupt()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_abe6bff8d1332074ad2e06dcec5a8886f} 
+void Cy\+Sys\+Tick\+Disable\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the Sys\+Tick interrupt.
+
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a9204e43a898063aa8a12e4df143ac771}\index{CyLib.c@{CyLib.c}!CySysTickEnable@{CySysTickEnable}}
+\index{CySysTickEnable@{CySysTickEnable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickEnable()}{CySysTickEnable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a9204e43a898063aa8a12e4df143ac771} 
+void Cy\+Sys\+Tick\+Enable (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the Sys\+Tick timer and its interrupt.
+
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a8888597f00b5699033ef5ff0e91ec0a9}\index{CyLib.c@{CyLib.c}!CySysTickEnableInterrupt@{CySysTickEnableInterrupt}}
+\index{CySysTickEnableInterrupt@{CySysTickEnableInterrupt}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickEnableInterrupt()}{CySysTickEnableInterrupt()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a8888597f00b5699033ef5ff0e91ec0a9} 
+void Cy\+Sys\+Tick\+Enable\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the Sys\+Tick interrupt.
+
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a4a95809e773eb2370be9df66960da209}\index{CyLib.c@{CyLib.c}!CySysTickGetCallback@{CySysTickGetCallback}}
+\index{CySysTickGetCallback@{CySysTickGetCallback}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickGetCallback()}{CySysTickGetCallback()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a4a95809e773eb2370be9df66960da209} 
+\mbox{\hyperlink{codegentemp_2_cy_lib_8h_a878baaa80a46228d4983c85bad4cdfa0}{cy\+Sys\+Tick\+Callback}} Cy\+Sys\+Tick\+Get\+Callback (\begin{DoxyParamCaption}\item[{uint32}]{number}{}\end{DoxyParamCaption})}
+
+The function get the specified callback pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The number of callback function address to get. The valid range is from 0 to 4.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the address of the specified callback function. The NULL is returned if the specified address in not initialized. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a32ebf0e33392a64c4863b6872b79d01a}\index{CyLib.c@{CyLib.c}!CySysTickGetClockSource@{CySysTickGetClockSource}}
+\index{CySysTickGetClockSource@{CySysTickGetClockSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickGetClockSource()}{CySysTickGetClockSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a32ebf0e33392a64c4863b6872b79d01a} 
+uint32 Cy\+Sys\+Tick\+Get\+Clock\+Source (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns the current clock source of the Sys\+Tick counter.
+
+\begin{DoxyReturn}{Returns}
+CY\+\_\+\+SYS\+\_\+\+SYST\+\_\+\+CSR\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+SYSCLK Sys\+Tick is clocked by CPU clock. CY\+\_\+\+SYS\+\_\+\+SYST\+\_\+\+CSR\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+LFCLK Sys\+Tick is clocked by the low frequency clock. (ILO 100 KHz for PSoC 5LP, and LFCLK for PSoC 4). 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ac86a0f1d927b6d1946e2927dfce898b4}\index{CyLib.c@{CyLib.c}!CySysTickGetCountFlag@{CySysTickGetCountFlag}}
+\index{CySysTickGetCountFlag@{CySysTickGetCountFlag}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickGetCountFlag()}{CySysTickGetCountFlag()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ac86a0f1d927b6d1946e2927dfce898b4} 
+uint32 Cy\+Sys\+Tick\+Get\+Count\+Flag (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+The count flag is set once Sys\+Tick counter reaches zero. The flag cleared on read.
+
+\begin{DoxyReturn}{Returns}
+Returns non-\/zero value if flag is set, otherwise zero is returned.
+\end{DoxyReturn}
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a16f169a27c7ef0265d8e9c578acfe0e1}\index{CyLib.c@{CyLib.c}!CySysTickGetReload@{CySysTickGetReload}}
+\index{CySysTickGetReload@{CySysTickGetReload}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickGetReload()}{CySysTickGetReload()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a16f169a27c7ef0265d8e9c578acfe0e1} 
+uint32 Cy\+Sys\+Tick\+Get\+Reload (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Sets value the counter is set to on startup and after it reaches zero.
+
+\begin{DoxyReturn}{Returns}
+Counter reset value 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a46c01193a5ac208558d948984700e09f}\index{CyLib.c@{CyLib.c}!CySysTickGetValue@{CySysTickGetValue}}
+\index{CySysTickGetValue@{CySysTickGetValue}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickGetValue()}{CySysTickGetValue()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a46c01193a5ac208558d948984700e09f} 
+uint32 Cy\+Sys\+Tick\+Get\+Value (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Gets current Sys\+Tick counter value.
+
+\begin{DoxyReturn}{Returns}
+Current Sys\+Tick counter value 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ae1ec0dfe8012f9ccda69941bdedf93ea}\index{CyLib.c@{CyLib.c}!CySysTickInit@{CySysTickInit}}
+\index{CySysTickInit@{CySysTickInit}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickInit()}{CySysTickInit()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ae1ec0dfe8012f9ccda69941bdedf93ea} 
+void Cy\+Sys\+Tick\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Initializes the callback addresses with pointers to NULL, associates the Sys\+Tick system vector with the function that is responsible for calling registered callback functions, configures Sys\+Tick timer to generate interrupt every 1 ms.
+
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set.
+
+The 1 ms interrupt interval is configured based on the frequency determined by PSoC Creator at build time. If System clock frequency is changed in runtime, the \doxylink{codegentemp_2_cy_lib_8c_a22accda26c0d6d8d1efca71f6fdcf5ed}{Cy\+Delay\+Freq()} with the appropriate parameter should be called. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a1cd50582bd86a12d2e4e9025da3ddf59}\index{CyLib.c@{CyLib.c}!CySysTickSetCallback@{CySysTickSetCallback}}
+\index{CySysTickSetCallback@{CySysTickSetCallback}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickSetCallback()}{CySysTickSetCallback()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a1cd50582bd86a12d2e4e9025da3ddf59} 
+\mbox{\hyperlink{codegentemp_2_cy_lib_8h_a878baaa80a46228d4983c85bad4cdfa0}{cy\+Sys\+Tick\+Callback}} Cy\+Sys\+Tick\+Set\+Callback (\begin{DoxyParamCaption}\item[{uint32}]{number}{, }\item[{\mbox{\hyperlink{codegentemp_2_cy_lib_8h_a878baaa80a46228d4983c85bad4cdfa0}{cy\+Sys\+Tick\+Callback}}}]{function}{}\end{DoxyParamCaption})}
+
+This function allows up to five user-\/defined interrupt service routine functions to be associated with the Sys\+Tick interrupt. These are specified through the use of pointers to the function.
+
+To set a custom callback function without the overhead of the system provided one, use Cy\+Int\+Set\+Sys\+Vector(\+CY\+\_\+\+INT\+\_\+\+SYSTICK\+\_\+\+IRQN, cyisraddress $<$address$>$), where $<$address$>$ is address of the custom defined interrupt service routine. Note\+: a custom callback function overrides the system defined callback functions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The number of the callback function addresses to be set. The valid range is from 0 to 4.\\
+\hline
+\end{DoxyParams}
+void(\texorpdfstring{$\ast$}{*}\+Callback\+Function(void)\+: A pointer to the function that will be associated with the Sys\+Tick ISR for the specified number.
+
+\begin{DoxyReturn}{Returns}
+Returns the address of the previous callback function. The NULL is returned if the specified address in not set.
+\end{DoxyReturn}
+\textbackslash{}sideeffect The registered callback functions will be executed in the interrupt. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a8de4d3094b469bd3a3d79639cd0de4f0}\index{CyLib.c@{CyLib.c}!CySysTickSetClockSource@{CySysTickSetClockSource}}
+\index{CySysTickSetClockSource@{CySysTickSetClockSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickSetClockSource()}{CySysTickSetClockSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a8de4d3094b469bd3a3d79639cd0de4f0} 
+void Cy\+Sys\+Tick\+Set\+Clock\+Source (\begin{DoxyParamCaption}\item[{uint32}]{clock\+Source}{}\end{DoxyParamCaption})}
+
+Sets the clock source for the Sys\+Tick counter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock\+Source} & Clock source for Sys\+Tick counter Define Clock Source CY\+\_\+\+SYS\+\_\+\+SYST\+\_\+\+CSR\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+SYSCLK Sys\+Tick is clocked by CPU clock. CY\+\_\+\+SYS\+\_\+\+SYST\+\_\+\+CSR\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+LFCLK Sys\+Tick is clocked by the low frequency clock (ILO 100 KHz for PSoC 5LP, and LFCLK for PSoC 4).\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set. If clock source is not ready this function call will have no effect. After changing clock source to the low frequency clock the counter and reload register values will remain unchanged so time to the interrupt will be significantly bigger and vice versa. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a116fd8f7755e48e6a7788ee636451a0c}\index{CyLib.c@{CyLib.c}!CySysTickSetReload@{CySysTickSetReload}}
+\index{CySysTickSetReload@{CySysTickSetReload}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickSetReload()}{CySysTickSetReload()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a116fd8f7755e48e6a7788ee636451a0c} 
+void Cy\+Sys\+Tick\+Set\+Reload (\begin{DoxyParamCaption}\item[{uint32}]{value}{}\end{DoxyParamCaption})}
+
+Sets value the counter is set to on startup and after it reaches zero. This function do not change or reset current sys\+Tick counter value, so it should be cleared using \doxylink{codegentemp_2_cy_lib_8c_aad30392c3d4d8dcc66c2691f292cf039}{Cy\+Sys\+Tick\+Clear()} API.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Valid range \mbox{[}0x0-\/0x00\+FFFFFF\mbox{]}. Counter reset value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a0a5476c2967f2b9b3ef005bae1618d2e}\index{CyLib.c@{CyLib.c}!CySysTickStart@{CySysTickStart}}
+\index{CySysTickStart@{CySysTickStart}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickStart()}{CySysTickStart()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a0a5476c2967f2b9b3ef005bae1618d2e} 
+void Cy\+Sys\+Tick\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Configures the Sys\+Tick timer to generate interrupt every 1 ms by call to the \doxylink{codegentemp_2_cy_lib_8c_ae1ec0dfe8012f9ccda69941bdedf93ea}{Cy\+Sys\+Tick\+Init()} function and starts it by calling \doxylink{codegentemp_2_cy_lib_8c_a9204e43a898063aa8a12e4df143ac771}{Cy\+Sys\+Tick\+Enable()} function. Refer to the corresponding function description for the details.
+
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a5b459855c1f540c006efb88a3f8890f3}\index{CyLib.c@{CyLib.c}!CySysTickStop@{CySysTickStop}}
+\index{CySysTickStop@{CySysTickStop}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CySysTickStop()}{CySysTickStop()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a5b459855c1f540c006efb88a3f8890f3} 
+void Cy\+Sys\+Tick\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Stops the system timer (Sys\+Tick).
+
+\textbackslash{}sideeffect Clears Sys\+Tick count flag if it was set \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a687b8de3bf771252511eac0669071448}\index{CyLib.c@{CyLib.c}!CyUsbClk\_SetSource@{CyUsbClk\_SetSource}}
+\index{CyUsbClk\_SetSource@{CyUsbClk\_SetSource}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyUsbClk\_SetSource()}{CyUsbClk\_SetSource()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a687b8de3bf771252511eac0669071448} 
+void Cy\+Usb\+Clk\+\_\+\+Set\+Source (\begin{DoxyParamCaption}\item[{uint8}]{source}{}\end{DoxyParamCaption})}
+
+Sets the source of the USB clock.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & One of the four available USB clock sources CY\+\_\+\+LIB\+\_\+\+USB\+\_\+\+CLK\+\_\+\+IMO2X -\/ IMO 2x CY\+\_\+\+LIB\+\_\+\+USB\+\_\+\+CLK\+\_\+\+IMO -\/ IMO CY\+\_\+\+LIB\+\_\+\+USB\+\_\+\+CLK\+\_\+\+PLL -\/ PLL CY\+\_\+\+LIB\+\_\+\+USB\+\_\+\+CLK\+\_\+\+DSI -\/ DSI \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a97b9243ad8802c8dd3aef483a7fd9223}\index{CyLib.c@{CyLib.c}!CyVdHvAnalogDisable@{CyVdHvAnalogDisable}}
+\index{CyVdHvAnalogDisable@{CyVdHvAnalogDisable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdHvAnalogDisable()}{CyVdHvAnalogDisable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a97b9243ad8802c8dd3aef483a7fd9223} 
+void Cy\+Vd\+Hv\+Analog\+Disable (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the analog high-\/voltage monitor and clears the associated persistent status bit.
+
+Note The associated interrupt enable/disable state is not changed by the function. The pending interrupt status is not cleared. The Interrupt component API should be used to manipulate with the associated interrupts. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a850f1056bda4f238ad5344ec429432d2}\index{CyLib.c@{CyLib.c}!CyVdHvAnalogEnable@{CyVdHvAnalogEnable}}
+\index{CyVdHvAnalogEnable@{CyVdHvAnalogEnable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdHvAnalogEnable()}{CyVdHvAnalogEnable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a850f1056bda4f238ad5344ec429432d2} 
+void Cy\+Vd\+Hv\+Analog\+Enable (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the output of the analog high-\/voltage monitor and sets 5.\+75 V threshold detection for Vdda.
+
+Note The associated interrupt enable/disable state is not changed by the function. The Interrupt component API should be used to register the interrupt service routine and to enable/disable associated interrupt. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_af79b2b0dd852e68077adaa984db85695}\index{CyLib.c@{CyLib.c}!CyVdLvAnalogDisable@{CyVdLvAnalogDisable}}
+\index{CyVdLvAnalogDisable@{CyVdLvAnalogDisable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdLvAnalogDisable()}{CyVdLvAnalogDisable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_af79b2b0dd852e68077adaa984db85695} 
+void Cy\+Vd\+Lv\+Analog\+Disable (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the analog low-\/voltage monitor, turns off device reset upon the analog low-\/voltage event, and clears the associated persistent status bit.
+
+Note The associated interrupt enable/disable state is not changed by the function. The pending interrupt status is not cleared. The Interrupt component API should be used to manipulate with the associated interrupts. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ac37bddbef25b3fc8b314edaa8a4172ba}\index{CyLib.c@{CyLib.c}!CyVdLvAnalogEnable@{CyVdLvAnalogEnable}}
+\index{CyVdLvAnalogEnable@{CyVdLvAnalogEnable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdLvAnalogEnable()}{CyVdLvAnalogEnable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ac37bddbef25b3fc8b314edaa8a4172ba} 
+void Cy\+Vd\+Lv\+Analog\+Enable (\begin{DoxyParamCaption}\item[{uint8}]{reset}{, }\item[{uint8}]{threshold}{}\end{DoxyParamCaption})}
+
+Sets the voltage trip level, enables the output of the analog low-\/voltage monitor, and optionally configures voltage monitor to reset device upon the low-\/voltage event instead of generating an interrupt.
+
+Note The associated interrupt enable/disable state is not changed by the function. The Interrupt component API should be used to register the interrupt service routine and to enable/disable associated interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reset} & Enables device reset on analog low-\/voltage event\+: Zero -\/ Interrupt on analog low-\/voltage event Non-\/zero -\/ Reset on analog low-\/voltage event\\
+\hline
+{\em threshold} & Sets the trip point of the analog low-\/voltage monitoring circuit in steps of approximately 250 mV in range from 1.\+70 V (0x00) to 5.\+45 V (0x0F). For example, the trip point is set to 1.\+80 V when value of the threshold parameter is 0x04. Please refer to the device TRM for the exact trip voltage values.\\
+\hline
+\end{DoxyParams}
+Side Effects and Restrictions\+: The voltage resets are momentary. When a voltage reset (analog/digital low-\/voltage and analog high-\/voltage) occurs, the RESET\+\_\+\+CR1 and RESET\+\_\+\+CR3 registers are restored to their default values. This means that the voltage monitor circuit is no longer enabled and the device exits reset. If the supply is below the trip level and firmware enables the voltage reset functionality, the device will reset again. This will continue as long as the supply is below the trip level or as long as the user enables the reset functionality of the voltage monitor functionality.
+
+When any voltage reset occurs, the RESET\+\_\+\+SR0 and RESET\+\_\+\+SR2 status registers are cleared. This means that analog low-\/voltage, digital low-\/voltage and analog high-\/voltage status bits are not persistent across any voltage reset. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a5a4e655b5519ba9333b327711bc74de0}\index{CyLib.c@{CyLib.c}!CyVdLvDigitDisable@{CyVdLvDigitDisable}}
+\index{CyVdLvDigitDisable@{CyVdLvDigitDisable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdLvDigitDisable()}{CyVdLvDigitDisable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a5a4e655b5519ba9333b327711bc74de0} 
+void Cy\+Vd\+Lv\+Digit\+Disable (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the digital low-\/voltage monitor, turns off device reset upon the digital low-\/voltage event, and clears the associated persistent status bit.
+
+Note The associated interrupt enable/disable state is not changed by the function. The pending interrupt status is not cleared. The Interrupt component API should be used to manipulate with the associated interrupts. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ab8214aa2f0f6beccf8417ad34a72470d}\index{CyLib.c@{CyLib.c}!CyVdLvDigitEnable@{CyVdLvDigitEnable}}
+\index{CyVdLvDigitEnable@{CyVdLvDigitEnable}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdLvDigitEnable()}{CyVdLvDigitEnable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ab8214aa2f0f6beccf8417ad34a72470d} 
+void Cy\+Vd\+Lv\+Digit\+Enable (\begin{DoxyParamCaption}\item[{uint8}]{reset}{, }\item[{uint8}]{threshold}{}\end{DoxyParamCaption})}
+
+Sets the voltage trip level, enables the output of the digital low-\/voltage monitor, and optionally configures voltage monitor to reset device upon the low-\/voltage event instead of generating an interrupt.
+
+Note The associated interrupt enable/disable state is not changed by the function. The Interrupt component API should be used to register the interrupt service routine and to enable/disable associated interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reset} & Enables device reset on digital low-\/voltage event\+: Zero -\/ Interrupt on digital low-\/voltage event Non-\/zero -\/ Reset on digital low-\/voltage event\\
+\hline
+{\em threshold} & Sets the trip point of the digital low-\/voltage monitoring circuit in steps of approximately 250 mV in range from 1.\+70 V (0x00) to 5.\+45 V (0x0F). For example, the trip point is set to 1.\+80 V when the threshold parameter value is 0x04. Refer to the device TRM for the exact trip voltage values.\\
+\hline
+\end{DoxyParams}
+Side Effects and Restrictions\+: The voltage resets are momentary. When a voltage reset (analog/digital low-\/voltage and analog high-\/voltage) occurs, the RESET\+\_\+\+CR1 and RESET\+\_\+\+CR3 registers are restored to their default values. This means that the voltage monitor circuit is no longer enabled and the device exits reset. If the supply is below the trip level and firmware enables the voltage reset functionality, the device will reset again. This will continue as long as the supply is below the trip level or as long as the user enables the reset functionality of the voltage monitor functionality.
+
+When any voltage reset occurs, the RESET\+\_\+\+SR0 and RESET\+\_\+\+SR2 status registers are cleared. This means that analog low-\/voltage, digital low-\/voltage and analog high-\/voltage status bits are not persistent across any voltage reset. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a071a5639ef1122ff6f232bb0b8545170}\index{CyLib.c@{CyLib.c}!CyVdRealTimeStatus@{CyVdRealTimeStatus}}
+\index{CyVdRealTimeStatus@{CyVdRealTimeStatus}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdRealTimeStatus()}{CyVdRealTimeStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a071a5639ef1122ff6f232bb0b8545170} 
+uint8 Cy\+Vd\+Real\+Time\+Status (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Reads the real-\/time voltage detection status bits in the RESET\+\_\+\+SR2 register. The bits are set to 1 by the voltage monitor circuit when the supply is outside the detector’s trip point, and set to 0 when the supply is inside the trip point.
+
+\begin{DoxyReturn}{Returns}
+Status of the LVID, LVIA, and HVIA bits in the RESET\+\_\+\+SR2 register. Define Definition CY\+\_\+\+VD\+\_\+\+LVID Real-\/time status of digital LVI. CY\+\_\+\+VD\+\_\+\+LVIA Real-\/time status of analog LVI. CY\+\_\+\+VD\+\_\+\+HVIA Real-\/time status of analog HVI.
+\end{DoxyReturn}
+Side Effects and Restrictions\+: When an LVI reset occurs, the RESET\+\_\+\+SR2 status registers are cleared. This means that the voltage detection status bits are not persistent across an LVI reset and cannot be used to determine a reset source. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a678a040ec217c51fb1e9075aa3f818d6}\index{CyLib.c@{CyLib.c}!CyVdStickyStatus@{CyVdStickyStatus}}
+\index{CyVdStickyStatus@{CyVdStickyStatus}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyVdStickyStatus()}{CyVdStickyStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a678a040ec217c51fb1e9075aa3f818d6} 
+uint8 Cy\+Vd\+Sticky\+Status (\begin{DoxyParamCaption}\item[{uint8}]{mask}{}\end{DoxyParamCaption})}
+
+Reads and clears the voltage detection status bits in the RESET\+\_\+\+SR0 register. The bits are set to 1 by the voltage monitor circuit when the supply is outside the detector trip point. They stay set to 1 until they are read or a POR / LVI / PRES reset occurs. This function uses a shadow register, so only the bits passed in the parameter will be cleared in the shadow register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & Bits in the RESET\+\_\+\+SR0 shadow register to clear and return. Define Definition CY\+\_\+\+VD\+\_\+\+LVID Persistent status of digital LVI. CY\+\_\+\+VD\+\_\+\+LVIA Persistent status of analog LVI. CY\+\_\+\+VD\+\_\+\+HVIA Persistent status of analog HVI.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status. Same enumerated bit values as used for the mask parameter. A zero is returned for bits not used in the mask parameter.
+\end{DoxyReturn}
+Side Effects and Restrictions\+: When an LVI reset occurs, the RESET\+\_\+\+SR0 status registers are cleared. This means that the voltage detection status bits are not persistent across an LVI reset and cannot be used to determine a reset source. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a162b380c11dc33427fd7286d4eef0166}\index{CyLib.c@{CyLib.c}!CyWdtClear@{CyWdtClear}}
+\index{CyWdtClear@{CyWdtClear}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyWdtClear()}{CyWdtClear()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a162b380c11dc33427fd7286d4eef0166} 
+void Cy\+Wdt\+Clear (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Clears (feeds) the watchdog timer. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a258ffba3305bdba4ac83c309e7bdbc52}\index{CyLib.c@{CyLib.c}!CyWdtStart@{CyWdtStart}}
+\index{CyWdtStart@{CyWdtStart}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyWdtStart()}{CyWdtStart()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a258ffba3305bdba4ac83c309e7bdbc52} 
+void Cy\+Wdt\+Start (\begin{DoxyParamCaption}\item[{uint8}]{ticks}{, }\item[{uint8}]{lp\+Mode}{}\end{DoxyParamCaption})}
+
+Enables the watchdog timer.
+
+The timer is configured for the specified count interval, the central timewheel is cleared, the setting for the low power mode is configured and the watchdog timer is enabled.
+
+Once enabled the watchdog cannot be disabled. The watchdog counts each time the Central Time Wheel (CTW) reaches the period specified. The watchdog must be cleared using the \doxylink{codegentemp_2_cy_lib_8c_a162b380c11dc33427fd7286d4eef0166}{Cy\+Wdt\+Clear()} function before three ticks of the watchdog timer occur. The CTW is free running, so this will occur after between 2 and 3 timer periods elapse.
+
+PSo\+C5\+: The watchdog timer should not be used during sleep modes. Since the WDT cannot be disabled after it is enabled, the WDT timeout period can be set to be greater than the sleep wakeup period, then feed the dog on each wakeup from Sleep.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticks} & One of the four available timer periods. Once WDT enabled, the interval cannot be changed. CYWDT\+\_\+2\+\_\+\+TICKS -\/ 4 -\/ 6 ms CYWDT\+\_\+16\+\_\+\+TICKS -\/ 32 -\/ 48 ms CYWDT\+\_\+128\+\_\+\+TICKS -\/ 256 -\/ 384 ms CYWDT\+\_\+1024\+\_\+\+TICKS -\/ 2.\+048 -\/ 3.\+072 s\\
+\hline
+{\em lp\+Mode} & Low power mode configuration. This parameter is ignored for PSoC 5. The WDT always acts as if CYWDT\+\_\+\+LPMODE\+\_\+\+NOCHANGE is passed.\\
+\hline
+\end{DoxyParams}
+CYWDT\+\_\+\+LPMODE\+\_\+\+NOCHANGE -\/ No Change CYWDT\+\_\+\+LPMODE\+\_\+\+MAXINTER -\/ Switch to longest timer mode during low power mode CYWDT\+\_\+\+LPMODE\+\_\+\+DISABLED -\/ Disable WDT during low power mode
+
+\textbackslash{}sideeffect PSo\+C5\+: The ILO 1 KHz must be enabled for proper WDT operation. Stopping the ILO 1 k\+Hz could break the active WDT functionality. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ae8238d6f957458a0137ff17cb35379e7}\index{CyLib.c@{CyLib.c}!CyXTAL\_32KHZ\_ReadStatus@{CyXTAL\_32KHZ\_ReadStatus}}
+\index{CyXTAL\_32KHZ\_ReadStatus@{CyXTAL\_32KHZ\_ReadStatus}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_32KHZ\_ReadStatus()}{CyXTAL\_32KHZ\_ReadStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ae8238d6f957458a0137ff17cb35379e7} 
+uint8 Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Read\+Status (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns status of the 32 KHz oscillator.
+
+\begin{DoxyReturn}{Returns}
+Value Define Source 20 CY\+\_\+\+XTAL32\+K\+\_\+\+ANA\+\_\+\+STAT Analog measurement 1\+: Stable 0\+: Not stable 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a1ae5762a43928f0ae272c03577d10e23}\index{CyLib.c@{CyLib.c}!CyXTAL\_32KHZ\_SetPowerMode@{CyXTAL\_32KHZ\_SetPowerMode}}
+\index{CyXTAL\_32KHZ\_SetPowerMode@{CyXTAL\_32KHZ\_SetPowerMode}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_32KHZ\_SetPowerMode()}{CyXTAL\_32KHZ\_SetPowerMode()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a1ae5762a43928f0ae272c03577d10e23} 
+uint8 Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Set\+Power\+Mode (\begin{DoxyParamCaption}\item[{uint8}]{mode}{}\end{DoxyParamCaption})}
+
+Sets the power mode for the 32 KHz oscillator used during the sleep mode. Allows for lower power during sleep when there are fewer sources of noise. During the active mode the oscillator is always run in the high power mode.
+
+uint8 mode 
+\begin{DoxyParams}{Parameters}
+{\em 0} & High power mode \\
+\hline
+{\em 1} & Low power mode during sleep\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Previous power mode. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a4ef10eb3e7fd34c53dc0a25626be2647}\index{CyLib.c@{CyLib.c}!CyXTAL\_32KHZ\_Start@{CyXTAL\_32KHZ\_Start}}
+\index{CyXTAL\_32KHZ\_Start@{CyXTAL\_32KHZ\_Start}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_32KHZ\_Start()}{CyXTAL\_32KHZ\_Start()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a4ef10eb3e7fd34c53dc0a25626be2647} 
+void Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the 32 KHz Crystal Oscillator. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_af86e111b180026e37f4a0c37d76c3d74}\index{CyLib.c@{CyLib.c}!CyXTAL\_32KHZ\_Stop@{CyXTAL\_32KHZ\_Stop}}
+\index{CyXTAL\_32KHZ\_Stop@{CyXTAL\_32KHZ\_Stop}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_32KHZ\_Stop()}{CyXTAL\_32KHZ\_Stop()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_af86e111b180026e37f4a0c37d76c3d74} 
+void Cy\+XTAL\+\_\+32\+KHZ\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the 32KHz Crystal Oscillator. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a00bea093bbda5487cc7fbc8f74512db2}\index{CyLib.c@{CyLib.c}!CyXTAL\_DisableErrStatus@{CyXTAL\_DisableErrStatus}}
+\index{CyXTAL\_DisableErrStatus@{CyXTAL\_DisableErrStatus}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_DisableErrStatus()}{CyXTAL\_DisableErrStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a00bea093bbda5487cc7fbc8f74512db2} 
+void Cy\+XTAL\+\_\+\+Disable\+Err\+Status (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the generation of the XERR status bit for the megahertz crystal. This function is not available for PSo\+C5. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a94b526c34cf86873400f521efb986d3e}\index{CyLib.c@{CyLib.c}!CyXTAL\_DisableFaultRecovery@{CyXTAL\_DisableFaultRecovery}}
+\index{CyXTAL\_DisableFaultRecovery@{CyXTAL\_DisableFaultRecovery}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_DisableFaultRecovery()}{CyXTAL\_DisableFaultRecovery()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a94b526c34cf86873400f521efb986d3e} 
+void Cy\+XTAL\+\_\+\+Disable\+Fault\+Recovery (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the fault recovery circuit which will switch to the IMO in the case of a fault in the megahertz crystal circuit. This function is not available for PSo\+C5. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_ad667fcb5cd4be5b5f49b611a68c90d04}\index{CyLib.c@{CyLib.c}!CyXTAL\_EnableErrStatus@{CyXTAL\_EnableErrStatus}}
+\index{CyXTAL\_EnableErrStatus@{CyXTAL\_EnableErrStatus}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_EnableErrStatus()}{CyXTAL\_EnableErrStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_ad667fcb5cd4be5b5f49b611a68c90d04} 
+void Cy\+XTAL\+\_\+\+Enable\+Err\+Status (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the generation of the XERR status bit for the megahertz crystal. This function is not available for PSo\+C5. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a385d3d86fca8647d6e4995ebe98b9054}\index{CyLib.c@{CyLib.c}!CyXTAL\_EnableFaultRecovery@{CyXTAL\_EnableFaultRecovery}}
+\index{CyXTAL\_EnableFaultRecovery@{CyXTAL\_EnableFaultRecovery}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_EnableFaultRecovery()}{CyXTAL\_EnableFaultRecovery()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a385d3d86fca8647d6e4995ebe98b9054} 
+void Cy\+XTAL\+\_\+\+Enable\+Fault\+Recovery (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Enables the fault recovery circuit which will switch to the IMO in the case of a fault in the megahertz crystal circuit. The crystal must be up and running with the XERR bit at 0, before calling this function to prevent an immediate fault switchover. This function is not available for PSo\+C5. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a18c8e9e93ae85143624b103a2ccd5888}\index{CyLib.c@{CyLib.c}!CyXTAL\_ReadStatus@{CyXTAL\_ReadStatus}}
+\index{CyXTAL\_ReadStatus@{CyXTAL\_ReadStatus}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_ReadStatus()}{CyXTAL\_ReadStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a18c8e9e93ae85143624b103a2ccd5888} 
+uint8 Cy\+XTAL\+\_\+\+Read\+Status (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Reads the XERR status bit for the megahertz crystal. This status bit is a sticky, clear on read. This function is not available for PSo\+C5.
+
+\begin{DoxyReturn}{Returns}
+Status 0\+: No error 1\+: Error 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_aab92c5100db285ae1a3902060b1f5159}\index{CyLib.c@{CyLib.c}!CyXTAL\_SetFbVoltage@{CyXTAL\_SetFbVoltage}}
+\index{CyXTAL\_SetFbVoltage@{CyXTAL\_SetFbVoltage}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_SetFbVoltage()}{CyXTAL\_SetFbVoltage()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_aab92c5100db285ae1a3902060b1f5159} 
+void Cy\+XTAL\+\_\+\+Set\+Fb\+Voltage (\begin{DoxyParamCaption}\item[{uint8}]{setting}{}\end{DoxyParamCaption})}
+
+Sets the feedback reference voltage to use for the crystal circuit. This function is only available for PSo\+C3 and PSoC 5LP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & Valid range \mbox{[}0-\/15\mbox{]}. Refer to the device TRM and datasheet for more information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a0b8b0074d88ab745cc8bad9a57fece65}\index{CyLib.c@{CyLib.c}!CyXTAL\_SetStartup@{CyXTAL\_SetStartup}}
+\index{CyXTAL\_SetStartup@{CyXTAL\_SetStartup}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_SetStartup()}{CyXTAL\_SetStartup()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a0b8b0074d88ab745cc8bad9a57fece65} 
+void Cy\+XTAL\+\_\+\+Set\+Startup (\begin{DoxyParamCaption}\item[{uint8}]{setting}{}\end{DoxyParamCaption})}
+
+Sets the startup settings for the crystal. The logic model outputs a frequency (setting + 4) MHz when enabled.
+
+This is artificial as the actual frequency is determined by an attached external crystal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & Valid range \mbox{[}0-\/31\mbox{]}. The value is dependent on the frequency and quality of the crystal being used. Refer to the device TRM and datasheet for more information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a31ca6ee25977eeac2d626556bc787d30}\index{CyLib.c@{CyLib.c}!CyXTAL\_SetWdVoltage@{CyXTAL\_SetWdVoltage}}
+\index{CyXTAL\_SetWdVoltage@{CyXTAL\_SetWdVoltage}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_SetWdVoltage()}{CyXTAL\_SetWdVoltage()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a31ca6ee25977eeac2d626556bc787d30} 
+void Cy\+XTAL\+\_\+\+Set\+Wd\+Voltage (\begin{DoxyParamCaption}\item[{uint8}]{setting}{}\end{DoxyParamCaption})}
+
+Sets the reference voltage used by the watchdog to detect a failure in the crystal circuit. This function is only available for PSo\+C3 and PSoC 5LP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & Valid range \mbox{[}0-\/7\mbox{]}. Refer to the device TRM and datasheet for more information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_a74e124d28c39efa187ea34eda93858d2}\index{CyLib.c@{CyLib.c}!CyXTAL\_Start@{CyXTAL\_Start}}
+\index{CyXTAL\_Start@{CyXTAL\_Start}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_Start()}{CyXTAL\_Start()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_a74e124d28c39efa187ea34eda93858d2} 
+cystatus Cy\+XTAL\+\_\+\+Start (\begin{DoxyParamCaption}\item[{uint8}]{wait}{}\end{DoxyParamCaption})}
+
+Enables the megahertz crystal.
+
+PSoC 3\+: Waits until the XERR bit is low (no error) for a millisecond or until the number of milliseconds specified by the wait parameter has expired.
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait} & Valid range \mbox{[}0-\/255\mbox{]}. This is the timeout value in milliseconds. The appropriate value is crystal specific.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS -\/ Completed successfully CYRET\+\_\+\+TIMEOUT -\/ Timeout occurred without detecting a low value on XERR.
+\end{DoxyReturn}
+Side Effects and Restrictions\+: If wait is enabled (non-\/zero wait). Uses the Fast Timewheel to time the wait. Any other use of the Fast Timewheel (FTW) will be stopped during the period of this function and then restored.
+
+Uses the 100KHz ILO. If not enabled, this function will enable the 100KHz ILO for the period of this function. No changes to the setup of the ILO, Fast Timewheel, Central Timewheel or Once Per Second interrupt may be made by interrupt routines during the period of this function.
+
+The current operation of the ILO, Central Timewheel and Once Per Second interrupt are maintained during the operation of this function provided the reading of the Power Manager Interrupt Status Register is only done using the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} function. \Hypertarget{_generated___source_2_p_so_c5_2_cy_lib_8c_abc31c6a620cad2b290d1220ca98252b0}\index{CyLib.c@{CyLib.c}!CyXTAL\_Stop@{CyXTAL\_Stop}}
+\index{CyXTAL\_Stop@{CyXTAL\_Stop}!CyLib.c@{CyLib.c}}
+\doxysubsubsection{\texorpdfstring{CyXTAL\_Stop()}{CyXTAL\_Stop()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_lib_8c_abc31c6a620cad2b290d1220ca98252b0} 
+void Cy\+XTAL\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Disables the megahertz crystal oscillator. 

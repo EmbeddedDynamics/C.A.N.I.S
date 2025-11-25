@@ -1,0 +1,563 @@
+\doxysection{Generated\+\_\+\+Source/\+PSo\+C5/\+Cy\+Dmac.c File Reference}
+\hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c}{}\label{_generated___source_2_p_so_c5_2_cy_dmac_8c}\index{Generated\_Source/PSoC5/CyDmac.c@{Generated\_Source/PSoC5/CyDmac.c}}
+
+
+Provides an API for the DMAC component. The API includes functions for the DMA controller, DMA channels and Transfer Descriptors. This API is the library version not the auto generated code that gets generated when the user places a DMA component on the schematic.  
+
+
+{\ttfamily \#include "{}Cy\+Dmac.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_ab7bbe15141740891add85a1ff5797451}{Cy\+Dmac\+Configure}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a8aeb1fff411210834f7b8b6f88adbe26}{Cy\+Dmac\+Error}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_ac41982903fd6796b9eaa45861e8eae2c}{Cy\+Dmac\+Clear\+Error}} (uint8 error)
+\item 
+uint32 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a22484901bdebb3a264d4be0f51f22e1e}{Cy\+Dmac\+Error\+Address}} (void)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc}} (void)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a3836f3aa97fd9ca928900d3c07d085f9}{Cy\+Dma\+Ch\+Free}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_ae9db258ea3738ab93013dbb4206e9820}{Cy\+Dma\+Ch\+Enable}} (uint8 ch\+Handle, uint8 preserve\+Tds)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a7faa26471bf6fcfd6aa2a4e97f5b69a4}{Cy\+Dma\+Ch\+Disable}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a73aa9558e09f1f53c7ab37af8ff58f14}{Cy\+Dma\+Clear\+Pending\+Drq}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a7392a70300b8061aaf5c37ab8c044bb7}{Cy\+Dma\+Ch\+Priority}} (uint8 ch\+Handle, uint8 priority)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2a1671efe242830f521e58e75eef2e69}{Cy\+Dma\+Ch\+Set\+Extended\+Address}} (uint8 ch\+Handle, uint16 source, uint16 destination)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_aa2f5b7beb329f6bcbc9cf09de83b46ad}{Cy\+Dma\+Ch\+Set\+Initial\+Td}} (uint8 ch\+Handle, uint8 start\+Td)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2f72c3e0c3329e6843dd06073eae2c59}{Cy\+Dma\+Ch\+Set\+Request}} (uint8 ch\+Handle, uint8 request)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a41ba065da0143fc5cd9bbd0f0e5fd4d4}{Cy\+Dma\+Ch\+Get\+Request}} (uint8 ch\+Handle)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}{Cy\+Dma\+Ch\+Status}} (uint8 ch\+Handle, uint8 \texorpdfstring{$\ast$}{*}current\+Td, uint8 \texorpdfstring{$\ast$}{*}state)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_ae50db20306edb5bf9527273b190906ec}{Cy\+Dma\+Ch\+Set\+Configuration}} (uint8 ch\+Handle, uint8 burst\+Count, uint8 request\+Per\+Burst, uint8 td\+Done0, uint8 td\+Done1, uint8 td\+Stop)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a15556b634419ca28c6787333c886bfb3}{Cy\+Dma\+Td\+Allocate}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_aa6cb8b3e5f2fe81f313cdba02ebece0e}{Cy\+Dma\+Td\+Free}} (uint8 td\+Handle)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a1d2e8024f47d1ab514a1af6c84e03dff}{Cy\+Dma\+Td\+Free\+Count}} (void)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_af27744f8b4f8f564766f3c1064201458}{Cy\+Dma\+Td\+Set\+Configuration}} (uint8 td\+Handle, uint16 transfer\+Count, uint8 next\+Td, uint8 configuration)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_adb4280a3e31f320281a7391aacf11cd1}{Cy\+Dma\+Td\+Get\+Configuration}} (uint8 td\+Handle, uint16 \texorpdfstring{$\ast$}{*}transfer\+Count, uint8 \texorpdfstring{$\ast$}{*}next\+Td, uint8 \texorpdfstring{$\ast$}{*}configuration)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_ab6921d90d9370ff8cce2194c70a27021}{Cy\+Dma\+Td\+Set\+Address}} (uint8 td\+Handle, uint16 source, uint16 destination)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2c918563c0ea4bf0a864ffc5638cccd5}{Cy\+Dma\+Td\+Get\+Address}} (uint8 td\+Handle, uint16 \texorpdfstring{$\ast$}{*}source, uint16 \texorpdfstring{$\ast$}{*}destination)
+\item 
+cystatus \mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8c_a6a9782a897c8ef6dd1c82aaf9092bef0}{Cy\+Dma\+Ch\+Round\+Robin}} (uint8 ch\+Handle, uint8 enable\+RR)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides an API for the DMAC component. The API includes functions for the DMA controller, DMA channels and Transfer Descriptors. This API is the library version not the auto generated code that gets generated when the user places a DMA component on the schematic. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+The auto generated code would use the APi\textquotesingle{}s in this module.
+
+\begin{DoxyNote}{Note}
+This code is endian agnostic.
+
+The Transfer Descriptor memory can be used as regular memory if the TD\textquotesingle{}s are not being used.
+
+This code uses the first byte of each TD to manage the free list of TD\textquotesingle{}s. The user can overwrite this once the TD is allocated.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_ac41982903fd6796b9eaa45861e8eae2c}\index{CyDmac.c@{CyDmac.c}!CyDmacClearError@{CyDmacClearError}}
+\index{CyDmacClearError@{CyDmacClearError}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmacClearError()}{CyDmacClearError()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_ac41982903fd6796b9eaa45861e8eae2c} 
+void Cy\+Dmac\+Clear\+Error (\begin{DoxyParamCaption}\item[{uint8}]{error}{}\end{DoxyParamCaption})}
+
+Clears the error bits in the error register of the DMAC.
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & Clears the error bits in the DMAC error register.\\
+\hline
+{\em DMAC\+\_\+\+PERIPH\+\_\+\+ERR} & Set to 1 when a peripheral responds to a bus transaction with an error response.\\
+\hline
+{\em DMAC\+\_\+\+UNPOP\+\_\+\+ACC} & Set to 1 when an access is attempted to an invalid address.\\
+\hline
+{\em DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT} & Set to 1 when a bus timeout occurs. Cleared by writing 1. Timeout values are determined by the BUS\+\_\+\+TIMEOUT field in the PHUBCFG register.\\
+\hline
+\end{DoxyParams}
+Theory\+: Once an error occurs the error bits are sticky and are only cleared by writing 1 to the error register. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_ab7bbe15141740891add85a1ff5797451}\index{CyDmac.c@{CyDmac.c}!CyDmacConfigure@{CyDmacConfigure}}
+\index{CyDmacConfigure@{CyDmacConfigure}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmacConfigure()}{CyDmacConfigure()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_ab7bbe15141740891add85a1ff5797451} 
+void Cy\+Dmac\+Configure (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Creates a linked list of all the TDs to be allocated. This function is called by the startup code; you do not normally need to call it. You can call this function if all of the DMA channels are inactive. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a8aeb1fff411210834f7b8b6f88adbe26}\index{CyDmac.c@{CyDmac.c}!CyDmacError@{CyDmacError}}
+\index{CyDmacError@{CyDmacError}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmacError()}{CyDmacError()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a8aeb1fff411210834f7b8b6f88adbe26} 
+uint8 Cy\+Dmac\+Error (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns errors of the last failed DMA transaction.
+
+\begin{DoxyReturn}{Returns}
+Errors of the last failed DMA transaction.
+\end{DoxyReturn}
+DMAC\+\_\+\+PERIPH\+\_\+\+ERR\+: Set to 1 when a peripheral responds to a bus transaction with an error response.
+
+DMAC\+\_\+\+UNPOP\+\_\+\+ACC\+: Set to 1 when an access is attempted to an invalid address.
+
+DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT\+: Set to 1 when a bus timeout occurs. Cleared by writing a 1. Timeout values are determined by the BUS\+\_\+\+TIMEOUT field in the PHUBCFG register.
+
+Theory\+: Once an error occurs the error bits are sticky and are only cleared by writing 1 to the error register. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a22484901bdebb3a264d4be0f51f22e1e}\index{CyDmac.c@{CyDmac.c}!CyDmacErrorAddress@{CyDmacErrorAddress}}
+\index{CyDmacErrorAddress@{CyDmacErrorAddress}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmacErrorAddress()}{CyDmacErrorAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a22484901bdebb3a264d4be0f51f22e1e} 
+uint32 Cy\+Dmac\+Error\+Address (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+When DMAC\+\_\+\+BUS\+\_\+\+TIMEOUT, DMAC\+\_\+\+UNPOP\+\_\+\+ACC, and DMAC\+\_\+\+PERIPH\+\_\+\+ERR occur the address of the error is written to the error address register and can be read with this function.
+
+If there are multiple errors, only the address of the first is saved.
+
+\begin{DoxyReturn}{Returns}
+The address that caused the error. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}\index{CyDmac.c@{CyDmac.c}!CyDmaChAlloc@{CyDmaChAlloc}}
+\index{CyDmaChAlloc@{CyDmaChAlloc}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChAlloc()}{CyDmaChAlloc()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2} 
+uint8 Cy\+Dma\+Ch\+Alloc (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Allocates a channel from the DMAC to be used in all functions that require a channel handle.
+
+\begin{DoxyReturn}{Returns}
+The allocated channel number. Zero is a valid channel number. DMA\+\_\+\+INVALID\+\_\+\+CHANNEL is returned if there are no channels available. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a7faa26471bf6fcfd6aa2a4e97f5b69a4}\index{CyDmac.c@{CyDmac.c}!CyDmaChDisable@{CyDmaChDisable}}
+\index{CyDmaChDisable@{CyDmaChDisable}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChDisable()}{CyDmaChDisable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a7faa26471bf6fcfd6aa2a4e97f5b69a4} 
+cystatus Cy\+Dma\+Ch\+Disable (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+Disables the DMA channel. Once this function is called, \doxylink{codegentemp_2_cy_dmac_8c_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}{Cy\+Dma\+Ch\+Status()} may be called to determine when the channel is disabled and which TDs were being executed.
+
+If it is currently executing it will allow the current burst to finish naturally.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_ae9db258ea3738ab93013dbb4206e9820}\index{CyDmac.c@{CyDmac.c}!CyDmaChEnable@{CyDmaChEnable}}
+\index{CyDmaChEnable@{CyDmaChEnable}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChEnable()}{CyDmaChEnable()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_ae9db258ea3738ab93013dbb4206e9820} 
+cystatus Cy\+Dma\+Ch\+Enable (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{preserve\+Tds}{}\end{DoxyParamCaption})}
+
+Enables the DMA channel. A software or hardware request still must happen before the channel is executed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em preserve\+Tds} & Preserves the original TD state when the TD has completed. This parameter applies to all TDs in the channel.\\
+\hline
+\end{DoxyParams}
+0 -\/ When TD is completed, the DMAC leaves the TD configuration values in their current state, and does not restore them to their original state.
+
+1 -\/ When TD is completed, the DMAC restores the original configuration values of the TD.
+
+When preserve\+Tds is set, the TD slot that equals the channel number becomes RESERVED and that becomes where the working registers exist. So, for example, if you are using CH06 and preserve\+Tds is set, you are not allowed to use TD slot 6. That is reclaimed by the DMA engine for its private use.
+
+\begin{DoxyNote}{Note}
+Do not chain back to a completed TD if the preserve\+Tds for the channel is set to 0. When a TD has completed preserve\+Tds for the channel set to 0, the transfer count will be at 0. If a TD with a transfer count of 0 is started, the TD will transfer an indefinite amount of data.
+\end{DoxyNote}
+Take extra precautions when using the hardware request (DRQ) option when the preserve\+Tds is set to 0, as you might be requesting the wrong data.
+
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a3836f3aa97fd9ca928900d3c07d085f9}\index{CyDmac.c@{CyDmac.c}!CyDmaChFree@{CyDmaChFree}}
+\index{CyDmaChFree@{CyDmaChFree}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChFree()}{CyDmaChFree()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a3836f3aa97fd9ca928900d3c07d085f9} 
+cystatus Cy\+Dma\+Ch\+Free (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+Frees a channel allocated by Dma\+Ch\+Alloc().
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & The handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a41ba065da0143fc5cd9bbd0f0e5fd4d4}\index{CyDmac.c@{CyDmac.c}!CyDmaChGetRequest@{CyDmaChGetRequest}}
+\index{CyDmaChGetRequest@{CyDmaChGetRequest}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChGetRequest()}{CyDmaChGetRequest()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a41ba065da0143fc5cd9bbd0f0e5fd4d4} 
+cystatus Cy\+Dma\+Ch\+Get\+Request (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+This function allows the caller of \doxylink{codegentemp_2_cy_dmac_8c_a2f72c3e0c3329e6843dd06073eae2c59}{Cy\+Dma\+Ch\+Set\+Request()} to determine if the request was completed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a three-\/bit field, corresponding to the three bits of the request, which describes the state of the previously posted request. If the value is zero, the request was completed. CY\+\_\+\+DMA\+\_\+\+INVALID\+\_\+\+CHANNEL if the handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a7392a70300b8061aaf5c37ab8c044bb7}\index{CyDmac.c@{CyDmac.c}!CyDmaChPriority@{CyDmaChPriority}}
+\index{CyDmaChPriority@{CyDmaChPriority}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChPriority()}{CyDmaChPriority()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a7392a70300b8061aaf5c37ab8c044bb7} 
+cystatus Cy\+Dma\+Ch\+Priority (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{priority}{}\end{DoxyParamCaption})}
+
+Sets the priority of a DMA channel. You can use this function when you want to change the priority at run time. If the priority remains the same for a DMA channel, then you can configure the priority in the .cydwr file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em priority} & Priority to set the channel to, 0 -\/ 7.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a6a9782a897c8ef6dd1c82aaf9092bef0}\index{CyDmac.c@{CyDmac.c}!CyDmaChRoundRobin@{CyDmaChRoundRobin}}
+\index{CyDmaChRoundRobin@{CyDmaChRoundRobin}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChRoundRobin()}{CyDmaChRoundRobin()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a6a9782a897c8ef6dd1c82aaf9092bef0} 
+cystatus Cy\+Dma\+Ch\+Round\+Robin (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{enable\+RR}{}\end{DoxyParamCaption})}
+
+Either enables or disables the Round-\/\+Robin scheduling enforcement algorithm. Within a priority level a Round-\/\+Robin fairness algorithm is enforced.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & ch\+Handle\+: A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or Dma\+\_\+\+Dma\+Initialize().\\
+\hline
+{\em uint8} & enable\+RR\+: \\
+\hline
+{\em 0} & Disable Round-\/\+Robin fairness algorithm \\
+\hline
+{\em 1} & Enable Round-\/\+Robin fairness algorithm\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_ae50db20306edb5bf9527273b190906ec}\index{CyDmac.c@{CyDmac.c}!CyDmaChSetConfiguration@{CyDmaChSetConfiguration}}
+\index{CyDmaChSetConfiguration@{CyDmaChSetConfiguration}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetConfiguration()}{CyDmaChSetConfiguration()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_ae50db20306edb5bf9527273b190906ec} 
+cystatus Cy\+Dma\+Ch\+Set\+Configuration (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{burst\+Count}{, }\item[{uint8}]{request\+Per\+Burst}{, }\item[{uint8}]{td\+Done0}{, }\item[{uint8}]{td\+Done1}{, }\item[{uint8}]{td\+Stop}{}\end{DoxyParamCaption})}
+
+Sets configuration information of the channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & ch\+Handle\+: A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initialize().\\
+\hline
+{\em uint8} & burst\+Count\+: Specifies the size of bursts (1 to 127) the data transfer should be divided into. If this value is zero then the whole transfer is done in one burst.\\
+\hline
+{\em uint8} & request\+Per\+Burst\+: The whole of the data can be split into multiple bursts, if this is \\
+\hline
+{\em required} & to complete the transaction\+: \\
+\hline
+{\em 0} & All subsequent bursts after the first burst will be automatically requested and carried out \\
+\hline
+{\em 1} & All subsequent bursts after the first burst must also be individually requested.\\
+\hline
+{\em uint8} & td\+Done0\+: Selects one of the TERMOUT0 interrupt lines to signal completion. The line connected to the nrq terminal will determine the TERMOUT0\+\_\+\+SEL definition and should be used as supplied by cyfitter.\+h\\
+\hline
+{\em uint8} & td\+Done1\+: Selects one of the TERMOUT1 interrupt lines to signal completion. The line connected to the nrq terminal will determine the TERMOUT1\+\_\+\+SEL definition and should be used as supplied by cyfitter.\+h\\
+\hline
+{\em uint8} & td\+Stop\+: Selects one of the TERMIN interrupt lines to signal to the DMAC that the TD should terminate. The signal connected to the trq terminal will determine which TERMIN (termination request) is used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2a1671efe242830f521e58e75eef2e69}\index{CyDmac.c@{CyDmac.c}!CyDmaChSetExtendedAddress@{CyDmaChSetExtendedAddress}}
+\index{CyDmaChSetExtendedAddress@{CyDmaChSetExtendedAddress}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetExtendedAddress()}{CyDmaChSetExtendedAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2a1671efe242830f521e58e75eef2e69} 
+cystatus Cy\+Dma\+Ch\+Set\+Extended\+Address (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint16}]{source}{, }\item[{uint16}]{destination}{}\end{DoxyParamCaption})}
+
+Sets the high 16 bits of the source and destination addresses for the DMA channel (valid for all TDs in the chain).
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em source} & Upper 16 bit address of the DMA transfer source.\\
+\hline
+{\em destination} & Upper 16 bit address of the DMA transfer destination.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_aa2f5b7beb329f6bcbc9cf09de83b46ad}\index{CyDmac.c@{CyDmac.c}!CyDmaChSetInitialTd@{CyDmaChSetInitialTd}}
+\index{CyDmaChSetInitialTd@{CyDmaChSetInitialTd}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetInitialTd()}{CyDmaChSetInitialTd()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_aa2f5b7beb329f6bcbc9cf09de83b46ad} 
+cystatus Cy\+Dma\+Ch\+Set\+Initial\+Td (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{start\+Td}{}\end{DoxyParamCaption})}
+
+Sets the initial TD to be executed for the channel when the \doxylink{codegentemp_2_cy_dmac_8c_ae9db258ea3738ab93013dbb4206e9820}{Cy\+Dma\+Ch\+Enable()} function is called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initialize().\\
+\hline
+{\em start\+Td} & Set the TD index as the first TD associated with the channel. Zero is a valid TD index.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2f72c3e0c3329e6843dd06073eae2c59}\index{CyDmac.c@{CyDmac.c}!CyDmaChSetRequest@{CyDmaChSetRequest}}
+\index{CyDmaChSetRequest@{CyDmaChSetRequest}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChSetRequest()}{CyDmaChSetRequest()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2f72c3e0c3329e6843dd06073eae2c59} 
+cystatus Cy\+Dma\+Ch\+Set\+Request (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8}]{request}{}\end{DoxyParamCaption})}
+
+Allows the caller to terminate a chain of TDs, terminate one TD, or create a direct request to start the DMA channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em request} & One of the following constants. Each of the constants is a three-\/bit value. CPU\+\_\+\+REQ -\/ Create a direct request to start the DMA channel CPU\+\_\+\+TERM\+\_\+\+TD -\/ Terminate one TD CPU\+\_\+\+TERM\+\_\+\+CHAIN -\/ Terminate a chain of TDs\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}\index{CyDmac.c@{CyDmac.c}!CyDmaChStatus@{CyDmaChStatus}}
+\index{CyDmaChStatus@{CyDmaChStatus}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaChStatus()}{CyDmaChStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_aaeedbf55d23b2dc8b1dcc8779ffc1ef2} 
+cystatus Cy\+Dma\+Ch\+Status (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{current\+Td}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+Determines the status of the DMA channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & A handle previously returned by \doxylink{codegentemp_2_cy_dmac_8c_adbfe228cbbce1f6cfacd8239a9f551d2}{Cy\+Dma\+Ch\+Alloc()} or DMA\+\_\+\+Dma\+Initalize().\\
+\hline
+{\em current\+Td} & The address to store the index of the current TD. Can be NULL if the value is not needed.\\
+\hline
+{\em state} & The address to store the state of the channel. Can be NULL if the value is not needed.\\
+\hline
+\end{DoxyParams}
+STATUS\+\_\+\+TD\+\_\+\+ACTIVE 
+\begin{DoxyParams}{Parameters}
+{\em 0} & Channel is not currently being serviced by DMAC \\
+\hline
+{\em 1} & Channel is currently being serviced by DMAC\\
+\hline
+\end{DoxyParams}
+STATUS\+\_\+\+CHAIN\+\_\+\+ACTIVE 
+\begin{DoxyParams}{Parameters}
+{\em 0} & TD chain is inactive; either no DMA requests have triggered a new chain or the previous chain has completed. \\
+\hline
+{\em 1} & TD chain has been triggered by a DMA request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid.
+\end{DoxyReturn}
+Theory\+: The caller can check on the activity of the Current TD and the Chain. \Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a73aa9558e09f1f53c7ab37af8ff58f14}\index{CyDmac.c@{CyDmac.c}!CyDmaClearPendingDrq@{CyDmaClearPendingDrq}}
+\index{CyDmaClearPendingDrq@{CyDmaClearPendingDrq}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaClearPendingDrq()}{CyDmaClearPendingDrq()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a73aa9558e09f1f53c7ab37af8ff58f14} 
+cystatus Cy\+Dma\+Clear\+Pending\+Drq (\begin{DoxyParamCaption}\item[{uint8}]{ch\+Handle}{}\end{DoxyParamCaption})}
+
+Clears pending the DMA data request.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Handle} & Handle to the dma channel.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. 
+
+CYRET\+\_\+\+BAD\+\_\+\+PARAM if ch\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a15556b634419ca28c6787333c886bfb3}\index{CyDmac.c@{CyDmac.c}!CyDmaTdAllocate@{CyDmaTdAllocate}}
+\index{CyDmaTdAllocate@{CyDmaTdAllocate}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdAllocate()}{CyDmaTdAllocate()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a15556b634419ca28c6787333c886bfb3} 
+uint8 Cy\+Dma\+Td\+Allocate (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Allocates a TD for use with an allocated DMA channel.
+
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the TD to be used by the caller. Since there are 128 TDs minus the reserved TDs (0 to 23), the value returned would range from 24 to 127 not 24 to 128. DMA\+\_\+\+INVALID\+\_\+\+TD is returned if there are no free TDs available. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_aa6cb8b3e5f2fe81f313cdba02ebece0e}\index{CyDmac.c@{CyDmac.c}!CyDmaTdFree@{CyDmaTdFree}}
+\index{CyDmaTdFree@{CyDmaTdFree}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdFree()}{CyDmaTdFree()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_aa6cb8b3e5f2fe81f313cdba02ebece0e} 
+void Cy\+Dma\+Td\+Free (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{}\end{DoxyParamCaption})}
+
+Returns a TD to the free list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: The TD handle returned by the \doxylink{codegentemp_2_cy_dmac_8c_a15556b634419ca28c6787333c886bfb3}{Cy\+Dma\+Td\+Allocate()}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a1d2e8024f47d1ab514a1af6c84e03dff}\index{CyDmac.c@{CyDmac.c}!CyDmaTdFreeCount@{CyDmaTdFreeCount}}
+\index{CyDmaTdFreeCount@{CyDmaTdFreeCount}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdFreeCount()}{CyDmaTdFreeCount()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a1d2e8024f47d1ab514a1af6c84e03dff} 
+uint8 Cy\+Dma\+Td\+Free\+Count (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns the number of free TDs available to be allocated.
+
+\begin{DoxyReturn}{Returns}
+The number of free TDs. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2c918563c0ea4bf0a864ffc5638cccd5}\index{CyDmac.c@{CyDmac.c}!CyDmaTdGetAddress@{CyDmaTdGetAddress}}
+\index{CyDmaTdGetAddress@{CyDmaTdGetAddress}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdGetAddress()}{CyDmaTdGetAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_a2c918563c0ea4bf0a864ffc5638cccd5} 
+cystatus Cy\+Dma\+Td\+Get\+Address (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16 \texorpdfstring{$\ast$}{*}}]{source}{, }\item[{uint16 \texorpdfstring{$\ast$}{*}}]{destination}{}\end{DoxyParamCaption})}
+
+Retrieves the lower 16 bits of the source and/or destination addresses for this TD only. If NULL is passed for a pointer parameter, that value is skipped. You may request only the values of interest.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & \texorpdfstring{$\ast$}{*} source\+: The address to store the lower 16 address bits of the source of the data transfer.\\
+\hline
+{\em uint16} & \texorpdfstring{$\ast$}{*} destination\+: The address to store the lower 16 address bits of the destination of the data transfer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_adb4280a3e31f320281a7391aacf11cd1}\index{CyDmac.c@{CyDmac.c}!CyDmaTdGetConfiguration@{CyDmaTdGetConfiguration}}
+\index{CyDmaTdGetConfiguration@{CyDmaTdGetConfiguration}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdGetConfiguration()}{CyDmaTdGetConfiguration()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_adb4280a3e31f320281a7391aacf11cd1} 
+cystatus Cy\+Dma\+Td\+Get\+Configuration (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16 \texorpdfstring{$\ast$}{*}}]{transfer\+Count}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{next\+Td}{, }\item[{uint8 \texorpdfstring{$\ast$}{*}}]{configuration}{}\end{DoxyParamCaption})}
+
+Retrieves the configuration of the TD. If a NULL pointer is passed as a parameter, that parameter is skipped. You may request only the values you are interested in.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & \texorpdfstring{$\ast$}{*} transfer\+Count\+: The address to store the size of the data transfer (in bytes) for this TD. A size of zero could indicate that the TD has completed its transfer, or that the TD is doing an indefinite transfer.\\
+\hline
+{\em uint8} & \texorpdfstring{$\ast$}{*} next\+Td\+: The address to store the index of the next TD in the TD chain.\\
+\hline
+{\em uint8} & \texorpdfstring{$\ast$}{*} configuration\+: The address to store the Bit field of configuration bits. See \doxylink{codegentemp_2_cy_dmac_8c_af27744f8b4f8f564766f3c1064201458}{Cy\+Dma\+Td\+Set\+Configuration()} function description.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle is invalid.
+\end{DoxyReturn}
+\textbackslash{}sideeffect If TD has a transfer count of N and is executed, the transfer count becomes
+\begin{DoxyEnumerate}
+\item If it is reexecuted, the Transfer count of zero will be interpreted as a request for indefinite transfer. Be careful when requesting TD with a transfer count of zero. 
+\end{DoxyEnumerate}\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_ab6921d90d9370ff8cce2194c70a27021}\index{CyDmac.c@{CyDmac.c}!CyDmaTdSetAddress@{CyDmaTdSetAddress}}
+\index{CyDmaTdSetAddress@{CyDmaTdSetAddress}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdSetAddress()}{CyDmaTdSetAddress()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_ab6921d90d9370ff8cce2194c70a27021} 
+cystatus Cy\+Dma\+Td\+Set\+Address (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16}]{source}{, }\item[{uint16}]{destination}{}\end{DoxyParamCaption})}
+
+Sets the lower 16 bits of the source and destination addresses for this TD only.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & source\+: The lower 16 address bits of the source of the data transfer.\\
+\hline
+{\em uint16} & destination\+: The lower 16 address bits of the destination of the data transfer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle is invalid. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8c_af27744f8b4f8f564766f3c1064201458}\index{CyDmac.c@{CyDmac.c}!CyDmaTdSetConfiguration@{CyDmaTdSetConfiguration}}
+\index{CyDmaTdSetConfiguration@{CyDmaTdSetConfiguration}!CyDmac.c@{CyDmac.c}}
+\doxysubsubsection{\texorpdfstring{CyDmaTdSetConfiguration()}{CyDmaTdSetConfiguration()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2_cy_dmac_8c_af27744f8b4f8f564766f3c1064201458} 
+cystatus Cy\+Dma\+Td\+Set\+Configuration (\begin{DoxyParamCaption}\item[{uint8}]{td\+Handle}{, }\item[{uint16}]{transfer\+Count}{, }\item[{uint8}]{next\+Td}{, }\item[{uint8}]{configuration}{}\end{DoxyParamCaption})}
+
+Configures the TD.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint8} & td\+Handle\+: A handle previously returned by Cy\+Dma\+Td\+Alloc().\\
+\hline
+{\em uint16} & transfer\+Count\+: The size of the data transfer (in bytes) for this TD. A size of zero will cause the transfer to continue indefinitely. This parameter is limited to 4095 bytes; the TD is not initialized at all when a higher value is passed.\\
+\hline
+{\em uint8} & next\+Td\+: Zero based index of the next Transfer Descriptor in the TD chain. Zero is a valid pointer to the next TD; DMA\+\_\+\+END\+\_\+\+CHAIN\+\_\+\+TD is the end of the chain. DMA\+\_\+\+DISABLE\+\_\+\+TD indicates an end to the chain and the DMA is disabled. No further TDs are fetched. DMA\+\_\+\+DISABLE\+\_\+\+TD is only supported on PSo\+C3 and PSoC 5LP silicons.\\
+\hline
+{\em uint8} & configuration\+: Stores the Bit field of configuration bits.\\
+\hline
+\end{DoxyParams}
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+EN -\/ Perform endian swap
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+SWAP\+\_\+\+SIZE4 -\/ Swap size = 4 bytes
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+AUTO\+\_\+\+EXEC\+\_\+\+NEXT -\/ The next TD in the chain will trigger automatically when the current TD completes.
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+TERMIN\+\_\+\+EN -\/ Terminate this TD if a positive edge on the trq input line occurs. The positive edge must occur during a burst. That is the only time the DMAC will listen for it.
+
+DMA\+\_\+\+\_\+\+TD\+\_\+\+TERMOUT\+\_\+\+EN -\/ When this TD completes, the TERMOUT signal will generate a pulse. Note that this option is instance specific with the instance name followed by two underscores. In this example, the instance name is DMA.
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+DST\+\_\+\+ADR -\/ Increment DST\+\_\+\+ADR according to the size of each data transaction in the burst.
+
+CY\+\_\+\+DMA\+\_\+\+TD\+\_\+\+INC\+\_\+\+SRC\+\_\+\+ADR -\/ Increment SRC\+\_\+\+ADR according to the size of each data transaction in the burst.
+
+\begin{DoxyReturn}{Returns}
+CYRET\+\_\+\+SUCCESS if successful. CYRET\+\_\+\+BAD\+\_\+\+PARAM if td\+Handle or transfer\+Count is invalid. 
+\end{DoxyReturn}

@@ -1,0 +1,219 @@
+\doxysection{Cy\+Dmac.\+h}
+\hypertarget{_generated___source_2_p_so_c5_2_cy_dmac_8h_source}{}\label{_generated___source_2_p_so_c5_2_cy_dmac_8h_source}\index{Generated\_Source/PSoC5/CyDmac.h@{Generated\_Source/PSoC5/CyDmac.h}}
+\mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_dmac_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/***************************************************************************/}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#if\ !defined(CY\_BOOT\_CYDMAC\_H)}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ CY\_BOOT\_CYDMAC\_H}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_generated___source_2_p_so_c5_2cytypes_8h}{cytypes.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}cyfitter.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}cydevice\_trm.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_generated___source_2_p_so_c5_2_cy_lib_8h}{CyLib.h}}"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00029\ \textcolor{comment}{*\ \ \ \ Function\ Prototypes}}
+\DoxyCodeLine{00030\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{/*\ DMA\ Controller\ functions.\ */}}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_ab7bbe15141740891add85a1ff5797451}{CyDmacConfigure}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00034\ uint8\ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a8aeb1fff411210834f7b8b6f88adbe26}{CyDmacError}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_ac41982903fd6796b9eaa45861e8eae2c}{CyDmacClearError}}(uint8\ error)\ ;}
+\DoxyCodeLine{00036\ uint32\ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a22484901bdebb3a264d4be0f51f22e1e}{CyDmacErrorAddress}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{/*\ Channel\ specific\ functions.\ */}}
+\DoxyCodeLine{00039\ uint8\ \ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_adbfe228cbbce1f6cfacd8239a9f551d2}{CyDmaChAlloc}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00040\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a3836f3aa97fd9ca928900d3c07d085f9}{CyDmaChFree}}(uint8\ chHandle)\ ;}
+\DoxyCodeLine{00041\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_ae9db258ea3738ab93013dbb4206e9820}{CyDmaChEnable}}(uint8\ chHandle,\ uint8\ preserveTds)\ ;}
+\DoxyCodeLine{00042\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a7faa26471bf6fcfd6aa2a4e97f5b69a4}{CyDmaChDisable}}(uint8\ chHandle)\ ;}
+\DoxyCodeLine{00043\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a73aa9558e09f1f53c7ab37af8ff58f14}{CyDmaClearPendingDrq}}(uint8\ chHandle)\ ;}
+\DoxyCodeLine{00044\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a7392a70300b8061aaf5c37ab8c044bb7}{CyDmaChPriority}}(uint8\ chHandle,\ uint8\ priority)\ ;}
+\DoxyCodeLine{00045\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a2a1671efe242830f521e58e75eef2e69}{CyDmaChSetExtendedAddress}}(uint8\ chHandle,\ uint16\ source,\ uint16\ destination)\(\backslash\)}
+\DoxyCodeLine{00046\ ;}
+\DoxyCodeLine{00047\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_aa2f5b7beb329f6bcbc9cf09de83b46ad}{CyDmaChSetInitialTd}}(uint8\ chHandle,\ uint8\ startTd)\ ;}
+\DoxyCodeLine{00048\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a2f72c3e0c3329e6843dd06073eae2c59}{CyDmaChSetRequest}}(uint8\ chHandle,\ uint8\ request)\ ;}
+\DoxyCodeLine{00049\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a41ba065da0143fc5cd9bbd0f0e5fd4d4}{CyDmaChGetRequest}}(uint8\ chHandle)\ ;}
+\DoxyCodeLine{00050\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_aaeedbf55d23b2dc8b1dcc8779ffc1ef2}{CyDmaChStatus}}(uint8\ chHandle,\ uint8\ *\ currentTd,\ uint8\ *\ state)\ ;}
+\DoxyCodeLine{00051\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_ae50db20306edb5bf9527273b190906ec}{CyDmaChSetConfiguration}}(uint8\ chHandle,\ uint8\ burstCount,\ uint8\ requestPerBurst,\ uint8\ tdDone0,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\ tdDone1,\ uint8\ tdStop)\ ;}
+\DoxyCodeLine{00053\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a6a9782a897c8ef6dd1c82aaf9092bef0}{CyDmaChRoundRobin}}(uint8\ chHandle,\ uint8\ enableRR)\ ;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{/*\ Transfer\ Descriptor\ functions.\ */}}
+\DoxyCodeLine{00056\ uint8\ \ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a15556b634419ca28c6787333c886bfb3}{CyDmaTdAllocate}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \ \ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_aa6cb8b3e5f2fe81f313cdba02ebece0e}{CyDmaTdFree}}(uint8\ tdHandle)\ ;}
+\DoxyCodeLine{00058\ uint8\ \ \ \ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a1d2e8024f47d1ab514a1af6c84e03dff}{CyDmaTdFreeCount}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00059\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_af27744f8b4f8f564766f3c1064201458}{CyDmaTdSetConfiguration}}(uint8\ tdHandle,\ uint16\ transferCount,\ uint8\ nextTd,\ uint8\ configuration)\(\backslash\)}
+\DoxyCodeLine{00060\ ;}
+\DoxyCodeLine{00061\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_adb4280a3e31f320281a7391aacf11cd1}{CyDmaTdGetConfiguration}}(uint8\ tdHandle,\ uint16\ *\ transferCount,\ uint8\ *\ nextTd,\ uint8\ *\ configuration)\(\backslash\)}
+\DoxyCodeLine{00062\ ;}
+\DoxyCodeLine{00063\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_ab6921d90d9370ff8cce2194c70a27021}{CyDmaTdSetAddress}}(uint8\ tdHandle,\ uint16\ source,\ uint16\ destination)\ ;}
+\DoxyCodeLine{00064\ cystatus\ \mbox{\hyperlink{codegentemp_2_cy_dmac_8h_a2c918563c0ea4bf0a864ffc5638cccd5}{CyDmaTdGetAddress}}(uint8\ tdHandle,\ uint16\ *\ source,\ uint16\ *\ destination)\ ;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00068\ \textcolor{comment}{*\ Data\ Struct\ Definitions}}
+\DoxyCodeLine{00069\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdmac__ch__struct}{dmac\_ch\_struct}}}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ basic\_cfg[4];}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ action[4];}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ basic\_status[4];}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ reserved[4];}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \}\ dmac\_ch;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdmac__cfgmem__struct}{dmac\_cfgmem\_struct}}}
+\DoxyCodeLine{00082\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ CFG0[4];}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ CFG1[4];}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \}\ dmac\_cfgmem;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdmac__tdmem__struct}{dmac\_tdmem\_struct}}}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ \ TD0[4];}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ \ TD1[4];}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \}\ dmac\_tdmem;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdmac__tdmem2__struct}{dmac\_tdmem2\_struct}}}
+\DoxyCodeLine{00098\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{volatile}\ uint16\ xfercnt;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ \ next\_td\_ptr;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\ \ flags;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{volatile}\ uint16\ src\_adr;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{volatile}\ uint16\ dst\_adr;}
+\DoxyCodeLine{00104\ \}\ dmac\_tdmem2;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00108\ \textcolor{comment}{*\ API\ Constants}}
+\DoxyCodeLine{00109\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ CY\_DMA\_INVALID\_CHANNEL\ \ \ \ \ \ 0xFFu\ \ \ }\textcolor{comment}{/*\ Invalid\ Channel\ ID\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ CY\_DMA\_INVALID\_TD\ \ \ \ \ \ \ \ \ \ \ 0xFFu\ \ \ }\textcolor{comment}{/*\ Invalid\ TD\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ CY\_DMA\_END\_CHAIN\_TD\ \ \ \ \ \ \ \ \ 0xFFu\ \ \ }\textcolor{comment}{/*\ End\ of\ chain\ TD\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ CY\_DMA\_DISABLE\_TD\ \ \ \ \ \ \ \ \ \ \ 0xFEu}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08u}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{comment}{/*\ "{}u"{}\ was\ removed\ as\ workaround\ for\ Keil\ compiler\ bug\ */}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_SWAP\_EN\ \ \ \ \ \ \ \ \ \ \ 0x80}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_SWAP\_SIZE4\ \ \ \ \ \ \ \ 0x40}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_AUTO\_EXEC\_NEXT\ \ \ \ 0x20}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_TERMIN\_EN\ \ \ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_TERMOUT1\_EN\ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_TERMOUT0\_EN\ \ \ \ \ \ \ 0x04}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_INC\_DST\_ADR\ \ \ \ \ \ \ 0x02}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TD\_INC\_SRC\_ADR\ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ CY\_DMA\_NUMBEROF\_TDS\ \ \ \ \ \ \ \ \ 128u}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ CY\_DMA\_NUMBEROF\_CHANNELS\ \ \ \ ((uint8)(CYDEV\_DMA\_CHANNELS\_AVAILABLE))}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{comment}{/*\ Action\ register\ bits\ */}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CPU\_REQ\ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8)(1u\ <<\ 0u))}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CPU\_TERM\_TD\ \ \ \ \ \ \ \ \ \ ((uint8)(1u\ <<\ 1u))}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CPU\_TERM\_CHAIN\ \ \ \ \ \ \ ((uint8)(1u\ <<\ 2u))}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{comment}{/*\ Basic\ Status\ register\ bits\ */}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ CY\_DMA\_STATUS\_CHAIN\_ACTIVE\ \ ((uint8)(1u\ <<\ 0u))}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ CY\_DMA\_STATUS\_TD\_ACTIVE\ \ \ \ \ ((uint8)(1u\ <<\ 1u))}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{comment}{/*\ DMA\ controller\ register\ error\ bits\ */}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ CY\_DMA\_BUS\_TIMEOUT\ \ \ \ \ \ \ \ \ \ (1u\ <<\ 1u)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ CY\_DMA\_UNPOP\_ACC\ \ \ \ \ \ \ \ \ \ \ \ (1u\ <<\ 2u)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ CY\_DMA\_PERIPH\_ERR\ \ \ \ \ \ \ \ \ \ \ (1u\ <<\ 3u)}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{comment}{/*\ Round\ robin\ bits\ */}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ CY\_DMA\_ROUND\_ROBIN\_ENABLE\ \ \ ((uint8)(1u\ <<\ 4u))}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00150\ \textcolor{comment}{*\ CyDmaChEnable()\ /\ CyDmaChDisable()\ API\ constants}}
+\DoxyCodeLine{00151\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CH\_BASIC\_CFG\_EN\ \ \ \ \ \ \ \ \ \ \ (0x01u)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CH\_BASIC\_CFG\_WORK\_SEP\ \ \ \ \ (0x20u)}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{comment}{/***************************************}}
+\DoxyCodeLine{00157\ \textcolor{comment}{*\ Registers}}
+\DoxyCodeLine{00158\ \textcolor{comment}{***************************************/}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CFG\_REG\ \ \ \ \ \ \ \ \ \ \ \ \ \ (*(reg32\ *)\ CYREG\_PHUB\_CFG)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CFG\_PTR\ \ \ \ \ \ \ \ \ \ \ \ \ \ (\ (reg32\ *)\ CYREG\_PHUB\_CFG)}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ CY\_DMA\_ERR\_REG\ \ \ \ \ \ \ \ \ \ \ \ \ \ (*(reg32\ *)\ CYREG\_PHUB\_ERR)}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ CY\_DMA\_ERR\_PTR\ \ \ \ \ \ \ \ \ \ \ \ \ \ (\ (reg32\ *)\ CYREG\_PHUB\_ERR)}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ CY\_DMA\_ERR\_ADR\_REG\ \ \ \ \ \ \ \ \ \ (*(reg32\ *)\ CYREG\_PHUB\_ERR\_ADR)}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ CY\_DMA\_ERR\_ADR\_PTR\ \ \ \ \ \ \ \ \ \ (\ (reg32\ *)\ CYREG\_PHUB\_ERR\_ADR)}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CH\_STRUCT\_REG\ \ \ \ \ \ \ \ (*(dmac\_ch\ CYXDATA\ *)\ CYDEV\_PHUB\_CH0\_BASE)}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CH\_STRUCT\_PTR\ \ \ \ \ \ \ \ (\ (dmac\_ch\ CYXDATA\ *)\ CYDEV\_PHUB\_CH0\_BASE)}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CFGMEM\_STRUCT\_REG\ \ \ \ (*(dmac\_cfgmem\ CYXDATA\ *)\ CYDEV\_PHUB\_CFGMEM0\_BASE)}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ CY\_DMA\_CFGMEM\_STRUCT\_PTR\ \ \ \ (\ (dmac\_cfgmem\ CYXDATA\ *)\ CYDEV\_PHUB\_CFGMEM0\_BASE)}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TDMEM\_STRUCT\_REG\ \ \ \ \ (*(dmac\_tdmem\ \ CYXDATA\ *)\ CYDEV\_PHUB\_TDMEM0\_BASE)}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ CY\_DMA\_TDMEM\_STRUCT\_PTR\ \ \ \ \ (\ (dmac\_tdmem\ \ CYXDATA\ *)\ CYDEV\_PHUB\_TDMEM0\_BASE)}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00180\ \textcolor{comment}{*\ The\ following\ code\ is\ OBSOLETE\ and\ must\ not\ be\ used.}}
+\DoxyCodeLine{00181\ \textcolor{comment}{*}}
+\DoxyCodeLine{00182\ \textcolor{comment}{*\ If\ the\ obsoleted\ macro\ definitions\ intended\ for\ use\ in\ the\ application\ use\ the}}
+\DoxyCodeLine{00183\ \textcolor{comment}{*\ following\ scheme,\ redefine\ your\ own\ versions\ of\ these\ definitions:}}
+\DoxyCodeLine{00184\ \textcolor{comment}{*\ \ \ \ \#ifdef\ <OBSOLETED\_DEFINE>}}
+\DoxyCodeLine{00185\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \#undef\ \ <OBSOLETED\_DEFINE>}}
+\DoxyCodeLine{00186\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \#define\ <OBSOLETED\_DEFINE>\ \ \ \ \ \ (<New\ Value>)}}
+\DoxyCodeLine{00187\ \textcolor{comment}{*\ \ \ \ \#endif}}
+\DoxyCodeLine{00188\ \textcolor{comment}{*}}
+\DoxyCodeLine{00189\ \textcolor{comment}{*\ Note:\ Redefine\ obsoleted\ macro\ definitions\ with\ caution.\ They\ might\ still\ be}}
+\DoxyCodeLine{00190\ \textcolor{comment}{*\ \ \ \ \ \ \ used\ in\ the\ application\ and\ their\ modification\ might\ lead\ to\ unexpected}}
+\DoxyCodeLine{00191\ \textcolor{comment}{*\ \ \ \ \ \ \ consequences.}}
+\DoxyCodeLine{00192\ \textcolor{comment}{*******************************************************************************/}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ DMA\_INVALID\_CHANNEL\ \ \ \ \ \ \ \ \ (CY\_DMA\_INVALID\_CHANNEL)}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ DMA\_INVALID\_TD\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_INVALID\_TD)}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#define\ DMA\_END\_CHAIN\_TD\ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_END\_CHAIN\_TD)}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ DMAC\_TD\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_SIZE)}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ TD\_SWAP\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_SWAP\_EN)}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#define\ TD\_SWAP\_SIZE4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_SWAP\_SIZE4)}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ TD\_AUTO\_EXEC\_NEXT\ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_AUTO\_EXEC\_NEXT)}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#define\ TD\_TERMIN\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_TERMIN\_EN)}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#define\ TD\_TERMOUT1\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_TERMOUT1\_EN)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ TD\_TERMOUT0\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_TERMOUT0\_EN)}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ TD\_INC\_DST\_ADR\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_INC\_DST\_ADR)}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ TD\_INC\_SRC\_ADR\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TD\_INC\_SRC\_ADR)}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ NUMBEROF\_TDS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_NUMBEROF\_TDS)}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ NUMBEROF\_CHANNELS\ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_NUMBEROF\_CHANNELS)}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ CPU\_REQ\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_CPU\_REQ)}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ CPU\_TERM\_TD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_CPU\_TERM\_TD)}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ CPU\_TERM\_CHAIN\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_CPU\_TERM\_CHAIN)}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ STATUS\_CHAIN\_ACTIVE\ \ \ \ \ \ \ \ \ (CY\_DMA\_STATUS\_CHAIN\_ACTIVE)}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ STATUS\_TD\_ACTIVE\ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_STATUS\_TD\_ACTIVE)}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ DMAC\_BUS\_TIMEOUT\ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_BUS\_TIMEOUT)}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ DMAC\_UNPOP\_ACC\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_UNPOP\_ACC)}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ DMAC\_PERIPH\_ERR\ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_PERIPH\_ERR)}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ ROUND\_ROBIN\_ENABLE\ \ \ \ \ \ \ \ \ \ (CY\_DMA\_ROUND\_ROBIN\_ENABLE)}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ DMA\_DISABLE\_TD\ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_DISABLE\_TD)}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ DMAC\_CFG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_CFG\_PTR)}}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ DMAC\_ERR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_ERR\_PTR)}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ DMAC\_ERR\_ADR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_ERR\_ADR\_PTR)}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ DMAC\_CH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_CH\_STRUCT\_PTR)}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ DMAC\_CFGMEM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_CFGMEM\_STRUCT\_PTR)}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ DMAC\_TDMEM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CY\_DMA\_TDMEM\_STRUCT\_PTR)}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ (CY\_BOOT\_CYDMAC\_H)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \textcolor{comment}{/*\ []\ END\ OF\ FILE\ */}}
+
+\end{DoxyCode}

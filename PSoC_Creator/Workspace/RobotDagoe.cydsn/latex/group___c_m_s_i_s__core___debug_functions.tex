@@ -1,0 +1,1694 @@
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{ITM Functions }
+\hypertarget{group___c_m_s_i_s__core___debug_functions}{}\label{group___c_m_s_i_s__core___debug_functions}\index{ITM Functions@{ITM Functions}}
+
+
+Functions that access the ITM debug interface.  
+
+
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gafbce95646fd514c10aa85ec0a33db728}{APSR\+\_\+\+Type\+::\+\_\+reserved0}}\+:27
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga22d10913489d24ab08bd83457daa88de}{APSR\+\_\+\+Type\+::Q}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8004d224aacb78ca37774c35f9156e7e}{APSR\+\_\+\+Type\+::V}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga86e2c5b891ecef1ab55b1edac0da79a6}{APSR\+\_\+\+Type\+::C}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3b04d58738b66a28ff13f23d8b0ba7e5}{APSR\+\_\+\+Type\+::Z}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7e7bbba9b00b0bb3283dc07f1abe37e0}{APSR\+\_\+\+Type\+::N}}\+:1
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gafbce95646fd514c10aa85ec0a33db728}{APSR\_Type::\_reserved0}}:27\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga22d10913489d24ab08bd83457daa88de}{APSR\_Type::Q}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8004d224aacb78ca37774c35f9156e7e}{APSR\_Type::V}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga86e2c5b891ecef1ab55b1edac0da79a6}{APSR\_Type::C}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3b04d58738b66a28ff13f23d8b0ba7e5}{APSR\_Type::Z}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7e7bbba9b00b0bb3283dc07f1abe37e0}{APSR\_Type::N}}:1\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga6d46ac7285e31c07641d1b545f4bac00}{APSR\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae4c2ef8c9430d7b7bef5cbfbbaed3a94}{APSR\+\_\+\+Type\+::w}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab46e5f1b2f4d17cfb9aca4fffcbb2fa5}{IPSR\+\_\+\+Type\+::\+ISR}}\+:9
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad2eb0a06de4f03f58874a727716aa9aa}{IPSR\+\_\+\+Type\+::\+\_\+reserved0}}\+:23
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab46e5f1b2f4d17cfb9aca4fffcbb2fa5}{IPSR\_Type::ISR}}:9\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad2eb0a06de4f03f58874a727716aa9aa}{IPSR\_Type::\_reserved0}}:23\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa3e99ab58b8a0a8eeebc57809c5ed486}{IPSR\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga4adca999d3a0bc1ae682d73ea7cfa879}{IPSR\+\_\+\+Type\+::w}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3e9120dcf1a829fc8d2302b4d0673970}{x\+PSR\+\_\+\+Type\+::\+ISR}}\+:9
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf438e0f407357e914a70b5bd4d6a97c5}{x\+PSR\+\_\+\+Type\+::\+\_\+reserved0}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa57a08ddc8ac3ee066e88dfddc3aa72a}{x\+PSR\+\_\+\+Type\+::\+ICI\+\_\+\+IT\+\_\+1}}\+:6
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga790056bb6f20ea16cecc784b0dd19ad6}{x\+PSR\+\_\+\+Type\+::\+\_\+reserved1}}\+:8
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7eed9fe24ae8d354cd76ae1c1110a658}{x\+PSR\+\_\+\+Type\+::T}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadf3639bb7c6e54e5712f2ddef46a702e}{x\+PSR\+\_\+\+Type\+::\+ICI\+\_\+\+IT\+\_\+2}}\+:2
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadd7cbd2b0abd8954d62cd7831796ac7c}{x\+PSR\+\_\+\+Type\+::Q}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf14df16ea0690070c45b95f2116b7a0a}{x\+PSR\+\_\+\+Type\+::V}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga40213a6b5620410cac83b0d89564609d}{x\+PSR\+\_\+\+Type\+::C}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga1e5d9801013d5146f2e02d9b7b3da562}{x\+PSR\+\_\+\+Type\+::Z}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2db9a52f6d42809627d1a7a607c5dbc5}{x\+PSR\+\_\+\+Type\+::N}}\+:1
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3e9120dcf1a829fc8d2302b4d0673970}{xPSR\_Type::ISR}}:9\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf438e0f407357e914a70b5bd4d6a97c5}{xPSR\_Type::\_reserved0}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa57a08ddc8ac3ee066e88dfddc3aa72a}{xPSR\_Type::ICI\_IT\_1}}:6\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga790056bb6f20ea16cecc784b0dd19ad6}{xPSR\_Type::\_reserved1}}:8\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7eed9fe24ae8d354cd76ae1c1110a658}{xPSR\_Type::T}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadf3639bb7c6e54e5712f2ddef46a702e}{xPSR\_Type::ICI\_IT\_2}}:2\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadd7cbd2b0abd8954d62cd7831796ac7c}{xPSR\_Type::Q}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf14df16ea0690070c45b95f2116b7a0a}{xPSR\_Type::V}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga40213a6b5620410cac83b0d89564609d}{xPSR\_Type::C}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga1e5d9801013d5146f2e02d9b7b3da562}{xPSR\_Type::Z}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2db9a52f6d42809627d1a7a607c5dbc5}{xPSR\_Type::N}}:1\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2aa4fd82a09ddca20dd3eaa6d2ff5810}{xPSR\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga1a47176768f45f79076c4f5b1b534bc2}{x\+PSR\+\_\+\+Type\+::w}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga35c1732cf153b7b5c4bd321cf1de9605}{CONTROL\+\_\+\+Type\+::n\+PRIV}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8cc085fea1c50a8bd9adea63931ee8e2}{CONTROL\+\_\+\+Type\+::\+SPSEL}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa7a5662079a447f801034d108f80ce49}{CONTROL\+\_\+\+Type\+::\+\_\+reserved1}}\+:30
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga35c1732cf153b7b5c4bd321cf1de9605}{CONTROL\_Type::nPRIV}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8cc085fea1c50a8bd9adea63931ee8e2}{CONTROL\_Type::SPSEL}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa7a5662079a447f801034d108f80ce49}{CONTROL\_Type::\_reserved1}}:30\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8c66fa5098de625aacc80ab294fcd08c}{CONTROL\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga6b642cca3d96da660b1198c133ca2a1f}{CONTROL\+\_\+\+Type\+::w}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8164a66b3f42d89200ec44f8857c3de7}{NVIC\+\_\+\+Type\+::\+ISER}} \mbox{[}8U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga097dac07d380fcaaf8a82482bfdd7f69}\label{group___c_m_s_i_s__core___debug_functions_ga097dac07d380fcaaf8a82482bfdd7f69} 
+uint32\+\_\+t {\bfseries NVIC\+\_\+\+Type\+::\+RESERVED0} \mbox{[}24U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7852b170a173ae8bddc0de0f24ed0cd0}{NVIC\+\_\+\+Type\+::\+ICER}} \mbox{[}8U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1413977fb5d7174a05c31d589aa59df8}\label{group___c_m_s_i_s__core___debug_functions_ga1413977fb5d7174a05c31d589aa59df8} 
+uint32\+\_\+t {\bfseries NVIC\+\_\+\+Type\+::\+RSERVED1} \mbox{[}24U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga6d31e250e4649be55603d7f87e909c7e}{NVIC\+\_\+\+Type\+::\+ISPR}} \mbox{[}8U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gaaaf3fac03a3c0736eab61383eca2fbc4}\label{group___c_m_s_i_s__core___debug_functions_gaaaf3fac03a3c0736eab61383eca2fbc4} 
+uint32\+\_\+t {\bfseries NVIC\+\_\+\+Type\+::\+RESERVED2} \mbox{[}24U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae8612ce4b44c9bc76293ec3e7e3ffbd8}{NVIC\+\_\+\+Type\+::\+ICPR}} \mbox{[}8U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gad1e623ba988e26758bdd8c79c9c687ce}\label{group___c_m_s_i_s__core___debug_functions_gad1e623ba988e26758bdd8c79c9c687ce} 
+uint32\+\_\+t {\bfseries NVIC\+\_\+\+Type\+::\+RESERVED3} \mbox{[}24U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gac803b714c8dd99a308ce9a0a2c611c56}{NVIC\+\_\+\+Type\+::\+IABR}} \mbox{[}8U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga383877136c591190f61651289dad6a76}\label{group___c_m_s_i_s__core___debug_functions_ga383877136c591190f61651289dad6a76} 
+uint32\+\_\+t {\bfseries NVIC\+\_\+\+Type\+::\+RESERVED4} \mbox{[}56U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint8\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gabff8c80bd2bdef960e4092421738118c}{NVIC\+\_\+\+Type\+::\+IP}} \mbox{[}240U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga22dc0f9f456717bd26de5a6451547be3}\label{group___c_m_s_i_s__core___debug_functions_ga22dc0f9f456717bd26de5a6451547be3} 
+uint32\+\_\+t {\bfseries NVIC\+\_\+\+Type\+::\+RESERVED5} \mbox{[}644U\mbox{]}
+\item 
+\+\_\+\+\_\+\+OM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga37de89637466e007171c6b135299bc75}{NVIC\+\_\+\+Type\+::\+STIR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga21e08d546d8b641bee298a459ea73e46}{SCB\+\_\+\+Type\+::\+CPUID}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga0ca18ef984d132c6bf4d9b61cd00f05a}{SCB\+\_\+\+Type\+::\+ICSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga187a4578e920544ed967f98020fb8170}{SCB\+\_\+\+Type\+::\+VTOR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad3e5b8934c647eb1b7383c1894f01380}{SCB\+\_\+\+Type\+::\+AIRCR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3a4840c6fa4d1ee75544f4032c88ec34}{SCB\+\_\+\+Type\+::\+SCR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2d6653b0b70faac936046a02809b577f}{SCB\+\_\+\+Type\+::\+CCR}}
+\item 
+\+\_\+\+\_\+\+IOM uint8\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga5d60f066eacb912263ae8d9eb5829b0f}{SCB\+\_\+\+Type\+::\+SHP}} \mbox{[}12U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7b5ae9741a99808043394c4743b635c4}{SCB\+\_\+\+Type\+::\+SHCSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga0cda9e061b42373383418663092ad19a}{SCB\+\_\+\+Type\+::\+CFSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga14ad254659362b9752c69afe3fd80934}{SCB\+\_\+\+Type\+::\+HFSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga191579bde0d21ff51d30a714fd887033}{SCB\+\_\+\+Type\+::\+DFSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2d03d0b7cec2254f39eb1c46c7445e80}{SCB\+\_\+\+Type\+::\+MMFAR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3f8e7e58be4e41c88dfa78f54589271c}{SCB\+\_\+\+Type\+::\+BFAR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab65372404ce64b0f0b35e2709429404e}{SCB\+\_\+\+Type\+::\+AFSR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga40745bb0af880c45827a653222d54117}{SCB\+\_\+\+Type\+::\+PFR}} \mbox{[}2U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga85dd6fe77aab17e7ea89a52c59da6004}{SCB\+\_\+\+Type\+::\+DFR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf084e1b2dad004a88668efea1dfe7fa1}{SCB\+\_\+\+Type\+::\+ADR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga4f353f207bb27a1cea7861aa9eb00dbb}{SCB\+\_\+\+Type\+::\+MMFR}} \mbox{[}4U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga00e93446b3433a807f1574fa2f1fce54}{SCB\+\_\+\+Type\+::\+ISAR}} \mbox{[}5U\mbox{]}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7a5c8889a1abec68c9c0fa1a25bdbb28}\label{group___c_m_s_i_s__core___debug_functions_ga7a5c8889a1abec68c9c0fa1a25bdbb28} 
+uint32\+\_\+t {\bfseries SCB\+\_\+\+Type\+::\+RESERVED0} \mbox{[}5U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gac6a860c1b8d8154a1f00d99d23b67764}{SCB\+\_\+\+Type\+::\+CPACR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga758b3cae751b227e20698256b6249dd4}\label{group___c_m_s_i_s__core___debug_functions_ga758b3cae751b227e20698256b6249dd4} 
+uint32\+\_\+t {\bfseries SCn\+SCB\+\_\+\+Type\+::\+RESERVED0} \mbox{[}1U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga34ec1d771245eb9bd0e3ec9336949762}{SCn\+SCB\+\_\+\+Type\+::\+ICTR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga0bce3f86e9f6e00085cf5a126ae201c6}\label{group___c_m_s_i_s__core___debug_functions_ga0bce3f86e9f6e00085cf5a126ae201c6} 
+uint32\+\_\+t {\bfseries SCn\+SCB\+\_\+\+Type\+::\+RESERVED1} \mbox{[}1U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga875e7afa5c4fd43997fb544a4ac6e37e}{Sys\+Tick\+\_\+\+Type\+::\+CTRL}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga4780a489256bb9f54d0ba8ed4de191cd}{Sys\+Tick\+\_\+\+Type\+::\+LOAD}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga9b5420d17e8e43104ddd4ae5a610af93}{Sys\+Tick\+\_\+\+Type\+::\+VAL}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gafcadb0c6d35b21cdc0018658a13942de}{Sys\+Tick\+\_\+\+Type\+::\+CALIB}}
+\item 
+\+\_\+\+\_\+\+OM uint8\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae773bf9f9dac64e6c28b14aa39f74275}{ITM\+\_\+\+Type\+::u8}}
+\item 
+\+\_\+\+\_\+\+OM uint16\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga962a970dfd286cad7f8a8577e87d4ad3}{ITM\+\_\+\+Type\+::u16}}
+\item 
+\+\_\+\+\_\+\+OM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga5834885903a557674f078f3b71fa8bc8}{ITM\+\_\+\+Type\+::u32}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\_\_OM uint8\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae773bf9f9dac64e6c28b14aa39f74275}{ITM\_Type::u8}}\\
+\>\_\_OM uint16\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga962a970dfd286cad7f8a8577e87d4ad3}{ITM\_Type::u16}}\\
+\>\_\_OM uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga5834885903a557674f078f3b71fa8bc8}{ITM\_Type::u32}}\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga081932189d3a95ab6e0a51c4ce1dfa4a}{ITM\_Type::PORT}} \mbox{[}32U\mbox{]}\\
+
+\end{tabbing}\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gad50da09e70f739596fe3f2d9ea33f414}\label{group___c_m_s_i_s__core___debug_functions_gad50da09e70f739596fe3f2d9ea33f414} 
+uint32\+\_\+t {\bfseries ITM\+\_\+\+Type\+::\+RESERVED0} \mbox{[}864U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gacd03c6858f7b678dab6a6121462e7807}{ITM\+\_\+\+Type\+::\+TER}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gae4d156d0fc83519f984c1388e232aeab}\label{group___c_m_s_i_s__core___debug_functions_gae4d156d0fc83519f984c1388e232aeab} 
+uint32\+\_\+t {\bfseries ITM\+\_\+\+Type\+::\+RESERVED1} \mbox{[}15U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae907229ba50538bf370fbdfd54c099a2}{ITM\+\_\+\+Type\+::\+TPR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9ad73d87a673a206268958c84949ad15}\label{group___c_m_s_i_s__core___debug_functions_ga9ad73d87a673a206268958c84949ad15} 
+uint32\+\_\+t {\bfseries ITM\+\_\+\+Type\+::\+RESERVED2} \mbox{[}15U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga04b9fbc83759cb818dfa161d39628426}{ITM\+\_\+\+Type\+::\+TCR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga69ad0c7295a64174e1967c8a6d9e95b5}\label{group___c_m_s_i_s__core___debug_functions_ga69ad0c7295a64174e1967c8a6d9e95b5} 
+uint32\+\_\+t {\bfseries ITM\+\_\+\+Type\+::\+RESERVED3} \mbox{[}29U\mbox{]}
+\item 
+\+\_\+\+\_\+\+OM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa9da04891e48d1a2f054de186e9c4c94}{ITM\+\_\+\+Type\+::\+IWR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga66eb82a070953f09909f39b8e516fb91}{ITM\+\_\+\+Type\+::\+IRR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae2ce4d3a54df2fd11a197ccac4406cd0}{ITM\+\_\+\+Type\+::\+IMCR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1975f3bb58d3feba11c275f5406b34f4}\label{group___c_m_s_i_s__core___debug_functions_ga1975f3bb58d3feba11c275f5406b34f4} 
+uint32\+\_\+t {\bfseries ITM\+\_\+\+Type\+::\+RESERVED4} \mbox{[}43U\mbox{]}
+\item 
+\+\_\+\+\_\+\+OM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7f9c2a2113a11c7f3e98915f95b669d5}{ITM\+\_\+\+Type\+::\+LAR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3861c67933a24dd6632288c4ed0b80c8}{ITM\+\_\+\+Type\+::\+LSR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga80d3c63efc2e68b754cf96d7f886ba9b}\label{group___c_m_s_i_s__core___debug_functions_ga80d3c63efc2e68b754cf96d7f886ba9b} 
+uint32\+\_\+t {\bfseries ITM\+\_\+\+Type\+::\+RESERVED5} \mbox{[}6U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaad5e11dd4baf6d941bd6c7450f60a158}{ITM\+\_\+\+Type\+::\+PID4}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf9085648bf18f69b5f9d1136d45e1d37}{ITM\+\_\+\+Type\+::\+PID5}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad34dbe6b1072c77d36281049c8b169f6}{ITM\+\_\+\+Type\+::\+PID6}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2bcec6803f28f30d5baf5e20e3517d3d}{ITM\+\_\+\+Type\+::\+PID7}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab4a4cc97ad658e9c46cf17490daffb8a}{ITM\+\_\+\+Type\+::\+PID0}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga89ea1d805a668d6589b22d8e678eb6a4}{ITM\+\_\+\+Type\+::\+PID1}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8471c4d77b7107cf580587509da69f38}{ITM\+\_\+\+Type\+::\+PID2}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf317d5e2d946d70e6fb67c02b92cc8a3}{ITM\+\_\+\+Type\+::\+PID3}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga30bb2b166b1723867da4a708935677ba}{ITM\+\_\+\+Type\+::\+CID0}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gac40df2c3a6cef02f90b4e82c8204756f}{ITM\+\_\+\+Type\+::\+CID1}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8000b92e4e528ae7ac4cb8b8d9f6757d}{ITM\+\_\+\+Type\+::\+CID2}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga43451f43f514108d9eaed5b017f8d921}{ITM\+\_\+\+Type\+::\+CID3}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadd790c53410023b3b581919bb681fe2a}{DWT\+\_\+\+Type\+::\+CTRL}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga102eaa529d9098242851cb57c52b42d9}{DWT\+\_\+\+Type\+::\+CYCCNT}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2c08096c82abe245c0fa97badc458154}{DWT\+\_\+\+Type\+::\+CPICNT}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga9fe20c16c5167ca61486caf6832686d1}{DWT\+\_\+\+Type\+::\+EXCCNT}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga416a54e2084ce66e5ca74f152a5ecc70}{DWT\+\_\+\+Type\+::\+SLEEPCNT}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gacc05d89bdb1b4fe2fa499920ec02d0b1}{DWT\+\_\+\+Type\+::\+LSUCNT}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga1cfc48384ebd8fd8fb7e5d955aae6c97}{DWT\+\_\+\+Type\+::\+FOLDCNT}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga6353ca1d1ad9bc1be05d3b5632960113}{DWT\+\_\+\+Type\+::\+PCSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga61c2965af5bc0643f9af65620b0e67c9}{DWT\+\_\+\+Type\+::\+COMP0}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga821eb5e71f340ec077efc064cfc567db}{DWT\+\_\+\+Type\+::\+MASK0}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga579ae082f58a0317b7ef029b20f52889}{DWT\+\_\+\+Type\+::\+FUNCTION0}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gaef6d91fd3df2a013546764fe0e4ad7a8}\label{group___c_m_s_i_s__core___debug_functions_gaef6d91fd3df2a013546764fe0e4ad7a8} 
+uint32\+\_\+t {\bfseries DWT\+\_\+\+Type\+::\+RESERVED0} \mbox{[}1U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga38714af6b7fa7c64d68f5e1efbe7a931}{DWT\+\_\+\+Type\+::\+COMP1}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaabf94936c9340e62fed836dcfb152405}{DWT\+\_\+\+Type\+::\+MASK1}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8dfcf25675f9606aa305c46e85182e4e}{DWT\+\_\+\+Type\+::\+FUNCTION1}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf4ad5239d7d9b1990005f75464754594}\label{group___c_m_s_i_s__core___debug_functions_gaf4ad5239d7d9b1990005f75464754594} 
+uint32\+\_\+t {\bfseries DWT\+\_\+\+Type\+::\+RESERVED1} \mbox{[}1U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga5ae6dde39989f27bae90afc2347deb46}{DWT\+\_\+\+Type\+::\+COMP2}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga00ac4d830dfe0070a656cda9baed170f}{DWT\+\_\+\+Type\+::\+MASK2}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab1b60d6600c38abae515bab8e86a188f}{DWT\+\_\+\+Type\+::\+FUNCTION2}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga61fdbdfbc267bb6ae3b5cff18f406f2f}\label{group___c_m_s_i_s__core___debug_functions_ga61fdbdfbc267bb6ae3b5cff18f406f2f} 
+uint32\+\_\+t {\bfseries DWT\+\_\+\+Type\+::\+RESERVED2} \mbox{[}1U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga85eb73d1848ac3f82d39d6c3e8910847}{DWT\+\_\+\+Type\+::\+COMP3}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2a509d8505c37a3b64f6b24993df5f3f}{DWT\+\_\+\+Type\+::\+MASK3}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga52d4ff278fae6f9216c63b74ce328841}{DWT\+\_\+\+Type\+::\+FUNCTION3}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7b72598e20066133e505bb781690dc22}{TPI\+\_\+\+Type\+::\+SSPSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8826aa84e5806053395a742d38d59d0f}{TPI\+\_\+\+Type\+::\+CSPSR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga409fb08ad6d58c17fcb7f59d65db6f93}\label{group___c_m_s_i_s__core___debug_functions_ga409fb08ad6d58c17fcb7f59d65db6f93} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED0} \mbox{[}2U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga9e5e4421ef9c3d5b7ff8b24abd4e99b3}{TPI\+\_\+\+Type\+::\+ACPR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gabc2f542560b78ccbbf0a44aadb5651fb}\label{group___c_m_s_i_s__core___debug_functions_gabc2f542560b78ccbbf0a44aadb5651fb} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED1} \mbox{[}55U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga12f79d4e3ddc69893ba8bff890d04cc5}{TPI\+\_\+\+Type\+::\+SPPR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gae6a238467f129df7440d97de8b58fe03}\label{group___c_m_s_i_s__core___debug_functions_gae6a238467f129df7440d97de8b58fe03} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED2} \mbox{[}131U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga6c47a0b4c7ffc66093ef993d36bb441c}{TPI\+\_\+\+Type\+::\+FFSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3f68b6e73561b4849ebf953a894df8d2}{TPI\+\_\+\+Type\+::\+FFCR}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad6901bfd8a0089ca7e8a20475cf494a8}{TPI\+\_\+\+Type\+::\+FSCR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gaba65c646f0447ebda95bf09b726ff78a}\label{group___c_m_s_i_s__core___debug_functions_gaba65c646f0447ebda95bf09b726ff78a} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED3} \mbox{[}759U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga4d4cd2357f72333a82a1313228287bbd}{TPI\+\_\+\+Type\+::\+TRIGGER}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa4d7b5cf39dff9f53bf7f69bc287a814}{TPI\+\_\+\+Type\+::\+FIFO0}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab358319b969d3fed0f89bbe33e9f1652}{TPI\+\_\+\+Type\+::\+ITATBCTR2}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gaad2125842c9abfbfc7db9e440ecf4280}\label{group___c_m_s_i_s__core___debug_functions_gaad2125842c9abfbfc7db9e440ecf4280} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED4} \mbox{[}1U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaaa573b2e073e76e93c51ecec79c616d0}{TPI\+\_\+\+Type\+::\+ITATBCTR0}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga061372fcd72f1eea871e2d9c1be849bc}{TPI\+\_\+\+Type\+::\+FIFO1}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaaa4c823c10f115f7517c82ef86a5a68d}{TPI\+\_\+\+Type\+::\+ITCTRL}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9c1ac143e09b64b1f6eb92ecd65d60d0}\label{group___c_m_s_i_s__core___debug_functions_ga9c1ac143e09b64b1f6eb92ecd65d60d0} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED5} \mbox{[}39U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf8b7d15fa5252b733dd4b11fa1b5730a}{TPI\+\_\+\+Type\+::\+CLAIMSET}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga0e10e292cb019a832b03ddd055b2f6ac}{TPI\+\_\+\+Type\+::\+CLAIMCLR}}
+\item 
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_ga33bb14730a444fdeeb91ea9cb7218e62}\label{group___c_m_s_i_s__core___debug_functions_ga33bb14730a444fdeeb91ea9cb7218e62} 
+uint32\+\_\+t {\bfseries TPI\+\_\+\+Type\+::\+RESERVED7} \mbox{[}8U\mbox{]}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gabc0ecda8a5446bc754080276bad77514}{TPI\+\_\+\+Type\+::\+DEVID}}
+\item 
+\+\_\+\+\_\+\+IM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad98855854a719bbea33061e71529a472}{TPI\+\_\+\+Type\+::\+DEVTYPE}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad63554e4650da91a8e79929cbb63db66}{Core\+Debug\+\_\+\+Type\+::\+DHCSR}}
+\item 
+\+\_\+\+\_\+\+OM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf907cf64577eaf927dac6787df6dd98b}{Core\+Debug\+\_\+\+Type\+::\+DCRSR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaab3cc92ef07bc1f04b3a3aa6db2c2d55}{Core\+Debug\+\_\+\+Type\+::\+DCRDR}}
+\item 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaeb3126abc4c258a858f21f356c0df6ee}{Core\+Debug\+\_\+\+Type\+::\+DEMCR}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gafbce95646fd514c10aa85ec0a33db728}{APSR\+\_\+\+Type\+::\+\_\+reserved0}}\+:27
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga22d10913489d24ab08bd83457daa88de}{APSR\+\_\+\+Type\+::Q}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8004d224aacb78ca37774c35f9156e7e}{APSR\+\_\+\+Type\+::V}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga86e2c5b891ecef1ab55b1edac0da79a6}{APSR\+\_\+\+Type\+::C}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3b04d58738b66a28ff13f23d8b0ba7e5}{APSR\+\_\+\+Type\+::Z}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7e7bbba9b00b0bb3283dc07f1abe37e0}{APSR\+\_\+\+Type\+::N}}\+:1
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gafbce95646fd514c10aa85ec0a33db728}{APSR\_Type::\_reserved0}}:27\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga22d10913489d24ab08bd83457daa88de}{APSR\_Type::Q}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8004d224aacb78ca37774c35f9156e7e}{APSR\_Type::V}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga86e2c5b891ecef1ab55b1edac0da79a6}{APSR\_Type::C}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3b04d58738b66a28ff13f23d8b0ba7e5}{APSR\_Type::Z}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7e7bbba9b00b0bb3283dc07f1abe37e0}{APSR\_Type::N}}:1\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad9863135ef119d56ce8a7323e62fffe1}{APSR\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab46e5f1b2f4d17cfb9aca4fffcbb2fa5}{IPSR\+\_\+\+Type\+::\+ISR}}\+:9
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad2eb0a06de4f03f58874a727716aa9aa}{IPSR\+\_\+\+Type\+::\+\_\+reserved0}}\+:23
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gab46e5f1b2f4d17cfb9aca4fffcbb2fa5}{IPSR\_Type::ISR}}:9\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gad2eb0a06de4f03f58874a727716aa9aa}{IPSR\_Type::\_reserved0}}:23\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga923b328fc38ba700c40ea72c7c5efa37}{IPSR\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3e9120dcf1a829fc8d2302b4d0673970}{x\+PSR\+\_\+\+Type\+::\+ISR}}\+:9
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf438e0f407357e914a70b5bd4d6a97c5}{x\+PSR\+\_\+\+Type\+::\+\_\+reserved0}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa57a08ddc8ac3ee066e88dfddc3aa72a}{x\+PSR\+\_\+\+Type\+::\+ICI\+\_\+\+IT\+\_\+1}}\+:6
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga790056bb6f20ea16cecc784b0dd19ad6}{x\+PSR\+\_\+\+Type\+::\+\_\+reserved1}}\+:8
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7eed9fe24ae8d354cd76ae1c1110a658}{x\+PSR\+\_\+\+Type\+::T}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadf3639bb7c6e54e5712f2ddef46a702e}{x\+PSR\+\_\+\+Type\+::\+ICI\+\_\+\+IT\+\_\+2}}\+:2
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadd7cbd2b0abd8954d62cd7831796ac7c}{x\+PSR\+\_\+\+Type\+::Q}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf14df16ea0690070c45b95f2116b7a0a}{x\+PSR\+\_\+\+Type\+::V}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga40213a6b5620410cac83b0d89564609d}{x\+PSR\+\_\+\+Type\+::C}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga1e5d9801013d5146f2e02d9b7b3da562}{x\+PSR\+\_\+\+Type\+::Z}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2db9a52f6d42809627d1a7a607c5dbc5}{x\+PSR\+\_\+\+Type\+::N}}\+:1
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga3e9120dcf1a829fc8d2302b4d0673970}{xPSR\_Type::ISR}}:9\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf438e0f407357e914a70b5bd4d6a97c5}{xPSR\_Type::\_reserved0}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa57a08ddc8ac3ee066e88dfddc3aa72a}{xPSR\_Type::ICI\_IT\_1}}:6\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga790056bb6f20ea16cecc784b0dd19ad6}{xPSR\_Type::\_reserved1}}:8\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga7eed9fe24ae8d354cd76ae1c1110a658}{xPSR\_Type::T}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadf3639bb7c6e54e5712f2ddef46a702e}{xPSR\_Type::ICI\_IT\_2}}:2\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gadd7cbd2b0abd8954d62cd7831796ac7c}{xPSR\_Type::Q}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaf14df16ea0690070c45b95f2116b7a0a}{xPSR\_Type::V}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga40213a6b5620410cac83b0d89564609d}{xPSR\_Type::C}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga1e5d9801013d5146f2e02d9b7b3da562}{xPSR\_Type::Z}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga2db9a52f6d42809627d1a7a607c5dbc5}{xPSR\_Type::N}}:1\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga22a7a1eb37b36a4d1a501f43c7c62d51}{xPSR\_Type::b}}\\
+
+\end{tabbing}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga35c1732cf153b7b5c4bd321cf1de9605}{CONTROL\+\_\+\+Type\+::n\+PRIV}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8cc085fea1c50a8bd9adea63931ee8e2}{CONTROL\+\_\+\+Type\+::\+SPSEL}}\+:1
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa7a5662079a447f801034d108f80ce49}{CONTROL\+\_\+\+Type\+::\+\_\+reserved1}}\+:30
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga35c1732cf153b7b5c4bd321cf1de9605}{CONTROL\_Type::nPRIV}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga8cc085fea1c50a8bd9adea63931ee8e2}{CONTROL\_Type::SPSEL}}:1\\
+\>uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa7a5662079a447f801034d108f80ce49}{CONTROL\_Type::\_reserved1}}:30\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga9db58aaf1fdfb8a6f2e3ec2baa80a35f}{CONTROL\_Type::b}}\\
+
+\end{tabbing}\item 
+\+\_\+\+\_\+\+OM uint8\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae773bf9f9dac64e6c28b14aa39f74275}{ITM\+\_\+\+Type\+::u8}}
+\item 
+\+\_\+\+\_\+\+OM uint16\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga962a970dfd286cad7f8a8577e87d4ad3}{ITM\+\_\+\+Type\+::u16}}
+\item 
+\+\_\+\+\_\+\+OM uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga5834885903a557674f078f3b71fa8bc8}{ITM\+\_\+\+Type\+::u32}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\_\_OM uint8\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae773bf9f9dac64e6c28b14aa39f74275}{ITM\_Type::u8}}\\
+\>\_\_OM uint16\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga962a970dfd286cad7f8a8577e87d4ad3}{ITM\_Type::u16}}\\
+\>\_\_OM uint32\_t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga5834885903a557674f078f3b71fa8bc8}{ITM\_Type::u32}}\\
+\} \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gafa26ecac48e18662f00cc487cbde94a7}{ITM\_Type::PORT}} \mbox{[}32U\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+volatile int32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}{ITM\+\_\+\+Rx\+Buffer}}
+\item 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE uint32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gac90a497bd64286b84552c2c553d3419e}{ITM\+\_\+\+Send\+Char}} (uint32\+\_\+t ch)
+\begin{DoxyCompactList}\small\item\em ITM Send Character. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE int32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gac3ee2c30a1ac4ed34c8a866a17decd53}{ITM\+\_\+\+Receive\+Char}} (void)
+\begin{DoxyCompactList}\small\item\em ITM Receive Character. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE int32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gae61ce9ca5917735325cd93b0fb21dd29}{ITM\+\_\+\+Check\+Char}} (void)
+\begin{DoxyCompactList}\small\item\em ITM Check Character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+volatile int32\+\_\+t \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}{ITM\+\_\+\+Rx\+Buffer}}
+\item 
+\#define \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa822cb398ee022b59e9e6c5d7bbb228a}{ITM\+\_\+\+RXBUFFER\+\_\+\+EMPTY}}~((int32\+\_\+t)0x5\+AA55\+AA5U)
+\item 
+\#define \mbox{\hyperlink{group___c_m_s_i_s__core___debug_functions_gaa822cb398ee022b59e9e6c5d7bbb228a}{ITM\+\_\+\+RXBUFFER\+\_\+\+EMPTY}}~((int32\+\_\+t)0x5\+AA55\+AA5U)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{Detailed Description}
+Functions that access the ITM debug interface. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_doc-define-members}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{Macro Definition Documentation}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa822cb398ee022b59e9e6c5d7bbb228a}\index{ITM Functions@{ITM Functions}!ITM\_RXBUFFER\_EMPTY@{ITM\_RXBUFFER\_EMPTY}}
+\index{ITM\_RXBUFFER\_EMPTY@{ITM\_RXBUFFER\_EMPTY}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_RXBUFFER\_EMPTY}{ITM\_RXBUFFER\_EMPTY}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa822cb398ee022b59e9e6c5d7bbb228a} 
+\#define ITM\+\_\+\+RXBUFFER\+\_\+\+EMPTY~((int32\+\_\+t)0x5\+AA55\+AA5U)}
+
+Value identifying \doxylink{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}{ITM\+\_\+\+Rx\+Buffer} is ready for next character. \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa822cb398ee022b59e9e6c5d7bbb228a}\index{ITM Functions@{ITM Functions}!ITM\_RXBUFFER\_EMPTY@{ITM\_RXBUFFER\_EMPTY}}
+\index{ITM\_RXBUFFER\_EMPTY@{ITM\_RXBUFFER\_EMPTY}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_RXBUFFER\_EMPTY}{ITM\_RXBUFFER\_EMPTY}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa822cb398ee022b59e9e6c5d7bbb228a} 
+\#define ITM\+\_\+\+RXBUFFER\+\_\+\+EMPTY~((int32\+\_\+t)0x5\+AA55\+AA5U)}
+
+Value identifying \doxylink{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}{ITM\+\_\+\+Rx\+Buffer} is ready for next character. 
+
+\label{doc-func-members}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_doc-func-members}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{Function Documentation}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gae61ce9ca5917735325cd93b0fb21dd29}\index{ITM Functions@{ITM Functions}!ITM\_CheckChar@{ITM\_CheckChar}}
+\index{ITM\_CheckChar@{ITM\_CheckChar}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_CheckChar()}{ITM\_CheckChar()}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae61ce9ca5917735325cd93b0fb21dd29} 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE int32\+\_\+t ITM\+\_\+\+Check\+Char (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+ITM Check Character. 
+
+Checks whether a character is pending for reading in the variable \doxylink{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}{ITM\+\_\+\+Rx\+Buffer}. \begin{DoxyReturn}{Returns}
+0 No character available. 
+
+1 Character available. 
+\end{DoxyReturn}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gac3ee2c30a1ac4ed34c8a866a17decd53}\index{ITM Functions@{ITM Functions}!ITM\_ReceiveChar@{ITM\_ReceiveChar}}
+\index{ITM\_ReceiveChar@{ITM\_ReceiveChar}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_ReceiveChar()}{ITM\_ReceiveChar()}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gac3ee2c30a1ac4ed34c8a866a17decd53} 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE int32\+\_\+t ITM\+\_\+\+Receive\+Char (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+ITM Receive Character. 
+
+Inputs a character via the external variable \doxylink{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}{ITM\+\_\+\+Rx\+Buffer}. \begin{DoxyReturn}{Returns}
+Received character. 
+
+-\/1 No character pending. 
+\end{DoxyReturn}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gac90a497bd64286b84552c2c553d3419e}\index{ITM Functions@{ITM Functions}!ITM\_SendChar@{ITM\_SendChar}}
+\index{ITM\_SendChar@{ITM\_SendChar}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_SendChar()}{ITM\_SendChar()}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gac90a497bd64286b84552c2c553d3419e} 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE uint32\+\_\+t ITM\+\_\+\+Send\+Char (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+ITM Send Character. 
+
+Transmits a character via the ITM channel 0, and \begin{DoxyItemize}
+\item Just returns when no debugger is connected that has booked the output. \item Is blocking when a debugger is connected, but the previous character sent has not been transmitted. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em ch} & Character to transmit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Character to transmit. 
+\end{DoxyReturn}
+\end{DoxyItemize}
+
+
+\label{doc-var-members}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_doc-var-members}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{Variable Documentation}
+\Hypertarget{group___c_m_s_i_s__core___debug_functions_gabf3dad5382e355447fb865314cadfbec}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gabf3dad5382e355447fb865314cadfbec} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved0}
+
+bit\+: 0..26 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga332c1a3422dbde9bebd0ca8b24c7d109}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga332c1a3422dbde9bebd0ca8b24c7d109} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved0}
+
+bit\+: 0..26 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_gafbce95646fd514c10aa85ec0a33db728}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{\_reserved0}{\_reserved0}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gafbce95646fd514c10aa85ec0a33db728} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::\+\_\+reserved0}
+
+bit\+: 0..26 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3f9ed69614380ecb999eae0f77fca012}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3f9ed69614380ecb999eae0f77fca012} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved0}
+
+bit\+: 9..31 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga05ec93c88fe65f8df551fa86263ba4ea}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga05ec93c88fe65f8df551fa86263ba4ea} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved0}
+
+bit\+: 9..31 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad2eb0a06de4f03f58874a727716aa9aa}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{\_reserved0}{\_reserved0}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad2eb0a06de4f03f58874a727716aa9aa} 
+uint32\+\_\+t IPSR\+\_\+\+Type\+::\+\_\+reserved0}
+
+bit\+: 9..31 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga31c7329ed10f9a1c44f748514e346f12}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga31c7329ed10f9a1c44f748514e346f12} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved0}
+
+bit\+: 9 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7886e0dd5c880e4a4596cd85b387f1e9}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7886e0dd5c880e4a4596cd85b387f1e9} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved0}
+
+bit\+: 9 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf438e0f407357e914a70b5bd4d6a97c5}\index{ITM Functions@{ITM Functions}!\_reserved0@{\_reserved0}}
+\index{\_reserved0@{\_reserved0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{\_reserved0}{\_reserved0}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf438e0f407357e914a70b5bd4d6a97c5} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::\+\_\+reserved0}
+
+bit\+: 9 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga76e8a7a954b165fa5b38772e00114277}\index{ITM Functions@{ITM Functions}!\_reserved1@{\_reserved1}}
+\index{\_reserved1@{\_reserved1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga76e8a7a954b165fa5b38772e00114277} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved1}
+
+bit\+: 2..31 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1a9d892dccbc390a8df16d128f382133}\index{ITM Functions@{ITM Functions}!\_reserved1@{\_reserved1}}
+\index{\_reserved1@{\_reserved1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga1a9d892dccbc390a8df16d128f382133} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved1}
+
+bit\+: 2..31 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa7a5662079a447f801034d108f80ce49}\index{ITM Functions@{ITM Functions}!\_reserved1@{\_reserved1}}
+\index{\_reserved1@{\_reserved1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{\_reserved1}{\_reserved1}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa7a5662079a447f801034d108f80ce49} 
+uint32\+\_\+t CONTROL\+\_\+\+Type\+::\+\_\+reserved1}
+
+bit\+: 2..31 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae6bde775dcac2ee4acc23a75d4106d38}\index{ITM Functions@{ITM Functions}!\_reserved1@{\_reserved1}}
+\index{\_reserved1@{\_reserved1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae6bde775dcac2ee4acc23a75d4106d38} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved1}
+
+bit\+: 16..23 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa999499fe673f729a9f9b7b53196ca71}\index{ITM Functions@{ITM Functions}!\_reserved1@{\_reserved1}}
+\index{\_reserved1@{\_reserved1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa999499fe673f729a9f9b7b53196ca71} 
+uint32\+\_\+t  \{ ... \} \+::\+\_\+reserved1}
+
+bit\+: 16..23 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga790056bb6f20ea16cecc784b0dd19ad6}\index{ITM Functions@{ITM Functions}!\_reserved1@{\_reserved1}}
+\index{\_reserved1@{\_reserved1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{\_reserved1}{\_reserved1}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga790056bb6f20ea16cecc784b0dd19ad6} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::\+\_\+reserved1}
+
+bit\+: 16..23 Reserved \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9e5e4421ef9c3d5b7ff8b24abd4e99b3}\index{ITM Functions@{ITM Functions}!ACPR@{ACPR}}
+\index{ACPR@{ACPR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ACPR}{ACPR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga9e5e4421ef9c3d5b7ff8b24abd4e99b3} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+ACPR}
+
+Offset\+: 0x010 (R/W) Asynchronous Clock Prescaler Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf084e1b2dad004a88668efea1dfe7fa1}\index{ITM Functions@{ITM Functions}!ADR@{ADR}}
+\index{ADR@{ADR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ADR}{ADR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf084e1b2dad004a88668efea1dfe7fa1} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCB\+\_\+\+Type\+::\+ADR}
+
+Offset\+: 0x04C (R/ ) Auxiliary Feature Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab65372404ce64b0f0b35e2709429404e}\index{ITM Functions@{ITM Functions}!AFSR@{AFSR}}
+\index{AFSR@{AFSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{AFSR}{AFSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab65372404ce64b0f0b35e2709429404e} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+AFSR}
+
+Offset\+: 0x03C (R/W) Auxiliary Fault Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad3e5b8934c647eb1b7383c1894f01380}\index{ITM Functions@{ITM Functions}!AIRCR@{AIRCR}}
+\index{AIRCR@{AIRCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{AIRCR}{AIRCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad3e5b8934c647eb1b7383c1894f01380} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+AIRCR}
+
+Offset\+: 0x00C (R/W) Application Interrupt and Reset Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga6d46ac7285e31c07641d1b545f4bac00}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga6d46ac7285e31c07641d1b545f4bac00} 
+struct  \{ ... \}  APSR\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad9863135ef119d56ce8a7323e62fffe1}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad9863135ef119d56ce8a7323e62fffe1} 
+struct  \{ ... \}  APSR\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8c66fa5098de625aacc80ab294fcd08c}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8c66fa5098de625aacc80ab294fcd08c} 
+struct  \{ ... \}  CONTROL\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9db58aaf1fdfb8a6f2e3ec2baa80a35f}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga9db58aaf1fdfb8a6f2e3ec2baa80a35f} 
+struct  \{ ... \}  CONTROL\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa3e99ab58b8a0a8eeebc57809c5ed486}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa3e99ab58b8a0a8eeebc57809c5ed486} 
+struct  \{ ... \}  IPSR\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga923b328fc38ba700c40ea72c7c5efa37}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga923b328fc38ba700c40ea72c7c5efa37} 
+struct  \{ ... \}  IPSR\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2aa4fd82a09ddca20dd3eaa6d2ff5810}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2aa4fd82a09ddca20dd3eaa6d2ff5810} 
+struct  \{ ... \}  x\+PSR\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga22a7a1eb37b36a4d1a501f43c7c62d51}\index{ITM Functions@{ITM Functions}!b@{b}}
+\index{b@{b}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[struct]}{[struct]}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga22a7a1eb37b36a4d1a501f43c7c62d51} 
+struct  \{ ... \}  x\+PSR\+\_\+\+Type\+::b}
+
+Structure used for bit access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3f8e7e58be4e41c88dfa78f54589271c}\index{ITM Functions@{ITM Functions}!BFAR@{BFAR}}
+\index{BFAR@{BFAR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{BFAR}{BFAR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3f8e7e58be4e41c88dfa78f54589271c} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+BFAR}
+
+Offset\+: 0x038 (R/W) Bus\+Fault Address Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae8221f44084d575483cdd6acfb73bd4d}\index{ITM Functions@{ITM Functions}!C@{C}}
+\index{C@{C}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae8221f44084d575483cdd6acfb73bd4d} 
+uint32\+\_\+t  \{ ... \} \+::C}
+
+bit\+: 29 Carry condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad97c853afb8314cca4e6088ed233ba22}\index{ITM Functions@{ITM Functions}!C@{C}}
+\index{C@{C}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad97c853afb8314cca4e6088ed233ba22} 
+uint32\+\_\+t  \{ ... \} \+::C}
+
+bit\+: 29 Carry condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga86e2c5b891ecef1ab55b1edac0da79a6}\index{ITM Functions@{ITM Functions}!C@{C}}
+\index{C@{C}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{C}{C}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga86e2c5b891ecef1ab55b1edac0da79a6} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::C}
+
+bit\+: 29 Carry condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga6958dd67c8a7a394182dd80227f4e6fc}\index{ITM Functions@{ITM Functions}!C@{C}}
+\index{C@{C}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga6958dd67c8a7a394182dd80227f4e6fc} 
+uint32\+\_\+t  \{ ... \} \+::C}
+
+bit\+: 29 Carry condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga33983ade6ebe26479b65ed77f29e79d1}\index{ITM Functions@{ITM Functions}!C@{C}}
+\index{C@{C}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga33983ade6ebe26479b65ed77f29e79d1} 
+uint32\+\_\+t  \{ ... \} \+::C}
+
+bit\+: 29 Carry condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga40213a6b5620410cac83b0d89564609d}\index{ITM Functions@{ITM Functions}!C@{C}}
+\index{C@{C}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{C}{C}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga40213a6b5620410cac83b0d89564609d} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::C}
+
+bit\+: 29 Carry condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gafcadb0c6d35b21cdc0018658a13942de}\index{ITM Functions@{ITM Functions}!CALIB@{CALIB}}
+\index{CALIB@{CALIB}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CALIB}{CALIB}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gafcadb0c6d35b21cdc0018658a13942de} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t Sys\+Tick\+\_\+\+Type\+::\+CALIB}
+
+Offset\+: 0x00C (R/ ) Sys\+Tick Calibration Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2d6653b0b70faac936046a02809b577f}\index{ITM Functions@{ITM Functions}!CCR@{CCR}}
+\index{CCR@{CCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CCR}{CCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2d6653b0b70faac936046a02809b577f} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+CCR}
+
+Offset\+: 0x014 (R/W) Configuration Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga0cda9e061b42373383418663092ad19a}\index{ITM Functions@{ITM Functions}!CFSR@{CFSR}}
+\index{CFSR@{CFSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CFSR}{CFSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga0cda9e061b42373383418663092ad19a} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+CFSR}
+
+Offset\+: 0x028 (R/W) Configurable Fault Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga30bb2b166b1723867da4a708935677ba}\index{ITM Functions@{ITM Functions}!CID0@{CID0}}
+\index{CID0@{CID0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CID0}{CID0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga30bb2b166b1723867da4a708935677ba} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+CID0}
+
+Offset\+: 0x\+FF0 (R/ ) ITM Component Identification Register \#0 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gac40df2c3a6cef02f90b4e82c8204756f}\index{ITM Functions@{ITM Functions}!CID1@{CID1}}
+\index{CID1@{CID1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CID1}{CID1}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gac40df2c3a6cef02f90b4e82c8204756f} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+CID1}
+
+Offset\+: 0x\+FF4 (R/ ) ITM Component Identification Register \#1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8000b92e4e528ae7ac4cb8b8d9f6757d}\index{ITM Functions@{ITM Functions}!CID2@{CID2}}
+\index{CID2@{CID2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CID2}{CID2}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8000b92e4e528ae7ac4cb8b8d9f6757d} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+CID2}
+
+Offset\+: 0x\+FF8 (R/ ) ITM Component Identification Register \#2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga43451f43f514108d9eaed5b017f8d921}\index{ITM Functions@{ITM Functions}!CID3@{CID3}}
+\index{CID3@{CID3}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CID3}{CID3}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga43451f43f514108d9eaed5b017f8d921} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+CID3}
+
+Offset\+: 0x\+FFC (R/ ) ITM Component Identification Register \#3 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga0e10e292cb019a832b03ddd055b2f6ac}\index{ITM Functions@{ITM Functions}!CLAIMCLR@{CLAIMCLR}}
+\index{CLAIMCLR@{CLAIMCLR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CLAIMCLR}{CLAIMCLR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga0e10e292cb019a832b03ddd055b2f6ac} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+CLAIMCLR}
+
+Offset\+: 0x\+FA4 (R/W) Claim tag clear \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf8b7d15fa5252b733dd4b11fa1b5730a}\index{ITM Functions@{ITM Functions}!CLAIMSET@{CLAIMSET}}
+\index{CLAIMSET@{CLAIMSET}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CLAIMSET}{CLAIMSET}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf8b7d15fa5252b733dd4b11fa1b5730a} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+CLAIMSET}
+
+Offset\+: 0x\+FA0 (R/W) Claim tag set \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga61c2965af5bc0643f9af65620b0e67c9}\index{ITM Functions@{ITM Functions}!COMP0@{COMP0}}
+\index{COMP0@{COMP0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{COMP0}{COMP0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga61c2965af5bc0643f9af65620b0e67c9} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+COMP0}
+
+Offset\+: 0x020 (R/W) Comparator Register 0 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga38714af6b7fa7c64d68f5e1efbe7a931}\index{ITM Functions@{ITM Functions}!COMP1@{COMP1}}
+\index{COMP1@{COMP1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{COMP1}{COMP1}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga38714af6b7fa7c64d68f5e1efbe7a931} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+COMP1}
+
+Offset\+: 0x030 (R/W) Comparator Register 1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga5ae6dde39989f27bae90afc2347deb46}\index{ITM Functions@{ITM Functions}!COMP2@{COMP2}}
+\index{COMP2@{COMP2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{COMP2}{COMP2}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga5ae6dde39989f27bae90afc2347deb46} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+COMP2}
+
+Offset\+: 0x040 (R/W) Comparator Register 2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga85eb73d1848ac3f82d39d6c3e8910847}\index{ITM Functions@{ITM Functions}!COMP3@{COMP3}}
+\index{COMP3@{COMP3}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{COMP3}{COMP3}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga85eb73d1848ac3f82d39d6c3e8910847} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+COMP3}
+
+Offset\+: 0x050 (R/W) Comparator Register 3 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gac6a860c1b8d8154a1f00d99d23b67764}\index{ITM Functions@{ITM Functions}!CPACR@{CPACR}}
+\index{CPACR@{CPACR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CPACR}{CPACR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gac6a860c1b8d8154a1f00d99d23b67764} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+CPACR}
+
+Offset\+: 0x088 (R/W) Coprocessor Access Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2c08096c82abe245c0fa97badc458154}\index{ITM Functions@{ITM Functions}!CPICNT@{CPICNT}}
+\index{CPICNT@{CPICNT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CPICNT}{CPICNT}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2c08096c82abe245c0fa97badc458154} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+CPICNT}
+
+Offset\+: 0x008 (R/W) CPI Count Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga21e08d546d8b641bee298a459ea73e46}\index{ITM Functions@{ITM Functions}!CPUID@{CPUID}}
+\index{CPUID@{CPUID}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CPUID}{CPUID}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga21e08d546d8b641bee298a459ea73e46} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCB\+\_\+\+Type\+::\+CPUID}
+
+Offset\+: 0x000 (R/ ) CPUID Base Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8826aa84e5806053395a742d38d59d0f}\index{ITM Functions@{ITM Functions}!CSPSR@{CSPSR}}
+\index{CSPSR@{CSPSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CSPSR}{CSPSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8826aa84e5806053395a742d38d59d0f} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+CSPSR}
+
+Offset\+: 0x004 (R/W) Current Parallel Port Size Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gadd790c53410023b3b581919bb681fe2a}\index{ITM Functions@{ITM Functions}!CTRL@{CTRL}}
+\index{CTRL@{CTRL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CTRL}{CTRL}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gadd790c53410023b3b581919bb681fe2a} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+CTRL}
+
+Offset\+: 0x000 (R/W) Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga875e7afa5c4fd43997fb544a4ac6e37e}\index{ITM Functions@{ITM Functions}!CTRL@{CTRL}}
+\index{CTRL@{CTRL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CTRL}{CTRL}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga875e7afa5c4fd43997fb544a4ac6e37e} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t Sys\+Tick\+\_\+\+Type\+::\+CTRL}
+
+Offset\+: 0x000 (R/W) Sys\+Tick Control and Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga102eaa529d9098242851cb57c52b42d9}\index{ITM Functions@{ITM Functions}!CYCCNT@{CYCCNT}}
+\index{CYCCNT@{CYCCNT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{CYCCNT}{CYCCNT}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga102eaa529d9098242851cb57c52b42d9} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+CYCCNT}
+
+Offset\+: 0x004 (R/W) Cycle Count Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaab3cc92ef07bc1f04b3a3aa6db2c2d55}\index{ITM Functions@{ITM Functions}!DCRDR@{DCRDR}}
+\index{DCRDR@{DCRDR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DCRDR}{DCRDR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaab3cc92ef07bc1f04b3a3aa6db2c2d55} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t Core\+Debug\+\_\+\+Type\+::\+DCRDR}
+
+Offset\+: 0x008 (R/W) Debug Core Register Data Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf907cf64577eaf927dac6787df6dd98b}\index{ITM Functions@{ITM Functions}!DCRSR@{DCRSR}}
+\index{DCRSR@{DCRSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DCRSR}{DCRSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf907cf64577eaf927dac6787df6dd98b} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t Core\+Debug\+\_\+\+Type\+::\+DCRSR}
+
+Offset\+: 0x004 ( /W) Debug Core Register Selector Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaeb3126abc4c258a858f21f356c0df6ee}\index{ITM Functions@{ITM Functions}!DEMCR@{DEMCR}}
+\index{DEMCR@{DEMCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DEMCR}{DEMCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaeb3126abc4c258a858f21f356c0df6ee} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t Core\+Debug\+\_\+\+Type\+::\+DEMCR}
+
+Offset\+: 0x00C (R/W) Debug Exception and Monitor Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gabc0ecda8a5446bc754080276bad77514}\index{ITM Functions@{ITM Functions}!DEVID@{DEVID}}
+\index{DEVID@{DEVID}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DEVID}{DEVID}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gabc0ecda8a5446bc754080276bad77514} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+DEVID}
+
+Offset\+: 0x\+FC8 (R/ ) TPIU\+\_\+\+DEVID \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad98855854a719bbea33061e71529a472}\index{ITM Functions@{ITM Functions}!DEVTYPE@{DEVTYPE}}
+\index{DEVTYPE@{DEVTYPE}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DEVTYPE}{DEVTYPE}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad98855854a719bbea33061e71529a472} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+DEVTYPE}
+
+Offset\+: 0x\+FCC (R/ ) TPIU\+\_\+\+DEVTYPE \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga85dd6fe77aab17e7ea89a52c59da6004}\index{ITM Functions@{ITM Functions}!DFR@{DFR}}
+\index{DFR@{DFR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DFR}{DFR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga85dd6fe77aab17e7ea89a52c59da6004} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCB\+\_\+\+Type\+::\+DFR}
+
+Offset\+: 0x048 (R/ ) Debug Feature Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga191579bde0d21ff51d30a714fd887033}\index{ITM Functions@{ITM Functions}!DFSR@{DFSR}}
+\index{DFSR@{DFSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DFSR}{DFSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga191579bde0d21ff51d30a714fd887033} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+DFSR}
+
+Offset\+: 0x030 (R/W) Debug Fault Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad63554e4650da91a8e79929cbb63db66}\index{ITM Functions@{ITM Functions}!DHCSR@{DHCSR}}
+\index{DHCSR@{DHCSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{DHCSR}{DHCSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad63554e4650da91a8e79929cbb63db66} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t Core\+Debug\+\_\+\+Type\+::\+DHCSR}
+
+Offset\+: 0x000 (R/W) Debug Halting Control and Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9fe20c16c5167ca61486caf6832686d1}\index{ITM Functions@{ITM Functions}!EXCCNT@{EXCCNT}}
+\index{EXCCNT@{EXCCNT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{EXCCNT}{EXCCNT}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga9fe20c16c5167ca61486caf6832686d1} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+EXCCNT}
+
+Offset\+: 0x00C (R/W) Exception Overhead Count Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3f68b6e73561b4849ebf953a894df8d2}\index{ITM Functions@{ITM Functions}!FFCR@{FFCR}}
+\index{FFCR@{FFCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FFCR}{FFCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3f68b6e73561b4849ebf953a894df8d2} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+FFCR}
+
+Offset\+: 0x304 (R/W) Formatter and Flush Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga6c47a0b4c7ffc66093ef993d36bb441c}\index{ITM Functions@{ITM Functions}!FFSR@{FFSR}}
+\index{FFSR@{FFSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FFSR}{FFSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga6c47a0b4c7ffc66093ef993d36bb441c} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+FFSR}
+
+Offset\+: 0x300 (R/ ) Formatter and Flush Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa4d7b5cf39dff9f53bf7f69bc287a814}\index{ITM Functions@{ITM Functions}!FIFO0@{FIFO0}}
+\index{FIFO0@{FIFO0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FIFO0}{FIFO0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa4d7b5cf39dff9f53bf7f69bc287a814} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+FIFO0}
+
+Offset\+: 0x\+EEC (R/ ) Integration ETM Data \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga061372fcd72f1eea871e2d9c1be849bc}\index{ITM Functions@{ITM Functions}!FIFO1@{FIFO1}}
+\index{FIFO1@{FIFO1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FIFO1}{FIFO1}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga061372fcd72f1eea871e2d9c1be849bc} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+FIFO1}
+
+Offset\+: 0x\+EFC (R/ ) Integration ITM Data \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1cfc48384ebd8fd8fb7e5d955aae6c97}\index{ITM Functions@{ITM Functions}!FOLDCNT@{FOLDCNT}}
+\index{FOLDCNT@{FOLDCNT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FOLDCNT}{FOLDCNT}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga1cfc48384ebd8fd8fb7e5d955aae6c97} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+FOLDCNT}
+
+Offset\+: 0x018 (R/W) Folded-\/instruction Count Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad6901bfd8a0089ca7e8a20475cf494a8}\index{ITM Functions@{ITM Functions}!FSCR@{FSCR}}
+\index{FSCR@{FSCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FSCR}{FSCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad6901bfd8a0089ca7e8a20475cf494a8} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+FSCR}
+
+Offset\+: 0x308 (R/ ) Formatter Synchronization Counter Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga579ae082f58a0317b7ef029b20f52889}\index{ITM Functions@{ITM Functions}!FUNCTION0@{FUNCTION0}}
+\index{FUNCTION0@{FUNCTION0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FUNCTION0}{FUNCTION0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga579ae082f58a0317b7ef029b20f52889} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+FUNCTION0}
+
+Offset\+: 0x028 (R/W) Function Register 0 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8dfcf25675f9606aa305c46e85182e4e}\index{ITM Functions@{ITM Functions}!FUNCTION1@{FUNCTION1}}
+\index{FUNCTION1@{FUNCTION1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FUNCTION1}{FUNCTION1}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8dfcf25675f9606aa305c46e85182e4e} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+FUNCTION1}
+
+Offset\+: 0x038 (R/W) Function Register 1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab1b60d6600c38abae515bab8e86a188f}\index{ITM Functions@{ITM Functions}!FUNCTION2@{FUNCTION2}}
+\index{FUNCTION2@{FUNCTION2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FUNCTION2}{FUNCTION2}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab1b60d6600c38abae515bab8e86a188f} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+FUNCTION2}
+
+Offset\+: 0x048 (R/W) Function Register 2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga52d4ff278fae6f9216c63b74ce328841}\index{ITM Functions@{ITM Functions}!FUNCTION3@{FUNCTION3}}
+\index{FUNCTION3@{FUNCTION3}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{FUNCTION3}{FUNCTION3}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga52d4ff278fae6f9216c63b74ce328841} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+FUNCTION3}
+
+Offset\+: 0x058 (R/W) Function Register 3 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga14ad254659362b9752c69afe3fd80934}\index{ITM Functions@{ITM Functions}!HFSR@{HFSR}}
+\index{HFSR@{HFSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{HFSR}{HFSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga14ad254659362b9752c69afe3fd80934} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+HFSR}
+
+Offset\+: 0x02C (R/W) Hard\+Fault Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gac803b714c8dd99a308ce9a0a2c611c56}\index{ITM Functions@{ITM Functions}!IABR@{IABR}}
+\index{IABR@{IABR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{IABR}{IABR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gac803b714c8dd99a308ce9a0a2c611c56} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t NVIC\+\_\+\+Type\+::\+IABR}
+
+Offset\+: 0x200 (R/W) Interrupt Active bit Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7852b170a173ae8bddc0de0f24ed0cd0}\index{ITM Functions@{ITM Functions}!ICER@{ICER}}
+\index{ICER@{ICER}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ICER}{ICER}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7852b170a173ae8bddc0de0f24ed0cd0} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t NVIC\+\_\+\+Type\+::\+ICER}
+
+Offset\+: 0x080 (R/W) Interrupt Clear Enable Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa0b86868ef5ae33c2c4157847f2ca509}\index{ITM Functions@{ITM Functions}!ICI\_IT\_1@{ICI\_IT\_1}}
+\index{ICI\_IT\_1@{ICI\_IT\_1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa0b86868ef5ae33c2c4157847f2ca509} 
+uint32\+\_\+t  \{ ... \} \+::\+ICI\+\_\+\+IT\+\_\+1}
+
+bit\+: 10..15 ICI/\+IT part 1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gace1efbbdeb73f503807c1f095d61090b}\index{ITM Functions@{ITM Functions}!ICI\_IT\_1@{ICI\_IT\_1}}
+\index{ICI\_IT\_1@{ICI\_IT\_1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gace1efbbdeb73f503807c1f095d61090b} 
+uint32\+\_\+t  \{ ... \} \+::\+ICI\+\_\+\+IT\+\_\+1}
+
+bit\+: 10..15 ICI/\+IT part 1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa57a08ddc8ac3ee066e88dfddc3aa72a}\index{ITM Functions@{ITM Functions}!ICI\_IT\_1@{ICI\_IT\_1}}
+\index{ICI\_IT\_1@{ICI\_IT\_1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ICI\_IT\_1}{ICI\_IT\_1}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa57a08ddc8ac3ee066e88dfddc3aa72a} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::\+ICI\+\_\+\+IT\+\_\+1}
+
+bit\+: 10..15 ICI/\+IT part 1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab73abb0327c2bd74834d92f5f4ba7351}\index{ITM Functions@{ITM Functions}!ICI\_IT\_2@{ICI\_IT\_2}}
+\index{ICI\_IT\_2@{ICI\_IT\_2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab73abb0327c2bd74834d92f5f4ba7351} 
+uint32\+\_\+t  \{ ... \} \+::\+ICI\+\_\+\+IT\+\_\+2}
+
+bit\+: 25..26 ICI/\+IT part 2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa375bb690d2d9a0a045f891205938ddc}\index{ITM Functions@{ITM Functions}!ICI\_IT\_2@{ICI\_IT\_2}}
+\index{ICI\_IT\_2@{ICI\_IT\_2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa375bb690d2d9a0a045f891205938ddc} 
+uint32\+\_\+t  \{ ... \} \+::\+ICI\+\_\+\+IT\+\_\+2}
+
+bit\+: 25..26 ICI/\+IT part 2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gadf3639bb7c6e54e5712f2ddef46a702e}\index{ITM Functions@{ITM Functions}!ICI\_IT\_2@{ICI\_IT\_2}}
+\index{ICI\_IT\_2@{ICI\_IT\_2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ICI\_IT\_2}{ICI\_IT\_2}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gadf3639bb7c6e54e5712f2ddef46a702e} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::\+ICI\+\_\+\+IT\+\_\+2}
+
+bit\+: 25..26 ICI/\+IT part 2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae8612ce4b44c9bc76293ec3e7e3ffbd8}\index{ITM Functions@{ITM Functions}!ICPR@{ICPR}}
+\index{ICPR@{ICPR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ICPR}{ICPR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae8612ce4b44c9bc76293ec3e7e3ffbd8} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t NVIC\+\_\+\+Type\+::\+ICPR}
+
+Offset\+: 0x180 (R/W) Interrupt Clear Pending Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga0ca18ef984d132c6bf4d9b61cd00f05a}\index{ITM Functions@{ITM Functions}!ICSR@{ICSR}}
+\index{ICSR@{ICSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ICSR}{ICSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga0ca18ef984d132c6bf4d9b61cd00f05a} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+ICSR}
+
+Offset\+: 0x004 (R/W) Interrupt Control and State Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga34ec1d771245eb9bd0e3ec9336949762}\index{ITM Functions@{ITM Functions}!ICTR@{ICTR}}
+\index{ICTR@{ICTR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ICTR}{ICTR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga34ec1d771245eb9bd0e3ec9336949762} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCn\+SCB\+\_\+\+Type\+::\+ICTR}
+
+Offset\+: 0x004 (R/ ) Interrupt Controller Type Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae2ce4d3a54df2fd11a197ccac4406cd0}\index{ITM Functions@{ITM Functions}!IMCR@{IMCR}}
+\index{IMCR@{IMCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{IMCR}{IMCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae2ce4d3a54df2fd11a197ccac4406cd0} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t ITM\+\_\+\+Type\+::\+IMCR}
+
+Offset\+: 0x\+F00 (R/W) ITM Integration Mode Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gabff8c80bd2bdef960e4092421738118c}\index{ITM Functions@{ITM Functions}!IP@{IP}}
+\index{IP@{IP}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{IP}{IP}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gabff8c80bd2bdef960e4092421738118c} 
+\+\_\+\+\_\+\+IOM uint8\+\_\+t NVIC\+\_\+\+Type\+::\+IP}
+
+Offset\+: 0x300 (R/W) Interrupt Priority Register (8Bit wide) \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga66eb82a070953f09909f39b8e516fb91}\index{ITM Functions@{ITM Functions}!IRR@{IRR}}
+\index{IRR@{IRR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{IRR}{IRR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga66eb82a070953f09909f39b8e516fb91} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+IRR}
+
+Offset\+: 0x\+EFC (R/ ) ITM Integration Read Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga00e93446b3433a807f1574fa2f1fce54}\index{ITM Functions@{ITM Functions}!ISAR@{ISAR}}
+\index{ISAR@{ISAR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ISAR}{ISAR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga00e93446b3433a807f1574fa2f1fce54} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCB\+\_\+\+Type\+::\+ISAR}
+
+Offset\+: 0x060 (R/ ) Instruction Set Attributes Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8164a66b3f42d89200ec44f8857c3de7}\index{ITM Functions@{ITM Functions}!ISER@{ISER}}
+\index{ISER@{ISER}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ISER}{ISER}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8164a66b3f42d89200ec44f8857c3de7} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t NVIC\+\_\+\+Type\+::\+ISER}
+
+Offset\+: 0x000 (R/W) Interrupt Set Enable Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga6d31e250e4649be55603d7f87e909c7e}\index{ITM Functions@{ITM Functions}!ISPR@{ISPR}}
+\index{ISPR@{ISPR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ISPR}{ISPR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga6d31e250e4649be55603d7f87e909c7e} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t NVIC\+\_\+\+Type\+::\+ISPR}
+
+Offset\+: 0x100 (R/W) Interrupt Set Pending Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab06d1c73647041626ca3d21d2fcf2b86}\index{ITM Functions@{ITM Functions}!ISR@{ISR}}
+\index{ISR@{ISR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab06d1c73647041626ca3d21d2fcf2b86} 
+uint32\+\_\+t  \{ ... \} \+::\+ISR}
+
+bit\+: 0.. 8 Exception number \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf1692e86e3177e9912bb78124d8a3df6}\index{ITM Functions@{ITM Functions}!ISR@{ISR}}
+\index{ISR@{ISR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf1692e86e3177e9912bb78124d8a3df6} 
+uint32\+\_\+t  \{ ... \} \+::\+ISR}
+
+bit\+: 0.. 8 Exception number \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab46e5f1b2f4d17cfb9aca4fffcbb2fa5}\index{ITM Functions@{ITM Functions}!ISR@{ISR}}
+\index{ISR@{ISR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ISR}{ISR}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab46e5f1b2f4d17cfb9aca4fffcbb2fa5} 
+uint32\+\_\+t IPSR\+\_\+\+Type\+::\+ISR}
+
+bit\+: 0.. 8 Exception number \Hypertarget{group___c_m_s_i_s__core___debug_functions_gafa5aec2725e212503b178e4194bdcabe}\index{ITM Functions@{ITM Functions}!ISR@{ISR}}
+\index{ISR@{ISR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gafa5aec2725e212503b178e4194bdcabe} 
+uint32\+\_\+t  \{ ... \} \+::\+ISR}
+
+bit\+: 0.. 8 Exception number \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9553e94d113936ba6421781fe70a9714}\index{ITM Functions@{ITM Functions}!ISR@{ISR}}
+\index{ISR@{ISR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga9553e94d113936ba6421781fe70a9714} 
+uint32\+\_\+t  \{ ... \} \+::\+ISR}
+
+bit\+: 0.. 8 Exception number \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3e9120dcf1a829fc8d2302b4d0673970}\index{ITM Functions@{ITM Functions}!ISR@{ISR}}
+\index{ISR@{ISR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ISR}{ISR}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3e9120dcf1a829fc8d2302b4d0673970} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::\+ISR}
+
+bit\+: 0.. 8 Exception number \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaaa573b2e073e76e93c51ecec79c616d0}\index{ITM Functions@{ITM Functions}!ITATBCTR0@{ITATBCTR0}}
+\index{ITATBCTR0@{ITATBCTR0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITATBCTR0}{ITATBCTR0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaaa573b2e073e76e93c51ecec79c616d0} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+ITATBCTR0}
+
+Offset\+: 0x\+EF8 (R/ ) ITATBCTR0 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab358319b969d3fed0f89bbe33e9f1652}\index{ITM Functions@{ITM Functions}!ITATBCTR2@{ITATBCTR2}}
+\index{ITATBCTR2@{ITATBCTR2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITATBCTR2}{ITATBCTR2}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab358319b969d3fed0f89bbe33e9f1652} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+ITATBCTR2}
+
+Offset\+: 0x\+EF0 (R/ ) ITATBCTR2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaaa4c823c10f115f7517c82ef86a5a68d}\index{ITM Functions@{ITM Functions}!ITCTRL@{ITCTRL}}
+\index{ITCTRL@{ITCTRL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITCTRL}{ITCTRL}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaaa4c823c10f115f7517c82ef86a5a68d} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+ITCTRL}
+
+Offset\+: 0x\+F00 (R/W) Integration Mode Control \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}\index{ITM Functions@{ITM Functions}!ITM\_RxBuffer@{ITM\_RxBuffer}}
+\index{ITM\_RxBuffer@{ITM\_RxBuffer}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_RxBuffer}{ITM\_RxBuffer}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8} 
+volatile int32\+\_\+t ITM\+\_\+\+Rx\+Buffer\hspace{0.3cm}{\ttfamily [extern]}}
+
+External variable to receive characters. \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8}\index{ITM Functions@{ITM Functions}!ITM\_RxBuffer@{ITM\_RxBuffer}}
+\index{ITM\_RxBuffer@{ITM\_RxBuffer}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{ITM\_RxBuffer}{ITM\_RxBuffer}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga12e68e55a7badc271b948d6c7230b2a8} 
+volatile int32\+\_\+t ITM\+\_\+\+Rx\+Buffer\hspace{0.3cm}{\ttfamily [extern]}}
+
+External variable to receive characters. \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaa9da04891e48d1a2f054de186e9c4c94}\index{ITM Functions@{ITM Functions}!IWR@{IWR}}
+\index{IWR@{IWR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{IWR}{IWR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaa9da04891e48d1a2f054de186e9c4c94} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t ITM\+\_\+\+Type\+::\+IWR}
+
+Offset\+: 0x\+EF8 ( /W) ITM Integration Write Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7f9c2a2113a11c7f3e98915f95b669d5}\index{ITM Functions@{ITM Functions}!LAR@{LAR}}
+\index{LAR@{LAR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{LAR}{LAR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7f9c2a2113a11c7f3e98915f95b669d5} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t ITM\+\_\+\+Type\+::\+LAR}
+
+Offset\+: 0x\+FB0 ( /W) ITM Lock Access Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga4780a489256bb9f54d0ba8ed4de191cd}\index{ITM Functions@{ITM Functions}!LOAD@{LOAD}}
+\index{LOAD@{LOAD}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{LOAD}{LOAD}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga4780a489256bb9f54d0ba8ed4de191cd} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t Sys\+Tick\+\_\+\+Type\+::\+LOAD}
+
+Offset\+: 0x004 (R/W) Sys\+Tick Reload Value Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3861c67933a24dd6632288c4ed0b80c8}\index{ITM Functions@{ITM Functions}!LSR@{LSR}}
+\index{LSR@{LSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{LSR}{LSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3861c67933a24dd6632288c4ed0b80c8} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+LSR}
+
+Offset\+: 0x\+FB4 (R/ ) ITM Lock Status Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gacc05d89bdb1b4fe2fa499920ec02d0b1}\index{ITM Functions@{ITM Functions}!LSUCNT@{LSUCNT}}
+\index{LSUCNT@{LSUCNT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{LSUCNT}{LSUCNT}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gacc05d89bdb1b4fe2fa499920ec02d0b1} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+LSUCNT}
+
+Offset\+: 0x014 (R/W) LSU Count Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga821eb5e71f340ec077efc064cfc567db}\index{ITM Functions@{ITM Functions}!MASK0@{MASK0}}
+\index{MASK0@{MASK0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{MASK0}{MASK0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga821eb5e71f340ec077efc064cfc567db} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+MASK0}
+
+Offset\+: 0x024 (R/W) Mask Register 0 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaabf94936c9340e62fed836dcfb152405}\index{ITM Functions@{ITM Functions}!MASK1@{MASK1}}
+\index{MASK1@{MASK1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{MASK1}{MASK1}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaabf94936c9340e62fed836dcfb152405} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+MASK1}
+
+Offset\+: 0x034 (R/W) Mask Register 1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga00ac4d830dfe0070a656cda9baed170f}\index{ITM Functions@{ITM Functions}!MASK2@{MASK2}}
+\index{MASK2@{MASK2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{MASK2}{MASK2}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga00ac4d830dfe0070a656cda9baed170f} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+MASK2}
+
+Offset\+: 0x044 (R/W) Mask Register 2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2a509d8505c37a3b64f6b24993df5f3f}\index{ITM Functions@{ITM Functions}!MASK3@{MASK3}}
+\index{MASK3@{MASK3}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{MASK3}{MASK3}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2a509d8505c37a3b64f6b24993df5f3f} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+MASK3}
+
+Offset\+: 0x054 (R/W) Mask Register 3 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2d03d0b7cec2254f39eb1c46c7445e80}\index{ITM Functions@{ITM Functions}!MMFAR@{MMFAR}}
+\index{MMFAR@{MMFAR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{MMFAR}{MMFAR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2d03d0b7cec2254f39eb1c46c7445e80} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+MMFAR}
+
+Offset\+: 0x034 (R/W) Mem\+Manage Fault Address Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga4f353f207bb27a1cea7861aa9eb00dbb}\index{ITM Functions@{ITM Functions}!MMFR@{MMFR}}
+\index{MMFR@{MMFR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{MMFR}{MMFR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga4f353f207bb27a1cea7861aa9eb00dbb} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCB\+\_\+\+Type\+::\+MMFR}
+
+Offset\+: 0x050 (R/ ) Memory Model Feature Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad5a7f995870261636f8fcab73f8d947b}\index{ITM Functions@{ITM Functions}!N@{N}}
+\index{N@{N}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad5a7f995870261636f8fcab73f8d947b} 
+uint32\+\_\+t  \{ ... \} \+::N}
+
+bit\+: 31 Negative condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga39d287bcadc8367c683536f2a9b988fe}\index{ITM Functions@{ITM Functions}!N@{N}}
+\index{N@{N}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga39d287bcadc8367c683536f2a9b988fe} 
+uint32\+\_\+t  \{ ... \} \+::N}
+
+bit\+: 31 Negative condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7e7bbba9b00b0bb3283dc07f1abe37e0}\index{ITM Functions@{ITM Functions}!N@{N}}
+\index{N@{N}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{N}{N}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7e7bbba9b00b0bb3283dc07f1abe37e0} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::N}
+
+bit\+: 31 Negative condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga0b96f63e8a29b11db6a90107f675f117}\index{ITM Functions@{ITM Functions}!N@{N}}
+\index{N@{N}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga0b96f63e8a29b11db6a90107f675f117} 
+uint32\+\_\+t  \{ ... \} \+::N}
+
+bit\+: 31 Negative condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gacdf8eca56484a3fca7ce77c5fd2ae2ca}\index{ITM Functions@{ITM Functions}!N@{N}}
+\index{N@{N}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gacdf8eca56484a3fca7ce77c5fd2ae2ca} 
+uint32\+\_\+t  \{ ... \} \+::N}
+
+bit\+: 31 Negative condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2db9a52f6d42809627d1a7a607c5dbc5}\index{ITM Functions@{ITM Functions}!N@{N}}
+\index{N@{N}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{N}{N}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2db9a52f6d42809627d1a7a607c5dbc5} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::N}
+
+bit\+: 31 Negative condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga4c929d2f87343d924a98c9c8ae603968}\index{ITM Functions@{ITM Functions}!nPRIV@{nPRIV}}
+\index{nPRIV@{nPRIV}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga4c929d2f87343d924a98c9c8ae603968} 
+uint32\+\_\+t  \{ ... \} \+::n\+PRIV}
+
+bit\+: 0 Execution privilege in Thread mode \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1affa44f25ce495c34a77ad4be6ac4e9}\index{ITM Functions@{ITM Functions}!nPRIV@{nPRIV}}
+\index{nPRIV@{nPRIV}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga1affa44f25ce495c34a77ad4be6ac4e9} 
+uint32\+\_\+t  \{ ... \} \+::n\+PRIV}
+
+bit\+: 0 Execution privilege in Thread mode \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga35c1732cf153b7b5c4bd321cf1de9605}\index{ITM Functions@{ITM Functions}!nPRIV@{nPRIV}}
+\index{nPRIV@{nPRIV}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{nPRIV}{nPRIV}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga35c1732cf153b7b5c4bd321cf1de9605} 
+uint32\+\_\+t CONTROL\+\_\+\+Type\+::n\+PRIV}
+
+bit\+: 0 Execution privilege in Thread mode \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga6353ca1d1ad9bc1be05d3b5632960113}\index{ITM Functions@{ITM Functions}!PCSR@{PCSR}}
+\index{PCSR@{PCSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PCSR}{PCSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga6353ca1d1ad9bc1be05d3b5632960113} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t DWT\+\_\+\+Type\+::\+PCSR}
+
+Offset\+: 0x01C (R/ ) Program Counter Sample Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga40745bb0af880c45827a653222d54117}\index{ITM Functions@{ITM Functions}!PFR@{PFR}}
+\index{PFR@{PFR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PFR}{PFR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga40745bb0af880c45827a653222d54117} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t SCB\+\_\+\+Type\+::\+PFR}
+
+Offset\+: 0x040 (R/ ) Processor Feature Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab4a4cc97ad658e9c46cf17490daffb8a}\index{ITM Functions@{ITM Functions}!PID0@{PID0}}
+\index{PID0@{PID0}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID0}{PID0}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab4a4cc97ad658e9c46cf17490daffb8a} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID0}
+
+Offset\+: 0x\+FE0 (R/ ) ITM Peripheral Identification Register \#0 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga89ea1d805a668d6589b22d8e678eb6a4}\index{ITM Functions@{ITM Functions}!PID1@{PID1}}
+\index{PID1@{PID1}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID1}{PID1}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga89ea1d805a668d6589b22d8e678eb6a4} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID1}
+
+Offset\+: 0x\+FE4 (R/ ) ITM Peripheral Identification Register \#1 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8471c4d77b7107cf580587509da69f38}\index{ITM Functions@{ITM Functions}!PID2@{PID2}}
+\index{PID2@{PID2}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID2}{PID2}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8471c4d77b7107cf580587509da69f38} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID2}
+
+Offset\+: 0x\+FE8 (R/ ) ITM Peripheral Identification Register \#2 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf317d5e2d946d70e6fb67c02b92cc8a3}\index{ITM Functions@{ITM Functions}!PID3@{PID3}}
+\index{PID3@{PID3}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID3}{PID3}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf317d5e2d946d70e6fb67c02b92cc8a3} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID3}
+
+Offset\+: 0x\+FEC (R/ ) ITM Peripheral Identification Register \#3 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaad5e11dd4baf6d941bd6c7450f60a158}\index{ITM Functions@{ITM Functions}!PID4@{PID4}}
+\index{PID4@{PID4}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID4}{PID4}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaad5e11dd4baf6d941bd6c7450f60a158} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID4}
+
+Offset\+: 0x\+FD0 (R/ ) ITM Peripheral Identification Register \#4 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf9085648bf18f69b5f9d1136d45e1d37}\index{ITM Functions@{ITM Functions}!PID5@{PID5}}
+\index{PID5@{PID5}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID5}{PID5}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf9085648bf18f69b5f9d1136d45e1d37} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID5}
+
+Offset\+: 0x\+FD4 (R/ ) ITM Peripheral Identification Register \#5 \Hypertarget{group___c_m_s_i_s__core___debug_functions_gad34dbe6b1072c77d36281049c8b169f6}\index{ITM Functions@{ITM Functions}!PID6@{PID6}}
+\index{PID6@{PID6}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID6}{PID6}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gad34dbe6b1072c77d36281049c8b169f6} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID6}
+
+Offset\+: 0x\+FD8 (R/ ) ITM Peripheral Identification Register \#6 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2bcec6803f28f30d5baf5e20e3517d3d}\index{ITM Functions@{ITM Functions}!PID7@{PID7}}
+\index{PID7@{PID7}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{PID7}{PID7}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2bcec6803f28f30d5baf5e20e3517d3d} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t ITM\+\_\+\+Type\+::\+PID7}
+
+Offset\+: 0x\+FDC (R/ ) ITM Peripheral Identification Register \#7 \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga081932189d3a95ab6e0a51c4ce1dfa4a}\index{ITM Functions@{ITM Functions}!PORT@{PORT}}
+\index{PORT@{PORT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[union]}{[union]}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga081932189d3a95ab6e0a51c4ce1dfa4a} 
+\+\_\+\+\_\+\+OM union  \{ ... \}  ITM\+\_\+\+Type\+::\+PORT\mbox{[}32U\mbox{]}}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port Registers \Hypertarget{group___c_m_s_i_s__core___debug_functions_gafa26ecac48e18662f00cc487cbde94a7}\index{ITM Functions@{ITM Functions}!PORT@{PORT}}
+\index{PORT@{PORT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[union]}{[union]}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gafa26ecac48e18662f00cc487cbde94a7} 
+\+\_\+\+\_\+\+OM union  \{ ... \}  ITM\+\_\+\+Type\+::\+PORT\mbox{[}32U\mbox{]}}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port Registers \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga291eadb35226edcf306c146b1b8cb113}\index{ITM Functions@{ITM Functions}!Q@{Q}}
+\index{Q@{Q}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga291eadb35226edcf306c146b1b8cb113} 
+uint32\+\_\+t  \{ ... \} \+::Q}
+
+bit\+: 27 Saturation condition flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga078fa472f7b9179c721b2e8bc929c37b}\index{ITM Functions@{ITM Functions}!Q@{Q}}
+\index{Q@{Q}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga078fa472f7b9179c721b2e8bc929c37b} 
+uint32\+\_\+t  \{ ... \} \+::Q}
+
+bit\+: 27 Saturation condition flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga22d10913489d24ab08bd83457daa88de}\index{ITM Functions@{ITM Functions}!Q@{Q}}
+\index{Q@{Q}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{Q}{Q}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga22d10913489d24ab08bd83457daa88de} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::Q}
+
+bit\+: 27 Saturation condition flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab29a584b8bd2a0f5033d004d6a0eef8a}\index{ITM Functions@{ITM Functions}!Q@{Q}}
+\index{Q@{Q}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab29a584b8bd2a0f5033d004d6a0eef8a} 
+uint32\+\_\+t  \{ ... \} \+::Q}
+
+bit\+: 27 Saturation condition flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga35a1711464c175f7264a158c3a2f4f2b}\index{ITM Functions@{ITM Functions}!Q@{Q}}
+\index{Q@{Q}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga35a1711464c175f7264a158c3a2f4f2b} 
+uint32\+\_\+t  \{ ... \} \+::Q}
+
+bit\+: 27 Saturation condition flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gadd7cbd2b0abd8954d62cd7831796ac7c}\index{ITM Functions@{ITM Functions}!Q@{Q}}
+\index{Q@{Q}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{Q}{Q}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gadd7cbd2b0abd8954d62cd7831796ac7c} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::Q}
+
+bit\+: 27 Saturation condition flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3a4840c6fa4d1ee75544f4032c88ec34}\index{ITM Functions@{ITM Functions}!SCR@{SCR}}
+\index{SCR@{SCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SCR}{SCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3a4840c6fa4d1ee75544f4032c88ec34} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+SCR}
+
+Offset\+: 0x010 (R/W) System Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7b5ae9741a99808043394c4743b635c4}\index{ITM Functions@{ITM Functions}!SHCSR@{SHCSR}}
+\index{SHCSR@{SHCSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SHCSR}{SHCSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7b5ae9741a99808043394c4743b635c4} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+SHCSR}
+
+Offset\+: 0x024 (R/W) System Handler Control and State Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga5d60f066eacb912263ae8d9eb5829b0f}\index{ITM Functions@{ITM Functions}!SHP@{SHP}}
+\index{SHP@{SHP}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SHP}{SHP}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga5d60f066eacb912263ae8d9eb5829b0f} 
+\+\_\+\+\_\+\+IOM uint8\+\_\+t SCB\+\_\+\+Type\+::\+SHP}
+
+Offset\+: 0x018 (R/W) System Handlers Priority Registers (4-\/7, 8-\/11, 12-\/15) \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga416a54e2084ce66e5ca74f152a5ecc70}\index{ITM Functions@{ITM Functions}!SLEEPCNT@{SLEEPCNT}}
+\index{SLEEPCNT@{SLEEPCNT}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SLEEPCNT}{SLEEPCNT}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga416a54e2084ce66e5ca74f152a5ecc70} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t DWT\+\_\+\+Type\+::\+SLEEPCNT}
+
+Offset\+: 0x010 (R/W) Sleep Count Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga12f79d4e3ddc69893ba8bff890d04cc5}\index{ITM Functions@{ITM Functions}!SPPR@{SPPR}}
+\index{SPPR@{SPPR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SPPR}{SPPR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga12f79d4e3ddc69893ba8bff890d04cc5} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+SPPR}
+
+Offset\+: 0x0\+F0 (R/W) Selected Pin Protocol Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga55502202fd7a4b06ad033be2e7a5da61}\index{ITM Functions@{ITM Functions}!SPSEL@{SPSEL}}
+\index{SPSEL@{SPSEL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga55502202fd7a4b06ad033be2e7a5da61} 
+uint32\+\_\+t  \{ ... \} \+::\+SPSEL}
+
+bit\+: 1 Stack to be used \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf2dd4de6b709c2f152e71c3a7122f6a5}\index{ITM Functions@{ITM Functions}!SPSEL@{SPSEL}}
+\index{SPSEL@{SPSEL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf2dd4de6b709c2f152e71c3a7122f6a5} 
+uint32\+\_\+t  \{ ... \} \+::\+SPSEL}
+
+bit\+: 1 Stack to be used \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8cc085fea1c50a8bd9adea63931ee8e2}\index{ITM Functions@{ITM Functions}!SPSEL@{SPSEL}}
+\index{SPSEL@{SPSEL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SPSEL}{SPSEL}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8cc085fea1c50a8bd9adea63931ee8e2} 
+uint32\+\_\+t CONTROL\+\_\+\+Type\+::\+SPSEL}
+
+bit\+: 1 Stack to be used \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7b72598e20066133e505bb781690dc22}\index{ITM Functions@{ITM Functions}!SSPSR@{SSPSR}}
+\index{SSPSR@{SSPSR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{SSPSR}{SSPSR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7b72598e20066133e505bb781690dc22} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t TPI\+\_\+\+Type\+::\+SSPSR}
+
+Offset\+: 0x000 (R/ ) Supported Parallel Port Size Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga37de89637466e007171c6b135299bc75}\index{ITM Functions@{ITM Functions}!STIR@{STIR}}
+\index{STIR@{STIR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{STIR}{STIR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga37de89637466e007171c6b135299bc75} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t NVIC\+\_\+\+Type\+::\+STIR}
+
+Offset\+: 0x\+E00 ( /W) Software Trigger Interrupt Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga47f09ea4b59428318c6a7481bbbecdd8}\index{ITM Functions@{ITM Functions}!T@{T}}
+\index{T@{T}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga47f09ea4b59428318c6a7481bbbecdd8} 
+uint32\+\_\+t  \{ ... \} \+::T}
+
+bit\+: 24 Thumb bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga2c869d2405c0e80884a8a1a446a0b181}\index{ITM Functions@{ITM Functions}!T@{T}}
+\index{T@{T}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga2c869d2405c0e80884a8a1a446a0b181} 
+uint32\+\_\+t  \{ ... \} \+::T}
+
+bit\+: 24 Thumb bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7eed9fe24ae8d354cd76ae1c1110a658}\index{ITM Functions@{ITM Functions}!T@{T}}
+\index{T@{T}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{T}{T}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7eed9fe24ae8d354cd76ae1c1110a658} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::T}
+
+bit\+: 24 Thumb bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga04b9fbc83759cb818dfa161d39628426}\index{ITM Functions@{ITM Functions}!TCR@{TCR}}
+\index{TCR@{TCR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{TCR}{TCR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga04b9fbc83759cb818dfa161d39628426} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t ITM\+\_\+\+Type\+::\+TCR}
+
+Offset\+: 0x\+E80 (R/W) ITM Trace Control Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gacd03c6858f7b678dab6a6121462e7807}\index{ITM Functions@{ITM Functions}!TER@{TER}}
+\index{TER@{TER}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{TER}{TER}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gacd03c6858f7b678dab6a6121462e7807} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t ITM\+\_\+\+Type\+::\+TER}
+
+Offset\+: 0x\+E00 (R/W) ITM Trace Enable Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae907229ba50538bf370fbdfd54c099a2}\index{ITM Functions@{ITM Functions}!TPR@{TPR}}
+\index{TPR@{TPR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{TPR}{TPR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae907229ba50538bf370fbdfd54c099a2} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t ITM\+\_\+\+Type\+::\+TPR}
+
+Offset\+: 0x\+E40 (R/W) ITM Trace Privilege Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga4d4cd2357f72333a82a1313228287bbd}\index{ITM Functions@{ITM Functions}!TRIGGER@{TRIGGER}}
+\index{TRIGGER@{TRIGGER}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{TRIGGER}{TRIGGER}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga4d4cd2357f72333a82a1313228287bbd} 
+\+\_\+\+\_\+\+IM uint32\+\_\+t TPI\+\_\+\+Type\+::\+TRIGGER}
+
+Offset\+: 0x\+EE8 (R/ ) TRIGGER \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga42356db5c2191303b94bbd17df2074d1}\index{ITM Functions@{ITM Functions}!u16@{u16}}
+\index{u16@{u16}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga42356db5c2191303b94bbd17df2074d1} 
+\+\_\+\+\_\+\+OM uint16\+\_\+t  \{ ... \} \+::u16}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 16-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga579c6968597371478e2dc4be0a39abee}\index{ITM Functions@{ITM Functions}!u16@{u16}}
+\index{u16@{u16}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga579c6968597371478e2dc4be0a39abee} 
+\+\_\+\+\_\+\+OM uint16\+\_\+t  \{ ... \} \+::u16}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 16-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga962a970dfd286cad7f8a8577e87d4ad3}\index{ITM Functions@{ITM Functions}!u16@{u16}}
+\index{u16@{u16}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{u16}{u16}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga962a970dfd286cad7f8a8577e87d4ad3} 
+\+\_\+\+\_\+\+OM uint16\+\_\+t ITM\+\_\+\+Type\+::u16}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 16-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga451c215f4c25f274a8828f357f0f0185}\index{ITM Functions@{ITM Functions}!u32@{u32}}
+\index{u32@{u32}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga451c215f4c25f274a8828f357f0f0185} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t  \{ ... \} \+::u32}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 32-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga68c1e3117c3700f040101ce52341b6a7}\index{ITM Functions@{ITM Functions}!u32@{u32}}
+\index{u32@{u32}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga68c1e3117c3700f040101ce52341b6a7} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t  \{ ... \} \+::u32}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 32-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga5834885903a557674f078f3b71fa8bc8}\index{ITM Functions@{ITM Functions}!u32@{u32}}
+\index{u32@{u32}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{u32}{u32}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga5834885903a557674f078f3b71fa8bc8} 
+\+\_\+\+\_\+\+OM uint32\+\_\+t ITM\+\_\+\+Type\+::u32}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 32-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_gab3c31da73c3ce0a05f389ddc27d49cec}\index{ITM Functions@{ITM Functions}!u8@{u8}}
+\index{u8@{u8}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gab3c31da73c3ce0a05f389ddc27d49cec} 
+\+\_\+\+\_\+\+OM uint8\+\_\+t  \{ ... \} \+::u8}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 8-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaea0c9c2e4451b16dc841b7c939b0ba60}\index{ITM Functions@{ITM Functions}!u8@{u8}}
+\index{u8@{u8}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaea0c9c2e4451b16dc841b7c939b0ba60} 
+\+\_\+\+\_\+\+OM uint8\+\_\+t  \{ ... \} \+::u8}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 8-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae773bf9f9dac64e6c28b14aa39f74275}\index{ITM Functions@{ITM Functions}!u8@{u8}}
+\index{u8@{u8}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{u8}{u8}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae773bf9f9dac64e6c28b14aa39f74275} 
+\+\_\+\+\_\+\+OM uint8\+\_\+t ITM\+\_\+\+Type\+::u8}
+
+Offset\+: 0x000 ( /W) ITM Stimulus Port 8-\/bit \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga27b54dc6be215416777821f8b7bb1a58}\index{ITM Functions@{ITM Functions}!V@{V}}
+\index{V@{V}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga27b54dc6be215416777821f8b7bb1a58} 
+uint32\+\_\+t  \{ ... \} \+::V}
+
+bit\+: 28 Overflow condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga7fde450123126c7d2f06602d190cbf44}\index{ITM Functions@{ITM Functions}!V@{V}}
+\index{V@{V}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga7fde450123126c7d2f06602d190cbf44} 
+uint32\+\_\+t  \{ ... \} \+::V}
+
+bit\+: 28 Overflow condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga8004d224aacb78ca37774c35f9156e7e}\index{ITM Functions@{ITM Functions}!V@{V}}
+\index{V@{V}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{V}{V}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga8004d224aacb78ca37774c35f9156e7e} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::V}
+
+bit\+: 28 Overflow condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaea918964fae17a715228a56e136a0686}\index{ITM Functions@{ITM Functions}!V@{V}}
+\index{V@{V}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaea918964fae17a715228a56e136a0686} 
+uint32\+\_\+t  \{ ... \} \+::V}
+
+bit\+: 28 Overflow condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaac48596619973d437f83822638ffb723}\index{ITM Functions@{ITM Functions}!V@{V}}
+\index{V@{V}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaac48596619973d437f83822638ffb723} 
+uint32\+\_\+t  \{ ... \} \+::V}
+
+bit\+: 28 Overflow condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_gaf14df16ea0690070c45b95f2116b7a0a}\index{ITM Functions@{ITM Functions}!V@{V}}
+\index{V@{V}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{V}{V}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gaf14df16ea0690070c45b95f2116b7a0a} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::V}
+
+bit\+: 28 Overflow condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga9b5420d17e8e43104ddd4ae5a610af93}\index{ITM Functions@{ITM Functions}!VAL@{VAL}}
+\index{VAL@{VAL}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{VAL}{VAL}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga9b5420d17e8e43104ddd4ae5a610af93} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t Sys\+Tick\+\_\+\+Type\+::\+VAL}
+
+Offset\+: 0x008 (R/W) Sys\+Tick Current Value Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga187a4578e920544ed967f98020fb8170}\index{ITM Functions@{ITM Functions}!VTOR@{VTOR}}
+\index{VTOR@{VTOR}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{VTOR}{VTOR}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga187a4578e920544ed967f98020fb8170} 
+\+\_\+\+\_\+\+IOM uint32\+\_\+t SCB\+\_\+\+Type\+::\+VTOR}
+
+Offset\+: 0x008 (R/W) Vector Table Offset Register \Hypertarget{group___c_m_s_i_s__core___debug_functions_gae4c2ef8c9430d7b7bef5cbfbbaed3a94}\index{ITM Functions@{ITM Functions}!w@{w}}
+\index{w@{w}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{w}{w}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_gae4c2ef8c9430d7b7bef5cbfbbaed3a94} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::w}
+
+Type used for word access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga6b642cca3d96da660b1198c133ca2a1f}\index{ITM Functions@{ITM Functions}!w@{w}}
+\index{w@{w}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{w}{w}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga6b642cca3d96da660b1198c133ca2a1f} 
+uint32\+\_\+t CONTROL\+\_\+\+Type\+::w}
+
+Type used for word access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga4adca999d3a0bc1ae682d73ea7cfa879}\index{ITM Functions@{ITM Functions}!w@{w}}
+\index{w@{w}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{w}{w}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga4adca999d3a0bc1ae682d73ea7cfa879} 
+uint32\+\_\+t IPSR\+\_\+\+Type\+::w}
+
+Type used for word access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1a47176768f45f79076c4f5b1b534bc2}\index{ITM Functions@{ITM Functions}!w@{w}}
+\index{w@{w}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{w}{w}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga1a47176768f45f79076c4f5b1b534bc2} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::w}
+
+Type used for word access \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga25404780731c798218628f5589b9e41d}\index{ITM Functions@{ITM Functions}!Z@{Z}}
+\index{Z@{Z}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga25404780731c798218628f5589b9e41d} 
+uint32\+\_\+t  \{ ... \} \+::Z}
+
+bit\+: 30 Zero condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga0eadcf5e612a22169799efed530203f2}\index{ITM Functions@{ITM Functions}!Z@{Z}}
+\index{Z@{Z}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga0eadcf5e612a22169799efed530203f2} 
+uint32\+\_\+t  \{ ... \} \+::Z}
+
+bit\+: 30 Zero condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga3b04d58738b66a28ff13f23d8b0ba7e5}\index{ITM Functions@{ITM Functions}!Z@{Z}}
+\index{Z@{Z}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{Z}{Z}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga3b04d58738b66a28ff13f23d8b0ba7e5} 
+uint32\+\_\+t APSR\+\_\+\+Type\+::Z}
+
+bit\+: 30 Zero condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga52bcdc8b62e9aaa30dce252b7dcc4001}\index{ITM Functions@{ITM Functions}!Z@{Z}}
+\index{Z@{Z}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga52bcdc8b62e9aaa30dce252b7dcc4001} 
+uint32\+\_\+t  \{ ... \} \+::Z}
+
+bit\+: 30 Zero condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga4f450c0b514fc85587f9354a8e7a50ce}\index{ITM Functions@{ITM Functions}!Z@{Z}}
+\index{Z@{Z}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{[]}{[]}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga4f450c0b514fc85587f9354a8e7a50ce} 
+uint32\+\_\+t  \{ ... \} \+::Z}
+
+bit\+: 30 Zero condition code flag \Hypertarget{group___c_m_s_i_s__core___debug_functions_ga1e5d9801013d5146f2e02d9b7b3da562}\index{ITM Functions@{ITM Functions}!Z@{Z}}
+\index{Z@{Z}!ITM Functions@{ITM Functions}}
+\doxysubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsubsection{\texorpdfstring{Z}{Z}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{group___c_m_s_i_s__core___debug_functions_ga1e5d9801013d5146f2e02d9b7b3da562} 
+uint32\+\_\+t x\+PSR\+\_\+\+Type\+::Z}
+
+bit\+: 30 Zero condition code flag 

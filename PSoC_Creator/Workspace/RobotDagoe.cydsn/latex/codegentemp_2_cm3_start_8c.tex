@@ -1,0 +1,122 @@
+\doxysection{codegentemp/\+Cm3\+Start.c File Reference}
+\hypertarget{codegentemp_2_cm3_start_8c}{}\label{codegentemp_2_cm3_start_8c}\index{codegentemp/Cm3Start.c@{codegentemp/Cm3Start.c}}
+
+
+Startup code for the ARM CM3.  
+
+
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include "{}cydevice\+\_\+trm.\+h"{}}\newline
+{\ttfamily \#include "{}cytypes.\+h"{}}\newline
+{\ttfamily \#include "{}cyfitter\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Lib.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Dmac.\+h"{}}\newline
+{\ttfamily \#include "{}cyfitter.\+h"{}}\newline
+{\ttfamily \#include "{}cyapicallbacks.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_ab116ea158c3ab0dde48b2fd7ddad1533}\label{codegentemp_2_cm3_start_8c_ab116ea158c3ab0dde48b2fd7ddad1533} 
+\#define {\bfseries CY\+\_\+\+NUM\+\_\+\+INTERRUPTS}~(32u)
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a6a7a0d3c16af63408ca303b1859713c1}\label{codegentemp_2_cm3_start_8c_a6a7a0d3c16af63408ca303b1859713c1} 
+\#define {\bfseries CY\+\_\+\+NUM\+\_\+\+VECTORS}~(CYINT\+\_\+\+IRQ\+\_\+\+BASE + CY\+\_\+\+NUM\+\_\+\+INTERRUPTS)
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a4113616489b7d91447828a0d51d22067}\label{codegentemp_2_cm3_start_8c_a4113616489b7d91447828a0d51d22067} 
+\#define {\bfseries CY\+\_\+\+NUM\+\_\+\+ROM\+\_\+\+VECTORS}~(4u)
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a45bf1891cbd23c4faa25e3e1a0455283}\label{codegentemp_2_cm3_start_8c_a45bf1891cbd23c4faa25e3e1a0455283} 
+\#define {\bfseries CY\+\_\+\+NVIC\+\_\+\+APINT\+\_\+\+PTR}~((reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+NVIC\+\_\+\+APPLN\+\_\+\+INTR)
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a1f1d37e112a6ca682c38c031ad0bd85b}\label{codegentemp_2_cm3_start_8c_a1f1d37e112a6ca682c38c031ad0bd85b} 
+\#define {\bfseries CY\+\_\+\+NVIC\+\_\+\+CFG\+\_\+\+CTRL\+\_\+\+PTR}~((reg32 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+NVIC\+\_\+\+CFG\+\_\+\+CONTROL)
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a56c8b4c8cf569e17492e38bfed6422d7}\label{codegentemp_2_cm3_start_8c_a56c8b4c8cf569e17492e38bfed6422d7} 
+\#define {\bfseries CY\+\_\+\+NVIC\+\_\+\+APINT\+\_\+\+PRIGROUP\+\_\+3\+\_\+5}~(0x00000400u)  /\texorpdfstring{$\ast$}{*} Priority group 3.\+5 split \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_af1cad667053c98d48ac1a973b8101fe7}\label{codegentemp_2_cm3_start_8c_af1cad667053c98d48ac1a973b8101fe7} 
+\#define {\bfseries CY\+\_\+\+NVIC\+\_\+\+APINT\+\_\+\+VECTKEY}~(0x05\+FA0000u)  /\texorpdfstring{$\ast$}{*} This key is required in order to write the NVIC\+\_\+\+APINT register \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_aeee22d6e30251365b969c821862ecfe9}\label{codegentemp_2_cm3_start_8c_aeee22d6e30251365b969c821862ecfe9} 
+\#define {\bfseries CY\+\_\+\+NVIC\+\_\+\+CFG\+\_\+\+STACKALIGN}~(0x00000200u)  /\texorpdfstring{$\ast$}{*} This specifies that the exception stack must be 8 byte aligned \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a291c5a201a544f665da3a1192b0afcdc}\label{codegentemp_2_cm3_start_8c_a291c5a201a544f665da3a1192b0afcdc} 
+void {\bfseries Cy\+Btldr\+\_\+\+Check\+Launch} (void)
+\item 
+void \mbox{\hyperlink{codegentemp_2_cm3_start_8c_a851136b987f677e2c18cb90631695e20}{initialize\+\_\+psoc}} (void)
+\item 
+\mbox{\hyperlink{codegentemp_2_cm3_start_8c_a474918ec64e0afc7f85f42d1f2ee67cd}{CY\+\_\+\+ISR}} (Int\+Default\+Handler)
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_aed19948be38e80a0af0f88a8ef598706}\label{codegentemp_2_cm3_start_8c_aed19948be38e80a0af0f88a8ef598706} 
+void {\bfseries Reset} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{codegentemp_2_cm3_start_8c_a151774833695e12db89454d238c3e693}\label{codegentemp_2_cm3_start_8c_a151774833695e12db89454d238c3e693} 
+cyisraddress {\bfseries Cy\+Ram\+Vectors} \mbox{[}CY\+\_\+\+NUM\+\_\+\+VECTORS\mbox{]}
+\item 
+const cyisraddress \mbox{\hyperlink{codegentemp_2_cm3_start_8c_a8fb8f8b0aeb45535ad5db073c8f9d0c7}{Rom\+Vectors}} \mbox{[}CY\+\_\+\+NUM\+\_\+\+ROM\+\_\+\+VECTORS\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Startup code for the ARM CM3. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{codegentemp_2_cm3_start_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{codegentemp_2_cm3_start_8c_a474918ec64e0afc7f85f42d1f2ee67cd}\index{Cm3Start.c@{Cm3Start.c}!CY\_ISR@{CY\_ISR}}
+\index{CY\_ISR@{CY\_ISR}!Cm3Start.c@{Cm3Start.c}}
+\doxysubsubsection{\texorpdfstring{CY\_ISR()}{CY\_ISR()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cm3_start_8c_a474918ec64e0afc7f85f42d1f2ee67cd} 
+CY\+\_\+\+ISR (\begin{DoxyParamCaption}\item[{Int\+Default\+Handler}]{}{}\end{DoxyParamCaption})}
+
+This function is called for all interrupts, other than a reset that gets called before the system is setup.
+
+Theory\+: Any value other than zero is acceptable. \Hypertarget{codegentemp_2_cm3_start_8c_a851136b987f677e2c18cb90631695e20}\index{Cm3Start.c@{Cm3Start.c}!initialize\_psoc@{initialize\_psoc}}
+\index{initialize\_psoc@{initialize\_psoc}!Cm3Start.c@{Cm3Start.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_psoc()}{initialize\_psoc()}}
+{\footnotesize\ttfamily \label{codegentemp_2_cm3_start_8c_a851136b987f677e2c18cb90631695e20} 
+void initialize\+\_\+psoc (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This function used to initialize the PSoC chip before calling main. 
+
+\label{doc-var-members}
+\Hypertarget{codegentemp_2_cm3_start_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{codegentemp_2_cm3_start_8c_a8fb8f8b0aeb45535ad5db073c8f9d0c7}\index{Cm3Start.c@{Cm3Start.c}!RomVectors@{RomVectors}}
+\index{RomVectors@{RomVectors}!Cm3Start.c@{Cm3Start.c}}
+\doxysubsubsection{\texorpdfstring{RomVectors}{RomVectors}}
+{\footnotesize\ttfamily \label{codegentemp_2_cm3_start_8c_a8fb8f8b0aeb45535ad5db073c8f9d0c7} 
+const cyisraddress Rom\+Vectors\mbox{[}CY\+\_\+\+NUM\+\_\+\+ROM\+\_\+\+VECTORS\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ INITIAL\_STACK\_POINTER,\ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (cyisraddress)\&Reset,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \&IntDefaultHandler,\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \&IntDefaultHandler,\ \ \ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

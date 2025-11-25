@@ -1,0 +1,462 @@
+\doxysection{ODrive.\+h File Reference}
+\hypertarget{_o_drive_8h}{}\label{_o_drive_8h}\index{ODrive.h@{ODrive.h}}
+
+
+Public header for the ODrive library.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_o_drive_8h_abc17924dfa0fc5fb679a44e7ba3c3dd1}{ODRIVE\+\_\+\+BIT}}(n)
+\begin{DoxyCompactList}\small\item\em Bit position to bit mask conversion macro. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_o_drive_8h_aedae33eda418637b16a0ebbdda1d766b}{ODRIVE\+\_\+\+DEFINE\+\_\+\+HANDLE}}(name)
+\begin{DoxyCompactList}\small\item\em Define an opaque handle type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061}\label{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061} 
+typedef uint8\+\_\+t {\bfseries Can\+Node\+Id}
+\begin{DoxyCompactList}\small\item\em Node id for the CAN bus controller. \end{DoxyCompactList}\item 
+typedef struct ODrive\+Driver\+\_\+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODrive\+Driver}}
+\begin{DoxyCompactList}\small\item\em Opaque handle to an ODrive driver instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781}{ODrive\+Can\+Command\+Id}} \{ \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aae2c00dda349fc1675d2bc0a58a049e9}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+VERSION}} = 0x000
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a2b6654bd68eb9be3bbaa8839e011185b}{CAN\+\_\+\+CMD\+\_\+\+HEARTBEAT}} = 0x001
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a30c533228ce9de19ea4347482ae7a2a1}{CAN\+\_\+\+CMD\+\_\+\+ESTOP}} = 0x002
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a673a3222b1dacd01018153dd92347b9a}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+ERROR}} = 0x003
+, \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ab09acffbea9068fccb194bd83595aabc}{CAN\+\_\+\+CMD\+\_\+\+RXSDO}} = 0x004
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a9564c56ea36e1f11e7348a0daef5c32c}{CAN\+\_\+\+CMD\+\_\+\+TXSDO}} = 0x005
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4fe2dfd3c150286d079f396e7082d81a}{CAN\+\_\+\+CMD\+\_\+\+ADDRESS}} = 0x006
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a05b0db0383964d33632cb9bd35b4d5f1}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+AXIS\+\_\+\+STATE}} = 0x007
+, \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a3f961fe98be3610244d5f465eea99ee6}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+ENCODER\+\_\+\+ESTIMATES}} = 0x009
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aff64a3bdc86726bbe231880bbe73fea2}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+CONTROLLER\+\_\+\+MODE}} = 0x00B
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aa6984bf3359626294fadb403f0a00ed8}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+POS}} = 0x00C
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a08d7b5e60e50955d0ba7d3376d05b59a}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+VEL}} = 0x00D
+, \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a56fdfb2ccab09beb1e760f2e77219a9d}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+TORQUE}} = 0x00E
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aeff1e4c575df27a5a9d2f9f3ed57e08c}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+LIMITS}} = 0x00F
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ae78ae909332976a8af09125bc0977102}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+TRAJ\+\_\+\+VEL\+\_\+\+LIMIT}} = 0x011
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aec2e8aa4bd1b0fa985ab08abbc299aa0}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+TRAJ\+\_\+\+ACCEL\+\_\+\+LIMITS}} = 0x012
+, \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0a967112031f63bf8b3b41b1bc599077}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+TRAJ\+\_\+\+INERTIA}} = 0x013
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a7f1a2de378fd40184e61584f4528b229}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+IQ}} = 0x014
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a238d2a52f05357c1b69ac4446690ec8e}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+TEMPERATURE}} = 0x015
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4d41b2e96293765e2df8d68721e1ec5f}{CAN\+\_\+\+CMD\+\_\+\+REBOOT}} = 0x016
+, \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a18ba39eeb8df80b5d58721c9a5900f0a}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+BUS\+\_\+\+VOLTAGE\+\_\+\+CURRENT}} = 0x017
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a48e14bf8651e1760fb0662c869656ae8}{CAN\+\_\+\+CMD\+\_\+\+CLEAR\+\_\+\+ERRORS}} = 0x018
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac463379860edeb7a25c84d6e9a0ad0c1}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+ABSOLUTE\+\_\+\+POSITION}} = 0x019
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac9c220abc5ebdfbfd28f128e19aa3aa9}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+POS\+\_\+\+GAIN}} = 0x01A
+, \newline
+\mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781af27009d783a94502a920ed5ccdc99bb1}{CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+VEL\+\_\+\+GAINS}} = 0x01B
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0c449c873749b77f45480efe319d0bd1}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+TORQUES}} = 0x01C
+, \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac6780cb92430dc56f6496dd74a914b5c}{CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+POWERS}} = 0x01D
+, {\bfseries CAN\+\_\+\+CMD\+\_\+\+ENTER\+\_\+\+DFU\+\_\+\+MODE} = 0x01F
+ \}
+\begin{DoxyCompactList}\small\item\em ODrive CAN Protocol Command IDs. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}{ODrive\+Result}} \{ \newline
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9d0060711bec852aec2ad5615596105b}{ODRIVE\+\_\+\+RESULT\+\_\+\+OK}} = 0x0000
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca25e7125387f8ada63d187f1a63b2af41}{ODRIVE\+\_\+\+GENERAL\+\_\+\+ERROR}} = 0x2000
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca89c93f8d946cdc76bea6743fd7bbc2ab}{ODRIVE\+\_\+\+ERROR\+\_\+\+TIMEOUT}} = 0x2001
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf16e31b86fac4db496c448c36337772b}{ODRIVE\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+INITIALIZED}} = 0x2002
+, \newline
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca19db1377d6be0227f18db9817e8f5d57}{ODRIVE\+\_\+\+ERROR\+\_\+\+BUSY}} = 0x2003
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca442562cd3a9e235d01b392ce7193be73}{ODRIVE\+\_\+\+ERROR\+\_\+\+OPERATION\+\_\+\+FAILED}} = 0x2004
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9f558fddee6ddff842e7557a36b5d726}{ODRIVE\+\_\+\+ERROR\+\_\+\+UNSUPPORTED}} = 0x2005
+, {\bfseries ODRIVE\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} = 0x2006
+, \newline
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca6ccba3498a9b24545dac3b554e18fbff}{ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+CAN\+\_\+\+ID}} = 0x3000
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab27e93bec3e5f3cd1d17c328dc71100b}{ODRIVE\+\_\+\+ERROR\+\_\+\+CAN\+\_\+\+TX\+\_\+\+FAILED}} = 0x3001
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca21ac67a8794a7aa68c6f049df22f66f6}{ODRIVE\+\_\+\+ERROR\+\_\+\+CAN\+\_\+\+RX\+\_\+\+FAILED}} = 0x3002
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca61980d178f825810d1a7f0e5d4ba7dca}{ODRIVE\+\_\+\+ERROR\+\_\+\+NO\+\_\+\+RESPONSE}} = 0x3003
+, \newline
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0a068031a3220a0bb034fc7af853c5a7}{ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+RESPONSE}} = 0x3004
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0c8918e9cadfb6a1e00686ef9693cd4d}{ODRIVE\+\_\+\+ERROR\+\_\+\+CHECKSUM\+\_\+\+MISMATCH}} = 0x3005
+, {\bfseries ODRIVE\+\_\+\+ERROR\+\_\+\+BUS\+\_\+\+OFF} = 0x3006
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5757c9d28d4c00700029828d53665d3f}{ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+PARAMETER}} = 0x4000
+, \newline
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5fad47cb3ab110fbe9231efcebce5441}{ODRIVE\+\_\+\+ERROR\+\_\+\+NULL\+\_\+\+POINTER}} = 0x4001
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0462a46d82cce5c7d3dbb968caaf5b73}{ODRIVE\+\_\+\+ERROR\+\_\+\+BUFFER\+\_\+\+OVERFLOW}} = 0x4002
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab1a43d899dfa1671ca74cec576e39f1d}{ODRIVE\+\_\+\+ERROR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+RANGE}} = 0x4003
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcac15d58475ff85f791c4326360bfdf427}{ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+AXIS}} = 0x4004
+, \newline
+{\bfseries ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+MODE} = 0x4005
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf781ed0abb5cf66903fd35dcdd23a17a}{ODRIVE\+\_\+\+ERROR\+\_\+\+DEVICE\+\_\+\+ERROR}} = 0x5000
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca99fd2d14dfc3e9b9b854c6bb2583841c}{ODRIVE\+\_\+\+ERROR\+\_\+\+MOTOR\+\_\+\+DISARMED}} = 0x5001
+, \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab78b3b773977abff822c5ce5b6faa113}{ODRIVE\+\_\+\+ERROR\+\_\+\+CALIBRATION\+\_\+\+REQUIRED}} = 0x5002
+, \newline
+{\bfseries ODRIVE\+\_\+\+ERROR\+\_\+\+ESTOP\+\_\+\+ACTIVE} = 0x5003
+ \}
+\begin{DoxyCompactList}\small\item\em ODrive operation result codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}{ODrive\+Result}} \mbox{\hyperlink{_o_drive_8h_a2651da61249bc05194bfdb206290364b}{create\+ODrive\+Driver}} (\mbox{\hyperlink{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061}{Can\+Node\+Id}} id, \mbox{\hyperlink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODrive\+Driver}} \texorpdfstring{$\ast$}{*}driver)
+\begin{DoxyCompactList}\small\item\em Creates a ODrive driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Public header for the ODrive library. 
+
+\begin{DoxyVersion}{Version}
+1.\+0.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright 2025, Embedded Dynamics. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-define-members}
+\Hypertarget{_o_drive_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_o_drive_8h_abc17924dfa0fc5fb679a44e7ba3c3dd1}\index{ODrive.h@{ODrive.h}!ODRIVE\_BIT@{ODRIVE\_BIT}}
+\index{ODRIVE\_BIT@{ODRIVE\_BIT}!ODrive.h@{ODrive.h}}
+\doxysubsubsection{\texorpdfstring{ODRIVE\_BIT}{ODRIVE\_BIT}}
+{\footnotesize\ttfamily \label{_o_drive_8h_abc17924dfa0fc5fb679a44e7ba3c3dd1} 
+\#define ODRIVE\+\_\+\+BIT(\begin{DoxyParamCaption}\item[{}]{n}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(1\ <<\ n)}
+
+\end{DoxyCode}
+
+
+Bit position to bit mask conversion macro. 
+
+Converts a bit position (0-\/31) to a bitmask value. Useful for setting individual bits in registers or flags.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em n} & Bit position (0-\/31) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bitmask with bit n set (value\+: 2\texorpdfstring{$^\wedge$}{\string^}n) 
+\end{DoxyReturn}
+\Hypertarget{_o_drive_8h_aedae33eda418637b16a0ebbdda1d766b}\index{ODrive.h@{ODrive.h}!ODRIVE\_DEFINE\_HANDLE@{ODRIVE\_DEFINE\_HANDLE}}
+\index{ODRIVE\_DEFINE\_HANDLE@{ODRIVE\_DEFINE\_HANDLE}!ODrive.h@{ODrive.h}}
+\doxysubsubsection{\texorpdfstring{ODRIVE\_DEFINE\_HANDLE}{ODRIVE\_DEFINE\_HANDLE}}
+{\footnotesize\ttfamily \label{_o_drive_8h_aedae33eda418637b16a0ebbdda1d766b} 
+\#define ODRIVE\+\_\+\+DEFINE\+\_\+\+HANDLE(\begin{DoxyParamCaption}\item[{}]{name}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }name\#\#\_T*\ name}
+
+\end{DoxyCode}
+
+
+Define an opaque handle type. 
+
+Creates a typedef for an opaque pointer handle. The resulting type is an incomplete pointer that hides implementation details.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em name} & -\/ Name of the handle type to create \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-typedef-members}
+\Hypertarget{_o_drive_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}\index{ODrive.h@{ODrive.h}!ODriveDriver@{ODriveDriver}}
+\index{ODriveDriver@{ODriveDriver}!ODrive.h@{ODrive.h}}
+\doxysubsubsection{\texorpdfstring{ODriveDriver}{ODriveDriver}}
+{\footnotesize\ttfamily \label{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a} 
+typedef struct ODrive\+Driver\+\_\+T\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODrive\+Driver}}}
+
+
+
+Opaque handle to an ODrive driver instance. 
+
+This is an opaque pointer type used to reference an ODrive controller. Users obtain valid handles through \doxylink{_o_drive_8h_a2651da61249bc05194bfdb206290364b}{create\+ODrive\+Driver()} and pass them to other ODrive functions.
+
+\begin{DoxyNote}{Note}
+Implementation details are hidden. Do not dereference directly. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{_o_drive_8h_a2651da61249bc05194bfdb206290364b}{create\+ODrive\+Driver} 
+\end{DoxySeeAlso}
+
+
+\label{doc-enum-members}
+\Hypertarget{_o_drive_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781}\index{ODrive.h@{ODrive.h}!ODriveCanCommandId@{ODriveCanCommandId}}
+\index{ODriveCanCommandId@{ODriveCanCommandId}!ODrive.h@{ODrive.h}}
+\doxysubsubsection{\texorpdfstring{ODriveCanCommandId}{ODriveCanCommandId}}
+{\footnotesize\ttfamily \label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781} 
+enum \mbox{\hyperlink{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781}{ODrive\+Can\+Command\+Id}}}
+
+
+
+ODrive CAN Protocol Command IDs. 
+
+Defines the CAN message command identifiers for the ODrive CANSimple protocol. The CAN message ID is constructed as\+: (node\+\_\+id \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5) \texorpdfstring{$\vert$}{|} cmd\+\_\+id
+
+Messages prefixed with "{}\+Get\+\_\+"{} can be requested by the host using RTR=1, or sent periodically by the ODrive based on configured intervals. Messages prefixed with "{}\+Set\+\_\+"{} are sent by the host to configure the ODrive.
+
+\begin{DoxyNote}{Note}
+All values are encoded in little endian 
+
+Floats use IEEE 754 standard format 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+ODrive CAN Protocol Documentation\+: \href{https://docs.odriverobotics.com/v/latest/manual/can-protocol.html}{\texttt{https\+://docs.\+odriverobotics.\+com/v/latest/manual/can-\/protocol.\+html}} 
+\end{DoxySeeAlso}
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_VERSION@{CAN\_CMD\_GET\_VERSION}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_VERSION@{CAN\_CMD\_GET\_VERSION}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aae2c00dda349fc1675d2bc0a58a049e9}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aae2c00dda349fc1675d2bc0a58a049e9} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+VERSION&Get firmware and hardware version info (ODrive -\/\texorpdfstring{$>$}{>} Host) Periodic heartbeat with axis state and errors (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_HEARTBEAT@{CAN\_CMD\_HEARTBEAT}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_HEARTBEAT@{CAN\_CMD\_HEARTBEAT}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a2b6654bd68eb9be3bbaa8839e011185b}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a2b6654bd68eb9be3bbaa8839e011185b} 
+CAN\+\_\+\+CMD\+\_\+\+HEARTBEAT&Emergency stop, disarms axis immediately (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_ESTOP@{CAN\_CMD\_ESTOP}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_ESTOP@{CAN\_CMD\_ESTOP}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a30c533228ce9de19ea4347482ae7a2a1}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a30c533228ce9de19ea4347482ae7a2a1} 
+CAN\+\_\+\+CMD\+\_\+\+ESTOP&Get active errors and disarm reason (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_ERROR@{CAN\_CMD\_GET\_ERROR}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_ERROR@{CAN\_CMD\_GET\_ERROR}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a673a3222b1dacd01018153dd92347b9a}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a673a3222b1dacd01018153dd92347b9a} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+ERROR&SDO receive -\/ read/write arbitrary parameters (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_RXSDO@{CAN\_CMD\_RXSDO}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_RXSDO@{CAN\_CMD\_RXSDO}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ab09acffbea9068fccb194bd83595aabc}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ab09acffbea9068fccb194bd83595aabc} 
+CAN\+\_\+\+CMD\+\_\+\+RXSDO&SDO transmit -\/ response to Rx\+Sdo (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_TXSDO@{CAN\_CMD\_TXSDO}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_TXSDO@{CAN\_CMD\_TXSDO}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a9564c56ea36e1f11e7348a0daef5c32c}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a9564c56ea36e1f11e7348a0daef5c32c} 
+CAN\+\_\+\+CMD\+\_\+\+TXSDO&Node discovery and addressing (Bidirectional) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_ADDRESS@{CAN\_CMD\_ADDRESS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_ADDRESS@{CAN\_CMD\_ADDRESS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4fe2dfd3c150286d079f396e7082d81a}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4fe2dfd3c150286d079f396e7082d81a} 
+CAN\+\_\+\+CMD\+\_\+\+ADDRESS&Set axis operational state (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_AXIS\_STATE@{CAN\_CMD\_SET\_AXIS\_STATE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_AXIS\_STATE@{CAN\_CMD\_SET\_AXIS\_STATE}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a05b0db0383964d33632cb9bd35b4d5f1}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a05b0db0383964d33632cb9bd35b4d5f1} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+AXIS\+\_\+\+STATE&Get position and velocity estimates (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_ENCODER\_ESTIMATES@{CAN\_CMD\_GET\_ENCODER\_ESTIMATES}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_ENCODER\_ESTIMATES@{CAN\_CMD\_GET\_ENCODER\_ESTIMATES}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a3f961fe98be3610244d5f465eea99ee6}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a3f961fe98be3610244d5f465eea99ee6} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+ENCODER\+\_\+\+ESTIMATES&Set control and input mode (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_CONTROLLER\_MODE@{CAN\_CMD\_SET\_CONTROLLER\_MODE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_CONTROLLER\_MODE@{CAN\_CMD\_SET\_CONTROLLER\_MODE}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aff64a3bdc86726bbe231880bbe73fea2}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aff64a3bdc86726bbe231880bbe73fea2} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+CONTROLLER\+\_\+\+MODE&Set position setpoint with feedforward (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_INPUT\_POS@{CAN\_CMD\_SET\_INPUT\_POS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_INPUT\_POS@{CAN\_CMD\_SET\_INPUT\_POS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aa6984bf3359626294fadb403f0a00ed8}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aa6984bf3359626294fadb403f0a00ed8} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+POS&Set velocity setpoint with torque feedforward (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_INPUT\_VEL@{CAN\_CMD\_SET\_INPUT\_VEL}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_INPUT\_VEL@{CAN\_CMD\_SET\_INPUT\_VEL}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a08d7b5e60e50955d0ba7d3376d05b59a}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a08d7b5e60e50955d0ba7d3376d05b59a} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+VEL&Set torque setpoint (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_INPUT\_TORQUE@{CAN\_CMD\_SET\_INPUT\_TORQUE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_INPUT\_TORQUE@{CAN\_CMD\_SET\_INPUT\_TORQUE}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a56fdfb2ccab09beb1e760f2e77219a9d}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a56fdfb2ccab09beb1e760f2e77219a9d} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+TORQUE&Set velocity and current limits (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_LIMITS@{CAN\_CMD\_SET\_LIMITS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_LIMITS@{CAN\_CMD\_SET\_LIMITS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aeff1e4c575df27a5a9d2f9f3ed57e08c}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aeff1e4c575df27a5a9d2f9f3ed57e08c} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+LIMITS&Set trajectory velocity limit (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_TRAJ\_VEL\_LIMIT@{CAN\_CMD\_SET\_TRAJ\_VEL\_LIMIT}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_TRAJ\_VEL\_LIMIT@{CAN\_CMD\_SET\_TRAJ\_VEL\_LIMIT}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ae78ae909332976a8af09125bc0977102}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ae78ae909332976a8af09125bc0977102} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+TRAJ\+\_\+\+VEL\+\_\+\+LIMIT&Set trajectory acceleration/deceleration limits (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_TRAJ\_ACCEL\_LIMITS@{CAN\_CMD\_SET\_TRAJ\_ACCEL\_LIMITS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_TRAJ\_ACCEL\_LIMITS@{CAN\_CMD\_SET\_TRAJ\_ACCEL\_LIMITS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aec2e8aa4bd1b0fa985ab08abbc299aa0}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781aec2e8aa4bd1b0fa985ab08abbc299aa0} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+TRAJ\+\_\+\+ACCEL\+\_\+\+LIMITS&Set trajectory inertia for feed-\/forward (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_TRAJ\_INERTIA@{CAN\_CMD\_SET\_TRAJ\_INERTIA}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_TRAJ\_INERTIA@{CAN\_CMD\_SET\_TRAJ\_INERTIA}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0a967112031f63bf8b3b41b1bc599077}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0a967112031f63bf8b3b41b1bc599077} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+TRAJ\+\_\+\+INERTIA&Get q-\/axis current setpoint and measured (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_IQ@{CAN\_CMD\_GET\_IQ}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_IQ@{CAN\_CMD\_GET\_IQ}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a7f1a2de378fd40184e61584f4528b229}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a7f1a2de378fd40184e61584f4528b229} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+IQ&Get FET and motor temperature (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_TEMPERATURE@{CAN\_CMD\_GET\_TEMPERATURE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_TEMPERATURE@{CAN\_CMD\_GET\_TEMPERATURE}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a238d2a52f05357c1b69ac4446690ec8e}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a238d2a52f05357c1b69ac4446690ec8e} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+TEMPERATURE&Reboot ODrive with specified action (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_REBOOT@{CAN\_CMD\_REBOOT}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_REBOOT@{CAN\_CMD\_REBOOT}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4d41b2e96293765e2df8d68721e1ec5f}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a4d41b2e96293765e2df8d68721e1ec5f} 
+CAN\+\_\+\+CMD\+\_\+\+REBOOT&Get DC bus voltage and current (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_BUS\_VOLTAGE\_CURRENT@{CAN\_CMD\_GET\_BUS\_VOLTAGE\_CURRENT}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_BUS\_VOLTAGE\_CURRENT@{CAN\_CMD\_GET\_BUS\_VOLTAGE\_CURRENT}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a18ba39eeb8df80b5d58721c9a5900f0a}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a18ba39eeb8df80b5d58721c9a5900f0a} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+BUS\+\_\+\+VOLTAGE\+\_\+\+CURRENT&Clear errors and optionally identify (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_CLEAR\_ERRORS@{CAN\_CMD\_CLEAR\_ERRORS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_CLEAR\_ERRORS@{CAN\_CMD\_CLEAR\_ERRORS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a48e14bf8651e1760fb0662c869656ae8}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a48e14bf8651e1760fb0662c869656ae8} 
+CAN\+\_\+\+CMD\+\_\+\+CLEAR\+\_\+\+ERRORS&Set absolute encoder position (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_ABSOLUTE\_POSITION@{CAN\_CMD\_SET\_ABSOLUTE\_POSITION}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_ABSOLUTE\_POSITION@{CAN\_CMD\_SET\_ABSOLUTE\_POSITION}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac463379860edeb7a25c84d6e9a0ad0c1}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac463379860edeb7a25c84d6e9a0ad0c1} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+ABSOLUTE\+\_\+\+POSITION&Set position controller gain (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_POS\_GAIN@{CAN\_CMD\_SET\_POS\_GAIN}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_POS\_GAIN@{CAN\_CMD\_SET\_POS\_GAIN}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac9c220abc5ebdfbfd28f128e19aa3aa9}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac9c220abc5ebdfbfd28f128e19aa3aa9} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+POS\+\_\+\+GAIN&Set velocity controller gains (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_SET\_VEL\_GAINS@{CAN\_CMD\_SET\_VEL\_GAINS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_SET\_VEL\_GAINS@{CAN\_CMD\_SET\_VEL\_GAINS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781af27009d783a94502a920ed5ccdc99bb1}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781af27009d783a94502a920ed5ccdc99bb1} 
+CAN\+\_\+\+CMD\+\_\+\+SET\+\_\+\+VEL\+\_\+\+GAINS&Get torque target and estimate (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_TORQUES@{CAN\_CMD\_GET\_TORQUES}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_TORQUES@{CAN\_CMD\_GET\_TORQUES}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0c449c873749b77f45480efe319d0bd1}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781a0c449c873749b77f45480efe319d0bd1} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+TORQUES&Get electrical and mechanical power (ODrive -\/\texorpdfstring{$>$}{>} Host) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN\_CMD\_GET\_POWERS@{CAN\_CMD\_GET\_POWERS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!CAN\_CMD\_GET\_POWERS@{CAN\_CMD\_GET\_POWERS}}}\Hypertarget{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac6780cb92430dc56f6496dd74a914b5c}\label{_o_drive_8h_aa0f28a742ac6185cc36428886fb58781ac6780cb92430dc56f6496dd74a914b5c} 
+CAN\+\_\+\+CMD\+\_\+\+GET\+\_\+\+POWERS&Enter DFU bootloader mode (Host -\/\texorpdfstring{$>$}{>} ODrive) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}\index{ODrive.h@{ODrive.h}!ODriveResult@{ODriveResult}}
+\index{ODriveResult@{ODriveResult}!ODrive.h@{ODrive.h}}
+\doxysubsubsection{\texorpdfstring{ODriveResult}{ODriveResult}}
+{\footnotesize\ttfamily \label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc} 
+enum \mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}{ODrive\+Result}}}
+
+
+
+ODrive operation result codes. 
+
+These result codes provide insight into the status of each operation. Success is indicated by ODRIVE\+\_\+\+RESULT\+\_\+\+OK (0x0000). Error codes are organized by category for easier debugging.
+
+\begin{DoxyNote}{Note}
+Error codes in range 0x2000-\/0x2\+FFF indicate operation-\/level errors 
+
+Error codes in range 0x3000-\/0x3\+FFF indicate communication errors 
+
+Error codes in range 0x4000-\/0x4\+FFF indicate parameter/validation errors 
+\end{DoxyNote}
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_RESULT\_OK@{ODRIVE\_RESULT\_OK}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_RESULT\_OK@{ODRIVE\_RESULT\_OK}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9d0060711bec852aec2ad5615596105b}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9d0060711bec852aec2ad5615596105b} 
+ODRIVE\+\_\+\+RESULT\+\_\+\+OK&Operation completed successfully \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_GENERAL\_ERROR@{ODRIVE\_GENERAL\_ERROR}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_GENERAL\_ERROR@{ODRIVE\_GENERAL\_ERROR}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca25e7125387f8ada63d187f1a63b2af41}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca25e7125387f8ada63d187f1a63b2af41} 
+ODRIVE\+\_\+\+GENERAL\+\_\+\+ERROR&Unspecified general error Operation timed out \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_TIMEOUT@{ODRIVE\_ERROR\_TIMEOUT}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_TIMEOUT@{ODRIVE\_ERROR\_TIMEOUT}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca89c93f8d946cdc76bea6743fd7bbc2ab}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca89c93f8d946cdc76bea6743fd7bbc2ab} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+TIMEOUT&ODrive not initialized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_NOT\_INITIALIZED@{ODRIVE\_ERROR\_NOT\_INITIALIZED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_NOT\_INITIALIZED@{ODRIVE\_ERROR\_NOT\_INITIALIZED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf16e31b86fac4db496c448c36337772b}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf16e31b86fac4db496c448c36337772b} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+INITIALIZED&ODrive busy with another operation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_BUSY@{ODRIVE\_ERROR\_BUSY}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_BUSY@{ODRIVE\_ERROR\_BUSY}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca19db1377d6be0227f18db9817e8f5d57}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca19db1377d6be0227f18db9817e8f5d57} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+BUSY&Operation failed to complete \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_OPERATION\_FAILED@{ODRIVE\_ERROR\_OPERATION\_FAILED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_OPERATION\_FAILED@{ODRIVE\_ERROR\_OPERATION\_FAILED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca442562cd3a9e235d01b392ce7193be73}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca442562cd3a9e235d01b392ce7193be73} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+OPERATION\+\_\+\+FAILED&Operation not supported \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_UNSUPPORTED@{ODRIVE\_ERROR\_UNSUPPORTED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_UNSUPPORTED@{ODRIVE\_ERROR\_UNSUPPORTED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9f558fddee6ddff842e7557a36b5d726}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9f558fddee6ddff842e7557a36b5d726} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+UNSUPPORTED&ODrive in incorrect state for operation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_INVALID\_CAN\_ID@{ODRIVE\_ERROR\_INVALID\_CAN\_ID}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_INVALID\_CAN\_ID@{ODRIVE\_ERROR\_INVALID\_CAN\_ID}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca6ccba3498a9b24545dac3b554e18fbff}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca6ccba3498a9b24545dac3b554e18fbff} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+CAN\+\_\+\+ID&CAN ID out of valid range (0-\/0x3F) CAN transmission failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_CAN\_TX\_FAILED@{ODRIVE\_ERROR\_CAN\_TX\_FAILED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_CAN\_TX\_FAILED@{ODRIVE\_ERROR\_CAN\_TX\_FAILED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab27e93bec3e5f3cd1d17c328dc71100b}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab27e93bec3e5f3cd1d17c328dc71100b} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+CAN\+\_\+\+TX\+\_\+\+FAILED&CAN reception failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_CAN\_RX\_FAILED@{ODRIVE\_ERROR\_CAN\_RX\_FAILED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_CAN\_RX\_FAILED@{ODRIVE\_ERROR\_CAN\_RX\_FAILED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca21ac67a8794a7aa68c6f049df22f66f6}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca21ac67a8794a7aa68c6f049df22f66f6} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+CAN\+\_\+\+RX\+\_\+\+FAILED&No response received from ODrive \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_NO\_RESPONSE@{ODRIVE\_ERROR\_NO\_RESPONSE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_NO\_RESPONSE@{ODRIVE\_ERROR\_NO\_RESPONSE}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca61980d178f825810d1a7f0e5d4ba7dca}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca61980d178f825810d1a7f0e5d4ba7dca} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+NO\+\_\+\+RESPONSE&Response format invalid or corrupted \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_INVALID\_RESPONSE@{ODRIVE\_ERROR\_INVALID\_RESPONSE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_INVALID\_RESPONSE@{ODRIVE\_ERROR\_INVALID\_RESPONSE}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0a068031a3220a0bb034fc7af853c5a7}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0a068031a3220a0bb034fc7af853c5a7} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+RESPONSE&Data checksum verification failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_CHECKSUM\_MISMATCH@{ODRIVE\_ERROR\_CHECKSUM\_MISMATCH}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_CHECKSUM\_MISMATCH@{ODRIVE\_ERROR\_CHECKSUM\_MISMATCH}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0c8918e9cadfb6a1e00686ef9693cd4d}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0c8918e9cadfb6a1e00686ef9693cd4d} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+CHECKSUM\+\_\+\+MISMATCH&CAN bus entered bus-\/off state \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_INVALID\_PARAMETER@{ODRIVE\_ERROR\_INVALID\_PARAMETER}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_INVALID\_PARAMETER@{ODRIVE\_ERROR\_INVALID\_PARAMETER}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5757c9d28d4c00700029828d53665d3f}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5757c9d28d4c00700029828d53665d3f} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+PARAMETER&Invalid parameter value provided Null pointer passed to function \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_NULL\_POINTER@{ODRIVE\_ERROR\_NULL\_POINTER}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_NULL\_POINTER@{ODRIVE\_ERROR\_NULL\_POINTER}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5fad47cb3ab110fbe9231efcebce5441}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5fad47cb3ab110fbe9231efcebce5441} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+NULL\+\_\+\+POINTER&Buffer size insufficient \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_BUFFER\_OVERFLOW@{ODRIVE\_ERROR\_BUFFER\_OVERFLOW}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_BUFFER\_OVERFLOW@{ODRIVE\_ERROR\_BUFFER\_OVERFLOW}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0462a46d82cce5c7d3dbb968caaf5b73}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca0462a46d82cce5c7d3dbb968caaf5b73} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+BUFFER\+\_\+\+OVERFLOW&Value outside acceptable range \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_OUT\_OF\_RANGE@{ODRIVE\_ERROR\_OUT\_OF\_RANGE}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_OUT\_OF\_RANGE@{ODRIVE\_ERROR\_OUT\_OF\_RANGE}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab1a43d899dfa1671ca74cec576e39f1d}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab1a43d899dfa1671ca74cec576e39f1d} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+RANGE&Axis number invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_INVALID\_AXIS@{ODRIVE\_ERROR\_INVALID\_AXIS}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_INVALID\_AXIS@{ODRIVE\_ERROR\_INVALID\_AXIS}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcac15d58475ff85f791c4326360bfdf427}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcac15d58475ff85f791c4326360bfdf427} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+AXIS&Control or input mode invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_DEVICE\_ERROR@{ODRIVE\_ERROR\_DEVICE\_ERROR}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_DEVICE\_ERROR@{ODRIVE\_ERROR\_DEVICE\_ERROR}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf781ed0abb5cf66903fd35dcdd23a17a}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcaf781ed0abb5cf66903fd35dcdd23a17a} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+DEVICE\+\_\+\+ERROR&ODrive reported internal error Motor is disarmed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_MOTOR\_DISARMED@{ODRIVE\_ERROR\_MOTOR\_DISARMED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_MOTOR\_DISARMED@{ODRIVE\_ERROR\_MOTOR\_DISARMED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca99fd2d14dfc3e9b9b854c6bb2583841c}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca99fd2d14dfc3e9b9b854c6bb2583841c} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+MOTOR\+\_\+\+DISARMED&Calibration must be performed first \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODRIVE\_ERROR\_CALIBRATION\_REQUIRED@{ODRIVE\_ERROR\_CALIBRATION\_REQUIRED}!ODrive.h@{ODrive.h}}\index{ODrive.h@{ODrive.h}!ODRIVE\_ERROR\_CALIBRATION\_REQUIRED@{ODRIVE\_ERROR\_CALIBRATION\_REQUIRED}}}\Hypertarget{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab78b3b773977abff822c5ce5b6faa113}\label{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbcab78b3b773977abff822c5ce5b6faa113} 
+ODRIVE\+\_\+\+ERROR\+\_\+\+CALIBRATION\+\_\+\+REQUIRED&Emergency stop is active \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{_o_drive_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_o_drive_8h_a2651da61249bc05194bfdb206290364b}\index{ODrive.h@{ODrive.h}!createODriveDriver@{createODriveDriver}}
+\index{createODriveDriver@{createODriveDriver}!ODrive.h@{ODrive.h}}
+\doxysubsubsection{\texorpdfstring{createODriveDriver()}{createODriveDriver()}}
+{\footnotesize\ttfamily \label{_o_drive_8h_a2651da61249bc05194bfdb206290364b} 
+\mbox{\hyperlink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbc}{ODrive\+Result}} create\+ODrive\+Driver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061}{Can\+Node\+Id}}}]{id}{, }\item[{\mbox{\hyperlink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODrive\+Driver}} \texorpdfstring{$\ast$}{*}}]{driver}{}\end{DoxyParamCaption})}
+
+
+
+Creates a ODrive driver. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em id} & -\/ The \doxylink{_o_drive_8h_a5fecdd2a1e907bbdbf4b5c2af5f83061}{Can\+Node\+Id} of the driver. \\
+\hline
+\mbox{\texttt{out}}  & {\em driver} & -\/ Pointer to the \doxylink{_o_drive_8h_acecf4fe80deab5e6416f5c014840469a}{ODrive\+Driver} handle address.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation result code\+:
+\begin{DoxyItemize}
+\item \doxylink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca9d0060711bec852aec2ad5615596105b}{ODRIVE\+\_\+\+RESULT\+\_\+\+OK} -\/ Driver created successfully
+\item \doxylink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca6ccba3498a9b24545dac3b554e18fbff}{ODRIVE\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+CAN\+\_\+\+ID} -\/ CAN ID out of valid range
+\item \doxylink{_o_drive_8h_a9e2cc71980ab5089613598ea7585fbbca5fad47cb3ab110fbe9231efcebce5441}{ODRIVE\+\_\+\+ERROR\+\_\+\+NULL\+\_\+\+POINTER} -\/ driver parameter is NULL 
+\end{DoxyItemize}
+\end{DoxyReturn}

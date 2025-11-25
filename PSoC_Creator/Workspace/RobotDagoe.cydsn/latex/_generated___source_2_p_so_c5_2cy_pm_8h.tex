@@ -1,0 +1,928 @@
+\doxysection{Generated\+\_\+\+Source/\+PSo\+C5/cy\+Pm.h File Reference}
+\hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h}{}\label{_generated___source_2_p_so_c5_2cy_pm_8h}\index{Generated\_Source/PSoC5/cyPm.h@{Generated\_Source/PSoC5/cyPm.h}}
+
+
+Provides the function definitions for the power management API.  
+
+
+{\ttfamily \#include "{}cytypes.\+h"{}}\newline
+{\ttfamily \#include "{}cydevice\+\_\+trm.\+h"{}}\newline
+{\ttfamily \#include "{}cyfitter.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Lib.\+h"{}}\newline
+{\ttfamily \#include "{}Cy\+Flash.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcy_pm_clock_backup_struct}{cy\+Pm\+Clock\+Backup\+Struct}}
+\item 
+struct \mbox{\hyperlink{structcy_pm_backup_struct}{cy\+Pm\+Backup\+Struct}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_afaae9ae198654ed235829d3697239b25}\label{_generated___source_2_p_so_c5_2cy_pm_8h_afaae9ae198654ed235829d3697239b25} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+NONE}~(0x0000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9570dae7713821a199268c6a4a44ea8f}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9570dae7713821a199268c6a4a44ea8f} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+NONE}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_afed4a8f60bbae72cfbb8156339f855de}\label{_generated___source_2_p_so_c5_2cy_pm_8h_afed4a8f60bbae72cfbb8156339f855de} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+NONE}~(0x0000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a34f560c5a8bdc6cba27d2edf7c9d1d44}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a34f560c5a8bdc6cba27d2edf7c9d1d44} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+NONE}~(0x0000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a70c7687c0018551fdfc41f182e1f43b0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a70c7687c0018551fdfc41f182e1f43b0} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR0}~(0x0001u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a68092cbe63f1bae0ef03c8b34399b3c5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a68092cbe63f1bae0ef03c8b34399b3c5} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR1}~(0x0002u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a0eca974c11483db96047b9697ceb5874}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a0eca974c11483db96047b9697ceb5874} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR2}~(0x0004u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2a0d3f9b683f47889ffd605b81b453c1}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a2a0d3f9b683f47889ffd605b81b453c1} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR3}~(0x0008u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a0271d521c0bfafbd9b55ac69fee27069}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a0271d521c0bfafbd9b55ac69fee27069} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+PICU}~(0x0040u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9e9045fc04c56f33564b66921d5f0e6a}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9e9045fc04c56f33564b66921d5f0e6a} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+I2C}~(0x0080u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a15c45eaab8c26a007158eceb201d4657}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a15c45eaab8c26a007158eceb201d4657} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+BOOSTCONVERTER}~(0x0200u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ac0bd762d54518b8138684c9777c0fcfe}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ac0bd762d54518b8138684c9777c0fcfe} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+VD}~(0x0400u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a364bc12a61bb5d37198299709948be66}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a364bc12a61bb5d37198299709948be66} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+CTW}~(0x0800u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a08f1ff1c36775535114163b5825f114f}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a08f1ff1c36775535114163b5825f114f} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+ONE\+\_\+\+PPS}~(0x0800u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a53120b0565a4bfd88cec6f0543e15108}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a53120b0565a4bfd88cec6f0543e15108} 
+\#define {\bfseries PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+LCD}~(0x1000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ab3b3bffee7a4f4e3e1f554ecd2e68db9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ab3b3bffee7a4f4e3e1f554ecd2e68db9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+PICU}~(0x0040u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a0fd8834a2b2d6c3bc82c1d64799cd5f7}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a0fd8834a2b2d6c3bc82c1d64799cd5f7} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR0}~(0x0001u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa90451f7f577e0cbb36a267009436347}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa90451f7f577e0cbb36a267009436347} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR1}~(0x0002u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a21799a1f761ce4bac46e6877d04cbf3a}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a21799a1f761ce4bac46e6877d04cbf3a} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR2}~(0x0004u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a62e697cd3961d128e6df195fc7815d46}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a62e697cd3961d128e6df195fc7815d46} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR3}~(0x0008u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae8e655a49b7e1aba50261a0b526061c8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae8e655a49b7e1aba50261a0b526061c8} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR0}~(0x0001u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa94d03737f9a7da2272e6c20f09992f9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa94d03737f9a7da2272e6c20f09992f9} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR1}~(0x0002u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a86250b33381149968a3a6bc9e4e8b04c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a86250b33381149968a3a6bc9e4e8b04c} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR2}~(0x0004u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a47652b5e5c098691669bc40dc51eced0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a47652b5e5c098691669bc40dc51eced0} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR3}~(0x0008u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aba284a2ddcb5b577764ff33e6f136265}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aba284a2ddcb5b577764ff33e6f136265} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+INTERRUPT}~(0x0010u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a514689bfa7a011c3f6d12593879d635e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a514689bfa7a011c3f6d12593879d635e} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+PICU}~(0x0040u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a14e7a043c52e9eb3b791959fa7791d0b}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a14e7a043c52e9eb3b791959fa7791d0b} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+I2C}~(0x0080u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ad7add3e98e12664c5be6f91853452b0d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ad7add3e98e12664c5be6f91853452b0d} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+BOOSTCONVERTER}~(0x0200u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_adf42ae0b6e1b5776ab1cc8470997f0d3}\label{_generated___source_2_p_so_c5_2cy_pm_8h_adf42ae0b6e1b5776ab1cc8470997f0d3} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+FTW}~(0x0400u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ad7b4fa4bf9c5213f3135949134f7e4f1}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ad7b4fa4bf9c5213f3135949134f7e4f1} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+VD}~(0x0400u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_abffc0ed9b564d51b5cab7edaf2e67a14}\label{_generated___source_2_p_so_c5_2cy_pm_8h_abffc0ed9b564d51b5cab7edaf2e67a14} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+CTW}~(0x0800u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a14cf80cd3d1727aa685f34f0eadfa950}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a14cf80cd3d1727aa685f34f0eadfa950} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+ONE\+\_\+\+PPS}~(0x0800u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9000bcd306f7edbdac81c2c453ca9d0d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9000bcd306f7edbdac81c2c453ca9d0d} 
+\#define {\bfseries PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+LCD}~(0x1000u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a33c18605edd611b05ecc709f3c35a594}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a33c18605edd611b05ecc709f3c35a594} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+PICU}~(0x04u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa31008c52239e7ada3644294637dd5a0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa31008c52239e7ada3644294637dd5a0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+IMO\+\_\+\+NO\+\_\+\+WAIT\+\_\+\+TO\+\_\+\+SETTLE}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a267719506c5050e48169d905bdbb5f70}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a267719506c5050e48169d905bdbb5f70} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+POWERDOWN\+\_\+\+MODE}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1513dbe8a5870079ef7a8cc8020728ed}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1513dbe8a5870079ef7a8cc8020728ed} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+HIGHPOWER\+\_\+\+MODE}~(0x00u)     /\texorpdfstring{$\ast$}{*} Deprecated \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a6a3afa26e16530c8e3ed6b213580d8e3}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a6a3afa26e16530c8e3ed6b213580d8e3} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ENABLED}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1ec4e95be6a448abc367afaef20cf4f5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1ec4e95be6a448abc367afaef20cf4f5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+DISABLED}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a47ce5ca97cc3372217ea12593a499e08}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a47ce5ca97cc3372217ea12593a499e08} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PLL\+\_\+\+OUT\+\_\+\+NO\+\_\+\+WAIT}~(0u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae4bb93c1f7e0955e68792dc9b69288f3}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae4bb93c1f7e0955e68792dc9b69288f3} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+XTAL\+\_\+\+MHZ\+\_\+\+NO\+\_\+\+WAIT}~(0u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a6390168a8780e8e23fbcb4700770e2e4}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a6390168a8780e8e23fbcb4700770e2e4} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAIT\+\_\+200\+\_\+\+US}~(200u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1bb94c3edeff9cb287bd26822ddfe025}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1bb94c3edeff9cb287bd26822ddfe025} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAIT\+\_\+250\+\_\+\+US}~(250u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a41d20f0d05c9049491aebc71d92b9be0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a41d20f0d05c9049491aebc71d92b9be0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAIT\+\_\+20\+\_\+\+US}~(20u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1e371f780b7f7440372a7c3d1f791bbf}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1e371f780b7f7440372a7c3d1f791bbf} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FREQ\+\_\+3\+MHZ}~(3u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9151f75c4539da2500be9c55f467a9f8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9151f75c4539da2500be9c55f467a9f8} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FREQ\+\_\+12\+MHZ}~(12u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9f15cd920c9ec3e1426fc406b76a90f2}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9f15cd920c9ec3e1426fc406b76a90f2} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FREQ\+\_\+48\+MHZ}~(48u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a81b6c6599a35d76f2f1f422f563f0886}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a81b6c6599a35d76f2f1f422f563f0886} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MHZ\+\_\+\+XTAL\+\_\+\+WAIT\+\_\+\+NUM\+\_\+\+OF\+\_\+200\+\_\+\+US}~(5u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ab4aa1bddd3cb94eee4a38a4918b921a8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ab4aa1bddd3cb94eee4a38a4918b921a8} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLK\+\_\+\+DELAY\+\_\+\+BANDGAP\+\_\+\+SETTLE\+\_\+\+US}~(50u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af5c39e8fc7585b2d2bea65fc9d55ec48}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af5c39e8fc7585b2d2bea65fc9d55ec48} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLK\+\_\+\+DELAY\+\_\+\+BIAS\+\_\+\+SETTLE\+\_\+\+US}~(25u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9f8047f94d01d27956c42a42a3219ce8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9f8047f94d01d27956c42a42a3219ce8} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MAX\+\_\+\+FLASH\+\_\+\+WAIT\+\_\+\+CYCLES}~(55u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a4e5d68fd588acb4b5aa76650883df95d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a4e5d68fd588acb4b5aa76650883df95d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+GET\+\_\+\+CPU\+\_\+\+FREQ\+\_\+\+MHZ}~(cy\+Pm\+Imo\+Freq\+Reg2\+Mhz\mbox{[}CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+REG \& CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+FREQ\+\_\+\+MASK\mbox{]})
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a8c08c691606ba7d8bf0ff93c3cb7dca9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a8c08c691606ba7d8bf0ff93c3cb7dca9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WFI}~\+\_\+\+\_\+asm volatile ("{}WFI \textbackslash{}n"{})
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7e624c4254f656a0ef633b9dc77fa535}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a7e624c4254f656a0ef633b9dc77fa535} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+IMO\+\_\+\+FREQ\+\_\+\+LPM}~(CY\+\_\+\+IMO\+\_\+\+FREQ\+\_\+48\+MHZ)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a596614f09dc5b528125306f171f48c2c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a596614f09dc5b528125306f171f48c2c} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a8453fb2faae11efc4a1895b7ffa02156}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a8453fb2faae11efc4a1895b7ffa02156} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a802bbaa128f90827f78642497c63fde0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a802bbaa128f90827f78642497c63fde0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR3\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR3 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ad7191898ba39444d24c7ff0e6149d3ba}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ad7191898ba39444d24c7ff0e6149d3ba} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR3\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR3 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_afc9a3558b506b9203d0ae64636b0e28c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_afc9a3558b506b9203d0ae64636b0e28c} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+MSTR0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+MSTR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ac7fb1e866ec534e783a4a12b2f6ce292}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ac7fb1e866ec534e783a4a12b2f6ce292} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+MSTR0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+MSTR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a6c20649e6bd71b06111491c6b9ec01a7}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a6c20649e6bd71b06111491c6b9ec01a7} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+MSTR1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+MSTR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a20bd95e73f7793d511128f920f0cab9d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a20bd95e73f7793d511128f920f0cab9d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+MSTR1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+MSTR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aabb994ceadc9e2a743974f9592a202b7}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aabb994ceadc9e2a743974f9592a202b7} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+CR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+CR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_afac5bd67dc59ddc7f9297a7af9ff862e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_afac5bd67dc59ddc7f9297a7af9ff862e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+CR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+CR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a8fb5617b7fb9e84433abc9ec3d19e340}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a8fb5617b7fb9e84433abc9ec3d19e340} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLK\+\_\+\+BUS\+\_\+\+LSB\+\_\+\+DIV\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+BCFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_acaf69b474681826ef173f3c3f892a821}\label{_generated___source_2_p_so_c5_2cy_pm_8h_acaf69b474681826ef173f3c3f892a821} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLK\+\_\+\+BUS\+\_\+\+LSB\+\_\+\+DIV\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+BCFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af9f09d93948147cb8542fb76dada3495}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af9f09d93948147cb8542fb76dada3495} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLK\+\_\+\+BUS\+\_\+\+MSB\+\_\+\+DIV\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+BCFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1726ce57ee4bd0f5bb41d24d2c44e31b}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1726ce57ee4bd0f5bb41d24d2c44e31b} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLK\+\_\+\+BUS\+\_\+\+MSB\+\_\+\+DIV\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+BCFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a397a05ee566bc95559cd98e3d3c57b76}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a397a05ee566bc95559cd98e3d3c57b76} 
+\#define {\bfseries CLK\+\_\+\+BUS\+\_\+\+CFG\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+BCFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a6ab862af4ad19244db7adee6e0053992}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a6ab862af4ad19244db7adee6e0053992} 
+\#define {\bfseries CLK\+\_\+\+BUS\+\_\+\+CFG\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+BCFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a19b20f7cbe0ea30dd5d0e706fbbfc84e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a19b20f7cbe0ea30dd5d0e706fbbfc84e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a4b4480154ac173e7ac003bd9537f9663}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a4b4480154ac173e7ac003bd9537f9663} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a68de739aaca086176a6fcb9ae8fdab6b}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a68de739aaca086176a6fcb9ae8fdab6b} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+CR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a906d274b6d545c99fe76cff6faa541ba}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a906d274b6d545c99fe76cff6faa541ba} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+CR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa0eb50f32b3f715e34e8e4bb2a72278e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa0eb50f32b3f715e34e8e4bb2a72278e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+CR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7418c7661718a806a8cf8bfb7e19dcc3}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a7418c7661718a806a8cf8bfb7e19dcc3} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+CR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_afc9c3f50bba3d9a9db92fc4d0ab92e93}\label{_generated___source_2_p_so_c5_2cy_pm_8h_afc9c3f50bba3d9a9db92fc4d0ab92e93} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+SLOWCLK\+\_\+\+ILO\+\_\+\+CR0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SLOWCLK\+\_\+\+ILO\+\_\+\+CR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7513d47d43c736fa490a202842fe6b97}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a7513d47d43c736fa490a202842fe6b97} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+SLOWCLK\+\_\+\+ILO\+\_\+\+CR0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SLOWCLK\+\_\+\+ILO\+\_\+\+CR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a73533baeaf12e32aad2b2b9262c9a9b0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a73533baeaf12e32aad2b2b9262c9a9b0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+SLOWCLK\+\_\+\+X32\+\_\+\+CR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SLOWCLK\+\_\+\+X32\+\_\+\+CR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a4ca6ef7b88c4490b2df7405010ebdb83}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a4ca6ef7b88c4490b2df7405010ebdb83} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+SLOWCLK\+\_\+\+X32\+\_\+\+CR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+SLOWCLK\+\_\+\+X32\+\_\+\+CR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ace03a688a923f5f7d02ef3a72cb13a1f}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ace03a688a923f5f7d02ef3a72cb13a1f} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+SLP\+\_\+\+TR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+SLP\+\_\+\+TR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a336aa1de0dfc1e09100bbe695e8a66d4}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a336aa1de0dfc1e09100bbe695e8a66d4} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+SLP\+\_\+\+TR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+SLP\+\_\+\+TR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2ffb18fac86069726ec555e46c65aedb}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a2ffb18fac86069726ec555e46c65aedb} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+RESET\+\_\+\+CR1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+RESET\+\_\+\+CR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ac83017e1f72140d5d2be9b69e18152bf}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ac83017e1f72140d5d2be9b69e18152bf} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+RESET\+\_\+\+CR1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+RESET\+\_\+\+CR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aab5363f0160d4c867b18ba12e79d25ac}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aab5363f0160d4c867b18ba12e79d25ac} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a783d473f4b756e2a3f3d9ebd153463e5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a783d473f4b756e2a3f3d9ebd153463e5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa51888623e69f32b1a6d8557784828c8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa51888623e69f32b1a6d8557784828c8} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+INT\+\_\+\+SR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+INT\+\_\+\+SR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9bbcc49669d45e4c9651bc836ee5e404}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9bbcc49669d45e4c9651bc836ee5e404} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+INT\+\_\+\+SR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+INT\+\_\+\+SR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa852330f488907e0894ed2bc3257d156}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa852330f488907e0894ed2bc3257d156} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a3ace84ae3365b95a5351eef5803a4be8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a3ace84ae3365b95a5351eef5803a4be8} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2968ecdb2efd23f869d52236572f0ab1}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a2968ecdb2efd23f869d52236572f0ab1} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2fa4b09b3263ae0a8b92487b7f2ef2f4}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a2fa4b09b3263ae0a8b92487b7f2ef2f4} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1a91801aea9c09a689d00a9dd828aaa9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1a91801aea9c09a689d00a9dd828aaa9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG2\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9d91ad5969b94bb034e2a6ce2f144153}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9d91ad5969b94bb034e2a6ce2f144153} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG2\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_acced62002db5635375816fde6add8b77}\label{_generated___source_2_p_so_c5_2cy_pm_8h_acced62002db5635375816fde6add8b77} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BOOST\+\_\+\+CR1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+BOOST\+\_\+\+CR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_afecc0d7dbcd7e4951c0326bce0edfb73}\label{_generated___source_2_p_so_c5_2cy_pm_8h_afecc0d7dbcd7e4951c0326bce0edfb73} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BOOST\+\_\+\+CR1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+BOOST\+\_\+\+CR1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a28a45a4a27b20eef3fc17ec7e7021f4c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a28a45a4a27b20eef3fc17ec7e7021f4c} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a8bb12109ed2aa7d05bfb58cd0bef2f60}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a8bb12109ed2aa7d05bfb58cd0bef2f60} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aab05eeeabeba56e63d5190134a97a9a9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aab05eeeabeba56e63d5190134a97a9a9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa3e1e4e5c7b2adfd5276873c6b9d385f}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa3e1e4e5c7b2adfd5276873c6b9d385f} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a14ff3f1f03d2159c2fda6b8a2078cc01}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a14ff3f1f03d2159c2fda6b8a2078cc01} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG2\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a6388a7ee1207f7dd4755c58ed6df7dda}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a6388a7ee1207f7dd4755c58ed6df7dda} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG2\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+TW\+\_\+\+CFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ad5aa9331b3975717bdde630c3663d8c2}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ad5aa9331b3975717bdde630c3663d8c2} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+SR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*}(reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+SR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2a688716225cccb4289f6505f10051c1}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a2a688716225cccb4289f6505f10051c1} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+SR\+\_\+\+PTR}~( (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+SR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aada1a6bfd379ad9a39ee79d1e160e9ae}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aada1a6bfd379ad9a39ee79d1e160e9ae} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aad63cc5f476548a4952f8bf1ede97536}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aad63cc5f476548a4952f8bf1ede97536} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a63938fc952c07e67d2b0f02cf55445a2}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a63938fc952c07e67d2b0f02cf55445a2} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+CFG0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a67b17bc78f7d8b358b2ba9ec5238beaf}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a67b17bc78f7d8b358b2ba9ec5238beaf} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+CFG0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_abda5cbb8ffdd9ef54c2e99f1e2e021da}\label{_generated___source_2_p_so_c5_2cy_pm_8h_abda5cbb8ffdd9ef54c2e99f1e2e021da} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+XMHZ\+\_\+\+CSR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+XMHZ\+\_\+\+CSR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_acc592c215f481311f85ed1c5ac041d81}\label{_generated___source_2_p_so_c5_2cy_pm_8h_acc592c215f481311f85ed1c5ac041d81} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+XMHZ\+\_\+\+CSR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+FASTCLK\+\_\+\+XMHZ\+\_\+\+CSR )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a5ed8c3025c3572bfe715b01f2e5f2065}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a5ed8c3025c3572bfe715b01f2e5f2065} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+DELAY\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+DLY1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a84581c171992f95d864772f212463de2}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a84581c171992f95d864772f212463de2} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+DELAY\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CLKDIST\+\_\+\+DLY1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1086a65a3469dad2904279ef766aa6ce}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1086a65a3469dad2904279ef766aa6ce} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CACHE\+\_\+\+CR\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CACHE\+\_\+\+CC\+\_\+\+CTL )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a907ea07fc7d1cabe4c41afa326dc06aa}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a907ea07fc7d1cabe4c41afa326dc06aa} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CACHE\+\_\+\+CR\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+CACHE\+\_\+\+CC\+\_\+\+CTL )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a925380690a5cdb1b4b1788655793a7b7}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a925380690a5cdb1b4b1788655793a7b7} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG0\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a70e4722609676e1fe304b6fcecf89f60}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a70e4722609676e1fe304b6fcecf89f60} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG0\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG0 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af73d93227f4d5dd4437e5be6c659bede}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af73d93227f4d5dd4437e5be6c659bede} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG1\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa24249c1e0b9e4df8d404e2c11b50019}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa24249c1e0b9e4df8d404e2c11b50019} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG1\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG1 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae04a140853fd84e1e15a53aad09577a5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae04a140853fd84e1e15a53aad09577a5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG2\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa123c5f0a644f4de2ed25c864eeb965e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa123c5f0a644f4de2ed25c864eeb965e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG2\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+CFG2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a857c8814df0b2bfc08c22f13506a8812}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a857c8814df0b2bfc08c22f13506a8812} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BOOST\+\_\+\+CR2\+\_\+\+REG}~(\texorpdfstring{$\ast$}{*} (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+BOOST\+\_\+\+CR2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a512ba5cf7f895f9cb37aee52eb8a9cde}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a512ba5cf7f895f9cb37aee52eb8a9cde} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BOOST\+\_\+\+CR2\+\_\+\+PTR}~(  (reg8 \texorpdfstring{$\ast$}{*}) CYREG\+\_\+\+BOOST\+\_\+\+CR2 )
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9303c7e392b5615f02c3a846956796ed}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9303c7e392b5615f02c3a846956796ed} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+FREQ\+\_\+\+MASK}~(0x07u)    /\texorpdfstring{$\ast$}{*} IMO frequency mask    \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ac2576bb94ae066de901e6961c8597765}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ac2576bb94ae066de901e6961c8597765} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+FREQ\+\_\+12\+MHZ}~(0x00u)    /\texorpdfstring{$\ast$}{*} IMO frequency 12 MHz  \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aab6d77f9ddbb99ae6ee9adc2f1a9426c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aab6d77f9ddbb99ae6ee9adc2f1a9426c} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+F2\+XON}~(0x10u)    /\texorpdfstring{$\ast$}{*} IMO doubler enable    \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9a090445b8661f646099abd7b5953dfd}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9a090445b8661f646099abd7b5953dfd} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+USB}~(0x40u)    /\texorpdfstring{$\ast$}{*} IMO is in USB mode    \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aecf66bb0778e74e90c1a8da16747770d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aecf66bb0778e74e90c1a8da16747770d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MASTER\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+IMO}~(0u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aeab98163f2b7eddb7e63b35306021d1e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aeab98163f2b7eddb7e63b35306021d1e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MASTER\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+PLL}~(1u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a127583ad6f80a43a81e87fc75ca718a0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a127583ad6f80a43a81e87fc75ca718a0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MASTER\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+XTAL}~(2u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ad3969dee723bd4afde79e5a725893f92}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ad3969dee723bd4afde79e5a725893f92} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MASTER\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+DSI}~(3u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae8da40f65bc319ef90bd9a631f3c069e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae8da40f65bc319ef90bd9a631f3c069e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MASTER\+\_\+\+CLK\+\_\+\+SRC\+\_\+\+MASK}~(3u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ab94a54a0796f0fd5c72a0c6a6a7d695a}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ab94a54a0796f0fd5c72a0c6a6a7d695a} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PLL\+\_\+\+CFG0\+\_\+\+ENABLE}~(0x01u)     /\texorpdfstring{$\ast$}{*} PLL enable             \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a051731a492522a6673bd5439afc92337}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a051731a492522a6673bd5439afc92337} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PLL\+\_\+\+STATUS\+\_\+\+LOCK}~(0x01u)     /\texorpdfstring{$\ast$}{*} PLL Lock Status        \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a953aeec87b712d361233f97e74c3052d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a953aeec87b712d361233f97e74c3052d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+XMHZ\+\_\+\+CSR\+\_\+\+ENABLE}~(0x01u)     /\texorpdfstring{$\ast$}{*} Enable X MHz OSC       \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a759929146776ea1e27ae99f2bc8336cf}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a759929146776ea1e27ae99f2bc8336cf} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+XMHZ\+\_\+\+CSR\+\_\+\+XERR}~(0x80u)     /\texorpdfstring{$\ast$}{*} High indicates failure \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_adcb6a7db833c48f63914e7ebe09a8651}\label{_generated___source_2_p_so_c5_2cy_pm_8h_adcb6a7db833c48f63914e7ebe09a8651} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BOOST\+\_\+\+ENABLE}~(0x08u)     /\texorpdfstring{$\ast$}{*} Boost enable           \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9ef55f8383d386da3cfc55d1f8c732a7}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9ef55f8383d386da3cfc55d1f8c732a7} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ILO\+\_\+\+CR0\+\_\+\+EN\+\_\+1K}~(0x02u)     /\texorpdfstring{$\ast$}{*} Enable 1k\+Hz ILO        \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a37f421adb4a9b5d43c1732040b3c46ea}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a37f421adb4a9b5d43c1732040b3c46ea} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ILO\+\_\+\+CR0\+\_\+\+EN\+\_\+100K}~(0x04u)     /\texorpdfstring{$\ast$}{*} Enable 100k\+Hz ILO      \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_abef37dd53cc1709c3b3545404fe07f12}\label{_generated___source_2_p_so_c5_2cy_pm_8h_abef37dd53cc1709c3b3545404fe07f12} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ILO\+\_\+\+CR0\+\_\+\+PD\+\_\+\+MODE}~(0x10u)     /\texorpdfstring{$\ast$}{*} Power down mode for ILO\texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a198328b43539186a36313b1c0508a35a}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a198328b43539186a36313b1c0508a35a} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+X32\+\_\+\+CR\+\_\+\+X32\+EN}~(0x01u)     /\texorpdfstring{$\ast$}{*} Enable 32k\+Hz OSC       \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a101fd586149186936a2216a9ce9ec3e5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a101fd586149186936a2216a9ce9ec3e5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CTW\+\_\+\+IE}~(0x08u)     /\texorpdfstring{$\ast$}{*} CTW interrupt enable   \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa4ecdb8df6448b1d9fe28639b7b248fe}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa4ecdb8df6448b1d9fe28639b7b248fe} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CTW\+\_\+\+EN}~(0x04u)     /\texorpdfstring{$\ast$}{*} CTW enable             \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a332c24c083f89065d53d1b054bcadac6}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a332c24c083f89065d53d1b054bcadac6} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FTW\+\_\+\+IE}~(0x02u)     /\texorpdfstring{$\ast$}{*} FTW interrupt enable   \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a09ee521b6162a0b248a9db5e5a471d20}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a09ee521b6162a0b248a9db5e5a471d20} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FTW\+\_\+\+EN}~(0x01u)     /\texorpdfstring{$\ast$}{*} FTW enable             \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a51a20eb2048a9080c43c06a54cd503bf}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a51a20eb2048a9080c43c06a54cd503bf} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+1\+PPS\+\_\+\+EN}~(0x10u)     /\texorpdfstring{$\ast$}{*} 1PPS enable            \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a73ce52d2e20735314134ae543b6b8ead}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a73ce52d2e20735314134ae543b6b8ead} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+1\+PPS\+\_\+\+IE}~(0x20u)     /\texorpdfstring{$\ast$}{*} 1PPS interrupt enable  \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aba9bb3f8274ff1b6674d5d3371970dd0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aba9bb3f8274ff1b6674d5d3371970dd0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+EN\+\_\+\+CLK\+\_\+\+A\+\_\+\+MASK}~(0x0\+Fu)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7aede4e2a4128ff56be78c5169cd3177}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a7aede4e2a4128ff56be78c5169cd3177} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+EN\+\_\+\+CLK\+\_\+\+D\+\_\+\+MASK}~(0x\+FFu)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7534d188add5581d43286f141aedca33}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a7534d188add5581d43286f141aedca33} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+DIV\+\_\+\+BY\+\_\+\+ONE}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a03525d8aa2854d034974cc56a00701c0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a03525d8aa2854d034974cc56a00701c0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+IMO\+\_\+\+CR\+\_\+\+XCLKEN}~(0x20u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af6f8371a83650c8433359c01c5bf8f0b}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af6f8371a83650c8433359c01c5bf8f0b} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+IMO\+\_\+\+OUT\+\_\+\+MASK}~(0x30u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1c4df38439183ec6c9c5667086ef0735}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1c4df38439183ec6c9c5667086ef0735} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+IMO\+\_\+\+OUT\+\_\+\+IMO}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a14b80b0746616976ca2fb99d0443a0cc}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a14b80b0746616976ca2fb99d0443a0cc} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+IMO2\+X\+\_\+\+SRC}~(0x40u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a93f905dca3f1992a7ffd05345923431b}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a93f905dca3f1992a7ffd05345923431b} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+PLL\+\_\+\+SRC\+\_\+\+MASK}~(0x03u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7b3d97eb177f2c9d6f904b9d8236bab5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a7b3d97eb177f2c9d6f904b9d8236bab5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+PLL\+\_\+\+SRC\+\_\+\+IMO}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aec3112d201801d598cda6b9593317638}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aec3112d201801d598cda6b9593317638} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+PLL\+\_\+\+SRC\+\_\+\+XTAL}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a1a791905cc4df598114fb33354b08c53}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a1a791905cc4df598114fb33354b08c53} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+PLL\+\_\+\+SRC\+\_\+\+DSI}~(0x02u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a88837900ff9ccbc3171700a0beafa144}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a88837900ff9ccbc3171700a0beafa144} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+PWRUP\+\_\+\+PULSE\+\_\+Q}~(0x08u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_acd36ebc86b2c8ab61bfc8190702af223}\label{_generated___source_2_p_so_c5_2cy_pm_8h_acd36ebc86b2c8ab61bfc8190702af223} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+ACTIVE}~(0x00u)     /\texorpdfstring{$\ast$}{*} Active power mode      \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a9aab8c9bd8a077fa5009a9e6dce6b70e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a9aab8c9bd8a077fa5009a9e6dce6b70e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+ALT\+\_\+\+ACT}~(0x01u)     /\texorpdfstring{$\ast$}{*} Alternate Active power \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af662ebfd5b2074f532de686600ee26e9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af662ebfd5b2074f532de686600ee26e9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+SLEEP}~(0x03u)     /\texorpdfstring{$\ast$}{*} Sleep power mode       \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af8e17e49439a10695148c4b71caf0391}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af8e17e49439a10695148c4b71caf0391} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+HIBERNATE}~(0x04u)     /\texorpdfstring{$\ast$}{*} Hibernate power mode   \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af82e8eb2dbf6aad482163a612fab5cf5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_af82e8eb2dbf6aad482163a612fab5cf5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+MODE\+\_\+\+CSR\+\_\+\+MASK}~(0x07u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a934c8626c563dc45dd6580b2a76ff488}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a934c8626c563dc45dd6580b2a76ff488} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR1\+\_\+\+I2\+CREG\+\_\+\+BACKUP}~(0x04u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae19925a0278152a6cbb1f8884a546e7f}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae19925a0278152a6cbb1f8884a546e7f} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR1\+\_\+\+LDOA\+\_\+\+ISO}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a8cca4bb75790fb5ee24553014c9fabb9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a8cca4bb75790fb5ee24553014c9fabb9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+CR1\+\_\+\+LDOA\+\_\+\+DIS}~(0x02u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a84130b72c16f0271f9aa84b5cc82ffb0}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a84130b72c16f0271f9aa84b5cc82ffb0} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR2\+\_\+\+VCCD\+\_\+\+CLK\+\_\+\+DET}~(0x04u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a0e02d837200f24eb4a970b5b0bf545f8}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a0e02d837200f24eb4a970b5b0bf545f8} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FTW\+\_\+\+INT}~(0x01u)     /\texorpdfstring{$\ast$}{*} FTW event has occured  \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a8eb0545f3e77a553f88fc7425c530726}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a8eb0545f3e77a553f88fc7425c530726} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CTW\+\_\+\+INT}~(0x02u)     /\texorpdfstring{$\ast$}{*} CTW event has occured  \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ac5ea31b54c9fd0f79d0f5e82bc4f5e5c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ac5ea31b54c9fd0f79d0f5e82bc4f5e5c} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ONEPPS\+\_\+\+INT}~(0x04u)     /\texorpdfstring{$\ast$}{*} 1PPS event has occured \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2fff2cf072373f7f41de11281b032ab9}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a2fff2cf072373f7f41de11281b032ab9} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+ACT\+\_\+\+CFG0\+\_\+\+IMO}~(0x10u)     /\texorpdfstring{$\ast$}{*} IMO enable in Active \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa1de638b2afeb6a3129890c5002399b2}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aa1de638b2afeb6a3129890c5002399b2} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CACHE\+\_\+\+CR\+\_\+\+CYCLES\+\_\+\+MASK}~(0x\+C0u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_acd0025293eff0ed64dc02b9bcadb694e}\label{_generated___source_2_p_so_c5_2cy_pm_8h_acd0025293eff0ed64dc02b9bcadb694e} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BUS\+\_\+\+CLK\+\_\+\+DIV\+\_\+\+BY\+\_\+\+ONE}~(0x00u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a784978ffb4a36c2193456d04e88dd3ad}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a784978ffb4a36c2193456d04e88dd3ad} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+RESET\+\_\+\+CR1\+\_\+\+HVI\+\_\+\+LVI\+\_\+\+EN\+\_\+\+MASK}~(0x07u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a02bf17bb0975e94fb96a0204959442ff}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a02bf17bb0975e94fb96a0204959442ff} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+RESET\+\_\+\+CR1\+\_\+\+HVIA\+\_\+\+EN}~(0x04u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a11d5a99a13b7567d123945927e04b48c}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a11d5a99a13b7567d123945927e04b48c} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+RESET\+\_\+\+CR1\+\_\+\+LVIA\+\_\+\+EN}~(0x02u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae2bf8a9a5e9866764304bc766e19136d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae2bf8a9a5e9866764304bc766e19136d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+RESET\+\_\+\+CR1\+\_\+\+LVID\+\_\+\+EN}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a09b5af4ca8b2c1a41649a7704fd7a05f}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a09b5af4ca8b2c1a41649a7704fd7a05f} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CLKDIST\+\_\+\+DELAY\+\_\+\+EN}~(0x04u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a73cc19052619e1aca145fcd71514ecfb}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a73cc19052619e1aca145fcd71514ecfb} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+WAKEUP\+\_\+\+SRC\+\_\+\+CMPS\+\_\+\+MASK}~(0x000\+Fu)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a41c0d25c8a62ce4b4f1efd470fed247d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a41c0d25c8a62ce4b4f1efd470fed247d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+SLP\+\_\+\+TR\+\_\+\+HIBSLP\+\_\+\+HOLDOFF\+\_\+\+MASK}~(0x1\+Fu)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ae32a165fcd7293dbce0e49284d0ddcb5}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ae32a165fcd7293dbce0e49284d0ddcb5} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+SLP\+\_\+\+TR\+\_\+\+BYPASS}~(0x10u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aff25774c143b27704b0fb4a92964e874}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aff25774c143b27704b0fb4a92964e874} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+BOOST\+\_\+\+CR2\+\_\+\+EREFSEL\+\_\+\+EXT}~(0x08u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a3dc07bc89b7c86df9edbc2be8de92ffd}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a3dc07bc89b7c86df9edbc2be8de92ffd} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR0}~(0x\+FFu)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ab2573175d4289d726fea6918c60825a7}\label{_generated___source_2_p_so_c5_2cy_pm_8h_ab2573175d4289d726fea6918c60825a7} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR1}~(0x\+B0u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a26980d4341770213e9ce008acf23fd57}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a26980d4341770213e9ce008acf23fd57} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+PWRSYS\+\_\+\+WAKE\+\_\+\+TR3}~(0x\+FFu)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_add74aa891bdb46c2e66004608eb2ae27}\label{_generated___source_2_p_so_c5_2cy_pm_8h_add74aa891bdb46c2e66004608eb2ae27} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+FASTCLK\+\_\+\+PLL\+\_\+\+LOCKED}~(0x01u)
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a5f629aebc4bf86ff73cfc0de6534225d}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a5f629aebc4bf86ff73cfc0de6534225d} 
+\#define {\bfseries CY\+\_\+\+PM\+\_\+\+CTW\+\_\+\+INTERVAL\+\_\+\+MASK}~(0x0\+Fu)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aced601838d9a8b1f7ccee78b0cee30ee}\label{_generated___source_2_p_so_c5_2cy_pm_8h_aced601838d9a8b1f7ccee78b0cee30ee} 
+typedef struct \mbox{\hyperlink{structcy_pm_clock_backup_struct}{cy\+Pm\+Clock\+Backup\+Struct}} {\bfseries CY\+\_\+\+PM\+\_\+\+CLOCK\+\_\+\+BACKUP\+\_\+\+STRUCT}
+\item 
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a0c8d4e4f92f067612df8c1db1ef44418}\label{_generated___source_2_p_so_c5_2cy_pm_8h_a0c8d4e4f92f067612df8c1db1ef44418} 
+typedef struct \mbox{\hyperlink{structcy_pm_backup_struct}{cy\+Pm\+Backup\+Struct}} {\bfseries CY\+\_\+\+PM\+\_\+\+BACKUP\+\_\+\+STRUCT}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a35a5ce6546a22af1abb3ce052a7470f5}{Cy\+Pm\+Save\+Clocks}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_aa867cec43f048788a1eab108352b12d1}{Cy\+Pm\+Restore\+Clocks}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a52a3859dccff44dd01344bd49eeb38f2}{Cy\+Pm\+Alt\+Act}} (uint16 wakeup\+Time, uint16 wakeup\+Source)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a0bf64016fa29d7a55b26f81b35f48003}{Cy\+Pm\+Sleep}} (uint8 wakeup\+Time, uint16 wakeup\+Source)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a2fe8930b62cf3b095201cb63c8b0504c}{Cy\+Pm\+Hibernate}} (void)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a43904ef8fbf062846939f2ac6891ced0}{Cy\+Pm\+Hibernate\+Ex}} (uint16 wakeup\+Source)
+\item 
+uint8 \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status}} (uint8 mask)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_af0bacbe3806f71ef8172c62f9e7909a6}{Cy\+Pm\+Ctw\+Set\+Interval}} (uint8 ctw\+Interval)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_a108a3e95daf6ecbd7362ca1f8db8496e}{Cy\+Pm\+Ftw\+Set\+Interval}} (uint8 ftw\+Interval)
+\item 
+void \mbox{\hyperlink{_generated___source_2_p_so_c5_2cy_pm_8h_ad566865474d29d815c49dd4d0fe5de3b}{Cy\+Pm\+Opps\+Set}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides the function definitions for the power management API. 
+
+\begin{DoxyVersion}{Version}
+6.\+0
+\end{DoxyVersion}
+
+
+\begin{DoxyNote}{Note}
+Documentation of the API\textquotesingle{}s in this file is located in the System Reference Guide provided with PSoC Creator.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright 2008-\/2018, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a52a3859dccff44dd01344bd49eeb38f2}\index{cyPm.h@{cyPm.h}!CyPmAltAct@{CyPmAltAct}}
+\index{CyPmAltAct@{CyPmAltAct}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmAltAct()}{CyPmAltAct()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a52a3859dccff44dd01344bd49eeb38f2} 
+void Cy\+Pm\+Alt\+Act (\begin{DoxyParamCaption}\item[{uint16}]{wakeup\+Time}{, }\item[{uint16}]{wakeup\+Source}{}\end{DoxyParamCaption})}
+
+Puts the part into the Alternate Active (Standby) state. The Alternate Active state can allow for any of the capabilities of the device to be active, but the operation of this function is dependent on the CPU being disabled during the Alternate Active state. The configuration code and the component APIs will configure the template for the Alternate Active state to be the same as the Active state with the exception that the CPU will be disabled during Alternate Active.
+
+Note Before calling this function, you must manually configure the power mode of the source clocks for the timer that is used as the wakeup timer.
+
+PSoC 3\+: Before switching to Alternate Active, if a wakeup\+Time other than NONE is specified, then the appropriate timer state is configured as specified with the interrupt for that timer disabled. The wakeup source will be the combination of the values specified in the wakeup\+Source and any timer specified in the wakeup\+Time argument. Once the wakeup condition is satisfied, then all saved state is restored and the function returns in the Active state.
+
+Note that if the wakeup\+Time is made with a different value, the period before the wakeup occurs can be significantly shorter than the specified time. If the next call is made with the same wakeup\+Time value, then the wakeup will occur the specified period after the previous wakeup occurred.
+
+If a wakeup\+Time other than NONE is specified, then upon exit the state of the specified timer will be left as specified by wakeup\+Time with the timer enabled and the interrupt disabled. If the CTW, FTW or One PPS is already configured for wakeup, for example with the Sleep\+Timer or RTC components, then specify NONE for the wakeup\+Time and include the appropriate source for wakeup\+Source.
+
+PSoC 5LP\+: This function is used to both enter the Alternate Active mode and halt the processor. For PSoC 3 these two actions must be paired together. With PSoC 5LP the processor can be halted independently with the \doxylink{group___c_m_s_i_s___core___instruction_interface_gad23bf2b78a9a4524157c9de0d30b7448}{\+\_\+\+\_\+\+WFI()} function from the CMSIS library that is included in Creator. This function should be used instead when the action required is just to halt the processor until an enabled interrupt occurs.
+
+The wakeup\+Time parameter is not used for this device. It must be set to zero (PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+NONE). The wake up time configuration can be done by a separate component\+: the CTW wakeup interval should be configured with the Sleep Timer component and one second interval should be configured with the RTC component.
+
+The wakeup behavior depends on the wakeup\+Source parameter in the following manner\+: upon function execution the device will be switched from Active to Alternate Active mode and then the CPU will be halted. When an enabled wakeup event occurs the device will return to Active mode. Similarly when an enabled interrupt occurs the CPU will be started. These two actions will occur together provided that the event that occurs is an enabled wakeup source and also generates an interrupt. If just the wakeup event occurs then the device will be in Active mode, but the CPU will remain halted waiting for an interrupt. If an interrupt occurs from something other than a wakeup source, then the CPU will restart with the device in Alternate Active mode until a wakeup event occurs.
+
+For example, if Cy\+Pm\+Alt\+Act(\+PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+NONE, PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+PICU) is called and PICU interrupt occurs, the CPU will be started and device will be switched into Active mode. And if Cy\+Pm\+Alt\+Act(\+PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+NONE,  PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+NONE) is called and PICU interrupt occurs, the CPU will be started while device remains in Alternate Active mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em wakeup\+Time} & Specifies a timer wakeup source and the frequency of that source. For PSoC 5LP this parameter is ignored.\\
+\hline
+\end{DoxyParams}
+Define Time PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+NONE None 
+\begin{DoxyParams}{Parameters}
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+ONE\+\_\+\+PPS} & One PPS\+: 1 second \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+2\+MS} & CTW\+: 2 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+4\+MS} & CTW\+: 4 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+8\+MS} & CTW\+: 8 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+16\+MS} & CTW\+: 16 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+32\+MS} & CTW\+: 32 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+64\+MS} & CTW\+: 64 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+128\+MS} & CTW\+: 128 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+256\+MS} & CTW\+: 256 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+512\+MS} & CTW\+: 512 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+1024\+MS} & CTW\+: 1024 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+2048\+MS} & CTW\+: 2048 ms \\
+\hline
+{\em PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+CTW\+\_\+4096\+MS} & CTW\+: 4096 ms PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+FTW(1-\/256)\texorpdfstring{$\ast$}{*} FTW\+: 10us to 2.\+56 ms\\
+\hline
+{\em \texorpdfstring{$\ast$}{*}\+Note} & PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+TIME\+\_\+\+FTW() is a macro that takes an argument that specifies how many increments of 10 us to delay. For PSoC 3 silicon the valid range of values is 1 to 256.\\
+\hline
+{\em wake\+Up\+Source} & Specifies a bitwise mask of wakeup sources. In addition, if a wakeup\+Time has been specified, the associated timer will be included as a wakeup source.\\
+\hline
+\end{DoxyParams}
+Define Source PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+NONE None PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR0 Comparator 0 PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR1 Comparator 1 PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR2 Comparator 2 PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+COMPARATOR3 Comparator 3 PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+INTERRUPT Interrupt PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+PICU PICU PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+I2C I2C PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+BOOSTCONVERTER Boost Converter PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+FTW Fast Timewheel\texorpdfstring{$\ast$}{*} PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+VD High and Low Voltage Detection (HVI, LVI)\texorpdfstring{$\ast$}{*} PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+CTW Central Timewheel\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+ONE\+\_\+\+PPS One PPS\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} PM\+\_\+\+ALT\+\_\+\+ACT\+\_\+\+SRC\+\_\+\+LCD LCD
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}\+Note} & \+: FTW and HVI/\+LVI wakeup signals are in the same mask bit. \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+Note} & CTW and One PPS wakeup signals are in the same mask bit.\\
+\hline
+\end{DoxyParams}
+When specifying a Comparator as the wakeup\+Source, an instance specific define that will track with the specific comparator that the instance is placed into should be used. As an example, for a Comparator instance named 
+\begin{DoxyParams}{Parameters}
+{\em My\+Comp} & the value to OR into the mask is\+: My\+Comp\+\_\+ct\+Comp\+\_\+\+\_\+\+CMP\+\_\+\+MASK.\\
+\hline
+\end{DoxyParams}
+When CTW, FTW or One PPS is used as a wakeup source, the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} function must be called upon wakeup with a corresponding parameter. Please refer to the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} API in the System Reference Guide for more information.
+
+Reentrant\+: No
+
+\textbackslash{}sideeffect If a wakeup\+Time other than NONE is specified, then upon exit the state of the specified timer will be left as specified by wakeup\+Time with the timer enabled and the interrupt disabled. Also, the ILO 1 KHz (if CTW timer is used as wakeup time) or ILO 100 KHz (if the FTW timer is used as wakeup time) will be left started. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_af0bacbe3806f71ef8172c62f9e7909a6}\index{cyPm.h@{cyPm.h}!CyPmCtwSetInterval@{CyPmCtwSetInterval}}
+\index{CyPmCtwSetInterval@{CyPmCtwSetInterval}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmCtwSetInterval()}{CyPmCtwSetInterval()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_af0bacbe3806f71ef8172c62f9e7909a6} 
+void Cy\+Pm\+Ctw\+Set\+Interval (\begin{DoxyParamCaption}\item[{uint8}]{ctw\+Interval}{}\end{DoxyParamCaption})}
+
+Performs the CTW configuration\+:
+\begin{DoxyItemize}
+\item Disables the CTW interrupt
+\item Enables 1 k\+Hz ILO
+\item Sets a new CTW interval
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctw\+Interval} & the CTW interval to be set.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect Enables ILO 1 KHz clock and leaves it enabled. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a108a3e95daf6ecbd7362ca1f8db8496e}\index{cyPm.h@{cyPm.h}!CyPmFtwSetInterval@{CyPmFtwSetInterval}}
+\index{CyPmFtwSetInterval@{CyPmFtwSetInterval}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmFtwSetInterval()}{CyPmFtwSetInterval()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a108a3e95daf6ecbd7362ca1f8db8496e} 
+void Cy\+Pm\+Ftw\+Set\+Interval (\begin{DoxyParamCaption}\item[{uint8}]{ftw\+Interval}{}\end{DoxyParamCaption})}
+
+Performs the FTW configuration\+:
+\begin{DoxyItemize}
+\item Disables the FTW interrupt
+\item Enables 100 k\+Hz ILO
+\item Sets a new FTW interval.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ftw\+Interval} & The FTW counter interval.\\
+\hline
+\end{DoxyParams}
+\textbackslash{}sideeffect Enables the ILO 100 KHz clock and leaves it enabled. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a2fe8930b62cf3b095201cb63c8b0504c}\index{cyPm.h@{cyPm.h}!CyPmHibernate@{CyPmHibernate}}
+\index{CyPmHibernate@{CyPmHibernate}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmHibernate()}{CyPmHibernate()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a2fe8930b62cf3b095201cb63c8b0504c} 
+void Cy\+Pm\+Hibernate (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Puts the part into the Hibernate state.
+
+Before switching to Hibernate, the current status of the PICU wakeup source bit is saved and then set. This configures the device to wake up from the PICU. Make sure you have at least one pin configured to generate PICU interrupt. For pin Px.\+y, the register "{}\+PICU\+\_\+\+INTTYPE\+\_\+\+PICUx\+\_\+\+INTTYPEy"{} controls the PICU behavior. In the TRM, this register is "{}\+PICU\mbox{[}0..\+15\mbox{]}\+\_\+\+INTTYPE\mbox{[}0..\+7\mbox{]}."{} In the Pins component datasheet, this register is referred to as the IRQ option. Once the wakeup occurs, the PICU wakeup source bit is restored and the PSoC returns to the Active state.
+
+Reentrant\+: No
+
+\textbackslash{}sideeffect Applications must wait 20 us before re-\/entering hibernate or sleep after waking up from hibernate. The 20 us allows the sleep regulator time to stabilize before the next hibernate / sleep event occurs. The 20 us requirement begins when the device wakes up. There is no hardware check that this requirement is met. The specified delay should be done on ISR entry.
+
+After the wakeup PICU interrupt occurs, the Pin\+\_\+\+Clear\+Interrupt() (where Pin is instance name of the Pins component) function must be called to clear the latched pin events to allow the proper Hibernate mode entry and to enable detection of future events.
+
+The 1 k\+Hz ILO clock is expected to be enabled for PSoC 3 and PSoC 5LP to measure Hibernate/\+Sleep regulator settling time after a reset. The holdoff delay is measured using the rising edges of the 1 k\+Hz ILO. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a43904ef8fbf062846939f2ac6891ced0}\index{cyPm.h@{cyPm.h}!CyPmHibernateEx@{CyPmHibernateEx}}
+\index{CyPmHibernateEx@{CyPmHibernateEx}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmHibernateEx()}{CyPmHibernateEx()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a43904ef8fbf062846939f2ac6891ced0} 
+void Cy\+Pm\+Hibernate\+Ex (\begin{DoxyParamCaption}\item[{uint16}]{wakeup\+Source}{}\end{DoxyParamCaption})}
+
+Puts the part into the Hibernate state.
+
+The following wake up sources can be configured\+: PICU interrupt, Comparator0, Comparator1, Comparator2, and Comparator3 output.
+
+Before switching to Hibernate, the current status of the PICU wakeup source bit is saved and then set.
+
+If using PICU as the wake up source, make sure you have at least one pin configured to generate a PICU interrupt. For pin Px.\+y, the register "{}\+PICU\+\_\+\+INTTYPE\+\_\+\+PICUx\+\_\+\+INTTYPEy"{} controls the PICU behavior. In the TRM, this register is "{}\+PICU\mbox{[}0..\+15\mbox{]}\+\_\+\+INTTYPE\mbox{[}0..\+7\mbox{]}."{} In the Pins component datasheet, this register is referred to as the IRQ option. Once the wakeup occurs, the PICU wakeup source bit is restored and the PSoC returns to the Active state.
+
+If using a comparator as the wake up source, make sure you call this function with the \textquotesingle{}wakeup\+Source\textquotesingle{} parameter set to the appropriate comparator. The part is configured for the requested wakeup source by setting the corresponding bits in PM\+\_\+\+WAKEUP\+\_\+\+CFG1 register.
+
+Function call Cy\+Pm\+Hibernate\+Ex(\+CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+PICU) will act in the same way as \doxylink{codegentemp_2cy_pm_8c_a2fe8930b62cf3b095201cb63c8b0504c}{Cy\+Pm\+Hibernate()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em wakeup\+Source} & Parameter Value Description CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+PICU PICU interrupt is set as the wake up source. CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR0 Comparator 0 is set as the wake up source. CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR1 Comparator 1 is set as the wake up source. CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR2 Comparator 2 is set as the wake up source. CY\+\_\+\+PM\+\_\+\+HIB\+\_\+\+SRC\+\_\+\+COMPARATOR3 Comparator 3 is set as the wake up source.\\
+\hline
+\end{DoxyParams}
+Reentrant\+: No
+
+\textbackslash{}sideeffect Applications must wait 20 us before re-\/entering hibernate or sleep after waking up from hibernate. The 20 us allows the sleep regulator time to stabilize before the next hibernate / sleep event occurs. The 20 us requirement begins when the device wakes up. There is no hardware check that this requirement is met. The specified delay should be done on ISR entry.
+
+After the wakeup PICU interrupt occurs, the Pin\+\_\+\+Clear\+Interrupt() (where Pin is instance name of the Pins component) function must be called to clear the latched pin events to allow the proper Hibernate mode entry and to enable detection of future events.
+
+The 1 k\+Hz ILO clock is expected to be enabled for PSoC 3 and PSoC 5LP to measure Hibernate/\+Sleep regulator settling time after a reset. The holdoff delay is measured using the rising edges of the 1 k\+Hz ILO. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_ad566865474d29d815c49dd4d0fe5de3b}\index{cyPm.h@{cyPm.h}!CyPmOppsSet@{CyPmOppsSet}}
+\index{CyPmOppsSet@{CyPmOppsSet}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmOppsSet()}{CyPmOppsSet()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_ad566865474d29d815c49dd4d0fe5de3b} 
+void Cy\+Pm\+Opps\+Set (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Performs 1PPS configuration\+:
+\begin{DoxyItemize}
+\item Starts 32 KHz XTAL
+\item Disables 1PPS interrupts
+\item Enables 1PPS 
+\end{DoxyItemize}\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a7f6c3c26c960cc2a69aa7d9a409875ff}\index{cyPm.h@{cyPm.h}!CyPmReadStatus@{CyPmReadStatus}}
+\index{CyPmReadStatus@{CyPmReadStatus}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmReadStatus()}{CyPmReadStatus()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a7f6c3c26c960cc2a69aa7d9a409875ff} 
+uint8 Cy\+Pm\+Read\+Status (\begin{DoxyParamCaption}\item[{uint8}]{mask}{}\end{DoxyParamCaption})}
+
+Manages the Power Manager Interrupt Status Register. This register has the interrupt status for the one pulse per second, central timewheel and fast timewheel timers. This hardware register clears on read. To allow for only clearing the bits of interest and preserving the other bits, this function uses a shadow register that retains the state. This function reads the status register and ORs that value with the shadow register. That is the value that is returned. Then the bits in the mask that are set are cleared from this value and written back to the shadow register.
+
+Note You must call this function within 1 ms (1 clock cycle of the ILO) after a CTW event has occurred.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & Bits in the shadow register to clear. \begin{DoxyCode}{0} Define                      Source\newline \end{DoxyCode}
+ CY\+\_\+\+PM\+\_\+\+FTW\+\_\+\+INT Fast Timewheel CY\+\_\+\+PM\+\_\+\+CTW\+\_\+\+INT Central Timewheel CY\+\_\+\+PM\+\_\+\+ONEPPS\+\_\+\+INT One Pulse Per Second\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status. Same bits values as the mask parameter. 
+\end{DoxyReturn}
+\Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_aa867cec43f048788a1eab108352b12d1}\index{cyPm.h@{cyPm.h}!CyPmRestoreClocks@{CyPmRestoreClocks}}
+\index{CyPmRestoreClocks@{CyPmRestoreClocks}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmRestoreClocks()}{CyPmRestoreClocks()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_aa867cec43f048788a1eab108352b12d1} 
+void Cy\+Pm\+Restore\+Clocks (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Restores any state that was preserved by the last call to \doxylink{codegentemp_2cy_pm_8c_a35a5ce6546a22af1abb3ce052a7470f5}{Cy\+Pm\+Save\+Clocks()}. The Flash wait state setting is also restored.
+
+Note If the Master Clock source is routed through the DSI inputs, then it must be set manually to another source before using the \doxylink{codegentemp_2cy_pm_8c_a35a5ce6546a22af1abb3ce052a7470f5}{Cy\+Pm\+Save\+Clocks()}/\+Cy\+Pm\+Restore\+Clocks() functions.
+
+PSoC 3 and PSoC 5LP\+: The merge region could be used to process state when the megahertz crystal is not ready after a hold-\/off timeout.
+
+PSoC 5\+: The 130 ms is given for the megahertz crystal to stabilize. Its readiness is not verified after a hold-\/off timeout. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a35a5ce6546a22af1abb3ce052a7470f5}\index{cyPm.h@{cyPm.h}!CyPmSaveClocks@{CyPmSaveClocks}}
+\index{CyPmSaveClocks@{CyPmSaveClocks}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmSaveClocks()}{CyPmSaveClocks()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a35a5ce6546a22af1abb3ce052a7470f5} 
+void Cy\+Pm\+Save\+Clocks (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This function is called in preparation for entering sleep or hibernate low power modes. Saves all the states of the clocking system that do not persist during sleep/hibernate or that need to be altered in preparation for sleep/hibernate. Shutdowns all the digital and analog clock dividers for the active power mode configuration.
+
+Switches the master clock over to the IMO and shuts down the PLL and MHz Crystal. The IMO frequency is set to either 12 MHz or 48 MHz to match the Design-\/\+Wide Resources System Editor "{}\+Enable Fast IMO During Startup"{} setting. The ILO and 32 KHz oscillators are not impacted. The current Flash wait state setting is saved and the Flash wait state setting is set for the current IMO speed.
+
+Note If the Master Clock source is routed through the DSI inputs, then it must be set manually to another source before using the \doxylink{codegentemp_2cy_pm_8c_a35a5ce6546a22af1abb3ce052a7470f5}{Cy\+Pm\+Save\+Clocks()}/\+Cy\+Pm\+Restore\+Clocks() functions.
+
+\textbackslash{}sideeffect All peripheral clocks are going to be off after this API method call. \Hypertarget{_generated___source_2_p_so_c5_2cy_pm_8h_a0bf64016fa29d7a55b26f81b35f48003}\index{cyPm.h@{cyPm.h}!CyPmSleep@{CyPmSleep}}
+\index{CyPmSleep@{CyPmSleep}!cyPm.h@{cyPm.h}}
+\doxysubsubsection{\texorpdfstring{CyPmSleep()}{CyPmSleep()}}
+{\footnotesize\ttfamily \label{_generated___source_2_p_so_c5_2cy_pm_8h_a0bf64016fa29d7a55b26f81b35f48003} 
+void Cy\+Pm\+Sleep (\begin{DoxyParamCaption}\item[{uint8}]{wakeup\+Time}{, }\item[{uint16}]{wakeup\+Source}{}\end{DoxyParamCaption})}
+
+Puts the part into the Sleep state.
+
+Note Before calling this function, you must manually configure the power mode of the source clocks for the timer that is used as the wakeup timer.
+
+Note Before calling this function, you must prepare clock tree configuration for the low power mode by calling \doxylink{codegentemp_2cy_pm_8c_a35a5ce6546a22af1abb3ce052a7470f5}{Cy\+Pm\+Save\+Clocks()}. And restore clock configuration after \doxylink{codegentemp_2cy_pm_8c_a0bf64016fa29d7a55b26f81b35f48003}{Cy\+Pm\+Sleep()} execution by calling \doxylink{codegentemp_2cy_pm_8c_aa867cec43f048788a1eab108352b12d1}{Cy\+Pm\+Restore\+Clocks()}. See Power Management section, Clock Configuration subsection of the System Reference Guide for more information.
+
+PSoC 3\+: Before switching to Sleep, if a wakeup\+Time other than NONE is specified, then the appropriate timer state is configured as specified with the interrupt for that timer disabled. The wakeup source will be a combination of the values specified in the wakeup\+Source and any timer specified in the wakeup\+Time argument. Once the wakeup condition is satisfied, then all saved state is restored and the function returns in the Active state.
+
+Note that if the wakeup\+Time is made with a different value, the period before the wakeup occurs can be significantly shorter than the specified time. If the next call is made with the same wakeup\+Time value, then the wakeup will occur the specified period after the previous wakeup occurred.
+
+If a wakeup\+Time other than NONE is specified, then upon exit the state of the specified timer will be left as specified by wakeup\+Time with the timer enabled and the interrupt disabled. If the CTW or One PPS is already configured for wakeup, for example with the Sleep\+Timer or RTC components, then specify NONE for the wakeup\+Time and include the appropriate source for wakeup\+Source.
+
+PSoC 5LP\+: The wakeup\+Time parameter is not used and the only NONE can be specified. The wakeup time must be configured with the component, Sleep\+Timer for CTW intervals and RTC for 1PPS interval. The component must be configured to generate interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em wakeup\+Time} & Specifies a timer wakeup source and the frequency of that source. For PSoC 5LP, this parameter is ignored.\\
+\hline
+\end{DoxyParams}
+Define Time PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+NONE None 
+\begin{DoxyParams}{Parameters}
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+ONE\+\_\+\+PPS} & One PPS\+: 1 second \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+2\+MS} & CTW\+: 2 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+4\+MS} & CTW\+: 4 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+8\+MS} & CTW\+: 8 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+16\+MS} & CTW\+: 16 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+32\+MS} & CTW\+: 32 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+64\+MS} & CTW\+: 64 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+128\+MS} & CTW\+: 128 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+256\+MS} & CTW\+: 256 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+512\+MS} & CTW\+: 512 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+1024\+MS} & CTW\+: 1024 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+2048\+MS} & CTW\+: 2048 ms \\
+\hline
+{\em PM\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+CTW\+\_\+4096\+MS} & CTW\+: 4096 ms\\
+\hline
+{\em wake\+Up\+Source} & Specifies a bitwise mask of wakeup sources. In addition, if a wakeup\+Time has been specified the associated timer will be included as a wakeup source.\\
+\hline
+\end{DoxyParams}
+Define Source PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+NONE None PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR0 Comparator 0 PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR1 Comparator 1 PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR2 Comparator 2 PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+COMPARATOR3 Comparator 3 PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+PICU PICU PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+I2C I2C PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+BOOSTCONVERTER Boost Converter PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+VD High and Low Voltage Detection (HVI, LVI) PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+CTW Central Timewheel\texorpdfstring{$\ast$}{*} PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+ONE\+\_\+\+PPS One PPS\texorpdfstring{$\ast$}{*} PM\+\_\+\+SLEEP\+\_\+\+SRC\+\_\+\+LCD LCD
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}\+Note} & CTW and One PPS wakeup signals are in the same mask bit.\\
+\hline
+\end{DoxyParams}
+When specifying a Comparator as the wakeup\+Source an instance specific define should be used that will track with the specific comparator that the instance is placed into. As an example for a Comparator instance named My\+Comp the 
+\begin{DoxyParams}{Parameters}
+{\em value} & to OR into the mask is\+: My\+Comp\+\_\+ct\+Comp\+\_\+\+\_\+\+CMP\+\_\+\+MASK.\\
+\hline
+\end{DoxyParams}
+When CTW or One PPS is used as a wakeup source, the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} function must be called upon wakeup with corresponding parameter. Please refer to the \doxylink{codegentemp_2cy_pm_8c_a7f6c3c26c960cc2a69aa7d9a409875ff}{Cy\+Pm\+Read\+Status()} API in the System Reference Guide for more information.
+
+Reentrant\+: No
+
+Side Effects and Restrictions\+: If a wakeup\+Time other than NONE is specified, then upon exit the state of the specified timer will be left as specified by wakeup\+Time with the timer enabled and the interrupt disabled. Also, the ILO 1 KHz (if CTW timer is used as wake up time) will be left started.
+
+The 1 k\+Hz ILO clock is expected to be enabled for PSoC 3 and PSoC 5LP to measure Hibernate/\+Sleep regulator settling time after a reset. The holdoff delay is measured using rising edges of the 1 k\+Hz ILO.
+
+For PSoC 3 silicon hardware buzz should be disabled before entering a sleep power mode. It is disabled by PSoC Creator during startup. If a Low Voltage Interrupt (LVI), High Voltage Interrupt (HVI) or Brown Out detect (power supply supervising capabilities) are required in a design during sleep, use the Central Time Wheel (CTW) to periodically wake the device, perform software buzz, and refresh the supervisory services. If LVI, HVI, or Brown Out is not required, then CTW is not required. Refer to the device errata for more information. 

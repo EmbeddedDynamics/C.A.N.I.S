@@ -1,0 +1,36 @@
+\doxysection{Generated\+\_\+\+Source/\+PSo\+C5/cy\+\_\+em\+\_\+eeprom.c File Reference}
+\hypertarget{_generated___source_2_p_so_c5_2cy__em__eeprom_8c}{}\label{_generated___source_2_p_so_c5_2cy__em__eeprom_8c}\index{Generated\_Source/PSoC5/cy\_em\_eeprom.c@{Generated\_Source/PSoC5/cy\_em\_eeprom.c}}
+
+
+This file provides source code of the API for the Emulated EEPROM library. The Emulated EEPROM API allows creating of an emulated EEPROM in flash that has the ability to do wear leveling and restore corrupted data from a redundant copy.  
+
+
+{\ttfamily \#include "{}cytypes.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}cy\+\_\+em\+\_\+eeprom.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_ga49df98ebc721d60425f383ef90a1e8e0}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Init}} (\mbox{\hyperlink{structcy__stc__eeprom__config__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+config\+\_\+t}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_gab5c9597b71a54279de831842d7f7840e}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Read}} (uint32 addr, void \texorpdfstring{$\ast$}{*}eeprom\+Data, uint32 size, \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_gaf463c335f865e8b3b27d60cb17326c8f}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Write}} (uint32 addr, void \texorpdfstring{$\ast$}{*}eeprom\+Data, uint32 size, \mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+cy\+\_\+en\+\_\+em\+\_\+eeprom\+\_\+status\+\_\+t \mbox{\hyperlink{group__group__em__eeprom__functions_gad61dbc3c01d2bbf96e0c0d5b6d2e0b61}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Erase}} (\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+uint32 \mbox{\hyperlink{group__group__em__eeprom__functions_ga799b04577ad8925061627f392a551fbc}{Cy\+\_\+\+Em\+\_\+\+EEPROM\+\_\+\+Num\+Writes}} (\mbox{\hyperlink{structcy__stc__eeprom__context__t}{cy\+\_\+stc\+\_\+eeprom\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides source code of the API for the Emulated EEPROM library. The Emulated EEPROM API allows creating of an emulated EEPROM in flash that has the ability to do wear leveling and restore corrupted data from a redundant copy. 
+
+\begin{DoxyVersion}{Version}
+2.\+20
+\end{DoxyVersion}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright 2017, Cypress Semiconductor Corporation. All rights reserved. You may use this file only in accordance with the license, terms, conditions, disclaimers, and limitations in the end user license agreement accompanying the software package with which this file was provided. 
+\end{DoxyCopyright}
