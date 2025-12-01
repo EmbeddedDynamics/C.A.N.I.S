@@ -205,7 +205,7 @@ De Notulist zorgt ervoor dat alle projectinformatie correct wordt vastgelegd, ge
 *Communicatie Kanalen:*
 - Primair: [Discord]
 - Secundair: [Whatsapp]
-- Documentatie Repository: [Github / OneDrive / Typst]
+- Documentatie Repository: [Github / GitButler / OneDrive / Typst]
 - Interne team management: [Notion / Toggl]
 - Real-time Communicatie: [WhatsApp]
 
@@ -292,107 +292,79 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 #pagebreak()
 
 == Pakket van Eisen
+Typ inleiding :D Zie @verplichte-eisen voor ...
 
-=== Functionele eisen (algemeen)
-
-+ Het systeem maakt gebruik van een *PSoC5* als primaire controller.  
-+ Het systeem bevat ten minste één vorm van draadloze communicatie (bijvoorbeeld BLE, RF of WiFi) of een regelsysteem (bijvoorbeeld PID controller), of beide.  
-+ Het systeem bevat ten minste één HDL-component, geïmplementeerd in Verilog (bijvoorbeeld voor knop-debouncing, game-logica of signaalverwerking).  
-+ Het systeem verwerkt input van minimaal één sensor of gebruiker (bijvoorbeeld knoppen, sensoren of actuatoren).  
-+ Het systeem levert een demonstratiebare functionaliteit (*zoals.... afwachten stakeholders!!!*) die geschikt is voor gebruik tijdens open dagen.  
-
-#v(1em)
-=== Energie en performance
-
-+ Het product is energiezuinig ontworpen en daarom implementeert het minimaal twee energiespaarmaatregelen. Het maakt efficiënt gebruik van voeding en eventuele slaapstanden.  
-+ Het systeem vertoont tijdens gebruik geen spontane resets of crashes.
+=== Verplichte eisen <verplichte-eisen>
++ Het systeem bevat minimaal één PSoC5 als microcontroller.
++ Het systeem zal gebruik maken van draadloze communicatie of een regeltechniek systeem.
++ Het systeem zal gebruik maken van een HDL-component geïmplementeerd in Verilog.
++ Het systeem zal gebruik maken van een RTOS.
++ Het systeem zal geoptimaliseerd worden voor energiezuinigheid (Zie @energie-eisen).
++ Het systeem zal minimaal één zelfgescrheven libary voor een communicatie protocol gebruiken.
++ Het systeem zal geschikt moeten zijn voor opendagen. (zie...)
 
 #v(1em)
-=== Gebruikersgerichtheid
-
-+ Het product is gebruiksvriendelijk en begrijpelijk voor niet-technische gebruikers (zoals bezoekers van open dagen). Dit houd in dat alle knoppen makkelijk toegankelijk zijn en duidelijke label of pictogrammen hebben. (*AFWACHTEN STAKEHOLDERS!!!!*)
-
+=== Functionele eisen
 
 #v(1em)
-=== Betrouwbaarheid en robuustheid
-
-+ Het systeem is bestand tegen normaal gebruik zoals het lopen, inclusief veelvuldig indrukken van knoppen en lichte mechanische belasting.  
-+ Datacommunicatie (indien van toepassing) is betrouwbaar wat in houd dat het niet hapert, verbinding niet verbreekt en dat de juiste inputs goed binnen komen (zoals rechtdoor lopen, naar achter lopen etc) en levert reproduceerbare resultaten op.
+==== Bewegingsfuncties
++ De robot zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ±1 meter.
++ De robot zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ±1 meter.
++ De robot zal minimaal 1 meter zijwaards kunnen lopen, met een afwijking van ±1 meter.
++ De robot zal een extra DOF beschikken in de roll-as. ?
++ De robot zal 360 graden om zijn eigen as heen kunnen draaien.
++ De robot zal 5mm kunnen springen in de lucht.
++ De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke bewegingen
 
 #v(1em)
-#pagebreak()
+==== AI en autonomie
++ De robothond zal kunnen praten D.M.V. ingebouwde speakers.
++ De robothond zal geluid kunnen afspelen D.M.V. ingebouwde speakers.
++ De robothond bestuurt de ingebouwde speakers D.M.V. AI of ingebouwde bestuurbare muziekbord.
++ De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke spraak.
 
-=== Documentatie en traceerbaarheid
+#v(1em)
+==== Modulaire functies
++ De robothond zal kunnen voorzien worden van extra externe modules
++ De robothond zal modulair ontworpen worden met aluminium extrusies
++ De robothond zal modulair ontworpen worden met pogo connectoren
 
+#v(1em)
+=== Energie en performance <energie-eisen>
++ De robothond zal een high-power modus beschikken die de motoren niet limiteert.
++ De robothond zal een low-power modus beschikken die de motoren limiteert tot 50% vermogen.
++ De robothond beschikt een sleep modus waarbij dit op de grond gaat liggen.
++ De robothond zal een AI-limitatie modus hebben die AI functies uitzet.
+
+#v(1em)
+=== Gebruikersgerichtheid en betrouwbaarheid
++ De robothond zal bestuurbaar zijn via een blauwetand x-doos of speelstation controller
++ De robothond zal een duidelijke fysieke gebruikers interface hebben met labels bij knoppen/schakelaars
++ De robothond zal geen onvoorspelbare beweging uitvoeren volgens een uitgebreid testplan.
++ De robothond zal bruikbaar zijn voor opendagen gebaseerd op de wensen van de stakeholder (Zie ...stakeholder).
+
+#v(1em)
+=== Documentatie
++ Er wordt een #acr("PvE") opgesteld met duidelijke MoSCoW-prioriteiten.
++ Er wordt een PvA opgesteld met daarin ten minste een planning, rolverdeling en risicoanalyse.  
++ Er zal een portfolio bijgehouden worden met gemaakte keuzes en ontwerpen
 + Alle ontwerpkeuzes worden onderbouwd met berekeningen, argumentatie
  en/of literatuurbronnen.  
 + Alle schema’s, code en andere ontwerpen worden als bijlage toegevoegd en zijn traceerbaar naar de gestelde eisen.  
-+ De documentatie is gestructureerd volgens de fasen van Design Thinking, tenzij expliciet anders afgesproken.
++ De documentatie is gestructureerd volgens de fasen van Design Thinking Proces, tenzij expliciet anders afgesproken.
 
 #v(1em)
-
 === Eisen aan het ontwikkelproces
-
-+ Er wordt een #acr("PvE") opgesteld met duidelijke MoSCoW-prioriteiten.
-+ Er wordt een duidelijke #acr("MVP") gedefinieerd.
-+ Er wordt een PvA opgesteld met daarin ten minste een planning, rolverdeling en risicoanalyse.  
++ Er zal gebruik gemaakt worden van het design thinking proces.
++ Er zal een testplan opgesteld worden voor elk deelproces.
++ Er zullen Blokdiagrammen aanwezig voor verschillende deelprocessen.
++ Er zal een proof of concept gemaakt met één of meer bijhorende prototype.
++ Er wordt een concrete #acr("MVP") gedefinieerd die meetbaar is via één of meerdere testplannen. 
 + Het team houdt één gezamenlijk logboek bij waarin activiteiten, uren en bijdragen per teamlid worden vastgelegd.  
 + Het team voert wekelijks een tutor-gesprek en legt afspraken en besluiten vast in notulen.  
 + Er wordt gebruikgemaakt van versiebeheer (bijvoorbeeld Git of vergelijkbaar).  
-+ Er wordt een peer review uitgevoerd op PvE en blokdiagram van een ander team en de feedback wordt verwerkt.
++ Er wordt een peer review uitgevoerd op een PvE en blokdiagram van de concurrentie.
 + Er worden rollen verdeeld in de groep en duidelijk gedefinieerd wat de verantwoordelijkheden zijn bij deze rol. (@team-structuur)
-
-#v(1em)
-#pagebreak()
-
-== Pakket van Eisen
-
-=== Verplichte eisen
-+ Het systeem zal gebruik maken van een PSoC5 als primaire controller
-+ Het systeem zal gebruik maken van draadloze communicatie of regeltechniek
-+ Het systeem zal gebruik maken van een HDL-component geïmplementeerd in Verilog
-+ Het systeem zal gebruik maken van een RTOS
-+ Het systeem zal energie zuinig zijn 
-+ Het syteem zal minimaal SPI of I2C gebruiken en zelfgescrheven libary
-
-=== Functionele eisen
-==== Bewegingsfuncties
-+ De robot zal naar voren kunnen lopen
-+ De robot zal naar achter kunnen lopen
-+ De robot zal zijwaards kunnen lopen
-+ De robot zal kunnen bewegen in de Roll directie
-+ De robot zal kunnen bewegen in de Pitch directie
-+ De robot zal kunnen bewegen in de Yaw directie
-+ De robot zal omzich heen kunnen draaien
-+ De robot zal kunnen springen
-
-==== AI en autonomie
-+ De robothond zal kunnen praten
-+ De robothond zal geluid kunnen afspelen
-+ De robothond zal een eigen persoonlijkheid hebben 
-
-==== Modulaire functies
-+ De robothond zal kunnen worden voorzien worden van extra externe modules
-
-=== Energie en performance
-+ De robothond zal gebruik maken van energieeffieciente modi.
-
-=== Gebruikersgerichtheid
-+ De robothond zal gebruiksvriendelijk zijn
-
-=== Betrouwbaarheid en robuustheid
-+ De robothond zal geschikt zijn voor het gebruik op een opendag
-
-=== Documentatie
-+ Er zal een pakket van eisen worden gemaakt
-+ Er zal een Plan van Aanpak worden gemaakt
-+ Er zal een portfolio gemaakt worden met gemaakte keuzes en ontwerpen
-
-=== Eisen aan het ontwikkelproces
-+ Er zal gebruikt gemaakt worden van het design thinking proces
-+ Er zal een testplan opgesteld moeten worden voor elk proces voor het maken
-+ Er zullen Blokdiagrammen van het product van verschillende fases
-+ Er zal een proof of concept worden gemaakt en daarbij behorende prototypes. 
 
 #pagebreak()
 
@@ -406,7 +378,7 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 
 #v(1em)
 == Minimal Viable Product
-Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product.
+Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product.
 
 - Het apparaat moet minimaal naar voren kunnen lopen door middel van de vier poten.
 - Het apparaat naar voren lopen door middel van berekende inverse kinematics.
