@@ -382,6 +382,8 @@ ODriveResult ODriveAxis_GetCurrentState(ODriveAxis axis, ODriveAxisState* state)
  * @param[in] torque_ff - Torque feedforward [Nm] (0 if unused)
  *
  * @return Operation result
+ * 
+ * @note control_mode must be equal to CONTROL_MODE_POSITION_CONTROL for this operation to work.
  */
 ODriveResult ODriveAxis_SetPositionSetpoint(ODriveAxis axis,
                                             float position,
@@ -400,6 +402,8 @@ ODriveResult ODriveAxis_SetPositionSetpoint(ODriveAxis axis,
  * @param[in] torque_ff - Torque feedforward [Nm] (0 if unused)
  *
  * @return Operation result
+ * 
+ * @note control_mode must be equal to CONTROL_MODE_VELOCITY_CONTROL for this operation to work.
  */
 ODriveResult ODriveAxis_SetVelocitySetpoint(ODriveAxis axis,
                                            float velocity,
@@ -416,6 +420,8 @@ ODriveResult ODriveAxis_SetVelocitySetpoint(ODriveAxis axis,
  * @param[in] torque - Target torque [Nm]
  *
  * @return Operation result
+ * 
+ * @note control_mode must be equal to CONTROL_MODE_TORQUE_CONTROL for this operation to work.
  */
 ODriveResult ODriveAxis_SetTorqueSetpoint(ODriveAxis axis, float torque);
 
@@ -429,16 +435,30 @@ ODriveResult ODriveAxis_SetTorqueSetpoint(ODriveAxis axis, float torque);
  * Sends CAN request and waits for response with encoder feedback.
  *
  * @param[in] axis - ODriveAxis handle
+ * @param[in] timeout - Timeout until fail [ms] (default 100ms)
  * @param[out] position - Pointer to receive position [turns] (NULL if not needed)
  * @param[out] velocity - Pointer to receive velocity [turns/s] (NULL if not needed)
  *
  * @return Operation result
  */
 ODriveResult ODriveAxis_GetEncoderEstimates(ODriveAxis axis,
+                                            uint16_t timeout,
                                             float* position,
                                             float* velocity);
 
-// ... (other functions as before)
+
+
+/**
+ * @brief Checks ODrive controller status
+ * 
+ * Returns the current state of the ODrive controller. The result is based on the 
+ * #ODriveAliveState enum.
+ *
+ * @param[in] axis - ODriveAxis handle
+ *
+ * @return #ODriveAliveState
+ */
+ODriveAliveState ODriveAxis_IsAlive(ODriveAxis axis);
 
 /**
  * @brief Gets CAN node ID of this axis
@@ -447,7 +467,7 @@ ODriveResult ODriveAxis_GetEncoderEstimates(ODriveAxis axis,
  *
  * @return CAN node ID (0-63), or 0xFF if axis NULL
  */
-uint8_t ODriveAxis_GetNodeId(ODriveAxis axis);
+CanNodeId ODriveAxis_GetNodeId(ODriveAxis axis);
 
 /**
  * @brief Gets driver handle associated with this axis
