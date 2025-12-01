@@ -55,7 +55,7 @@
 /**
   * @brief Node id for the CAN bus controller
   */
-typedef uint8_t CanNodeId;
+typedef uint16_t CanNodeId;
 // ========================================================
 // Public Enums
 // ========================================================
@@ -1240,6 +1240,380 @@ typedef enum {
     INPUT_MODE_TUNING = 8
 
 } ODriveInputMode;
+
+/**
+ * @brief ODrive alive state
+ *
+ * Represents whether the ODrive controller is currently responsive,
+ * based on periodic heartbeat messages. Useful for monitoring connection
+ * health, detecting timeouts, and determining whether a reboot or power
+ * cycle has occurred.
+ *
+ * This is an application-level abstraction. ODrive firmware does not
+ * provide a direct alive-state enum; instead, the alive state is inferred
+ * from heartbeat timing and reconnect behavior.
+ */
+typedef enum {
+
+    /**
+     * @brief Invalid / uninitialized state.
+     *
+     * Indicates that no heartbeat has been received yet, or that the
+     * monitoring system has not been started. This state exists to
+     * distinguish between "never connected" and "connected but timed out."
+     *
+     * Typical causes:
+     *  - Startup before the first heartbeat arrives
+     *  - Monitoring system not initialized
+     *  - Invalid or corrupt state
+     */
+    ALIVE_STATE_INVALID = 0,
+
+    /**
+     * @brief Active - controller is alive and responsive.
+     *
+     * Heartbeats are received within the expected time window (typically
+     * every 100 ms for ODrive). The controller is considered online and
+     * communication is healthy.
+     *
+     * Source of state change:
+     *  - Heartbeat received on time
+     *
+     * Expected behavior:
+     *  - Commands may be issued reliably
+     *  - Axis states may be monitored in real time
+     */
+    ALIVE_STATE_ACTIVE = 1,
+
+    /**
+     * @brief Timeout - controller has stopped responding.
+     *
+     * Indicates that no heartbeat has been received within the configured
+     * timeout threshold. The ODrive is presumed offline, disconnected,
+     * powered down, or rebooting.
+     *
+     * Typical causes:
+     *  - Heartbeat timeout
+     *  - CAN cable unplugged
+     *  - Power loss
+     *  - Reboot in progress
+     *  - Firmware crash
+     *
+     * Recovery behavior:
+     *  - State may transition back to ACTIVE when heartbeats resume
+     */
+    ALIVE_STATE_TIMEOUT = 2,
+
+    /**
+     * @brief Reboot detected.
+     *
+     * Indicates that the ODrive has recently restarted. This state is
+     * typically inferred when a heartbeat resumes after a timeout and
+     * reports a rebooted uptime value or reset counters.
+     *
+     * This is optional logic and depends on how the application interprets
+     * heartbeat data. It can be used to trigger controller reconfiguration
+     * after a power cycle.
+     *
+     * Typical use cases:
+     *  - Automatic reconfiguration of ODrive axis parameters
+     *  - Logging unexpected restarts for diagnostics
+     */
+    ALIVE_STATE_REBOOT = 3
+
+} ODriveAliveState;
+
+/**
+ * @brief Procedure result codes (axis.procedure_result)
+ *
+ * Indicates the outcome of the last high-level procedure executed on the
+ * axis (e.g. calibration, homing, etc.). This is reported in the heartbeat
+ * and can be inspected after a procedure completes or fails.
+ *
+ * Typical usage:
+ *  - Check this after changing axis state (e.g. MOTOR_CALIBRATION,
+ *    ENCODER_OFFSET_CALIBRATION, HOMING, etc.).
+ *  - On DISARMED, inspect axis.disarm_reason and axis.error for details.
+ * 
+ * @see ODrive v0.6.1 InputMode documentation:
+ *      https://docs.odriverobotics.com/v/latest/fibre_types/com_odriverobotics_ODrive.html#ODrive.ProcedureResult
+ */
+typedef enum {
+    /**
+     * @brief Success - procedure completed without faults.
+     *
+     * The requested procedure finished normally and the axis remained
+     * in an armed state. No corrective action is required.
+     */
+    PROCEDURE_RESULT_SUCCESS = 0,
+
+    /**
+     * @brief Busy - procedure still in progress.
+     *
+     * The requested procedure has not yet finished. This is typically
+     * reported while a calibration, homing or other long-running
+     * operation is still executing.
+     *
+     * Action:
+     *  - Wait until the procedure finishes (result changes to SUCCESS
+     *    or an error code).
+     *  - Avoid starting conflicting procedures while BUSY.
+     */
+    PROCEDURE_RESULT_BUSY = 1,
+
+    /**
+     * @brief Cancelled by user.
+     *
+     * The last procedure was explicitly cancelled by the user, for
+     * example by changing axis state or issuing a command that aborts
+     * the current task.
+     *
+     * Action:
+     *  - Re-run the procedure if it is still required.
+     */
+    PROCEDURE_RESULT_CANCELLED = 2,
+
+    /**
+     * @brief Disarmed due to fault.
+     *
+     * A fault occurred during the procedure and the axis was disarmed
+     * for safety.
+     *
+     * Details:
+     *  - See axis.disarm_reason for the high-level disarm cause.
+     *  - See axis.error and sub-component error fields for specifics.
+     *
+     * Action:
+     *  - Diagnose the underlying error (wiring, configuration, mechanical
+     *    issues, etc.) before re-arming the axis.
+     */
+    PROCEDURE_RESULT_DISARMED = 3,
+
+    /**
+     * @brief No response from component.
+     *
+     * A procedure component did not respond as expected. This is most
+     * commonly caused by encoder problems (not powered, not connected,
+     * incorrect configuration, etc.).
+     *
+     * Typical causes:
+     *  - Encoder not powered or wrong supply.
+     *  - Missing / swapped encoder signals (A/B/Z, Hall, SPI, etc.).
+     *  - Incorrect encoder type or config (cpr, mode, pins).
+     *
+     * Action:
+     *  - Verify encoder wiring and power.
+     *  - Verify encoder configuration matches the hardware.
+     */
+    PROCEDURE_RESULT_NO_RESPONSE = 4,
+
+    /**
+     * @brief Pole pair / encoder CPR mismatch.
+     *
+     * The configured motor pole pairs and/or incremental encoder CPR
+     * do not match the measured motion during calibration.
+     *
+     * Typical causes:
+     *  - config.motor.pole_pairs incorrect for the motor.
+     *  - inc_encoder0.config.cpr incorrect for the encoder.
+     *
+     * Action:
+     *  - Verify motor pole pair count.
+     *  - Verify encoder CPR and configuration.
+     *  - See observed_encoder_scale_factor for further diagnostics.
+     *
+     * Note:
+     *  - If not using an incremental encoder, the CPR value is not used
+     *    and can be ignored.
+     */
+    PROCEDURE_RESULT_POLE_PAIR_CPR_MISMATCH = 5,
+
+    /**
+     * @brief Phase resistance out of range.
+     *
+     * The measured motor phase resistance is outside the plausible range
+     * or the calibration parameters are unsuitable.
+     *
+     * Typical causes:
+     *  - Loose, missing or shorted motor phase connection.
+     *  - Motor with very low or very high resistance relative to
+     *    calibration settings.
+     *  - config.motor.resistance_calib_max_voltage too low or too high
+     *    for the motor and bus voltage.
+     *
+     * Useful relations:
+     *  - resistance_calib_max_voltage > calibration_current * phase_resistance
+     *  - resistance_calib_max_voltage < 0.5 * vbus_voltage
+     *
+     * Action:
+     *  - Check all motor phase connections.
+     *  - Inspect phase_resistance and phase_inductance values.
+     *  - Adjust resistance_calib_max_voltage and/or calibration_current,
+     *    especially for small or gimbal-type motors.
+     */
+    PROCEDURE_RESULT_PHASE_RESISTANCE_OUT_OF_RANGE = 6,
+
+    /**
+     * @brief Phase inductance out of range.
+     *
+     * The measured motor phase inductance is outside the plausible range
+     * or calibration parameters are not appropriate.
+     *
+     * Typical causes:
+     *  - Similar to PHASE_RESISTANCE_OUT_OF_RANGE: incorrect wiring,
+     *    inappropriate calibration settings, or a motor outside the
+     *    expected inductance range.
+     *
+     * Action:
+     *  - Check motor wiring and connections.
+     *  - Adjust calibration_current and resistance_calib_max_voltage as
+     *    needed and repeat calibration.
+     *  - See motor.phase_inductance and phase_resistance readings for
+     *    reference.
+     */
+    PROCEDURE_RESULT_PHASE_INDUCTANCE_OUT_OF_RANGE = 7,
+
+    /**
+     * @brief Unbalanced motor phases.
+     *
+     * The measured motor phase resistances are not balanced. This usually
+     * indicates wiring or motor issues.
+     *
+     * Typical causes:
+     *  - Bad crimp or solder joint on one phase.
+     *  - Damaged motor winding.
+     *  - Asymmetric cable or connector failures.
+     *
+     * Action:
+     *  - Verify all phase connections and continuity.
+     *  - Inspect motor and cabling for damage.
+     */
+    PROCEDURE_RESULT_UNBALANCED_PHASES = 8,
+
+    /**
+     * @brief Invalid motor type.
+     *
+     * The configured motor type is not a valid entry in the MotorType
+     * enum or is unsupported by the firmware.
+     *
+     * Typical causes:
+     *  - config.motor.motor_type set to an undefined or reserved value.
+     *
+     * Action:
+     *  - Set motor_type to a valid value (e.g. high current, gimbal,
+     *    high torque, etc.) matching the hardware and firmware version.
+     */
+    PROCEDURE_RESULT_INVALID_MOTOR_TYPE = 9,
+
+    /**
+     * @brief Illegal Hall state during calibration.
+     *
+     * During Hall sensor calibration, the controller observed too many
+     * invalid or illegal Hall states (combinations of Hall inputs that
+     * should never occur).
+     *
+     * Typical causes:
+     *  - Incorrect Hall wiring or pin assignment.
+     *  - Excessive electrical noise or poor signal integrity.
+     *  - Damaged Hall sensors.
+     *
+     * Action:
+     *  - Verify Hall wiring and pull-ups.
+     *  - Ensure clean signals and proper grounding.
+     *  - Re-run calibration after fixing wiring.
+     */
+    PROCEDURE_RESULT_ILLEGAL_HALL_STATE = 10,
+
+    /**
+     * @brief Timeout.
+     *
+     * The procedure did not complete within the expected time limit.
+     *
+     * Typical causes:
+     *  - Mechanically blocked motion (stall, jam, endstop hit).
+     *  - Excessive load preventing the requested movement.
+     *  - Very slow response due to configuration or hardware issues.
+     *
+     * Action:
+     *  - Check mechanical system for binding or endstops.
+     *  - Inspect motor current limits, torque capability and load.
+     */
+    PROCEDURE_RESULT_TIMEOUT = 11,
+
+    /**
+     * @brief Homing requested without endstop.
+     *
+     * A homing procedure was requested but no endstop was enabled for
+     * the direction in which the axis is trying to home.
+     *
+     * Typical causes:
+     *  - <axis>.min_endstop.config.enabled (or appropriate endstop)
+     *    is false.
+     *
+     * Action:
+     *  - Enable the relevant endstop in configuration.
+     *  - Verify wiring and endstop detection.
+     */
+    PROCEDURE_RESULT_HOMING_WITHOUT_ENDSTOP = 12,
+
+    /**
+     * @brief Invalid state requested.
+     *
+     * The requested axis state is not a valid AxisState value or is not
+     * allowed in the current configuration.
+     *
+     * Typical causes:
+     *  - Requesting an undefined or unsupported state.
+     *  - Incompatible transitions (e.g. skipping required calibrations).
+     *
+     * Action:
+     *  - Ensure the requested state is a valid AxisState enum value.
+     *  - Follow the recommended state transition sequence (e.g. run
+     *    calibrations before CLOSED_LOOP_CONTROL).
+     */
+    PROCEDURE_RESULT_INVALID_STATE = 13,
+
+    /**
+     * @brief Required calibration not completed.
+     *
+     * The requested state could not be entered because the axis is not
+     * fully calibrated for the current configuration and control mode.
+     *
+     * Typical causes:
+     *  - Skipping MOTOR_CALIBRATION or ENCODER_OFFSET_CALIBRATION before
+     *    requesting CLOSED_LOOP_CONTROL.
+     *  - Configuration changes that require re-calibration.
+     *
+     * Action:
+     *  - Run the required calibration sequence for the current setup.
+     *  - Ensure all necessary calibrations complete with SUCCESS.
+     */
+    PROCEDURE_RESULT_NOT_CALIBRATED = 14,
+
+    /**
+     * @brief Calibration did not converge.
+     *
+     * The calibration procedure failed to converge to a reliable
+     * solution. Measured quantities did not reach sufficient statistical
+     * significance or consistency.
+     *
+     * Typical causes:
+     *  - Encoder did not move sufficiently or consistently during
+     *    ENCODER_OFFSET_CALIBRATION.
+     *  - Excessive mechanical play, noise or backlash.
+     *  - Inappropriate calibration parameters (speed, current, etc.).
+     *
+     * Action:
+     *  - Verify mechanical setup and encoder mounting.
+     *  - Adjust calibration parameters (current, speed, duration).
+     *  - Ensure the axis can move freely during calibration.
+     * 
+     * @note This enum is not available in ODrive v0.6.1
+     */
+    PROCEDURE_RESULT_NOT_CONVERGING = 15
+
+} ODriveProcedureResult;
+
 
 // ========================================================
 // Public Structs
