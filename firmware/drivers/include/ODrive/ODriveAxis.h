@@ -315,7 +315,9 @@ typedef enum {
  *         - ODRIVE_ERROR_OUT_OF_MEMORY - Allocation failed
  *         - ODRIVE_ERROR_AXIS_ALREADY_REGISTERED - node_id already in use
  */
-ODriveResult ODriveAxis_Create(ODriveDriver driver, uint8_t node_id, ODriveAxis* axis);
+ODriveResult ODriveAxis_Create(ODriveDriver driver, 
+                               uint8_t node_id, 
+                               ODriveAxis* axis);
 
 /**
  * @brief Destroys ODrive axis instance
@@ -350,7 +352,8 @@ ODriveResult ODriveAxis_Destroy(ODriveAxis axis);
  *
  * @return Operation result
  */
-ODriveResult ODriveAxis_SetRequestedState(ODriveAxis axis, ODriveAxisState state);
+ODriveResult ODriveAxis_SetRequestedState(ODriveAxis axis, 
+                                          ODriveAxisState state);
 
 /**
  * @brief Gets current axis state (from cached heartbeat)
@@ -363,7 +366,8 @@ ODriveResult ODriveAxis_SetRequestedState(ODriveAxis axis, ODriveAxisState state
  *
  * @return Operation result
  */
-ODriveResult ODriveAxis_GetCurrentState(ODriveAxis axis, ODriveAxisState* state);
+ODriveResult ODriveAxis_GetCurrentState(ODriveAxis axis, 
+                                        ODriveAxisState* state);
 
 // ========================================================
 // Function Prototypes - Control Setpoints
@@ -384,11 +388,13 @@ ODriveResult ODriveAxis_GetCurrentState(ODriveAxis axis, ODriveAxisState* state)
  * @return Operation result
  * 
  * @note control_mode must be equal to CONTROL_MODE_POSITION_CONTROL for this operation to work.
+ * 
+ * @see https://docs.odriverobotics.com/v/latest/manual/can-protocol.html#set-input-pos
  */
 ODriveResult ODriveAxis_SetPositionSetpoint(ODriveAxis axis,
                                             float position,
-                                            float velocity_ff,
-                                            float torque_ff);
+                                            int16_t velocity_ff,
+                                            int16_t torque_ff);
 
 /**
  * @brief Sets velocity setpoint
@@ -404,10 +410,12 @@ ODriveResult ODriveAxis_SetPositionSetpoint(ODriveAxis axis,
  * @return Operation result
  * 
  * @note control_mode must be equal to CONTROL_MODE_VELOCITY_CONTROL for this operation to work.
+ * 
+ * @see https://docs.odriverobotics.com/v/latest/manual/can-protocol.html#set-input-vel
  */
 ODriveResult ODriveAxis_SetVelocitySetpoint(ODriveAxis axis,
-                                           float velocity,
-                                           float torque_ff);
+                                            float velocity,
+                                            float torque_ff);
 
 /**
  * @brief Sets torque setpoint
@@ -422,8 +430,11 @@ ODriveResult ODriveAxis_SetVelocitySetpoint(ODriveAxis axis,
  * @return Operation result
  * 
  * @note control_mode must be equal to CONTROL_MODE_TORQUE_CONTROL for this operation to work.
+ * 
+ * @see https://docs.odriverobotics.com/v/latest/manual/can-protocol.html#set-input-torque
  */
-ODriveResult ODriveAxis_SetTorqueSetpoint(ODriveAxis axis, float torque);
+ODriveResult ODriveAxis_SetTorqueSetpoint(ODriveAxis axis, 
+                                          float torque);
 
 // ========================================================
 // Function Prototypes - Feedback
@@ -436,16 +447,30 @@ ODriveResult ODriveAxis_SetTorqueSetpoint(ODriveAxis axis, float torque);
  *
  * @param[in] axis - ODriveAxis handle
  * @param[in] timeout - Timeout until fail [ms] (default 100ms)
- * @param[out] position - Pointer to receive position [turns] (NULL if not needed)
- * @param[out] velocity - Pointer to receive velocity [turns/s] (NULL if not needed)
+ * @param[out] frame - EncoderEstimateFrame pointer
  *
  * @return Operation result
  */
 ODriveResult ODriveAxis_GetEncoderEstimates(ODriveAxis axis,
                                             uint16_t timeout,
-                                            float* position,
-                                            float* velocity);
+                                            EncoderEstimateFrame* frame);
 
+/**
+ * @brief Reboots ODrive controller
+ *
+ * Note: Reboots entire ODrive board.
+ *
+ * @param[in] axis - ODriveAxis handle
+ * @param[in] action - Rebooot action to be executed (ODriveRebootAction)
+ *
+ * @return Operation result
+ * 
+ * @note Reboots a specific ODrive controller connected to the CAN bus.
+ * 
+ * @see https://docs.odriverobotics.com/v/latest/manual/can-protocol.html#reboot
+ */
+ODriveResult ODriveAxis_Reboot(ODriveAxis axis, 
+                               ODriveRebootAction action);
 
 
 /**
