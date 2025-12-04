@@ -7,30 +7,30 @@
 
 #v(1em)
 
-=== De Stakeholders
+=== De Stakeholders <stakeholder-analyse>
 
 *Stakeholder 1: Projecteigenaar* \
-Meneer Rieno Moedt is de projecteigenaar van dit project. Meneer Moedt bepaalt de spelregels en acceptatiecriteria. Verder stelt hij de eisen vast en beoordeeld hij het eindresultaat. Zijn voornaamste belangen zijn een goed werkend proof-of-concept en high-fidelity prototype, naleving van alle eisen, en een eindproduct dat geschikt is voor open dagen en toekomstige studenten die enthousiast worden gemaakt. Zijn invloed is zeer hoog: hij bepaalt het uiteindelijke cijfer. De strategie is regelmatig, open overleg met duidelijke verwachtingen en directe feedback.
+Meneer Rieno Moedt is de projecteigenaar van dit project. Hij bepaalt de spelregels en acceptatiecriteria. Verder stelt hij de eisen vast en beoordeeld hij het eindresultaat. Zijn voornaamste belangen zijn een goed werkend proof-of-concept en high-fidelity prototype, naleving van alle eisen, en een eindproduct dat geschikt is voor open dagen en toekomstige studenten die enthousiast worden gemaakt. Zijn invloed is zeer hoog: hij bepaalt het uiteindelijke cijfer. De strategie is regelmatig, open overleg met duidelijke verwachtingen en directe feedback.
 
 *Stakeholder 2: Leerlingen/Studenten* \
-De leerlingen en studenten die het robothondproject op de open dag zullen zien, zijn de primaire eindgebruikers. Ze vormen de doelgroep waarvan zij enthousiast moeten worden wanneer zij het product aanraken en gebruiken. Hun belangen zijn duidelijk: zij willen een aantrekkelijke en interactieve demonstratie die hen enthousiast maakt en inzicht geeft in wat elektrotechniek te bieden heeft. Hun invloed is matig tot hoog. De leerlingen/Studenten bepalen via hun ervaringen en feedback of het project succesvol is in het aantrekken van toekomstige studenten, wat indirect van invloed is op de perceptie van de opleiding. De communicatie is vooral op de opendagen zelf. Huidige jaar 1 elektrostudenten kunnen wel ondervraagd worden over wat zij willen zien in het project. De strategie is het product intuïtief maken met een betrouwbare en interactieve werking.
+De leerlingen en studenten die het robothondproject op de open dag zullen zien, zijn de primaire eindgebruikers. Zij vormen de doelgroep waarvan zij enthousiast moeten worden wanneer zij het product aanraken en gebruiken. Hun belangen zijn duidelijk: zij willen een aantrekkelijke en interactieve demonstratie die hen enthousiast maakt en inzicht geeft in wat elektrotechniek te bieden heeft. Hun invloed is matig tot hoog. De leerlingen/Studenten bepalen via hun ervaringen en feedback of het project succesvol is in het aantrekken van toekomstige studenten, wat indirect van invloed is op de perceptie van de opleiding. De communicatie is vooral op de opendagen zelf. Huidige jaar 1 elektrostudenten kunnen wel ondervraagd worden over wat zij willen zien in het project. De strategie is het product intuïtief maken met een betrouwbare en interactieve werking.
 
 #pagebreak()
 
 *Stakeholder 3: Ouders/Verzorgers* \
 De ouders en verzorgers van toekomstige leerlingen die op de open dag komen, zijn indirecte maar belangrijke stakeholders. Zij vormen samen met hun kinderen de doelgroep die zich informeert over de opleiding. Hun belangen zijn inzicht krijgen in wat hun kinderen kunnen leren, het niveau van innovatie en praktische projectwerk aan de school, en of de opleiding aansluit bij hun verwachtingen en hun toekomstbeeld van hun kind. Ze willen zien dat de school studenten voorbereidt op moderne technologie en dat projecten echt werkend zijn, niet alleen theoretisch.
-Hun invloed is indirect maar wel erg belangrijk. Positieve indrukken van het robothondproject kunnen een rol spelen in hun inschrijfbeslissing voor de opleiding. Communicatie verloopt via de live demonstratie en korte pitch op de open dag waarbij teamleden duidelijk moeten kunnen uitleggen wat het project doet, hoe het werkt, en welke vaardigheden zij hebben opgebouwd. De strategie is een professionele, begrijpelijke presentatie afleveren. Dit draagt rechtstreeks bij aan het aantrekken van nieuwe studenten en dus de reputatie van de school en opleiding.
+Hun invloed is indirect maar wel erg belangrijk. Positieve indrukken van het robothondproject kunnen een rol spelen in hun inschrijfbeslissing voor de opleiding. Communicatie verloopt via de live demonstratie en korte pitch op de open dag waarbij teamleden duidelijk moeten kunnen uitleggen wat het project doet, hoe het werkt, en welke vaardigheden zij hebben opgebouwd. De strategie is om een leuke technische presentatie te geven van de robothond.  Dit draagt rechtstreeks bij aan het aantrekken van nieuwe studenten en dus de reputatie van de school en opleiding.
 
 *Stakeholder 4: Docenten elektrotechniek* \
-De docenten elektrotechniek zijn een belangrijke interne stakeholder groep. Deze groep wilt dat het project van hoge kwaliteit is en goed aansluit op wat wij geleerd hebben. Alle leerstof met betrekking van regeltechniek en embedded wordt hier toegepast. Het project zijn zij als een showcase voor onze opleiding. De docenten zijn gebaat bij een succesvol eindresultaat. Hun invloed is matig tot hoog. Communicatie verloopt wanneer wij feedback willen hebben van de docenten en wanneer zij meer willen weten wat wij aan het doen zijn. Hun strategie is dat zij verwachten dat jullie zelfstandig leren, maar staan open voor hulpvragen.
+De docenten elektrotechniek zijn een belangrijke interne stakeholder groep. Deze groep wilt dat het project van hoge kwaliteit is en goed aansluit op wat wij geleerd hebben. Alle leerstof met betrekking van regeltechniek en embedded wordt hier toegepast. Het project zien zij als een showcase voor onze opleiding. De docenten zijn willen een succesvol eindresultaat. Hun invloed is matig tot hoog. Communicatie verloopt wanneer wij feedback willen hebben van de docenten en wanneer zij meer willen weten wat wij aan het doen zijn. De strategie is om regelmatig vragen te stellen en laten zien wat wij op het moment aan het doen zijn. 
 
 #pagebreak()
 
 *Stakeholder 5: Tutor* \
-De tutor is de begeleider die wekelijks met de groep spreekt. De tutor ondersteunt bij planning, voortgang en kwaliteitsborging. De tutor verwacht dat jullie zelf de afspraken plannen, een agenda opstellen en notulen bijhouden, en dat jullie planning en logboek op orde zijn. De invloed van de tutor is hoog in het proces. De communicatiestrategie is structureel en proactief: wekelijks overleg met heldere vragen en beslispunten, en tussentijds updates bij blokkades.
+De tutor is de begeleider die wekelijks met de groep spreekt. De tutor ondersteunt bij planning en voortgang. De tutor verwacht dat wij zelf de afspraken plannen, een agenda opstellen en notulen bijhouden, en dat wij planning en logboek op orde zijn. De invloed van de tutor is hoog in het proces. De communicatiestrategie is structureel een wekelijks overleg met heldere vragen en beslispunten, en tussentijds updates.
 
 *Stakeholder 6: Overige Bezoekers* \
-Overige bezoekers op de open dag — zoals bedrijven uit de regio en geïnteresseerden vormen een brede, indirecte doelgroep. Hun belang is voornamelijk informatief en reputatiegericht. Zij willen een indruk krijgen van de kwaliteit, innovatie en praktijkgerichtheid van de opleiding.
+Overige bezoekers op de open dag zoals bedrijven uit de regio en geïnteresseerden vormen een brede, indirecte doelgroep. Hun belang is voornamelijk informatief en reputatiegericht. Zij willen een indruk krijgen van de kwaliteit, innovatie en praktijkgerichtheid van de opleiding.
 Hun invloed is laag tot matig. Zij beslissen niet over eisen of cijfers, maar hun feedback dragen bij aan de reputatie van de opleiding en kunnen deuren openen naar contacten of stagekansen. Communicatie gebeurt via de demo en korte uitleg bij de opleiding. De strategie is om te informeren en te inspireren. Dit ondersteunt het opendag doel en de showcase functie.
 
 #pagebreak()
@@ -440,3 +440,6 @@ antwoorden:
 *Fase 1:* Dansen + Audio (haalt 64% van de wensen)\
 *Fase 2:* Autonome navigatie + interactie\
 *Fase 3:* Geavanceerde sensoren (object herkenning)\
+
+== Uitwerking conclusie
+De uitkomsten van de enquête worden rechtstreeks omgezet in concrete functies voor het ontwerp. De hond krijgt daarom een geprogrammeerde dansmodus gecombineerd met een soundboard dat verschillende geluiden kan afspelen. Ook wordt er een AI gestuurde functie toegevoegd voor autonome navigatie en obstakelvermijding, omdat veel mensen dit technisch interessant vinden. Zo sluit het ontwerp goed aan bij de behoefte van de stakeholders en laat het op een duidelijke manier de techniek achter de robothond zien tijdens open dagen.

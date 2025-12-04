@@ -200,7 +200,7 @@ De Notulist zorgt ervoor dat alle projectinformatie correct wordt vastgelegd, ge
 - Software Code Reviews: Dinsdag (indien nodig)
 - AI Code Reviews: Dinsdag (indien nodig)
 - Git Pull Request Reviews: Woensdag (indien nodig)
-- Tutor Meetings: [DAG]
+- Tutor Meetings: Woensdag (tenzij niet mogelijk)
 
 *Communicatie Kanalen:*
 - Primair: [Discord]
@@ -292,7 +292,8 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 #pagebreak()
 
 == Pakket van Eisen
-Typ inleiding :D Zie @verplichte-eisen voor ...
+In het pakket van eisen worden de eisen voor dit project vastgelegd. Deze eisen zijn grofweg te verdelen in twee groepen, eisen van de opdrachtgever en eisen die door het projectteam zelf zijn opgesteld. De verplichte eisen van de opdrachtgever zijn te vinden in @verplichte-eisen. Naast de verplichte eisen zijn de eisen aanvullend geformuleerd door het projectteam.
+#v(1em)
 
 === Verplichte eisen <verplichte-eisen>
 + Het systeem bevat minimaal één PSoC5 als microcontroller.
@@ -300,20 +301,20 @@ Typ inleiding :D Zie @verplichte-eisen voor ...
 + Het systeem zal gebruik maken van een HDL-component geïmplementeerd in Verilog.
 + Het systeem zal gebruik maken van een RTOS.
 + Het systeem zal geoptimaliseerd worden voor energiezuinigheid (Zie @energie-eisen).
-+ Het systeem zal minimaal één zelfgescrheven libary voor een communicatie protocol gebruiken.
-+ Het systeem zal geschikt moeten zijn voor opendagen. (zie...)
++ Het systeem zal minimaal één zelfgeschreven libary voor een communicatie protocol gebruiken.
++ Het systeem zal geschikt moeten zijn voor opendagen. (zie @stakeholder-analyse)
 
 #v(1em)
 === Functionele eisen
 
 #v(1em)
 ==== Bewegingsfuncties
-+ De robot zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ±1 meter.
-+ De robot zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ±1 meter.
-+ De robot zal minimaal 1 meter zijwaards kunnen lopen, met een afwijking van ±1 meter.
-+ De robot zal een extra DOF beschikken in de roll-as. ?
++ De robot zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ± 50 centimeter.
++ De robot zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ± 50 centimeter.
++ De robot zal minimaal 1 meter zijwaarts kunnen lopen, met een afwijking van ± 50 centimeter.
++ De robot zal een extra DOF beschikken in de roll-as.
 + De robot zal 360 graden om zijn eigen as heen kunnen draaien.
-+ De robot zal 5mm kunnen springen in de lucht.
++ De robot zal 5 millimeter kunnen springen in de lucht.
 + De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke bewegingen
 
 #v(1em)
@@ -322,12 +323,15 @@ Typ inleiding :D Zie @verplichte-eisen voor ...
 + De robothond zal geluid kunnen afspelen D.M.V. ingebouwde speakers.
 + De robothond bestuurt de ingebouwde speakers D.M.V. AI of ingebouwde bestuurbare muziekbord.
 + De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke spraak.
++ De robothond zal autonoom door de school kunnen lopen D.M.V. AI algoritmes zonder menselijke handelingen.
+#v(1em)
 
 #v(1em)
 ==== Modulaire functies
-+ De robothond zal kunnen voorzien worden van extra externe modules
-+ De robothond zal modulair ontworpen worden met aluminium extrusies
-+ De robothond zal modulair ontworpen worden met pogo connectoren
++ De robothond zal kunnen voorzien worden van extra externe modules.
++ De robothond zal modulair ontworpen worden met aluminium extrusies voor het bevestigen van externe modules.
++ De robothond zal modulair ontworpen worden met pogo connectoren.
+
 
 #v(1em)
 === Energie en performance <energie-eisen>
@@ -340,8 +344,8 @@ Typ inleiding :D Zie @verplichte-eisen voor ...
 === Gebruikersgerichtheid en betrouwbaarheid
 + De robothond zal bestuurbaar zijn via een blauwetand x-doos of speelstation controller
 + De robothond zal een duidelijke fysieke gebruikers interface hebben met labels bij knoppen/schakelaars
-+ De robothond zal geen onvoorspelbare beweging uitvoeren volgens een uitgebreid testplan.
-+ De robothond zal bruikbaar zijn voor opendagen gebaseerd op de wensen van de stakeholder (Zie ...stakeholder).
++ De robothond zal tijdens werking geen ongewenste of onverwachte bewegingen uitvoeren die afwijken van het gedefinieerde gedrag zoals vastgelegd in het testplan.
++ De robothond zal bruikbaar zijn voor opendagen gebaseerd op de wensen van de stakeholder (Zie @stakeholder-analyse).
 
 #v(1em)
 === Documentatie
@@ -351,9 +355,11 @@ Typ inleiding :D Zie @verplichte-eisen voor ...
 + Alle ontwerpkeuzes worden onderbouwd met berekeningen, argumentatie
  en/of literatuurbronnen.  
 + Alle schema’s, code en andere ontwerpen worden als bijlage toegevoegd en zijn traceerbaar naar de gestelde eisen.  
-+ De documentatie is gestructureerd volgens de fasen van Design Thinking Proces, tenzij expliciet anders afgesproken.
++ De documentatie zal gestructureerd worden volgens de fasen van Design Thinking Proces, tenzij expliciet anders afgesproken.
 
 #v(1em)
+#pagebreak()
+
 === Eisen aan het ontwikkelproces
 + Er zal gebruik gemaakt worden van het design thinking proces.
 + Er zal een testplan opgesteld worden voor elk deelproces.
@@ -369,20 +375,38 @@ Typ inleiding :D Zie @verplichte-eisen voor ...
 #pagebreak()
 
 == Pakket van Wensen
+Aanleiding stakeholder analyse. Schrijf inleiding
 
-+ De robothond heeft een systeem dat koffie kan inschenken via een pomp of actuator aan de achterkant van de robot.
-+ De robothond kan autonoom door het schoolgebouw lopen.
-+ De robothond heeft een soundboard en kan dus audio afspelen. 
-+ De robothond kan dansen.
-
++ De robothond heeft een extern systeem dat koffie kan inschenken D.M.V. AI detectie.
++ De robothond beschikt over een ingebouwde soundboard. Hiermee kunnen externe gebruikers met handmatige acties sound effects afspelen D.M.V. een controller.
++ De robothond kan in geprogrammeerde dansjes doen.
++ De robothond beschikt over een GPS systeem waardoor die real-time getracked kan worden.
++ De robothond beschikt over het ExpressLRS protocol. Hiermee kunnen wij de robothond op een minimale afstand van 1km besturen.
++ De robothond beschikt over een analoge FPV camera. Hierdoor kan de gebruiker in het perspectief in de robot hond kijken.
 
 #v(1em)
 == Minimal Viable Product
-Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product.
+Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product. In dit hoofdstuk benoemen wij onze eisen voor het #acr("MVP"), dit is nodig om ons project af te ronden met een voldoende.
 
-- Het apparaat moet minimaal naar voren kunnen lopen door middel van de vier poten.
-- Het apparaat naar voren lopen door middel van berekende inverse kinematics.
-- Het apparaat moet minimaal bestuurbaar zijn via een controller.
+#v(1em)
+=== Beweging
++ De robothond zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ±1 meter.
++ De robothond zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ±1 meter.
++ De robothond beschikt IK voor de bewegingen van de robot actuatoren.
+
+#v(1em)
+=== Embedded firmware
++ De robothond heeft minimaal een eigen geschreven library voor een communicatie protocol.
++ De robothond beschikt over een RTOS die werkt op de PSoC 5 architectuur.
++ De robothond beschikt over een HDL component (bijvoorbeeld een Statemachine).
+
+#v(1em)
+=== Draadloze communicatie en regelsystemen
++ De robothond zal bestuurbaar zijn via een blauwetand x-doos of speelstation controller
+
+#v(1em)
+=== Mechanica
++ De robothond bevat een betrouwbaar en getest mechanisch frame volgens testplan
 
 #v(1em)
 #pagebreak()

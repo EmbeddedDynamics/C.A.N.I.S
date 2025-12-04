@@ -358,6 +358,6 @@
   // biblio
   if biblio != none {
     pagebreak()
-    bibliography(biblio, full: true)
+    bibliography(biblio, full: true, style: "ieee")
   }
 }
