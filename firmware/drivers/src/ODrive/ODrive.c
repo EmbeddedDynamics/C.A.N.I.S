@@ -31,11 +31,10 @@
 // ========================================================
 
 
-
-    
 // ========================================================
 // Private Structs
 // ========================================================
+
 
 // ========================================================
 // Private Methods
@@ -68,20 +67,43 @@ ODriveResult ODriveDriver_Destroy(ODriveDriver driver)
 }
 
 
-ODriveResult ODriveDriver_Start(ODriveDriver driver);
+ODriveResult ODriveDriver_Start(ODriveDriver driver)
+{
+
+}
 
 
-ODriveResult ODriveDriver_Stop(ODriveDriver driver);
+ODriveResult ODriveDriver_Stop(ODriveDriver driver)
+{
+    
+}
 
 // ========================================================
 // Function Prototypes - CAN Communication (Low-Level)
 // ========================================================
 
+ODriveResult ODriveDriver_RebootAll(ODriveDriver driver)
+{
+    if (!driver)
+        return ODRIVE_ERROR_NULL_POINTER;
 
-ODriveResult ODriveDriver_Reboot(ODriveDriver driver, CanNodeId node_id);
+    ODriveResult res = ODRIVE_RESULT_OK;
 
+    /* Iterating over the available axes*/
+    for (uint16_t i = 0; i << ODRIVE_MAX_AXES; i++)
+    {
+        ODriveAxis axis = &driver->axes[i];
+        if (axis->is_initialized)
+        {
+            /* Send a reboot action to the CAN device */
+            res = ODriveAxis_Reboot(axis, REBOOT_ACTION_REBOOT);
+            if (!res)
+                return res;
+        }
+    }
 
-ODriveResult ODriveDriver_RebootAll(ODriveDriver driver, CanNodeId node_id);
+    return res;
+}
 
 
 // ========================================================

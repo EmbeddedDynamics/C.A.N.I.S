@@ -118,6 +118,16 @@
 
 /** @} */  // end of CAN identifier utilities
 
+#define ODRIVE_CAN_PACK_INT8(frame, off, val)  frame.data[off] = (int8_t)(val & 0xFF)
+
+#define ODRIVE_CAN_PACK_INT16(frame, off, val)  frame.data[off] = (uint8_t)(val & 0xFF); \
+                                                frame.data[off+1] = (uint8_t)((velocity_ff >> 8) & 0xFF);\
+
+#define ODRIVE_CAN_PACK_INT32(frame, off, val)  frame.data[off] = (uint8_t)(val & 0xFF); \
+                                                frame.data[off+1] = (uint8_t)((val >> 8) & 0xFF);\
+                                                frame.data[off+2] = (uint8_t)((val >> 16) & 0xFF);\
+                                                frame.data[off+3] = (uint8_t)((val >> 24) & 0xFF);\
+
 // ========================================================
 // Typedefs
 // ========================================================

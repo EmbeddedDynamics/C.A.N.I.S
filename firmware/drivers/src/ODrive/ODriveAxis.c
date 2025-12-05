@@ -48,7 +48,7 @@ ODriveResult createODriveAxis(ODriveDriver driver, CanNodeId id, ODriveAxis* axi
     if (!axis)
         return ODRIVE_ERROR_NULL_POINTER; 
     
-    if (!ODRIVE_CAN_ID_VALID(id) ||  (id < ODRIVE_MAX_AXISES))
+    if (!ODRIVE_CAN_ID_VALID(id) ||  (id < ODRIVE_MAX_AXES))
         return ODRIVE_ERROR_INVALID_CAN_ID;
     
     if (driver->axes[id].is_initialized)
@@ -105,11 +105,7 @@ ODriveResult ODriveAxis_SetRequestedState(ODriveAxis axis, ODriveAxisState state
     frame.rtr = 0;
 
     // Pack state as little-endian uint32_t into the first 4 bytes
-    uint32_t s = (uint32_t)state;
-    frame.data[0] = (uint8_t)(s & 0xFF);
-    frame.data[1] = (uint8_t)((s >> 8) & 0xFF);
-    frame.data[2] = (uint8_t)((s >> 16) & 0xFF);
-    frame.data[3] = (uint8_t)((s >> 24) & 0xFF);
+    ODRIVE_CAN_PACK_INT32(frame, 0u, (uint32_t)state);
 
     return ODriveCAN_SendCommand(&frame);
 }
@@ -124,7 +120,7 @@ ODriveResult ODriveAxis_SetPositionSetpoint(ODriveAxis axis,
                                             int16_t velocity_ff,
                                             int16_t torque_ff)
 {
-    if (axis == NULL) {
+    if (!axis) {
         return ODRIVE_ERROR_NULL_POINTER;
     }
 
@@ -143,12 +139,93 @@ ODriveResult ODriveAxis_SetPositionSetpoint(ODriveAxis axis,
     memcpy(&frame.data[0], &position, sizeof(float));
 
     // Pack velocity feed-forward (int16, little-endian)
-    frame.data[4] = (uint8_t)(velocity_ff & 0xFF);
-    frame.data[5] = (uint8_t)((velocity_ff >> 8) & 0xFF);
-
+    ODRIVE_CAN_PACK_INT16(frame, 4u, velocity_ff);
+    
     // Pack torque feed-forward (int16, little-endian)
-    frame.data[6] = (uint8_t)(torque_ff & 0xFF);
-    frame.data[7] = (uint8_t)((torque_ff >> 8) & 0xFF);
+    ODRIVE_CAN_PACK_INT16(frame, 6u, torque_ff);
+
+    return ODriveCAN_SendCommand(&frame);
+}
+
+ODriveResult ODriveAxis_SetVelocitySetpoint(ODriveAxis axis,
+                                           float velocity,
+                                           float torque_ff)
+{
+    if (!axis) {
+        return ODRIVE_ERROR_NULL_POINTER;
+    }
+
+    CanNodeId id = ODriveAxis_GetNodeId(axis);
+    if (!ODRIVE_CAN_ID_VALID(id)) {
+        return ODRIVE_ERROR_INVALID_CAN_ID;
+    }
+
+    ODriveCANFrame frame = {0};
+    frame.id  = ODRIVE_CAN_ID(id, CAN_CMD_SET_INPUT_POS);
+    frame.dlc = 8;  // 4 + 4 bytes
+    frame.rtr = 0;
+
+    // Pack velocity (float32) as little-endian
+    // PSoC (ARM) is little-endian, so memcpy is fine here.
+    memcpy(&frame.data[0], &velocity, sizeof(float));
+
+    // Pack torque_ff (float32, little-endian)
+    memcpy(&frame.data[4], &torque_ff, sizeof(float));
+
+    return ODriveCAN_SendCommand(&frame);
+}
+
+ODriveResult ODriveAxis_SetTorqueSetpoint(ODriveAxis axis, 
+                                          float torque)
+{
+    if (!axis) {
+        return ODRIVE_ERROR_NULL_POINTER;
+    }
+
+    CanNodeId id = ODriveAxis_GetNodeId(axis);
+    if (!ODRIVE_CAN_ID_VALID(id)) {
+        return ODRIVE_ERROR_INVALID_CAN_ID;
+    }
+
+    ODriveCANFrame frame = {0};
+    frame.id  = ODRIVE_CAN_ID(id, CAN_CMD_SET_INPUT_POS);
+    frame.dlc = 4;  // 4 bytes
+    frame.rtr = 0;
+
+    // Pack torque (float32) as little-endian
+    // PSoC (ARM) is little-endian, so memcpy is fine here.
+    memcpy(&frame.data[0], &torque, sizeof(float));
+
+    return ODriveCAN_SendCommand(&frame);
+}
+
+ODriveResult ODriveAxis_GetEncoderEstimates(ODriveAxis axis,
+                                            uint16_t timeout,
+                                            EncoderEstimateFrame* frame)
+{
+
+    return ODRIVE_RESULT_OK;
+}
+
+ODriveResult ODriveAxis_Reboot(ODriveAxis axis, 
+                               ODriveRebootAction action)
+{
+    if (!axis) {
+        return ODRIVE_ERROR_NULL_POINTER;
+    }
+
+    CanNodeId id = ODriveAxis_GetNodeId(axis);
+    if (!ODRIVE_CAN_ID_VALID(id)) {
+        return ODRIVE_ERROR_INVALID_CAN_ID;
+    }
+
+    ODriveCANFrame frame = {0};
+    frame.id  = ODRIVE_CAN_ID(id, CAN_CMD_REBOOT);
+    frame.dlc = 1;
+    frame.rtr = 0;
+
+    // Pack actioon (int8, little-endian)
+    ODRIVE_CAN_PACK_INT8(frame, 0u, (uint8_t) action);
 
     return ODriveCAN_SendCommand(&frame);
 }
