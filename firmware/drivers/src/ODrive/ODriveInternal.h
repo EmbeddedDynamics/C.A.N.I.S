@@ -45,7 +45,7 @@
 // ========================================================
 
 struct ODriveDriver_T {
-    struct ODriveAxis_T axes[ODRIVE_MAX_AXISES];   // indexed by node_id
+    struct ODriveAxis_T axes[ODRIVE_MAX_AXES];   // indexed by node_id
     uint16_t num_axes;
 
     ODriveDriverConfig config;

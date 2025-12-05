@@ -33,7 +33,7 @@
 #include "ODriveCore.h"
 #include "ODriveAxis.h"
 
-#define ODRIVE_MAX_AXISES 12
+#define ODRIVE_MAX_AXES 12u
     
 // ========================================================
 // Public Typedefs
@@ -129,20 +129,6 @@ ODriveResult ODriveDriver_Stop(ODriveDriver driver);
 // ========================================================
 // Function Prototypes - CAN Communication (Low-Level)
 // ========================================================
-
-/**
- * @brief Reboots ODrive controller
- *
- * Note: Reboots entire ODrive board.
- *
- * @param[in] driver - ODriveDriver handle
- * @param[in] node_id - Any axis CanNodeId on target ODrive
- *
- * @return Operation result
- * 
- * @note Reboots a specific ODrive controller connected to the CAN bus.
- */
-ODriveResult ODriveDriver_Reboot(ODriveDriver driver, CanNodeId node_id);
 
 /**
  * @brief Reboots all ODrive controllers
