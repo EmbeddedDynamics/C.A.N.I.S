@@ -1614,10 +1614,63 @@ typedef enum {
 
 } ODriveProcedureResult;
 
+/**
+ * @brief ODrive reboot action flags.
+ *
+ * These values define what action the ODrive should perform when a
+ * CAN-based Reboot command is issued. The action is passed as the
+ * payload to the ODrive Reboot message (cmd_id = 0x16).
+ *
+ * Actions include simple rebooting, saving/erasing configuration,
+ * or entering DFU (firmware upgrade) mode.
+ *
+ * @note Refer to the ODrive v0.6.11 CAN protocol documentation:
+ *       https://docs.odriverobotics.com/v/latest/manual/can-protocol.html#reboot
+ */
+typedef enum {
+    /**
+     * @brief Reboot the ODrive normally.
+     *
+     * Performs a standard MCU reset without modifying configuration
+     * or entering any special bootloader mode.
+     */
+    REBOOT_ACTION_REBOOT         = 0x00000000,
+
+    /**
+     * @brief Save the current configuration to persistent storage, then reboot.
+     *
+     * Equivalent to issuing a "save configuration" command followed
+     * by a restart. Useful after modifying parameters via CAN.
+     */
+    REBOOT_ACTION_SAVE_CONFIG    = 0x00000001,
+
+    /**
+     * @brief Erase the configuration (factory reset), then reboot.
+     *
+     * Clears all saved configuration values and restarts the board.
+     * After reboot, the ODrive will return to default settings.
+     */
+    REBOOT_ACTION_ERASE_CONFIG   = 0x00000002,
+
+    /**
+     * @brief Enter DFU (Device Firmware Update) mode.
+     *
+     * Reboots into the bootloader for firmware flashing over USB.
+     * The device will not return to normal operation until reset.
+     */
+    REBOOT_ACTION_DFU_MODE       = 0x00000003,
+
+} ODriveRebootAction;
+
 
 // ========================================================
 // Public Structs
 // ========================================================
+
+typedef struct EncoderEstimateFrame_T {
+    float Position;
+    float Velocity;
+} EncoderEstimateFrame;
 
 /**
  * @brief Opaque handle to an ODrive driver instance
