@@ -52,10 +52,15 @@
  */ 
 #define ODRIVE_DEFINE_HANDLE(name) typedef struct name##_T* name
 
+// ========================================================
+// Custom types
+// ========================================================
+
 /**
   * @brief Node id for the CAN bus controller
   */
 typedef uint16_t CanNodeId;
+
 // ========================================================
 // Public Enums
 // ========================================================
