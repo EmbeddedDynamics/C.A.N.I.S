@@ -33,6 +33,8 @@
 #include "ODriveAxis.h"
 #include "ODriveCore.h"
 
+#include "ODriveCAN.h"
+
     
 // ========================================================
 // Private Typedefs
@@ -47,6 +49,8 @@
 struct ODriveDriver_T {
     struct ODriveAxis_T axes[ODRIVE_MAX_AXES];   // indexed by node_id
     uint16_t num_axes;
+
+    ODriveCANDriver CANDriver;
 
     ODriveDriverConfig config;
 };

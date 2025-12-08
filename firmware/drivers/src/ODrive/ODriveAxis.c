@@ -23,7 +23,6 @@
 #include <stdbool.h>
     
 /* Project headers */
-#include "ODrive.h"
 #include "ODriveAxis.h"
 #include "ODriveCAN.h"
 
@@ -33,6 +32,22 @@
 // Private Structs
 // ========================================================
 
+// ========================================================
+// Public helpet functions
+// ========================================================
+
+static inline ODriveResult transmitCANFrame(ODriveAxis axis,
+                                            ODriveCANFrame* frame)
+{
+    if (!axis || !frame)
+        return ODRIVE_ERROR_INVALID_PARAMETER;
+
+    ODriveDriver driver = ODriveAxis_GetDriver(axis);
+    if (!driver)
+        return ODRIVE_ERROR_DEVICE_ERROR;
+
+    driver->CANDriver.transmit(frame);
+}
 
 // ========================================================
 // Public Methods

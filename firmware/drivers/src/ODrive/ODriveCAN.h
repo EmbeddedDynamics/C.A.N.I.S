@@ -72,7 +72,8 @@
  * @brief Validate an ODrive CAN node ID.
  *
  * @param[in] n Candidate node ID.
- * @return true if \p n is within the valid range [0, 63].
+ * 
+ * @return true if \p n is within the valid range [0, #ODRIVE_CAN_ID_MAX].
  *
  * Useful when parsing configuration, ensuring user input is valid,
  * or validating IDs extracted from incoming frames.
@@ -129,7 +130,7 @@
                                                 frame.data[off+3] = (uint8_t)((val >> 24) & 0xFF);\
 
 // ========================================================
-// Typedefs
+// Custom types
 // ========================================================
 
 /**
@@ -148,13 +149,17 @@
  *   Construct a CANId with #ODRIVE_CAN_ID().
  *
  * @note This type stores the full 11-bit arbitration ID; the upper bits
- *       of the 32-bit integer are unused.
+ *       of the 16-bit integer are unused.
  * @note ODrive uses only standard (CAN 2.0A) identifiers; extended IDs
  *       are not supported.
  * @note node_id = 0x3F (63) is reserved for broadcast (host -> ODrive) and
  *       indicates an unaddressed axis (ODrive -> host).
  */
 typedef uint16_t CANId;
+
+// ========================================================
+// CANSimple structs
+// ========================================================
 
 /**
  * @brief ODrive CANSimple frame container.
@@ -204,62 +209,51 @@ typedef struct ODriveCANFrame_T {
      * - `0` = Data frame (normal CAN message with payload)
      * - `1` = RTR frame (request for ODrive to transmit this cmd_id)
      *
-     * RTR frames are used to request "Get\_\*" messages on-demand.
+     * RTR frames are used to request "Get*" messages on-demand.
      */
     uint8_t rtr;
 
+    /**
+     * @brief Void pointer for custom user specifc context.
+     */
+    void* context;
+
 } ODriveCANFrame;
+
+// ========================================================
+// CANSimple function pointers
+// ========================================================
 
 /**
  * @brief CAN receive callback function type.
  *
  * Called when a CAN message is received from an ODrive axis.
  *
- * @param[in] can_id    CANId message ID (encodes node_id and command_id).
- * @param[in] data      Pointer to CAN data payload (0–8 bytes).
- * @param[in] dlc       Data length in bytes (0–8).
- * @param[in] user_data User context pointer from registration.
+ * @param[in] frame - CAN Frame to be processed
  *
  * @note Callback may be invoked from ISR context. Keep execution time minimal.
  */
-typedef void (*ODriveCANRxCallback)(CANId can_id,
-                                    const uint8_t *data,
-                                    uint8_t dlc,
-                                    void *user_data);
+typedef void (*ODriveCAN_PFN_Receive)(ODriveCANFrame* frame);
 
 /**
  * @brief CAN transmit callback function type.
  *
  * Called when a CAN message is being transmitted to an ODrive axis.
  *
- * @param[in] can_id    CANId message ID (encodes node_id and command_id).
- * @param[in] data      Pointer to CAN data payload (0–8 bytes).
- * @param[in] dlc       Data length in bytes (0–8).
- * @param[in] user_data User context pointer from registration.
+ * @param[in] frame - CAN Frame to be transmitted
  *
  * @note Callback may be invoked from ISR context. Keep execution time minimal.
  */
-typedef void (*ODriveCANTxCallback)(CANId can_id,
-                                    const uint8_t *data,
-                                    uint8_t dlc,
-                                    void *user_data);
+typedef void (*ODriveCAN_PFN_Transmit)(ODriveCANFrame* frame);
 
 // ========================================================
-// Private Methods
+// CANSimple function pointers
 // ========================================================
 
-/**
- * @brief Send a CAN frame on the ODrive CAN bus.
- *
- * Sends a preconstructed CAN frame through the underlying CAN hardware.
- *
- * @param[in] frame Pointer to CAN frame to transmit (must not be NULL).
- *
- * @retval ODRIVE_RESULT_OK           Frame queued or transmitted successfully.
- * @retval ODRIVE_ERROR_NULL_POINTER  frame was NULL.
- * @retval ODRIVE_ERROR_COMM_ERROR    Underlying CAN driver reported an error.
- */
-ODriveResult ODriveCAN_SendCommand(const ODriveCANFrame *frame);
+typedef struct ODriveCANDriver_T {
+    ODriveCAN_PFN_Receive receive;
+    ODriveCAN_PFN_Transmit transmit;
+} ODriveCANDriver;
 
 #endif // !ODRIVE_INTERNAL_CAN_H
 
