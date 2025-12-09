@@ -1,3 +1,13 @@
 # PSoC-IDE user generated files
 *.cywrk.*
 *.cyprj.*
+
+Export/
+CortexM3/
+Generated_Source/
+codegentemp/
+
+*.log
+
+doxygen/
+.vscode/
