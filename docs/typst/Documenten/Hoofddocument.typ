@@ -4,11 +4,14 @@
 
 #import "@preview/tablem:0.1.0": tablem
 #import "@preview/numbly:0.1.0": numbly
+#import "@preview/gantty:0.5.1": gantt
+
+#import "@local/academic-tools:0.1.10": *
 
 #import "template.typ": *
 #import "Config/config.typ": *
+#import "Config/Planning.typ": *
 #import "Stakeholder_analyse.typ": *
-
 #import "role-calculations.typ" as rc
 
 #let stakeholder_content = include "Stakeholder_analyse.typ"
@@ -37,16 +40,23 @@
   //month: [#month],
   //year: [#year],
   date: datetime.today(),
-  abstract: [In dit project ontwikkelen wij als bachelorstudenten van NHL Stenden een embedded systeem in vorm van een Robothond. Het apparaat is bedoeld als demonstrator op opendagen om de mogelijkheden van technische innovatie aan toekomstige studenten uit te leggen. We volgen hiervoor de Design-Thinking methodologie met nadruk op iteratieve prototyping en uitvoerige testen. Het doel is een volledig functioneel product te realiseren dat voldoet aan de stakeholder-eisen en markt-gereed is.],
+  abstract: [In dit project ontwikkelen wij als bachelorstudenten van NHL Stenden een embedded systeem in de vorm van een Robothond. Het apparaat is bedoeld als demonstrator op opendagen om de mogelijkheden van technische innovatie aan toekomstige studenten uit te leggen. We volgen hiervoor de Design-Thinking methodologie met nadruk op iteratieve prototyping en uitvoerige testen. Het doel is een volledig functioneel product te realiseren dat voldoet aan de stakeholder-eisen en markt-gereed is.],
   keywords: [],
   acknowledgments: [],
   acronyms: (
     "PvE": ("Pakket van Eisen","Pakket van Eisen"),
     "MVP": ("Minimum Viable Product","Minimum Viable Product"),
     "PvA": ("Plan van Aanpak","Plan van Aanpak"),
-    //"MVP": "Minimum Viable Product",
-    //"PvA": "Plan van Aanpak",
+    "IK": ("Inverse Kinematics"),
   ),
+  versions: (
+    version(
+      committee: [R. van der Veen\ D. Smit],
+      description: [Initiële commit],
+      date: "2025-12-19",
+      level: 3,
+    ),
+  )
 )
 
 //---------------------------------------
@@ -175,6 +185,7 @@ De Notulist zorgt ervoor dat alle projectinformatie correct wordt vastgelegd, ge
 
 == Project Tijdlijn
 
+Dit is de tijdlijn dat gespecificeerd is vanuit het project zelf.
 #table(
   columns: 3,
   [*Fase*], [*Week Nr*], [*Deadlines*],
@@ -191,6 +202,14 @@ De Notulist zorgt ervoor dat alle projectinformatie correct wordt vastgelegd, ge
 
 #v(1em)
 #pagebreak()
+
+#set page(flipped: false)
+
+== Planning
+#gantt(planning)
+
+#pagebreak()
+#set page(flipped: false)
 
 == Communicatie Plan
 
@@ -318,6 +337,8 @@ In het pakket van eisen worden de eisen voor dit project vastgelegd. Deze eisen 
 + De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke bewegingen
 
 #v(1em)
+#pagebreak()
+
 ==== AI en autonomie
 + De robothond zal kunnen praten D.M.V. ingebouwde speakers.
 + De robothond zal geluid kunnen afspelen D.M.V. ingebouwde speakers.
@@ -348,6 +369,8 @@ In het pakket van eisen worden de eisen voor dit project vastgelegd. Deze eisen 
 + De robothond zal bruikbaar zijn voor opendagen gebaseerd op de wensen van de stakeholder (Zie @stakeholder-analyse).
 
 #v(1em)
+#pagebreak()
+
 === Documentatie
 + Er wordt een #acr("PvE") opgesteld met duidelijke MoSCoW-prioriteiten.
 + Er wordt een PvA opgesteld met daarin ten minste een planning, rolverdeling en risicoanalyse.  
@@ -358,7 +381,6 @@ In het pakket van eisen worden de eisen voor dit project vastgelegd. Deze eisen 
 + De documentatie zal gestructureerd worden volgens de fasen van Design Thinking Proces, tenzij expliciet anders afgesproken.
 
 #v(1em)
-#pagebreak()
 
 === Eisen aan het ontwikkelproces
 + Er zal gebruik gemaakt worden van het design thinking proces.
@@ -385,6 +407,8 @@ Aanleiding stakeholder analyse. Schrijf inleiding
 + De robothond beschikt over een analoge FPV camera. Hierdoor kan de gebruiker in het perspectief in de robot hond kijken.
 
 #v(1em)
+#pagebreak()
+
 == Minimal Viable Product
 Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product. In dit hoofdstuk benoemen wij onze eisen voor het #acr("MVP"), dit is nodig om ons project af te ronden met een voldoende.
 
@@ -543,7 +567,8 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
   node((11,4.75), [*Omgevings\ herkening*], name: <omgeving-block>),
   node((12,4.75), [*Persoonlijkheid*], name: <persoonlijkheid-block>),
 
-  node((5.5,4.50), [*RTOS*], name: <rtos-block>),
+  node((4.5,4.50), [*IK*], name: <IK-block>),
+  node((5.8,4.50), [*RTOS*], name: <rtos-block>),
   node((6.9,4.5), [*Protocolen*], name: <protocolen-block>),
 
   node((6.25,5.75), [*Draadloos*], name: <draadloos-block>),
@@ -565,6 +590,7 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
   edge(vertices: (<software-block>, <regel-systemen-block>), "-|>"),
   bent-edge(<software-block>, <AI-block>),
 
+  bent-edge(<embedded-firmware-block>, <IK-block>),
   bent-edge(<embedded-firmware-block>, <rtos-block>),
   bent-edge(<embedded-firmware-block>, <protocolen-block>),
 

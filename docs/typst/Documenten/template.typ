@@ -4,6 +4,8 @@
 
 #import "@preview/acrostiche:0.7.0": *
 
+#import "@local/academic-tools:0.1.8" as academic
+
 #let academic-frontpage(
   title: [Document Title],
   authors: "Author Name",
@@ -24,6 +26,7 @@
   keywords: none,
   acknowledgments: none,
   acronyms: (:),
+  versions: (:),
   biblio: none,
   body
 ) = {
@@ -75,7 +78,8 @@
     
     // Add pagebreak before Chapter 2 and onwards
     if is-chapter and chapter-number >= 2 {
-      pagebreak()
+      v(3em, weak: true)
+      //pagebreak()
     }
     
     v(spacing, weak: true)
@@ -265,16 +269,16 @@
   // ============================================================
   // LIST OF FIGURES
   // ============================================================
-  heading(level: 1, numbering: none)[Lijst van figuren]
-  outline(title: none, target: figure.where(kind: image), indent: 2em)
-  pagebreak()
+  //heading(level: 1, numbering: none)[Lijst van figuren]
+  //outline(title: none, target: figure.where(kind: image), indent: 2em)
+  //pagebreak()
   
   // ============================================================
   // LIST OF TABLES
   // ============================================================
-  heading(level: 1, numbering: none)[Lijst van tabellen]
-  outline(title: none, target: figure.where(kind: table), indent: 2em)
-  pagebreak()
+  //heading(level: 1, numbering: none)[Lijst van tabellen]
+  //outline(title: none, target: figure.where(kind: table), indent: 2em)
+  //pagebreak()
 
   // ============================================================
   // ACRONYMS
@@ -321,8 +325,17 @@
       clickable:true
     )
     
-    pagebreak()
   }
+
+  if versions != (:) {
+    v(3em)
+
+    academic.version-history(
+      ..versions.flatten()
+    )
+  }
+
+  pagebreak()
   
   // ============================================================
   // MAIN CONTENT
@@ -361,3 +374,5 @@
     bibliography(biblio, full: true, style: "ieee")
   }
 }
+
+

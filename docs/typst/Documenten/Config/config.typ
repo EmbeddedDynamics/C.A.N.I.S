@@ -35,8 +35,8 @@
 #let country = "Nederland"
 
 #let university = "NHL Stenden"
-#let universitydesc = "Universety of Applied Sciences"
-#let department = "Afdeling van Elektro Engineering"
+#let universitydesc = "University of Applied Sciences"
+#let department = "Afdeling van Elektrotechniek"
 #let degree = "Bachelor elektrotechniek"
 #let program = "BD.ELT"
 

@@ -437,9 +437,9 @@ antwoorden:
 
 *Aanbeveling voor Robothond-Design:*\
 *Fase 0 (MVP):* Werkende robothond die kan lopen\
-*Fase 1:* Dansen + Audio (haalt 64% van de wensen)\
+*Fase 1:* Dansen + Audio \
 *Fase 2:* Autonome navigatie + interactie\
-*Fase 3:* Geavanceerde sensoren (object herkenning)\
+*Fase 3:* Geavanceerde sensoren zoals object herkenning\
 
 == Uitwerking conclusie
 De uitkomsten van de enquête worden rechtstreeks omgezet in concrete functies voor het ontwerp. De hond krijgt daarom een geprogrammeerde dansmodus gecombineerd met een soundboard dat verschillende geluiden kan afspelen. Ook wordt er een AI gestuurde functie toegevoegd voor autonome navigatie en obstakelvermijding, omdat veel mensen dit technisch interessant vinden. Zo sluit het ontwerp goed aan bij de behoefte van de stakeholders en laat het op een duidelijke manier de techniek achter de robothond zien tijdens open dagen.
