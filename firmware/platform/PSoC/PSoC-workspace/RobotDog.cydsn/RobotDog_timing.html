@@ -539,7 +539,7 @@ function getElementsByClass(rootNode, elemName, className)
 <tr> <td class="prop"> Project :</td>
 <td class="proptext"> RobotDog</td></tr>
 <tr> <td class="prop"> Build Time :</td>
-<td class="proptext"> 12/06/25 00:33:11</td></tr>
+<td class="proptext"> 12/21/25 20:00:05</td></tr>
 <tr> <td class="prop"> Device :</td>
 <td class="proptext"> CY8C5888LTI-LP097</td></tr>
 <tr> <td class="prop"> Temperature :</td>
@@ -575,7 +575,28 @@ function getElementsByClass(rootNode, elemName, className)
 <span class="sec_head"><span style="font-family: monospace;">+</span>
 Timing Violation Section</span>
 </a>
-</div><div class="vio_sta_secbody"><div class="sta_sec_desc">No Timing Violations</div>
+</div><div class="vio_sta_secbody"><div class="sta_sec_desc">Note: If your design will only ever run at typical room temperatures, selecting the narrower temperature range in the system DWR for your application helps the tool to find timing-compliant routing solutions.</div>
+<table class="sta_tpd">
+ <thead> 
+<tr> 
+<th>Violation</th>
+<th>Source Clock</th>
+<th>Destination Clock</th>
+<th>Slack(ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td colspan="4" class = "text_info">Async</td>
+</tr>
+<tr class="sta_tv tv1">
+ <td class = "text_info"> </td>
+ <td class = "text_info">ClockBlock/clk_bus_glb_ff</td>
+ <td class = "text_info">CyBUS_CLK</td>
+ <td class = "text_info"> </td>
+</tr>
+</tbody>
+ </table> 
 </div>
 </div>
 <div class="sta_sec" id="clock_summary">
@@ -623,29 +644,124 @@ Clock Summary Section</span>
 <tr> 
  <td class = "text_info">CyMASTER_CLK</td>
  <td class = "text_info">CyMASTER_CLK</td>
- <td class = "number">24.000&nbsp;MHz</td>
- <td class = "number">24.000&nbsp;MHz</td>
+ <td class = "number">70.000&nbsp;MHz</td>
+ <td class = "number">70.000&nbsp;MHz</td>
  <td class = "number"> N/A </td>
  <td class = "text_info"> </td>
 </tr>
 <tr> 
  <td class = "text_info">CyBUS_CLK</td>
  <td class = "text_info">CyMASTER_CLK</td>
- <td class = "number">24.000&nbsp;MHz</td>
- <td class = "number">24.000&nbsp;MHz</td>
+ <td class = "number">70.000&nbsp;MHz</td>
+ <td class = "number">70.000&nbsp;MHz</td>
  <td class = "number"> N/A </td>
  <td class = "text_info"> </td>
 </tr>
 <tr> 
  <td class = "text_info">CyPLL_OUT</td>
  <td class = "text_info">CyPLL_OUT</td>
- <td class = "number">24.000&nbsp;MHz</td>
- <td class = "number">24.000&nbsp;MHz</td>
+ <td class = "number">70.000&nbsp;MHz</td>
+ <td class = "number">70.000&nbsp;MHz</td>
  <td class = "number"> N/A </td>
  <td class = "text_info"> </td>
 </tr>
 </tbody>
  </table> 
+</div>
+</div>
+<div class="sta_sec" >
+<div>
+<a href="#" style="text-decoration: none; color: inherit;">
+<span class="sec_head"><span style="font-family: monospace;">+</span>
+Asynchronous Clock Crossing Section</span>
+</a>
+</div><div class="sta_secbody"><div class="sta_sec" >
+<div>
+<a href="#" style="text-decoration: none; color: inherit;">
+<span class="sec_head"><span style="font-family: monospace;">+</span>
+Source Clock ClockBlock/clk_bus_glb_ff</span>
+</a>
+</div><div class="sta_secbody"><div class="sta_sec" >
+<div>
+<a href="#" style="text-decoration: none; color: inherit;">
+<span class="sec_head"><span style="font-family: monospace;">+</span>
+Destination Clock CyBUS_CLK</span>
+</a>
+</div><div class="sta_secbody"><table class="sta_tscs">
+ <thead> 
+<tr> 
+<th>Source</th>
+<th>Destination</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">\CAN:CanIP\/interrupt</td>
+ <td class = "text_info">CAN_DMA/dmareq</td>
+ <td class = "number">18.043</td>
+</tr>
+<tr class="sta_path tv1">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">cancell</td>
+ <td class = "text_info">F(CAN,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\CAN:CanIP\</td>
+ <td class = "text_info">\CAN:CanIP\/clock</td>
+ <td class = "text_info">\CAN:CanIP\/interrupt</td>
+ <td class = "number">1.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_12</td>
+ <td class = "text_info">\CAN:CanIP\/interrupt</td>
+ <td class = "text_info">CAN_DMA/dmareq</td>
+ <td class = "number">9.943</td>
+</tr>
+<tr> 
+ <td class = "text_info">drqcell1</td>
+ <td class = "text_info">[DrqContainer=(0)][DrqId=(0)]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">CAN_DMA</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">7.100</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+</tbody>
+ </table> 
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </body>
