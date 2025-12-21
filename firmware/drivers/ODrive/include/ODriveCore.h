@@ -1701,6 +1701,16 @@ ODRIVE_DEFINE_HANDLE(ODriveDriver);
  */
 ODRIVE_DEFINE_HANDLE(ODriveAxis);
 
+/**
+ * @brief Opaque handle to an ODrive CAN driver instance
+ * 
+ * This is an opaque handle for a CAN simple driver instance.
+ * 
+ * @note Implementation details are hidden. Do not dereference directly.
+ * @see #ODriveDriver_Create
+ */
+ODRIVE_DEFINE_HANDLE(ODriveCANDriver);
+
 // ========================================================
 
 #endif // !ODRIVE_CORE_H

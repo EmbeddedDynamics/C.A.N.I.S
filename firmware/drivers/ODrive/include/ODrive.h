@@ -40,8 +40,6 @@
 // ========================================================
 
 
-
-    
 // ========================================================
 // Public Structs
 // ========================================================
@@ -58,9 +56,6 @@ typedef struct {
     
     /**< CAN receive timeout [ms] */
     uint16_t rx_timeout_ms;         
-    
-    /**< Maximum number of axes to support */
-    uint8_t max_axes;               
     
     /**< Monitor axis heartbeat messages */
     bool enable_heartbeat_monitor;  

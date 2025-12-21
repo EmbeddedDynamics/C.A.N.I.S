@@ -27,6 +27,22 @@
 #include "ODriveCore.h"
 
 // ========================================================
+// Platform-specific macros
+// ========================================================
+
+#if defined(CY_PSOC5)
+    #define ODRIVE_PLATFORM_PSOC5
+
+    #if defined(CY_CAN_CAN_H)
+        #define ODRIVE_COM_CAN_AVAILABLE
+
+        #include "CAN.h"
+
+        #pragma Message("ODrive: Using PSoC5 CAN peripheral for ODrive CANSimple communication.")
+    #endif // !defined(CY_CAN_CAN_H)
+#endif // !defined(CY_PSOC5)
+
+// ========================================================
 // CAN bus macros
 // ========================================================
 
