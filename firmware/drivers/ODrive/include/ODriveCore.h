@@ -13,23 +13,23 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-// ========================================================
-// Include guard
-// ========================================================
-
 #ifndef ODRIVE_CORE_H
 #define ODRIVE_CORE_H
 
-// ========================================================
-// Public defines
-// ========================================================
+//========================================================
+//      Standard Includes
+//========================================================
  
 /* Internal headers */
 #include <stdint.h>
     
 /* Project headers */
 #include "ODriveResult.h"
-    
+
+//========================================================
+//      Core Macro's
+//========================================================
+
 /*!
  * @brief Bit position to bit mask conversion macro
  *
@@ -52,122 +52,22 @@
  */ 
 #define ODRIVE_DEFINE_HANDLE(name) typedef struct name##_T* name
 
-// ========================================================
-// Custom types
-// ========================================================
+//========================================================
+//      Core Type Definitions
+//========================================================
 
 /**
   * @brief Node id for the CAN bus controller
   */
-typedef uint16_t CanNodeId;
+typedef uint16_t    odrive_node_id;
 
-// ========================================================
-// Public Enums
-// ========================================================
+typedef void*       odrive_ctx_t;
 
-/**
- * @brief ODrive CAN Protocol Command IDs
- *
- * Defines the CAN message command identifiers for the ODrive CANSimple protocol.
- * The CAN message ID is constructed as: (node_id << 5) | cmd_id
- * 
- * Messages prefixed with "Get_" can be requested by the host using RTR=1,
- * or sent periodically by the ODrive based on configured intervals.
- * Messages prefixed with "Set_" are sent by the host to configure the ODrive.
- *
- * @note All values are encoded in little endian
- * @note Floats use IEEE 754 standard format
- * @see ODrive CAN Protocol Documentation: https://docs.odriverobotics.com/v/latest/manual/can-protocol.html
- */
-typedef enum {
-    /**< Get firmware and hardware version info (ODrive -> Host) */
-    CAN_CMD_GET_VERSION                 = 0x000,
-    
-    /**< Periodic heartbeat with axis state and errors (ODrive -> Host) */
-    CAN_CMD_HEARTBEAT                   = 0x001,
-    
-    /**< Emergency stop, disarms axis immediately (Host -> ODrive) */
-    CAN_CMD_ESTOP                       = 0x002,
-    
-    /**< Get active errors and disarm reason (ODrive -> Host) */
-    CAN_CMD_GET_ERROR                   = 0x003,
-    
-    /**< SDO receive - read/write arbitrary parameters (Host -> ODrive) */
-    CAN_CMD_RXSDO                       = 0x004,
-    
-    /**< SDO transmit - response to RxSdo (ODrive -> Host) */
-    CAN_CMD_TXSDO                       = 0x005,
-    
-    /**< Node discovery and addressing (Bidirectional) */
-    CAN_CMD_ADDRESS                     = 0x006,
-    
-    /**< Set axis operational state (Host -> ODrive) */
-    CAN_CMD_SET_AXIS_STATE              = 0x007,
-    
-    /**< Get position and velocity estimates (ODrive -> Host) */
-    CAN_CMD_GET_ENCODER_ESTIMATES       = 0x009,
-    
-    /**< Set control and input mode (Host -> ODrive) */
-    CAN_CMD_SET_CONTROLLER_MODE         = 0x00B,
-    
-    /**< Set position setpoint with feedforward (Host -> ODrive) */
-    CAN_CMD_SET_INPUT_POS               = 0x00C,
-    
-    /**< Set velocity setpoint with torque feedforward (Host -> ODrive) */
-    CAN_CMD_SET_INPUT_VEL               = 0x00D,
-    
-    /**< Set torque setpoint (Host -> ODrive) */
-    CAN_CMD_SET_INPUT_TORQUE            = 0x00E,
-    
-    /**< Set velocity and current limits (Host -> ODrive) */
-    CAN_CMD_SET_LIMITS                  = 0x00F,
-    
-    /**< Set trajectory velocity limit (Host -> ODrive) */
-    CAN_CMD_SET_TRAJ_VEL_LIMIT          = 0x011,
-    
-    /**< Set trajectory acceleration/deceleration limits (Host -> ODrive) */
-    CAN_CMD_SET_TRAJ_ACCEL_LIMITS       = 0x012,
-    
-    /**< Set trajectory inertia for feed-forward (Host -> ODrive) */
-    CAN_CMD_SET_TRAJ_INERTIA            = 0x013,
-    
-    /**< Get q-axis current setpoint and measured (ODrive -> Host) */
-    CAN_CMD_GET_IQ                      = 0x014,
-    
-    /**< Get FET and motor temperature (ODrive -> Host) */
-    CAN_CMD_GET_TEMPERATURE             = 0x015,
-    
-    /**< Reboot ODrive with specified action (Host -> ODrive) */
-    CAN_CMD_REBOOT                      = 0x016,
-    
-    /**< Get DC bus voltage and current (ODrive -> Host) */
-    CAN_CMD_GET_BUS_VOLTAGE_CURRENT     = 0x017,
-    
-    /**< Clear errors and optionally identify (Host -> ODrive) */
-    CAN_CMD_CLEAR_ERRORS                = 0x018,
-    
-    /**< Set absolute encoder position (Host -> ODrive) */
-    CAN_CMD_SET_ABSOLUTE_POSITION       = 0x019,
-    
-    /**< Set position controller gain (Host -> ODrive) */
-    CAN_CMD_SET_POS_GAIN                = 0x01A,
-    
-    /**< Set velocity controller gains (Host -> ODrive) */
-    CAN_CMD_SET_VEL_GAINS               = 0x01B,
-    
-    /**< Get torque target and estimate (ODrive -> Host) */
-    CAN_CMD_GET_TORQUES                 = 0x01C,
-    
-    /**< Get electrical and mechanical power (ODrive -> Host) */
-    CAN_CMD_GET_POWERS                  = 0x01D,
-    
-    /**< Enter DFU bootloader mode (Host -> ODrive) */
-    CAN_CMD_ENTER_DFU_MODE              = 0x01F,
-} ODriveCanCommandId;
+typedef uint32_t    odrive_flags;
 
-// =============================================================================
-// ERROR FLAGS (BITFIELDS)
-// =============================================================================
+//========================================================
+//      ODrive Error Enums
+//========================================================
 
 /**
  * @brief ODrive axis error flags
@@ -352,7 +252,7 @@ typedef enum {
      */
     AXIS_ERROR_OVER_TEMP                    = 0x00010000
 
-} ODriveAxisError;
+} odrive_axis_error_t;
 
 /**
  * @brief ODrive motor error flags
@@ -510,7 +410,7 @@ typedef enum {
      */
     MOTOR_ERROR_CURRENT_UNSTABLE                = 0x00001000
 
-} ODriveMotorError;
+} odrive_motor_error_t;
 
 /**
  * @brief ODrive encoder error flags
@@ -646,7 +546,7 @@ typedef enum {
      */
     ENCODER_ERROR_HALL_NOT_CALIBRATED_YET   = 0x0200
 
-} ODriveEncoderError;
+} odrive_encoder_error_t;
 
 /**
  * @brief ODrive controller error flags
@@ -731,7 +631,7 @@ typedef enum {
      */
     CONTROLLER_ERROR_INVALID_ESTIMATE       = 0x20
 
-} ODriveControllerError;
+} odrive_controller_error_t;
 
 /**
  * @brief ODrive sensorless estimator error flags
@@ -777,7 +677,7 @@ typedef enum {
      */
     SENSORLESS_ESTIMATOR_ERROR_UNKNOWN_CURRENT_COMMAND = 0x02
 
-} ODriveSensorlessEstimatorError;
+} odrive_sensorless_estimate_error_t;
 
 /**
  * @brief ODrive top-level error flags
@@ -1089,7 +989,116 @@ typedef enum {
      */
     ODRIVE_ERROR_CALIBRATION_ERROR          = 0x40000000
 
-} ODriveError;
+} odrive_error_t;
+
+//========================================================
+//      ODrive CAN Enums
+//========================================================
+
+/**
+ * @brief ODrive CAN Protocol Command IDs
+ *
+ * Defines the CAN message command identifiers for the ODrive CANSimple protocol.
+ * The CAN message ID is constructed as: (node_id << 5) | cmd_id
+ * 
+ * Messages prefixed with "Get_" can be requested by the host using RTR=1,
+ * or sent periodically by the ODrive based on configured intervals.
+ * Messages prefixed with "Set_" are sent by the host to configure the ODrive.
+ *
+ * @note All values are encoded in little endian
+ * @note Floats use IEEE 754 standard format
+ * @see ODrive CAN Protocol Documentation: https://docs.odriverobotics.com/v/latest/manual/can-protocol.html
+ */
+typedef enum {
+    /**< Get firmware and hardware version info (ODrive -> Host) */
+    CAN_CMD_GET_VERSION                 = 0x000,
+    
+    /**< Periodic heartbeat with axis state and errors (ODrive -> Host) */
+    CAN_CMD_HEARTBEAT                   = 0x001,
+    
+    /**< Emergency stop, disarms axis immediately (Host -> ODrive) */
+    CAN_CMD_ESTOP                       = 0x002,
+    
+    /**< Get active errors and disarm reason (ODrive -> Host) */
+    CAN_CMD_GET_ERROR                   = 0x003,
+    
+    /**< SDO receive - read/write arbitrary parameters (Host -> ODrive) */
+    CAN_CMD_RXSDO                       = 0x004,
+    
+    /**< SDO transmit - response to RxSdo (ODrive -> Host) */
+    CAN_CMD_TXSDO                       = 0x005,
+    
+    /**< Node discovery and addressing (Bidirectional) */
+    CAN_CMD_ADDRESS                     = 0x006,
+    
+    /**< Set axis operational state (Host -> ODrive) */
+    CAN_CMD_SET_AXIS_STATE              = 0x007,
+    
+    /**< Get position and velocity estimates (ODrive -> Host) */
+    CAN_CMD_GET_ENCODER_ESTIMATES       = 0x009,
+    
+    /**< Set control and input mode (Host -> ODrive) */
+    CAN_CMD_SET_CONTROLLER_MODE         = 0x00B,
+    
+    /**< Set position setpoint with feedforward (Host -> ODrive) */
+    CAN_CMD_SET_INPUT_POS               = 0x00C,
+    
+    /**< Set velocity setpoint with torque feedforward (Host -> ODrive) */
+    CAN_CMD_SET_INPUT_VEL               = 0x00D,
+    
+    /**< Set torque setpoint (Host -> ODrive) */
+    CAN_CMD_SET_INPUT_TORQUE            = 0x00E,
+    
+    /**< Set velocity and current limits (Host -> ODrive) */
+    CAN_CMD_SET_LIMITS                  = 0x00F,
+    
+    /**< Set trajectory velocity limit (Host -> ODrive) */
+    CAN_CMD_SET_TRAJ_VEL_LIMIT          = 0x011,
+    
+    /**< Set trajectory acceleration/deceleration limits (Host -> ODrive) */
+    CAN_CMD_SET_TRAJ_ACCEL_LIMITS       = 0x012,
+    
+    /**< Set trajectory inertia for feed-forward (Host -> ODrive) */
+    CAN_CMD_SET_TRAJ_INERTIA            = 0x013,
+    
+    /**< Get q-axis current setpoint and measured (ODrive -> Host) */
+    CAN_CMD_GET_IQ                      = 0x014,
+    
+    /**< Get FET and motor temperature (ODrive -> Host) */
+    CAN_CMD_GET_TEMPERATURE             = 0x015,
+    
+    /**< Reboot ODrive with specified action (Host -> ODrive) */
+    CAN_CMD_REBOOT                      = 0x016,
+    
+    /**< Get DC bus voltage and current (ODrive -> Host) */
+    CAN_CMD_GET_BUS_VOLTAGE_CURRENT     = 0x017,
+    
+    /**< Clear errors and optionally identify (Host -> ODrive) */
+    CAN_CMD_CLEAR_ERRORS                = 0x018,
+    
+    /**< Set absolute encoder position (Host -> ODrive) */
+    CAN_CMD_SET_ABSOLUTE_POSITION       = 0x019,
+    
+    /**< Set position controller gain (Host -> ODrive) */
+    CAN_CMD_SET_POS_GAIN                = 0x01A,
+    
+    /**< Set velocity controller gains (Host -> ODrive) */
+    CAN_CMD_SET_VEL_GAINS               = 0x01B,
+    
+    /**< Get torque target and estimate (ODrive -> Host) */
+    CAN_CMD_GET_TORQUES                 = 0x01C,
+    
+    /**< Get electrical and mechanical power (ODrive -> Host) */
+    CAN_CMD_GET_POWERS                  = 0x01D,
+    
+    /**< Enter DFU bootloader mode (Host -> ODrive) */
+    CAN_CMD_ENTER_DFU_MODE              = 0x01F,
+} odrive_can_command_t;
+
+//========================================================
+//      ODrive Motor Types
+//========================================================
+
 /**
  * @brief Motor type selection (axis.motor.config.motor_type)
  *
@@ -1107,7 +1116,11 @@ typedef enum {
     
     /**< Used for FOC control of AC Induction Motors (ACIM), aka Asynchronous motors. */
     MOTOR_TYPE_ACIM                     = 0x03,
-} ODriveMotorType;
+} odrive_motor_type;
+
+//========================================================
+//      ODrive Input modes
+//========================================================
 
 /**
  * @brief Input mode selection (axis.controller.config.input_mode)
@@ -1244,7 +1257,11 @@ typedef enum {
      */
     INPUT_MODE_TUNING = 8
 
-} ODriveInputMode;
+} odrive_input_mode_t;
+
+//========================================================
+//      ODrive State's
+//========================================================
 
 /**
  * @brief ODrive alive state
@@ -1326,7 +1343,11 @@ typedef enum {
      */
     ALIVE_STATE_REBOOT = 3
 
-} ODriveAliveState;
+} odrive_alive_state_t;
+
+//========================================================
+//      ODrive Result codes
+//========================================================
 
 /**
  * @brief Procedure result codes (axis.procedure_result)
@@ -1617,10 +1638,14 @@ typedef enum {
      */
     PROCEDURE_RESULT_NOT_CONVERGING = 15
 
-} ODriveProcedureResult;
+} odrive_procedure_result_t;
+
+//========================================================
+//      ODrive Reboot Actions
+//========================================================
 
 /**
- * @brief ODrive reboot action flags.
+ * @brief ODrive reboot actions.
  *
  * These values define what action the ODrive should perform when a
  * CAN-based Reboot command is issued. The action is passed as the
@@ -1665,56 +1690,51 @@ typedef enum {
      */
     REBOOT_ACTION_DFU_MODE       = 0x00000003,
 
-} ODriveRebootAction;
+} odrive_reboot_action_t;
 
-
-// ========================================================
-// Public Structs
-// ========================================================
-
-typedef struct EncoderEstimateFrame_T {
-    float Position;
-    float Velocity;
-} EncoderEstimateFrame;
+//========================================================
+//      ODrive Handles
+//========================================================
 
 /**
  * @brief Opaque handle to an ODrive driver instance
  * 
- * This is an opaque pointer type used to reference an ODrive controller.
- * Users obtain valid handles through ODriveDriver_Create() and pass them
- * to other ODrive functions.
- * 
- * @note Implementation details are hidden. Do not dereference directly.
- * @see #ODriveDriver_Create
+ * @note Obtained via ODriveDriver_Create(). Do not dereference directly.
  */
-ODRIVE_DEFINE_HANDLE(ODriveDriver);
+ODRIVE_DEFINE_HANDLE(odrive_driver);
 
 /**
  * @brief Opaque handle to an ODrive axis instance
  * 
- * This is an opaque pointer type used to reference an ODrive axis.
- * Users obtain valid handles through ODriveDriver_Create() and pass them
- * to other ODrive functions.
- * 
- * @note Implementation details are hidden. Do not dereference directly.
- * @see #ODriveDriver_Create
+ * @note Obtained via ODriveDriver_Create(). Do not dereference directly.
  */
-ODRIVE_DEFINE_HANDLE(ODriveAxis);
+ODRIVE_DEFINE_HANDLE(odrive_axis);
 
 /**
  * @brief Opaque handle to an ODrive CAN driver instance
  * 
- * This is an opaque handle for a CAN simple driver instance.
- * 
- * @note Implementation details are hidden. Do not dereference directly.
- * @see #ODriveDriver_Create
+ * @note Obtained via ODriveDriver_Create(). Do not dereference directly.
  */
-ODRIVE_DEFINE_HANDLE(ODriveCANDriver);
+ODRIVE_DEFINE_HANDLE(odrive_can_driver);
 
 // ========================================================
+// ODrive Core Structs
+// ========================================================
+
+/**
+ * @brief Encoder estimate frame (position and velocity)
+ * 
+ * @details
+ * Contains current position and velocity estimates from the encoder
+ * or sensorless estimator.
+ */
+typedef struct  {
+    float Position;
+    float Velocity;
+} encoder_estimate_frame;
+
+//========================================================
+//      End of File
+//========================================================
 
 #endif // !ODRIVE_CORE_H
-
-// ========================================================
-
-/* [] END OF FILE */
