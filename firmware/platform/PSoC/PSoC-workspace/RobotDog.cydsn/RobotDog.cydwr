@@ -15,15 +15,38 @@
         <Data key="enabled" value="True" />
         <Data key="minus_accuracy" value="1" />
         <Data key="minus_tolerance" value="1.5" />
-        <Data key="name" value="CAN_Bus_Clock" />
+        <Data key="name" value="CAN_Clock" />
         <Data key="named_src_direct_connect" value="True" />
-        <Data key="netlist_name" value="\CAN_Bus:Clock\" />
+        <Data key="netlist_name" value="\CAN:Clock\" />
         <Data key="placement" value="AUTO" />
         <Data key="plus_accuracy" value="1" />
         <Data key="plus_tolerance" value="1.5" />
         <Data key="scope" value="LOCAL" />
         <Data key="src_clk_id" value="75C2148C-3656-4d8a-846D-0CAE99AB6FF7" />
         <Data key="src_clk_name" value="BUS_CLK" />
+        <Data key="start_on_reset" value="True" />
+        <Data key="sync_with_bus_clk" value="True" />
+        <Data key="user_set_domain" value="False" />
+      </Group>
+      <Group key="72616f72-e301-4c83-b048-6f9f5a324cd8">
+        <Data key="check_tolerance" value="True" />
+        <Data key="clock_version" value="v1" />
+        <Data key="derive_type" value="AUTO" />
+        <Data key="desired_freq" value="12" />
+        <Data key="desired_unit" value="6" />
+        <Data key="divider" value="2" />
+        <Data key="domain" value="DIGITAL" />
+        <Data key="enabled" value="True" />
+        <Data key="minus_accuracy" value="1" />
+        <Data key="minus_tolerance" value="5" />
+        <Data key="name" value="Clock_1" />
+        <Data key="netlist_name" value="Clock_1" />
+        <Data key="placement" value="AUTO" />
+        <Data key="plus_accuracy" value="1" />
+        <Data key="plus_tolerance" value="5" />
+        <Data key="scope" value="LOCAL" />
+        <Data key="src_clk_id" value="61737EF6-3B74-48f9-8B91-F7473A442AE7" />
+        <Data key="src_clk_name" value="MASTER_CLK" />
         <Data key="start_on_reset" value="True" />
         <Data key="sync_with_bus_clk" value="True" />
         <Data key="user_set_domain" value="False" />
@@ -58,7 +81,7 @@
         <Data key="check_tolerance" value="True" />
         <Data key="clock_version" value="v1" />
         <Data key="derive_type" value="BUILTIN" />
-        <Data key="desired_freq" value="70" />
+        <Data key="desired_freq" value="24" />
         <Data key="desired_unit" value="6" />
         <Data key="divider" value="0" />
         <Data key="domain" value="0" />
@@ -268,15 +291,21 @@
   </Group>
   <Group key="Component">
     <Group key="v1">
-      <Data key="cy_boot" value="cy_boot_v6_0" />
+      <Data key="cy_boot" value="cy_boot_v6_10" />
       <Data key="Em_EEPROM_Dynamic" value="Em_EEPROM_Dynamic_v2_20" />
-      <Data key="LIN_Dynamic" value="LIN_Dynamic_v5_0" />
+      <Data key="LIN_Dynamic" value="LIN_Dynamic_v6_0" />
     </Group>
   </Group>
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
     <Group key="Clock">
-      <Data key="2c366327-8ea9-4813-ab0d-a7ce473af76e/ccbbccde-4db5-4009-af85-8e8bae589faa" value="CAN_Bus_Clock" />
+      <Data key="2c366327-8ea9-4813-ab0d-a7ce473af76e/ccbbccde-4db5-4009-af85-8e8bae589faa" value="CAN_Clock" />
+      <Data key="72616f72-e301-4c83-b048-6f9f5a324cd8" value="Clock_1" />
+    </Group>
+    <Group key="Interrupt">
+      <Data key="0afe98df-806a-4b9d-a0c5-1118421eaef6" value="CORDIC" />
+      <Data key="2c366327-8ea9-4813-ab0d-a7ce473af76e/ff9e6c0d-df4b-4b4a-8faa-5abec07f0853" value="CAN_isr" />
+      <Data key="8e9160b0-0d1c-43a7-9f30-c9d7a29d93a0" value="CORDIC" />
     </Group>
   </Group>
   <Group key="EEPROM">
@@ -3359,6 +3388,22 @@
       </Group>
       <Group key="1024">
         <Data key="LevelKey" value="00" />
+      </Group>
+    </Group>
+  </Group>
+  <Group key="Interrupt">
+    <Group key="0afe98df-806a-4b9d-a0c5-1118421eaef6">
+      <Group key="CortexM3">
+        <Data key="Assigned" value="True" />
+        <Data key="Priority" value="0" />
+        <Data key="Vector" value="-1" />
+      </Group>
+    </Group>
+    <Group key="8e9160b0-0d1c-43a7-9f30-c9d7a29d93a0">
+      <Group key="CortexM3">
+        <Data key="Assigned" value="True" />
+        <Data key="Priority" value="6" />
+        <Data key="Vector" value="-1" />
       </Group>
     </Group>
   </Group>
