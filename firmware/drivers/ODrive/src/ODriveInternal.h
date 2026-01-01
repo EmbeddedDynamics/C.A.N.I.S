@@ -1,9 +1,9 @@
 /***************************************************************************//**
-* \file ODriveCAN.h
+* \file ODriveInternal.h
 * \version 1.0.0
 *
-*  \brief
-*  Private header for OpenCAN protocol used by ODrive
+* \brief
+* Private header for the ODrive internal definitions
 *
 ********************************************************************************
 * \copyright
@@ -13,16 +13,12 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-// ========================================================
-// Include guard
-// ========================================================
-
 #ifndef ODRIVE_INTERNAL_H
 #define ODRIVE_INTERNAL_H
 
-// ========================================================
-// Public defines
-// ========================================================
+//========================================================
+//      Standard Includes
+//========================================================
  
 /* Internal headers */
 #include <stdint.h>
@@ -33,52 +29,156 @@
 #include "ODriveAxis.h"
 #include "ODriveCore.h"
 
-#include "ODriveCAN.h"
+/**
+ * @brief Construct an ODrive CAN arbitration ID.
+ *
+ * Packs a node ID and command ID into the standard 11-bit CAN identifier.
+ *
+ * Layout:
+ *   - Bits [10:5] = node_id (0–63)
+ *   - Bits [4:0]  = cmd_id  (0–31)
+ *
+ * @param node_id ODrive axis node ID (0–63).
+ * @param cmd_id  ODrive command ID (0–31).
+ *
+ * @return 11-bit CAN identifier ready for transmission.
+ *
+ * @code
+ * CANId id = ODRIVE_CAN_ID(0x01, CAN_CMD_SET_INPUT_POS);  // Set_Input_Pos on node 1
+ * @endcode
+ */
+#define ODRIVE_CAN_ID(node_id, cmd_id) \
+    (((uint16_t)(node_id) << 5) | ((uint16_t)(cmd_id) & 0x1F))
 
+//========================================================
+//      Message Packing Macros (Little-Endian)
+//========================================================
+
+/**
+ * @brief Pack signed 8-bit integer into message
+ *
+ * @param[in,out] msg Message structure
+ * @param[in] val     Value to pack (int8_t or compatible)
+ *
+ * @note Increments msg.dlc; ensure dlc + 1 <= 64 before calling
+ * @warning No bounds checking; caller responsible for buffer overflow
+ */
+#define ODRIVE_PACK_INT8(msg, val)  do { \
+    if (msg.dlc < 64) { \
+        msg.buffer[msg.dlc++] = (uint8_t)(val & 0xFF); \
+    } \
+} while(0)
+
+/**
+ * @brief Pack signed 16-bit integer into message (little-endian)
+ *
+ * @param[in,out] msg Message structure
+ * @param[in] val     Value to pack (int16_t or compatible)
+ *
+ * @note Increments msg.dlc by 2; ensure dlc + 2 <= 64 before calling
+ */
+#define ODRIVE_PACK_INT16(msg, val)  do { \
+    if (msg.dlc + 1 < 64) { \
+        msg.buffer[msg.dlc++] = (uint8_t)(val & 0xFF); \
+        msg.buffer[msg.dlc++] = (uint8_t)((val >> 8) & 0xFF); \
+    } \
+} while(0)  
+
+/**
+ * @brief Pack signed 32-bit integer into message (little-endian)
+ *
+ * @param[in,out] msg Message structure
+ * @param[in] val     Value to pack (int32_t or compatible)
+ *
+ * @note Increments msg.dlc by 4; ensure dlc + 4 <= 64 before calling
+ */
+#define ODRIVE_PACK_INT32(msg, val)  do { \
+    if (msg.dlc + 3 < 64) { \
+        msg.buffer[msg.dlc++] = (uint8_t)(val & 0xFF); \
+        msg.buffer[msg.dlc++] = (uint8_t)((val >> 8) & 0xFF); \
+        msg.buffer[msg.dlc++] = (uint8_t)((val >> 16) & 0xFF); \
+        msg.buffer[msg.dlc++] = (uint8_t)((val >> 24) & 0xFF); \
+    } \
+} while(0)  
+
+/**
+ * @brief Pack unsigned 8-bit integer into message
+ */
+#define ODRIVE_PACK_UINT8(msg, val) \
+    ODRIVE_PACK_INT8(msg, val)
+
+/**
+ * @brief Pack unsigned 16-bit integer into message (little-endian)
+ */
+#define ODRIVE_PACK_UINT16(msg, val) \
+    ODRIVE_PACK_INT16(msg, val)
+
+/**
+ * @brief Pack unsigned 32-bit integer into message (little-endian)
+ */
+#define ODRIVE_PACK_UINT32(msg, val) \
+    ODRIVE_PACK_INT32(msg, val)
+
+/**
+ * @brief Pack 32-bit float into message (little-endian IEEE 754)
+ *
+ * @param[in,out] msg Message structure
+ * @param[in] val     Float value to pack
+ *
+ * @note Uses union to reinterpret bits; safe for IEEE 754 platforms
+ */
+#define ODRIVE_PACK_FLOAT(msg, val) do { \
+    union { float f; uint32_t u; } _u = {(val)}; \
+    ODRIVE_PACK_UINT32(msg, _u.u); \
+} while(0)
+
+//========================================================
+//      ODrive Axis Structure
+//========================================================
+
+struct odrive_axis_T {
+    /**< Axis initialization flag */
+    bool initialized;
+
+    /**< CAN node ID (0-63) */
+    odrive_node_id node_id;      
+
+    /**< Cached alive state */
+    odrive_alive_state_t alive_state;
+
+    /**< Last received heartbeat */
+    odrive_heartbeat_frame_t heartbeat;
+
+    /**
+     * @brief Last received encoder estimate frame
+     */
+    encoder_estimate_frame encoder_estimate;
+
+    odrive_driver driver;    /**< CAN driver handle */
     
-// ========================================================
-// Private Typedefs
-// ========================================================
-
-
-    
-// ========================================================
-// Private Structs
-// ========================================================
-
-struct ODriveDriver_T {
-    struct ODriveAxis_T axes[ODRIVE_MAX_AXES];   // indexed by node_id
-    uint16_t num_axes;
-
-    ODriveCANDriver CANDriver;
-
-    ODriveDriverConfig config;
 };
 
-struct ODriveAxis_T {
-    ODriveDriver driver;    /**< CAN driver handle */
-    CanNodeId node_id;      /**< CAN node ID (0-63) */
-    bool is_initialized;    /**< Initialization status */
-};
+//========================================================
+//      ODrive Driver Structure
+//========================================================
 
-typedef struct {
-    ODriveAxisError axis_error;
-    ODriveAxisState  axis_state;
-    ODriveProcedureResult  procedure_result;
-    bool     traj_done;
-} ODriveHeartbeatFrame;
+struct odrive_driver_T {
+    //odrive_driver_config_t config;
 
-// ========================================================
-// Private Methods
-// ========================================================
+    odrive_com_t            com;            /**< Communication context (CAN, etc.) */
 
-ODriveResult ODriveDriver_PollCANMessage(Can);
+    struct odrive_axis_T    axes[ODRIVE_MAX_AXES]; /**< Axis handle table, indexed by slot */
+    uint16_t                num_axes;              /**< Number of active axes */
+
+    // Optional: mapping node_id -> axis index (0xFF = unused)
+    odrive_node_id     node_map[ODRIVE_MAX_AXES]; /**< Node ID per slot, or 0xFF if free */
+
+    odrive_driver_state_t state;
+};  
 
 
-// ========================================================
+//========================================================
+//      End of File
+//========================================================
 
 #endif // !ODRIVE_INTERNAL_H
-
-// ========================================================
-
-/* [] END OF FILE */
