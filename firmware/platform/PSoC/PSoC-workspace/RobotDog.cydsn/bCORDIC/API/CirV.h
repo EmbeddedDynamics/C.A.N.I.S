@@ -23,7 +23,8 @@
 //========================================================
 //      Standard Includes
 //========================================================
-    
+
+#include <stdbool.h>
 #include <stdint.h>
     
 #include "cytypes.h"
@@ -128,7 +129,7 @@
  *
  * 
 */
-#define `$INSTANCE_NAME`_INT_STATUS_PTR     (  (reg8 *) `$INSTANCE_NAME`_StatusIntReg_1_sts_intr_sts_reg__STATUS_REG)
+#define `$INSTANCE_NAME`_INT_STATUS_PTR     (  (reg8 *) `$INSTANCE_NAME`_InterruptRegister__STATUS_REG)
 
 /**
  * @brief Interrupt status value
@@ -143,7 +144,7 @@
  *
  * 
 */
-#define `$INSTANCE_NAME`_INT_STATUS_MASK    (* (reg8 *) `$INSTANCE_NAME`_StatusIntReg_1_sts_intr_sts_reg__MASK_REG )
+#define `$INSTANCE_NAME`_INT_STATUS_MASK    (* (reg8 *) `$INSTANCE_NAME`_InterruptRegister__MASK_REG )
 
 
 /**
@@ -151,7 +152,7 @@
  *
  * 
 */
-#define `$INSTANCE_NAME`_INT_STATUS_AUX_CTRL    (* (reg8 *) `$INSTANCE_NAME`_StatusIntReg_1_sts_intr_sts_reg__STATUS_AUX_CTL_REG )
+#define `$INSTANCE_NAME`_INT_STATUS_AUX_CTRL    (* (reg8 *) `$INSTANCE_NAME`_InterruptRegister__STATUS_AUX_CTL_REG )
 
 /** @} */
 
@@ -166,25 +167,25 @@
 */
 
 
-#define `$INSTANCE_NAME`_X_ENGINE_A0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_A0_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_A0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_A0_REG)
 #define `$INSTANCE_NAME`_X_ENGINE_A0_REG    (* `$INSTANCE_NAME`_X_ENGINE_A0_PTR)
 
-#define `$INSTANCE_NAME`_X_ENGINE_A1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_A1_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_A1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_A1_REG)
 #define `$INSTANCE_NAME`_X_ENGINE_A1_REG    (* `$INSTANCE_NAME`_X_ENGINE_A1_PTR)
 
-#define `$INSTANCE_NAME`_X_ENGINE_D0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_D0_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_D0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_D0_REG)
 #define `$INSTANCE_NAME`_X_ENGINE_D0_REG    (* `$INSTANCE_NAME`_X_ENGINE_D0_PTR)
 
-#define `$INSTANCE_NAME`_X_ENGINE_D1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_D1_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_D1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_D1_REG)
 #define `$INSTANCE_NAME`_X_ENGINE_D1_REG    (* `$INSTANCE_NAME`_X_ENGINE_D1_PTR)
 
-#define `$INSTANCE_NAME`_X_ENGINE_F0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_F0_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_F0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_F0_REG)
 #define `$INSTANCE_NAME`_X_ENGINE_F0_REG    (* `$INSTANCE_NAME`_X_ENGINE_F0_PTR)
 
-#define `$INSTANCE_NAME`_X_ENGINE_F1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_F1_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_F1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_F1_REG)
 #define `$INSTANCE_NAME`_X_ENGINE_F1_REG    (* `$INSTANCE_NAME`_X_ENGINE_F1_PTR)
 
-#define `$INSTANCE_NAME`_X_ENGINE_AUX_CTRL  ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_DP_AUX_CTL_REG)
+#define `$INSTANCE_NAME`_X_ENGINE_AUX_CTRL  ((reg16 *) `$INSTANCE_NAME`_dp_x_engine_LSB__16BIT_DP_AUX_CTL_REG)
 
 /* MSB Datapath registers */
 #define `$INSTANCE_NAME`_X_ENGINE_A0_MSB_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_x_engine_MSB__A0_REG)
@@ -237,25 +238,25 @@
 */
 
 
-#define `$INSTANCE_NAME`_Y_ENGINE_A0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_A0_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_A0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_A0_REG)
 #define `$INSTANCE_NAME`_Y_ENGINE_A0_REG    (* `$INSTANCE_NAME`_Y_ENGINE_A0_PTR)
 
-#define `$INSTANCE_NAME`_Y_ENGINE_A1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_A1_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_A1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_A1_REG)
 #define `$INSTANCE_NAME`_Y_ENGINE_A1_REG    (* `$INSTANCE_NAME`_Y_ENGINE_A1_PTR)
 
-#define `$INSTANCE_NAME`_Y_ENGINE_D0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_D0_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_D0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_D0_REG)
 #define `$INSTANCE_NAME`_Y_ENGINE_D0_REG    (* `$INSTANCE_NAME`_Y_ENGINE_D0_PTR)
 
-#define `$INSTANCE_NAME`_Y_ENGINE_D1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_D1_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_D1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_D1_REG)
 #define `$INSTANCE_NAME`_Y_ENGINE_D1_REG    (* `$INSTANCE_NAME`_Y_ENGINE_D1_PTR)
 
-#define `$INSTANCE_NAME`_Y_ENGINE_F0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_F0_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_F0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_F0_REG)
 #define `$INSTANCE_NAME`_Y_ENGINE_F0_REG    (* `$INSTANCE_NAME`_Y_ENGINE_F0_PTR)
 
-#define `$INSTANCE_NAME`_Y_ENGINE_F1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_F1_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_F1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_F1_REG)
 #define `$INSTANCE_NAME`_Y_ENGINE_F1_REG    (* `$INSTANCE_NAME`_Y_ENGINE_F1_PTR)
 
-#define `$INSTANCE_NAME`_Y_ENGINE_AUX_CTRL  ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_DP_AUX_CTL_REG)
+#define `$INSTANCE_NAME`_Y_ENGINE_AUX_CTRL  ((reg16 *) `$INSTANCE_NAME`_dp_y_engine_LSB__16BIT_DP_AUX_CTL_REG)
 
 /* MSB Datapath registers */
 #define `$INSTANCE_NAME`_Y_ENGINE_A0_MSB_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_y_engine_MSB__A0_REG)
@@ -299,7 +300,7 @@
 
 
 //========================================================
-//      CORDIC-engine registers
+//      CORDIC Z-engine registers
 //========================================================
 
 /** 
@@ -309,25 +310,25 @@
 */
 
 
-#define `$INSTANCE_NAME`_Z_ENGINE_A0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_A0_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_A0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_A0_REG)
 #define `$INSTANCE_NAME`_Z_ENGINE_A0_REG    (* `$INSTANCE_NAME`_Z_ENGINE_A0_PTR)
                         
-#define `$INSTANCE_NAME`_Z_ENGINE_A1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_A1_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_A1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_A1_REG)
 #define `$INSTANCE_NAME`_Z_ENGINE_A1_REG    (* `$INSTANCE_NAME`_Z_ENGINE_A1_PTR)
                         
-#define `$INSTANCE_NAME`_Z_ENGINE_D0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_D0_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_D0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_D0_REG)
 #define `$INSTANCE_NAME`_Z_ENGINE_D0_REG    (* `$INSTANCE_NAME`_Z_ENGINE_D0_PTR)
                         
-#define `$INSTANCE_NAME`_Z_ENGINE_D1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_D1_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_D1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_D1_REG)
 #define `$INSTANCE_NAME`_Z_ENGINE_D1_REG    (* `$INSTANCE_NAME`_Z_ENGINE_D1_PTR)
                         
-#define `$INSTANCE_NAME`_Z_ENGINE_F0_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_F0_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_F0_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_F0_REG)
 #define `$INSTANCE_NAME`_Z_ENGINE_F0_REG    (* `$INSTANCE_NAME`_Z_ENGINE_F0_PTR)
                         
-#define `$INSTANCE_NAME`_Z_ENGINE_F1_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_F1_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_F1_PTR    ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_F1_REG)
 #define `$INSTANCE_NAME`_Z_ENGINE_F1_REG    (* `$INSTANCE_NAME`_Z_ENGINE_F1_PTR)
                         
-#define `$INSTANCE_NAME`_Z_ENGINE_AUX_CTRL  ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_DP_AUX_CTL_REG)
+#define `$INSTANCE_NAME`_Z_ENGINE_AUX_CTRL  ((reg16 *) `$INSTANCE_NAME`_dp_z_engine_LSB__16BIT_DP_AUX_CTL_REG)
 
 /* MSB Datapath registers */
 #define `$INSTANCE_NAME`_Z_ENGINE_A0_MSB_PTR    ((reg8 *) `$INSTANCE_NAME`_dp_z_engine_MSB__A0_REG)
@@ -377,8 +378,22 @@
 #define `$INSTANCE_NAME`_KC             (1.64676f)
 #define `$INSTANCE_NAME`_KC_INVERSE     (0.60725f)
 
+/* Status register constants */
+#define `$INSTANCE_NAME`_STS_CFAULT     (0x01u)
+#define `$INSTANCE_NAME`_STS_IDLE       (0x02u)
+#define `$INSTANCE_NAME`_STS_X_F0_READY (0x04u)
+#define `$INSTANCE_NAME`_STS_Y_F0_READY (0x08u)
+#define `$INSTANCE_NAME`_STS_Z_FILLED   (0x10u)
+#define `$INSTANCE_NAME`_STS_X_FILLED   (0x20u)
+#define `$INSTANCE_NAME`_STS_DONE       (0x40u)
+
+#define `$INSTANCE_NAME`_STS_PENDING    (0x30u)
+
+/* Interrupt constants */
 #define `$INSTANCE_NAME`_INTR_ENBL      (0x10u)
 
+
+/* Control register constants */
 #define `$INSTANCE_NAME`_EN             (0x01u)
 #define `$INSTANCE_NAME`_RST            (0x02u)
 
@@ -386,8 +401,8 @@
 //      Optimized KC-Embedded Conversions (16 iterations)
 //========================================================
 
-#define `$INSTANCE_NAME`_Q12_4_SCALE     (9.71604696f)   // 16 * KC_16iter
-#define `$INSTANCE_NAME`_Q12_4_INV_SCALE (0.1029375f)    // (1/16) * (1/KC)
+#define `$INSTANCE_NAME`_Q12_4_SCALE     (9.716)    // 16 * KC_16iter
+#define `$INSTANCE_NAME`_Q12_4_INV_SCALE (0.0625f)  // (1/16)
 
 #define `$INSTANCE_NAME`_BAMS_SCALE      (182.044444f)   // 65536/360
 
@@ -398,84 +413,126 @@
 #define Q12_4_FROM_MM(mm)       ((int16_t)((mm) * `$INSTANCE_NAME`_Q12_4_SCALE))
 #define Q12_4_TO_MM(q12_4)      ((float)(q12_4) * `$INSTANCE_NAME`_Q12_4_INV_SCALE)
 
-#define BAMS_FROM_DEG(deg)      ((int16_t)(((deg) + 180.0f) * `$INSTANCE_NAME`_BAMS_SCALE))
-#define BAMS_TO_DEG(bams)       ((((float)(bams)) / `$INSTANCE_NAME`_BAMS_SCALE) - 180.0f)
+#define BAMS_PER_DEG   (32768.0f/180.0f)   // 182.044444...
+
+#define BAMS_FROM_DEG_SIGNED(deg)  ((int16_t)((deg) * BAMS_PER_DEG))
+#define DEG_FROM_BAMS_SIGNED(bams) ((float)(bams) * (180.0f/32768.0f))
 
 //========================================================
 //      CORDIC Structures
 //========================================================
 
 typedef struct {
-    int16_t x;     // 2 bytes (software view)
-    int16_t y;     // 2 bytes (software view)
-    
-    // Hardware FIFO byte access (4 sequential bytes)
-    struct {
-        uint8_t x_lsb;
-        uint8_t x_msb;
-        uint8_t y_lsb;
-        uint8_t y_msb;
-    } fifo_bytes;
+    float x;
+    float y;
 } `$INSTANCE_NAME`_vector_t;
 
 typedef struct {
-    int16_t mag;     // 2 bytes (software view)
-    int16_t ang;     // 2 bytes (software view)
-    
-    // Hardware FIFO byte access (4 sequential bytes)
-    struct {
-        uint8_t x_lsb;
-        uint8_t x_msb;
-        uint8_t y_lsb;
-        uint8_t y_msb;
-    } fifo_bytes;
+    float mag;
+    float angle;
 } `$INSTANCE_NAME`_result_t;
-
-//========================================================
-//      CORDIC Function prototypes
-//========================================================
-
-/**
- * @brief Initialize the CORDIC engine
-*/
-uint8_t inline `$INSTANCE_NAME`_init(void) `=ReentrantKeil($INSTANCE_NAME . "_Init")`;
-
-//void  `$INSTANCE_NAME`_Start(uint16_t x, uint16_t y)  `=ReentrantKeil($INSTANCE_NAME . "_Start")`;
 
 //========================================================
 //      CORDIC Enable functions
 //========================================================
 
 /**
- * @brief Enable the CORDIC engine to process data
+ * @brief Enable the CORDICs hardware
 */
-void inline `$INSTANCE_NAME`_enable(void) `=ReentrantKeil($INSTANCE_NAME . "_Enable")`;
+void `$INSTANCE_NAME`_enable(void) `=ReentrantKeil($INSTANCE_NAME . "_enable")`;
 
-void inline `$INSTANCE_NAME`_disable(void) `=ReentrantKeil($INSTANCE_NAME . "_Enable")`;
+/**
+ * @brief Disables the CORDICs hardware
+*/
+void `$INSTANCE_NAME`_disable(void) `=ReentrantKeil($INSTANCE_NAME . "_disable")`;
 
 //========================================================
 //      CORDIC State functions
 //========================================================
+/**
+ * @brief Checks if the CORDIC has output data
+ *
+ * @return bool
+*/
+bool `$INSTANCE_NAME`_has_pending(void) `=ReentrantKeil($INSTANCE_NAME . "_has_pending")`;
 
-uint8_t inline `$INSTANCE_NAME`_start(void) `=ReentrantKeil($INSTANCE_NAME . "_start")`;
+/**
+ * @brief Init the CORDIC engine
+ *
+ * @return void
+*/
+void `$INSTANCE_NAME`_init(void) `=ReentrantKeil($INSTANCE_NAME . "_init")`;
+
+/**
+ * @brief Start the CORDIC engine
+ *
+ * @return uint8_t
+ *          CYRET_SUCCES: CORDIC engine started
+ *          CYRET_TIMEOUT: CORDIC engine didn't respond
+*/
+uint8_t `$INSTANCE_NAME`_start(void) `=ReentrantKeil($INSTANCE_NAME . "_start")`;
 
 /**
  * @brief Halts the CORDIC engine
 */
-uint8_t inline `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`;
+uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`;
 
+/**
+ * @brief Fetch data from the output FIFO's
+ *
+ * @details this function enables bit 4 in the interrupts AUX control register.
+ * This is the software start needed for interrupts 
+ *
+ * @param[inout] result - Pointer to the result struct
+ *
+ * @return uint8_t
+ *          CYRET_SUCCES: Data fetched
+ *
+ * @note See documentation: https://community.infineon.com/gfawx74859/attachments/gfawx74859/psoc4/46012/2/component_author_guide.pdf#page=67
+*/
+uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`;
 
-
-uint8_t inline `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=ReentrantKeil($INSTANCE_NAME . "_GetData")`;
+/**
+ * @brief Fetch data from the output FIFO's
+ *
+ * @details this function enables bit 4 in the interrupts AUX control register.
+ * This is the software start needed for interrupts 
+ *
+ * @param[inout] result - Pointer to the result struct
+ *
+ * @return uint8_t
+ *          CYRET_SUCCES: Data fetched
+ *
+ * @note See documentation: https://community.infineon.com/gfawx74859/attachments/gfawx74859/psoc4/46012/2/component_author_guide.pdf#page=67
+*/
+uint8_t `$INSTANCE_NAME`_queue_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`;
 
 //========================================================
 //      CORDIC Interrupt functions
 //========================================================
 
-void inline `$INSTANCE_NAME`_enable_interrupt(void) `=ReentrantKeil($INSTANCE_NAME . "_EnableInterrupt")`;
+/**
+ * @brief Enable the statusi block to interrupt
+ *
+ * @details this function enables bit 4 in the interrupts AUX control register.
+ * This is the software start needed for interrupts 
+ *
+ * @note See documentation: https://community.infineon.com/gfawx74859/attachments/gfawx74859/psoc4/46012/2/component_author_guide.pdf#page=67
+*/
+void `$INSTANCE_NAME`_enable_interrupt(void) `=ReentrantKeil($INSTANCE_NAME . "_EnableInterrupt")`;
 
-void inline `$INSTANCE_NAME`_disable_interrupt(void) `=ReentrantKeil($INSTANCE_NAME . "_DisableInterrupt")`;
+/**
+ * @brief Disable the statusi block to interrupt
+ *
+ * @details this function disables bit 4 in the interrupts AUX control register.
+ *
+ * @note See documentation: https://community.infineon.com/gfawx74859/attachments/gfawx74859/psoc4/46012/2/component_author_guide.pdf#page=67
+*/
+void `$INSTANCE_NAME`_disable_interrupt(void) `=ReentrantKeil($INSTANCE_NAME . "_DisableInterrupt")`;
 
+CY_ISR_PROTO(`$INSTANCE_NAME`_ISR_Handler);
+
+void `$INSTANCE_NAME`_done_callback(void) `=ReentrantKeil($INSTANCE_NAME . "_done_callback")`;
 
 //========================================================
 //      End of File
