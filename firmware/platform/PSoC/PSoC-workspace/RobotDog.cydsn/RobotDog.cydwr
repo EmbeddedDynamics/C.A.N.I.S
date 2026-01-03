@@ -303,9 +303,10 @@
       <Data key="72616f72-e301-4c83-b048-6f9f5a324cd8" value="Clock_1" />
     </Group>
     <Group key="Interrupt">
-      <Data key="0afe98df-806a-4b9d-a0c5-1118421eaef6" value="CORDIC" />
+      <Data key="0afe98df-806a-4b9d-a0c5-1118421eaef6" value="CORDIC_ISR" />
       <Data key="2c366327-8ea9-4813-ab0d-a7ce473af76e/ff9e6c0d-df4b-4b4a-8faa-5abec07f0853" value="CAN_isr" />
       <Data key="8e9160b0-0d1c-43a7-9f30-c9d7a29d93a0" value="CORDIC" />
+      <Data key="c821e721-680c-4376-b857-e4a6ce23cab9/74b069b5-d5c5-469b-a48a-44b8a12146cd" value="I2C_1_I2C_IRQ" />
     </Group>
   </Group>
   <Group key="EEPROM">
@@ -3395,7 +3396,7 @@
     <Group key="0afe98df-806a-4b9d-a0c5-1118421eaef6">
       <Group key="CortexM3">
         <Data key="Assigned" value="True" />
-        <Data key="Priority" value="0" />
+        <Data key="Priority" value="1" />
         <Data key="Vector" value="-1" />
       </Group>
     </Group>
@@ -3418,7 +3419,7 @@
     <Data key="CYDEV_DEBUGGING_DPS" value="SWD_SWV" />
     <Data key="CYDEV_DEBUGGING_XRES" value="False" />
     <Data key="CYDEV_ECC_ENABLE" value="False" />
-    <Data key="CYDEV_HEAP_SIZE" value="0x80" />
+    <Data key="CYDEV_HEAP_SIZE" value="0xF0" />
     <Data key="CYDEV_INSTRUCT_CACHE_ENABLED" value="True" />
     <Data key="CYDEV_PROTECTION_ENABLE" value="False" />
     <Data key="CYDEV_STACK_SIZE" value="0x0800" />
