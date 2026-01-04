@@ -50,6 +50,16 @@ module bCORDIC (
 );
 	parameter CY_CONFIG_TITLE = "CORDIC_N";
     
+    localparam SYSTEM_LINEAR = 1;
+	localparam SYSTEM_CIRCULAR = 2;
+    localparam SYSTEM_HYPERBOLIC = 3;
+    
+    localparam OPERATION_ROTATING = 1;
+	localparam OPERATION_VECTORING = 2;
+    
+    parameter CORDICSystem = SYSTEM_CIRCULAR;
+    parameter CORDICOperation = OPERATION_VECTORING;
+    
 //`#start body` -- edit after this line, do not edit this line
     
     /* CORDIC states */
