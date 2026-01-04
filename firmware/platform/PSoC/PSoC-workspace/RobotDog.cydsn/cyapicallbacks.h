@@ -12,6 +12,8 @@
 #ifndef CYAPICALLBACKS_H
 #define CYAPICALLBACKS_H
     
+#define CAN_COMPONENT_NAME CAN_1
+    
 #define CAN_RECEIVE_MSG_0_CALLBACK
 void CAN_ReceiveMsg_0_Callback(void);
 

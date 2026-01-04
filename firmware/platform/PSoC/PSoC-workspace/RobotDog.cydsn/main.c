@@ -21,12 +21,6 @@
 #include "CanStack.h"
 #include "ODrive.h"
 
-// Our callback function
-void CAN_ReceiveMsg_0_Callback(void)
-{
-
-}
-
 void CORDIC_done_callback(void)
 {
     
