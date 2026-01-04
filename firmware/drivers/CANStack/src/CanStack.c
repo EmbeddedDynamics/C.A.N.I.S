@@ -40,15 +40,23 @@
 canstack_result_t canstack_create_driver(canstack_driver_t* driver,
                                          const canstack_config_t* cfg)
 {
+    /* Parameter validation */
     if (!driver || !cfg)
         return CAN_RESULT_INVALID_ARG;
-
+    
+    /* Allocating platform driver */
     canstack_platform_driver_t* platform_driver = (canstack_platform_driver_t*) malloc(sizeof(canstack_platform_driver_t));
     if (!platform_driver)
         return CAN_RESULT_NO_MEMORY;
 
+    /* Perform platform specific operations*/
     #if defined(CAN_STACK_PLATFORM_PSOC5)
+        /* Initialize the platform driver with PSoC5 specific functions */
         CAN_STACK_ERROR_CHECK(canstack_psoc5_create_driver(platform_driver));
+
+        /* Bind the CanStack driver to the PSoC5 platform*/
+        canstack_psoc5_bind(&driver);
+        
     #else
         return CAN_RESULT_NO_PLATFORM_DRIVER;
     #endif

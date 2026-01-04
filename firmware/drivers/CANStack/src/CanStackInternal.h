@@ -185,7 +185,7 @@ typedef struct {
  * 
  * @details Contains driver state, callbacks, and platform abstraction layer.
  */
-typedef struct canstack_driver_T {
+struct canstack_driver_T {
     /* Configuration */
     uint32_t bitrate;           /**< CAN bitrate */
     canstack_ctx_t user_ctx;    /**< User-provided context */
@@ -208,7 +208,7 @@ typedef struct canstack_driver_T {
     /* State */
     bool initialized;           /**< Initialization flag */
     canstack_state_t state;     /**< Running state flag */
-} canstack_driver_struct_t;
+};
 
 //========================================================
 //      End of File

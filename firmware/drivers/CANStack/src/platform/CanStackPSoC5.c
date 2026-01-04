@@ -17,10 +17,9 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "CanStackInternal.h"
-#include "CanStackPSoC5.h"
-
 #if defined(CAN_STACK_PLATFORM_PSOC5)
+
+#include "CanStackPSoC5.h"
 
 //========================================================
 //      Standard Includes
@@ -28,10 +27,12 @@
 
 #include <stdbool.h>
 #include <string.h>
-    
+
 //========================================================
 //      PSoC5 Platform Context
 //========================================================
+
+static canstack_driver_t g_drv = NULL;
 
 /**
  * @brief Static platform context for PSoC5
@@ -43,6 +44,22 @@ static canstack_psoc5_context_t g_psoc5_ctx = {
     .rx_enabled_mask = CAN_STACK_PSOC5_RX_ENABLED_MASK,
     .tx_enabled_mask = CAN_STACK_PSOC5_TX_ENABLED_MASK,
 };
+
+//========================================================
+//      Static Inline Helpers
+//========================================================
+
+static inline bool canstack_psoc5_is_rx_enabled(canstack_mb_id_t mb_id)
+{
+    return (mb_id < 16u) &&
+           CANSTACK_BIT_IS_SET(CAN_STACK_PSOC5_RX_ENABLED_MASK, mb_id);
+}
+
+static inline bool canstack_psoc5_is_tx_enabled(canstack_mb_id_t mb_id)
+{
+    return (mb_id < 16u) &&
+           CANSTACK_BIT_IS_SET(CAN_STACK_PSOC5_TX_ENABLED_MASK, mb_id);
+}
 
 //========================================================
 //      TX Message Handler
@@ -80,17 +97,17 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
 
     if (mb_id == CAN_STACK_MAILBOX_ID_ANY) {
         // Build PSoC5 CAN message structure
-        CAN_TX_MSG tx_msg = {
+        CANSTACK_PSOC5_TYPE(TX_MSG) tx_msg = {
             .id = msg->id,
             .dlc = msg->dlc,
             .rtr = (uint8_t)msg->rtr,
             .ide = 0,           // Standard 11-bit CAN (not extended)
             .irq = 0,           // No interrupt on TX complete
-            .msg = (CAN_DATA_BYTES_MSG*)msg->data
+            .msg = (CANSTACK_PSOC5_TYPE(DATA_BYTES_MSG)*)msg->data
         };
-
+        
         // BASIC CAN: use first available mailbox (CAN_SendMsg)
-        if (CAN_SendMsg(&tx_msg) != CYRET_SUCCESS) {
+        if (CANSTACK_PSOC5_CALL(SendMsg, &tx_msg) != CYRET_SUCCESS) {
             return CAN_RESULT_ERROR;
         }
     } else {
@@ -102,9 +119,10 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
         /* Write message data to mailbox */
         //memcpy((void*) CAN_TX[mb_id].txdata.byte,(void*) msg->data, msg->dlc);
 
-        for (uint8_t j = 0u; (j < msg->dlc) && (j < CAN_TX_DLC_MAX_VALUE); j++)
+        for (uint8_t j = 0u; (j < msg->dlc) && (j < CANSTACK_PSOC5_CONST(TX_DLC_MAX_VALUE)); j++)
         {
-            CAN_TX_DATA_BYTE(mb_id, j) = msg->data[j];
+            //CAN_TX_DATA_BYTE(mb_id, j) =
+            CANSTACK_PSOC5_MACRO_CALL(TX_DATA_BYTE, mb_id, j) = msg->data[j];
         }
 
         /* Dispatch to PSoC-generated send function */
@@ -113,49 +131,49 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
         switch (mb_id) {
             #if CAN_TX0_FUNC_ENABLE
             case 0u:
-                result = CAN_SendMsg0();
+                result = CANSTACK_PSOC5_CALL(SendMsg0);
                 break;
             #endif
 
             #if CAN_TX1_FUNC_ENABLE
             case 1u:
-                result = CAN_SendMsg1();
+                result = CANSTACK_PSOC5_CALL(SendMsg1);
                 break;
             #endif
 
             #if CAN_TX2_FUNC_ENABLE
             case 2u:
-                result = CAN_SendMsg2();
+                result = CANSTACK_PSOC5_CALL(SendMsg2);
                 break;
             #endif
 
             #if CAN_TX3_FUNC_ENABLE
             case 3u:
-                result = CAN_SendMsg3();
+                result = CANSTACK_PSOC5_CALL(SendMsg3);
                 break;
             #endif
 
             #if CAN_TX4_FUNC_ENABLE
             case 4u:
-                result = CAN_SendMsg4();
+                result = CANSTACK_PSOC5_CALL(SendMsg4);
                 break;
             #endif
 
             #if CAN_TX5_FUNC_ENABLE
             case 5u:
-                result = CAN_SendMsg5();
+                result = CANSTACK_PSOC5_CALL(SendMsg5);
                 break;
             #endif
 
             #if CAN_TX6_FUNC_ENABLE
             case 6u:
-                result = CAN_SendMsg6();
+                result = CANSTACK_PSOC5_CALL(SendMsg6);
                 break;
             #endif
 
             #if CAN_TX7_FUNC_ENABLE
             case 7u:
-                result = CAN_SendMsg7();
+                result = CANSTACK_PSOC5_CALL(SendMsg7);
                 break;
             #endif
 
@@ -208,12 +226,11 @@ static canstack_result_t psoc5_rx_message(canstack_ctx_t __unused hw_ctx,
     //}
 
     /* Read message from mailbox */
-    msg->id = (canstack_id_t)CAN_GET_RX_ID(mb_id);
-    msg->dlc = (canstack_dlc_t)CAN_GET_DLC(mb_id);
-    
-    for (uint8_t j = 0u; (j < msg->dlc) && (j < CAN_TX_DLC_MAX_VALUE); j++)
+    msg->id = (canstack_id_t)CANSTACK_PSOC5_MACRO_CALL(GET_RX_ID, mb_id);
+    msg->dlc = (canstack_dlc_t)CANSTACK_PSOC5_MACRO_CALL(GET_DLC, mb_id);
+    for (uint8_t j = 0u; (j < msg->dlc) && (j < CANSTACK_PSOC5_CONST(TX_DLC_MAX_VALUE)); j++)
     {
-        msg->data[j] = CAN_RX_DATA_BYTE(mb_id, j);
+        msg->data[j] = CANSTACK_PSOC5_MACRO_CALL(RX_DATA_BYTE, mb_id, j);
     }
     
     //memcpy((void*)msg->data, (void*)CAN_RX[mb_id].rxdata.byte, msg->dlc);
@@ -264,11 +281,10 @@ static canstack_result_t psoc5_configure_rx_filter(canstack_ctx_t __unused hw_ct
         return CAN_RESULT_NOT_CONFIGURED;
     }
 
-    uint8 result = CAN_FAIL;
-
-    if (CAN_RXRegisterInit((reg32 *)&CAN_RX[mb_id].rxamr, filter->amr) == CYRET_SUCCESS)
+    uint8 result = CANSTACK_PSOC5_CONST(FAIL);
+    if (CANSTACK_PSOC5_CALL(RXRegisterInit, (reg32 *)&CANSTACK_PSOC5_CONST(RX)[mb_id].rxamr, filter->amr) == CYRET_SUCCESS)
     {
-        if (CAN_RXRegisterInit((reg32 *)&CAN_RX[mb_id].rxacr, filter->acr) == CYRET_SUCCESS)
+        if (CANSTACK_PSOC5_CALL(RXRegisterInit, (reg32 *)&CANSTACK_PSOC5_CONST(RX)[mb_id].rxacr, filter->acr) == CYRET_SUCCESS)
         {
             result = CYRET_SUCCESS;
         }
@@ -311,30 +327,21 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
         case CAN_STACK_CMD_INIT: {
             const canstack_config_t* cfg = (const canstack_config_t*)arg;
 
-            /* Validate at least one mailbox is configured */
-            if (canstack_psoc5_count_rx_enabled() == 0 &&
-                canstack_psoc5_count_tx_enabled() == 0) {
-                return CAN_RESULT_NO_MAILBOX;
-            }
-
             /* Initialize PSoC CAN component */
-            CAN_Init();
+            CANSTACK_PSOC5_CALL(Init);
             return CAN_RESULT_OK;
         }
 
         case CAN_STACK_CMD_DEINIT:
-            CAN_Stop();
-
+            CANSTACK_PSOC5_CALL(Stop);
             return CAN_RESULT_OK;
 
         case CAN_STACK_CMD_START:
-            CAN_Start();
-
+            CANSTACK_PSOC5_CALL(Start);
             return CAN_RESULT_OK;
 
         case CAN_STACK_CMD_STOP:
-            CAN_Stop();
-
+            CANSTACK_PSOC5_CALL(Stop);
             return CAN_RESULT_OK;
 
         #if CAN_STACK_HAS_HW_FILTERS
@@ -355,22 +362,21 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
     }
 }
 
-/* ========================================================
-   Platform Driver Initialization
-   ======================================================== */
+//========================================================
+//      Platform Driver Initialization
+//========================================================
 
-/**
- * @brief Create PSoC5 platform driver
- * 
- * @param[out] platform_driver - Driver structure to initialize
- * 
- * @return canstack_result_t 
- *                  CAN_STACK_RESULT_OK: on success
- * 
- * @details
- * Sets up the vtable with PSoC5-specific implementations.
- * The driver is opaque to the caller; only canstack_driver_t is exposed.
- */
+void canstack_psoc5_bind(canstack_driver_t drv)
+{
+    CANSTACK_ASSERT(g_drv == NULL);
+    g_drv = drv;
+}
+
+canstack_driver_t canstack_psoc5_get_bound_driver(void)
+{
+    return g_drv;
+}
+
 canstack_result_t canstack_psoc5_create_driver(
     canstack_platform_driver_t* platform_driver)
 {
@@ -389,55 +395,165 @@ canstack_result_t canstack_psoc5_create_driver(
     return CAN_RESULT_OK;
 }
 
-/* ========================================================
-   ISR Helpers (Optional - for interrupt-driven RX)
-   ======================================================== */
+//========================================================
+//      ISR RX Functions
+//========================================================
 
-/**
- * @brief Internal: Dispatch RX callback for mailbox
- * 
- * @param[in] driver - CAN driver handle
- * @param[in] mb_id  - Mailbox ID
- * 
- * @return void
- * 
- * @details
- * Called from PSoC-generated ISR (e.g., CAN_1_ISR).
- * Reads message and calls registered callback if set.
- * 
- * Usage in your ISR:
- * 
- *   void CAN_1_ISR(void) {
- *       uint8_t irq_src = CAN_1_GetRxInterruptStatus();
- *       if (irq_src & (1u << 3)) {  // MB3 received
- *           canstack_psoc5_dispatch_rx(g_can_driver, 3);
- *       }
- *   }
- * 
- */
-void canstack_psoc5_dispatch_rx(canstack_driver_t driver,
-                                canstack_mb_id_t mb_id)
+#if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB)
+void canstack_psoc5_isr_rx_mailbox(canstack_driver_t drv, canstack_mb_id_t mb)
 {
-    // if (!driver) {
-    //     return;
-    // }
-
-    // canstack_message_t msg = {0};
-
-    // /* Read message from mailbox */
-    // if (psoc5_rx_message(drv_ctx->platform.hw_ctx, mb_id, &msg) !=
-    //     CAN_STACK_RESULT_OK) {
-    //     return;
-    // }
-
-    // /* Dispatch to registered callback */
-    // #if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB)
-    // if (drv_ctx->rx_callbacks[mb_id].callback) {
-    //     drv_ctx->rx_callbacks[mb_id].callback(&msg,
-    //                                            drv_ctx->rx_callbacks[mb_id].ctx);
-    // }
-    // #endif
+    canstack_message_t msg;
+    if (drv->platform->ops.rx_message(drv->platform->hw_ctx, mb, &msg) == CAN_RESULT_OK) {
+        // push into drv->rxq
+    } else {
+        // optional: count errors
+    }
 }
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 0)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 0
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 0)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 1)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 1
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 1)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 2)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 2
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 2)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 3)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 3
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 3)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 4)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 4
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 4)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 5)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 5
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 5)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 6)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 6
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 6)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 7)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 7
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 7)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 8)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 8
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 8)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 9)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 9
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 9)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 10)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 10
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 10)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 11)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 11
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 11)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 12)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 12
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 12)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 13)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 13
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 13)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 14)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 14
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 14)
+
+#endif
+
+#if RX_ENABLE(CAN_COMPONENT_NAME, 15)
+
+    /**
+     * @brief RX interrupt receive function for mailbox 15
+     */
+    PSOC5_RX_CALLBACK(CAN_COMPONENT_NAME, 15)
+
+#endif
 
 //========================================================
 //      End of File

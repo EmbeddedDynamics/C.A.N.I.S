@@ -33,6 +33,12 @@
 #include <stdint.h>
 
 #include "CanStackInternal.h"
+#include "cyapicallbacks.h"
+
+//========================================================
+//      Platform Macro's
+//========================================================
+
 
 //========================================================
 //      PSoC5 Platform Context
@@ -59,22 +65,22 @@ typedef struct {
  * Bit set = mailbox enabled in PSoC Creator.
  */
 #define CAN_STACK_PSOC5_RX_ENABLED_MASK ( \
-    (CAN_RX0_FUNC_ENABLE  ? (1u << 0)  : 0) | \
-    (CAN_RX1_FUNC_ENABLE  ? (1u << 1)  : 0) | \
-    (CAN_RX2_FUNC_ENABLE  ? (1u << 2)  : 0) | \
-    (CAN_RX3_FUNC_ENABLE  ? (1u << 3)  : 0) | \
-    (CAN_RX4_FUNC_ENABLE  ? (1u << 4)  : 0) | \
-    (CAN_RX5_FUNC_ENABLE  ? (1u << 5)  : 0) | \
-    (CAN_RX6_FUNC_ENABLE  ? (1u << 6)  : 0) | \
-    (CAN_RX7_FUNC_ENABLE  ? (1u << 7)  : 0) | \
-    (CAN_RX8_FUNC_ENABLE  ? (1u << 8)  : 0) | \
-    (CAN_RX9_FUNC_ENABLE  ? (1u << 9)  : 0) | \
-    (CAN_RX10_FUNC_ENABLE ? (1u << 10) : 0) | \
-    (CAN_RX11_FUNC_ENABLE ? (1u << 11) : 0) | \
-    (CAN_RX12_FUNC_ENABLE ? (1u << 12) : 0) | \
-    (CAN_RX13_FUNC_ENABLE ? (1u << 13) : 0) | \
-    (CAN_RX14_FUNC_ENABLE ? (1u << 14) : 0) | \
-    (CAN_RX15_FUNC_ENABLE ? (1u << 15) : 0) \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 0)  ? (1u << 0)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 1)  ? (1u << 1)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 2)  ? (1u << 2)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 3)  ? (1u << 3)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 4)  ? (1u << 4)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 5)  ? (1u << 5)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 6)  ? (1u << 6)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 7)  ? (1u << 7)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 8)  ? (1u << 8)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 9)  ? (1u << 9)  : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 10) ? (1u << 10) : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 11) ? (1u << 11) : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 12) ? (1u << 12) : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 13) ? (1u << 13) : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 14) ? (1u << 14) : 0) | \
+    (RX_ENABLE(CAN_COMPONENT_NAME, 15) ? (1u << 15) : 0) \
 )
 
 /**
@@ -84,83 +90,60 @@ typedef struct {
  * Bit set = mailbox enabled in PSoC Creator.
  */
 #define CAN_STACK_PSOC5_TX_ENABLED_MASK ( \
-    (CAN_TX0_FUNC_ENABLE ? (1u << 0) : 0) | \
-    (CAN_TX1_FUNC_ENABLE ? (1u << 1) : 0) | \
-    (CAN_TX2_FUNC_ENABLE ? (1u << 2) : 0) | \
-    (CAN_TX3_FUNC_ENABLE ? (1u << 3) : 0) | \
-    (CAN_TX4_FUNC_ENABLE ? (1u << 4) : 0) | \
-    (CAN_TX5_FUNC_ENABLE ? (1u << 5) : 0) | \
-    (CAN_TX6_FUNC_ENABLE ? (1u << 6) : 0) | \
-    (CAN_TX7_FUNC_ENABLE ? (1u << 7) : 0) \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 0) ? (1u << 0) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 1) ? (1u << 1) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 2) ? (1u << 2) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 3) ? (1u << 3) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 4) ? (1u << 4) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 5) ? (1u << 5) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 6) ? (1u << 6) : 0) | \
+    (TX_ENABLE(CAN_COMPONENT_NAME, 7) ? (1u << 7) : 0) \
 )
 
 //========================================================
 //      PSoC5 Helper Functions
 //========================================================
 
-/**
- * @brief Check if an RX mailbox is enabled
- * 
- * @param[in] mb - Mailbox ID (0-15)
- * 
- * @return true if mailbox is enabled, false otherwise
- * 
- * @note Validates mailbox range (0-15)
- */
-static inline bool canstack_psoc5_is_rx_enabled(uint8_t mb)
-{
-    return (mb < 16) && (CAN_STACK_PSOC5_RX_ENABLED_MASK & (1u << mb));
-}
-
-/**
- * @brief Check if a TX mailbox is enabled
- * 
- * @param[in] mb - Mailbox ID (0-7)
- * 
- * @return true if mailbox is enabled, false otherwise
- * 
- * @note Validates mailbox range (0-7)
- */
-static inline bool canstack_psoc5_is_tx_enabled(uint8_t mb)
-{
-    return (mb < 8) && (CAN_STACK_PSOC5_TX_ENABLED_MASK & (1u << mb));
-}
-
-/**
- * @brief Count enabled RX mailboxes
- * 
- * @return Number of enabled RX mailboxes (0-16)
- */
-static inline uint8_t canstack_psoc5_count_rx_enabled(void)
-{
-    uint16_t mask = CAN_STACK_PSOC5_RX_ENABLED_MASK;
-    uint8_t count = 0x00;
-    while (mask) {
-        count += mask & 0x01;
-        mask >>= 0x01;
+#define PSOC5_RX_CALLBACK_(prefix, mbx)                             \
+    void prefix##_ReceiveMsg_##mbx##_Callback(void)                  \
+    {                                                                \
+        canstack_driver_t drv = canstack_psoc5_get_bound_driver(); \
+        if (drv != NULL) {                                           \
+            canstack_psoc5_isr_rx_mailbox(drv, (canstack_mb_id_t)(mbx)); \
+        }                                                            \
     }
-    return count;
-}
 
-/**
- * @brief Count enabled TX mailboxes
- * 
- * @return Number of enabled TX mailboxes (0-8)
- */
-static inline uint8_t canstack_psoc5_count_tx_enabled(void)
-{
-    uint8_t mask = CAN_STACK_PSOC5_TX_ENABLED_MASK;
-    uint8_t count = 0x00;
-    while (mask) {
-        count += mask & 0x01;
-        mask >>= 0x01;
-    }
-    return count;
-}
+#define PSOC5_RX_CALLBACK(prefix, mbx) PSOC5_RX_CALLBACK_(prefix, mbx) 
+
+#define CANSTACK_PSOC5_CALL_(component, func, ...) \
+    CANSTACK_CAT3(component, _, func)(__VA_ARGS__)
+
+#define CANSTACK_PSOC5_CALL(func, ...) \
+    CANSTACK_PSOC5_CALL_(CAN_COMPONENT_NAME, func, __VA_ARGS__)
 
 //========================================================
 //      PSoC5 Driver methods
 //========================================================
+
+#if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB) 
+void canstack_psoc5_isr_rx_mailbox(canstack_driver_t drv, canstack_mb_id_t mb); 
+#endif 
+
+/**
+ * @brief Bind the CanStack driver to the PSoC5 platform
+ * 
+ * @param[in] drv - CanStack driver handle
+ * 
+ * @return void
+ */
+void canstack_psoc5_bind(canstack_driver_t drv); 
+
+/**
+ * @brief Return the bound CanStack driver
+ * 
+ * @return canstack_driver_t
+ */
+canstack_driver_t canstack_psoc5_get_bound_driver(void);
 
 /**
  * @brief Create and initialize PSoC5 platform driver
