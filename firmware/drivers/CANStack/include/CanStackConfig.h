@@ -13,64 +13,116 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-// ========================================================
-// Include guard
-// ========================================================
-
 #ifndef CAN_STACK_CONFIG_H
 #define CAN_STACK_CONFIG_H
 
-// ========================================================
-// Standard Includes
-// ========================================================
+//========================================================
+//      Standard Includes
+//========================================================
 
 /* Standard headers */
 #include <stdbool.h>
 #include <stdint.h>
 
+#if CANSTACK_ENABLE_ASSERT
+#include <assert.h>
+#define CANSTACK_ASSERT(x) assert(x)
+#else
+#define CANSTACK_ASSERT(x) ((void)0)
+#endif
+
+#define CANSTACK_STR_(x) #x
+#define CANSTACK_STR(x)  CANSTACK_STR_(x)
+
+#define CANSTACK_CAT2_(a,b) a##b
+#define CANSTACK_CAT2(a,b)  CANSTACK_CAT2_(a,b)
+
+#define CANSTACK_CAT3_(a,b,c) a##b##c
+#define CANSTACK_CAT3(a,b,c)  CANSTACK_CAT3_(a,b,c)
+
+#define CANSTACK_BIT_IS_SET(mask, bit) \
+    (((mask) & (1u << (bit))) != 0u)
+
 /* Project headers */
 #include "CanStackResult.h"
+
+//========================================================
+//      CanStack Constants
+//========================================================
 
 #define CAN_STACK_MAX_PAYLOAD_SIZE 8u
 
 #define CAN_STACK_MAILBOX_ID_ANY 0xFF
 
+//========================================================
+//      PSoC5 Configuratioon
+//========================================================
+
 #if defined(PLATFORM_PSOC5)
+    #include "cyapicallbacks.h"
+    
+    #ifndef CAN_COMPONENT_NAME
+    #error "CAN_COMPONENT_NAME must be defined (e.g. CAN, CAN0, CAN1)"
+    #endif
 
+    #ifndef CAN_STACK_PLATFORM_PSOC5
     #define CAN_STACK_PLATFORM_PSOC5
-    #include "CAN.h"
+    #endif
 
-    #define CAN_STACK_TOTAL_RX_MAILBOXES CAN_NUMBER_OF_RX_MAILBOXES
-    #define CAN_STACK_TOTAL_TX_MAILBOXES CAN_NUMBER_OF_TX_MAILBOXES
+    #define CANSTACK_PSOC5_CONST(name) \
+    CANSTACK_CAT3(CAN_COMPONENT_NAME, _, name)
+
+    #define CANSTACK_PSOC5_TYPE(name) \
+    CANSTACK_CAT3(CAN_COMPONENT_NAME, _, name)
+
+    #define CANSTACK_PSOC5_MACRO_CALL_(component, macro, ...) \
+    CANSTACK_CAT3(component, _, macro)(__VA_ARGS__)
+
+    #define CANSTACK_PSOC5_MACRO_CALL(macro, ...) \
+    CANSTACK_PSOC5_MACRO_CALL_(CAN_COMPONENT_NAME, macro, __VA_ARGS__)
+
+    //#define CAN_COMPONENT_NAME CAN
+
+    /* Include the CAN component header */
+    #include CANSTACK_STR(CAN_COMPONENT_NAME.h)
+
+    #define RX_ENABLE_(prefix, mbx) prefix##_RX##mbx##_FUNC_ENABLE
+    #define RX_ENABLE(prefix, mbx)  RX_ENABLE_(prefix, mbx)
+
+    #define TX_ENABLE_(prefix, mbx) prefix##_TX##mbx##_FUNC_ENABLE
+    #define TX_ENABLE(prefix, mbx)  TX_ENABLE_(prefix, mbx)
+
+    #define CAN_STACK_TOTAL_RX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_RX_MAILBOXES)
+    #define CAN_STACK_TOTAL_TX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_TX_MAILBOXES)
 
     #define CAN_STACK_FULL_RX_ENABLE_COUNT ( \
-        CAN_RX0_FUNC_ENABLE     + \
-        CAN_RX1_FUNC_ENABLE     + \
-        CAN_RX2_FUNC_ENABLE     + \
-        CAN_RX3_FUNC_ENABLE     + \
-        CAN_RX4_FUNC_ENABLE     + \
-        CAN_RX5_FUNC_ENABLE     + \
-        CAN_RX6_FUNC_ENABLE     + \
-        CAN_RX7_FUNC_ENABLE     + \
-        CAN_RX8_FUNC_ENABLE     + \
-        CAN_RX9_FUNC_ENABLE     + \
-        CAN_RX10_FUNC_ENABLE    + \
-        CAN_RX11_FUNC_ENABLE    + \
-        CAN_RX12_FUNC_ENABLE    + \
-        CAN_RX13_FUNC_ENABLE    + \
-        CAN_RX14_FUNC_ENABLE    + \
-        CAN_RX15_FUNC_ENABLE    \
+        RX_ENABLE(CAN_COMPONENT_NAME, 0)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 1)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 2)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 3)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 4)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 5)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 6)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 7)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 8)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 9)     + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 10)    + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 11)    + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 12)    + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 13)    + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 14)    + \
+        RX_ENABLE(CAN_COMPONENT_NAME, 15)    \
     )
 
     #define CAN_STACK_FULL_TX_ENABLE_COUNT ( \
-        CAN_TX0_FUNC_ENABLE     + \
-        CAN_TX1_FUNC_ENABLE     + \
-        CAN_TX2_FUNC_ENABLE     + \
-        CAN_TX3_FUNC_ENABLE     + \
-        CAN_TX4_FUNC_ENABLE     + \
-        CAN_TX5_FUNC_ENABLE     + \
-        CAN_TX6_FUNC_ENABLE     + \
-        CAN_TX7_FUNC_ENABLE     \
+        TX_ENABLE(CAN_COMPONENT_NAME, 0)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 1)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 2)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 3)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 4)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 5)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 6)     + \
+        TX_ENABLE(CAN_COMPONENT_NAME, 7)     \
     )
 
     // Validate at least one mailbox is configured
@@ -85,24 +137,23 @@
     #endif
 
     // Hardware filtering only for RX mailboxes (TX doesn't support filtering)
-    #if (CAN_STACK_FULL_RX_ENABLE_COUNT > 0) && \
-        defined(CAN_STACK_ENABLE_HW_FILTERING)
+    #if (CAN_STACK_FULL_RX_ENABLE_COUNT > 0) && defined(CAN_STACK_ENABLE_HW_FILTERING)
         #define CAN_STACK_HAS_HW_FILTERS  1
     #else
         #define CAN_STACK_HAS_HW_FILTERS  0
     #endif
 
+    
 #else 
+
     #define CAN_STACK_EXCLUDE_FULL_RX_MB
     #define CAN_STACK_EXCLUDE_FULL_TX_MB
 
     #define CAN_STACK_TOTAL_RX_MAILBOXES -1
     #define CAN_STACK_TOTAL_TX_MAILBOXES -1
 
-    #error "CanStack: No supported platform detected"
+    #error "CanStack didn't detect a supported platform"
 #endif
-
-
 
 // ========================================================
 
