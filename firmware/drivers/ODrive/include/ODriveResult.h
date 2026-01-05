@@ -127,7 +127,7 @@ typedef enum {
 
 
     /**< Invalid parameter value provided */
-    ODRIVE_ERROR_INVALID_PARAMETER = 0x4000,
+    ODRIVE_ERROR_INVALID_PARAM = 0x4000,
 
     /**< Null pointer passed to function expecting valid pointer */
     ODRIVE_ERROR_NULL_POINTER = 0x4001,
@@ -145,7 +145,7 @@ typedef enum {
     ODRIVE_ERROR_INVALID_MODE = 0x4005,
 
     /**< Memory allocation failed (out of heap) */
-    ODRIVE_ERROR_OUT_OF_MEMORY = 0x4006,
+    ODRIVE_ERROR_NO_MEMORY = 0x4006,
 
 
     //========================================================

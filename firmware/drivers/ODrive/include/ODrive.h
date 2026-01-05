@@ -33,7 +33,7 @@
 #include "ODriveResult.h"
 #include "ODriveCore.h"
 #include "ODriveAxis.h"
-#include "ODriveComHAL.h"
+#include "driver/ODriveComHAL.h"
 
 #if defined(ODRIVE_USE_CANSTACK)
     #include "CanStack.h"
@@ -80,7 +80,7 @@ typedef enum {
  */
 typedef struct {
     
-    odrive_com_t com;
+    odrive_com com;
    
     
     /**< Monitor axis heartbeat messages */
@@ -196,19 +196,8 @@ odrive_result_t odrive_stop_driver(odrive_driver driver);
  *          - ODRIVE_ERROR_NOT_INITIALIZED - Driver not initialized
  *          - ODRIVE_ERROR_TRANSMIT_FAILED - Failed to transmit message
  * 
- * @details
- * Sends a reboot command to all ODrive controllers on the bus.
- * Controllers will disarm and then perform the specified action:
- * - REBOOT_ACTION_REBOOT: Normal reboot
- * - REBOOT_ACTION_SAVE_CONFIG: Save config to flash and reboot
- * - REBOOT_ACTION_ERASE_CONFIG: Factory reset and reboot
- * - REBOOT_ACTION_DFU_MODE: Enter firmware update (DFU) mode
- * 
  * @warning All axes will disarm immediately. Ensure motors are safe
  *          before calling this function.
- * 
- * @note Controller reboot completes in ~500ms. Heartbeat will resume
- *       after reboot if monitoring is enabled.
  * 
  * @example
  *   // Reboot and save configuration
