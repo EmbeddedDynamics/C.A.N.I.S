@@ -14,6 +14,8 @@
     
 #define CAN_COMPONENT_NAME CAN_1
     
+#define CANSTACK_ENABLE_HW_FILTERING
+    
 #define CAN_RECEIVE_MSG_0_CALLBACK
 void CAN_ReceiveMsg_0_Callback(void);
 
