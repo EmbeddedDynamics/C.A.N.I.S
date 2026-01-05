@@ -1,4 +1,4 @@
-Loading plugins phase: Elapsed time ==> 0s.107ms
+Loading plugins phase: Elapsed time ==> 3s.294ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\Perijn\Documents\Git-projects\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\RobotDog.cydsn\RobotDog.cyprj -d CY8C5888LTI-LP097 -s C:\Users\Perijn\Documents\Git-projects\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\RobotDog.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
@@ -7,7 +7,7 @@ ADD: sdb.M0060: warning: Warning in component: CAN_1. The BUS_CLK clock accuracy
  * C:\Users\Perijn\Documents\Git-projects\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\RobotDog.cydsn\TopDesign\TopDesign.cysch (Instance:CAN_1)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.224ms
+Elaboration phase: Elapsed time ==> 9s.649ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
 HDL generation phase: Elapsed time ==> 0s.026ms
@@ -44,7 +44,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Perij
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Jan 04 16:35:40 2026
+Mon Jan 05 20:14:36 2026
 
 
 ======================================================================
@@ -54,7 +54,7 @@ Options  :    -yv2 -q10 RobotDog.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Jan 04 16:35:40 2026
+Mon Jan 05 20:14:36 2026
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\or_v1_0\or_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -94,7 +94,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Perij
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Jan 04 16:35:40 2026
+Mon Jan 05 20:14:36 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -128,7 +128,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Perij
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Jan 04 16:35:40 2026
+Mon Jan 05 20:14:37 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -552,14 +552,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Perijn\Documents\Git-projects\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\RobotDog.cydsn\RobotDog.cyprj -dcpsoc3 RobotDog.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.651ms
+Warp synthesis phase: Elapsed time ==> 1s.634ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Sunday, 04 January 2026 16:35:40
+cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Monday, 05 January 2026 20:14:37
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Perijn\Documents\Git-projects\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\RobotDog.cydsn\RobotDog.cyprj -d CY8C5888LTI-LP097 RobotDog.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.012ms
+Design parsing phase: Elapsed time ==> 0s.023ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -2642,12 +2642,12 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.151ms
-Tech Mapping phase: Elapsed time ==> 0s.212ms
+Technology Mapping: Elapsed time ==> 0s.156ms
+Tech Mapping phase: Elapsed time ==> 0s.217ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
-Analog Placement phase: Elapsed time ==> 0s.020ms
+Analog Placement phase: Elapsed time ==> 0s.025ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -2665,11 +2665,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.196ms
+Analog Code Generation phase: Elapsed time ==> 0s.237ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 3.5 sec.
+I2076: Total run-time: 3.8 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -2700,7 +2700,7 @@ PLD Packing: Elapsed time ==> 0s.001ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.037ms
+Partitioning: Elapsed time ==> 0s.043ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -5153,33 +5153,33 @@ Port | Pin | Fixed |      Type |       Drive Mode |     Name | Connections
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.063ms
-Digital Placement phase: Elapsed time ==> 3s.837ms
+Digital component placer commit/Report: Elapsed time ==> 0s.062ms
+Digital Placement phase: Elapsed time ==> 4s.257ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "RobotDog_r.vh2" --pcf-path "RobotDog.pco" --des-name "RobotDog" --dsf-path "RobotDog.dsf" --sdc-path "RobotDog.sdc" --lib-path "RobotDog_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 5s.950ms
+Digital Routing phase: Elapsed time ==> 5s.673ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.139ms
+Bitstream Generation phase: Elapsed time ==> 0s.147ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.032ms
+Bitstream Verification phase: Elapsed time ==> 0s.035ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in RobotDog_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.452ms
+Static timing analysis phase: Elapsed time ==> 0s.515ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.219ms
+Design database save phase: Elapsed time ==> 0s.227ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 11s.149ms
+cydsfit: Elapsed time ==> 11s.444ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 11s.150ms
-API generation phase: Elapsed time ==> 0s.923ms
-Dependency generation phase: Elapsed time ==> 0s.006ms
+Fitter phase: Elapsed time ==> 11s.446ms
+API generation phase: Elapsed time ==> 1s.485ms
+Dependency generation phase: Elapsed time ==> 0s.008ms
 Cleanup phase: Elapsed time ==> 0s.000ms
