@@ -29,7 +29,7 @@
 #include "CanStackInternal.h"
 
 /* Project headers */
-#if defined(CAN_STACK_PLATFORM_PSOC5)
+#if defined(CANSTACK_PLATFORM_PSOC5)
     #include "CanStackPSoC5.h"
 #endif
 
@@ -37,8 +37,8 @@
 //      CanStack Methods
 //========================================================
 
-canstack_result_t canstack_create_driver(canstack_driver_t* driver,
-                                         const canstack_config_t* cfg)
+canstack_result_t canstack_create_driver(const canstack_config_t* cfg,
+                                         canstack_driver* driver)
 {
     /* Parameter validation */
     if (!driver || !cfg)
@@ -61,7 +61,7 @@ canstack_result_t canstack_create_driver(canstack_driver_t* driver,
         return CAN_RESULT_NO_PLATFORM_DRIVER;
     #endif
 
-    canstack_driver_t new_driver = malloc(sizeof(struct canstack_driver_T));
+    canstack_driver new_driver = malloc(sizeof(struct canstack_driver_T));
     if (!new_driver)
         return CAN_RESULT_NO_MEMORY;
 
@@ -75,30 +75,30 @@ canstack_result_t canstack_create_driver(canstack_driver_t* driver,
     return CAN_RESULT_OK;
 }
 
-void canstack_destroy_driver(canstack_driver_t driver)
+void canstack_destroy_driver(canstack_driver driver)
 {
     
 }
 
-canstack_result_t canstack_transmit(canstack_driver_t driver,
+canstack_result_t canstack_transmit(canstack_driver driver,
                                     const canstack_message_t* msg)
 {
     if (!driver || !msg)
         return CAN_RESULT_INVALID_ARG;
 
     /* Check for proper dlc bounds even though the memory buffer is fixed */
-    if (msg->dlc > CAN_STACK_MAX_PAYLOAD_SIZE)
+    if (msg->dlc > CANSTACK_MAX_PAYLOAD_SIZE)
         return CAN_RESULT_PAYLOAD_OVERFLOW;
 
     if (driver->state == CANSTACK_STATE_RUNNING)
         return CAN_RESULT_INVALID_STATE;
 
-    return driver->platform->ops.tx_message(driver->platform->hw_ctx, CAN_STACK_MAILBOX_ID_ANY, msg);
+    return driver->platform->ops.tx_message(driver->platform->hw_ctx, CANSTACK_MAILBOX_ID_ANY, msg);
 }
 
-#if CAN_STACK_HAS_HW_FILTERS
+#if CANSTACK_HAS_HW_FILTERS
 
-    canstack_result_t canstack_register_rx_cb(canstack_driver_t driver,
+    canstack_result_t canstack_register_rx_cb(canstack_driver driver,
                                               canstack_mb_id_t mb_id,
                                               canstack_pfn_rx_callback_t callback)
     {
@@ -113,7 +113,7 @@ canstack_result_t canstack_transmit(canstack_driver_t driver,
         return CAN_RESULT_OK;
     }
 
-    canstack_result_t canstack_configure_rx_filter(canstack_driver_t driver,
+    canstack_result_t canstack_configure_rx_filter(canstack_driver driver,
                                                    canstack_mb_id_t mb_id,
                                                    const canstack_mb_filter_t* filter)
     {

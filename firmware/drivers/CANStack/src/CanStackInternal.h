@@ -44,12 +44,12 @@ typedef enum {
     CAN_STACK_CMD_START = 0x03,     /**< Start CAN communication */
     CAN_STACK_CMD_STOP = 0x04,      /**< Stop CAN communication */
     
-    #if CAN_STACK_HAS_HW_FILTERS
+    #if CANSTACK_HAS_HW_FILTERS
         CAN_STACK_CMD_CONFIGURE_RX_FILTER = 0x05,  /**< Configure RX filter */
     #endif
 } canstack_command_t;
 
-#if CAN_STACK_HAS_HW_FILTERS
+#if CANSTACK_HAS_HW_FILTERS
 
     typedef struct {
         canstack_mb_id_t mb_id;
@@ -103,7 +103,7 @@ typedef canstack_result_t (*canstack_pfn_rx_message_t)(canstack_ctx_t hw_ctx,
                                                        canstack_mb_id_t mb_id,
                                                        canstack_message_t* msg);
 
-#if CAN_STACK_HAS_HW_FILTERS
+#if CANSTACK_HAS_HW_FILTERS
 
 /**
  * @brief Platform RX mailbox filter configuration
@@ -126,7 +126,7 @@ typedef canstack_result_t (*canstack_pfn_configure_rx_filter_t)(
 //      CanStack Callback storage
 //========================================================
 
-#if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB)
+#if !defined(CANSTACK_EXCLUDE_FULL_RX_MB)
 
 /**
  * @brief RX callback entry (callback + context)
@@ -138,7 +138,7 @@ typedef struct {
 
 #endif /* !CAN_STACK_EXCLUDE_FULL_RX_MB */
 
-#if !defined(CAN_STACK_EXCLUDE_FULL_TX_MB)
+#if !defined(CANSTACK_EXCLUDE_FULL_TX_MB)
 
 /**
  * @brief TX callback entry (callback + context)
@@ -181,7 +181,7 @@ typedef struct {
 //========================================================
 
 /**
- * @brief Main CAN driver instance (pointed to by canstack_driver_t)
+ * @brief Main CAN driver instance (pointed to by canstack_driver)
  * 
  * @details Contains driver state, callbacks, and platform abstraction layer.
  */
@@ -191,13 +191,13 @@ struct canstack_driver_T {
     canstack_ctx_t user_ctx;    /**< User-provided context */
 
     /* RX Callbacks */
-    #if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB)
-        canstack_rx_cb_entry_t rx_callbacks[CAN_STACK_TOTAL_RX_MAILBOXES];
+    #if !defined(CANSTACK_EXCLUDE_FULL_RX_MB)
+        canstack_rx_cb_entry_t rx_callbacks[CANSTACK_TOTAL_RX_MAILBOXES];
     #endif
 
     /* TX Callbacks */
-    #if !defined(CAN_STACK_EXCLUDE_FULL_TX_MB)
-        canstack_tx_cb_entry_t tx_callbacks[CAN_STACK_TOTAL_TX_MAILBOXES];
+    #if !defined(CANSTACK_EXCLUDE_FULL_TX_MB)
+        canstack_tx_cb_entry_t tx_callbacks[CANSTACK_TOTAL_TX_MAILBOXES];
     #endif
 
     /* Platform abstraction */
