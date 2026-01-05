@@ -27,7 +27,7 @@
 /* Internal headers */
 #include <stdint.h> // Standard integer types
 
-#define CAN_STACK_ERROR_CHECK(expr) do { \
+#define CANSTACK_ERROR_CHECK(expr) do { \
     canstack_result_t _res = (expr);     \
     if (_res != CAN_RESULT_OK)           \
         return _res;                     \

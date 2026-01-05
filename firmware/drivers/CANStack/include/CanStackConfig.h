@@ -17,6 +17,47 @@
 #define CAN_STACK_CONFIG_H
 
 //========================================================
+//      Library Information
+//========================================================
+
+#define CANSTACK_MAJOR 1u
+#define CANSTACK_MINOR 0u
+#define CANSTACK_PATCH 1u
+
+//========================================================
+//      Version Packing Helpers
+//========================================================
+
+/**
+ * @brief Pack a semantic version (major.minor.patch) into a single comparable integer.
+ *
+ * Uses 8 bits per component (0..255). Adjust shifts if you need larger ranges.
+ */
+#define CANSTACK_VERSION_ENCODE(major, minor, patch) \
+    ((((major) & 0xFFu) << 16) | (((minor) & 0xFFu) << 8) | ((patch) & 0xFFu))
+
+/** @brief Current library version as a single integer. */
+#define CANSTACK_VERSION \
+    CANSTACK_VERSION_ENCODE(CANSTACK_MAJOR, CANSTACK_MINOR, CANSTACK_PATCH)
+
+/**
+ * @brief True if CanStack version is at least (major.minor.patch).
+ *
+ * Usage:
+ *   #if CANSTACK_VERSION_AT_LEAST(1,0,0)
+ *     ...
+ *   #endif
+ */
+#define CANSTACK_VERSION_AT_LEAST(major, minor, patch) \
+    (CANSTACK_VERSION >= CANSTACK_VERSION_ENCODE((major), (minor), (patch)))
+
+/**
+ * @brief True if CanStack version is exactly (major.minor.patch).
+ */
+#define CANSTACK_VERSION_IS(major, minor, patch) \
+    (CANSTACK_VERSION == CANSTACK_VERSION_ENCODE((major), (minor), (patch)))
+
+//========================================================
 //      Standard Includes
 //========================================================
 
@@ -31,6 +72,31 @@
 #define CANSTACK_ASSERT(x) ((void)0)
 #endif
 
+/* Project headers */
+#include "CanStackResult.h"
+
+#if defined(__has_include)
+    #if __has_include("cyfitter.h")
+        #include "cyfitter.h"
+        
+        #if defined(CYDEV_CHIP_FAMILY_USED)
+            #if (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+                #define CANSTACK_PLATFORM_PSOC3
+            #elif (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC4)
+                #define CANSTACK_PLATFORM_PSOC4
+            #elif (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC5)
+                #define CANSTACK_PLATFORM_PSOC5
+            #elif (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC6)
+                #define CANSTACK_PLATFORM_PSOC6
+            #endif
+        #endif
+    #endif
+#endif
+
+//========================================================
+//      CanStack Macro Helpers
+//========================================================
+
 #define CANSTACK_STR_(x) #x
 #define CANSTACK_STR(x)  CANSTACK_STR_(x)
 
@@ -43,30 +109,23 @@
 #define CANSTACK_BIT_IS_SET(mask, bit) \
     (((mask) & (1u << (bit))) != 0u)
 
-/* Project headers */
-#include "CanStackResult.h"
-
 //========================================================
 //      CanStack Constants
 //========================================================
 
-#define CAN_STACK_MAX_PAYLOAD_SIZE 8u
+#define CANSTACK_MAX_PAYLOAD_SIZE 8u
 
-#define CAN_STACK_MAILBOX_ID_ANY 0xFF
+#define CANSTACK_MAILBOX_ID_ANY 0xFF
 
 //========================================================
 //      PSoC5 Configuratioon
 //========================================================
 
-#if defined(PLATFORM_PSOC5)
+#if defined(CANSTACK_PLATFORM_PSOC5)
     #include "cyapicallbacks.h"
     
     #ifndef CAN_COMPONENT_NAME
     #error "CAN_COMPONENT_NAME must be defined (e.g. CAN, CAN0, CAN1)"
-    #endif
-
-    #ifndef CAN_STACK_PLATFORM_PSOC5
-    #define CAN_STACK_PLATFORM_PSOC5
     #endif
 
     #define CANSTACK_PSOC5_CONST(name) \
@@ -92,10 +151,10 @@
     #define TX_ENABLE_(prefix, mbx) prefix##_TX##mbx##_FUNC_ENABLE
     #define TX_ENABLE(prefix, mbx)  TX_ENABLE_(prefix, mbx)
 
-    #define CAN_STACK_TOTAL_RX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_RX_MAILBOXES)
-    #define CAN_STACK_TOTAL_TX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_TX_MAILBOXES)
+    #define CANSTACK_TOTAL_RX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_RX_MAILBOXES)
+    #define CANSTACK_TOTAL_TX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_TX_MAILBOXES)
 
-    #define CAN_STACK_FULL_RX_ENABLE_COUNT ( \
+    #define CANSTACK_FULL_RX_ENABLE_COUNT ( \
         RX_ENABLE(CAN_COMPONENT_NAME, 0)     + \
         RX_ENABLE(CAN_COMPONENT_NAME, 1)     + \
         RX_ENABLE(CAN_COMPONENT_NAME, 2)     + \
@@ -114,7 +173,7 @@
         RX_ENABLE(CAN_COMPONENT_NAME, 15)    \
     )
 
-    #define CAN_STACK_FULL_TX_ENABLE_COUNT ( \
+    #define CANSTACK_FULL_TX_ENABLE_COUNT ( \
         TX_ENABLE(CAN_COMPONENT_NAME, 0)     + \
         TX_ENABLE(CAN_COMPONENT_NAME, 1)     + \
         TX_ENABLE(CAN_COMPONENT_NAME, 2)     + \
@@ -126,33 +185,24 @@
     )
 
     // Validate at least one mailbox is configured
-    #if (CAN_STACK_FULL_RX_ENABLE_COUNT < 1)
+    #if (CANSTACK_FULL_RX_ENABLE_COUNT < 1)
         #define CAN_STACK_EXCLUDE_FULL_RX_MB
         #pragma message("No Full RX mailboxes configured in PSoC Creator!") 
     #endif
 
-    #if (CAN_STACK_FULL_TX_ENABLE_COUNT < 1)
+    #if (CANSTACK_FULL_TX_ENABLE_COUNT < 1)
         #define CAN_STACK_EXCLUDE_FULL_TX_MB
         #pragma message("No Full TX mailboxes configured in PSoC Creator!") 
     #endif
 
     // Hardware filtering only for RX mailboxes (TX doesn't support filtering)
-    #if (CAN_STACK_FULL_RX_ENABLE_COUNT > 0) && defined(CAN_STACK_ENABLE_HW_FILTERING)
-        #define CAN_STACK_HAS_HW_FILTERS  1
+    #if (CANSTACK_FULL_RX_ENABLE_COUNT > 0) && defined(CANSTACK_ENABLE_HW_FILTERING)
+        #define CANSTACK_HAS_HW_FILTERS  1
     #else
-        #define CAN_STACK_HAS_HW_FILTERS  0
+        #define CANSTACK_HAS_HW_FILTERS  0
     #endif
-
-    
 #else 
-
-    #define CAN_STACK_EXCLUDE_FULL_RX_MB
-    #define CAN_STACK_EXCLUDE_FULL_TX_MB
-
-    #define CAN_STACK_TOTAL_RX_MAILBOXES -1
-    #define CAN_STACK_TOTAL_TX_MAILBOXES -1
-
-    #error "CanStack didn't detect a supported platform"
+    #error "CanStack didn't detect any supported platform"
 #endif
 
 // ========================================================
