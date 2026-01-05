@@ -26,6 +26,19 @@
 #include "ODriveResult.h"
 
 //========================================================
+//      CAN Constants
+//========================================================
+
+#define ODRIVE_CAN_DLC_MAX 8u
+
+//========================================================
+//      CAN Typedefs
+//========================================================
+
+typedef uint32_t  odrive_can_id_t;
+typedef uint8_t   odrive_can_dlc_t;
+
+//========================================================
 //      Communication Types
 //========================================================
 
@@ -50,15 +63,8 @@ typedef enum {
 
 } odrive_transport_t;
 
-typedef enum {
-   CAN_FLAG_RTR = ODRIVE_BIT(0u),
-   CAN_FLAG_IDE = ODRIVE_BIT(1u),
-} odrive_can_flags;
-
-typedef odrive_flags odrive_com_flags;
-
 //========================================================
-//      Transport Message
+//      CAN Transport Message
 //========================================================
 
 /**
@@ -71,33 +77,11 @@ typedef odrive_flags odrive_com_flags;
  * 
  */
 typedef struct {
-   /**
-    * @brief Command message ID
-    * 
-    * **CAN (11-bit standard):**
-    *   - Bits [10:5]: Node ID (0-63)
-    *   - Bits [4:0]: Command ID (0-31)
-    *   - Range: 0x000 - 0x7FF
-    * 
-    * **CAN (29-bit extended):**
-    *   - Bits [28:23]: Node ID
-    *   - Bits [22:18]: Command ID
-    *   - Bits [17:0]: Reserved/unused
-    */
-   uint32_t msg_id;
-
-   /**< Payload data */
-   uint8_t  buffer[64];
-
-   /**< Payload length */
-   uint16_t dlc;
-
-   odrive_com_flags flags;
-
-   /**< Node ID (if applicable to transport) */
-   uint8_t  node_id;
-
-} odrive_message_t;
+   odrive_can_id_t   id;                                    /**< CAN message ID */
+   odrive_can_dlc_t  dlc;                              /**< Data length (0-8) in bytes */
+   bool              rtr;                              /**< Remote transmission request */
+   uint8_t           data[ODRIVE_CAN_DLC_MAX];  /**< Message payload */
+} odrive_can_message_t;
 
 //========================================================
 //      Callback Types
@@ -110,7 +94,7 @@ typedef struct {
  * Runs in ISR context (for interrupt-driven transports) or
  * from polling thread context.
  */
-typedef void (*odrive_com_rx_callback)(const odrive_message_t* msg,
+typedef void (*odrive_com_rx_callback)(const odrive_can_message_t* msg,
                                        void* user_ctx);
 
 /**
@@ -122,22 +106,27 @@ typedef void (*odrive_com_status_callback)(uint8_t status,
                                            void* user_ctx);
 
 //========================================================
-//      Communication Function Prototypes
+//      CAN Function Prototypes
 //========================================================
 
 /**
  * @brief Message transmit operation
  *
  * @param[in] msg Message to transmit
+ * 
  * @return ODRIVE_RESULT_OK on success
  */
-typedef odrive_result_t (*odrive_com_transmit_fn_t)(
-    const odrive_message_t* msg);
+typedef odrive_result_t (*odrive_can_transmit_fn_t)(odrive_ctx_t ctx, const odrive_can_message_t* msg);
+
+//========================================================
+//      Communication Function Prototypes
+//========================================================
 
 /**
  * @brief Get transport name operation
  *
  * @param[in] hw_ctx Hardware context
+ * 
  * @return Human-readable transport name (e.g., "CAN 500kbps", "USB CDC")
  */
 typedef const char* (*odrive_com_get_name_fn_t)(void* hw_ctx);
@@ -145,7 +134,7 @@ typedef const char* (*odrive_com_get_name_fn_t)(void* hw_ctx);
 typedef odrive_result_t (*odrive_pfn_event_handler) ();
 
 //========================================================
-//      Communication Operartions
+//      CAN Communication Operartions
 //========================================================
 
 /**
@@ -156,17 +145,18 @@ typedef struct {
    /**
     * @brief Message transmit abstraction
     */
-   odrive_com_transmit_fn_t transmit;
+   odrive_can_transmit_fn_t transmit;
 
 
+} odrive_can_ops_t;
 
-   /**
-    * @brief Get transport name (for logging/debugging)
-    * @return Human-readable transport name (e.g., "CAN 500kbps")
-    */
-   odrive_com_get_name_fn_t get_name;
+//========================================================
+//      Communication Operartions
+//========================================================
 
-} odrive_com_ops_t;
+typedef union {
+   odrive_can_ops_t can_ops;
+} odrive_com_ops;
 
 //========================================================
 //      Communication Context
@@ -183,12 +173,20 @@ typedef struct {
    odrive_transport_t transport; 
 
    /**< Operations vtable */
-   odrive_com_ops_t ops;              
+   odrive_com_ops ops;              
+
+   /**
+    * @brief Get transport name (for logging/debugging)
+    * @return Human-readable transport name (e.g., "CAN 500kbps")
+    */
+   odrive_com_get_name_fn_t get_name;
 
    /**< Hardware-specific context */
    odrive_ctx_t hw_ctx;                  
 
 } odrive_com_t;
+
+typedef odrive_com_t* odrive_com;
 
 //========================================================
 //      Public HAL Interface
@@ -201,7 +199,7 @@ typedef struct {
  * 
  * @return odrive_com_t
  */
-odrive_transport_t odrive_com_get_type(const odrive_com_t* com);
+odrive_transport_t odrive_com_get_type(const odrive_com com);
 
 /**
  * @brief Get backend name
@@ -210,7 +208,7 @@ odrive_transport_t odrive_com_get_type(const odrive_com_t* com);
  * 
  * @return Backend name (const char*)
  */
-const char* odrive_get_backend_name(const odrive_com_t* com);
+const char* odrive_get_backend_name(const odrive_com com);
 
 //========================================================
 //      End of File
