@@ -21,7 +21,7 @@
 #ifndef CAN_STACK_PSOC5_H
 #define CAN_STACK_PSOC5_H
 
-#if !defined(CAN_STACK_PLATFORM_PSOC5)
+#if !defined(CANSTACK_PLATFORM_PSOC5)
     #error "CanStack: PSoC5 platform not detected. Include this header only when building for PSoC5."
 #endif
 
@@ -33,12 +33,11 @@
 #include <stdint.h>
 
 #include "CanStackInternal.h"
-#include "cyapicallbacks.h"
-
-//========================================================
-//      Platform Macro's
-//========================================================
-
+#if defined(__has_include)
+    #if __has_include("cyapicallbacks.h")
+        #include "cyapicallbacks.h"
+    #endif
+#endif
 
 //========================================================
 //      PSoC5 Platform Context
@@ -64,7 +63,7 @@ typedef struct {
  * @details Each bit represents one mailbox (0-15).
  * Bit set = mailbox enabled in PSoC Creator.
  */
-#define CAN_STACK_PSOC5_RX_ENABLED_MASK ( \
+#define CANSTACK_PSOC5_RX_ENABLED_MASK ( \
     (RX_ENABLE(CAN_COMPONENT_NAME, 0)  ? (1u << 0)  : 0) | \
     (RX_ENABLE(CAN_COMPONENT_NAME, 1)  ? (1u << 1)  : 0) | \
     (RX_ENABLE(CAN_COMPONENT_NAME, 2)  ? (1u << 2)  : 0) | \
@@ -89,7 +88,7 @@ typedef struct {
  * @details Each bit represents one mailbox (0-7).
  * Bit set = mailbox enabled in PSoC Creator.
  */
-#define CAN_STACK_PSOC5_TX_ENABLED_MASK ( \
+#define CANSTACK_PSOC5_TX_ENABLED_MASK ( \
     (TX_ENABLE(CAN_COMPONENT_NAME, 0) ? (1u << 0) : 0) | \
     (TX_ENABLE(CAN_COMPONENT_NAME, 1) ? (1u << 1) : 0) | \
     (TX_ENABLE(CAN_COMPONENT_NAME, 2) ? (1u << 2) : 0) | \
@@ -107,7 +106,7 @@ typedef struct {
 #define PSOC5_RX_CALLBACK_(prefix, mbx)                             \
     void prefix##_ReceiveMsg_##mbx##_Callback(void)                  \
     {                                                                \
-        canstack_driver_t drv = canstack_psoc5_get_bound_driver(); \
+        canstack_driver drv = canstack_psoc5_get_bound_driver(); \
         if (drv != NULL) {                                           \
             canstack_psoc5_isr_rx_mailbox(drv, (canstack_mb_id_t)(mbx)); \
         }                                                            \
@@ -125,8 +124,8 @@ typedef struct {
 //      PSoC5 Driver methods
 //========================================================
 
-#if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB) 
-void canstack_psoc5_isr_rx_mailbox(canstack_driver_t drv, canstack_mb_id_t mb); 
+#if !defined(CANSTACK_EXCLUDE_FULL_RX_MB) 
+void canstack_psoc5_isr_rx_mailbox(canstack_driver drv, canstack_mb_id_t mb); 
 #endif 
 
 /**
@@ -136,14 +135,14 @@ void canstack_psoc5_isr_rx_mailbox(canstack_driver_t drv, canstack_mb_id_t mb);
  * 
  * @return void
  */
-void canstack_psoc5_bind(canstack_driver_t drv); 
+void canstack_psoc5_bind(canstack_driver drv); 
 
 /**
  * @brief Return the bound CanStack driver
  * 
- * @return canstack_driver_t
+ * @return canstack_driver
  */
-canstack_driver_t canstack_psoc5_get_bound_driver(void);
+canstack_driver canstack_psoc5_get_bound_driver(void);
 
 /**
  * @brief Create and initialize PSoC5 platform driver

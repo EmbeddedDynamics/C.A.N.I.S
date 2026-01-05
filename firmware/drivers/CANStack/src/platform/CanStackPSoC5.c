@@ -17,7 +17,7 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if defined(CAN_STACK_PLATFORM_PSOC5)
+#if defined(CANSTACK_PLATFORM_PSOC5)
 
 #include "CanStackPSoC5.h"
 
@@ -32,7 +32,7 @@
 //      PSoC5 Platform Context
 //========================================================
 
-static canstack_driver_t g_drv = NULL;
+static canstack_driver g_drv = NULL;
 
 /**
  * @brief Static platform context for PSoC5
@@ -41,8 +41,8 @@ static canstack_driver_t g_drv = NULL;
  * For multiple CAN instances, allocate dynamically per driver.
  */
 static canstack_psoc5_context_t g_psoc5_ctx = {
-    .rx_enabled_mask = CAN_STACK_PSOC5_RX_ENABLED_MASK,
-    .tx_enabled_mask = CAN_STACK_PSOC5_TX_ENABLED_MASK,
+    .rx_enabled_mask = CANSTACK_PSOC5_RX_ENABLED_MASK,
+    .tx_enabled_mask = CANSTACK_PSOC5_TX_ENABLED_MASK,
 };
 
 //========================================================
@@ -52,13 +52,13 @@ static canstack_psoc5_context_t g_psoc5_ctx = {
 static inline bool canstack_psoc5_is_rx_enabled(canstack_mb_id_t mb_id)
 {
     return (mb_id < 16u) &&
-           CANSTACK_BIT_IS_SET(CAN_STACK_PSOC5_RX_ENABLED_MASK, mb_id);
+           CANSTACK_BIT_IS_SET(CANSTACK_PSOC5_RX_ENABLED_MASK, mb_id);
 }
 
 static inline bool canstack_psoc5_is_tx_enabled(canstack_mb_id_t mb_id)
 {
     return (mb_id < 16u) &&
-           CANSTACK_BIT_IS_SET(CAN_STACK_PSOC5_TX_ENABLED_MASK, mb_id);
+           CANSTACK_BIT_IS_SET(CANSTACK_PSOC5_TX_ENABLED_MASK, mb_id);
 }
 
 //========================================================
@@ -242,7 +242,7 @@ static canstack_result_t psoc5_rx_message(canstack_ctx_t __unused hw_ctx,
 //      PSoC5 Hardware Filtering
 //========================================================
 
-#if CAN_STACK_HAS_HW_FILTERS
+#if CANSTACK_HAS_HW_FILTERS
 
 /**
  * @brief Configure RX mailbox hardware filter
@@ -344,7 +344,7 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
             CANSTACK_PSOC5_CALL(Stop);
             return CAN_RESULT_OK;
 
-        #if CAN_STACK_HAS_HW_FILTERS
+        #if CANSTACK_HAS_HW_FILTERS
         case CAN_STACK_CMD_CONFIGURE_RX_FILTER: {
             const canstack_mb_filter_cmd_t* filter_cmd =
                 (const canstack_mb_filter_cmd_t*)arg;
@@ -366,13 +366,13 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
 //      Platform Driver Initialization
 //========================================================
 
-void canstack_psoc5_bind(canstack_driver_t drv)
+void canstack_psoc5_bind(canstack_driver drv)
 {
     CANSTACK_ASSERT(g_drv == NULL);
     g_drv = drv;
 }
 
-canstack_driver_t canstack_psoc5_get_bound_driver(void)
+canstack_driver canstack_psoc5_get_bound_driver(void)
 {
     return g_drv;
 }
@@ -399,8 +399,8 @@ canstack_result_t canstack_psoc5_create_driver(
 //      ISR RX Functions
 //========================================================
 
-#if !defined(CAN_STACK_EXCLUDE_FULL_RX_MB)
-void canstack_psoc5_isr_rx_mailbox(canstack_driver_t drv, canstack_mb_id_t mb)
+#if !defined(CANSTACK_EXCLUDE_FULL_RX_MB)
+void canstack_psoc5_isr_rx_mailbox(canstack_driver drv, canstack_mb_id_t mb)
 {
     canstack_message_t msg;
     if (drv->platform->ops.rx_message(drv->platform->hw_ctx, mb, &msg) == CAN_RESULT_OK) {
