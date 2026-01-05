@@ -26,29 +26,6 @@
     
 /* Project headers */
 #include "ODrive.h"
-#include "ODriveAxis.h"
-#include "ODriveCore.h"
-
-/**
- * @brief Construct an ODrive CAN arbitration ID.
- *
- * Packs a node ID and command ID into the standard 11-bit CAN identifier.
- *
- * Layout:
- *   - Bits [10:5] = node_id (0–63)
- *   - Bits [4:0]  = cmd_id  (0–31)
- *
- * @param node_id ODrive axis node ID (0–63).
- * @param cmd_id  ODrive command ID (0–31).
- *
- * @return 11-bit CAN identifier ready for transmission.
- *
- * @code
- * CANId id = ODRIVE_CAN_ID(0x01, CAN_CMD_SET_INPUT_POS);  // Set_Input_Pos on node 1
- * @endcode
- */
-#define ODRIVE_CAN_ID(node_id, cmd_id) \
-    (((uint16_t)(node_id) << 5) | ((uint16_t)(cmd_id) & 0x1F))
 
 //========================================================
 //      Message Packing Macros (Little-Endian)
@@ -165,7 +142,7 @@ struct odrive_axis_T {
 struct odrive_driver_T {
     //odrive_driver_config_t config;
 
-    odrive_com_t            com;            /**< Communication context (CAN, etc.) */
+    odrive_com              com;            /**< Communication context (CAN, etc.) */
 
     struct odrive_axis_T    axes[ODRIVE_MAX_AXES]; /**< Axis handle table, indexed by slot */
     uint16_t                num_axes;              /**< Number of active axes */
