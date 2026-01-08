@@ -1,28 +1,14 @@
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
-
-#import "@preview/oxifmt:0.2.1": strfmt
-
-#import "@preview/tablem:0.1.0": tablem
-#import "@preview/numbly:0.1.0": numbly
-#import "@preview/gantty:0.5.1": gantt
-
-#import "@local/academic-tools:0.1.10": *
-
-#import "template.typ": *
-#import "Config/config.typ": *
-#import "Config/Planning.typ": *
-#import "Stakeholder_analyse.typ": *
-#import "role-calculations.typ" as rc
-
-#let stakeholder_content = include "Stakeholder_analyse.typ"
+// Import list
+#import "Config/_Imports.typ": *
 
 #set text(lang: "Nl")
-
+#set par(justify: true)
+#set text(costs: (hyphenation: 500%))
 #show link: underline
 
-//---------------------------------------
-// Front page and general definitions
-//---------------------------------------
+// ============================================
+// Front Page en general definitions
+// ============================================
 #show: academic-frontpage.with(
   title: [Embedded Systems Project\ Robothond],
   authors: students.map(s => s.name).join(", "),
@@ -48,23 +34,62 @@
     "MVP": ("Minimum Viable Product","Minimum Viable Product"),
     "PvA": ("Plan van Aanpak","Plan van Aanpak"),
     "IK": ("Inverse Kinematics"),
+    "PSoC5": ("Programmable System on a Chip 5"),
+    "RTOS": ("Real-Time Operating System"),
+    "MoSCoW": ("Must have, Should have, Could have, Won’t have"),
+    "PCB": ("Printed Circuit Board"),
+    "CAD": ("Computer Aided Design"),
+    "AI": ("Artificial Intelligence"),
+    "PoC": ("Proof of Concept"),
+    "LiDAR": "Light Detection And Ranging",
+    "ESD": ("ElectroStatic Discharge"),
+    "GPS": ("Global Positioning System"),
+    "ELRS": ("Express Long Range System"),
+    "FPV": ("First-Person View"),
+    "HDL": ("Hardware Description Language"),
+    "IMU": ("Inertial Measurement Uni"),
+    "PID": ("Proportional–Integral–Derivative"),
   ),
   versions: (
     version(
-      committee: [R. van der Veen\ D. Smit],
+      committee: [R. van der Veen\ D. Smit\ P. Huijser],
       description: [Initiële commit],
+      date: "2025-11-10",
+      level: 3,
+    ),
+    version(
+      committee: [D. Smit\ P. Huijser],
+      description: [PvE bijgewerkt op basis van de feedback van Rieno Moedt.],
+      date: "2025-12-09",
+      level: 3,
+    ),
+    version(
+      committee: [R. van der Veen],
+      description: [Bijgewerkte PvE nagelopen en spellingsfouten eruit gehaald.],
+      date: "2025-12-09",
+      level: 3,
+    ),
+    version(
+      committee: [R. van der Veen\ D. Smit\ P. Huijser],
+      description: [Er is een PvA gemaakt en een planning bijgevoegd.],
       date: "2025-12-19",
+      level: 3,
+    ),
+    version(
+      committee: [R. van der Veen\ D. Smit\ P. Huijser],
+      description: [MoSCoW Herschreven op basis van het bijgewerkte PvE. Een aantal punten die buiten de scope vallen toegevoegd. Versies van het document ingevuld.],
+      date: "2026-01-08",
       level: 3,
     ),
   )
 )
 
-//---------------------------------------
+// ============================================
 // Document contents
-//---------------------------------------
+// ============================================
 = Organisatie
 
-Voor het project "Embedded Systems" moet er een embedded device gerealiseerd worden. Voordat wij gaan beginnen met het realiseren van een apparaat gaan wij extensief onderzoek uitvoeren. Als aller eerst is er een organisatie definitie vereist. Hierin gaan wij onze organisatie definiëren voor een goed structuur en efficiënte samenwerking.
+Voor het project "Embedded Systems" moet er een embedded systeem gerealiseerd worden. Voordat wij gaan beginnen met het realiseren van een apparaat gaan wij extensief onderzoek uitvoeren. Als aller eerst is er een organisatie definitie vereist. Hierin gaan wij onze organisatie definiëren voor een goed structuur en efficiënte samenwerking.
 
 #v(1em)
 
@@ -85,9 +110,8 @@ Voor het project "Embedded Systems" moet er een embedded device gerealiseerd wor
   ..teamstructure
 )
 
-
-#v(1em)
 #pagebreak()
+
 
 == Rol Beschrijvingen <rollen>
 
@@ -108,32 +132,32 @@ De Project Leider is verantwoordelijk voor het coördineren van alle aspecten va
 
 === AI Developer
 
-De AI Developer is verantwoordelijk voor de ontwikkeling van de AI-gerelateerde features van de Robothond. De nadruk ligt op het maken van bewuste, onderbouwde keuzes over wat haalbaar en praktisch is gegeven de hardware beperkingen. Naast implementatie is het essentieel dat alle AI features grondig worden getest voordat integratie in de embedded pipeline plaatsvindt.
+De #acr("AI") Developer is verantwoordelijk voor de ontwikkeling van de #acr("AI")-gerelateerde features van de Robothond. De nadruk ligt op het maken van bewuste, onderbouwde keuzes over wat haalbaar en praktisch is gegeven de hardware beperkingen. Naast implementatie is het essentieel dat alle #acr("AI") features grondig worden getest voordat integratie in de embedded pipeline plaatsvindt.
 
 *Hoofd Verantwoordelijkheden:*
-- Evalueer AI feature requirements op haalbaarheid en performance impact
-- Ontwerp en implementeer AI algoritmes en modellen
-- Voer uitgebreide testen uit op AI features (unit tests, integratie tests)
-- Integreer AI features in de embedded firmware pipeline
-- Documenteer AI beslissingen en gekozen algoritmes
-- Optimaliseer AI modellen voor embedded hardware (resource constraints)
+- Evalueer #acr("AI") feature requirements op haalbaarheid en performance impact
+- Ontwerp en implementeer #acr("AI") algoritmes en modellen
+- Voer uitgebreide testen uit op #acr("AI") features (unit tests, integratie tests)
+- Integreer #acr("AI") features in de embedded firmware pipeline
+- Documenteer #acr("AI") beslissingen en gekozen algoritmes
+- Optimaliseer #acr("AI") modellen voor embedded hardware (resource constraints)
 - Werk samen met de Software Developer voor naadloze integratie
 
-#v(1em)
 #pagebreak()
+
 
 === Hardware Engineer
 
-De Hardware Engineer heeft als taak om alle hardware gerelateerde aspecten te behandelen, zoals: PCB design, componenten selectie en circuit design. Naast het elektrotechnische aspect is het ook belangrijk voor de hardware engineer om ook de CAD aspecten op te nemen, zoals: 3D tekenen, technische tekeningen maken, assemblage tekeningen maken indien nodig en het hardware te testen.
+De Hardware Engineer heeft als taak om alle hardware gerelateerde aspecten te behandelen, zoals: #acr("PCB") design, componenten selectie en circuit design. Naast het elektrotechnische aspect is het ook belangrijk voor de hardware engineer om ook de #acr("CAD") aspecten op te nemen, zoals: 3D tekenen, technische tekeningen maken, assemblage tekeningen maken indien nodig en het hardware te testen.
 
 *Hoofd Verantwoordelijkheden:*
 - Design circuit schema's en verificatie
 - Selecteert de juiste componenten op basis van specificaties
-- Maakt PCB layouts, breadboard designs en schema's
+- Maakt #acr("PCB") layouts, breadboard designs en schema's
 - Test de functionaliteit van de hardware
 - Documenteert hardware specificaties, progressie en onderzoeken
 - Leidt hardware reviews en troubleshooting
-- Zorgt voor versionering van CAD bestanden
+- Zorgt voor versionering van #acr("CAD") bestanden
 
 #v(1em)
 
@@ -149,8 +173,8 @@ De Git Master is verantwoordelijk voor het beheren van de git repository. Hierbi
 - Merge conflicts oplossen en escaleren indien nodig
 - Toegangsrechten en repository-instellingen beheren
 
-#v(1em)
 #pagebreak()
+
 
 === Software Developer
 
@@ -180,8 +204,8 @@ De Notulist zorgt ervoor dat alle projectinformatie correct wordt vastgelegd, ge
 - Organiseert project bestanden en versionering
 - Zorgt voor consistentie in documentatie
 
-#v(1em)
 #pagebreak()
+
 
 == Project Tijdlijn
 
@@ -190,18 +214,18 @@ Dit is de tijdlijn dat gespecificeerd is vanuit het project zelf.
   columns: 3,
   [*Fase*], [*Week Nr*], [*Deadlines*],
   [Empathize], [Week 1-2 (46-47)], [Teams maken en project kiezen],
-  [Define], [Week 3-4 (48-49)], [Inleveren PvE en blokdiagram\ Presentaties],
-  [Ideate], [Week 5-6 (50-51)], [Peer review\ Inleveren PvA],
+  [Define], [Week 3-4 (48-49)], [Inleveren #acr("PvE") en blokdiagram\ Presentaties],
+  [Ideate], [Week 5-6 (50-51)], [Peer review\ Inleveren #acr("PvA")],
   [Prototype, fase 1], [Week 7-8 (2-3)], [],
-  [Test/Validatie], [Week 9 (6)], [Demo proof of concept\ Gedetailleerde blokdiagram\ Lijst met extra's],
+  [Test/Validatie], [Week 9 (6)], [Demo #acr("PoC")\ Gedetailleerde blokdiagram\ Lijst met extra's],
   [Prototype, fase 2], [Week 10-11 (7-8)], [],
   [Test/Validatie], [Week 12-13 (10-11)], [],
   [Afronding en reflectie], [Week 14-15 (12-13)], [Documentatie inleveren],
   [Assessment], [Week 16 (14)], [Demonstratie],
 )
 
-#v(1em)
 #pagebreak()
+
 
 #set page(flipped: false)
 
@@ -209,6 +233,8 @@ Dit is de tijdlijn dat gespecificeerd is vanuit het project zelf.
 #gantt(planning)
 
 #pagebreak()
+
+
 #set page(flipped: false)
 
 == Communicatie Plan
@@ -217,7 +243,7 @@ Dit is de tijdlijn dat gespecificeerd is vanuit het project zelf.
 - Wekelijkse Team Meetings: Maandag.
 - Hardware Review Meetings: Dinsdag (indien nodig)
 - Software Code Reviews: Dinsdag (indien nodig)
-- AI Code Reviews: Dinsdag (indien nodig)
+- #acr("AI") Code Reviews: Dinsdag (indien nodig)
 - Git Pull Request Reviews: Woensdag (indien nodig)
 - Tutor Meetings: Woensdag (tenzij niet mogelijk)
 
@@ -235,8 +261,8 @@ Dit is de tijdlijn dat gespecificeerd is vanuit het project zelf.
 - Reguliere status updates naar relevante stakeholders
 - Indien nog niet opgelost wordt het teamlid verwijdert
 
-#v(1em)
 #pagebreak()
+
 
 == Risico Management
 
@@ -257,7 +283,6 @@ Dit project kent verschillende risico's die proactief beheerd dienen te worden:
 - Scope creep → Strik adheren aan requirements
 - Onvoorziene technische uitdagingen → Reserve tijd in planning
 
-#v(1em)
 #pagebreak()
 
 
@@ -276,8 +301,8 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 - Breng in bij tutor of docent
 - Document de rationale achter de beslissing
 
-#v(1em)
 #pagebreak()
+
 
 == Kwaliteitsstandaarden
 
@@ -289,10 +314,10 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 
 #v(1em)
 *Hardware Standaarden:*
-- PCB design volgens industriële standaarden
+- #acr("PCB") design volgens industriële standaarden
 - Alle componenten gedocumenteerd met datasheets
 - Hardware testen volgens test plan
-- Veiligheid checks (ESD, thermal, mechanical)
+- Veiligheid checks (#acr("ESD"), thermische, mechanische)
 
 #v(1em)
 *Documentatie Standaarden:*
@@ -302,312 +327,99 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 - Technische tekeningen en schema's volgens afgesproken stijl
 - README en setup guides compleet
 
-#v(1em)
+#pagebreak()
+
+
 = Inleving
 
 #stakeholder_content
 
-#v(1em)
 #pagebreak()
+
 
 == Pakket van Eisen
-In het pakket van eisen worden de eisen voor dit project vastgelegd. Deze eisen zijn grofweg te verdelen in twee groepen, eisen van de opdrachtgever en eisen die door het projectteam zelf zijn opgesteld. De verplichte eisen van de opdrachtgever zijn te vinden in @verplichte-eisen. Naast de verplichte eisen zijn de eisen aanvullend geformuleerd door het projectteam.
+In het #acr("PvE") worden de eisen voor dit project vastgelegd. Deze eisen zijn grofweg te verdelen in twee groepen, eisen van de opdrachtgever en eisen die door het projectteam zelf zijn opgesteld. De verplichte eisen van de opdrachtgever zijn te vinden in @verplichte-eisen. Naast de verplichte eisen zijn de eisen aanvullend geformuleerd door het projectteam.
 #v(1em)
 
-=== Verplichte eisen <verplichte-eisen>
-+ Het systeem bevat minimaal één PSoC5 als microcontroller.
-+ Het systeem zal gebruik maken van draadloze communicatie of een regeltechniek systeem.
-+ Het systeem zal gebruik maken van een HDL-component geïmplementeerd in Verilog.
-+ Het systeem zal gebruik maken van een RTOS.
-+ Het systeem zal geoptimaliseerd worden voor energiezuinigheid (Zie @energie-eisen).
-+ Het systeem zal minimaal één zelfgeschreven libary voor een communicatie protocol gebruiken.
-+ Het systeem zal geschikt moeten zijn voor opendagen. (zie @stakeholder-analyse)
+// PvE from Documenten/Config/PvE_MoSCoW.typ
+#pve_range(pve_moscow, "2.3.1", "2.3.1", 3)
+#pagebreak()
 
-#v(1em)
 === Functionele eisen
-
-#v(1em)
-==== Bewegingsfuncties
-+ De robot zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ± 50 centimeter.
-+ De robot zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ± 50 centimeter.
-+ De robot zal minimaal 1 meter zijwaarts kunnen lopen, met een afwijking van ± 50 centimeter.
-+ De robot zal een extra DOF beschikken in de roll-as.
-+ De robot zal 360 graden om zijn eigen as heen kunnen draaien.
-+ De robot zal 5 millimeter kunnen springen in de lucht.
-+ De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke bewegingen
-
-#v(1em)
+#pve_range(pve_moscow, "2.3.2.1", "2.3.2.3", 4)
 #pagebreak()
 
-==== AI en autonomie
-+ De robothond zal kunnen praten D.M.V. ingebouwde speakers.
-+ De robothond zal geluid kunnen afspelen D.M.V. ingebouwde speakers.
-+ De robothond bestuurt de ingebouwde speakers D.M.V. AI of ingebouwde bestuurbare muziekbord.
-+ De robothond zal een eigen persoonlijkheid hebben D.M.V. unieke spraak.
-+ De robothond zal autonoom door de school kunnen lopen D.M.V. AI algoritmes zonder menselijke handelingen.
-#v(1em)
-
-#v(1em)
-==== Modulaire functies
-+ De robothond zal kunnen voorzien worden van extra externe modules.
-+ De robothond zal modulair ontworpen worden met aluminium extrusies voor het bevestigen van externe modules.
-+ De robothond zal modulair ontworpen worden met pogo connectoren.
-
-
-#v(1em)
-=== Energie en performance <energie-eisen>
-+ De robothond zal een high-power modus beschikken die de motoren niet limiteert.
-+ De robothond zal een low-power modus beschikken die de motoren limiteert tot 50% vermogen.
-+ De robothond beschikt een sleep modus waarbij dit op de grond gaat liggen.
-+ De robothond zal een AI-limitatie modus hebben die AI functies uitzet.
-
-#v(1em)
-=== Gebruikersgerichtheid en betrouwbaarheid
-+ De robothond zal bestuurbaar zijn via een blauwetand x-doos of speelstation controller
-+ De robothond zal een duidelijke fysieke gebruikers interface hebben met labels bij knoppen/schakelaars
-+ De robothond zal tijdens werking geen ongewenste of onverwachte bewegingen uitvoeren die afwijken van het gedefinieerde gedrag zoals vastgelegd in het testplan.
-+ De robothond zal bruikbaar zijn voor opendagen gebaseerd op de wensen van de stakeholder (Zie @stakeholder-analyse).
-
-#v(1em)
+#pve_range(pve_moscow, "2.3.3", "2.3.5", 3)
 #pagebreak()
 
-=== Documentatie
-+ Er wordt een #acr("PvE") opgesteld met duidelijke MoSCoW-prioriteiten.
-+ Er wordt een PvA opgesteld met daarin ten minste een planning, rolverdeling en risicoanalyse.  
-+ Er zal een portfolio bijgehouden worden met gemaakte keuzes en ontwerpen
-+ Alle ontwerpkeuzes worden onderbouwd met berekeningen, argumentatie
- en/of literatuurbronnen.  
-+ Alle schema’s, code en andere ontwerpen worden als bijlage toegevoegd en zijn traceerbaar naar de gestelde eisen.  
-+ De documentatie zal gestructureerd worden volgens de fasen van Design Thinking Proces, tenzij expliciet anders afgesproken.
-
-#v(1em)
-
-=== Eisen aan het ontwikkelproces
-+ Er zal gebruik gemaakt worden van het design thinking proces.
-+ Er zal een testplan opgesteld worden voor elk deelproces.
-+ Er zullen Blokdiagrammen aanwezig voor verschillende deelprocessen.
-+ Er zal een proof of concept gemaakt met één of meer bijhorende prototype.
-+ Er wordt een concrete #acr("MVP") gedefinieerd die meetbaar is via één of meerdere testplannen. 
-+ Het team houdt één gezamenlijk logboek bij waarin activiteiten, uren en bijdragen per teamlid worden vastgelegd.  
-+ Het team voert wekelijks een tutor-gesprek en legt afspraken en besluiten vast in notulen.  
-+ Er wordt gebruikgemaakt van versiebeheer (bijvoorbeeld Git of vergelijkbaar).  
-+ Er wordt een peer review uitgevoerd op een PvE en blokdiagram van de concurrentie.
-+ Er worden rollen verdeeld in de groep en duidelijk gedefinieerd wat de verantwoordelijkheden zijn bij deze rol. (@team-structuur)
-
+#pve_range(pve_moscow, "2.3.6", "2.3.6", 3)
+#pve_range(pve_moscow, "2.4", "2.4", 2)
 #pagebreak()
 
-== Pakket van Wensen
-Aanleiding stakeholder analyse. Schrijf inleiding
-
-+ De robothond heeft een extern systeem dat koffie kan inschenken D.M.V. AI detectie.
-+ De robothond beschikt over een ingebouwde soundboard. Hiermee kunnen externe gebruikers met handmatige acties sound effects afspelen D.M.V. een controller.
-+ De robothond kan in geprogrammeerde dansjes doen.
-+ De robothond beschikt over een GPS systeem waardoor die real-time getracked kan worden.
-+ De robothond beschikt over het ExpressLRS protocol. Hiermee kunnen wij de robothond op een minimale afstand van 1km besturen.
-+ De robothond beschikt over een analoge FPV camera. Hierdoor kan de gebruiker in het perspectief in de robot hond kijken.
-
+#pve_range(pve_moscow, "2.5", "2.5", 2)
 #v(1em)
-#pagebreak()
 
 == Minimal Viable Product
-Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product. In dit hoofdstuk benoemen wij onze eisen voor het #acr("MVP"), dit is nodig om ons project af te ronden met een voldoende.
+Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product.
 
-#v(1em)
-=== Beweging
-+ De robothond zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ±1 meter.
-+ De robothond zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ±1 meter.
-+ De robothond beschikt IK voor de bewegingen van de robot actuatoren.
-
-#v(1em)
-=== Embedded firmware
-+ De robothond heeft minimaal een eigen geschreven library voor een communicatie protocol.
-+ De robothond beschikt over een RTOS die werkt op de PSoC 5 architectuur.
-+ De robothond beschikt over een HDL component (bijvoorbeeld een Statemachine).
-
-#v(1em)
-=== Draadloze communicatie en regelsystemen
-+ De robothond zal bestuurbaar zijn via een blauwetand x-doos of speelstation controller
-
-#v(1em)
-=== Mechanica
-+ De robothond bevat een betrouwbaar en getest mechanisch frame volgens testplan
-
-#v(1em)
+#pve_range(pve_moscow, "2.6.1", "2.6.4", 3)
 #pagebreak()
+
 
 == MoSCoW-analyse
 
-// Priority
-#let p1 = table.cell(
-  fill: rgb(150, 255, 150))[1] // priority 1, green
-#let p2 = table.cell(
-  fill: rgb(255, 255, 180))[2] // priority 2, yellow
-#let p3 = table.cell(
-  fill: rgb(255, 210, 150))[3] // priority 3, orange
-#let p4 = table.cell(
-  fill: rgb(255, 150, 150))[4] // priority 4, red
+// ============================================
+// MoSCoW
+// Data from /Documents/Config/config.typ
+// ============================================
 
+// Legend
 #table(
   columns: (auto, auto, auto),
   align: (left, left, center),
   inset: 6pt,
   stroke: 0.7pt + black,
   [*Prioritisering*], [*Uitleg MoSCoW methode*], [*Indicatie*],
-  [Must have], [Vereist om te kunnen spreken van een werkbaar product.], p1,
+  [Must have],   [Vereist om te kunnen spreken van een werkbaar product.], p1,
   [Should have], [Hoge prioriteit, maar niet vereist voor een bruikbaar product.], p2,
-  [Could have], [Optie die alleen wordt meegenomen als er tijd over is.], p3,
-  [Won't have], [Geen prioriteit], p4,
+  [Could have],  [Optie die alleen wordt meegenomen als er tijd over is.], p3,
+  [Won't have],  [Bewust niet binnen de scope van dit project.], p4,
 )
 
 #v(1em)
 
-#table(
-  columns: (auto, auto),
-  align: (left, center),
-  inset: 6pt,
-  stroke: 0.7pt + black,
-
-  [*Eis / Beschrijving*], [*Prioriteit*],
-
-  [*2.2.1 Functionele eisen (algemeen)*], [],
-  [Het systeem gebruikt een PSoC5 als primaire controller.], p1,
-  [Het systeem bevat ten minste één vorm van draadloze communicatie of regelsysteem of beide.], p1,
-  [Het systeem bevat ten minste één HDL-component.], p1,
-  [Het systeem verwerkt input van minimaal één sensor of gebruiker.], p1,
-  [Het systeem levert een demonstratiebare functionaliteit geschikt voor open dagen.], p1,
-
-  [*2.2.2 Energie & performance*], [],
-  [Het product bevat minimaal twee energiebesparingsmaatregelen.], p2,
-  [Het systeem vertoont geen spontane resets of crashes.], p1,
-
-  [*2.2.3 Gebruikersgerichtheid*], [],
-  [Het product is begrijpelijk voor niet-technische gebruikers.], p1,
-  [Knoppen zijn duidelijk gelabeld en toegankelijk.], p2,
-
-  [*2.2.4 Betrouwbaarheid & robuustheid*], [],
-  [Het systeem is bestand tegen normaal gebruik, zoals:\ lopen of gebruik van knoppen.], p1,
-  [Datacommunicatie voldoet aan gespecificeerde protocol eisen.], p1,
-  [Consistente performance tijdens demonstraties.], p2,
-
-  [*2.2.5 Documentatie & traceerbaarheid*], [],
-  [Alle ontwerpkeuzes zijn onderbouwd en traceerbaar.], p1,
-  [Alle schema’s, code en ontwerpen worden als bijlage toegevoegd.], p1,
-  [Documentatie volgt het Design Thinking-proces.], p1,
-  [Volledige traceerbaarheid: eisen → ontwerp → testplan → testrapport.], p2,
-
-  [*2.2.6 Eisen aan het ontwikkelproces*], [],
-  [Er is een PvE met MoSCoW-prioriteiten.], p1,
-  [Er is een MVP gedefinieerd.], p1,
-  [Er is een PvA met planning, rollen en risicoanalyse.], p1,
-  [Het team houdt één gezamenlijk logboek bij.], p1,
-  [Er zijn wekelijkse tutor-gesprekken met notulen.], p1,
-  [Gebruik van versiebeheer (Git).], p1,
-  [Teamrollen zijn toegewezen volgens hoofdstuk 1.1–1.2.], p1,
-
-  [*2.3 Wensen *], [],
-  [Autonome navigatie door het schoolgebouw.], p3,
-  [Soundboard / audio-afspeelfuncties.], p3,
-  [Koffieschenksysteem.], p3,
-  [Dansfunctionaliteit of animaties.], p3,
-  [Uitgebreide AI-persoonlijkheid of gedrag.], p3,
-  [Esthetische uitbreidingen zoals verlichting of covers.], p3,
-
-  [*2.4 MVP Gebruikersgerichtheid*], [],
-  [Lopen op vier poten met berekende inverse kinematics.], p1,
-  [De hond moet minimaal naar voren kunnen lopen.], p1,
-  [Bestuurbaar via een bluetooth controller.], p1,
-
-  [*Won't-have*], [],
-  [Geavanceerde LIDAR-systemen.], p4,
-  [Smartphone-app of cloudkoppelingen.], p4,
-)
-
-
-#v(1em)
-#set page(flipped: true)
+// MoSCoW
+#moscow_range(pve_moscow, "2.3.1", "2.3.2.1")
 #pagebreak()
+
+#moscow_range(pve_moscow, "2.3.2.2", "2.3.4")
+#pagebreak()
+
+#moscow_range(pve_moscow, "2.3.5", "2.3.6")
+#pagebreak()
+
+#moscow_range(pve_moscow, "2.4", "2.5")
+#pagebreak()
+
+#moscow_range(pve_moscow, "2.6.1", "2.6.4")
+#pagebreak()
+
+#set page(flipped: true)
 
 
 == Opdeling van de Robothond
-#let bent-edge(from, to, ..args) = {
-  let midpoint = (from, 50%, to)
-  let vertices = (
-    from,
-    (from, "|-", midpoint),
-    (midpoint, "-|", to),
-    to,
-  )
-  edge(..vertices, "-|>", ..args)
-}
 
-#diagram(
-  node-stroke: luma(80%),
-  edge-corner-radius: none,
-  spacing: (10pt, 15pt),
+#Blokdiagram
 
-  // Nodes
-  node((6.5,0), [*Robothond*], name: <root>),
-  
-  node((1.5,1.5), [*Hardware*], name: <hardware-block>),
-  node((9,1.5), [*Software*], name: <software-block>),
-  
-  node((0.5,3), [*Robotpoot*], name: <robotpoot-block>),
-  node((2.8,3), [*Chassis*], name: <chasis-block>),
+#pagebreak()
 
-  node((0,4), [*Aandrijving*], name: <aandrijving-block>),
-  node((1,4), [*Motoren*], name: <motoren-block>),
-  
-  node((6.25,3.25), [*Embedded\ firmware*], name: <embedded-firmware-block>),
-  node((9,3.25), [*Regel\ systemen*], name: <regel-systemen-block>),
-  node((11.5,3.25), [*AI\ functies*], name: <AI-block>),
 
-  node((8.5,4.5), [*FOC*], name: <foc-block>),
-  node((9.5,4.5), [*IMU*], name: <imu-block>),
-
-  node((11,4.75), [*Omgevings\ herkening*], name: <omgeving-block>),
-  node((12,4.75), [*Persoonlijkheid*], name: <persoonlijkheid-block>),
-
-  node((4.5,4.50), [*IK*], name: <IK-block>),
-  node((5.8,4.50), [*RTOS*], name: <rtos-block>),
-  node((6.9,4.5), [*Protocolen*], name: <protocolen-block>),
-
-  node((6.25,5.75), [*Draadloos*], name: <draadloos-block>),
-  node((7.5,5.75), [*Galvanisch*], name: <galvanisch-block>),
-
-  // Edges
-  
-  bent-edge(<root>, <hardware-block>),
-  bent-edge(<root>, <software-block>),
-
-  bent-edge(<hardware-block>, <robotpoot-block>),
-  bent-edge(<hardware-block>, <chasis-block>),
-
-  bent-edge(<robotpoot-block>, <aandrijving-block>),
-  bent-edge(<robotpoot-block>, <motoren-block>),
-
-  bent-edge(<software-block>, <embedded-firmware-block>),
-  //bent-edge(<software-block>, <regel-systemen-block>),
-  edge(vertices: (<software-block>, <regel-systemen-block>), "-|>"),
-  bent-edge(<software-block>, <AI-block>),
-
-  bent-edge(<embedded-firmware-block>, <IK-block>),
-  bent-edge(<embedded-firmware-block>, <rtos-block>),
-  bent-edge(<embedded-firmware-block>, <protocolen-block>),
-
-  bent-edge(<protocolen-block>, <draadloos-block>),
-  bent-edge(<protocolen-block>, <galvanisch-block>),
-
-  bent-edge(<regel-systemen-block>, <foc-block>),
-  bent-edge(<regel-systemen-block>, <imu-block>),
-
-  bent-edge(<AI-block>, <omgeving-block>),
-  bent-edge(<AI-block>, <persoonlijkheid-block>),
-)
 #set page(flipped: false)
 
 = Definitie
 
 == Feature lijst
+
 === Beweging-features
 - De robothond kan zich bewegen in de Roll directie
 - De robothond kan zich bewegen in de Pitch directie
@@ -618,10 +430,10 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
 - De robothond kan springen
 - De robothond kan een trap oplopen of aflopen
 - De robothond kan dansen
-- De robothond bevat een IMU die de robot stabiliseert door middel van een PID controller
+- De robothond bevat een #acr("IMU") die de robot stabiliseert door middel van een #acr("PID") controller
 
 === AI-features
-- De robothond kan autonoom bewegen d.m.v. AI en omgevingsdetectie
+- De robothond kan autonoom bewegen d.m.v. #acr("AI") en omgevingsdetectie
 - De robothond kan praten en / of geluid afspelen
 - De robothond heeft zijn eigen persoonlijkheid
 
@@ -630,17 +442,26 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
 - De robothond kan versnaperingen brengen
 - De robothond kan zitten en een poot geven
 - De robothond kan koffie deponeren aan de achterkant
-- De robothond kan d.m.v. GPS locatie een pad lopen en posities opslaan
+- De robothond kan d.m.v. #acr("GPS") locatie een pad lopen en posities opslaan
+
+#pagebreak()
+
+
+== Plan van Aanpak
+
+#set heading(offset: 2)
+
+// Plan van aanpak importeren zonder voorpagina:
+#PvA_body()
+
+#set heading(offset: 0)
+
+#pagebreak()
 
 
 = Appendix
 
-
 == Initiële kostenberekening
-
-// ============================================
-// USAGE EXAMPLE
-// ============================================
 
 #rc.add-roles(groupRoles)
 #rc.add-assignments(peopleAssingments)
@@ -648,6 +469,8 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
 #rc.role-calculations(title: "Arbeids kosten", level: 3)
 
 #pagebreak()
+
+
 #set page(flipped: true)
 
 === Materialen kosten
@@ -672,6 +495,10 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
   ..MaterialList,
   [], [], [], [], [], [], [], [€#strfmt("{:.2}", float(TotalCost))]
 )
+
+#pagebreak()
+
+
 #set page(flipped: false)
 
 #let subtotaal = 35.00 + 50.00 + 25.00 + 10.00 + 15.00
@@ -681,78 +508,7 @@ Voor het project moet er een #acr("MVP") gedefinieerd worden. Dit zijn de eigens
 
 === Samenvatting kosten
 
-
-
 #pagebreak()
 
-#let ondertekenaars = students.map(s => s.name)
 
-== Samenwerkingscontract
-
-#let studentRows = students.map(s => (
-  [#s.name],
-  [#link("mailto:" + s.email)[#s.email]],
-  [#s.tel],
-)).flatten()
-
-#table(
-  columns: (auto, auto, auto),
-  stroke: 0.7pt,
-  inset: 6pt,
-  align: (left, left, left),
-  fill: (rgb("f7f7f7"), none, none),
-  [*Naam studenten*], [*E-mail Adres*], [*Telefoonnummer*],
-  ..studentRows
-)
-
-#v(8pt)
-
-*Doel van de samenwerking*\
-In een hecht en verantwoordelijk team samenwerken aan het ontwerp en de realisatie van een Robothond, waarbij we elkaar versterken en een professioneel eindproduct opleveren.
-
-#v(6pt)
-
-*Contractduur:*\ 
-van #startdate tot #enddate.
-
-#v(8pt)
-
-*Afspraken*
-+ Aanwezig zijn op afgesproken momenten 
-+ Werk op tijd klaar
-+ Reageren op berichten
-+ Verdere afspraken en verantwoordelijkheden zijn benoemd in @rollen \ (tenzij er een goede reden is zoals ziekte, zijn er consequenties voor het teamlid)
-
-
-*Consequenties*
-- Eerste keer afspraak niet nagekomen:\ Gesprek met het groepje.
-- Tweede keer afspraak niet nagekomen:\ Gesprek met tutor.
-- Derde keer afspraak niet nagekomen:\ verwijdering uit het groepje.
-
-#v(12pt)
-
-#grid(
-  columns: 2,
-  gutter: 1fr,
-  [*Plaats:* #city, #university],
-  [*Datum:* #startdate],
-)
-
-#v(18pt)
-#pagebreak()
-
-*Getekend door*
-
-#let ondertekenaars = students.map(s => ([#s.name]))
-
-#let handtekening = (name) => block(
-  spacing: 6pt,
-  //rule(stroke: 0.7pt, width: 7cm),
-  emph(name),
-)
-
-#grid(
-  columns: 2,
-  gutter: 2cm,
-  ..ondertekenaars.map(n => handtekening(n))
-)
+#Samenwerkingscontract

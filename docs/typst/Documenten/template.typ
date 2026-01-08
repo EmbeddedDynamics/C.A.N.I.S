@@ -252,16 +252,6 @@
   // ============================================================
   // TABLE OF CONTENTS
   // ============================================================
-  show outline.entry.where(level: 1): it => {
-    v(12pt, weak: true)
-    strong(it)
-  }
-  show outline.entry.where(level: 2): it => {
-    pad(left: 0em, it)
-  }
-  show outline.entry.where(level: 3): it => {
-    pad(left: 1em, it)
-  }
   
   outline(title: text(size: 25pt, weight: "bold")[Inhoudsopgave], indent: 2em)
   pagebreak()

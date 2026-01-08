@@ -1,6 +1,6 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 #import "../template.typ": *
-#import "../Config/config.typ": *
+#import "../Config/_Imports.typ": *
 #set text(lang: "Nl")
 
 // Front page and general definitions

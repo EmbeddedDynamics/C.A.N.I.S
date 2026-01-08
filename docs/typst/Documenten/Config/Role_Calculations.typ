@@ -75,7 +75,7 @@
       let assignments = state-value.assignments
       
       // Display header
-      heading(level: it.level, it.title)
+      heading(level: it.level, [#it.title #label("kaas33")])
       
       // Calculate totals per person
       let people-totals = assignments.fold((:), (acc, assignment) => {

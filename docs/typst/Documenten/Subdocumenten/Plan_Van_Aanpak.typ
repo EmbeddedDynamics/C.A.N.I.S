@@ -3,7 +3,7 @@
 #import "@local/academic-tools:0.1.10": *
 
 #import "/Documenten/template.typ": *
-#import "/Documenten/Config/config.typ": *
+#import "/Documenten/Config/GeneralConfig.typ": *
 #import "/Documenten/Config/Planning.typ": *
 
 #set text(lang: "Nl")
@@ -26,7 +26,7 @@
   supervisor: [#supervisor],
   tutor: [#tutor],
   logo: "/Documenten/Assets/NHL_logo.jpg",
-  project-logo: "/Documenten/Assets/ED_Logo.png",
+  project-logo: none,
   //month: [#month],
   //year: [#year],
   date: datetime.today(),
@@ -40,7 +40,7 @@
     "IK": ("Inverse Kinematics"),
     "PSoC5": ("Programmable System on a Chip 5"),
     "RTOS": ("Real-Time Operating System"),
-    "MoSCoW": ("M - Must have, S - Should have, C - Could have, W - Won’t have"),
+    "MoSCoW": ("Must have, Should have, Could have, Won’t have"),
     "PoC": ("Proof of Concept"),
     "LiDAR": "Light Detection And Ranging"
   ),
@@ -57,6 +57,7 @@
 //---------------------------------------
 // Document contents
 //---------------------------------------
+#let PvA_body() = [
 = Project achtergrond
 
 #v(1em)
@@ -79,7 +80,8 @@ Voor dit project is Chel-Mari Spies aangewezen als tutor. Zij begeleidt het proc
 == Projectomschrijving
 Voor dit project moeten de studenten gezamenlijk een embedded systeem ontwikkelen, als doel voor de komende open dagen van de opleiding Elektrotechniek. Tijdens de zestien geplande wekken wordt een werkend systeem gerealiseerd, in de vorm van een robothond, die op een betrouwbare en inzichtelijke manier de mogelijkheden van embedded technieken laat zien. De bijbehorende handleiding en projectrichtlijnen worden als leidraad gebruikt. Aan het einde van het project beoordeelt de opdrachtgever de studenten op het behaalde eindresultaat en de geschiktheid van de demonstratie voor de open dagen.
 
-#v(1em)
+#pagebreak()
+
 
 == Doelstelling
 Het doel van dit project vanuit NHL Stenden is het ontwikkelen van een werkend embedded systeem. Dit willen wij gaan realiseren door middel van een robothond. Om daar te komen gaan wij systematisch te werk en actief het proces documenteren. Daarnaast willen wij gebruik maken van prototypes en tests om het systeem stap voor stap betrouwbaarder te maken. Ook leggen we keuzes en resultaten goed vast, zodat er per eis terug gezien kan worden wat we hebben ontworpen en hoe we hebben getest. Uiteindelijk willen we dat de robothond tijdens open dagen steeds hetzelfde gedrag laat zien en veilig te bedienen is onder begeleiding.
@@ -231,3 +233,7 @@ Dit plan van aanpak zorgt voor een systematische aanpak voor het ontwikkelen van
 De aanpak is gefocust op het design-thinking proces. Dit zorgt ervoor dat er gestructureerd gewerkt wordt. Door vroegtijdig te prototypen en uitvoerig te testen aan de hand van concrete testplannen wordt de technische haalbaarheid steeds getest. 
 
 De combinatie van duidelijke projectgrenzen, risicobeheersing en kwaliteitswaarborging via wekelijkse reviews en versiebeheer creëert een sterke basis om het project te laten slagen. Met vaste overlegmomenten en duidelijke rolverdeling wordt zowel de technische als procesmatige kwaliteit geborgd. Het #acr("PvA") zorgt voor een betrouwbaar document voor het ontwikkelen van de robothond. 
+
+]
+
+#PvA_body()

@@ -1,9 +1,6 @@
-#import "../role-calculations.typ": *
-
 // ============================================
-// USAGE EXAMPLE
+// General Data
 // ============================================
-
 
 #let groupRoles = (
   (name: "Project leider", hourly-rate: 75.0),
@@ -30,7 +27,6 @@
   (name: "Daan Smit", email: "daan.Smit3@student.nhlstenden.com", tel: "06 57294064", role: "Notulist \nSoftware Developer", responsibilities: "Firmware development \nControl systems engineering"),
 )
 
-
 #let city = "Leeuwarden"
 #let country = "Nederland"
 
@@ -49,9 +45,10 @@
 #let tutor = "Chel-Marí Spies"
 
 
-//----------------------------------------------------------------------------------------------------------
-// Materiaal kosten
-//----------------------------------------------------------------------------------------------------------
+
+// ============================================
+// Material cost
+// ============================================
 
 #let Materials = (
   (name: "PSoC 5 dev board", ordernr: "448-CY8CKIT-059-ND", brand: "Infineon", supplier: "DigiKey", amount: 2, unit: "Stuks", unitprice: 18.23, link: "https://www.digikey.nl/nl/products/detail/infineon-technologies/CY8CKIT-059/5184557?gclsrc=aw.ds&gad_source=1&gad_campaignid=20226276216/"),
@@ -61,6 +58,4 @@
  (name: "MKS XDRIVE Mini", ordernr: "N.V.T.", brand: "Makerbase", supplier: "Aliexpress", amount: 12, unit: "Stuks", unitprice: 30.19 / 1.21 * 1, link: "https://nl.aliexpress.com/item/1005008096636346.html?spm=a2g0o.order_list.order_list_main.11.38f979d2whk6Dq&gatewayAdapt=glo2nld"),
 
  (name: "PC-ABS Filament", ordernr: "N.V.T.", brand: "Sunlu", supplier: "Sunlu", amount: 1, unit: "kg", unitprice: 35.10 / 1.21 * 1, link: "https://sunlu.com/products/pc-abs-3d-printer-filament-high-performance-3d-filament-1kg"),
-
- 
 )
