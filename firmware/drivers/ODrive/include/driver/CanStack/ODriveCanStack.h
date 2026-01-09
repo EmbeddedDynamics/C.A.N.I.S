@@ -24,7 +24,7 @@
 #include <stddef.h>
 
 #include "ODriveCore.h"
-#include "driver/ODriveComHAL.h"
+#include "driver/ODriveBackend.h"
 
 #ifndef ODRIVE_STATIC_ASSERT
     #define ODRIVE_STATIC_ASSERT(cond, msg) \
@@ -171,8 +171,8 @@ typedef struct {
 //      CanStack Methods
 //========================================================
 
-odrive_result_t odrive_create_canstack_driver(const odrive_canstack_config_t *cfg,
-                                              odrive_com* com);
+odrive_result_t odrive_create_canstack_backend(const odrive_canstack_config_t *cfg,
+                                               odrive_backend* backend);
 
 //========================================================
 //      End of File

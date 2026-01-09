@@ -26,7 +26,6 @@
 /* Project headers */
 #include "ODriveInternal.h"
 
-
 //========================================================
 //      ODrive Axis Structure
 //========================================================
@@ -48,6 +47,8 @@ odrive_result_t odrive_create_driver(const odrive_driver_config_t* config,
 
     /* Initialize node map (all slots unused) */
     memset(new_driver->node_map, 0xFF, sizeof(new_driver->node_map));
+
+    ENCODER_ERROR_HALL_NOT_CALIBRATED_YET
 
     *driver = new_driver;
 

@@ -142,7 +142,7 @@ struct odrive_axis_T {
 struct odrive_driver_T {
     //odrive_driver_config_t config;
 
-    odrive_com              com;            /**< Communication context (CAN, etc.) */
+    odrive_backend          backend;            /**< Communication context (CAN, etc.) */
 
     struct odrive_axis_T    axes[ODRIVE_MAX_AXES]; /**< Axis handle table, indexed by slot */
     uint16_t                num_axes;              /**< Number of active axes */

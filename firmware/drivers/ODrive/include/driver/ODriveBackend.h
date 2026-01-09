@@ -1,5 +1,5 @@
 /***************************************************************************//**
-* \file ODriveComHAL.h
+* \file ODriveBackendL.h
 * \version 1.0.0
 *
 * \brief
@@ -12,8 +12,8 @@
 *
 *******************************************************************************/
 
-#ifndef ODRIVE_COM_HAL_H
-#define ODRIVE_COM_HAL_H
+#ifndef ODRIVE_BACKEND_H
+#define ODRIVE_BACKEND_H
 
 //========================================================
 //      Standard Includes
@@ -94,16 +94,16 @@ typedef struct {
  * Runs in ISR context (for interrupt-driven transports) or
  * from polling thread context.
  */
-typedef void (*odrive_com_rx_callback)(const odrive_can_message_t* msg,
-                                       void* user_ctx);
+typedef void (*odrive_backend_rx_callback)(const odrive_can_message_t* msg,
+                                           void* user_ctx);
 
 /**
  * @brief Status change callback
  * 
  * Called on transport state changes (connected/disconnected/error).
  */
-typedef void (*odrive_com_status_callback)(uint8_t status,
-                                           void* user_ctx);
+typedef void (*odrive_backend_status_callback)(uint8_t status,
+                                               void* user_ctx);
 
 //========================================================
 //      CAN Function Prototypes
@@ -129,7 +129,7 @@ typedef odrive_result_t (*odrive_can_transmit_fn_t)(odrive_ctx_t ctx, const odri
  * 
  * @return Human-readable transport name (e.g., "CAN 500kbps", "USB CDC")
  */
-typedef const char* (*odrive_com_get_name_fn_t)(void* hw_ctx);
+typedef const char* (*odrive_backend_get_name_fn_t)(void* hw_ctx);
 
 typedef odrive_result_t (*odrive_pfn_event_handler) ();
 
@@ -156,7 +156,7 @@ typedef struct {
 
 typedef union {
    odrive_can_ops_t can_ops;
-} odrive_com_ops;
+} odrive_backend_ops;
 
 //========================================================
 //      Communication Context
@@ -166,27 +166,26 @@ typedef union {
  * @brief Communication abstraction layer context
  * 
  * Encapsulates transport operations and hardware state.
- * Opaque to user; allocated by backend factory.
  */
 typedef struct {
    /**< Transport type */
    odrive_transport_t transport; 
 
    /**< Operations vtable */
-   odrive_com_ops ops;              
+   odrive_backend_ops ops;              
 
    /**
     * @brief Get transport name (for logging/debugging)
     * @return Human-readable transport name (e.g., "CAN 500kbps")
     */
-   odrive_com_get_name_fn_t get_name;
+   odrive_backend_get_name_fn_t get_name;
 
    /**< Hardware-specific context */
    odrive_ctx_t hw_ctx;                  
 
-} odrive_com_t;
+} odrive_backend_t;
 
-typedef odrive_com_t* odrive_com;
+typedef odrive_backend_t* odrive_backend;
 
 //========================================================
 //      Public HAL Interface
@@ -199,7 +198,7 @@ typedef odrive_com_t* odrive_com;
  * 
  * @return odrive_com_t
  */
-odrive_transport_t odrive_com_get_type(const odrive_com com);
+odrive_transport_t odrive_backend_get_type(const odrive_backend com);
 
 /**
  * @brief Get backend name
@@ -208,10 +207,10 @@ odrive_transport_t odrive_com_get_type(const odrive_com com);
  * 
  * @return Backend name (const char*)
  */
-const char* odrive_get_backend_name(const odrive_com com);
+const char* odrive_backend_get_name(const odrive_backend com);
 
 //========================================================
 //      End of File
 //========================================================
 
-#endif /* !ODRIVE_COM_HAL_H */
+#endif // !ODRIVE_BACKEND_H

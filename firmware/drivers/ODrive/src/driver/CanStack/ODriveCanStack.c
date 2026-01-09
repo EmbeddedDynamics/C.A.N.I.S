@@ -52,23 +52,23 @@ odrive_result_t odrive_canstack_transmit(odrive_ctx_t ctx,
 //      Driver Creation
 //========================================================
 
-odrive_result_t odrive_create_canstack_driver(const odrive_canstack_config_t *cfg,
-                                              odrive_com* com)
+odrive_result_t odrive_create_canstack_backend(const odrive_canstack_config_t *cfg,
+                                               odrive_backend* backend)
 {
-    if (!cfg || !com)
+    if (!cfg || !backend)
         return ODRIVE_ERROR_NULL_POINTER;
 
     if (!cfg->driver)
         return ODRIVE_ERROR_INVALID_PARAM;
 
-    odrive_com newCom = (odrive_com) malloc(sizeof(odrive_com_t));
-    if (!newCom)
+    odrive_backend newBackend = (odrive_backend) malloc(sizeof(odrive_backend_t));
+    if (!newBackend)
         return ODRIVE_ERROR_NO_MEMORY;
 
-    newCom->transport = ODRIVE_TRANSPORT_CAN;
-    newCom->ops.can_ops.transmit = odrive_canstack_transmit;
+    newBackend->transport = ODRIVE_TRANSPORT_CAN;
+    newBackend->ops.can_ops.transmit = odrive_canstack_transmit;
 
-    newCom->hw_ctx = (odrive_ctx_t) cfg->driver;
+    newBackend->hw_ctx = (odrive_ctx_t) cfg->driver;
 
     return ODRIVE_RESULT_OK;
 }
