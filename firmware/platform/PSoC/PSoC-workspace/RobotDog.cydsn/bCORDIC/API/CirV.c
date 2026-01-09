@@ -69,7 +69,6 @@ uint8_t `$INSTANCE_NAME`_start(void) `=ReentrantKeil($INSTANCE_NAME . "_start")`
     `$INSTANCE_NAME`_CONTROL_REG |= `$INSTANCE_NAME`_RST;
     while((timeout--) && (timeout != 0u) && !(`$INSTANCE_NAME`_CONTROL_REG & `$INSTANCE_NAME`_RST))
     {
-        volatile uint8_t val = `$INSTANCE_NAME`_STATUS_REG;
         CyDelayUs(1);
     }
     if (timeout == 0u) return CYRET_TIMEOUT;
