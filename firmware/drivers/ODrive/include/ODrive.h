@@ -33,11 +33,8 @@
 #include "ODriveResult.h"
 #include "ODriveCore.h"
 #include "ODriveAxis.h"
-#include "driver/ODriveComHAL.h"
 
-#if defined(ODRIVE_USE_CANSTACK)
-    #include "CanStack.h"
-#endif
+#include "driver/ODriveBackend.h"
 
 //========================================================
 //      Configuration Constants
@@ -51,7 +48,7 @@
 /**
  * @brief Default heartbeat timeout (milliseconds)
  */
-#define ODRIVE_HEARTBEAT_TIMEOUT_MS_DEFAULT 100u
+#define ODRIVE_HEARTBEAT_DEFAULT_TIMEOUT_MS 100u
 
 //========================================================
 //      ODrive State Enums
@@ -80,9 +77,8 @@ typedef enum {
  */
 typedef struct {
     
-    odrive_com com;
+    odrive_backend backend;
    
-    
     /**< Monitor axis heartbeat messages */
     bool enable_heartbeat_monitor;  
     
@@ -104,12 +100,6 @@ typedef struct {
  *          - ODRIVE_RESULT_OK - Driver created successfully
  *          - ODRIVE_ERROR_NULL_POINTER - config or driver parameter is NULL
  *          - ODRIVE_ERROR_OUT_OF_MEMORY - Memory allocation failed
- *          - ODRIVE_ERROR_CAN_INIT_FAILED - CAN peripheral initialization failed
- * 
- * @details
- * Initializes the ODrive driver and underlying CAN communication interface.
- * The driver is not automatically started; call odrive_start_driver() to
- * enable CAN communication.
  * 
  * @example
  *   odrive_driver_config_t cfg = {
@@ -133,15 +123,10 @@ odrive_result_t odrive_create_driver(const odrive_driver_config_t* config,
  *          - ODRIVE_RESULT_OK - Driver destroyed successfully
  *          - ODRIVE_ERROR_NULL_POINTER - driver is NULL
  * 
- * @details
- * Shuts down CAN communication, cleans up resources, and deallocates
- * the driver instance. All associated axis instances should be destroyed
- * before calling this function.
- * 
  * @warning After calling this function, the driver handle is invalid
  *          and must not be used.
  */
-odrive_result_t odrive_destroy_driver(odrive_driver driver);
+void odrive_destroy_driver(odrive_driver driver);
 
 //========================================================
 //      Driver Communication Control
@@ -158,13 +143,6 @@ odrive_result_t odrive_destroy_driver(odrive_driver driver);
  *          - ODRIVE_ERROR_NOT_INITIALIZED - Driver not initialized
  *          - ODRIVE_ERROR_OPERATION_FAILED - Failed to start CAN peripheral
  * 
- * @details
- * Enables the communication peripheral and begins processing ODrive messages.
- * Must be called after odrive_create_driver() and before any axis
- * commands can be sent.
- * 
- * @note If heartbeat monitoring is enabled, this function initializes the
- * monitoring system and resets all heartbeat timeouts.
  */
 odrive_result_t odrive_start_driver(odrive_driver driver);
 
@@ -178,11 +156,16 @@ odrive_result_t odrive_start_driver(odrive_driver driver);
  *          - ODRIVE_ERROR_NULL_POINTER - driver is NULL
  *          - ODRIVE_ERROR_NOT_INITIALIZED - Driver not initialized
  * 
- * @details
- * Disables the communication peripheral and halts message processing.
- * Pending messages are discarded. Call odrive_start_driver() to resume.
  */
 odrive_result_t odrive_stop_driver(odrive_driver driver);
+
+//========================================================
+//      Driver Methods
+//========================================================
+
+/**
+ * @brief Activate 
+ */
 
 /**
  * @brief Reboot all ODrive controllers on the CAN bus

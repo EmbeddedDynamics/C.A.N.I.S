@@ -26,7 +26,6 @@
 //      Standard Includes
 //========================================================
 
-
 #include <stdint.h>
 
 //========================================================
@@ -125,7 +124,7 @@ typedef enum {
     //      Parameter/Validation Errors (0x4000-0x4FFF)
     //========================================================
 
-
+    
     /**< Invalid parameter value provided */
     ODRIVE_ERROR_INVALID_PARAM = 0x4000,
 

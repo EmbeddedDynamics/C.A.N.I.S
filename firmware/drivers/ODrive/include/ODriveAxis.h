@@ -1,5 +1,5 @@
 /***************************************************************************//**
-* \file odrive_axis.h
+* \file ODriveAxis.h
 * \version 1.0.0
 *
 * \brief
@@ -42,17 +42,17 @@ typedef struct  {
     /**
      * @brief Axis error of the ODrive controller
      */
-    odrive_axis_error_t         axis_error;
+    odrive_axis_error axis_error;
 
     /**
      * @brief Axis state of the ODrive controller
      */
-    odrive_axis_state_t         axis_state;
+    odrive_axis_state axis_state;
 
     /**
      * @brief Latest error of a procedure
      */
-    odrive_procedure_result_t   procedure_result;
+    odrive_procedure_result procedure_result;
 
     /**
      * @brief Trajectory planner done bit

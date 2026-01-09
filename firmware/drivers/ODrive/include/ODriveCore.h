@@ -28,19 +28,114 @@
 #include "ODriveResult.h"
 
 //========================================================
+//      Library Information
+//========================================================
+
+#define ODRIVE_MAJOR 1u
+#define ODRIVE_MINOR 0u
+#define ODRIVE_PATCH 1u
+
+//========================================================
+//      Version Packing Helpers
+//========================================================
+
+/**
+ * @brief Pack a semantic version (major.minor.patch) into a single comparable integer.
+ *
+ * Uses 8 bits per component (0..255). Adjust shifts if you need larger ranges.
+ */
+#define ODRIVE_VERSION_ENCODE(major, minor, patch) \
+    ((((major) & 0xFFu) << 16) | (((minor) & 0xFFu) << 8) | ((patch) & 0xFFu))
+
+/** @brief Current library version as a single integer. */
+#define ODRIVEK_VERSION \
+    ODRIVE_VERSION_ENCODE(ODRIVE_MAJOR, ODRIVE_MINOR, ODRIVE_PATCH)
+
+/**
+ * @brief True if ODrive version is at least (major.minor.patch).
+ *
+ * Usage:
+ *   #if ODRIVE_VERSION_AT_LEAST(1,0,0)
+ *     ...
+ *   #endif
+ */
+#define ODRIVE_VERSION_AT_LEAST(major, minor, patch) (ODRIVE_VERSION >= ODRIVE_VERSION_ENCODE((major), (minor), (patch)))
+
+/**
+ * @brief True if ODrive version is exactly (major.minor.patch).
+ */
+#define ODRIVE_VERSION_IS(major, minor, patch) \
+(ODRIVE_VERSION == ODRIVE_VERSION_ENCODE((major), (minor), (patch)))
+
+//========================================================
+//      ODrive Firmware Version Encoding
+//========================================================
+
+#define ODRIVE_FW_VERSION(major, minor, patch) \
+    ((((major) & 0xFFu) << 16) | (((minor) & 0xFFu) << 8) | ((patch) & 0xFFu))
+
+#define ODRIVE_FW_VERSION_MAJOR(version) (((version) >> 16) & 0xFFu)
+#define ODRIVE_FW_VERSION_MINOR(version) (((version) >> 8)  & 0xFFu)
+#define ODRIVE_FW_VERSION_PATCH(version) ((version) & 0xFFu)
+
+//========================================================
+//      Known ODrive Firmware Versions
+//========================================================
+
+#define ODRIVE_FW_V0_5_4   ODRIVE_FW_VERSION(0, 5, 4)
+#define ODRIVE_FW_V0_5_5   ODRIVE_FW_VERSION(0, 5, 5)
+#define ODRIVE_FW_V0_5_6   ODRIVE_FW_VERSION(0, 5, 6)
+
+#define ODRIVE_FW_V0_6_0   ODRIVE_FW_VERSION(0, 6, 0)
+#define ODRIVE_FW_V0_6_1   ODRIVE_FW_VERSION(0, 6, 1)
+#define ODRIVE_FW_V0_6_2   ODRIVE_FW_VERSION(0, 6, 2)
+#define ODRIVE_FW_V0_6_3   ODRIVE_FW_VERSION(0, 6, 3)
+#define ODRIVE_FW_V0_6_4   ODRIVE_FW_VERSION(0, 6, 4)
+#define ODRIVE_FW_V0_6_5   ODRIVE_FW_VERSION(0, 6, 5)
+#define ODRIVE_FW_V0_6_6   ODRIVE_FW_VERSION(0, 6, 6)
+#define ODRIVE_FW_V0_6_7   ODRIVE_FW_VERSION(0, 6, 7)
+#define ODRIVE_FW_V0_6_8   ODRIVE_FW_VERSION(0, 6, 8)
+#define ODRIVE_FW_V0_6_9   ODRIVE_FW_VERSION(0, 6, 9)
+#define ODRIVE_FW_V0_6_10  ODRIVE_FW_VERSION(0, 6, 10)
+#define ODRIVE_FW_V0_6_11  ODRIVE_FW_VERSION(0, 6, 11)
+
+//========================================================
+//      Firmware Version Comparison Helpers
+//========================================================
+
+/* Exact match */
+#define ODRIVE_FW_VERSION_IS(version) \
+    ((ODRIVE_FW_TARGET) == (version))
+
+/* >= comparison */
+#define ODRIVE_FW_VERSION_AT_LEAST(version) \
+    ((ODRIVE_FW_TARGET) >= (version))
+
+/* < comparison */
+#define ODRIVE_FW_VERSION_IS_LOWER(version) ((ODRIVE_FW_TARGET) <= (version))
+
+//========================================================
+//      Target Firmware Selection
+//========================================================
+
+#ifndef ODRIVE_FW_TARGET
+#define ODRIVE_FW_TARGET ODRIVE_FW_V0_5_6
+#endif
+
+//========================================================
 //      Core Macro's
 //========================================================
 
 /*!
  * @brief Bit position to bit mask conversion macro
  *
- * Converts a bit position (0-31) to a bitmask value.
- * Useful for setting individual bits in registers or flags.
- *
  * @param[in] n Bit position (0-31)
+ * 
  * @return Bitmask with bit n set (value: 2^n)
  */
 #define ODRIVE_BIT(n) (1 << n)
+
+#define ODRIVE_BIT64(n) (UINT64_C(1) << (n))
 
 /*!
  * @brief Define an opaque handle type
@@ -53,8 +148,15 @@
  */ 
 #define ODRIVE_DEFINE_HANDLE(name) typedef struct name##_T* name
 
-#define ODRIVE_STATIC_ASSERT(cond, msg) \
-    _Static_assert(cond, msg)
+
+#if defined(ODRIVE_ASSERT)
+    #define ODRIVE_STATIC_ASSERT(cond, msg) \
+        _Static_assert(cond, msg)
+
+#else
+    #define ODRIVE_STATIC_ASSERT(cond, msg)
+
+#endif
 
 //========================================================
 //      Core Type Definitions
@@ -70,7 +172,7 @@ typedef void*       odrive_ctx_t;
 typedef uint32_t    odrive_flags;
 
 //========================================================
-//      ODrive Error Enums
+//      Axis Error Flags
 //========================================================
 
 /**
@@ -82,352 +184,254 @@ typedef uint32_t    odrive_flags;
  *
  * In firmware v0.5.x/v0.6.x, these errors appear in both axis.error (latched)
  * and axis.active_errors (current state). Clear with odrv.clear_errors().
- *
- * @see ODrive v0.5.x documentation
  */
-typedef enum {
+typedef enum odrive_axis_error_T {
+
+#if ODRIVE_FW_VERSION_IS_LOWER(ODRIVE_FW_V0_6_0)
     /**
-     * @brief No axis error.
-     *
-     * Axis is operating normally without any error conditions.
+     * No reported axis error
      */
-    AXIS_ERROR_NONE                         = 0x00000000,
+    AXIS_ERROR_UNKNOWN = 0x0000,
 
     /**
-     * @brief Axis state machine in invalid state.
+     * Axis state machine in invalid state.
      *
      * Attempted to enter a state that is not allowed given current
-     * configuration or calibration status. For example, entering
-     * CLOSED_LOOP_CONTROL without completing motor calibration.
+     * configuration or calibration status.
      */
-    AXIS_ERROR_INVALID_STATE                = 0x00000001,
+    AXIS_ERROR_INVALID_STATE = ODRIVE_BIT(0u),
+
+#if ODRIVE_FW_VERSION_AT_LEAST(ODRIVE_FW_V0_5_5)
 
     /**
-     * @brief DC bus voltage fell below minimum threshold.
-     *
-     * Vbus dropped below config.dc_bus_undervoltage_trip_level during
-     * operation. Check power supply capacity, wiring resistance, and
-     * current draw. May occur during aggressive deceleration or high
-     * torque demand with insufficient PSU.
+     * Axis motor error occured
      */
-    AXIS_ERROR_DC_BUS_UNDER_VOLTAGE         = 0x00000002,
+    AXIS_ERROR_MOTOR_FAILED = ODRIVE_BIT(6u),
 
     /**
-     * @brief DC bus voltage exceeded maximum threshold.
-     *
-     * Vbus rose above config.dc_bus_overvoltage_trip_level. Usually
-     * caused by regenerative braking without functional brake resistor
-     * or insufficient brake resistor capacity. Verify brake_resistance
-     * configuration and brake resistor wiring.
+     * Sensorless estimator failed
      */
-    AXIS_ERROR_DC_BUS_OVER_VOLTAGE          = 0x00000004,
+    AXIS_ERROR_SENSORLESS_ESTIMATOR_FAILED = ODRIVE_BIT(7u),
 
     /**
-     * @brief Current measurement ADC timeout.
-     *
-     * Current sense ADC failed to provide measurements within expected
-     * timing window. Indicates hardware fault or severe computational
-     * overload. Should not occur in normal operation.
+     * Encoder failed
+     * 
      */
-    AXIS_ERROR_CURRENT_MEASUREMENT_TIMEOUT  = 0x00000008,
+    AXIS_ERROR_ENCODER_FAILED = ODRIVE_BIT(8u),
+
+#endif    
 
     /**
-     * @brief Brake resistor disarmed.
-     *
-     * The brake resistor safety interlock was triggered, typically due
-     * to overtemperature or related system fault. Axis cannot operate
-     * until brake resistor is re-armed after clearing root cause.
+     * The axis watchdog expired 
      */
-    AXIS_ERROR_BRAKE_RESISTOR_DISARMED      = 0x00000010,
+    AXIS_ERROR_WATCHDOG_TIMER_EXPIRED = ODRIVE_BIT(11u),
 
     /**
-     * @brief Motor disarmed unexpectedly.
-     *
-     * Motor control was disabled outside of normal user command,
-     * typically as a protective response to a detected fault condition.
+     * The min endstop is pressed 
      */
-    AXIS_ERROR_MOTOR_DISARMED               = 0x00000020,
+    AXIS_ERROR_MIN_ENDSTOP_PRESSED = ODRIVE_BIT(12u),
 
     /**
-     * @brief Motor subsystem fault.
-     *
-     * The motor control subsystem encountered an error. Check
-     * axis.motor.error for specific motor error flags. Common causes
-     * include current sense saturation, DRV fault, or control timing
-     * violations.
+     * The max endstop is pressed 
      */
-    AXIS_ERROR_MOTOR_FAILED                 = 0x00000040,
+    AXIS_ERROR_MAX_ENDSTOP_PRESSED = ODRIVE_BIT(13u),
 
     /**
-     * @brief Sensorless estimator fault (sensorless mode only).
-     *
-     * The sensorless position/velocity estimator failed or became
-     * unstable. Check axis.sensorless_estimator.error for details.
-     * Occurs when operating in AXIS_STATE_SENSORLESS_CONTROL without
-     * encoder feedback. May indicate incorrect motor parameters, too
-     * low velocity, or excessive load.
+     * The estop message was sent over CAN 
      */
-    AXIS_ERROR_SENSORLESS_ESTIMATOR_FAILED  = 0x00000080,
+    AXIS_ERROR_ESTOP_REQUESTED = ODRIVE_BIT(14u),
 
     /**
-     * @brief Encoder subsystem fault.
-     *
-     * The encoder failed to provide valid feedback. Check
-     * axis.encoder.error for specific encoder error flags. Common
-     * causes include disconnected encoder, SPI communication failure,
-     * or illegal hall state. This error prevents closed-loop operation.
+     * The axis is homing without a endstop 
      */
-    AXIS_ERROR_ENCODER_FAILED               = 0x00000100,
+    AXIS_ERROR_HOMING_WITHOUT_ENDSTOP = ODRIVE_BIT(17u),
 
     /**
-     * @brief Controller subsystem fault.
-     *
-     * The motion controller encountered an error. Check
-     * axis.controller.error for specific controller error flags.
-     * Common causes include overspeed, invalid setpoints, or unstable
-     * control gains.
+     * The axis motor overheated 
      */
-    AXIS_ERROR_CONTROLLER_FAILED            = 0x00000200,
+    AXIS_ERROR_OVER_TEMP = ODRIVE_BIT(18u),
 
     /**
-     * @brief Position control attempted during sensorless operation.
-     *
-     * Cannot perform position control in sensorless mode as there is
-     * no absolute position reference. Only velocity and torque control
-     * are supported in AXIS_STATE_SENSORLESS_CONTROL.
+     * There isn’t a valid position estimate available. 
      */
-    AXIS_ERROR_POS_CTRL_DURING_SENSORLESS   = 0x00000400,
+    AXIS_ERROR_UNKNOWN_POSITION = ODRIVE_BIT(19u),
 
-    /**
-     * @brief Axis watchdog timer expired.
-     *
-     * Watchdog was not fed within axis.config.watchdog_timeout period.
-     * Enable watchdog with axis.config.enable_watchdog and feed with
-     * axis.watchdog_feed(). Used for detecting communication loss or
-     * host failure. Axis disarms to prevent runaway.
-     */
-    AXIS_ERROR_WATCHDOG_TIMER_EXPIRED       = 0x00000800,
-
-    /**
-     * @brief Minimum endstop triggered.
-     *
-     * The minimum (lower limit) endstop switch was activated. Requires
-     * axis.min_endstop.config.enabled = true. Motor is stopped to
-     * prevent mechanical damage. Can be used for homing or as safety
-     * limit.
-     */
-    AXIS_ERROR_MIN_ENDSTOP_PRESSED          = 0x00001000,
-
-    /**
-     * @brief Maximum endstop triggered.
-     *
-     * The maximum (upper limit) endstop switch was activated. Requires
-     * axis.max_endstop.config.enabled = true. Motor is stopped to
-     * prevent mechanical damage. Can be used for homing or as safety
-     * limit.
-     */
-    AXIS_ERROR_MAX_ENDSTOP_PRESSED          = 0x00002000,
-
-    /**
-     * @brief Emergency stop requested.
-     *
-     * E-stop was triggered by external source such as CAN command,
-     * dedicated E-stop input, or endstop configured as E-stop. All
-     * motion halts immediately. Requires manual error clearing and
-     * verification before resuming operation.
-     */
-    AXIS_ERROR_ESTOP_REQUESTED              = 0x00004000,
-
-    /**
-     * @brief Homing attempted without configured endstop (v0.5.2+).
-     *
-     * AXIS_STATE_HOMING was requested but no endstops are enabled.
-     * Enable axis.min_endstop or axis.max_endstop before attempting
-     * homing procedure.
-     */
-    AXIS_ERROR_HOMING_WITHOUT_ENDSTOP       = 0x00008000,
-
-    /**
-     * @brief Over-temperature fault (v0.5.2+).
-     *
-     * Motor or inverter temperature exceeded configured limits. Check
-     * axis.motor_thermistor.temperature and axis.fet_thermistor.temperature.
-     * Allow cooling before clearing error and resuming operation.
-     */
-    AXIS_ERROR_OVER_TEMP                    = 0x00010000
+#endif
 
 } odrive_axis_error_t;
+
+//========================================================
+//      Motor Error Flags
+//========================================================
 
 /**
  * @brief ODrive motor error flags
  *
  * Bitfield of motor-specific errors (axis.motor.error). Multiple bits can
- * be set at once. These indicate faults in motor control, current sensing,
- * gate driver, or motor parameter issues.
+ * be set at once. 
  *
  * Motor errors typically trigger AXIS_ERROR_MOTOR_FAILED at the axis level.
- *
- * @see ODrive v0.5.x motor documentation
  */
-typedef enum {
+typedef enum odrive_motor_error_T {
     /**
      * @brief No motor error.
      *
      * Motor subsystem operating normally.
      */
-    MOTOR_ERROR_NONE                            = 0x00000000,
+    MOTOR_ERROR_NONE = 0x0000000000000000,
+
 
     /**
-     * @brief Phase resistance measurement out of acceptable range.
-     *
-     * During MOTOR_CALIBRATION, measured phase resistance was outside
-     * expected bounds (typically 0.001Ω to 10Ω). May indicate:
-     *  - Disconnected motor phases
-     *  - Short circuit between phases
-     *  - Incorrect motor connection
-     *  - Very high or very low resistance motor
+     * @brief The measured motor phase resistance is outside of the plausible range.
      */
-    MOTOR_ERROR_PHASE_RESISTANCE_OUT_OF_RANGE   = 0x00000001,
+    MOTOR_ERROR_PHASE_RESISTANCE_OUT_OF_RANGE = ODRIVE_BIT64(0u),
 
     /**
-     * @brief Phase inductance measurement out of acceptable range.
-     *
-     * During MOTOR_CALIBRATION, measured phase inductance was outside
-     * expected bounds (typically 1µH to 10mH). Similar causes to
-     * phase resistance error. Very small or very large inductance
-     * motors may require firmware tuning.
+     * @brief The measured motor phase inductance is outside of the plausible range
      */
-    MOTOR_ERROR_PHASE_INDUCTANCE_OUT_OF_RANGE   = 0x00000002,
+    MOTOR_ERROR_PHASE_INDUCTANCE_OUT_OF_RANGE = ODRIVE_BIT(1u),
 
     /**
-     * @brief ADC (current sensor) failure.
-     *
-     * Current measurement analog-to-digital converter malfunction.
-     * Hardware fault or severe noise corruption. Cannot operate
-     * safely without valid current feedback.
+     * @brief The gate driver chip reported an error
      */
-    MOTOR_ERROR_ADC_FAILED                      = 0x00000004,
+    MOTOR_ERROR_DRV_FAULT = ODRIVE_BIT(3u),
 
     /**
-     * @brief DRV8301/DRV8305 gate driver fault.
-     *
-     * Gate driver chip reported a fault condition via nFAULT pin.
-     * Common causes:
-     *  - Overcurrent (phase short to ground/Vbus)
-     *  - Overtemperature
-     *  - Undervoltage
-     *  - Gate drive fault
-     * Check odrv.get_drv_fault() for DRV-specific fault code. May
-     * indicate hardware damage if persistent.
+     * @brief The closed-loop system missed its deadline
      */
-    MOTOR_ERROR_DRV_FAULT                       = 0x00000008,
+    MOTOR_ERROR_CONTROL_DEADLINE_MISSED = ODRIVE_BIT(4u),
 
     /**
-     * @brief Control deadline missed (timing violation).
-     *
-     * Motor control loop failed to complete within hard real-time
-     * deadline (typically 125µs at 8kHz). Indicates computational
-     * overload or firmware bug. System cannot guarantee stable
-     * current control. Should not occur in normal operation.
+     * @brief The bus voltage was insufficent to push the requested current through the motor
      */
-    MOTOR_ERROR_CONTROL_DEADLINE_MISSED         = 0x00000010,
+    MOTOR_ERROR_MODULATION_MAGNITUDE= ODRIVE_BIT(7u),
+    
+    /**
+     * @brief The current sense circuit saturated the current sense amplifier
+     */
+    MOTOR_ERROR_CURRENT_SENSE_SATURATION = ODRIVE_BIT(10u),
 
     /**
-     * @brief Motor type not implemented or unsupported.
-     *
-     * The configured motor.config.motor_type is not supported by
-     * this firmware version or hardware revision. Verify motor_type
-     * setting (0=high current, 2=ACIM for v0.5.x).
+     * @brief The motor current exceeded motor.config.current_lim + motor.config.current_lim_margin
      */
-    MOTOR_ERROR_NOT_IMPLEMENTED_MOTOR_TYPE      = 0x00000020,
+    MOTOR_ERROR_CURRENT_LIMIT_VIOLATION = ODRIVE_BIT(12u),
 
     /**
-     * @brief Brake current out of valid range.
-     *
-     * Calculated or measured brake resistor current exceeded safe
-     * limits. May indicate:
-     *  - Incorrect config.brake_resistance value
-     *  - Brake resistor wiring issue
-     *  - Excessive regenerative power
+     * @brief The motor modulation is invalid
      */
-    MOTOR_ERROR_BRAKE_CURRENT_OUT_OF_RANGE      = 0x00000040,
+    MOTOR_ERROR_MODULATION_IS_NAN = ODRIVE_BIT(16u),
 
     /**
-     * @brief PWM modulation magnitude exceeded safe limit.
-     *
-     * Requested motor voltage modulation exceeded 100% or other
-     * safety bound. Usually indicates:
-     *  - Bus voltage too low for requested torque/speed
-     *  - Control loop instability
-     *  - Incorrect motor parameters (R, L)
+     * @brief The motor thermistor measured a temperature above motor.motor_thermistor.config.temp_limit_upper
      */
-    MOTOR_ERROR_MODULATION_MAGNITUDE            = 0x00000080,
+    MOTOR_ERROR_THERMISTOR_OVER_TEMP = ODRIVE_BIT(17u),
 
     /**
-     * @brief Brake resistor deadtime violation.
-     *
-     * Internal timing violation in brake resistor PWM control.
-     * Should not occur; indicates firmware issue or extreme
-     * operating conditions.
+     * @brief The inverter thermistor measured a temperature above motor.fet_thermistor.config.temp_limit_upper
      */
-    MOTOR_ERROR_BRAKE_DEADTIME_VIOLATION        = 0x00000100,
+    MOTOR_ERROR_FET_THERMISTOR_OVER_TEMP = ODRIVE_BIT(18u),
 
     /**
-     * @brief Unexpected timer callback execution.
-     *
-     * Motor control timer interrupt occurred at unexpected time.
-     * Indicates firmware bug or severe system timing issue. Should
-     * not happen in production code.
+     * @brief A timer update event was missed
      */
-    MOTOR_ERROR_UNEXPECTED_TIMER_CALLBACK       = 0x00000200,
+    MOTOR_ERROR_TIMER_UPDATE_MISSED = ODRIVE_BIT(19u),
 
     /**
-     * @brief Current sense ADC saturation.
-     *
-     * Current measurement ADC reading hit maximum (saturated), meaning
-     * actual current exceeded measurable range. Causes:
-     *  - motor.config.current_lim too high for hardware
-     *  - motor.config.requested_current_range too low
-     *  - Phase short circuit
-     * Saturated measurements prevent accurate current control.
+     * @brief The phase current measurement is not available
      */
-    MOTOR_ERROR_CURRENT_SENSE_SATURATION        = 0x00000400,
+    MOTOR_ERROR_CURRENT_MEASUREMENT_UNAVAILABLE = ODRIVE_BIT(20u),
 
     /**
-     * @brief Inverter over-temperature (v0.5.2+).
-     *
-     * Power stage (FET) temperature exceeded
-     * motor.config.inverter_temp_limit_upper. Check cooling, reduce
-     * current limit, or reduce duty cycle. Persistent overheating
-     * may damage hardware.
+     * @brief The motor was disarmed because the underlying controller failed
      */
-    MOTOR_ERROR_INVERTER_OVER_TEMP              = 0x00000800,
+    MOTOR_ERROR_CONTROLLER_FAILED = ODRIVE_BIT(21u),
 
     /**
-     * @brief Current controller unstable (v0.5.2+).
-     *
-     * Current control loop exhibiting instability (oscillation or
-     * divergence). Possible causes:
-     *  - Incorrect motor.config.phase_resistance/inductance
-     *  - motor.config.current_control_bandwidth too high
-     *  - Hardware noise or malfunction
+     * @brief The DC current sourced/sunk by this motor exceeded the configured hard limits
      */
-    MOTOR_ERROR_CURRENT_UNSTABLE                = 0x00001000
+    MOTOR_ERROR_I_BUS_OUT_OF_RANGE = ODRIVE_BIT(22u),
+
+    /**
+     * @brief An attempt was made to run the motor PWM while the brake resistor was configured as 
+     * enabled (config.enable_brake_resistor) but disarmed
+     */
+    MOTOR_ERROR_BRAKE_RESISTOR_DISARMED = ODRIVE_BIT(23u),
+
+    /**
+     * @brief The motor had to be disarmed because of a system level error
+     */
+    MOTOR_ERROR_SYSTEM_LEVEL = ODRIVE_BIT(24u),
+
+    /**
+     * @brief The main control loop got out of sync with the motor control loop
+     */
+    MOTOR_ERROR_BAD_TIMING = ODRIVE_BIT(25u),
+
+    /**
+     * @brief The current controller did not get a valid angle input
+     */
+    MOTOR_ERROR_UNKNOWN_PHASE_ESTIMATE = ODRIVE_BIT(26u),
+
+    /**
+     * @brief The motor controller did not get a valid phase velocity input
+     */
+    MOTOR_ERROR_UNKNOWN_PHASE_VEL = ODRIVE_BIT(27u),
+
+    /**
+     * @brief The motor controller did not get a valid torque input
+     */
+    MOTOR_ERROR_UNKNOWN_TORQUE = ODRIVE_BIT(28u),
+
+    /**
+     * @brief The current controller did not get a valid current setpoint
+     */
+    MOTOR_ERROR_UNKNOWN_CURRENT_COMMAND = ODRIVE_BIT(29u),
+
+    /**
+     * @brief The current controller did not get a valid current measurement
+     */
+    MOTOR_ERROR_UNKNOWN_CURRENT_MEASUREMENT = ODRIVE_BIT64(30u),
+
+    /**
+     * @brief The current controller did not get a valid ODrive:vbus_voltage measurement
+     */
+    MOTOR_ERROR_UNKNOWN_VBUS_VOLTAGE = ODRIVE_BIT64(31u),
+
+    /**
+     * @brief The current controller did not get a valid feedforward voltage setpoint.
+     */
+    MOTOR_ERROR_UNKNOWN_VOLTAGE_COMMAND = ODRIVE_BIT64(32u),
+
+    /**
+     * @brief The current controller gains were not configured.
+     */
+    MOTOR_ERROR_UNKNOWN_GAINS = ODRIVE_BIT64(33u),
+
+    /**
+     * @brief Internal value used while the controller is not yet ready to generate PWM timings
+     */
+    MOTOR_ERROR_CONTROLLER_INITIALIZING = ODRIVE_BIT64(34u),
+
+    /**
+     * @brief The motor phases are not balanced
+     */
+    MOTOR_ERROR_UNBALANCED_PHASES = ODRIVE_BIT64(35u),
 
 } odrive_motor_error_t;
+
+//========================================================
+//      Encoder Error Flags
+//========================================================
 
 /**
  * @brief ODrive encoder error flags
  *
  * Bitfield of encoder-specific errors (axis.encoder.error). Multiple bits
- * can be set at once. These indicate faults in encoder hardware, wiring,
- * configuration, or communication.
+ * can be set at once.
  *
  * Encoder errors typically trigger AXIS_ERROR_ENCODER_FAILED at axis level.
- *
- * @see ODrive v0.5.x encoder documentation
  */
-typedef enum {
+typedef enum odrive_encoder_error_T {
     /**
      * @brief No encoder error.
      *
@@ -439,11 +443,7 @@ typedef enum {
      * @brief Encoder gain/signal unstable.
      *
      * Encoder readings fluctuating excessively or failing consistency
-     * checks during calibration. Causes:
-     *  - Mechanical vibration
-     *  - Electrical noise
-     *  - Loose mounting
-     *  - Weak magnetic field (magnetic encoders)
+     * checks during calibration.
      */
     ENCODER_ERROR_UNSTABLE_GAIN             = 0x0001,
 
@@ -451,9 +451,7 @@ typedef enum {
      * @brief CPR and pole pairs mismatch.
      *
      * The configured encoder.config.cpr and motor.config.pole_pairs
-     * values are incompatible. For hall sensors, CPR must equal
-     * pole_pairs * 6. For other encoders, the CPR/pole_pairs ratio
-     * must produce integer electrical cycles per mechanical revolution.
+     * values are incompatible.
      */
     ENCODER_ERROR_CPR_POLEPAIRS_MISMATCH    = 0x0002,
 
@@ -461,12 +459,6 @@ typedef enum {
      * @brief Encoder not responding or no signal detected.
      *
      * No valid encoder signal received during calibration or operation.
-     * Common causes:
-     *  - Encoder disconnected or unpowered
-     *  - Wrong encoder.config.mode selected
-     *  - Incorrect GPIO pin configuration
-     *  - Encoder hardware failure
-     * For SPI encoders, check CS pin and SPI wiring.
      */
     ENCODER_ERROR_NO_RESPONSE               = 0x0004,
 
@@ -474,8 +466,7 @@ typedef enum {
      * @brief Encoder mode not supported or invalid.
      *
      * The configured encoder.config.mode is not supported by firmware
-     * or hardware. Verify encoder mode setting matches your encoder
-     * type (incremental, hall, SPI absolute, etc.).
+     * or hardware.
      */
     ENCODER_ERROR_UNSUPPORTED_ENCODER_MODE  = 0x0008,
 
@@ -483,13 +474,7 @@ typedef enum {
      * @brief Illegal hall sensor state detected.
      *
      * Hall sensors reported invalid state combination (000 or 111
-     * binary). Indicates:
-     *  - Disconnected hall sensor wire
-     *  - Hall sensor power issue
-     *  - Wrong hall sensor GPIO pin assignment
-     *  - Defective hall sensor
-     * Can be ignored with encoder.config.ignore_illegal_hall_state
-     * if occasional and non-critical.
+     * binary).
      */
     ENCODER_ERROR_ILLEGAL_HALL_STATE        = 0x0010,
 
@@ -552,6 +537,10 @@ typedef enum {
 
 } odrive_encoder_error_t;
 
+//========================================================
+//      Controller Error Flags
+//========================================================
+
 /**
  * @brief ODrive controller error flags
  *
@@ -563,7 +552,7 @@ typedef enum {
  *
  * @see ODrive v0.5.x controller documentation
  */
-typedef enum {
+typedef enum odrive_controller_error_T {
     /**
      * @brief No controller error.
      *
@@ -637,6 +626,10 @@ typedef enum {
 
 } odrive_controller_error_t;
 
+//========================================================
+//      Sensorless Estimator Error Flags
+//========================================================
+
 /**
  * @brief ODrive sensorless estimator error flags
  *
@@ -650,7 +643,7 @@ typedef enum {
  * @see ODrive v0.5.x sensorless mode documentation
  *      https://docs.odriverobotics.com/v/0.6.1/fibre_types/com_odriverobotics_ODrive.html#ODrive.SensorlessEstimator
  */
-typedef enum {
+typedef enum odrive_sensorless_estimate_error_T {
     /**
      * @brief No sensorless estimator error.
      *
@@ -683,6 +676,10 @@ typedef enum {
 
 } odrive_sensorless_estimate_error_t;
 
+//========================================================
+//     ODrive Error Flags
+//========================================================
+
 /**
  * @brief ODrive top-level error flags
  *
@@ -696,7 +693,7 @@ typedef enum {
  * @see ODrive Error documentation (v0.6.x format applies to v0.5.x):
  *      https://docs.odriverobotics.com/v/latest/fibre_types/com_odriverobotics_ODrive.html#ODrive.Error
  */
-typedef enum {
+typedef enum odrive_error_T {
     /**
      * @brief No system error.
      *
@@ -996,7 +993,7 @@ typedef enum {
 } odrive_error_t;
 
 //========================================================
-//      ODrive CAN Enums
+//      ODrive CAN Commands
 //========================================================
 
 /**
@@ -1004,16 +1001,13 @@ typedef enum {
  *
  * Defines the CAN message command identifiers for the ODrive CANSimple protocol.
  * The CAN message ID is constructed as: (node_id << 5) | cmd_id
- * 
- * Messages prefixed with "Get_" can be requested by the host using RTR=1,
- * or sent periodically by the ODrive based on configured intervals.
- * Messages prefixed with "Set_" are sent by the host to configure the ODrive.
  *
  * @note All values are encoded in little endian
  * @note Floats use IEEE 754 standard format
+ * 
  * @see ODrive CAN Protocol Documentation: https://docs.odriverobotics.com/v/latest/manual/can-protocol.html
  */
-typedef enum {
+typedef enum odrive_can_command_T {
     /**< Get firmware and hardware version info (ODrive -> Host) */
     CAN_CMD_GET_VERSION                 = 0x000,
     
@@ -1980,8 +1974,7 @@ ODRIVE_DEFINE_HANDLE(odrive_can_driver);
 /**
  * @brief Encoder estimate frame (position and velocity)
  * 
- * @details
- * Contains current position and velocity estimates from the encoder
+ * @details Contains current position and velocity estimates from the encoder
  * or sensorless estimator.
  */
 typedef struct  {
