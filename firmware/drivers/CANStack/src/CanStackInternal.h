@@ -28,11 +28,13 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#include <stdatomic.h>
+
 /* Project headers */
 #include "CanStack.h"
 
 //========================================================
-//      Platform Commands
+//      CanStack Commands
 //========================================================
 
 /**
@@ -49,6 +51,10 @@ typedef enum {
     #endif
 } canstack_command_t;
 
+//========================================================
+//      Hardware Filter Command
+//========================================================
+
 #if CANSTACK_HAS_HW_FILTERS
 
     typedef struct {
@@ -59,28 +65,29 @@ typedef enum {
 #endif
 
 //========================================================
-//      Platform Abstraction Layer
+//      Platform Function Pointers
 //========================================================
 
 /**
  * @brief Platform command execution callback
  * 
  * @param[in] hw_ctx - Platform-specific hardware context
- * @param[in] cmd    - Command to execute
+ * @param[in] cmd - Command to execute
+ * @param[in] arg - Pointer to the command argument
  * 
  * @return canstack_result_t 
  *                  CAN_STACK_RESULT_OK: on success
  */
 typedef canstack_result_t (*canstack_pfn_run_command_t)(canstack_ctx_t hw_ctx,
                                                         canstack_command_t cmd,
-                                                        void* arg);
+                                                        canstack_cmd_t arg);
 
 /**
  * @brief Platform TX message function
  * 
  * @param[in] hw_ctx - Platform-specific hardware context
- * @param[in] mb_id  - Mailbox ID
- * @param[in] msg    - Message to transmit
+ * @param[in] mb_id - Mailbox ID
+ * @param[in] msg - Message to transmit
  * 
  * @return canstack_result_t 
  *                  CAN_STACK_RESULT_OK: on success
@@ -93,8 +100,8 @@ typedef canstack_result_t (*canstack_pfn_tx_message_t)(canstack_ctx_t hw_ctx,
  * @brief Platform RX message function
  * 
  * @param[in] hw_ctx - Platform-specific hardware context
- * @param[in] mb_id  - Mailbox ID
- * @param[out] msg   - Pointer to store received message
+ * @param[in] mb_id - Mailbox ID
+ * @param[out] msg - Pointer to store received message
  * 
  * @return canstack_result_t 
  *                  CAN_STACK_RESULT_OK: on success
@@ -103,27 +110,28 @@ typedef canstack_result_t (*canstack_pfn_rx_message_t)(canstack_ctx_t hw_ctx,
                                                        canstack_mb_id_t mb_id,
                                                        canstack_message_t* msg);
 
+                                                       
 #if CANSTACK_HAS_HW_FILTERS
 
 /**
  * @brief Platform RX mailbox filter configuration
  * 
  * @param[in] hw_ctx - Platform-specific hardware context
- * @param[in] mb_id  - RX mailbox ID
+ * @param[in] mb_id - RX mailbox ID
  * @param[in] filter - Filter configuration
  * 
  * @return canstack_result_t 
  *                  CAN_STACK_RESULT_OK: on success
  */
 typedef canstack_result_t (*canstack_pfn_configure_rx_filter_t)(
-    void* hw_ctx,
+    canstack_ctx_t hw_ctx,
     canstack_mb_id_t mb_id,
     const canstack_mb_filter_t* filter);
 
 #endif /* CAN_STACK_HAS_HW_FILTERS */
 
 //========================================================
-//      CanStack Callback storage
+//      CanStack Callback Structures
 //========================================================
 
 #if !defined(CANSTACK_EXCLUDE_FULL_RX_MB)
@@ -132,8 +140,11 @@ typedef canstack_result_t (*canstack_pfn_configure_rx_filter_t)(
  * @brief RX callback entry (callback + context)
  */
 typedef struct {
-    canstack_pfn_rx_callback_t callback;  /**< Callback function pointer */
-    canstack_ctx_t ctx;                   /**< User context */
+    /**< Callback function pointer */
+    canstack_pfn_rx_callback_t callback;  
+
+    /**< User context */
+    canstack_ctx_t ctx;                  
 } canstack_rx_cb_entry_t;
 
 #endif /* !CAN_STACK_EXCLUDE_FULL_RX_MB */
@@ -144,27 +155,45 @@ typedef struct {
  * @brief TX callback entry (callback + context)
  */
 typedef struct {
-    canstack_pfn_tx_callback_t callback;  /**< Callback function pointer */
-    canstack_ctx_t ctx;                   /**< User context */
+    /**< Callback function pointer */
+    canstack_pfn_tx_callback_t callback;  
+
+    /**< User context */
+    canstack_ctx_t ctx;                   
 } canstack_tx_cb_entry_t;
 
 #endif /* !CAN_STACK_EXCLUDE_FULL_TX_MB */
+
+//========================================================
+//      Rx ISR Queue
+//========================================================
+
+typedef struct {
+    volatile uint8_t head;   // written by ISR
+    volatile uint8_t tail;   // written by consumer
+    volatile uint16_t drops;  // overflow counter
+    canstack_message_t buf[CANSTACK_RX_QUEUE_SIZE];
+} can_rx_queue_t;
 
 //========================================================
 //      Platform Driver Interface
 //========================================================
 
 /**
- * @brief Platform driver vtable
+ * @brief Platform driver operation table
  * 
  * @details Contains function pointers to platform-specific implementations.
  * Each platform (PSoC5, STM32, etc.) implements this interface.
  */
 typedef struct {
-    /* Core operations */
-    canstack_pfn_run_command_t run_cmd;      /**< Command execution */
-    canstack_pfn_tx_message_t tx_message;    /**< Transmit message */
-    canstack_pfn_rx_message_t rx_message;    /**< Receive message */
+    /**< Command execution */
+    canstack_pfn_run_command_t run_cmd;     
+    
+    /**< Transmit message */
+    canstack_pfn_tx_message_t tx_message;  
+    
+    /**< Receive message */
+    canstack_pfn_rx_message_t rx_message;    
 
 } canstack_platform_ops_t;
 
@@ -172,43 +201,63 @@ typedef struct {
  * @brief Opaque platform driver context
  */
 typedef struct {
-    canstack_platform_ops_t ops;  /**< Operation vtable */
-    void* hw_ctx;                 /**< Hardware-specific context */
-} canstack_platform_driver_t;
+    /**< Operation vtable */
+    canstack_platform_ops_t ops;  
+
+    /**< Hardware-specific context */
+    canstack_ctx_t hw_ctx; 
+
+} canstack_platform_backend_t;
 
 //========================================================
-//      CanStack Driver Instance Structure
+//      CanStack Driver Structure
 //========================================================
 
 /**
- * @brief Main CAN driver instance (pointed to by canstack_driver)
+ * @brief Main CanStack driver structure
  * 
- * @details Contains driver state, callbacks, and platform abstraction layer.
+ * Contains driver state, callbacks, and platform abstraction layer.
  */
 struct canstack_driver_T {
-    /* Configuration */
-    uint32_t bitrate;           /**< CAN bitrate */
-    canstack_ctx_t user_ctx;    /**< User-provided context */
+    /**< CAN bitrate */
+    uint32_t bitrate;           
+    
+    /**< Initialization flag */
+    bool initialized;           
+
+    /**< Running state flag */
+    canstack_state_t state;     
+
+    can_rx_queue_t rx_queue;
+
+    #if !defined(CANSTACK_EXCLUDE_FULL_RX_MB)
 
     /* RX Callbacks */
-    #if !defined(CANSTACK_EXCLUDE_FULL_RX_MB)
-        canstack_rx_cb_entry_t rx_callbacks[CANSTACK_TOTAL_RX_MAILBOXES];
+    canstack_rx_cb_entry_t rx_callbacks[CANSTACK_TOTAL_RX_MAILBOXES];
+
     #endif
+
+    #if !defined(CANSTACK_EXCLUDE_FULL_TX_MB)
 
     /* TX Callbacks */
-    #if !defined(CANSTACK_EXCLUDE_FULL_TX_MB)
-        canstack_tx_cb_entry_t tx_callbacks[CANSTACK_TOTAL_TX_MAILBOXES];
+    canstack_tx_cb_entry_t tx_callbacks[CANSTACK_TOTAL_TX_MAILBOXES];
+
     #endif
 
-    /* Platform abstraction */
+    /**< Platform backend */
+    canstack_platform_backend_t* backend;  
 
-    /**< Platform driver */
-    canstack_platform_driver_t* platform;  
-
-    /* State */
-    bool initialized;           /**< Initialization flag */
-    canstack_state_t state;     /**< Running state flag */
+    /**< User-provided context */
+    canstack_ctx_t user_ctx;    
 };
+
+//========================================================
+//      CanStack Queue Methods
+//========================================================
+
+bool canstack_pop_rx(can_rx_queue_t* queue, canstack_message_t* msg);
+
+void canstack_push_rx(can_rx_queue_t* queue, const canstack_message_t* msg);
 
 //========================================================
 //      End of File
