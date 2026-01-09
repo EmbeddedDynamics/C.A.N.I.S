@@ -36,6 +36,47 @@
 #include "CanStackConfig.h"
 
 //========================================================
+//      Library Information
+//========================================================
+
+#define CANSTACK_MAJOR 1u
+#define CANSTACK_MINOR 0u
+#define CANSTACK_PATCH 1u
+
+//========================================================
+//      Version Packing Helpers
+//========================================================
+
+/**
+ * @brief Pack a semantic version (major.minor.patch) into a single comparable integer.
+ *
+ * Uses 8 bits per component (0..255). Adjust shifts if you need larger ranges.
+ */
+#define CANSTACK_VERSION_ENCODE(major, minor, patch) \
+    ((((major) & 0xFFu) << 16) | (((minor) & 0xFFu) << 8) | ((patch) & 0xFFu))
+
+/** @brief Current library version as a single integer. */
+#define CANSTACK_VERSION \
+    CANSTACK_VERSION_ENCODE(CANSTACK_MAJOR, CANSTACK_MINOR, CANSTACK_PATCH)
+
+/**
+ * @brief True if CanStack version is at least (major.minor.patch).
+ *
+ * Usage:
+ *   #if CANSTACK_VERSION_AT_LEAST(1,0,0)
+ *     ...
+ *   #endif
+ */
+#define CANSTACK_VERSION_AT_LEAST(major, minor, patch) \
+    (CANSTACK_VERSION >= CANSTACK_VERSION_ENCODE((major), (minor), (patch)))
+
+/**
+ * @brief True if CanStack version is exactly (major.minor.patch).
+ */
+#define CANSTACK_VERSION_IS(major, minor, patch) \
+    (CANSTACK_VERSION == CANSTACK_VERSION_ENCODE((major), (minor), (patch)))
+
+//========================================================
 //      CanStack Typedefs
 //========================================================
 
@@ -59,12 +100,20 @@ typedef uint8_t canstack_mb_id_t;
  */
 typedef void* canstack_ctx_t;
 
+/**
+ * @brief Generic void pointer used for command parameters
+ */
+typedef void* canstack_cmd_t;
+
 //========================================================
 //      CanStack States
 //========================================================
 
+/**
+ * @brief Current state of the CanStack driver
+ */
 typedef enum {
-    CANSTACK_STATE_UNKOWN = 0x00,
+    CANSTACK_STATE_UNKNOWN = 0x00,
     CANSTACK_STATE_IDLE,
     CANSTACK_STATE_RUNNING,
     CANSTACK_STATE_STOPPED,
@@ -167,7 +216,7 @@ typedef struct {
 } canstack_config_t;
 
 //========================================================
-//      CanStack Public Driver API
+//      CanStack Instance Methods
 //========================================================
 
 /**
@@ -192,7 +241,7 @@ canstack_result_t canstack_create_driver(const canstack_config_t* cfg,
 void canstack_destroy_driver(canstack_driver driver);
 
 //========================================================
-//      CanStack Transmit API
+//      CanStack Transmit Methods
 //========================================================
 
 /**
@@ -280,6 +329,18 @@ canstack_result_t canstack_configure_rx_filter(canstack_driver driver,
                                                const canstack_mb_filter_t* filter);
 
 #endif /* CAN_STACK_HAS_HW_FILTERS */
+
+/**
+ * @brief Number of buffered CAN frames
+ * 
+ * @param[in] driver - CanStack driver handle
+ * 
+ * @return uint8_t
+ */
+uint8_t canstack_get_rx_count(canstack_driver driver);
+
+canstack_result_t canstack_get_rx(canstack_driver driver,
+                                  canstack_message_t* msg);
 
 //========================================================
 //      End of File

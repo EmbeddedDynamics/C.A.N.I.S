@@ -17,47 +17,6 @@
 #define CAN_STACK_CONFIG_H
 
 //========================================================
-//      Library Information
-//========================================================
-
-#define CANSTACK_MAJOR 1u
-#define CANSTACK_MINOR 0u
-#define CANSTACK_PATCH 1u
-
-//========================================================
-//      Version Packing Helpers
-//========================================================
-
-/**
- * @brief Pack a semantic version (major.minor.patch) into a single comparable integer.
- *
- * Uses 8 bits per component (0..255). Adjust shifts if you need larger ranges.
- */
-#define CANSTACK_VERSION_ENCODE(major, minor, patch) \
-    ((((major) & 0xFFu) << 16) | (((minor) & 0xFFu) << 8) | ((patch) & 0xFFu))
-
-/** @brief Current library version as a single integer. */
-#define CANSTACK_VERSION \
-    CANSTACK_VERSION_ENCODE(CANSTACK_MAJOR, CANSTACK_MINOR, CANSTACK_PATCH)
-
-/**
- * @brief True if CanStack version is at least (major.minor.patch).
- *
- * Usage:
- *   #if CANSTACK_VERSION_AT_LEAST(1,0,0)
- *     ...
- *   #endif
- */
-#define CANSTACK_VERSION_AT_LEAST(major, minor, patch) \
-    (CANSTACK_VERSION >= CANSTACK_VERSION_ENCODE((major), (minor), (patch)))
-
-/**
- * @brief True if CanStack version is exactly (major.minor.patch).
- */
-#define CANSTACK_VERSION_IS(major, minor, patch) \
-    (CANSTACK_VERSION == CANSTACK_VERSION_ENCODE((major), (minor), (patch)))
-
-//========================================================
 //      Standard Includes
 //========================================================
 
@@ -74,6 +33,10 @@
 
 /* Project headers */
 #include "CanStackResult.h"
+
+//========================================================
+//      PSoC Platform checker
+//========================================================
 
 #if defined(__has_include)
     #if __has_include("cyfitter.h")
@@ -113,6 +76,9 @@
 //      CanStack Constants
 //========================================================
 
+#define CANSTACK_RX_QUEUE_SIZE  32u
+#define CANSTACK_RX_QUEUE_MASK (CANSTACK_RX_QUEUE_SIZE - 1u)
+
 #define CANSTACK_MAX_PAYLOAD_SIZE 8u
 
 #define CANSTACK_MAILBOX_ID_ANY 0xFF
@@ -129,18 +95,23 @@
     #endif
 
     #define CANSTACK_PSOC5_CONST(name) \
-    CANSTACK_CAT3(CAN_COMPONENT_NAME, _, name)
+        CANSTACK_CAT3(CAN_COMPONENT_NAME, _, name)
 
     #define CANSTACK_PSOC5_TYPE(name) \
-    CANSTACK_CAT3(CAN_COMPONENT_NAME, _, name)
+        CANSTACK_CAT3(CAN_COMPONENT_NAME, _, name)
 
     #define CANSTACK_PSOC5_MACRO_CALL_(component, macro, ...) \
-    CANSTACK_CAT3(component, _, macro)(__VA_ARGS__)
+        CANSTACK_CAT3(component, _, macro)(__VA_ARGS__)
 
     #define CANSTACK_PSOC5_MACRO_CALL(macro, ...) \
-    CANSTACK_PSOC5_MACRO_CALL_(CAN_COMPONENT_NAME, macro, __VA_ARGS__)
+        CANSTACK_PSOC5_MACRO_CALL_(CAN_COMPONENT_NAME, macro, __VA_ARGS__)
 
-    //#define CAN_COMPONENT_NAME CAN
+    #define CANSTACK_PSOC5_CALL_(component, func, ...) \
+        CANSTACK_CAT3(component, _, func)(__VA_ARGS__)
+
+    #define CANSTACK_PSOC5_CALL(func, ...) \
+        CANSTACK_PSOC5_CALL_(CAN_COMPONENT_NAME, func, __VA_ARGS__)
+
 
     /* Include the CAN component header */
     #include CANSTACK_STR(CAN_COMPONENT_NAME.h)
@@ -153,6 +124,9 @@
 
     #define CANSTACK_TOTAL_RX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_RX_MAILBOXES)
     #define CANSTACK_TOTAL_TX_MAILBOXES CANSTACK_PSOC5_CONST(NUMBER_OF_TX_MAILBOXES)
+
+    #define CANSTACK_DISABLE_INTERRUPT() (CyGlobalIntDisable)
+    #define CANSTACK_ENABLE_INTERRUPT() (CyGlobalIntEnable)
 
     #define CANSTACK_FULL_RX_ENABLE_COUNT ( \
         RX_ENABLE(CAN_COMPONENT_NAME, 0)     + \
@@ -186,12 +160,12 @@
 
     // Validate at least one mailbox is configured
     #if (CANSTACK_FULL_RX_ENABLE_COUNT < 1)
-        #define CAN_STACK_EXCLUDE_FULL_RX_MB
+        #define CANSTACK_EXCLUDE_FULL_RX_MB
         #pragma message("No Full RX mailboxes configured in PSoC Creator!") 
     #endif
 
     #if (CANSTACK_FULL_TX_ENABLE_COUNT < 1)
-        #define CAN_STACK_EXCLUDE_FULL_TX_MB
+        #define CANSTACK_EXCLUDE_FULL_TX_MB
         #pragma message("No Full TX mailboxes configured in PSoC Creator!") 
     #endif
 
