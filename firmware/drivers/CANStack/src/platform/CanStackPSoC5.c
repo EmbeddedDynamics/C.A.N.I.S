@@ -86,16 +86,11 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
 {
     /* Parameter validation */
     if (!msg) {
-        return CAN_RESULT_INVALID_ARG;
+        return CAN_ERROR_NULL_POINTER;
     }
 
-    // if (msg->dlc > CAN_STACK_MAX_PAYLOAD_SIZE) {
-    //     return CAN_RESULT_INVALID_ARG;
-    // }
-
-    //canstack_psoc5_context_t* ctx = (canstack_psoc5_context_t*)hw_ctx;
-
     if (mb_id == CAN_STACK_MAILBOX_ID_ANY) {
+
         // Build PSoC5 CAN message structure
         CANSTACK_PSOC5_TYPE(TX_MSG) tx_msg = {
             .id = msg->id,
@@ -108,12 +103,13 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
         
         // BASIC CAN: use first available mailbox (CAN_SendMsg)
         if (CANSTACK_PSOC5_CALL(SendMsg, &tx_msg) != CYRET_SUCCESS) {
-            return CAN_RESULT_ERROR;
+            return CAN_RESULT_GENERAL_ERROR;
         }
+
     } else {
         /* Check if mailbox is enabled */
         if (!canstack_psoc5_is_tx_enabled(mb_id)) {
-            return CAN_RESULT_NOT_CONFIGURED;
+            return CAN_ERROR_NOT_CONFIGURED;
         }
 
         /* Write message data to mailbox */
@@ -178,13 +174,13 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
             #endif
 
             default:
-                return CAN_RESULT_INVALID_ARG;
+                return CAN_ERROR_INVALID_PARAMTER;
         }
 
-        return (result == CYRET_SUCCESS) ? CAN_RESULT_OK : CAN_RESULT_ERROR;
+        return (result == CYRET_SUCCESS) ? CAN_RESULT_OK : CAN_ERROR_INVALID_PARAMTER;
     }
 
-    return CAN_RESULT_ERROR;
+    return CAN_RESULT_GENERAL_ERROR;
 }
 
 //========================================================
@@ -209,21 +205,18 @@ static canstack_result_t psoc5_rx_message(canstack_ctx_t __unused hw_ctx,
                                           canstack_mb_id_t mb_id,
                                           canstack_message_t* msg)
 {
+    /* Parameter validation */
     if (!msg) {
-        return CAN_RESULT_INVALID_ARG;
+        return CAN_ERROR_NULL_POINTER;
     }
-
-    //canstack_psoc5_context_t* ctx = (canstack_psoc5_context_t*)hw_ctx;
 
     /* Check if mailbox is enabled */
     if (!canstack_psoc5_is_rx_enabled(mb_id)) {
-        return CAN_RESULT_NOT_CONFIGURED;
+        return CAN_ERROR_NOT_CONFIGURED;
     }
-
-    /* Check if mailbox has new data (DLC != 0 indicates valid message) */
-    //if (CAN_RX[mb_id].rxdlc == 0) {
-    //    return CAN_STACK_RESULT_NO_DATA;
-    //}
+    
+    if (CANSTACK_PSOC5_MACRO_CALL(GET_DLC, mb_id) == 0)
+        return CAN_WARNING_NO_DATA;
 
     /* Read message from mailbox */
     msg->id = (canstack_id_t)CANSTACK_PSOC5_MACRO_CALL(GET_RX_ID, mb_id);
@@ -247,14 +240,6 @@ static canstack_result_t psoc5_rx_message(canstack_ctx_t __unused hw_ctx,
 /**
  * @brief Configure RX mailbox hardware filter
  * 
- * @param[in] hw_ctx - Platform context
- * @param[in] mb_id  - RX mailbox ID (0-15)
- * @param[in] filter - Filter configuration (AMR/ACR)
- * 
- * @return canstack_result_t 
- *                  CAN_STACK_RESULT_OK: on success
- * 
- * @details
  * PSoC5 uses:
  * - ACR (Acceptance Code Register): ID to match
  * - AMR (Acceptance Mask Register): Which bits to care about
@@ -263,6 +248,13 @@ static canstack_result_t psoc5_rx_message(canstack_ctx_t __unused hw_ctx,
  * Example: Match ID 0x123 with mask 0x7FF (11-bit)
  *   acr = 0x123 << 5 (PSoC5 format)
  *   amr = 0x7FF << 5
+ * 
+ * @param[in] hw_ctx - Platform context
+ * @param[in] mb_id  - RX mailbox ID (0-15)
+ * @param[in] filter - Filter configuration (AMR/ACR)
+ * 
+ * @return canstack_result_t 
+ *                  CAN_STACK_RESULT_OK: on success
  * 
  * @see For documentation of the acr and amr registers see: <a href="https://www.infineon.com/assets/row/public/documents/30/57/infineon-psoc-3-architecture-trm-additionaltechnicalinformation-en.pdf?fileId=8ac78c8c7d0d8da4017d0f9055f37cd5&utm_source=cypress&utm_medium=referral&utm_campaign=202110_globe_en_all_integration-technical_reference_manual&redirId=TRM103#page=235">docs</a>
  */
@@ -393,6 +385,18 @@ canstack_result_t canstack_psoc5_create_driver(
     platform_driver->hw_ctx = (void*)&g_psoc5_ctx;
 
     return CAN_RESULT_OK;
+}
+
+void canstack_psoc5_destroy_driver(
+    canstack_platform_driver_t* platform_driver)
+{
+    if (!platform_driver)
+        return;
+    
+    if (!g_drv)
+        g_drv = NULL;
+
+    free(platform_driver)
 }
 
 //========================================================

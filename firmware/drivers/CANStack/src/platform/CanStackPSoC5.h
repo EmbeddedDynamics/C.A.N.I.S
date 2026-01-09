@@ -33,25 +33,12 @@
 #include <stdint.h>
 
 #include "CanStackInternal.h"
+
 #if defined(__has_include)
     #if __has_include("cyapicallbacks.h")
         #include "cyapicallbacks.h"
     #endif
 #endif
-
-//========================================================
-//      PSoC5 Platform Context
-//========================================================
-
-/**
- * @brief PSoC5-specific driver context
- * 
- * @details Stores platform-specific state like mailbox masks
- */
-typedef struct {
-    uint16_t rx_enabled_mask;  /**< Bitmask of enabled RX mailboxes (0-15) */
-    uint8_t tx_enabled_mask;   /**< Bitmask of enabled TX mailboxes (0-7) */
-} canstack_psoc5_context_t;
 
 //========================================================
 //      Full Mailbox Enabled Masks
@@ -60,7 +47,7 @@ typedef struct {
 /**
  * @brief RX mailbox enabled bitmask
  * 
- * @details Each bit represents one mailbox (0-15).
+ * Each bit represents one mailbox (0-15).
  * Bit set = mailbox enabled in PSoC Creator.
  */
 #define CANSTACK_PSOC5_RX_ENABLED_MASK ( \
@@ -85,7 +72,7 @@ typedef struct {
 /**
  * @brief TX mailbox enabled bitmask
  * 
- * @details Each bit represents one mailbox (0-7).
+ * Each bit represents one mailbox (0-7).
  * Bit set = mailbox enabled in PSoC Creator.
  */
 #define CANSTACK_PSOC5_TX_ENABLED_MASK ( \
@@ -100,7 +87,7 @@ typedef struct {
 )
 
 //========================================================
-//      PSoC5 Helper Functions
+//      PSoC5 Rx Callback Macro's
 //========================================================
 
 #define PSOC5_RX_CALLBACK_(prefix, mbx)                             \
@@ -114,18 +101,36 @@ typedef struct {
 
 #define PSOC5_RX_CALLBACK(prefix, mbx) PSOC5_RX_CALLBACK_(prefix, mbx) 
 
-#define CANSTACK_PSOC5_CALL_(component, func, ...) \
-    CANSTACK_CAT3(component, _, func)(__VA_ARGS__)
+//========================================================
+//      PSoC5 Platform Context
+//========================================================
 
-#define CANSTACK_PSOC5_CALL(func, ...) \
-    CANSTACK_PSOC5_CALL_(CAN_COMPONENT_NAME, func, __VA_ARGS__)
+/**
+ * @brief PSoC5-specific driver context
+ * 
+ * @details Stores platform-specific state like mailbox masks
+ */
+typedef struct {
+    uint16_t rx_enabled_mask;  /**< Bitmask of enabled RX mailboxes (0-15) */
+    uint8_t tx_enabled_mask;   /**< Bitmask of enabled TX mailboxes (0-7) */
+} canstack_psoc5_context_t;
 
 //========================================================
-//      PSoC5 Driver methods
+//      PSoC5 Backend Methods
 //========================================================
 
 #if !defined(CANSTACK_EXCLUDE_FULL_RX_MB) 
+
+/**
+ * @brief Internal method called by the Rx mailbox ISR
+ * 
+ * @param[in] drv - CanStack driver handle
+ * @param[in] mb - Mailbox id
+ * 
+ * @return void
+ */
 void canstack_psoc5_isr_rx_mailbox(canstack_driver drv, canstack_mb_id_t mb); 
+
 #endif 
 
 /**
@@ -155,8 +160,12 @@ canstack_driver canstack_psoc5_get_bound_driver(void);
  * @internal
  * Called by canstack_create_driver() to set up PSoC5-specific vtable
  */
-canstack_result_t canstack_psoc5_create_driver(
-    canstack_platform_driver_t* platform_driver);
+canstack_result_t canstack_psoc5_create_backed(
+    canstack_platform_backend_t* platform_backend);
+
+    
+void canstack_psoc5_destroy_backend(
+    canstack_platform_backend_t* platform_backend);
 
 //========================================================
 //      End of File
