@@ -34,135 +34,102 @@
 
 /**
  * @brief ODrive operation result codes
- * 
- * @details
- * Standard result type for all ODrive operations. Success indicated by
- * ODRIVE_RESULT_OK (0x0000). Error codes organized by category:
- * 
- * - 0x0000: Success
- * - 0x2000-0x2FFF: Operation-level errors
- * - 0x3000-0x3FFF: Communication errors
- * - 0x4000-0x4FFF: Parameter/validation errors
- * - 0x5000-0x5FFF: ODrive device errors
- * 
- * Use bitwise AND with category mask to identify error type:
- * @code
- *   if (result & 0x2000) { // Operation error }
- *   if (result & 0x3000) { // Communication error }
- * @endcode
+ *
+ * Result code layout:
+ *
+ *  0x0000                : Success
+ *  0x2000 - 0x2FFF       : Operation-level errors
+ *  0x3000 - 0x3FFF       : Communication errors
+ *  0x4000 - 0x4FFF       : Parameter / validation errors
+ *  0x5000 - 0x5FFF       : ODrive device errors
+ *  0x6000 - 0x6FFF       : Warnings (non-fatal)
+ *
+ * Category can be extracted using ODRIVE_RESULT_CATEGORY_MASK.
  */
-typedef enum {
+typedef enum
+{
     //========================================================
-    //      Succes
-    //========================================================
-
-
-    /**< Operation completed successfully */
-    ODRIVE_RESULT_OK = 0x0000,
-
-    //========================================================
-    //      Operation-Level Errors (0x2000-0x2FFF)
+    //      Result masks & bases
     //========================================================
 
+    ODRIVE_RESULT_CATEGORY_MASK      = 0xF000,
 
-    /**< Unspecified general error */
-    ODRIVE_ERROR_GENERAL = 0x2000,
-
-    /**< Operation timed out waiting for result */
-    ODRIVE_ERROR_TIMEOUT = 0x2001,
-
-    /**< ODrive subsystem not initialized */
-    ODRIVE_ERROR_NOT_INITIALIZED = 0x2002,
-
-    /**< ODrive busy with another operation */
-    ODRIVE_ERROR_BUSY = 0x2003,
-
-    /**< Operation failed to complete */
-    ODRIVE_ERROR_OPERATION_FAILED = 0x2004,
-
-    /**< Operation not supported by this firmware version */
-    ODRIVE_ERROR_UNSUPPORTED = 0x2005,
-
-    /**< ODrive in incorrect state for requested operation */
-    ODRIVE_ERROR_WRONG_STATE = 0x2006,
-
+    ODRIVE_RESULT_SUCCESS_BASE       = 0x0000,
+    ODRIVE_RESULT_OPERATION_BASE     = 0x2000,
+    ODRIVE_RESULT_COMM_BASE          = 0x3000,
+    ODRIVE_RESULT_PARAM_BASE         = 0x4000,
+    ODRIVE_RESULT_DEVICE_BASE        = 0x5000,
+    ODRIVE_RESULT_WARNING_BASE       = 0x6000,
 
     //========================================================
-    //      Communication Errors (0x3000-0x3FFF)
+    //      Success
     //========================================================
 
-
-    /**< CAN node ID out of valid range (0-63) */
-    ODRIVE_ERROR_INVALID_CAN_ID = 0x3000,
-
-    /**< CAN message transmission failed */
-    ODRIVE_ERROR_CAN_TX_FAILED = 0x3001,
-
-    /**< CAN message reception failed */
-    ODRIVE_ERROR_RX_FAILED = 0x3002,
-
-    /**< No response received from ODrive within timeout */
-    ODRIVE_ERROR_NO_RESPONSE = 0x3003,
-
-    /**< Response message format invalid or corrupted */
-    ODRIVE_ERROR_INVALID_RESPONSE = 0x3004,
-
-    /**< Data checksum or CRC verification failed */
-    ODRIVE_ERROR_CHECKSUM_MISMATCH = 0x3005,
-
-    /**< CAN bus entered bus-off error state */
-    ODRIVE_ERROR_BUS_OFF = 0x3006,
-
-    /**< CAN bus hardware initialization failed */
-    ODRIVE_ERROR_PERIPHERAL_INIT_FAILED = 0x3007,
-
-
-    ODRIVE_ERROR_INVALID_BACKEND,
-
+    /**
+     * @brief Operation succeeded
+     */
+    ODRIVE_RESULT_OK                 = ODRIVE_RESULT_SUCCESS_BASE,
 
     //========================================================
-    //      Parameter/Validation Errors (0x4000-0x4FFF)
+    //      Operation-level errors (0x2000)
     //========================================================
 
-    
-    /**< Invalid parameter value provided */
-    ODRIVE_ERROR_INVALID_PARAM = 0x4000,
+    ODRIVE_ERROR_GENERAL             = ODRIVE_RESULT_OPERATION_BASE + 0x000,
+    ODRIVE_ERROR_TIMEOUT             = ODRIVE_RESULT_OPERATION_BASE + 0x001,
+    ODRIVE_ERROR_NOT_INITIALIZED     = ODRIVE_RESULT_OPERATION_BASE + 0x002,
+    ODRIVE_ERROR_OPERATION_FAILED    = ODRIVE_RESULT_OPERATION_BASE + 0x003,
+    ODRIVE_ERROR_UNSUPPORTED         = ODRIVE_RESULT_OPERATION_BASE + 0x004,
+  
+    /**
+     * @brief No available axis slot
+     */
+    ODRIVE_ERROR_NO_AXIS_SLOT        = ODRIVE_RESULT_OPERATION_BASE + 0x005,
 
-    /**< Null pointer passed to function expecting valid pointer */
-    ODRIVE_ERROR_NULL_POINTER = 0x4001,
-
-    /**< Buffer size insufficient for operation */
-    ODRIVE_ERROR_BUFFER_OVERFLOW = 0x4002,
-
-    /**< Value outside acceptable range */
-    ODRIVE_ERROR_OUT_OF_RANGE = 0x4003,
-
-    /**< Axis number invalid (must be 0 or 1) */
-    ODRIVE_ERROR_INVALID_AXIS = 0x4004,
-
-    /**< Control mode or input mode invalid */
-    ODRIVE_ERROR_INVALID_MODE = 0x4005,
-
-    /**< Memory allocation failed (out of heap) */
-    ODRIVE_ERROR_NO_MEMORY = 0x4006,
-
+    /**
+     * @brief The ODrive driver is in a invalid state
+     */
+    ODRIVE_ERROR_INVALID_STATE       = ODRIVE_RESULT_OPERATION_BASE + 0x006,
 
     //========================================================
-    //      ODrive Device Errors (0x5000-0x5FFF)
+    //      Communication errors (0x3000)
     //========================================================
 
+    ODRIVE_ERROR_INVALID_CAN_ID       = ODRIVE_RESULT_COMM_BASE + 0x000,
+    ODRIVE_ERROR_CAN_TX_FAILED        = ODRIVE_RESULT_COMM_BASE + 0x001,
+    ODRIVE_ERROR_CAN_RX_FAILED        = ODRIVE_RESULT_COMM_BASE + 0x002,
+    ODRIVE_ERROR_CAN_NO_RESPONSE      = ODRIVE_RESULT_COMM_BASE + 0x003,
+    ODRIVE_ERROR_INVALID_RESPONSE    = ODRIVE_RESULT_COMM_BASE + 0x004,
+    ODRIVE_ERROR_CHECKSUM_MISMATCH   = ODRIVE_RESULT_COMM_BASE + 0x005,
+    ODRIVE_ERROR_CAN_BUS_OFF          = ODRIVE_RESULT_COMM_BASE + 0x006,
+    ODRIVE_ERROR_COMM_INIT_FAILED    = ODRIVE_RESULT_COMM_BASE + 0x007,
+    ODRIVE_ERROR_INVALID_BACKEND     = ODRIVE_RESULT_COMM_BASE + 0x008,
 
-    /**< ODrive reported internal device error */
-    ODRIVE_ERROR_DEVICE_ERROR = 0x5000,
+    //========================================================
+    //      Parameter / validation errors (0x4000)
+    //========================================================
 
-    /**< Motor is disarmed (must arm before operation) */
-    ODRIVE_ERROR_MOTOR_DISARMED = 0x5001,
+    ODRIVE_ERROR_INVALID_PARAM       = ODRIVE_RESULT_PARAM_BASE + 0x000,
+    ODRIVE_ERROR_NULL_POINTER        = ODRIVE_RESULT_PARAM_BASE + 0x001,
+    ODRIVE_ERROR_BUFFER_TOO_SMALL    = ODRIVE_RESULT_PARAM_BASE + 0x002,
+    ODRIVE_ERROR_OUT_OF_RANGE        = ODRIVE_RESULT_PARAM_BASE + 0x003,
+    ODRIVE_ERROR_INVALID_MODE        = ODRIVE_RESULT_PARAM_BASE + 0x004,
+    ODRIVE_ERROR_NO_MEMORY           = ODRIVE_RESULT_PARAM_BASE + 0x005,
 
-    /**< Calibration must be performed before operation */
-    ODRIVE_ERROR_CALIBRATION_REQUIRED = 0x5002,
+    //========================================================
+    //      ODrive device errors (0x5000)
+    //========================================================
 
-    /**< Emergency stop is active (must reset to continue) */
-    ODRIVE_ERROR_ESTOP_ACTIVE = 0x5003,
+    ODRIVE_ERROR_DEVICE_ERROR        = ODRIVE_RESULT_DEVICE_BASE + 0x000,
+    ODRIVE_ERROR_MOTOR_DISARMED      = ODRIVE_RESULT_DEVICE_BASE + 0x001,
+    ODRIVE_ERROR_CALIBRATION_REQUIRED= ODRIVE_RESULT_DEVICE_BASE + 0x002,
+    ODRIVE_ERROR_ESTOP_ACTIVE        = ODRIVE_RESULT_DEVICE_BASE + 0x003,
+
+    //========================================================
+    //      Warnings (0x6000) – non-fatal
+    //========================================================
+
+    ODRIVE_WARNING_GENERAL           = ODRIVE_RESULT_WARNING_BASE + 0x000,
+    ODRIVE_WARNING_NO_RX_MESSAGES    = ODRIVE_RESULT_WARNING_BASE + 0x001,
 
 } odrive_result_t;
 
