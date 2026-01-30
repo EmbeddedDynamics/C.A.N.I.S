@@ -55,12 +55,12 @@
 
 #if !defined(ODRIVE_CANSTACK_FORCE_CONVERT) && \
     (defined(CANSTACK_VERSION) && defined(CANSTACK_VERSION_AT_LEAST) && CANSTACK_VERSION_AT_LEAST(1,0,1))
-  #define ODRIVE_CANSTACK_CANFRAME_ALIAS 1
+  #define ODRIVE_CANSTACK_MATCH_FRAME_ALIAS 1
 #else
-  #define ODRIVE_CANSTACK_CANFRAME_ALIAS 0
+  #define ODRIVE_CANSTACK_MATCH_FRAME_ALIAS 0
 #endif
 
-#if (ODRIVE_CANSTACK_CANFRAME_ALIAS)
+#if (ODRIVE_CANSTACK_MATCH_FRAME_ALIAS)
 
 ODRIVE_STATIC_ASSERT(sizeof(canstack_id_t)  == sizeof(odrive_can_id_t),
                      "canstack_id_t size mismatch");
@@ -165,6 +165,7 @@ ODRIVE_STATIC_ASSERT(offsetof(odrive_can_message_t, data) ==
 
 typedef struct {
     canstack_driver driver;
+    odrive_gpio_driver_t* gpio;
 } odrive_canstack_config_t;
 
 //========================================================

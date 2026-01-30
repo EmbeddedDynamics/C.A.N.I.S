@@ -51,22 +51,6 @@
 #define ODRIVEK_VERSION \
     ODRIVE_VERSION_ENCODE(ODRIVE_MAJOR, ODRIVE_MINOR, ODRIVE_PATCH)
 
-/**
- * @brief True if ODrive version is at least (major.minor.patch).
- *
- * Usage:
- *   #if ODRIVE_VERSION_AT_LEAST(1,0,0)
- *     ...
- *   #endif
- */
-#define ODRIVE_VERSION_AT_LEAST(major, minor, patch) (ODRIVE_VERSION >= ODRIVE_VERSION_ENCODE((major), (minor), (patch)))
-
-/**
- * @brief True if ODrive version is exactly (major.minor.patch).
- */
-#define ODRIVE_VERSION_IS(major, minor, patch) \
-(ODRIVE_VERSION == ODRIVE_VERSION_ENCODE((major), (minor), (patch)))
-
 //========================================================
 //      ODrive Firmware Version Encoding
 //========================================================
@@ -114,6 +98,7 @@
 /* < comparison */
 #define ODRIVE_FW_VERSION_IS_LOWER(version) ((ODRIVE_FW_TARGET) <= (version))
 
+    
 //========================================================
 //      Target Firmware Selection
 //========================================================
@@ -158,6 +143,28 @@
 
 #endif
 
+#if !defined(ODRIVE_UNUSED)
+  #if defined(__clang__)
+    #define ODRIVE_UNUSED __attribute__((unused))
+  #elif defined(__GNUC__)
+    #define ODRIVE_UNUSED __attribute__((unused))
+  #elif defined(__ICCARM__)      /* IAR */
+    #define ODRIVE_UNUSED
+    /* IAR often prefers: use UNUSED(x) or #pragma diag_suppress */
+  #elif defined(__ARMCC_VERSION) /* Arm Compiler (armcc/armclang) */
+    /* armclang understands GNU-style attributes; armcc is more limited */
+    #if defined(__clang__)
+      #define ODRIVE_UNUSED __attribute__((unused))
+    #else
+      #define ODRIVE_UNUSED
+    #endif
+  #elif defined(_MSC_VER)
+    #define ODRIVE_UNUSED
+  #else
+    #define ODRIVE_UNUSED
+  #endif
+#endif
+
 //========================================================
 //      Core Type Definitions
 //========================================================
@@ -169,7 +176,10 @@ typedef uint16_t    odrive_node_id;
 
 typedef void*       odrive_ctx_t;
 
-typedef uint32_t    odrive_flags;
+typedef uint8_t     odrive_flags8_t;
+typedef uint16_t    odrive_flags16_t;
+typedef uint32_t    odrive_flags32_t;
+typedef uint64_t    odrive_flags64_t;
 
 //========================================================
 //      Axis Error Flags
@@ -259,6 +269,12 @@ typedef enum odrive_axis_error_T {
 #endif
 
 } odrive_axis_error_t;
+
+#if ODRIVE_FW_VERSION_IS(ODRIVE_FW_V0_5_4)
+    typedef odrive_flags32_t odrive_axis_error_flags_t;
+#elif ODRIVE_FW_VERSION_IS(ODRIVE_FW_V0_5_6)
+    typedef odrive_flags32_t odrive_axis_error_flags_t;
+#endif
 
 //========================================================
 //      Motor Error Flags
@@ -1258,92 +1274,6 @@ typedef enum {
 } odrive_input_mode_t;
 
 //========================================================
-//      ODrive State's
-//========================================================
-
-/**
- * @brief ODrive alive state
- *
- * Represents whether the ODrive controller is currently responsive,
- * based on periodic heartbeat messages. Useful for monitoring connection
- * health, detecting timeouts, and determining whether a reboot or power
- * cycle has occurred.
- *
- * This is an application-level abstraction. ODrive firmware does not
- * provide a direct alive-state enum; instead, the alive state is inferred
- * from heartbeat timing and reconnect behavior.
- */
-typedef enum {
-
-    /**
-     * @brief Invalid / uninitialized state.
-     *
-     * Indicates that no heartbeat has been received yet, or that the
-     * monitoring system has not been started. This state exists to
-     * distinguish between "never connected" and "connected but timed out."
-     *
-     * Typical causes:
-     *  - Startup before the first heartbeat arrives
-     *  - Monitoring system not initialized
-     *  - Invalid or corrupt state
-     */
-    ALIVE_STATE_INVALID = 0,
-
-    /**
-     * @brief Active - controller is alive and responsive.
-     *
-     * Heartbeats are received within the expected time window (typically
-     * every 100 ms for ODrive). The controller is considered online and
-     * communication is healthy.
-     *
-     * Source of state change:
-     *  - Heartbeat received on time
-     *
-     * Expected behavior:
-     *  - Commands may be issued reliably
-     *  - Axis states may be monitored in real time
-     */
-    ALIVE_STATE_ACTIVE = 1,
-
-    /**
-     * @brief Timeout - controller has stopped responding.
-     *
-     * Indicates that no heartbeat has been received within the configured
-     * timeout threshold. The ODrive is presumed offline, disconnected,
-     * powered down, or rebooting.
-     *
-     * Typical causes:
-     *  - Heartbeat timeout
-     *  - CAN cable unplugged
-     *  - Power loss
-     *  - Reboot in progress
-     *  - Firmware crash
-     *
-     * Recovery behavior:
-     *  - State may transition back to ACTIVE when heartbeats resume
-     */
-    ALIVE_STATE_TIMEOUT = 2,
-
-    /**
-     * @brief Reboot detected.
-     *
-     * Indicates that the ODrive has recently restarted. This state is
-     * typically inferred when a heartbeat resumes after a timeout and
-     * reports a rebooted uptime value or reset counters.
-     *
-     * This is optional logic and depends on how the application interprets
-     * heartbeat data. It can be used to trigger controller reconfiguration
-     * after a power cycle.
-     *
-     * Typical use cases:
-     *  - Automatic reconfiguration of ODrive axis parameters
-     *  - Logging unexpected restarts for diagnostics
-     */
-    ALIVE_STATE_REBOOT = 3
-
-} odrive_alive_state_t;
-
-//========================================================
 //      ODrive Result codes
 //========================================================
 
@@ -1838,6 +1768,8 @@ typedef enum {
      */
     AXIS_STATE_ENCODER_HALL_PHASE_CALIBRATION = 0x000D,
 
+#if ODRIVE_FW_VERSION_AT_LEAST(ODRIVE_FW_V0_6_0)
+
     /**
      * @brief Anticogging calibration.
      *
@@ -1865,7 +1797,15 @@ typedef enum {
      */
     AXIS_STATE_HARMONIC_CALIBRATION_COMMUTATION = 0x0010
 
+#endif
+
 } odrive_axis_state_t;
+
+#if ODRIVE_FW_VERSION_IS(ODRIVE_FW_V0_5_4)
+    typedef odrive_flags32_t odrive_axis_state_flags_t;
+#elif ODRIVE_FW_VERSION_IS(ODRIVE_FW_V0_5_6)
+    typedef odrive_flags8_t odrive_axis_state_flags_t;
+#endif
 
 //========================================================
 //      ODrive Encoder Mode
@@ -1966,21 +1906,6 @@ ODRIVE_DEFINE_HANDLE(odrive_axis);
  * @note Obtained via ODriveDriver_Create(). Do not dereference directly.
  */
 ODRIVE_DEFINE_HANDLE(odrive_can_driver);
-
-// ========================================================
-// ODrive Core Structs
-// ========================================================
-
-/**
- * @brief Encoder estimate frame (position and velocity)
- * 
- * @details Contains current position and velocity estimates from the encoder
- * or sensorless estimator.
- */
-typedef struct  {
-    float Position;
-    float Velocity;
-} encoder_estimate_frame;
 
 //========================================================
 //      End of File
