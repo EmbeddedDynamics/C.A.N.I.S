@@ -17,22 +17,23 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if defined(CANSTACK_PLATFORM_PSOC5)
-
 #include "CanStackPSoC5.h"
 
+#if defined(CANSTACK_PLATFORM_PSOC5)
+    
 //========================================================
 //      Standard Includes
 //========================================================
 
 #include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
 //========================================================
 //      PSoC5 Platform Context
 //========================================================
 
-static canstack_driver g_drv = NULL;
+static canstack_driver* g_drv = NULL;
 
 /**
  * @brief Static platform context for PSoC5
@@ -89,7 +90,7 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
         return CAN_ERROR_NULL_POINTER;
     }
 
-    if (mb_id == CAN_STACK_MAILBOX_ID_ANY) {
+    if (mb_id == CANSTACK_MAILBOX_ID_ANY) {
 
         // Build PSoC5 CAN message structure
         CANSTACK_PSOC5_TYPE(TX_MSG) tx_msg = {
@@ -97,7 +98,7 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
             .dlc = msg->dlc,
             .rtr = (uint8_t)msg->rtr,
             .ide = 0,           // Standard 11-bit CAN (not extended)
-            .irq = 0,           // No interrupt on TX complete
+            .irq = 1u,           // No interrupt on TX complete
             .msg = (CANSTACK_PSOC5_TYPE(DATA_BYTES_MSG)*)msg->data
         };
         
@@ -105,6 +106,8 @@ static canstack_result_t psoc5_tx_message(canstack_ctx_t __unused hw_ctx,
         if (CANSTACK_PSOC5_CALL(SendMsg, &tx_msg) != CYRET_SUCCESS) {
             return CAN_RESULT_GENERAL_ERROR;
         }
+        
+        return CAN_RESULT_OK;
 
     } else {
         /* Check if mailbox is enabled */
@@ -263,14 +266,14 @@ static canstack_result_t psoc5_configure_rx_filter(canstack_ctx_t __unused hw_ct
                                                    const canstack_mb_filter_t* filter)
 {
     if (!filter) {
-        return CAN_RESULT_INVALID_ARG;
+        return CAN_ERROR_NULL_POINTER;
     }
 
     //canstack_psoc5_context_t* ctx = (canstack_psoc5_context_t*)hw_ctx;
 
     /* Check if mailbox is enabled */
     if (!canstack_psoc5_is_rx_enabled(mb_id)) {
-        return CAN_RESULT_NOT_CONFIGURED;
+        return CAN_ERROR_NOT_CONFIGURED;
     }
 
     uint8 result = CANSTACK_PSOC5_CONST(FAIL);
@@ -281,8 +284,8 @@ static canstack_result_t psoc5_configure_rx_filter(canstack_ctx_t __unused hw_ct
             result = CYRET_SUCCESS;
         }
     }
-
-    return (result == CYRET_SUCCESS) ? CAN_RESULT_OK : CAN_RESULT_ERROR;
+    
+    return (result == CYRET_SUCCESS) ? CAN_RESULT_OK : CAN_RESULT_GENERAL_ERROR;
 }
 
 #endif /* CAN_STACK_HAS_HW_FILTERS */
@@ -342,7 +345,7 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
                 (const canstack_mb_filter_cmd_t*)arg;
 
             if (!filter_cmd || !filter_cmd->filter) {
-                return CAN_RESULT_INVALID_ARG;
+                return CAN_ERROR_INVALID_PARAMTER;
             }
 
             return psoc5_configure_rx_filter(hw_ctx, filter_cmd->mb_id, filter_cmd->filter);
@@ -350,7 +353,7 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
         #endif
 
         default:
-            return CAN_RESULT_INVALID_CMD;
+            return CAN_ERROR_INVALID_CMD;
     }
 }
 
@@ -358,45 +361,49 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
 //      Platform Driver Initialization
 //========================================================
 
-void canstack_psoc5_bind(canstack_driver drv)
+void canstack_psoc5_bind(canstack_driver* drv)
 {
-    CANSTACK_ASSERT(g_drv == NULL);
+    CANSTACK_ASSERT(!g_drv);
     g_drv = drv;
 }
 
-canstack_driver canstack_psoc5_get_bound_driver(void)
+canstack_driver* canstack_psoc5_get_bound_driver(void)
 {
     return g_drv;
 }
 
-canstack_result_t canstack_psoc5_create_driver(
-    canstack_platform_driver_t* platform_driver)
+canstack_result_t canstack_psoc5_create_backend(
+    canstack_platform_backend_t* platform_backend)
 {
-    if (!platform_driver) {
-        return CAN_RESULT_INVALID_ARG;
+    if (!platform_backend) {
+        return CAN_ERROR_NULL_POINTER;
     }
+    
+    CAN_Init();
+    CAN_Start();
+    CAN_GlobalIntEnable();
 
     /* Set up vtable */
-    platform_driver->ops.run_cmd = psoc5_run_command;
-    platform_driver->ops.tx_message = psoc5_tx_message;
-    platform_driver->ops.rx_message = psoc5_rx_message;
+    platform_backend->ops.run_cmd = psoc5_run_command;
+    platform_backend->ops.tx_message = psoc5_tx_message;
+    platform_backend->ops.rx_message = psoc5_rx_message;
 
     /* Set up hardware context */
-    platform_driver->hw_ctx = (void*)&g_psoc5_ctx;
+    platform_backend->hw_ctx = (void*)&g_psoc5_ctx;
 
     return CAN_RESULT_OK;
 }
 
 void canstack_psoc5_destroy_driver(
-    canstack_platform_driver_t* platform_driver)
+    canstack_platform_backend_t* platform_backend)
 {
-    if (!platform_driver)
+    if (!platform_backend)
         return;
     
     if (!g_drv)
         g_drv = NULL;
 
-    free(platform_driver)
+    free(platform_backend);
 }
 
 //========================================================
@@ -407,8 +414,9 @@ void canstack_psoc5_destroy_driver(
 void canstack_psoc5_isr_rx_mailbox(canstack_driver drv, canstack_mb_id_t mb)
 {
     canstack_message_t msg;
-    if (drv->platform->ops.rx_message(drv->platform->hw_ctx, mb, &msg) == CAN_RESULT_OK) {
-        // push into drv->rxq
+    if (drv->backend->ops.rx_message(drv->backend->hw_ctx, mb, &msg) == CAN_RESULT_OK) {
+        volatile uint8_t id = (msg.id >> 5);
+        canstack_push_rx(&drv->rx_queue, &msg);
     } else {
         // optional: count errors
     }

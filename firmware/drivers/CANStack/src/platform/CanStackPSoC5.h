@@ -21,9 +21,6 @@
 #ifndef CAN_STACK_PSOC5_H
 #define CAN_STACK_PSOC5_H
 
-#if !defined(CANSTACK_PLATFORM_PSOC5)
-    #error "CanStack: PSoC5 platform not detected. Include this header only when building for PSoC5."
-#endif
 
 //========================================================
 //      Standard Includes
@@ -33,11 +30,15 @@
 #include <stdint.h>
 
 #include "CanStackInternal.h"
-
+    
 #if defined(__has_include)
     #if __has_include("cyapicallbacks.h")
         #include "cyapicallbacks.h"
     #endif
+#endif
+
+#if !defined(CANSTACK_PLATFORM_PSOC5)
+    #error "CanStack: PSoC5 platform not detected. Include this header only when building for PSoC5."
 #endif
 
 //========================================================
@@ -93,9 +94,9 @@
 #define PSOC5_RX_CALLBACK_(prefix, mbx)                             \
     void prefix##_ReceiveMsg_##mbx##_Callback(void)                  \
     {                                                                \
-        canstack_driver drv = canstack_psoc5_get_bound_driver(); \
-        if (drv != NULL) {                                           \
-            canstack_psoc5_isr_rx_mailbox(drv, (canstack_mb_id_t)(mbx)); \
+        canstack_driver* drv = canstack_psoc5_get_bound_driver(); \
+        if (drv) {                                           \
+            canstack_psoc5_isr_rx_mailbox(*drv, (canstack_mb_id_t)(mbx)); \
         }                                                            \
     }
 
@@ -140,14 +141,14 @@ void canstack_psoc5_isr_rx_mailbox(canstack_driver drv, canstack_mb_id_t mb);
  * 
  * @return void
  */
-void canstack_psoc5_bind(canstack_driver drv); 
+void canstack_psoc5_bind(canstack_driver* drv); 
 
 /**
  * @brief Return the bound CanStack driver
  * 
  * @return canstack_driver
  */
-canstack_driver canstack_psoc5_get_bound_driver(void);
+canstack_driver* canstack_psoc5_get_bound_driver(void);
 
 /**
  * @brief Create and initialize PSoC5 platform driver
@@ -160,7 +161,7 @@ canstack_driver canstack_psoc5_get_bound_driver(void);
  * @internal
  * Called by canstack_create_driver() to set up PSoC5-specific vtable
  */
-canstack_result_t canstack_psoc5_create_backed(
+canstack_result_t canstack_psoc5_create_backend(
     canstack_platform_backend_t* platform_backend);
 
     
