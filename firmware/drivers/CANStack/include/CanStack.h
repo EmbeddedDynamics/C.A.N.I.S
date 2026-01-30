@@ -39,9 +39,9 @@
 //      Library Information
 //========================================================
 
-#define CANSTACK_MAJOR 1u
-#define CANSTACK_MINOR 0u
-#define CANSTACK_PATCH 1u
+#define CANSTACK_MAJOR 1
+#define CANSTACK_MINOR 0
+#define CANSTACK_PATCH 1
 
 //========================================================
 //      Version Packing Helpers
@@ -56,8 +56,8 @@
     ((((major) & 0xFFu) << 16) | (((minor) & 0xFFu) << 8) | ((patch) & 0xFFu))
 
 /** @brief Current library version as a single integer. */
-#define CANSTACK_VERSION \
-    CANSTACK_VERSION_ENCODE(CANSTACK_MAJOR, CANSTACK_MINOR, CANSTACK_PATCH)
+#define CANSTACK_VERSION_STRING \
+    "v" CANSTACK_STR(CANSTACK_MAJOR) "." CANSTACK_STR(CANSTACK_MINOR) "." CANSTACK_STR(CANSTACK_PATCH)
 
 /**
  * @brief True if CanStack version is at least (major.minor.patch).
@@ -339,6 +339,16 @@ canstack_result_t canstack_configure_rx_filter(canstack_driver driver,
  */
 uint8_t canstack_get_rx_count(canstack_driver driver);
 
+/**
+ * @brief Retrieve a received CAN message from the RX buffer
+ * 
+ * @param[in] driver - Driver handle
+ * @param[out] msg - Pointer to message buffer
+ * 
+ * @retval CAN_RESULT_OK - Message retrieved successfully
+ * @retval CAN_ERROR_RX_EMPTY - No messages available
+ * @retval CAN_ERROR_NULL_POINTER - msg is NULL
+ */
 canstack_result_t canstack_get_rx(canstack_driver driver,
                                   canstack_message_t* msg);
 

@@ -51,12 +51,12 @@ canstack_result_t canstack_create_driver(const canstack_config_t* cfg,
         return CAN_ERROR_NO_MEMORY;
 
     /* Perform platform specific operations*/
-    #if defined(CAN_STACK_PLATFORM_PSOC5)
+    #if defined(CANSTACK_PLATFORM_PSOC5)
         /* Initialize the platform driver with PSoC5 specific functions */
-        CAN_STACK_ERROR_CHECK(canstack_psoc5_create_backend(backend));
+        CANSTACK_ERROR_CHECK(canstack_psoc5_create_backend(backend));
 
         /* Bind the CanStack driver to the PSoC5 platform*/
-        canstack_psoc5_bind(&driver);
+        canstack_psoc5_bind(driver);
         
     #else
         return CAN_ERROR_INVALID_BACKEND;
@@ -70,6 +70,10 @@ canstack_result_t canstack_create_driver(const canstack_config_t* cfg,
     new_driver->state = CANSTACK_STATE_IDLE;
     new_driver->backend = backend;
     new_driver->user_ctx = cfg->ctx;
+    
+    new_driver->rx_queue.head = 0;
+    new_driver->rx_queue.tail = 0;
+    new_driver->rx_queue.drops = 0;
     
     *driver = new_driver;
 
@@ -215,6 +219,9 @@ void canstack_push_rx(can_rx_queue_t* queue, const canstack_message_t* msg)
     
     if (next == queue->tail) {
         queue->drops++;           // queue full: drop newest (or choose another policy)
+
+        CANSTACK_ENABLE_INTERRUPT();
+        
         return;
     }
 
