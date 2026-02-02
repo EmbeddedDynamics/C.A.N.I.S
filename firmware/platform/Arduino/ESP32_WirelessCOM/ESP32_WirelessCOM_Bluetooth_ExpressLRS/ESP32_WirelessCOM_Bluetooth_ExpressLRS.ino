@@ -1,0 +1,231 @@
+//Project Title: Embedded systems Robotdog I2C controller communication
+//Author: Daan Smit
+//Date: 28-1-2026
+//Version: 1
+
+ /* Description:
+ * ESP32 reads Xbox/PS controller via Bluepad32 Bluetooth library
+ * Sends joystick + button data to PSoC5 via I2C (ESP32 = Master, PSoC5 = Slave)
+ *
+ * Hardware:
+ *   - ESP32 Dev
+ *   - PSoC5
+ *
+ * Software/Libraries:
+ *  - <Bluepad32.h>
+ *  - <Wire.h>
+ *
+ * Credits/References:
+ *
+ * License:
+ *   - non
+ */
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//REQUIRED LIBARIES
+#include <Bluepad32.h>
+#include <Wire.h>
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//DEFINES
+#define PSOC_ADDR 0x20
+#define SDA_PIN 8
+#define SCL_PIN 9
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+typedef struct {
+    // Joysticks (8 bytes)
+    int16_t leftX;       // Left stick X-as (-511 tot +512)
+    int16_t leftY;       // Left stick Y-as (-511 tot +512)
+    int16_t rightX;      // Right stick X-as (-511 tot +512)
+    int16_t rightY;      // Right stick Y-as (-511 tot +512)
+    
+    // Triggers (4 bytes)
+    int16_t brake;       // Left trigger L2 (0-1023)
+    int16_t throttle;    // Right trigger R2 (0-1023)
+    
+    // Buttons & D-pad (3 bytes)
+    uint16_t buttons;    // Button bitmask (A/B/X/Y/LB/RB/start/select/etc)
+    uint8_t dpad;        // D-pad (up/down/left/right als bits)
+    
+    // Extra (1 byte)
+    uint8_t misc;
+
+} RobotControllerData;
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ControllerPtr myControllers[BP32_MAX_GAMEPADS];
+RobotControllerData DataController;
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// I2C zendfunctie
+
+void sendControllerI2C() {
+    Wire.beginTransmission(PSOC_ADDR);
+    Wire.write((uint8_t*)&DataController, sizeof(DataController));
+    Wire.endTransmission();
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// This callback gets called any time a new gamepad is connected.
+// Up to 4 gamepads can be connected at the same time.
+void onConnectedController(ControllerPtr ctl) {
+    bool foundEmptySlot = false;
+    for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
+        if (myControllers[i] == nullptr) {
+            Serial.printf("CALLBACK: Controller is connected, index=%d\n", i);
+            // Additionally, you can get certain gamepad properties like:
+            // Model, VID, PID, BTAddr, flags, etc.
+            ControllerProperties properties = ctl->getProperties();
+            Serial.printf("Controller model: %s, VID=0x%04x, PID=0x%04x\n", ctl->getModelName().c_str(), properties.vendor_id,
+                           properties.product_id);
+            myControllers[i] = ctl;
+            foundEmptySlot = true;
+            break;
+        }
+    }
+    if (!foundEmptySlot) {
+        Serial.println("CALLBACK: Controller connected, but could not found empty slot");
+    }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// CALLBACK FUNCTIE: Wordt aangeroepen wanneer een controller ontkoppelt
+// Deze functie verwijdert de controller uit de myControllers array
+void onDisconnectedController(ControllerPtr ctl) {
+    bool foundController = false;
+
+    for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
+        if (myControllers[i] == ctl) {
+            Serial.printf("CALLBACK: Controller disconnected from index=%d\n", i);
+            myControllers[i] = nullptr;
+            foundController = true;
+            break;
+        }
+    }
+
+    if (!foundController) {
+        Serial.println("CALLBACK: Controller disconnected, but not found in myControllers");
+    }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// DEBUG FUNCTIE: Print alle controller data naar Serial Monitor
+// Wordt gebruikt om alle beschikbare sensor data te zien (joysticks, buttons, gyro, etc.)
+void dumpGamepad(ControllerPtr ctl) {
+    Serial.printf(
+        "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4d, %4d, axis R: %4d, %4d, brake: %4d, throttle: %4d, "
+        "misc: 0x%02x\n",
+        ctl->index(),        // Controller Index
+        ctl->dpad(),         // D-pad
+        ctl->buttons(),      // bitmask of pressed buttons
+        ctl->axisX(),        // (-511 - 512) left X Axis
+        ctl->axisY(),        // (-511 - 512) left Y axis
+        ctl->axisRX(),       // (-511 - 512) right X axis
+        ctl->axisRY(),       // (-511 - 512) right Y axis
+        ctl->brake(),        // (0 - 1023): brake button
+        ctl->throttle(),     // (0 - 1023): throttle (AKA gas) button
+        ctl->miscButtons()  // bitmask of pressed "misc" buttons
+    );
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// CONTROLLER PROCESSING FUNCTIE: Verwerkt alle gamepad inputs
+// Leest joystick + button data en stuurt het naar PSoC5 via I2C
+void processGamepad(ControllerPtr ctl) {
+
+    // Voor Struct
+    DataController.leftX    = ctl->axisX();
+    DataController.leftY    = ctl->axisY();
+    DataController.rightX   = ctl->axisRX();
+    DataController.rightY   = ctl->axisRY();
+
+    DataController.brake    = ctl->brake();
+    DataController.throttle = ctl->throttle();
+
+    DataController.buttons = ctl->buttons();
+    DataController.dpad    = ctl->dpad();
+    DataController.misc    = ctl->miscButtons();
+
+    // Verstuur naar PSoC
+    sendControllerI2C();
+
+    // Debug print
+    dumpGamepad(ctl);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// MAIN CONTROLLER LOOP: Doorloopt alle verbonden controllers en verwerkt ze
+// Wordt aangeroepen vanuit loop() wanneer er nieuwe controller data is
+void processControllers() {
+    for (auto myController : myControllers) {
+        if (myController && myController->isConnected() && myController->hasData()) {
+            if (myController->isGamepad()) {
+                processGamepad(myController);
+            } else {
+                Serial.println("Unsupported controller");
+            }
+        }
+    }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Arduino setup function. Runs in CPU 1
+void setup() {
+    Serial.begin(115200);
+
+    Wire.begin(SDA_PIN, SCL_PIN);
+    Wire.setClock(400000);
+    
+
+    Serial.printf("Firmware: %s\n", BP32.firmwareVersion());
+    const uint8_t* addr = BP32.localBdAddress();
+    Serial.printf("BD Addr: %2X:%2X:%2X:%2X:%2X:%2X\n", addr[0], addr[1], addr[2], addr[3], addr[4], addr[5]);
+
+    // Setup the Bluepad32 callbacks
+    BP32.setup(&onConnectedController, &onDisconnectedController);
+
+    // "forgetBluetoothKeys()" should be called when the user performs
+    // a "device factory reset", or similar.
+    // Calling "forgetBluetoothKeys" in setup() just as an example.
+    // Forgetting Bluetooth keys prevents "paired" gamepads to reconnect.
+    // But it might also fix some connection / re-connection issues.
+    BP32.forgetBluetoothKeys();
+
+    // Enables mouse / touchpad support for gamepads that support them.
+    // When enabled, controllers like DualSense and DualShock4 generate two connected devices:
+    // - First one: the gamepad
+    // - Second one, which is a "virtual device", is a mouse.
+    // By default, it is disabled.
+    BP32.enableVirtualDevice(false);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Arduino loop function. Runs in CPU 1.
+void loop() {
+    // This call fetches all the controllers' data.
+    // Call this function in your main loop.
+    bool dataUpdated = BP32.update();
+    if (dataUpdated)
+        processControllers();
+
+    // The main loop must have some kind of "yield to lower priority task" event.
+    // Otherwise, the watchdog will get triggered.
+    // If your main loop doesn't have one, just add a simple `vTaskDelay(1)`.
+    // Detailed info here:
+    // https://stackoverflow.com/questions/66278271/task-watchdog-got-triggered-the-tasks-did-not-reset-the-watchdog-in-time
+
+    //     vTaskDelay(1);
+    delay(50);
+}
