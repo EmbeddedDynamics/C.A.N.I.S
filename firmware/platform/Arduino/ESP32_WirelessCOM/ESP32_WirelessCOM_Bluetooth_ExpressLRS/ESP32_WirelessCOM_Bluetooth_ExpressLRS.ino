@@ -62,7 +62,7 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 RobotControllerData DataController;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// I2C zendfunctie
+// I2C sendfunction
 
 void sendControllerI2C() {
     Wire.beginTransmission(PSOC_ADDR);
@@ -96,8 +96,8 @@ void onConnectedController(ControllerPtr ctl) {
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// CALLBACK FUNCTIE: Wordt aangeroepen wanneer een controller ontkoppelt
-// Deze functie verwijdert de controller uit de myControllers array
+// CALLBACK FUNCTION: Called when a controller disconnects
+// This function removes the controller from the myControllers array
 void onDisconnectedController(ControllerPtr ctl) {
     bool foundController = false;
 
@@ -138,8 +138,8 @@ void dumpGamepad(ControllerPtr ctl) {
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// CONTROLLER PROCESSING FUNCTIE: Verwerkt alle gamepad inputs
-// Leest joystick + button data en stuurt het naar PSoC5 via I2C
+// DEBUG FUNCTION: Prints all controller data to Serial Monitor
+// Used to display all available sensor data (joysticks, buttons, gyro, etc.)
 void processGamepad(ControllerPtr ctl) {
 
     // Voor Struct
@@ -164,8 +164,8 @@ void processGamepad(ControllerPtr ctl) {
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// MAIN CONTROLLER LOOP: Doorloopt alle verbonden controllers en verwerkt ze
-// Wordt aangeroepen vanuit loop() wanneer er nieuwe controller data is
+// MAIN CONTROLLER LOOP: Iterates through all connected controllers and processes them
+// Called from loop() when new controller data is available
 void processControllers() {
     for (auto myController : myControllers) {
         if (myController && myController->isConnected() && myController->hasData()) {
