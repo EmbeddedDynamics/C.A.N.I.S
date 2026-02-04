@@ -84,6 +84,11 @@ module bCORDIC (
     
     wire F1_x_lsb_filled, F1_x_msb_filled;
     wire F1_z_lsb_filled, F1_z_msb_filled;
+    
+    wire F1_x_lsb_full, F1_x_msb_full;
+    wire F1_z_lsb_full, F1_z_msb_full;
+    
+    wire out_fifo_full = &{F1_x_lsb_full, F1_x_msb_full, F1_z_lsb_full, F1_z_msb_full};
 
     /* Datapath PI/PO */
     wire [7:0] x_pi_lsb, x_pi_msb;
@@ -228,7 +233,7 @@ module bCORDIC (
         .clock(op_clock)
     );
 
-    assign cordic_status[7]     = 1'b0;
+    assign cordic_status[7]     = out_fifo_full;
     assign cordic_status[6]     = cordic_done;
     assign cordic_status[5]     = x_filled;
     assign cordic_status[4]     = z_filled;
@@ -281,7 +286,7 @@ module bCORDIC (
                     dp_op    <= OP_IDLE;
                     load_out <= 1'b0;
 
-                    if (!fifo_empty) begin
+                    if (!fifo_empty & !out_fifo_full) begin
                         iter   <= 4'd0;
                         state  <= S_LOAD_A0;
                     end
@@ -434,7 +439,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  output                  */  .f0_bus_stat(F0_x_lsb_full),
         /*  output                  */  .f0_blk_stat(F0_x_lsb_empty),
         /*  output                  */  .f1_bus_stat(F1_x_lsb_filled),
-        /*  output                  */  .f1_blk_stat(),
+        /*  output                  */  .f1_blk_stat(F1_x_lsb_full),
         
         /* input                    */  .ci(1'b0),          // Carry in from previous stage
         /* output                   */  .co(chain_x[12]),   // Carry out to engine_x_MSB
@@ -535,7 +540,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  output                  */  .f0_bus_stat(F0_x_msb_full),
         /*  output                  */  .f0_blk_stat(F0_x_msb_empty),
         /*  output                  */  .f1_bus_stat(F1_x_msb_filled),
-        /*  output                  */  .f1_blk_stat(),
+        /*  output                  */  .f1_blk_stat(F1_x_msb_full),
         
         /* input                    */  .ci(chain_x[12]),          // Carry in from previous stage
         /* output                   */  .co(),              // Carry out to next stage
@@ -848,7 +853,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  output                  */  .f0_bus_stat(), //.f0_bus_stat(F0_z_msb_full),
         /*  output                  */  .f0_blk_stat(), //.f0_blk_stat(F0_z_msb_empty),
         /*  output                  */  .f1_bus_stat(F1_z_lsb_filled),
-        /*  output                  */  .f1_blk_stat(),
+        /*  output                  */  .f1_blk_stat(F1_z_lsb_full),
         
         /* input                    */  .ci(1'b0),          // Carry in from previous stage
         /* output                   */  .co(chain_z[12]),   // Carry out to engine_x_MSB
@@ -949,7 +954,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  output                  */  .f0_bus_stat(), //.f0_bus_stat(F0_z_msb_full),
         /*  output                  */  .f0_blk_stat(), //.f0_blk_stat(F0_z_msb_empty),
         /*  output                  */  .f1_bus_stat(F1_z_msb_filled),
-        /*  output                  */  .f1_blk_stat(),
+        /*  output                  */  .f1_blk_stat(F1_z_msb_full),
         
         /* input                    */  .ci(chain_z[12]),          // Carry in from previous stage
         /* output                   */  .co(),              // Carry out to next stage
