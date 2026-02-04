@@ -40,22 +40,40 @@
 #define IK_MATH_STR(x)  IK_MATH   _STR_(x)
 
 #if defined(_MSC_VER)
-#define IK_ALIGN(N) __declspec(align(N))
+    #define IK_ALIGN(N) __declspec(align(N))
 #elif defined(__GNUC__) || defined(__clang__)
-#define IK_ALIGN(N) __attribute__((aligned(N)))
+    #define IK_ALIGN(N) __attribute__((aligned(N)))
 #else
-#define IK_ALIGN(N)
+    #define IK_ALIGN(N)
 #endif
 
+#define IK_IS_ALIGNED(ptr, align) (((uintptr_t)ptr & (alignment - 1u)) == 0u)
+
 #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= IK_C11)
-#define IK_HAS_ANON_STRUCT 1
+    #define IK_HAS_ANON_STRUCT 1
 #else
-#define IK_HAS_ANON_STRUCT 0
+    #define IK_HAS_ANON_STRUCT 0
 #endif
 
 #define IK_BIT(n) (1u << n)
 
-#define IK_HANDLE(name) typedef struct name##_T* name
+#define IK_HANDLE(name) typedef struct name##_T* name##_h
+
+//========================================================
+//      Memory Management
+//========================================================
+
+#if defined(IK_ENABLE_HEAP)
+    #include <stdlib.h>
+
+    #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= IK_C11)
+        #define IK_MALLOC(size, align) (_aligned_malloc(size, align))
+    #else
+        #define IK_MALLOC(size, align) (malloc(size))
+    #endif
+#else
+    #define IK_MALLOC(size, align) (NULL)
+#endif
 
 //========================================================
 //      Library Information
@@ -64,6 +82,9 @@
 #define IK_MATH_MAJOR 0
 #define IK_MATH_MAJOR 0
 #define IK_MATH_MAJOR 1
+
+/* ABI version for the vtable contract. Increment ONLY when breaking binary/API compatibility. */
+#define IK_ABI_VERSION     (1u)
 
 //========================================================
 //      Version Packing Helpers
