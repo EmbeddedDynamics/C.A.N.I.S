@@ -24,6 +24,13 @@
 #include "cyapicallbacks.h"
 
 //========================================================
+//      CORDIC Globals
+//========================================================
+
+static `$INSTANCE_NAME`_job_id_t queue_cntr;
+static `$INSTANCE_NAME`_job_id_t output_cntr;
+
+//========================================================
 //      CORDIC Enable functions
 //========================================================
 
@@ -57,6 +64,9 @@ void `$INSTANCE_NAME`_init(void) `=ReentrantKeil($INSTANCE_NAME . "_init")`
 
     /* Set the priority. */
     `$INSTANCE_NAME`_ISR_SetPriority((uint8)`$INSTANCE_NAME`_ISR_INTC_PRIOR_NUMBER);
+    
+    //queue_cntr = 0u;
+    //output_cntr = 0u;
 }
 
 uint8_t `$INSTANCE_NAME`_start(void) `=ReentrantKeil($INSTANCE_NAME . "_start")`
@@ -110,7 +120,8 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`
     return CYRET_SUCCESS;
 }
 
-uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`
+//`$INSTANCE_NAME`_job_id_t* job_id
+uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`;
 {
     if (!result)
         return CYRET_BAD_PARAM;
@@ -118,19 +129,26 @@ uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=Reentrant
     if (!`$INSTANCE_NAME`_has_pending())
         return CYRET_CANCELED;
     
-    result->mag = Q12_4_TO_MM(`$INSTANCE_NAME`_X_ENGINE_F1_REG);
-    result->angle = DEG_FROM_BAMS_SIGNED(`$INSTANCE_NAME`_Z_ENGINE_F1_REG);
+    result->x = `$INSTANCE_NAME`_X_ENGINE_F1_REG;
+    result->z = `$INSTANCE_NAME`_Z_ENGINE_F1_REG;
+    
+    //*job_id = output_cntr;
+    //output_cntr++;
     
     return CYRET_SUCCESS;
 }
 
-uint8_t `$INSTANCE_NAME`_queue_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`
+//, `$INSTANCE_NAME`_job_id_t* job_id
+uint8_t `$INSTANCE_NAME`_queue_data(const `$INSTANCE_NAME`_vector_t* vector) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`;
 {
-    if (!result)
+    if (!vector || !job_id)
         return CYRET_BAD_PARAM;
 
-    CY_SET_REG16(CORDIC_X_ENGINE_F0_PTR, (int16_t) Q12_4_FROM_MM(result->x)); //(int16_t) 0xF000);
-    CY_SET_REG16(CORDIC_Y_ENGINE_F0_PTR, (int16_t) Q12_4_FROM_MM(result->y));
+    CY_SET_REG16(CORDIC_X_ENGINE_F0_PTR, (int16_t) vector->x); //(int16_t) 0xF000);
+    CY_SET_REG16(CORDIC_Y_ENGINE_F0_PTR, (int16_t) vector->y);
+    
+    //*job_id = queue_cntr;
+    //queue_cntr++;
     
     return CYRET_SUCCESS;
 }
@@ -160,7 +178,9 @@ CY_ISR(CORDIC_ISR_Handler)
     if (int_status & `$INSTANCE_NAME`_STS_DONE)
     {
         #if defined(`$INSTANCE_NAME`_DONE_CALLBACK)
-            `$INSTANCE_NAME`_done_callback();
+            
+        `$INSTANCE_NAME`_done_callback();
+        
         #endif
     }
 }

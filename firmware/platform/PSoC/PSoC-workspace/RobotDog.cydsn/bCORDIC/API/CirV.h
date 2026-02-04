@@ -31,13 +31,13 @@
 #include "cytypes.h"
 #include "cyfitter.h"
 #include "CyLib.h"
+    
+//========================================================
+//      CORDIC Custom Types
+//========================================================
 
-/* Check to see if required defines such as CY_PSOC5A are available */
-/* They are defined starting with cy_boot v3.0 */
-#ifndef CY_PSOC5A
-    #error Component `$CY_COMPONENT_NAME` requires cy_boot v3.0 or later
-#endif /* CY_PSOC5A */
-
+typedef uint32_t `$INSTANCE_NAME`_job_id_t;
+    
 //========================================================
 //      CORDIC Control registers
 //========================================================
@@ -452,66 +452,18 @@ typedef struct {
     /** 
       * @brief X coordinate of the input vector. 
       */
-    float x; 
+    int16_t x; 
     
     /** 
       * @brief Y coordinate of the input vector. 
       */
-    float y; 
+    int16_t y; 
+    
+    /** 
+      * @brief z coordinate of the input vector. 
+      */
+    int16_t z; 
 } `$INSTANCE_NAME`_vector_t;
-
-/**
- * @brief Output result for CORDIC circular vectoring mode.
- *
- * This result structure is used when the CORDIC operates in **circular vectoring**
- * mode. In this mode, the algorithm accepts an input vector `(x, y)` and iteratively
- * rotates it toward the +X axis until the Y component is driven to zero.
- *
- * As a result of this process:
- * - The final X component represents the **vector magnitude**
- * - The accumulated rotation represents the **vector angle**
- *
- * Functional interpretation:
- * - If **both `x` and `y` are provided** as inputs:
- *   - `mag`   = `sqrt(x^2 + y^2)` (optionally scaled by the CORDIC gain `K`)
- *   - `angle` = `atan2(y, x)`
- *
- * This makes circular vectoring mode suitable for:
- * - Polar conversion `(x, y) → (r, θ)`
- * - Phase extraction
- * - Magnitude computation
- *
- * Trigonometric inverse functions using vectoring mode:
- * - **`acos(a)`**  
- *   Provide inputs:
- *   - `x = a`
- *   - `y = sqrt(1 - a^2)`
- *   Then:
- *   - `angle = acos(a)`
- *
- * - **`asin(a)`**  
- *   Provide inputs:
- *   - `x = sqrt(1 - a^2)`
- *   - `y = a`
- *   Then:
- *   - `angle = asin(a)`
- *
- * - **`atan(a)`**  
- *   Provide inputs:
- *   - `x = 1`
- *   - `y = a`
- *   Then:
- *   - `angle = atan(a)`
- *
- * @note Input values for `asin` and `acos` must satisfy `|a| <= 1`.
- */
-typedef struct {
-    /**< Vector magnitude derived from (x, y); may include CORDIC gain K. */
-    float mag;   
-   
-    /**< Accumulated rotation angle (e.g., atan2(y, x)). */
-    float angle;
-} `$INSTANCE_NAME`_result_t;
 
 //========================================================
 //      CORDIC Enable functions
@@ -564,10 +516,10 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`;
 /**
  * @brief Fetch data from the output FIFOs.
  *
- * @param[out] - Pointer to the result structure
+ * @param[out] result - Pointer to the result structure
+ * @param[out] job_id - Job id of the resulting vector
  *
- * @return uint8_t
- *          CYRET_SUCCESS: Data fetched.
+ * @retval CYRET_SUCCESS - Data fetched.
  *
  */
 uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`;
@@ -575,13 +527,13 @@ uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=Reentrant
 /**
  * @brief Queue input vector data for processing.
  *
- * @param[in] - Pointer to the vector to be processed
+ * @param[in] vector - Pointer to the vector to be processed
+ * @param[out] job_id - Job id of the queued vector
  *
- * @return uint8_t
- *          CYRET_SUCCESS: Data queued.
+ * @retval CYRET_SUCCESS - Data queued.
  *
  */
-uint8_t `$INSTANCE_NAME`_queue_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`;
+uint8_t `$INSTANCE_NAME`_queue_data(const `$INSTANCE_NAME`_vector_t* vector) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`;
 
 //========================================================
 //      CORDIC Interrupt functions
