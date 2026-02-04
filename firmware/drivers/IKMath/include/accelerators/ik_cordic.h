@@ -31,6 +31,20 @@
 #include "ik_results.h"
 #include "ik_types.h"
 
+#ifndef IK_USE_STATIC_JOB_QUEUE
+    #define IK_USE_STATIC_JOB_QUEUE 1u
+#endif
+
+#ifndef IK_CORDIC_JOB_QUEUE_SIZE
+    #define IK_CORDIC_JOB_QUEUE_SIZE 4u
+#endif
+
+#define IK_CORDIC_INVALID_JOB_ID 0xFFu
+
+//========================================================
+//      CORDIC FPU Support
+//========================================================
+
 #ifndef IK_CORDIC_SUPPORT_FPU
 #define IK_CORDIC_SUPPORT_FPU 0
 #endif
@@ -59,7 +73,7 @@ enum {
     IK_CORDIC_OP_CAP_ROTATION = IK_BIT(0u), // theta -> (s,c) or rotated vector
     IK_CORDIC_OP_CAP_VECTORING = IK_BIT(1u), // (x,y) -> (r,theta)
 };
-typedef uint32_t ik_cordic_op_caps_t;
+typedef ik_flags8_t ik_cordic_op_caps_t;
 
 typedef struct {
     ik_cordic_op_caps_t linear_ops;
@@ -85,25 +99,14 @@ typedef struct {
 
 typedef enum {
     IK_ANGLE_TURNS = 0, // 1.0 = full turn (2π)
-    IK_ANGLE_DEGREES,
+
+    /**
+     * @brief Binary Angular Measurement representation
+     */
+    IK_ANGLE_BAMS,
+    
     IK_ANGLE_RADIANS,
 } ik_angle_unit_t;
-
-//========================================================
-//      CORDIC Job Structure
-//========================================================
-
-typedef struct {
-    ik_vector2f_t vec;
-    float theta;
-} ik_cordic_job_input_t;
-
-typedef struct {
-    ik_cordic_coord_t coord;
-    ik_cordic_operation_t operation;
-    ik_cordic_job_input_t input;
-    
-} ik_cordic_job_t;
 
 //========================================================
 //      CORDIC Configuration
@@ -122,6 +125,8 @@ typedef struct {
 #endif
 
     ik_angle_unit_t angle_unit;
+
+    uint16_t timeout;
     
     uint8_t iterations;
 
@@ -134,57 +139,99 @@ typedef struct {
 IK_HANDLE(ik_cordic);
 
 //========================================================
-//      CORDIC Methods
+//      CORDIC Creation Methods
 //========================================================
 
 /**
  * @brief Create the CORDIC backend
  * 
  * @param[in] cfg - CORDIC creation configuration
- * @param[out] handle - CORDIC backend handle
+ * @param[inout] handle - CORDIC backend handle
  * 
  * @retval IK_RESULT_OK : CORDIC backend created
  * 
  */
 ik_result_t ik_cordic_create_backend(
     ik_cordic_cfg_t* cfg,
-    ik_cordic* handle
+    ik_cordic_h* handle
 );
 
+//========================================================
+//      CORDIC Synchronus API's
+//========================================================
+
 /**
- * @brief Perform a synchronus vectoring operation
- * 
- * @param[in] handle - CORDIC Handle
- * @param[in] coord - Coordinate system
- * @param[in] vec_in - Input vector
- * @param[out] out - Output vector pointer
- * 
- * @retval
+ * @brief Perform a synchronous CORDIC vectoring operation.
+ *
+ * Computes the CORDIC vectoring operation on the input vector in the specified
+ * coordinate system.
+ *
+ * @param[in]  handle   CORDIC instance handle.
+ * @param[in]  coord    Coordinate system to use.
+ * @param[in]  vec_in   Input vector.
+ * @param[out] out      Pointer to the output vector.
+ *
+ * @retval IK_ERROR_CORDIC_NO_BACKEND - The @p handle is not a valid CORDIC backend
+ * @retval IK_ERROR_CORDIC_NOT_SUPPORTED - Either the vectoring operation or the specified coordinate system is not supported
  */
 ik_result_t ik_cordic_vec_sync(
-    ik_cordic handle, 
+    ik_cordic_h handle,
     ik_cordic_coord_t coord,
-    const ik_vector2f_t *vec_in, 
-    ik_vector2f_t *out
+    const ik_vector2f_t* vec_in,
+    ik_vector2f_t* out
 );
 
 /**
- * @brief Perform a synchronus rotational operation
- * 
- * Perform a synchronus rational CORDIC operation in the specified
- * Coordinate system.
- * 
- * @param[in] handle - CODRIC Handle
- * @param[in] coord - Coordinate system
- * @param[in] theta - Starting angle
- * @param[out] out - Output vector pointer
+ * @brief Perform a synchronous CORDIC rotation operation.
+ *
+ * Computes a CORDIC rotation in the specified coordinate system for the given
+ * input angle.
+ *
+ * @param[in]  handle   CORDIC instance handle.
+ * @param[in]  coord    Coordinate system to use.
+ * @param[in]  theta    Rotation angle (radians unless otherwise specified).
+ * @param[out] out      Pointer to the output vector.
+ *
+ * @retval IK_ERROR_NULL_POINTER - Either @p handle or @p out is a NULL pointer
+ * @retval IK_ERROR_CORDIC_NO_BACKEND - The @p handle is not a valid CORDIC backend
+ * @retval IK_ERROR_CORDIC_NOT_SUPPORTED - Either the rotational operation or the specified coordinate system is not supported
  */
 ik_result_t ik_cordic_rot_sync(
-    ik_cordic handle, 
+    ik_cordic_h handle,
     ik_cordic_coord_t coord,
-    float theta, 
+    float theta,
     ik_vector2f_t* out
 );
+
+//========================================================
+//      CORDIC Asynchronus API's
+//========================================================
+
+/**
+ * @brief Poll the CORDIC driver
+ * 
+ * Process internal CORDIC information and updates the
+ * state machine
+ * 
+ * @param[in] handle - CORDIC handle
+ * 
+ * @retval IK_RESULT_OK - CORDIC polled succesfully
+ */
+ik_result_t ik_cordic_poll(ik_cordic_h handle);
+
+/**
+ * @brief Directly queue a CORDIC job
+ * 
+ * @param[in] handle - CORDIC handle
+ * @param[in] job - Address to the CORDIC job
+ * 
+ * @note The CORDIC won't take ownership of @p job the structure must stay valid
+ * in it's lifespan of the CORDIC statemachine.
+ */
+// ik_result_t ik_cordic_submit_job(
+//     ik_cordic_h handle,
+//     ik_cordic_job_t* job
+// );
 
 //========================================================
 //      End of File
