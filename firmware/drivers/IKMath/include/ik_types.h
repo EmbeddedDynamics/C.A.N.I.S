@@ -36,8 +36,10 @@
 //      IK Custom Types
 //========================================================
 
-typedef uint32_t ik_flags32_t;
-typedef uint64_t ik_flags64_t;
+typedef uint8_t     ik_flags8_t;
+typedef uint16_t    ik_flags16_t;
+typedef uint32_t    ik_flags32_t;
+typedef uint64_t    ik_flags64_t;
 
 //========================================================
 //      IK Vectors
