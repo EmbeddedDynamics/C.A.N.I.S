@@ -49,6 +49,18 @@
 #define IK_CORDIC_SUPPORT_FPU 0
 #endif
 
+#if (IK_CORDIC_SUPPORT_FPU == 0)
+
+static inline int32_t ik_float_to_fixed_i32_fast(float x, ik_fixed_fmt_t fmt)
+{
+    // Multiply by 2^frac_bits and round
+    // This compiles to: float mul + add + cast
+    return (int32_t)(x * (float)(1u << fmt.frac_bits)
+                     + (x >= 0.0f ? 0.5f : -0.5f));
+}
+
+#endif
+
 //========================================================
 //      CORDIC Coordinate Systems
 //========================================================
@@ -87,6 +99,14 @@ typedef struct {
 
 #if (IK_CORDIC_SUPPORT_FPU == 0)
 
+static inline int32_t ik_float_to_fixed_i32_fast(float x, ik_fixed_fmt_t fmt)
+{
+    // Multiply by 2^frac_bits and round
+    // This compiles to: float mul + add + cast
+    return (int32_t)(x * (float)(1u << fmt.frac_bits)
+                     + (x >= 0.0f ? 0.5f : -0.5f));
+}
+
 typedef struct {
     uint8_t total_bits;
     uint8_t frac_bits;
@@ -107,6 +127,73 @@ typedef enum {
     
     IK_ANGLE_RADIANS,
 } ik_angle_unit_t;
+
+//========================================================
+//      BAMS Constants
+//========================================================
+
+typedef int8_t  ik_bams8_t;
+typedef int16_t ik_bams16_t;
+typedef int32_t ik_bams32_t;
+
+// ---------- Full turn counts ----------
+#define IK_BAMS8_FULL_TURN_U32    (256u)
+#define IK_BAMS16_FULL_TURN_U32   (65536u)
+#define IK_BAMS32_FULL_TURN_U64   (4294967296ull) // 2^32
+
+// ---------- Handy fractions (signed) ----------
+#define IK_BAMS8_QUARTER_TURN_I32   (64)
+#define IK_BAMS8_HALF_TURN_I32      (128)
+
+#define IK_BAMS16_QUARTER_TURN_I32  (16384)
+#define IK_BAMS16_HALF_TURN_I32     (32768)
+
+#define IK_BAMS32_QUARTER_TURN_I64  (1073741824ll)
+#define IK_BAMS32_HALF_TURN_I64     (2147483648ll)
+
+// ---------- LSB sizes (float) ----------
+#define IK_BAMS8_DEG_PER_LSB_F    (360.0f / 256.0f)
+#define IK_BAMS16_DEG_PER_LSB_F   (360.0f / 65536.0f)
+#define IK_BAMS32_DEG_PER_LSB_F   (360.0f / 4294967296.0f)
+
+#define IK_BAMS8_RAD_PER_LSB_F    (6.2831853071795864769f / 256.0f)
+#define IK_BAMS16_RAD_PER_LSB_F   (6.2831853071795864769f / 65536.0f)
+#define IK_BAMS32_RAD_PER_LSB_F   (6.2831853071795864769f / 4294967296.0f)
+
+//========================================================
+//      Float conversions
+//========================================================
+
+// Degrees/radians -> BAMS
+#define IK_DEG_TO_BAMS8_F(deg_f)   ((ik_bams8_t) ((deg_f) * (256.0f / 360.0f)))
+#define IK_DEG_TO_BAMS16_F(deg_f)  ((ik_bams16_t)((deg_f) * (65536.0f / 360.0f)))
+#define IK_DEG_TO_BAMS32_F(deg_f)  ((ik_bams32_t)((deg_f) * (4294967296.0f / 360.0f)))
+
+#define IK_RAD_TO_BAMS8_F(rad_f)   ((ik_bams8_t) ((rad_f) * (256.0f / 6.2831853071795864769f)))
+#define IK_RAD_TO_BAMS16_F(rad_f)  ((ik_bams16_t)((rad_f) * (65536.0f / 6.2831853071795864769f)))
+#define IK_RAD_TO_BAMS32_F(rad_f)  ((ik_bams32_t)((rad_f) * (4294967296.0f / 6.2831853071795864769f)))
+
+// BAMS -> Degrees/radians
+#define IK_BAMS8_TO_DEG_F(b)    ((float)(b) * IK_BAMS8_DEG_PER_LSB_F)
+#define IK_BAMS16_TO_DEG_F(b)   ((float)(b) * IK_BAMS16_DEG_PER_LSB_F)
+#define IK_BAMS32_TO_DEG_F(b)   ((float)(b) * IK_BAMS32_DEG_PER_LSB_F)
+
+#define IK_BAMS8_TO_RAD_F(b)    ((float)(b) * IK_BAMS8_RAD_PER_LSB_F)
+#define IK_BAMS16_TO_RAD_F(b)   ((float)(b) * IK_BAMS16_RAD_PER_LSB_F)
+#define IK_BAMS32_TO_RAD_F(b)   ((float)(b) * IK_BAMS32_RAD_PER_LSB_F)
+
+//========================================================
+//      Cross-width conversions
+//========================================================
+
+#define IK_BAMS8_TO_BAMS16(b8)   ((ik_bams16_t)((int16_t)(b8) << 8))
+#define IK_BAMS16_TO_BAMS8(b16)  ((ik_bams8_t)((int16_t)(b16) >> 8))
+
+#define IK_BAMS16_TO_BAMS32(b16) ((ik_bams32_t)((int32_t)(b16) << 16))
+#define IK_BAMS32_TO_BAMS16(b32) ((ik_bams16_t)((int32_t)(b32) >> 16))
+
+#define IK_BAMS8_TO_BAMS32(b8)   ((ik_bams32_t)((int32_t)(b8) << 24))
+#define IK_BAMS32_TO_BAMS8(b32)  ((ik_bams8_t)((int32_t)(b32) >> 24))
 
 //========================================================
 //      CORDIC Configuration

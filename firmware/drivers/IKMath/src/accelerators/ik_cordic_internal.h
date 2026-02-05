@@ -60,8 +60,7 @@ typedef ik_flags8_t ik_cordic_job_state_t;
 //========================================================
 
 typedef union {
-    ik_vector2f_t vec;
-    float theta;
+    ik_vector3f_t vec;
 } ik_cordic_job_input_t;
 
 typedef struct {

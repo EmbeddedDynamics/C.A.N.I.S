@@ -51,34 +51,56 @@
     void ik_cordic_done_clb(void);
 #endif
 
+#define CORDIC_WAIT_UNTIL_EMPTY(timeout) \
+( \
+    uint16_t _timeout = timeout;
+    uint8_t empty = (CORDIC_STATUS_REG & CORDIC_STS_X_FILLED) \
+    while ((empty != 0) || (_timeout > 0)) \
+    { \
+        empty = (CORDIC_STATUS_REG & CORDIC_STS_X_FILLED); \
+        _timeout--; \
+        CyDelayUs(10); \
+    } \
+    if (_timeout <= 0)
+        return IK_ERROR_CORDIC_TIMEOUT;
+    break; \
+)
+
 //========================================================
 //      PSoC5 CORDIC Methods
 //========================================================
 
-typedef ik_result_t (*ik_cordic_submit_fn_t) (
-    ik_ctx_t ctx,
-    ik_cordic_job_t* job,
-    uint32_t* job_id
-);
-
-typedef uint8_t (*ik_cordic_available_fn_t) (
-    ik_ctx_t ctx
-);
-
-ik_result_t ik_cordic_psoc5_submit(
-    ik_ctx_t ctx,
-    ik_cordic_job_t* job)
+ik_result_t ik_cordic_psoc5_submit(ik_ctx_t ctx, ik_cordic_job_t* job)
 {
     if (!ctx || !job)
         return IK_ERROR_NULL_POINTER;
 
-    CORDIC_vector_t vector = {
-        .x = job->input.vec[0],
-        .y = job->input.vec[1],
-        .z = 0u
+    uint8_t current_mode = (uint8_t)(CORDIC_CONTROL_REG & CORDIC_OPER_MODE);
+
+    uint8_t desired_mode = (job->operation == IK_CORDIC_OPERATION_ROTATION)
+        ? CORDIC_ROTATING_OPER
+        : CORDIC_VECTORING_OPER;
+
+    // If mode must change, drain/flush first
+    if (current_mode != desired_mode)
+    {
+        // Wait until the X-fifo is empry
+        CORDIC_WAIT_UNTIL_EMPTY();
+
+        // Write mode field (clear then set)
+        CORDIC_CONTROL_REG = (CORDIC_CONTROL_REG & (uint8_t)~CORDIC_OPER_MODE) | desired_mode;
     }
 
-    if (CORDIC_queue_data(&vector) != CYRET_SUCCESS)
+    ik_cordic_h h = (ik_cordic_h) ctx;
+
+    // Build the vector to queue
+    CORDIC_vector_t v = {0};
+
+    v.x = (int16_t) ik_float_to_fixed_i32_fast(job->input.vec.x, h->config.vec_xy_fmt);   // placeholder: you need a defined source
+    v.y = (int16_t) ik_float_to_fixed_i32_fast(job->input.vec.y, h->config.vec_xy_fmt); // placeholder: usually 0
+    v.z = (int16_t) IK_RAD_TO_BAMS16_F(theta_rad); // placeholder: BAMS16 or radians->BAMS16 conversion later
+
+    if (CORDIC_queue_data(&v) != CYRET_SUCCESS)
         return IK_ERROR_CORDIC_HARDWARE_ERROR;
 
     return IK_RESULT_OK;
