@@ -54,8 +54,8 @@ module bCORDIC (
 	localparam SYSTEM_CIRCULAR = 2;
     localparam SYSTEM_HYPERBOLIC = 3;
     
-    localparam OPERATION_ROTATING = 1;
-	localparam OPERATION_VECTORING = 2;
+    localparam OPERATION_ROTATING = 0;
+	localparam OPERATION_VECTORING = 1;
     
     parameter CORDICSystem = SYSTEM_CIRCULAR;
     parameter CORDICOperation = OPERATION_VECTORING;
@@ -67,6 +67,7 @@ module bCORDIC (
     
     wire cordic_enable;
     wire cordic_reset;
+    wire cordic_operation;
     
     wire core_init;
     wire hold_reset = 0;
@@ -98,6 +99,7 @@ module bCORDIC (
     wire [7:0] y_po_lsb, y_po_msb;
 
     wire [7:0] z_pi_lsb, z_pi_msb;
+    wire [7:0] z_po;
 
     /* Chaining */
     wire [14:0] chain_x, chain_y, chain_z;
@@ -198,6 +200,7 @@ module bCORDIC (
     wire [7:0] ctrl;
     localparam  MDIO_CTRL_ENABLE = 3'd0;
     localparam  MDIO_CTRL_RESET  = 3'd1;
+    localparam  MDIO_CTRL_OPERATION  = 3'd2;
     
     cy_psoc3_control #(.cy_force_order(`TRUE)) CtlReg
     (
@@ -207,6 +210,7 @@ module bCORDIC (
     
     assign cordic_enable = ctrl[MDIO_CTRL_ENABLE] & en;
     assign cordic_reset = ctrl[MDIO_CTRL_RESET] | rst;
+    assign cordic_operation = ctrl[MDIO_CTRL_OPERATION];
     
     //======================================================================================================
     //      STATUS REGISTER
@@ -310,7 +314,8 @@ module bCORDIC (
 
                     x_pi <= {y_po_msb, y_po_lsb};
                     y_pi <= {x_po_msb, x_po_lsb};
-                    sign <= y_po_msb[7];
+                    
+                    sign <= (cordic_operation==OPERATION_VECTORING) ? y_po_msb[7] : ~z_po[7];
 
                     state <= S_LOAD_A1;
                 end
@@ -369,49 +374,49 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM0:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM0:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC___F0, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM1:                  Load FIFO F0 -> A0*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM1:                    Load FIFO F0 -> A0*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM2:       Load PO (PO = SRCA = A0)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM2:         Load PO (PO = SRCA = A0)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM3:       Load A1 (A1 = PI = dY)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM3:         Load A1 (A1 = PI = dY)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A1, `CS_SRCB_D0,
     `CS_SHFT_OP___SR, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM4:       Shift A1 (A1 = A1 >> 1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM4:         Shift A1 (A1 = A1 >> 1)*/
     `CS_ALU_OP__ADD, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM5:       Add A0 (A0 = A0 + A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM5:         Add A0 (A0 = A0 + A1)*/
     `CS_ALU_OP__SUB, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM6:       Sub A0 (A0 = A0 - A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM6:         Sub A0 (A0 = A0 - A1)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM7:       Idle*/
-    8'hFF, 8'h00,  /*CFG9:                    ALU Mask unused*/
-    8'hFF, 8'hFF,  /*CFG11-10:                    CMP Mask unused*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM7:         Idle*/
+    8'hFF, 8'h00,  /*CFG9:                      ALU Mask unused*/
+    8'hFF, 8'hFF,  /*CFG11-10:                      CMP Mask unused*/
     `SC_CMPB_A0_D1, `SC_CMPA_A0_D1, `SC_CI_B_ARITH,
     `SC_CI_A_ARITH, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL,
     `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_CHAIN,
-    `SC_SI_A_CHAIN, /*CFG13-12:                          */
+    `SC_SI_A_CHAIN, /*CFG13-12:                            */
     `SC_A0_SRC_ACC, `SC_SHIFT_SR, `SC_PI_DYN_EN,
     1'h0, `SC_FIFO1__A0, `SC_FIFO0_BUS,
     `SC_MSB_DSBL, `SC_MSB_BIT7, `SC_MSB_NOCHN,
     `SC_FB_NOCHN, `SC_CMP1_NOCHN,
-    `SC_CMP0_NOCHN, /*CFG15-14:                    Enable DYN PI*/
+    `SC_CMP0_NOCHN, /*CFG15-14:                      Enable DYN PI*/
     10'h00, `SC_FIFO_CLK__DP,`SC_FIFO_CAP_AX,
     `SC_FIFO__EDGE,`SC_FIFO__SYNC,`SC_EXTCRC_DSBL,
-    `SC_WRK16CAT_DSBL /*CFG17-16:                          */
+    `SC_WRK16CAT_DSBL /*CFG17-16:                            */
 }),
 .d1_init(8'b11111111)
 ) dp_x_engine_LSB(
@@ -470,49 +475,49 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM0:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM0:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC___F0, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM1:                  Load FIFO F0 -> A0*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM1:                    Load FIFO F0 -> A0*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM2:       Load PO (PO = SRCA = A0)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM2:         Load PO (PO = SRCA = A0)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM3:       Load A1 (A1 = PI = dY)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM3:         Load A1 (A1 = PI = dY)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A1, `CS_SRCB_D0,
     `CS_SHFT_OP___SR, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM4:       Shift A1 (A1 = A1 >> 1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM4:         Shift A1 (A1 = A1 >> 1)*/
     `CS_ALU_OP__ADD, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM5:       Add A0 (A0 = A0 + A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM5:         Add A0 (A0 = A0 + A1)*/
     `CS_ALU_OP__SUB, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM6:       Sub A0 (A0 = A0 - A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM6:         Sub A0 (A0 = A0 - A1)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM7:       Idle*/
-    8'hFF, 8'h00,  /*CFG9:                    ALU Mask unused*/
-    8'hFF, 8'hFF,  /*CFG11-10:                    CMP Mask unused*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM7:         Idle*/
+    8'hFF, 8'h00,  /*CFG9:                      ALU Mask unused*/
+    8'hFF, 8'hFF,  /*CFG11-10:                      CMP Mask unused*/
     `SC_CMPB_A0_D1, `SC_CMPA_A0_D1, `SC_CI_B_CHAIN,
     `SC_CI_A_CHAIN, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL,
     `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_DEFSI,
-    `SC_SI_A_DEFSI, /*CFG13-12:                          */
+    `SC_SI_A_DEFSI, /*CFG13-12:                            */
     `SC_A0_SRC_ACC, `SC_SHIFT_SR, `SC_PI_DYN_EN,
     `SC_SR_SRC_MSB, `SC_FIFO1__A0, `SC_FIFO0_BUS,
     `SC_MSB_DSBL, `SC_MSB_BIT7, `SC_MSB_NOCHN,
     `SC_FB_NOCHN, `SC_CMP1_NOCHN,
-    `SC_CMP0_NOCHN, /*CFG15-14:                    Enable DYN PI*/
+    `SC_CMP0_NOCHN, /*CFG15-14:                      Enable DYN PI*/
     10'h00, `SC_FIFO_CLK__DP,`SC_FIFO_CAP_AX,
     `SC_FIFO__EDGE,`SC_FIFO__SYNC,`SC_EXTCRC_DSBL,
-    `SC_WRK16CAT_DSBL /*CFG17-16:                          */
+    `SC_WRK16CAT_DSBL /*CFG17-16:                            */
 }),
 .d1_init(8'b11111111)
 ) dp_x_engine_MSB(
@@ -576,49 +581,49 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM0:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM0:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC___F0, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM1:                  Load FIFO F0 -> A0*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM1:                    Load FIFO F0 -> A0*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM2:       Load PO (PO = SRCA = A0)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM2:         Load PO (PO = SRCA = A0)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM3:       Load A1 (A1 = PI = dY)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM3:         Load A1 (A1 = PI = dY)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A1, `CS_SRCB_D0,
     `CS_SHFT_OP___SR, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM4:       Shift A1 (A1 = A1 >> 1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM4:         Shift A1 (A1 = A1 >> 1)*/
     `CS_ALU_OP__SUB, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM5:       Sub A0 (A0 = A0 - A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM5:         Sub A0 (A0 = A0 - A1)*/
     `CS_ALU_OP__ADD, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM6:       Add A0 (A0 = A0 + A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM6:         Add A0 (A0 = A0 + A1)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM7:       Idle*/
-    8'hFF, 8'h00,  /*CFG9:                    ALU Mask unused*/
-    8'hFF, 8'hFF,  /*CFG11-10:                    CMP Mask unused*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM7:         Idle*/
+    8'hFF, 8'h00,  /*CFG9:                      ALU Mask unused*/
+    8'hFF, 8'hFF,  /*CFG11-10:                      CMP Mask unused*/
     `SC_CMPB_A0_D1, `SC_CMPA_A0_D1, `SC_CI_B_ARITH,
     `SC_CI_A_ARITH, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL,
     `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_CHAIN,
-    `SC_SI_A_CHAIN, /*CFG13-12:                          */
+    `SC_SI_A_CHAIN, /*CFG13-12:                            */
     `SC_A0_SRC_ACC, `SC_SHIFT_SR, `SC_PI_DYN_EN,
     1'h0, `SC_FIFO1__A0, `SC_FIFO0_BUS,
     `SC_MSB_DSBL, `SC_MSB_BIT7, `SC_MSB_NOCHN,
     `SC_FB_NOCHN, `SC_CMP1_NOCHN,
-    `SC_CMP0_NOCHN, /*CFG15-14:                    Enable DYN PI*/
+    `SC_CMP0_NOCHN, /*CFG15-14:                      Enable DYN PI*/
     10'h00, `SC_FIFO_CLK__DP,`SC_FIFO_CAP_AX,
     `SC_FIFO__EDGE,`SC_FIFO__SYNC,`SC_EXTCRC_DSBL,
-    `SC_WRK16CAT_DSBL /*CFG17-16:                          */
+    `SC_WRK16CAT_DSBL /*CFG17-16:                            */
 }),
 .d1_init(8'b11111111)
 ) dp_y_engine_LSB(
@@ -628,7 +633,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  input                   */  .route_si(1'b0),
         /*  input                   */  .route_ci(1'b0),
         /*  input                   */  .f0_load(1'b0),
-        /*  input                   */  .f1_load(1'b0),
+        /*  input                   */  .f1_load(load_out_fifo),
         /*  input                   */  .d0_load(1'b0),
         /*  input                   */  .d1_load(1'b0),
         /*  output                  */  .ce0(),
@@ -677,49 +682,49 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM0:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM0:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC___F0, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM1:                  Load FIFO F0 -> A0*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM1:                    Load FIFO F0 -> A0*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM2:       Load PO (PO = SRCA = A0)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM2:         Load PO (PO = SRCA = A0)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM3:       Load A1 (A1 = PI = dY)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM3:         Load A1 (A1 = PI = dY)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A1, `CS_SRCB_D0,
     `CS_SHFT_OP___SR, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM4:       Shift A1 (A1 = A1 >> 1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM4:         Shift A1 (A1 = A1 >> 1)*/
     `CS_ALU_OP__SUB, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM5:       Sub A0 (A0 = A0 - A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM5:         Sub A0 (A0 = A0 - A1)*/
     `CS_ALU_OP__ADD, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM6:       Add A0 (A0 = A0 + A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM6:         Add A0 (A0 = A0 + A1)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM7:       Idle*/
-    8'hFF, 8'h00,  /*CFG9:                    ALU Mask unused*/
-    8'hFF, 8'hFF,  /*CFG11-10:                    CMP Mask unused*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM7:         Idle*/
+    8'hFF, 8'h00,  /*CFG9:                      ALU Mask unused*/
+    8'hFF, 8'hFF,  /*CFG11-10:                      CMP Mask unused*/
     `SC_CMPB_A0_D1, `SC_CMPA_A0_D1, `SC_CI_B_CHAIN,
     `SC_CI_A_CHAIN, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL,
     `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_DEFSI,
-    `SC_SI_A_DEFSI, /*CFG13-12:                          */
+    `SC_SI_A_DEFSI, /*CFG13-12:                            */
     `SC_A0_SRC_ACC, `SC_SHIFT_SR, `SC_PI_DYN_EN,
     `SC_SR_SRC_MSB, `SC_FIFO1__A0, `SC_FIFO0_BUS,
     `SC_MSB_DSBL, `SC_MSB_BIT7, `SC_MSB_NOCHN,
     `SC_FB_NOCHN, `SC_CMP1_NOCHN,
-    `SC_CMP0_NOCHN, /*CFG15-14:                    Enable DYN PI*/
+    `SC_CMP0_NOCHN, /*CFG15-14:                      Enable DYN PI*/
     10'h00, `SC_FIFO_CLK__DP,`SC_FIFO_CAP_AX,
     `SC_FIFO__EDGE,`SC_FIFO__SYNC,`SC_EXTCRC_DSBL,
-    `SC_WRK16CAT_DSBL /*CFG17-16:                          */
+    `SC_WRK16CAT_DSBL /*CFG17-16:                            */
 }),
 .d1_init(8'b11111111)
 ) dp_y_engine_MSB(
@@ -729,7 +734,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  input                   */  .route_si(1'b0),
         /*  input                   */  .route_ci(1'b0),
         /*  input                   */  .f0_load(1'b0),
-        /*  input                   */  .f1_load(1'b0),
+        /*  input                   */  .f1_load(load_out_fifo),
         /*  input                   */  .d0_load(1'b0),
         /*  input                   */  .d1_load(1'b0),
         /*  output                  */  .ce0(),
@@ -783,49 +788,49 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM0:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM0:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
-    `CS_SHFT_OP_PASS, `CS_A0_SRC___D0, `CS_A1_SRC_NONE,
+    `CS_SHFT_OP_PASS, `CS_A0_SRC___F0, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM1:                  Load FIFO D0 -> A0*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM1:                    Load FIFO F0 -> A0*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM2:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM2:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM3:       Load LUT (A1 = PI = LUT[i])*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM3:         Load LUT (A1 = PI = LUT[i])*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
-    `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
-    `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM4:       Load LUT (A1 = PI = LUT[i])*/
+    `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
+    `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
+    `CS_CMP_SEL_CFGA, /*CFGRAM4:         Idle*/
     `CS_ALU_OP__ADD, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM5:       Add A0 (A0 = A0 + A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM5:         Add A0 (A0 = A0 + A1)*/
     `CS_ALU_OP__SUB, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM6:       Sub A0 (A0 = A0 - A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM6:         Sub A0 (A0 = A0 - A1)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM7:       Idle*/
-    8'hFF, 8'h00,  /*CFG9:                    ALU Mask unused*/
-    8'hFF, 8'hFF,  /*CFG11-10:                    CMP Mask unused*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM7:         Idle*/
+    8'hFF, 8'h00,  /*CFG9:                      ALU Mask unused*/
+    8'hFF, 8'hFF,  /*CFG11-10:                      CMP Mask unused*/
     `SC_CMPB_A0_D1, `SC_CMPA_A0_D1, `SC_CI_B_ARITH,
     `SC_CI_A_ARITH, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL,
     `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_CHAIN,
-    `SC_SI_A_CHAIN, /*CFG13-12:                          */
+    `SC_SI_A_CHAIN, /*CFG13-12:                            */
     `SC_A0_SRC_ACC, `SC_SHIFT_SR, `SC_PI_DYN_EN,
     1'h0, `SC_FIFO1__A0, `SC_FIFO0_BUS,
     `SC_MSB_DSBL, `SC_MSB_BIT7, `SC_MSB_NOCHN,
     `SC_FB_NOCHN, `SC_CMP1_NOCHN,
-    `SC_CMP0_NOCHN, /*CFG15-14:                    Enable DYN PI*/
+    `SC_CMP0_NOCHN, /*CFG15-14:                      Enable DYN PI*/
     10'h00, `SC_FIFO_CLK__DP,`SC_FIFO_CAP_AX,
     `SC_FIFO__EDGE,`SC_FIFO__SYNC,`SC_EXTCRC_DSBL,
-    `SC_WRK16CAT_DSBL /*CFG17-16:                          */
+    `SC_WRK16CAT_DSBL /*CFG17-16:                            */
 }),
 .d1_init(8'b11111111)
 ) dp_z_engine_LSB(
@@ -884,49 +889,49 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM0:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM0:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
-    `CS_SHFT_OP_PASS, `CS_A0_SRC___D0, `CS_A1_SRC_NONE,
+    `CS_SHFT_OP_PASS, `CS_A0_SRC___F0, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM1:                  Load FIFO D0 -> A0*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM1:                    Load FIFO F0 -> A0*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM2:       Idle*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM2:         Idle*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
     `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM3:       Load LUT (A1 = PI = LUT[i])*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM3:         Load LUT (A1 = PI = LUT[i])*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
-    `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU,
-    `CS_FEEDBACK_ENBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM4:       Load LUT (A1 = PI = LUT[i])*/
+    `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
+    `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
+    `CS_CMP_SEL_CFGA, /*CFGRAM4:         Idle*/
     `CS_ALU_OP__ADD, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM5:       Add A0 (A0 = A0 + A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM5:         Add A0 (A0 = A0 + A1)*/
     `CS_ALU_OP__SUB, `CS_SRCA_A0, `CS_SRCB_A1,
     `CS_SHFT_OP_PASS, `CS_A0_SRC__ALU, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM6:       Sub A0 (A0 = A0 - A1)*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM6:         Sub A0 (A0 = A0 - A1)*/
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0,
     `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE,
     `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA,
-    `CS_CMP_SEL_CFGA, /*CFGRAM7:       Idle*/
-    8'hFF, 8'h00,  /*CFG9:                    ALU Mask unused*/
-    8'hFF, 8'hFF,  /*CFG11-10:                    CMP Mask unused*/
+    `CS_CMP_SEL_CFGA, /*CFGRAM7:         Idle*/
+    8'hFF, 8'h00,  /*CFG9:                      ALU Mask unused*/
+    8'hFF, 8'hFF,  /*CFG11-10:                      CMP Mask unused*/
     `SC_CMPB_A0_D1, `SC_CMPA_A0_D1, `SC_CI_B_CHAIN,
     `SC_CI_A_CHAIN, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL,
     `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_DEFSI,
-    `SC_SI_A_DEFSI, /*CFG13-12:                          */
+    `SC_SI_A_DEFSI, /*CFG13-12:                            */
     `SC_A0_SRC_ACC, `SC_SHIFT_SR, `SC_PI_DYN_EN,
     `SC_SR_SRC_MSB, `SC_FIFO1__A0, `SC_FIFO0_BUS,
     `SC_MSB_DSBL, `SC_MSB_BIT7, `SC_MSB_NOCHN,
     `SC_FB_NOCHN, `SC_CMP1_NOCHN,
-    `SC_CMP0_NOCHN, /*CFG15-14:                    Enable DYN PI*/
+    `SC_CMP0_NOCHN, /*CFG15-14:                      Enable DYN PI*/
     10'h00, `SC_FIFO_CLK__DP,`SC_FIFO_CAP_AX,
     `SC_FIFO__EDGE,`SC_FIFO__SYNC,`SC_EXTCRC_DSBL,
-    `SC_WRK16CAT_DSBL /*CFG17-16:                          */
+    `SC_WRK16CAT_DSBL /*CFG17-16:                            */
 }),
 .d1_init(8'b11111111)
 ) dp_z_engine_MSB(
@@ -977,7 +982,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /* input                    */  .cfbi(chain_z[8]),        // CRC Feedback in from previous stage
         /* output                   */  .cfbo(),            // CRC Feedback out to next stage
         /* input [07:00]            */  .pi(z_pi_msb), // Parallel data port
-        /* output [07:00]           */  .po()       // Parallel data port
+        /* output [07:00]           */  .po(z_po)       // Parallel data port
 );
 
 //`#end` -- edit above this line, do not edit this line
@@ -988,3 +993,5 @@ endmodule
 `endif /* bCORDIC_V_ALREADY_INCLUDED */
 
 //`#end` -- edit above this line, do not edit this line
+
+
