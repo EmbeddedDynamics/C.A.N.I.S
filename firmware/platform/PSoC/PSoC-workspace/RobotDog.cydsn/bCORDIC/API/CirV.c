@@ -121,7 +121,7 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`
 }
 
 //`$INSTANCE_NAME`_job_id_t* job_id
-uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`;
+uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`
 {
     if (!result)
         return CYRET_BAD_PARAM;
@@ -130,6 +130,7 @@ uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=Reentrant
         return CYRET_CANCELED;
     
     result->x = `$INSTANCE_NAME`_X_ENGINE_F1_REG;
+    result->y = `$INSTANCE_NAME`_Y_ENGINE_F1_REG;
     result->z = `$INSTANCE_NAME`_Z_ENGINE_F1_REG;
     
     //*job_id = output_cntr;
@@ -139,13 +140,14 @@ uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=Reentrant
 }
 
 //, `$INSTANCE_NAME`_job_id_t* job_id
-uint8_t `$INSTANCE_NAME`_queue_data(const `$INSTANCE_NAME`_vector_t* vector) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`;
+uint8_t `$INSTANCE_NAME`_queue_data(const `$INSTANCE_NAME`_vector_t* vector) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`
 {
-    if (!vector || !job_id)
+    if (!vector)
         return CYRET_BAD_PARAM;
 
-    CY_SET_REG16(CORDIC_X_ENGINE_F0_PTR, (int16_t) vector->x); //(int16_t) 0xF000);
-    CY_SET_REG16(CORDIC_Y_ENGINE_F0_PTR, (int16_t) vector->y);
+    CY_SET_REG16(`$INSTANCE_NAME`_X_ENGINE_F0_PTR, (int16_t) vector->x); //(int16_t) 0xF000);
+    CY_SET_REG16(`$INSTANCE_NAME`_Y_ENGINE_F0_PTR, (int16_t) vector->y);
+    CY_SET_REG16(`$INSTANCE_NAME`_Z_ENGINE_F0_PTR, (int16_t) vector->z);
     
     //*job_id = queue_cntr;
     //queue_cntr++;

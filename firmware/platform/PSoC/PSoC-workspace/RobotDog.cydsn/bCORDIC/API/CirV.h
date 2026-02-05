@@ -37,8 +37,8 @@
 //========================================================
     
 #define `$INSTANCE_NAME`_MAJOR 1u
-#define `$INSTANCE_NAME`_MINOR 0u
 #define `$INSTANCE_NAME`_MINOR 1u
+#define `$INSTANCE_NAME`_PATCH 0u
     
 //========================================================
 //      CORDIC Custom Types
@@ -363,6 +363,10 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 //      CORDIC Constans
 //========================================================
 
+#define `$INSTANCE_NAME`_ROTATING_OPER  (0x00)
+    
+#define `$INSTANCE_NAME`_VECTORING_OPER (0x01)
+    
 /**
  * @brief BAMS angle sign bit.
  */
@@ -384,14 +388,15 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 #define `$INSTANCE_NAME`_KC_INVERSE     (0.60725f)
 
 /* Status register constants */
-#define `$INSTANCE_NAME`_STS_CFAULT     (0x01u)
-#define `$INSTANCE_NAME`_STS_IDLE       (0x02u)
-#define `$INSTANCE_NAME`_STS_X_F0_READY (0x04u)
-#define `$INSTANCE_NAME`_STS_Y_F0_READY (0x08u)
-#define `$INSTANCE_NAME`_STS_Z_FILLED   (0x10u)
-#define `$INSTANCE_NAME`_STS_X_FILLED   (0x20u)
-#define `$INSTANCE_NAME`_STS_DONE       (0x40u)
-
+#define `$INSTANCE_NAME`_STS_CFAULT         (0x01u)
+#define `$INSTANCE_NAME`_STS_IDLE           (0x02u)
+#define `$INSTANCE_NAME`_STS_X_F0_READY     (0x04u)
+#define `$INSTANCE_NAME`_STS_Y_F0_READY     (0x08u)
+#define `$INSTANCE_NAME`_STS_Z_FILLED       (0x10u)
+#define `$INSTANCE_NAME`_STS_X_FILLED       (0x20u)
+#define `$INSTANCE_NAME`_STS_DONE           (0x40u)
+#define `$INSTANCE_NAME`_STS_OUT_FIFO_FULL  (0x80u)
+    
 #define `$INSTANCE_NAME`_STS_PENDING    (0x30u)
 
 /* Interrupt constants */
@@ -400,27 +405,13 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 /* Control register constants */
 #define `$INSTANCE_NAME`_EN             (0x01u)
 #define `$INSTANCE_NAME`_RST            (0x02u)
+#define `$INSTANCE_NAME`_OPER_MODE      (0x04u)
 
 //========================================================
 //      Optimized KC-Embedded Conversions (16 iterations)
 //========================================================
-
-#define `$INSTANCE_NAME`_Q12_4_SCALE     (9.716)    // 16 * KC_16iter
-#define `$INSTANCE_NAME`_Q12_4_INV_SCALE (0.0625f)  // (1/16)
-
+    
 #define `$INSTANCE_NAME`_BAMS_SCALE      (182.044444f)   // 65536/360
-
-//========================================================
-//      Single-Multiply Conversions (Zero KC overhead)
-//========================================================
-
-#define Q12_4_FROM_MM(mm)       ((int16_t)((mm) * `$INSTANCE_NAME`_Q12_4_SCALE))
-#define Q12_4_TO_MM(q12_4)      ((float)(q12_4) * `$INSTANCE_NAME`_Q12_4_INV_SCALE)
-
-#define BAMS_PER_DEG   (32768.0f/180.0f)   // 182.044444...
-
-#define BAMS_FROM_DEG_SIGNED(deg)  ((int16_t)((deg) * BAMS_PER_DEG))
-#define DEG_FROM_BAMS_SIGNED(bams) ((float)(bams) * (180.0f/32768.0f))
 
 //========================================================
 //      CORDIC Structures
@@ -530,7 +521,7 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`;
  * @retval CYRET_SUCCESS - Data fetched.
  *
  */
-uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_result_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`;
+uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`;
 
 /**
  * @brief Queue input vector data for processing.
