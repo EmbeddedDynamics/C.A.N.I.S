@@ -320,7 +320,7 @@ static canstack_result_t psoc5_run_command(canstack_ctx_t __unused hw_ctx,
 
     switch (cmd) {
         case CAN_STACK_CMD_INIT: {
-            const canstack_config_t* cfg = (const canstack_config_t*)arg;
+            //const canstack_config_t* cfg = (const canstack_config_t*)arg;
 
             /* Initialize PSoC CAN component */
             CANSTACK_PSOC5_CALL(Init);
@@ -415,7 +415,6 @@ void canstack_psoc5_isr_rx_mailbox(canstack_driver drv, canstack_mb_id_t mb)
 {
     canstack_message_t msg;
     if (drv->backend->ops.rx_message(drv->backend->hw_ctx, mb, &msg) == CAN_RESULT_OK) {
-        volatile uint8_t id = (msg.id >> 5);
         canstack_push_rx(&drv->rx_queue, &msg);
     } else {
         // optional: count errors
