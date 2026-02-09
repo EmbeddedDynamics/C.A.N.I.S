@@ -12,7 +12,8 @@
 #ifndef CYAPICALLBACKS_H
 #define CYAPICALLBACKS_H
     
-#define CAN_COMPONENT_NAME CAN_1
+#define CAN_COMPONENT_NAME CAN
+#define CORDIC_COMPONENT_NAME CORDIC
     
 #define CANSTACK_ENABLE_HW_FILTERING
     
@@ -64,12 +65,8 @@ void CAN_ReceiveMsg_14_Callback(void);
 #define CAN_RECEIVE_MSG_15_CALLBACK
 void CAN_ReceiveMsg_15_Callback(void);
 
-#define CORDIC_DONE_CALLBACK
+#define CORDIC_DONE_CALLBACK 1
 void CORDIC_done_callback(void);
-    /*Define your macro callbacks here */
-    /*For more information, refer to the Writing Code topic in the PSoC Creator Help.*/
- 
-
     
 #endif /* CYAPICALLBACKS_H */   
 /* [] */
