@@ -87,7 +87,6 @@
             if (_filled == 0u) break;                                           \
             if (_t == 0u) break;                                                \
             _t--;                                                               \
-            CyDelayUs(10u);                                                     \
         } while (1);                                                            \
         (ok_out) = (_filled == 0u);                                             \
     } while (0)
@@ -138,6 +137,9 @@ ik_result_t ik_cordic_psoc5_submit(ik_ctx_t ctx, ik_cordic_job_t* job)
 
         // Write mode field (clear then set)
         IK_PSOC5_CONST(CONTROL_REG) = (IK_PSOC5_CONST(CONTROL_REG) & (uint8_t)~ IK_PSOC5_CONST(OPER_MODE)) | desired_mode;
+        //CORDIC_CONTROL_REG |= CORDIC_OPER_MODE;
+        
+        while ((IK_PSOC5_CONST(CONTROL_REG) & IK_PSOC5_CONST(OPER_MODE)) != desired_mode) {}
     }
     
     ik_cordic_h h = (ik_cordic_h) ctx;
@@ -145,19 +147,75 @@ ik_result_t ik_cordic_psoc5_submit(ik_ctx_t ctx, ik_cordic_job_t* job)
     // Build the vector to queue
     IK_PSOC5_TYPE(vector_t) v = {0u, 0u, 0u};
     
-    v.x = IK_QFMT_TO_I16(IK_VEC3_X(job->input), h->config.vec_fmt);
-    v.y = IK_QFMT_TO_I16(IK_VEC3_Y(job->input), h->config.vec_fmt);
-    v.z = IK_RAD_TO_BAMS16_F(IK_VEC3_Z(job->input));
-    
+    /* Only do quadrant pre-rotation for VECTORING */
+    float xin = IK_VEC3_X(job->input);
+    float yin = IK_VEC3_Y(job->input);
+
+    job->z_offset_rad = (job->operation == IK_CORDIC_OPERATION_VECTORING) ? IK_VEC3_Z(job->input) : 0.0f; /* <-- add this field, or store elsewhere */
+
+    if (job->operation == IK_CORDIC_OPERATION_VECTORING && xin < 0.0f)
+    {
+        xin = -xin;
+        yin = -yin;
+        job->z_offset_rad += (float)M_PI; /* add to z_out later */
+    }
+
+    /* X/Y packing (FIX: handle both branches) */
+    if (h->config.use_gain_compensation)
+    {
+        v.x = IK_QFMT_TO_I16(xin * CORDIC_KC_INVERSE, job->fmt); //h->config.vec_fmt);
+        v.y = IK_QFMT_TO_I16(yin * CORDIC_KC_INVERSE, job->fmt); //h->config.vec_fmt);
+    }
+    else
+    {
+        v.x = IK_QFMT_TO_I16(xin, job->fmt); //h->config.vec_fmt);
+        v.y = IK_QFMT_TO_I16(yin, job->fmt); //h->config.vec_fmt);
+    }
+
+    float zin = (desired_mode == IK_PSOC5_CONST(ROTATING_OPER)) ? IK_VEC3_Z(job->input) : 0.0f;
+    v.z = IK_RAD_TO_BAMS16_F(zin);
+
     if (IK_PSOC5_CALL(queue_data, &v) != CYRET_SUCCESS)
         return IK_ERROR_CORDIC_HARDWARE_ERROR;
+    
+    job->state = CORDIC_JOB_STATE_QUEUED;
 
     return IK_RESULT_OK;
 };
 
-uint8_t ik_cordic_psoc5_available(ik_ctx_t ctx)
+uint8_t ik_cordic_psoc5_available(ik_ctx_t __unused ctx)
 {
-    return IK_PSOC5_CALL(has_pending) ? 1u : 0u
+    return IK_PSOC5_CALL(has_pending) ? 1u : 0u;
+}
+
+ik_result_t ik_cordic_psoc5_acquire(
+    ik_ctx_t ctx,
+    ik_cordic_job_t* job)
+{
+    if (!ctx || !job)
+        return IK_ERROR_NULL_POINTER;
+
+    uint8_t used_mode = IK_PSOC5_CONST(CONTROL_REG) & IK_PSOC5_CONST(OPER_MODE);
+    
+    IK_PSOC5_TYPE(vector_t) vector;
+    if (CORDIC_get_data(&vector) != CYRET_SUCCESS)
+        return IK_ERROR_CORDIC_HARDWARE_ERROR;
+    
+    ik_cordic_h h = (ik_cordic_h) ctx;
+
+    IK_VEC3_XP(job->output) = IK_I16_TO_QFMT_F(
+        vector.x, 
+        job->fmt
+        //(used_mode == IK_PSOC5_CONST(ROTATING_OPER)) ? h->config.unit_fmt : h->config.vec_fmt
+    );
+    IK_VEC3_YP(job->output) = IK_I16_TO_QFMT_F(
+        vector.y,
+        job->fmt
+        //(used_mode == IK_PSOC5_CONST(ROTATING_OPER)) ? h->config.unit_fmt : h->config.vec_fmt
+    );
+    IK_VEC3_ZP(job->output) = IK_BAMS16_TO_RAD_F(vector.z) + job->z_offset_rad;
+
+    return IK_RESULT_OK;
 }
 
 //========================================================
@@ -182,10 +240,29 @@ ik_result_t ik_cordic_create_backend(
     new_cordic->config = *cfg;
     new_cordic->state = CORDIC_STATE_IDLE;
 
+    new_cordic->job_count = 0u;
+    new_cordic->job_in_idx = 0u;
+    new_cordic->job_out_idx = 0u;
+    new_cordic->job_size = 4u;
+
+    for (uint8_t i = 0; i < new_cordic->job_size; i++)
+    {
+        new_cordic->jobs[i].state = CORDIC_JOB_STATE_FREE;
+    }
+
     new_cordic->submit = ik_cordic_psoc5_submit;
     new_cordic->available = ik_cordic_psoc5_available;
+    new_cordic->acquire = ik_cordic_psoc5_acquire;
+    
+    new_cordic->hw_ctx = (void*) new_cordic;
 
     g_cordic = new_cordic;
+    
+    #if defined(IK_ENABLE_HEAP)
+        
+        *handle = new_cordic;
+        
+    #endif
 
     return IK_RESULT_OK;
 };
