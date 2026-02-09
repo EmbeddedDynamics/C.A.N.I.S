@@ -41,43 +41,13 @@ typedef uint16_t    ik_flags16_t;
 typedef uint32_t    ik_flags32_t;
 typedef uint64_t    ik_flags64_t;
 
+typedef int8_t      ik_bams8_t;
+typedef int16_t     ik_bams16_t;
+typedef int32_t     ik_bams32_t;
+
 //========================================================
 //      IK Vectors
 //========================================================
-
-#if IK_HAS_ANON_STRUCT
-
-typedef union { 
-    struct { float x, y; }; 
-    float v[2]; 
-} ik_vector2f_t;
-
-typedef union { 
-    struct { float x, y, z; }; 
-    float v[3]; 
-} ik_vector3f_t;
-
-typedef union { 
-    struct { float x, y, z, w; }; 
-    float v[4]; 
-} ik_vector4f_t;
-
-typedef union { 
-    struct { int16_t x, y; }; 
-    int16_t v[2]; 
-} ik_vector2i16_t;
-
-typedef union { 
-    struct { int16_t x, y, z; }; 
-    int16_t v[3]; 
-} ik_vector3i16_t;
-
-typedef union { 
-    struct { int16_t x, y, z, w; }; 
-    int16_t v[4]; 
-} ik_vector4i16_t;
-
-#else
 
 typedef struct { 
     float v[2]; 
@@ -126,8 +96,6 @@ typedef struct {
 #define IK_VEC4_YP(p) ((p)->v[1])
 #define IK_VEC4_ZP(p) ((p)->v[2])
 #define IK_VEC4_WP(p) ((p)->v[3])
-
-#endif
 
 //========================================================
 //      End of File

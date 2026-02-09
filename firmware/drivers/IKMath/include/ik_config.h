@@ -36,8 +36,10 @@
 
 #define IK_C11 201112L
 
-#define IK_MATH_STR_(x) #x
-#define IK_MATH_STR(x)  IK_MATH   _STR_(x)
+#define IK_STR_(x) #x
+#define IK_STR(x)  IK_STR_(x)
+
+#define IK_BIT(n) (1u << n)
 
 #if defined(_MSC_VER)
     #define IK_ALIGN(N) __declspec(align(N))
@@ -55,9 +57,13 @@
     #define IK_HAS_ANON_STRUCT 0
 #endif
 
-#define IK_BIT(n) (1u << n)
-
 #define IK_HANDLE(name) typedef struct name##_T* name##_h
+
+#define IK_CAT2_(a,b) a##b
+#define IK_CAT2(a,b)  IK_CAT2_(a,b)
+
+#define IK_CAT3_(a,b,c) a##b##c
+#define IK_CAT3(a,b,c) IK_CAT3_(a,b,c)
 
 //========================================================
 //      Memory Management
@@ -81,7 +87,7 @@
 
 #define IK_MATH_MAJOR 0
 #define IK_MATH_MAJOR 0
-#define IK_MATH_MAJOR 1
+#define IK_MATH_PATCH 1
 
 /* ABI version for the vtable contract. Increment ONLY when breaking binary/API compatibility. */
 #define IK_ABI_VERSION     (1u)
@@ -102,7 +108,7 @@
  * @brief Current library version as a single integer. 
  */
 #define CIK_MATH_VERSION_STRING \
-    "v" IK_MATH_STR(IK_MATH_MAJOR) "." IK_MATH_STR(IK_MATH_MINOR) "." IK_MATH_STR(IK_MATH_PATCH)
+    "v" IK_STR(IK_MATH_MAJOR) "." IK_STR(IK_MATH_MINOR) "." IK_STR(IK_MATH_PATCH)
 
 /**
  * @brief True if IK_MATH version is at least (major.minor.patch).
