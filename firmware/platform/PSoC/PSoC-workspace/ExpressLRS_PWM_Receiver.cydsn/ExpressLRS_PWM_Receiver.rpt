@@ -1,0 +1,3557 @@
+Loading plugins phase: Elapsed time ==> 0s.114ms
+<CYPRESSTAG name="CyDsfit arguments...">
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -d CY8C5888LTI-LP097 -s C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+</CYPRESSTAG>
+<CYPRESSTAG name="Design elaboration results...">
+</CYPRESSTAG>
+Elaboration phase: Elapsed time ==> 0s.868ms
+<CYPRESSTAG name="HDL generation results...">
+</CYPRESSTAG>
+HDL generation phase: Elapsed time ==> 0s.021ms
+<CYPRESSTAG name="Synthesis results...">
+
+     | | | | | | |
+   _________________
+  -|               |-
+  -|               |-
+  -|               |-
+  -|    CYPRESS    |-
+  -|               |-
+  -|               |-   Warp Verilog Synthesis Compiler: Version 6.3 IR 41
+  -|               |-   Copyright (C) 1991-2001 Cypress Semiconductor
+   |_______________|
+     | | | | | | |
+
+======================================================================
+Compiling:  ExpressLRS_PWM_Receiver.v
+Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -dcpsoc3 ExpressLRS_PWM_Receiver.v -verilog
+======================================================================
+
+======================================================================
+Compiling:  ExpressLRS_PWM_Receiver.v
+Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -dcpsoc3 ExpressLRS_PWM_Receiver.v -verilog
+======================================================================
+
+======================================================================
+Compiling:  ExpressLRS_PWM_Receiver.v
+Program  :   vlogfe
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -dcpsoc3 -verilog ExpressLRS_PWM_Receiver.v
+======================================================================
+
+vlogfe V6.3 IR 41:  Verilog parser
+Mon Feb 09 12:39:30 2026
+
+
+======================================================================
+Compiling:  ExpressLRS_PWM_Receiver.v
+Program  :   vpp
+Options  :    -yv2 -q10 ExpressLRS_PWM_Receiver.v
+======================================================================
+
+vpp V6.3 IR 41:  Verilog Pre-Processor
+Mon Feb 09 12:39:30 2026
+
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\B_Timer_v2_80\B_Timer_v2_80.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\OneTerminal\OneTerminal.v'
+
+vpp:  No errors.
+
+Library 'work' => directory 'lcpsoc3'
+General_symbol_table
+General_symbol_table
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\work\cypress.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\ieee\work\stdlogic.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\lpmpkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
+Using control file 'ExpressLRS_PWM_Receiver.ctl'.
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\B_Timer_v2_80\B_Timer_v2_80.v (line 368, col 46):  Note: Substituting module 'cmp_vv_vv' for '='.
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\B_Timer_v2_80\B_Timer_v2_80.v (line 374, col 62):  Note: Substituting module 'add_vv_vv' for '+'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
+
+vlogfe:  No errors.
+
+
+======================================================================
+Compiling:  ExpressLRS_PWM_Receiver.v
+Program  :   tovif
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -dcpsoc3 -verilog ExpressLRS_PWM_Receiver.v
+======================================================================
+
+tovif V6.3 IR 41:  High-level synthesis
+Mon Feb 09 12:39:31 2026
+
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\work\cypress.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\ieee\work\stdlogic.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\lpmpkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
+Linking 'C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\codegentemp\ExpressLRS_PWM_Receiver.ctl'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
+Linking 'C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\codegentemp\ExpressLRS_PWM_Receiver.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\B_Timer_v2_80\B_Timer_v2_80.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\OneTerminal\OneTerminal.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mcompare.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\lcpsoc3\stdlogic\mod_cnst.vif'.
+
+tovif:  No errors.
+
+
+======================================================================
+Compiling:  ExpressLRS_PWM_Receiver.v
+Program  :   topld
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -dcpsoc3 -verilog ExpressLRS_PWM_Receiver.v
+======================================================================
+
+topld V6.3 IR 41:  Synthesis and optimization
+Mon Feb 09 12:39:31 2026
+
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\work\cypress.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\ieee\work\stdlogic.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\lpmpkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
+Linking 'C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\codegentemp\ExpressLRS_PWM_Receiver.ctl'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
+Linking 'C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\codegentemp\ExpressLRS_PWM_Receiver.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\B_Timer_v2_80\B_Timer_v2_80.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\OneTerminal\OneTerminal.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\mcompare.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\lcpsoc3\stdlogic\mod_cnst.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\lcpsoc3\stdlogic\cpsoc3.vif'.
+
+----------------------------------------------------------
+Detecting unused logic.
+----------------------------------------------------------
+    User names
+	\CH1_Timer:Net_260\
+	Net_345
+	\CH1_Timer:Net_53\
+	\CH1_Timer:TimerUDB:ctrl_enable\
+	\CH1_Timer:TimerUDB:ctrl_ten\
+	\CH1_Timer:TimerUDB:control_7\
+	\CH1_Timer:TimerUDB:control_6\
+	\CH1_Timer:TimerUDB:control_5\
+	\CH1_Timer:TimerUDB:control_4\
+	\CH1_Timer:TimerUDB:control_3\
+	\CH1_Timer:TimerUDB:control_2\
+	\CH1_Timer:TimerUDB:ctrl_tmode_1\
+	\CH1_Timer:TimerUDB:ctrl_tmode_0\
+	Net_343
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:albi_1\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:agbi_1\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:lt_0\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:gt_0\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:lt_1\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:gt_1\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:lti_0\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:gti_0\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:albi_0\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:agbi_0\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xneq\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xlt\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xlte\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xgt\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xgte\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:lt\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:gt\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:gte\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:lte\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:neq\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:b_1\
+	\CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:b_0\
+	\CH1_Timer:Net_102\
+	\CH1_Timer:Net_266\
+	\CH2_Timer:Net_260\
+	Net_138
+	\CH2_Timer:Net_53\
+	\CH2_Timer:TimerUDB:ctrl_enable\
+	\CH2_Timer:TimerUDB:ctrl_ten\
+	\CH2_Timer:TimerUDB:control_7\
+	\CH2_Timer:TimerUDB:control_6\
+	\CH2_Timer:TimerUDB:control_5\
+	\CH2_Timer:TimerUDB:control_4\
+	\CH2_Timer:TimerUDB:control_3\
+	\CH2_Timer:TimerUDB:control_2\
+	\CH2_Timer:TimerUDB:ctrl_tmode_1\
+	\CH2_Timer:TimerUDB:ctrl_tmode_0\
+	Net_135
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_1\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_1\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_0\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_0\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_1\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_1\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lti_0\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gti_0\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_0\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_0\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xneq\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlt\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlte\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgt\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgte\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:lt\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:gt\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:gte\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:lte\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:neq\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_1\
+	\CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_0\
+	\CH2_Timer:Net_102\
+	\CH2_Timer:Net_266\
+	\CH3_Timer:Net_260\
+	Net_149
+	\CH3_Timer:Net_53\
+	\CH3_Timer:TimerUDB:ctrl_enable\
+	\CH3_Timer:TimerUDB:ctrl_ten\
+	\CH3_Timer:TimerUDB:control_7\
+	\CH3_Timer:TimerUDB:control_6\
+	\CH3_Timer:TimerUDB:control_5\
+	\CH3_Timer:TimerUDB:control_4\
+	\CH3_Timer:TimerUDB:control_3\
+	\CH3_Timer:TimerUDB:control_2\
+	\CH3_Timer:TimerUDB:ctrl_tmode_1\
+	\CH3_Timer:TimerUDB:ctrl_tmode_0\
+	Net_146
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:albi_1\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:agbi_1\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:lt_0\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:gt_0\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:lt_1\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:gt_1\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:lti_0\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:gti_0\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:albi_0\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:agbi_0\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xneq\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xlt\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xlte\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xgt\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xgte\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:lt\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:gt\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:gte\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:lte\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:neq\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:b_1\
+	\CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:b_0\
+	\CH3_Timer:Net_102\
+	\CH3_Timer:Net_266\
+	\CH4_Timer:Net_260\
+	Net_161
+	\CH4_Timer:Net_53\
+	\CH4_Timer:TimerUDB:ctrl_enable\
+	\CH4_Timer:TimerUDB:ctrl_ten\
+	\CH4_Timer:TimerUDB:control_7\
+	\CH4_Timer:TimerUDB:control_6\
+	\CH4_Timer:TimerUDB:control_5\
+	\CH4_Timer:TimerUDB:control_4\
+	\CH4_Timer:TimerUDB:control_3\
+	\CH4_Timer:TimerUDB:control_2\
+	\CH4_Timer:TimerUDB:ctrl_tmode_1\
+	\CH4_Timer:TimerUDB:ctrl_tmode_0\
+	Net_158
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:albi_1\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:agbi_1\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:lt_0\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:gt_0\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:lt_1\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:gt_1\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:lti_0\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:gti_0\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:albi_0\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:agbi_0\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xneq\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xlt\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xlte\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xgt\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xgte\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:lt\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:gt\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:gte\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:lte\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:neq\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:b_1\
+	\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:b_0\
+	\CH4_Timer:Net_102\
+	\CH4_Timer:Net_266\
+
+
+Deleted 152 User equations/components.
+Deleted 0 Synthesized equations/components.
+
+------------------------------------------------------
+Alias Detection
+------------------------------------------------------
+Aliasing \CH1_Timer:TimerUDB:control_1\ to Net_12
+Aliasing \CH1_Timer:TimerUDB:control_0\ to Net_12
+Aliasing \CH1_Timer:TimerUDB:ctrl_cmode_1\ to one
+Aliasing \CH1_Timer:TimerUDB:ctrl_cmode_0\ to one
+Aliasing \CH1_Timer:TimerUDB:trigger_enable\ to one
+Aliasing \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:aeqb_0\ to one
+Aliasing MODIN3_1 to MODIN1_1
+Aliasing MODIN3_0 to MODIN1_0
+Aliasing \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\ to one
+Aliasing \CH1_Timer:TimerUDB:status_6\ to Net_12
+Aliasing \CH1_Timer:TimerUDB:status_5\ to Net_12
+Aliasing \CH1_Timer:TimerUDB:status_4\ to Net_12
+Aliasing \CH1_Timer:TimerUDB:status_0\ to \CH1_Timer:TimerUDB:tc_i\
+Aliasing zero to Net_12
+Aliasing Net_133 to Net_12
+Aliasing \CH2_Timer:TimerUDB:control_1\ to Net_12
+Aliasing \CH2_Timer:TimerUDB:control_0\ to Net_12
+Aliasing \CH2_Timer:TimerUDB:ctrl_cmode_1\ to one
+Aliasing \CH2_Timer:TimerUDB:ctrl_cmode_0\ to one
+Aliasing \CH2_Timer:TimerUDB:trigger_enable\ to one
+Aliasing \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_0\ to one
+Aliasing MODIN6_1 to MODIN4_1
+Aliasing MODIN6_0 to MODIN4_0
+Aliasing \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:b_0\ to one
+Aliasing \CH2_Timer:TimerUDB:status_6\ to Net_12
+Aliasing \CH2_Timer:TimerUDB:status_5\ to Net_12
+Aliasing \CH2_Timer:TimerUDB:status_4\ to Net_12
+Aliasing \CH2_Timer:TimerUDB:status_0\ to \CH2_Timer:TimerUDB:tc_i\
+Aliasing Net_144 to Net_12
+Aliasing \CH3_Timer:TimerUDB:control_1\ to Net_12
+Aliasing \CH3_Timer:TimerUDB:control_0\ to Net_12
+Aliasing \CH3_Timer:TimerUDB:ctrl_cmode_1\ to one
+Aliasing \CH3_Timer:TimerUDB:ctrl_cmode_0\ to one
+Aliasing \CH3_Timer:TimerUDB:trigger_enable\ to one
+Aliasing \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:aeqb_0\ to one
+Aliasing MODIN9_1 to MODIN7_1
+Aliasing MODIN9_0 to MODIN7_0
+Aliasing \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:g1:z1:s0:g1:u0:b_0\ to one
+Aliasing \CH3_Timer:TimerUDB:status_6\ to Net_12
+Aliasing \CH3_Timer:TimerUDB:status_5\ to Net_12
+Aliasing \CH3_Timer:TimerUDB:status_4\ to Net_12
+Aliasing \CH3_Timer:TimerUDB:status_0\ to \CH3_Timer:TimerUDB:tc_i\
+Aliasing Net_156 to Net_12
+Aliasing \CH4_Timer:TimerUDB:control_1\ to Net_12
+Aliasing \CH4_Timer:TimerUDB:control_0\ to Net_12
+Aliasing \CH4_Timer:TimerUDB:ctrl_cmode_1\ to one
+Aliasing \CH4_Timer:TimerUDB:ctrl_cmode_0\ to one
+Aliasing \CH4_Timer:TimerUDB:trigger_enable\ to one
+Aliasing \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:aeqb_0\ to one
+Aliasing \CH4_Timer:TimerUDB:sIntCapCount:MODIN12_1\ to \CH4_Timer:TimerUDB:sIntCapCount:MODIN10_1\
+Aliasing \CH4_Timer:TimerUDB:sIntCapCount:MODIN12_0\ to \CH4_Timer:TimerUDB:sIntCapCount:MODIN10_0\
+Aliasing \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:g1:z1:s0:g1:u0:b_0\ to one
+Aliasing \CH4_Timer:TimerUDB:status_6\ to Net_12
+Aliasing \CH4_Timer:TimerUDB:status_5\ to Net_12
+Aliasing \CH4_Timer:TimerUDB:status_4\ to Net_12
+Aliasing \CH4_Timer:TimerUDB:status_0\ to \CH4_Timer:TimerUDB:tc_i\
+Aliasing tmpOE__CH1_Pin_net_0 to one
+Aliasing tmpOE__CH2_Pin_net_0 to one
+Aliasing tmpOE__CH3_Pin_net_0 to one
+Aliasing tmpOE__CH4_Pin_net_0 to one
+Aliasing \CH1_Timer:TimerUDB:hwEnable_reg\\D\ to \CH1_Timer:TimerUDB:run_mode\
+Aliasing \CH2_Timer:TimerUDB:hwEnable_reg\\D\ to \CH2_Timer:TimerUDB:run_mode\
+Aliasing \CH3_Timer:TimerUDB:hwEnable_reg\\D\ to \CH3_Timer:TimerUDB:run_mode\
+Aliasing \CH4_Timer:TimerUDB:hwEnable_reg\\D\ to \CH4_Timer:TimerUDB:run_mode\
+Removing Rhs of wire Net_24[4] = \CH1_Timer:Net_55\[5]
+Removing Lhs of wire \CH1_Timer:TimerUDB:control_1\[19] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:control_0\[20] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:ctrl_cmode_1\[21] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:ctrl_cmode_0\[22] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:ctrl_ic_1\[25] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:ctrl_ic_0\[26] = Net_12[2]
+Removing Rhs of wire \CH1_Timer:TimerUDB:timer_enable\[31] = \CH1_Timer:TimerUDB:runmode_enable\[104]
+Removing Rhs of wire \CH1_Timer:TimerUDB:run_mode\[32] = \CH1_Timer:TimerUDB:hwEnable\[33]
+Removing Lhs of wire \CH1_Timer:TimerUDB:run_mode\[32] = Net_10[1]
+Removing Lhs of wire \CH1_Timer:TimerUDB:trigger_enable\[35] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:tc_i\[37] = \CH1_Timer:TimerUDB:status_tc\[34]
+Removing Lhs of wire cmp_vv_vv_MODGEN_1[43] = \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xeq\[82]
+Removing Rhs of wire add_vv_vv_MODGEN_2_1[44] = \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:s_1\[99]
+Removing Rhs of wire add_vv_vv_MODGEN_2_0[46] = \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:s_0\[100]
+Removing Lhs of wire \CH1_Timer:TimerUDB:capt_fifo_load_int\[48] = \CH1_Timer:TimerUDB:capt_int_temp\[47]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:newa_1\[49] = MODIN1_1[50]
+Removing Rhs of wire MODIN1_1[50] = \CH1_Timer:TimerUDB:int_capt_count_1\[42]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:newa_0\[51] = MODIN1_0[52]
+Removing Rhs of wire MODIN1_0[52] = \CH1_Timer:TimerUDB:int_capt_count_0\[45]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:newb_1\[53] = MODIN2_1[54]
+Removing Lhs of wire MODIN2_1[54] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:newb_0\[55] = MODIN2_0[56]
+Removing Lhs of wire MODIN2_0[56] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:dataa_1\[57] = MODIN1_1[50]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:dataa_0\[58] = MODIN1_0[52]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:datab_1\[59] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:datab_0\[60] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:a_1\[61] = MODIN1_1[50]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:a_0\[62] = MODIN1_0[52]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:b_1\[63] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:b_0\[64] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:aeqb_0\[67] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:eq_0\[68] = \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:xnor_array_0\[66]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:eqi_0\[70] = \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:eq_1\[69]
+Removing Rhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xeq\[82] = \CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:aeqb_1\[71]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:a_1\[93] = MODIN1_1[50]
+Removing Lhs of wire MODIN3_1[94] = MODIN1_1[50]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:a_0\[95] = MODIN1_0[52]
+Removing Lhs of wire MODIN3_0[96] = MODIN1_0[52]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_0\[102] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\[103] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:status_6\[106] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:status_5\[107] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:status_4\[108] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:status_0\[109] = \CH1_Timer:TimerUDB:status_tc\[34]
+Removing Lhs of wire \CH1_Timer:TimerUDB:status_1\[110] = \CH1_Timer:TimerUDB:capt_int_temp\[47]
+Removing Rhs of wire \CH1_Timer:TimerUDB:status_2\[111] = \CH1_Timer:TimerUDB:fifo_full\[112]
+Removing Rhs of wire \CH1_Timer:TimerUDB:status_3\[113] = \CH1_Timer:TimerUDB:fifo_nempty\[114]
+Removing Lhs of wire \CH1_Timer:TimerUDB:cs_addr_2\[116] = Net_12[2]
+Removing Lhs of wire \CH1_Timer:TimerUDB:cs_addr_1\[117] = \CH1_Timer:TimerUDB:trig_reg\[105]
+Removing Lhs of wire \CH1_Timer:TimerUDB:cs_addr_0\[118] = \CH1_Timer:TimerUDB:per_zero\[36]
+Removing Lhs of wire zero[120] = Net_12[2]
+Removing Lhs of wire Net_133[298] = Net_12[2]
+Removing Rhs of wire Net_137[300] = \CH2_Timer:Net_55\[301]
+Removing Lhs of wire \CH2_Timer:TimerUDB:control_1\[314] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:control_0\[315] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:ctrl_cmode_1\[316] = one[9]
+Removing Lhs of wire \CH2_Timer:TimerUDB:ctrl_cmode_0\[317] = one[9]
+Removing Lhs of wire \CH2_Timer:TimerUDB:ctrl_ic_1\[320] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:ctrl_ic_0\[321] = Net_12[2]
+Removing Rhs of wire \CH2_Timer:TimerUDB:timer_enable\[326] = \CH2_Timer:TimerUDB:runmode_enable\[399]
+Removing Rhs of wire \CH2_Timer:TimerUDB:run_mode\[327] = \CH2_Timer:TimerUDB:hwEnable\[328]
+Removing Lhs of wire \CH2_Timer:TimerUDB:run_mode\[327] = Net_131[297]
+Removing Lhs of wire \CH2_Timer:TimerUDB:trigger_enable\[330] = one[9]
+Removing Lhs of wire \CH2_Timer:TimerUDB:tc_i\[332] = \CH2_Timer:TimerUDB:status_tc\[329]
+Removing Lhs of wire cmp_vv_vv_MODGEN_3[338] = \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\[377]
+Removing Rhs of wire add_vv_vv_MODGEN_4_1[339] = \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_1\[394]
+Removing Rhs of wire add_vv_vv_MODGEN_4_0[341] = \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_0\[395]
+Removing Lhs of wire \CH2_Timer:TimerUDB:capt_fifo_load_int\[343] = \CH2_Timer:TimerUDB:capt_int_temp\[342]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_1\[344] = MODIN4_1[345]
+Removing Rhs of wire MODIN4_1[345] = \CH2_Timer:TimerUDB:int_capt_count_1\[337]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_0\[346] = MODIN4_0[347]
+Removing Rhs of wire MODIN4_0[347] = \CH2_Timer:TimerUDB:int_capt_count_0\[340]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_1\[348] = MODIN5_1[349]
+Removing Lhs of wire MODIN5_1[349] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_0\[350] = MODIN5_0[351]
+Removing Lhs of wire MODIN5_0[351] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_1\[352] = MODIN4_1[345]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_0\[353] = MODIN4_0[347]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_1\[354] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_0\[355] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_1\[356] = MODIN4_1[345]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_0\[357] = MODIN4_0[347]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_1\[358] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_0\[359] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_0\[362] = one[9]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_0\[363] = \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\[361]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eqi_0\[365] = \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\[364]
+Removing Rhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\[377] = \CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_1\[366]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_1\[388] = MODIN4_1[345]
+Removing Lhs of wire MODIN6_1[389] = MODIN4_1[345]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_0\[390] = MODIN4_0[347]
+Removing Lhs of wire MODIN6_0[391] = MODIN4_0[347]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_0\[397] = one[9]
+Removing Lhs of wire \CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:b_0\[398] = one[9]
+Removing Lhs of wire \CH2_Timer:TimerUDB:status_6\[401] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:status_5\[402] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:status_4\[403] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:status_0\[404] = \CH2_Timer:TimerUDB:status_tc\[329]
+Removing Lhs of wire \CH2_Timer:TimerUDB:status_1\[405] = \CH2_Timer:TimerUDB:capt_int_temp\[342]
+Removing Rhs of wire \CH2_Timer:TimerUDB:status_2\[406] = \CH2_Timer:TimerUDB:fifo_full\[407]
+Removing Rhs of wire \CH2_Timer:TimerUDB:status_3\[408] = \CH2_Timer:TimerUDB:fifo_nempty\[409]
+Removing Lhs of wire \CH2_Timer:TimerUDB:cs_addr_2\[411] = Net_12[2]
+Removing Lhs of wire \CH2_Timer:TimerUDB:cs_addr_1\[412] = \CH2_Timer:TimerUDB:trig_reg\[400]
+Removing Lhs of wire \CH2_Timer:TimerUDB:cs_addr_0\[413] = \CH2_Timer:TimerUDB:per_zero\[331]
+Removing Lhs of wire Net_144[592] = Net_12[2]
+Removing Rhs of wire Net_148[594] = \CH3_Timer:Net_55\[595]
+Removing Lhs of wire \CH3_Timer:TimerUDB:control_1\[608] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:control_0\[609] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:ctrl_cmode_1\[610] = one[9]
+Removing Lhs of wire \CH3_Timer:TimerUDB:ctrl_cmode_0\[611] = one[9]
+Removing Lhs of wire \CH3_Timer:TimerUDB:ctrl_ic_1\[614] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:ctrl_ic_0\[615] = Net_12[2]
+Removing Rhs of wire \CH3_Timer:TimerUDB:timer_enable\[620] = \CH3_Timer:TimerUDB:runmode_enable\[693]
+Removing Rhs of wire \CH3_Timer:TimerUDB:run_mode\[621] = \CH3_Timer:TimerUDB:hwEnable\[622]
+Removing Lhs of wire \CH3_Timer:TimerUDB:run_mode\[621] = Net_142[591]
+Removing Lhs of wire \CH3_Timer:TimerUDB:trigger_enable\[624] = one[9]
+Removing Lhs of wire \CH3_Timer:TimerUDB:tc_i\[626] = \CH3_Timer:TimerUDB:status_tc\[623]
+Removing Lhs of wire cmp_vv_vv_MODGEN_5[632] = \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xeq\[671]
+Removing Rhs of wire add_vv_vv_MODGEN_6_1[633] = \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:s_1\[688]
+Removing Rhs of wire add_vv_vv_MODGEN_6_0[635] = \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:s_0\[689]
+Removing Lhs of wire \CH3_Timer:TimerUDB:capt_fifo_load_int\[637] = \CH3_Timer:TimerUDB:capt_int_temp\[636]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:newa_1\[638] = MODIN7_1[639]
+Removing Rhs of wire MODIN7_1[639] = \CH3_Timer:TimerUDB:int_capt_count_1\[631]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:newa_0\[640] = MODIN7_0[641]
+Removing Rhs of wire MODIN7_0[641] = \CH3_Timer:TimerUDB:int_capt_count_0\[634]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:newb_1\[642] = MODIN8_1[643]
+Removing Lhs of wire MODIN8_1[643] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:newb_0\[644] = MODIN8_0[645]
+Removing Lhs of wire MODIN8_0[645] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:dataa_1\[646] = MODIN7_1[639]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:dataa_0\[647] = MODIN7_0[641]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:datab_1\[648] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:datab_0\[649] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:a_1\[650] = MODIN7_1[639]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:a_0\[651] = MODIN7_0[641]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:b_1\[652] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:b_0\[653] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:aeqb_0\[656] = one[9]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:eq_0\[657] = \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:xnor_array_0\[655]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:eqi_0\[659] = \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:eq_1\[658]
+Removing Rhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xeq\[671] = \CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:aeqb_1\[660]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:a_1\[682] = MODIN7_1[639]
+Removing Lhs of wire MODIN9_1[683] = MODIN7_1[639]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:a_0\[684] = MODIN7_0[641]
+Removing Lhs of wire MODIN9_0[685] = MODIN7_0[641]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:g1:z1:s0:g1:u0:c_0\[691] = one[9]
+Removing Lhs of wire \CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:g1:z1:s0:g1:u0:b_0\[692] = one[9]
+Removing Lhs of wire \CH3_Timer:TimerUDB:status_6\[695] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:status_5\[696] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:status_4\[697] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:status_0\[698] = \CH3_Timer:TimerUDB:status_tc\[623]
+Removing Lhs of wire \CH3_Timer:TimerUDB:status_1\[699] = \CH3_Timer:TimerUDB:capt_int_temp\[636]
+Removing Rhs of wire \CH3_Timer:TimerUDB:status_2\[700] = \CH3_Timer:TimerUDB:fifo_full\[701]
+Removing Rhs of wire \CH3_Timer:TimerUDB:status_3\[702] = \CH3_Timer:TimerUDB:fifo_nempty\[703]
+Removing Lhs of wire \CH3_Timer:TimerUDB:cs_addr_2\[705] = Net_12[2]
+Removing Lhs of wire \CH3_Timer:TimerUDB:cs_addr_1\[706] = \CH3_Timer:TimerUDB:trig_reg\[694]
+Removing Lhs of wire \CH3_Timer:TimerUDB:cs_addr_0\[707] = \CH3_Timer:TimerUDB:per_zero\[625]
+Removing Lhs of wire Net_156[886] = Net_12[2]
+Removing Rhs of wire Net_160[888] = \CH4_Timer:Net_55\[889]
+Removing Lhs of wire \CH4_Timer:TimerUDB:control_1\[902] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:control_0\[903] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:ctrl_cmode_1\[904] = one[9]
+Removing Lhs of wire \CH4_Timer:TimerUDB:ctrl_cmode_0\[905] = one[9]
+Removing Lhs of wire \CH4_Timer:TimerUDB:ctrl_ic_1\[908] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:ctrl_ic_0\[909] = Net_12[2]
+Removing Rhs of wire \CH4_Timer:TimerUDB:timer_enable\[914] = \CH4_Timer:TimerUDB:runmode_enable\[987]
+Removing Rhs of wire \CH4_Timer:TimerUDB:run_mode\[915] = \CH4_Timer:TimerUDB:hwEnable\[916]
+Removing Lhs of wire \CH4_Timer:TimerUDB:run_mode\[915] = Net_154[885]
+Removing Lhs of wire \CH4_Timer:TimerUDB:trigger_enable\[918] = one[9]
+Removing Lhs of wire \CH4_Timer:TimerUDB:tc_i\[920] = \CH4_Timer:TimerUDB:status_tc\[917]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_7\[926] = \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xeq\[965]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_8_1\[927] = \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:s_1\[982]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_8_0\[929] = \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:s_0\[983]
+Removing Lhs of wire \CH4_Timer:TimerUDB:capt_fifo_load_int\[931] = \CH4_Timer:TimerUDB:capt_int_temp\[930]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:newa_1\[932] = \CH4_Timer:TimerUDB:sIntCapCount:MODIN10_1\[933]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODIN10_1\[933] = \CH4_Timer:TimerUDB:int_capt_count_1\[925]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:newa_0\[934] = \CH4_Timer:TimerUDB:sIntCapCount:MODIN10_0\[935]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODIN10_0\[935] = \CH4_Timer:TimerUDB:int_capt_count_0\[928]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:newb_1\[936] = \CH4_Timer:TimerUDB:sIntCapCount:MODIN11_1\[937]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODIN11_1\[937] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:newb_0\[938] = \CH4_Timer:TimerUDB:sIntCapCount:MODIN11_0\[939]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODIN11_0\[939] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:dataa_1\[940] = \CH4_Timer:TimerUDB:int_capt_count_1\[925]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:dataa_0\[941] = \CH4_Timer:TimerUDB:int_capt_count_0\[928]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:datab_1\[942] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:datab_0\[943] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:a_1\[944] = \CH4_Timer:TimerUDB:int_capt_count_1\[925]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:a_0\[945] = \CH4_Timer:TimerUDB:int_capt_count_0\[928]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:b_1\[946] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:b_0\[947] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:aeqb_0\[950] = one[9]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:eq_0\[951] = \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:xnor_array_0\[949]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:eqi_0\[953] = \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:eq_1\[952]
+Removing Rhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xeq\[965] = \CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:aeqb_1\[954]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:a_1\[976] = \CH4_Timer:TimerUDB:int_capt_count_1\[925]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODIN12_1\[977] = \CH4_Timer:TimerUDB:int_capt_count_1\[925]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:a_0\[978] = \CH4_Timer:TimerUDB:int_capt_count_0\[928]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODIN12_0\[979] = \CH4_Timer:TimerUDB:int_capt_count_0\[928]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:g1:z1:s0:g1:u0:c_0\[985] = one[9]
+Removing Lhs of wire \CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:g1:z1:s0:g1:u0:b_0\[986] = one[9]
+Removing Lhs of wire \CH4_Timer:TimerUDB:status_6\[989] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:status_5\[990] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:status_4\[991] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:status_0\[992] = \CH4_Timer:TimerUDB:status_tc\[917]
+Removing Lhs of wire \CH4_Timer:TimerUDB:status_1\[993] = \CH4_Timer:TimerUDB:capt_int_temp\[930]
+Removing Rhs of wire \CH4_Timer:TimerUDB:status_2\[994] = \CH4_Timer:TimerUDB:fifo_full\[995]
+Removing Rhs of wire \CH4_Timer:TimerUDB:status_3\[996] = \CH4_Timer:TimerUDB:fifo_nempty\[997]
+Removing Lhs of wire \CH4_Timer:TimerUDB:cs_addr_2\[999] = Net_12[2]
+Removing Lhs of wire \CH4_Timer:TimerUDB:cs_addr_1\[1000] = \CH4_Timer:TimerUDB:trig_reg\[988]
+Removing Lhs of wire \CH4_Timer:TimerUDB:cs_addr_0\[1001] = \CH4_Timer:TimerUDB:per_zero\[919]
+Removing Lhs of wire tmpOE__CH1_Pin_net_0[1179] = one[9]
+Removing Lhs of wire tmpOE__CH2_Pin_net_0[1184] = one[9]
+Removing Lhs of wire tmpOE__CH3_Pin_net_0[1189] = one[9]
+Removing Lhs of wire tmpOE__CH4_Pin_net_0[1194] = one[9]
+Removing Lhs of wire \CH1_Timer:TimerUDB:capture_last\\D\[1202] = Net_21[28]
+Removing Lhs of wire \CH1_Timer:TimerUDB:tc_reg_i\\D\[1203] = \CH1_Timer:TimerUDB:status_tc\[34]
+Removing Lhs of wire \CH1_Timer:TimerUDB:hwEnable_reg\\D\[1204] = Net_10[1]
+Removing Lhs of wire \CH1_Timer:TimerUDB:capture_out_reg_i\\D\[1205] = \CH1_Timer:TimerUDB:capt_fifo_load\[30]
+Removing Lhs of wire \CH2_Timer:TimerUDB:capture_last\\D\[1209] = Net_134[323]
+Removing Lhs of wire \CH2_Timer:TimerUDB:tc_reg_i\\D\[1210] = \CH2_Timer:TimerUDB:status_tc\[329]
+Removing Lhs of wire \CH2_Timer:TimerUDB:hwEnable_reg\\D\[1211] = Net_131[297]
+Removing Lhs of wire \CH2_Timer:TimerUDB:capture_out_reg_i\\D\[1212] = \CH2_Timer:TimerUDB:capt_fifo_load\[325]
+Removing Lhs of wire \CH3_Timer:TimerUDB:capture_last\\D\[1216] = Net_145[617]
+Removing Lhs of wire \CH3_Timer:TimerUDB:tc_reg_i\\D\[1217] = \CH3_Timer:TimerUDB:status_tc\[623]
+Removing Lhs of wire \CH3_Timer:TimerUDB:hwEnable_reg\\D\[1218] = Net_142[591]
+Removing Lhs of wire \CH3_Timer:TimerUDB:capture_out_reg_i\\D\[1219] = \CH3_Timer:TimerUDB:capt_fifo_load\[619]
+Removing Lhs of wire \CH4_Timer:TimerUDB:capture_last\\D\[1223] = Net_157[911]
+Removing Lhs of wire \CH4_Timer:TimerUDB:tc_reg_i\\D\[1224] = \CH4_Timer:TimerUDB:status_tc\[917]
+Removing Lhs of wire \CH4_Timer:TimerUDB:hwEnable_reg\\D\[1225] = Net_154[885]
+Removing Lhs of wire \CH4_Timer:TimerUDB:capture_out_reg_i\\D\[1226] = \CH4_Timer:TimerUDB:capt_fifo_load\[913]
+
+------------------------------------------------------
+Aliased 0 equations, 232 wires.
+------------------------------------------------------
+
+----------------------------------------------------------
+Circuit simplification
+----------------------------------------------------------
+
+Substituting virtuals - pass 1:
+
+Note:  Expanding virtual equation for 'Net_12' (cost = 0):
+Net_12 <=  ('0') ;
+
+Note:  Expanding virtual equation for 'one' (cost = 0):
+one <=  ('1') ;
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:fifo_load_polarized\' (cost = 2):
+\CH1_Timer:TimerUDB:fifo_load_polarized\ <= ((not \CH1_Timer:TimerUDB:capture_last\ and Net_21)
+	OR (not Net_21 and \CH1_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:timer_enable\' (cost = 0):
+\CH1_Timer:TimerUDB:timer_enable\ <= (Net_10);
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\' (cost = 0):
+\CH1_Timer:TimerUDB:sIntCapCount:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\ <= (MODIN1_0);
+
+Note:  Expanding virtual equation for 'add_vv_vv_MODGEN_2_0' (cost = 0):
+add_vv_vv_MODGEN_2_0 <= (not MODIN1_0);
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:xnor_array_1\' (cost = 0):
+\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:xnor_array_1\ <= (not MODIN1_1);
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:xnor_array_0\' (cost = 0):
+\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:xnor_array_0\ <= (not MODIN1_0);
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:eq_1\' (cost = 1):
+\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:gx:u0:eq_1\ <= ((not MODIN1_1 and not MODIN1_0));
+
+Note:  Expanding virtual equation for '\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xeq\' (cost = 5):
+\CH1_Timer:TimerUDB:sIntCapCount:MODULE_1:g1:a0:xeq\ <= ((not MODIN1_1 and not MODIN1_0));
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:fifo_load_polarized\' (cost = 2):
+\CH2_Timer:TimerUDB:fifo_load_polarized\ <= ((not \CH2_Timer:TimerUDB:capture_last\ and Net_134)
+	OR (not Net_134 and \CH2_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:timer_enable\' (cost = 0):
+\CH2_Timer:TimerUDB:timer_enable\ <= (Net_131);
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_1\' (cost = 0):
+\CH2_Timer:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_1\ <= (MODIN4_0);
+
+Note:  Expanding virtual equation for 'add_vv_vv_MODGEN_4_0' (cost = 0):
+add_vv_vv_MODGEN_4_0 <= (not MODIN4_0);
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_1\' (cost = 0):
+\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_1\ <= (not MODIN4_1);
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\' (cost = 0):
+\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\ <= (not MODIN4_0);
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\' (cost = 1):
+\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\ <= ((not MODIN4_1 and not MODIN4_0));
+
+Note:  Expanding virtual equation for '\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\' (cost = 5):
+\CH2_Timer:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\ <= ((not MODIN4_1 and not MODIN4_0));
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:fifo_load_polarized\' (cost = 2):
+\CH3_Timer:TimerUDB:fifo_load_polarized\ <= ((not \CH3_Timer:TimerUDB:capture_last\ and Net_145)
+	OR (not Net_145 and \CH3_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:timer_enable\' (cost = 0):
+\CH3_Timer:TimerUDB:timer_enable\ <= (Net_142);
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:g1:z1:s0:g1:u0:c_1\' (cost = 0):
+\CH3_Timer:TimerUDB:sIntCapCount:MODULE_6:g2:a0:g1:z1:s0:g1:u0:c_1\ <= (MODIN7_0);
+
+Note:  Expanding virtual equation for 'add_vv_vv_MODGEN_6_0' (cost = 0):
+add_vv_vv_MODGEN_6_0 <= (not MODIN7_0);
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:xnor_array_1\' (cost = 0):
+\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:xnor_array_1\ <= (not MODIN7_1);
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:xnor_array_0\' (cost = 0):
+\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:xnor_array_0\ <= (not MODIN7_0);
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:eq_1\' (cost = 1):
+\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:gx:u0:eq_1\ <= ((not MODIN7_1 and not MODIN7_0));
+
+Note:  Expanding virtual equation for '\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xeq\' (cost = 5):
+\CH3_Timer:TimerUDB:sIntCapCount:MODULE_5:g1:a0:xeq\ <= ((not MODIN7_1 and not MODIN7_0));
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:fifo_load_polarized\' (cost = 2):
+\CH4_Timer:TimerUDB:fifo_load_polarized\ <= ((not \CH4_Timer:TimerUDB:capture_last\ and Net_157)
+	OR (not Net_157 and \CH4_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:timer_enable\' (cost = 0):
+\CH4_Timer:TimerUDB:timer_enable\ <= (Net_154);
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:xnor_array_1\' (cost = 0):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:xnor_array_1\ <= (not \CH4_Timer:TimerUDB:int_capt_count_1\);
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:xnor_array_0\' (cost = 0):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:xnor_array_0\ <= (not \CH4_Timer:TimerUDB:int_capt_count_0\);
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:eq_1\' (cost = 1):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:gx:u0:eq_1\ <= ((not \CH4_Timer:TimerUDB:int_capt_count_1\ and not \CH4_Timer:TimerUDB:int_capt_count_0\));
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xeq\' (cost = 5):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_7:g1:a0:xeq\ <= ((not \CH4_Timer:TimerUDB:int_capt_count_1\ and not \CH4_Timer:TimerUDB:int_capt_count_0\));
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:g1:z1:s0:g1:u0:c_1\' (cost = 0):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:g1:z1:s0:g1:u0:c_1\ <= (\CH4_Timer:TimerUDB:int_capt_count_0\);
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:s_0\' (cost = 0):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:s_0\ <= (not \CH4_Timer:TimerUDB:int_capt_count_0\);
+
+
+Substituting virtuals - pass 2:
+
+Note:  Virtual signal \CH1_Timer:TimerUDB:capt_fifo_load\ with ( cost: 112 or cost_inv: 4)  > 90 or with size: 2 > 102 has been made a (soft) node.
+\CH1_Timer:TimerUDB:capt_fifo_load\ <= ((not \CH1_Timer:TimerUDB:capture_last\ and Net_10 and Net_21)
+	OR (not Net_21 and Net_10 and \CH1_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for 'add_vv_vv_MODGEN_2_1' (cost = 4):
+add_vv_vv_MODGEN_2_1 <= ((not MODIN1_0 and MODIN1_1)
+	OR (not MODIN1_1 and MODIN1_0));
+
+Note:  Virtual signal \CH2_Timer:TimerUDB:capt_fifo_load\ with ( cost: 112 or cost_inv: 4)  > 90 or with size: 2 > 102 has been made a (soft) node.
+\CH2_Timer:TimerUDB:capt_fifo_load\ <= ((not \CH2_Timer:TimerUDB:capture_last\ and Net_131 and Net_134)
+	OR (not Net_134 and Net_131 and \CH2_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for 'add_vv_vv_MODGEN_4_1' (cost = 4):
+add_vv_vv_MODGEN_4_1 <= ((not MODIN4_0 and MODIN4_1)
+	OR (not MODIN4_1 and MODIN4_0));
+
+Note:  Virtual signal \CH3_Timer:TimerUDB:capt_fifo_load\ with ( cost: 112 or cost_inv: 4)  > 90 or with size: 2 > 102 has been made a (soft) node.
+\CH3_Timer:TimerUDB:capt_fifo_load\ <= ((not \CH3_Timer:TimerUDB:capture_last\ and Net_142 and Net_145)
+	OR (not Net_145 and Net_142 and \CH3_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for 'add_vv_vv_MODGEN_6_1' (cost = 4):
+add_vv_vv_MODGEN_6_1 <= ((not MODIN7_0 and MODIN7_1)
+	OR (not MODIN7_1 and MODIN7_0));
+
+Note:  Virtual signal \CH4_Timer:TimerUDB:capt_fifo_load\ with ( cost: 112 or cost_inv: 4)  > 90 or with size: 2 > 102 has been made a (soft) node.
+\CH4_Timer:TimerUDB:capt_fifo_load\ <= ((not \CH4_Timer:TimerUDB:capture_last\ and Net_154 and Net_157)
+	OR (not Net_157 and Net_154 and \CH4_Timer:TimerUDB:capture_last\));
+
+Note:  Expanding virtual equation for '\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:s_1\' (cost = 4):
+\CH4_Timer:TimerUDB:sIntCapCount:MODULE_8:g2:a0:s_1\ <= ((not \CH4_Timer:TimerUDB:int_capt_count_0\ and \CH4_Timer:TimerUDB:int_capt_count_1\)
+	OR (not \CH4_Timer:TimerUDB:int_capt_count_1\ and \CH4_Timer:TimerUDB:int_capt_count_0\));
+
+
+Substituting virtuals - pass 3:
+
+
+----------------------------------------------------------
+Circuit simplification results:
+
+	Expanded 38 signals.
+	Turned 4 signals into soft nodes.
+	Maximum default expansion cost was set at 3.
+----------------------------------------------------------
+
+------------------------------------------------------
+Alias Detection
+------------------------------------------------------
+Removing Lhs of wire \CH1_Timer:TimerUDB:trig_reg\[105] = Net_10[1]
+Removing Lhs of wire \CH2_Timer:TimerUDB:trig_reg\[400] = Net_131[297]
+Removing Lhs of wire \CH3_Timer:TimerUDB:trig_reg\[694] = Net_142[591]
+Removing Lhs of wire \CH4_Timer:TimerUDB:trig_reg\[988] = Net_154[885]
+
+------------------------------------------------------
+Aliased 0 equations, 4 wires.
+------------------------------------------------------
+
+----------------------------------------------------------
+Circuit simplification
+----------------------------------------------------------
+
+Eliminating unused logic - pass 1:
+
+
+Eliminating unused logic - pass 2:
+
+
+Substituting virtuals - pass 1:
+
+
+----------------------------------------------------------
+Circuit simplification results:
+
+	Expanded 0 signals.
+	Turned 0 signals into soft nodes.
+	Maximum default expansion cost was set at 3.
+----------------------------------------------------------
+
+topld:  No errors.
+
+CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp
+Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -dcpsoc3 ExpressLRS_PWM_Receiver.v -verilog
+</CYPRESSTAG>
+Warp synthesis phase: Elapsed time ==> 1s.667ms
+<CYPRESSTAG name="Fitter results...">
+<CYPRESSTAG name="Fitter startup details...">
+cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Monday, 09 February 2026 12:39:32
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver.cyprj -d CY8C5888LTI-LP097 ExpressLRS_PWM_Receiver.v -verilog
+</CYPRESSTAG>
+<CYPRESSTAG name="Design parsing">
+Design parsing phase: Elapsed time ==> 0s.020ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Tech Mapping">
+<CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
+Assigning clock timer_clock to clock BUS_CLK because it is a pass-through
+Assigning clock timer_clock_1 to clock BUS_CLK because it is a pass-through
+Assigning clock timer_clock_2 to clock BUS_CLK because it is a pass-through
+Assigning clock timer_clock_3 to clock BUS_CLK because it is a pass-through
+<CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
+</CYPRESSTAG>
+
+Removing unused cells resulting from optimization
+Done removing unused cells.
+<CYPRESSTAG name="UDB Clock/Enable Remapping Results">
+    UDB Clk/Enable \CH1_Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
+        ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: BUS_CLK, EnableOut: Constant 1
+    UDB Clk/Enable \CH2_Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
+        ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: BUS_CLK, EnableOut: Constant 1
+    UDB Clk/Enable \CH3_Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
+        ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: BUS_CLK, EnableOut: Constant 1
+    UDB Clk/Enable \CH4_Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
+        ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: BUS_CLK, EnableOut: Constant 1
+</CYPRESSTAG>
+ADD: pft.M0040: information: The following 4 pin(s) will be assigned a location by the fitter: CH1_Pin(0), CH2_Pin(0), CH3_Pin(0), CH4_Pin(0)
+
+
+Removing unused cells resulting from optimization
+Done removing unused cells.
+<CYPRESSTAG name="Duplicate Macrocell detection">
+</CYPRESSTAG>
+</CYPRESSTAG>
+<CYPRESSTAG name="Duplicate Macrocell detection">
+</CYPRESSTAG>
+<CYPRESSTAG name="Design Equations" icon="FILE_RPT_EQUATION">
+
+------------------------------------------------------------
+Design Equations
+------------------------------------------------------------
+    <CYPRESSTAG name="Pin listing">
+
+    ------------------------------------------------------------
+    Pin listing
+    ------------------------------------------------------------
+
+    Pin : Name = CH1_Pin(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_DIGITAL
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilities: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => CH1_Pin(0)__PA ,
+            fb => Net_21 ,
+            pad => CH1_Pin(0)_PAD );
+
+    Pin : Name = CH2_Pin(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_DIGITAL
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilities: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => CH2_Pin(0)__PA ,
+            fb => Net_134 ,
+            pad => CH2_Pin(0)_PAD );
+
+    Pin : Name = CH3_Pin(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_DIGITAL
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilities: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => CH3_Pin(0)__PA ,
+            fb => Net_145 ,
+            pad => CH3_Pin(0)_PAD );
+
+    Pin : Name = CH4_Pin(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_DIGITAL
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilities: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => CH4_Pin(0)__PA ,
+            fb => Net_157 ,
+            pad => CH4_Pin(0)_PAD );
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
+
+    ------------------------------------------------------------
+    Macrocell listing
+    ------------------------------------------------------------
+
+    MacroCell: Name=\CH1_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_21 * \CH1_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_21 * !\CH1_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH1_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    MacroCell: Name=\CH1_Timer:TimerUDB:status_tc\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH1_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH1_Timer:TimerUDB:status_tc\ (fanout=1)
+
+    MacroCell: Name=\CH2_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_134 * \CH2_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_134 * !\CH2_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH2_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    MacroCell: Name=\CH2_Timer:TimerUDB:status_tc\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH2_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH2_Timer:TimerUDB:status_tc\ (fanout=1)
+
+    MacroCell: Name=\CH3_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_145 * \CH3_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_145 * !\CH3_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH3_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    MacroCell: Name=\CH3_Timer:TimerUDB:status_tc\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH3_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH3_Timer:TimerUDB:status_tc\ (fanout=1)
+
+    MacroCell: Name=\CH4_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_157 * \CH4_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_157 * !\CH4_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH4_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    MacroCell: Name=\CH4_Timer:TimerUDB:status_tc\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH4_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH4_Timer:TimerUDB:status_tc\ (fanout=1)
+
+    MacroCell: Name=\CH1_Timer:TimerUDB:capture_last\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_21
+        );
+        Output = \CH1_Timer:TimerUDB:capture_last\ (fanout=1)
+
+    MacroCell: Name=MODIN1_1, Mode=(T-Register)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH1_Timer:TimerUDB:capt_fifo_load\ * MODIN1_0
+        );
+        Output = MODIN1_1 (fanout=2)
+
+    MacroCell: Name=MODIN1_0, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH1_Timer:TimerUDB:capt_fifo_load\ * MODIN1_0
+            + \CH1_Timer:TimerUDB:capt_fifo_load\ * MODIN1_1 * !MODIN1_0
+        );
+        Output = MODIN1_0 (fanout=3)
+
+    MacroCell: Name=\CH1_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH1_Timer:TimerUDB:capt_fifo_load\ * !MODIN1_1 * !MODIN1_0
+        );
+        Output = \CH1_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+
+    MacroCell: Name=\CH2_Timer:TimerUDB:capture_last\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_134
+        );
+        Output = \CH2_Timer:TimerUDB:capture_last\ (fanout=1)
+
+    MacroCell: Name=MODIN4_1, Mode=(T-Register)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH2_Timer:TimerUDB:capt_fifo_load\ * MODIN4_0
+        );
+        Output = MODIN4_1 (fanout=2)
+
+    MacroCell: Name=MODIN4_0, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH2_Timer:TimerUDB:capt_fifo_load\ * MODIN4_0
+            + \CH2_Timer:TimerUDB:capt_fifo_load\ * MODIN4_1 * !MODIN4_0
+        );
+        Output = MODIN4_0 (fanout=3)
+
+    MacroCell: Name=\CH2_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH2_Timer:TimerUDB:capt_fifo_load\ * !MODIN4_1 * !MODIN4_0
+        );
+        Output = \CH2_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+
+    MacroCell: Name=\CH3_Timer:TimerUDB:capture_last\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_145
+        );
+        Output = \CH3_Timer:TimerUDB:capture_last\ (fanout=1)
+
+    MacroCell: Name=MODIN7_1, Mode=(T-Register)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH3_Timer:TimerUDB:capt_fifo_load\ * MODIN7_0
+        );
+        Output = MODIN7_1 (fanout=2)
+
+    MacroCell: Name=MODIN7_0, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH3_Timer:TimerUDB:capt_fifo_load\ * MODIN7_0
+            + \CH3_Timer:TimerUDB:capt_fifo_load\ * MODIN7_1 * !MODIN7_0
+        );
+        Output = MODIN7_0 (fanout=3)
+
+    MacroCell: Name=\CH3_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH3_Timer:TimerUDB:capt_fifo_load\ * !MODIN7_1 * !MODIN7_0
+        );
+        Output = \CH3_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+
+    MacroCell: Name=\CH4_Timer:TimerUDB:capture_last\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_157
+        );
+        Output = \CH4_Timer:TimerUDB:capture_last\ (fanout=1)
+
+    MacroCell: Name=\CH4_Timer:TimerUDB:int_capt_count_1\, Mode=(T-Register)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              \CH4_Timer:TimerUDB:int_capt_count_0\
+        );
+        Output = \CH4_Timer:TimerUDB:int_capt_count_1\ (fanout=2)
+
+    MacroCell: Name=\CH4_Timer:TimerUDB:int_capt_count_0\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              \CH4_Timer:TimerUDB:int_capt_count_0\
+            + \CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              \CH4_Timer:TimerUDB:int_capt_count_1\ * 
+              !\CH4_Timer:TimerUDB:int_capt_count_0\
+        );
+        Output = \CH4_Timer:TimerUDB:int_capt_count_0\ (fanout=3)
+
+    MacroCell: Name=\CH4_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              !\CH4_Timer:TimerUDB:int_capt_count_1\ * 
+              !\CH4_Timer:TimerUDB:int_capt_count_0\
+        );
+        Output = \CH4_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Datapath listing">
+
+    ------------------------------------------------------------
+    Datapath listing
+    ------------------------------------------------------------
+
+    datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u0\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_out => \CH1_Timer:TimerUDB:sT32:timerdp:carry0\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u1\
+
+    datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u1\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH1_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+            chain_out => \CH1_Timer:TimerUDB:sT32:timerdp:carry1\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u0\
+        Next in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u2\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH1_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+            chain_out => \CH1_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u1\
+        Next in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u3\
+
+    datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u3\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+            z0_comb => \CH1_Timer:TimerUDB:per_zero\ ,
+            f0_bus_stat_comb => \CH1_Timer:TimerUDB:status_3\ ,
+            f0_blk_stat_comb => \CH1_Timer:TimerUDB:status_2\ ,
+            chain_in => \CH1_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u0\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_out => \CH2_Timer:TimerUDB:sT32:timerdp:carry0\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u1\
+
+    datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u1\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH2_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+            chain_out => \CH2_Timer:TimerUDB:sT32:timerdp:carry1\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u0\
+        Next in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u2\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH2_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+            chain_out => \CH2_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u1\
+        Next in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u3\
+
+    datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u3\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+            z0_comb => \CH2_Timer:TimerUDB:per_zero\ ,
+            f0_bus_stat_comb => \CH2_Timer:TimerUDB:status_3\ ,
+            f0_blk_stat_comb => \CH2_Timer:TimerUDB:status_2\ ,
+            chain_in => \CH2_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u0\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_out => \CH3_Timer:TimerUDB:sT32:timerdp:carry0\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u1\
+
+    datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u1\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH3_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+            chain_out => \CH3_Timer:TimerUDB:sT32:timerdp:carry1\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u0\
+        Next in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u2\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH3_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+            chain_out => \CH3_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u1\
+        Next in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u3\
+
+    datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u3\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+            z0_comb => \CH3_Timer:TimerUDB:per_zero\ ,
+            f0_bus_stat_comb => \CH3_Timer:TimerUDB:status_3\ ,
+            f0_blk_stat_comb => \CH3_Timer:TimerUDB:status_2\ ,
+            chain_in => \CH3_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u0\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_out => \CH4_Timer:TimerUDB:sT32:timerdp:carry0\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u1\
+
+    datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u1\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH4_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+            chain_out => \CH4_Timer:TimerUDB:sT32:timerdp:carry1\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u0\
+        Next in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u2\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+            chain_in => \CH4_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+            chain_out => \CH4_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u1\
+        Next in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u3\
+
+    datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u3\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => ClockBlock_BUS_CLK_local ,
+            cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+            f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+            z0_comb => \CH4_Timer:TimerUDB:per_zero\ ,
+            f0_bus_stat_comb => \CH4_Timer:TimerUDB:status_3\ ,
+            f0_blk_stat_comb => \CH4_Timer:TimerUDB:status_2\ ,
+            chain_in => \CH4_Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u2\
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Status register listing">
+    </CYPRESSTAG>
+    <CYPRESSTAG name="StatusI register listing">
+
+    ------------------------------------------------------------
+    StatusI register listing
+    ------------------------------------------------------------
+
+    statusicell: Name =\CH1_Timer:TimerUDB:rstSts:stsreg\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            status_3 => \CH1_Timer:TimerUDB:status_3\ ,
+            status_2 => \CH1_Timer:TimerUDB:status_2\ ,
+            status_1 => \CH1_Timer:TimerUDB:capt_int_temp\ ,
+            status_0 => \CH1_Timer:TimerUDB:status_tc\ ,
+            interrupt => Net_24 );
+        Properties:
+        {
+            cy_force_order = 1
+            cy_int_mask = "1111111"
+            cy_md_select = "0000011"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+
+    statusicell: Name =\CH2_Timer:TimerUDB:rstSts:stsreg\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            status_3 => \CH2_Timer:TimerUDB:status_3\ ,
+            status_2 => \CH2_Timer:TimerUDB:status_2\ ,
+            status_1 => \CH2_Timer:TimerUDB:capt_int_temp\ ,
+            status_0 => \CH2_Timer:TimerUDB:status_tc\ ,
+            interrupt => Net_137 );
+        Properties:
+        {
+            cy_force_order = 1
+            cy_int_mask = "1111111"
+            cy_md_select = "0000011"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+
+    statusicell: Name =\CH3_Timer:TimerUDB:rstSts:stsreg\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            status_3 => \CH3_Timer:TimerUDB:status_3\ ,
+            status_2 => \CH3_Timer:TimerUDB:status_2\ ,
+            status_1 => \CH3_Timer:TimerUDB:capt_int_temp\ ,
+            status_0 => \CH3_Timer:TimerUDB:status_tc\ ,
+            interrupt => Net_148 );
+        Properties:
+        {
+            cy_force_order = 1
+            cy_int_mask = "1111111"
+            cy_md_select = "0000011"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+
+    statusicell: Name =\CH4_Timer:TimerUDB:rstSts:stsreg\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            status_3 => \CH4_Timer:TimerUDB:status_3\ ,
+            status_2 => \CH4_Timer:TimerUDB:status_2\ ,
+            status_1 => \CH4_Timer:TimerUDB:capt_int_temp\ ,
+            status_0 => \CH4_Timer:TimerUDB:status_tc\ ,
+            interrupt => Net_160 );
+        Properties:
+        {
+            cy_force_order = 1
+            cy_int_mask = "1111111"
+            cy_md_select = "0000011"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Sync listing">
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Control register listing">
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Count7 listing">
+    </CYPRESSTAG>
+    <CYPRESSTAG name="DRQ listing">
+    </CYPRESSTAG>
+    <CYPRESSTAG name="Interrupt listing">
+
+    ------------------------------------------------------------
+    Interrupt listing
+    ------------------------------------------------------------
+
+    interrupt: Name =isr_1
+        PORT MAP (
+            interrupt => Net_24 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+
+    interrupt: Name =isr_2
+        PORT MAP (
+            interrupt => Net_137 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+
+    interrupt: Name =isr_3
+        PORT MAP (
+            interrupt => Net_148 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+
+    interrupt: Name =isr_4
+        PORT MAP (
+            interrupt => Net_160 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+    </CYPRESSTAG>
+</CYPRESSTAG>
+<CYPRESSTAG name="Technology mapping summary" expanded>
+
+------------------------------------------------------------
+Technology mapping summary
+------------------------------------------------------------
+
+Resource Type                 : Used : Free :  Max :  % Used
+============================================================
+Digital Clocks                :    0 :    8 :    8 :  0.00 %
+Analog Clocks                 :    0 :    4 :    4 :  0.00 %
+CapSense Buffers              :    0 :    2 :    2 :  0.00 %
+Digital Filter Block          :    0 :    1 :    1 :  0.00 %
+Interrupts                    :    4 :   28 :   32 : 12.50 %
+IO                            :    7 :   41 :   48 : 14.58 %
+Segment LCD                   :    0 :    1 :    1 :  0.00 %
+CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
+I2C                           :    0 :    1 :    1 :  0.00 %
+USB                           :    0 :    1 :    1 :  0.00 %
+DMA Channels                  :    0 :   24 :   24 :  0.00 %
+Timer                         :    0 :    4 :    4 :  0.00 %
+UDB                           :      :      :      :        
+  Macrocells                  :   24 :  168 :  192 : 12.50 %
+  Unique P-terms              :   32 :  352 :  384 :  8.33 %
+  Total P-terms               :   32 :      :      :        
+  Datapath Cells              :   16 :    8 :   24 : 66.67 %
+  Status Cells                :    4 :   20 :   24 : 16.67 %
+    StatusI Registers         :    4 :      :      :        
+  Control Cells               :    0 :   24 :   24 :  0.00 %
+Opamp                         :    0 :    4 :    4 :  0.00 %
+Comparator                    :    0 :    4 :    4 :  0.00 %
+Delta-Sigma ADC               :    0 :    1 :    1 :  0.00 %
+LPF                           :    0 :    2 :    2 :  0.00 %
+SAR ADC                       :    0 :    2 :    2 :  0.00 %
+Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
+DAC                           :      :      :      :        
+  VIDAC                       :    0 :    4 :    4 :  0.00 %
+</CYPRESSTAG>
+Technology Mapping: Elapsed time ==> 0s.076ms
+Tech Mapping phase: Elapsed time ==> 0s.110ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Analog Placement">
+Initial Analog Placement Results:
+Analog Placement phase: Elapsed time ==> 0s.013ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Analog Routing">
+Analog Routing phase: Elapsed time ==> 0s.000ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Analog Code Generation">
+============ Analog Final Answer Routes ============
+Dump of CyAnalogRoutingResultsDB
+Map of net to items {
+}
+Map of item to net {
+}
+Mux Info {
+}
+Dump of CyP35AnalogRoutingResultsDB
+IsVddaHalfUsedForComp = False
+IsVddaHalfUsedForSar0 = False
+IsVddaHalfUsedForSar1 = False
+Analog Code Generation phase: Elapsed time ==> 0s.150ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Digital Placement">
+<CYPRESSTAG name="Detailed placement messages">
+I2076: Total run-time: 1.1 sec.
+
+</CYPRESSTAG>
+<CYPRESSTAG name="PLD Packing">
+<CYPRESSTAG name="PLD Packing Summary" expanded>
+
+------------------------------------------------------------
+PLD Packing Summary
+------------------------------------------------------------
+            Resource Type : Used : Free :  Max :  % Used
+    ====================================================
+                     PLDs :    8 :   40 :   48 :  16.67%
+
+<CYPRESSTAG name="PLD Statistics">
+
+        PLD Resource Type :     Average/LAB
+    =======================================
+                   Inputs :            5.50
+                   Pterms :            4.00
+               Macrocells :            3.00
+</CYPRESSTAG>
+<CYPRESSTAG name="Packed PLD Contents">
+Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
+</CYPRESSTAG>
+PLD Packing: Elapsed time ==> 0s.000ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Partitioning">
+<CYPRESSTAG name="Initial Partitioning Summary">
+Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
+<CYPRESSTAG name="Final Partitioning Summary">
+Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
+Partitioning: Elapsed time ==> 0s.017ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Final Placement Summary">
+
+------------------------------------------------------------
+Final Placement Summary
+------------------------------------------------------------
+
+       Resource Type :      Count : Avg Inputs : Avg Outputs
+    ========================================================
+                 UDB :         16 :       1.75 :       1.50
+<CYPRESSTAG name="Final Placement Details">
+<CYPRESSTAG name="Component Details">
+
+------------------------------------------------------------
+Component Placement Details
+------------------------------------------------------------
+UDB [UDB=(0,0)] is empty.
+UDB [UDB=(0,1)] is empty.
+UDB [UDB=(0,2)] is empty.
+UDB [UDB=(0,3)] contents:
+datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_out => \CH2_Timer:TimerUDB:sT32:timerdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u1\
+
+UDB [UDB=(0,4)] contents:
+LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=6, #pterms=6
+{
+    [McSlotId=0]:     MacroCell: Name=\CH2_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_134 * \CH2_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_134 * !\CH2_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH2_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH2_Timer:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_134
+        );
+        Output = \CH2_Timer:TimerUDB:capture_last\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=MODIN4_0, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH2_Timer:TimerUDB:capt_fifo_load\ * MODIN4_0
+            + \CH2_Timer:TimerUDB:capt_fifo_load\ * MODIN4_1 * !MODIN4_0
+        );
+        Output = MODIN4_0 (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=MODIN4_1, Mode=(T-Register) @ [UDB=(0,4)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH2_Timer:TimerUDB:capt_fifo_load\ * MODIN4_0
+        );
+        Output = MODIN4_1 (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(0,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\CH2_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH2_Timer:TimerUDB:capt_fifo_load\ * !MODIN4_1 * !MODIN4_0
+        );
+        Output = \CH2_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH2_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(0,4)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH2_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH2_Timer:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u3\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+        z0_comb => \CH2_Timer:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \CH2_Timer:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \CH2_Timer:TimerUDB:status_2\ ,
+        chain_in => \CH2_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u2\
+
+statusicell: Name =\CH2_Timer:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        status_3 => \CH2_Timer:TimerUDB:status_3\ ,
+        status_2 => \CH2_Timer:TimerUDB:status_2\ ,
+        status_1 => \CH2_Timer:TimerUDB:capt_int_temp\ ,
+        status_0 => \CH2_Timer:TimerUDB:status_tc\ ,
+        interrupt => Net_137 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] is empty.
+UDB [UDB=(1,1)] is empty.
+UDB [UDB=(1,2)] is empty.
+UDB [UDB=(1,3)] contents:
+datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH2_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+        chain_out => \CH2_Timer:TimerUDB:sT32:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u0\
+    Next in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u2\
+
+UDB [UDB=(1,4)] contents:
+datapathcell: Name =\CH2_Timer:TimerUDB:sT32:timerdp:u2\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH2_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH2_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH2_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+        chain_out => \CH2_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u1\
+    Next in chain : \CH2_Timer:TimerUDB:sT32:timerdp:u3\
+
+UDB [UDB=(1,5)] is empty.
+UDB [UDB=(2,0)] contents:
+datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_out => \CH4_Timer:TimerUDB:sT32:timerdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u1\
+
+UDB [UDB=(2,1)] contents:
+datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u3\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+        z0_comb => \CH4_Timer:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \CH4_Timer:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \CH4_Timer:TimerUDB:status_2\ ,
+        chain_in => \CH4_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u2\
+
+statusicell: Name =\CH4_Timer:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        status_3 => \CH4_Timer:TimerUDB:status_3\ ,
+        status_2 => \CH4_Timer:TimerUDB:status_2\ ,
+        status_1 => \CH4_Timer:TimerUDB:capt_int_temp\ ,
+        status_0 => \CH4_Timer:TimerUDB:status_tc\ ,
+        interrupt => Net_160 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=4, #inputs=6, #pterms=6
+{
+    [McSlotId=0]:     MacroCell: Name=\CH4_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_157 * \CH4_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_157 * !\CH4_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH4_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH4_Timer:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_157
+        );
+        Output = \CH4_Timer:TimerUDB:capture_last\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\CH4_Timer:TimerUDB:int_capt_count_0\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              \CH4_Timer:TimerUDB:int_capt_count_0\
+            + \CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              \CH4_Timer:TimerUDB:int_capt_count_1\ * 
+              !\CH4_Timer:TimerUDB:int_capt_count_0\
+        );
+        Output = \CH4_Timer:TimerUDB:int_capt_count_0\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\CH4_Timer:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(2,2)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              \CH4_Timer:TimerUDB:int_capt_count_0\
+        );
+        Output = \CH4_Timer:TimerUDB:int_capt_count_1\ (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,2)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\CH4_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH4_Timer:TimerUDB:capt_fifo_load\ * 
+              !\CH4_Timer:TimerUDB:int_capt_count_1\ * 
+              !\CH4_Timer:TimerUDB:int_capt_count_0\
+        );
+        Output = \CH4_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH4_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH4_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH4_Timer:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u3\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+        z0_comb => \CH3_Timer:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \CH3_Timer:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \CH3_Timer:TimerUDB:status_2\ ,
+        chain_in => \CH3_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u2\
+
+UDB [UDB=(2,3)] contents:
+LAB@[UDB=(2,3)][LB=0] #macrocells=4, #inputs=6, #pterms=6
+{
+    [McSlotId=0]:     MacroCell: Name=\CH1_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_21 * \CH1_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_21 * !\CH1_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH1_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH1_Timer:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_21
+        );
+        Output = \CH1_Timer:TimerUDB:capture_last\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=MODIN1_0, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH1_Timer:TimerUDB:capt_fifo_load\ * MODIN1_0
+            + \CH1_Timer:TimerUDB:capt_fifo_load\ * MODIN1_1 * !MODIN1_0
+        );
+        Output = MODIN1_0 (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=MODIN1_1, Mode=(T-Register) @ [UDB=(2,3)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH1_Timer:TimerUDB:capt_fifo_load\ * MODIN1_0
+        );
+        Output = MODIN1_1 (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,3)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\CH1_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH1_Timer:TimerUDB:capt_fifo_load\ * !MODIN1_1 * !MODIN1_0
+        );
+        Output = \CH1_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH1_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH1_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH1_Timer:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_out => \CH3_Timer:TimerUDB:sT32:timerdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u1\
+
+statusicell: Name =\CH1_Timer:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        status_3 => \CH1_Timer:TimerUDB:status_3\ ,
+        status_2 => \CH1_Timer:TimerUDB:status_2\ ,
+        status_1 => \CH1_Timer:TimerUDB:capt_int_temp\ ,
+        status_0 => \CH1_Timer:TimerUDB:status_tc\ ,
+        interrupt => Net_24 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=6, #pterms=6
+{
+    [McSlotId=0]:     MacroCell: Name=\CH3_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_145 * \CH3_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+            + Net_145 * !\CH3_Timer:TimerUDB:capture_last\ * 
+              ClockBlock_BUS_CLK_local
+        );
+        Output = \CH3_Timer:TimerUDB:capt_fifo_load\ (fanout=7)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH3_Timer:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_145
+        );
+        Output = \CH3_Timer:TimerUDB:capture_last\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=MODIN7_0, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\CH3_Timer:TimerUDB:capt_fifo_load\ * MODIN7_0
+            + \CH3_Timer:TimerUDB:capt_fifo_load\ * MODIN7_1 * !MODIN7_0
+        );
+        Output = MODIN7_0 (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=MODIN7_1, Mode=(T-Register) @ [UDB=(2,4)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH3_Timer:TimerUDB:capt_fifo_load\ * MODIN7_0
+        );
+        Output = MODIN7_1 (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\CH3_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH3_Timer:TimerUDB:capt_fifo_load\ * !MODIN7_1 * !MODIN7_0
+        );
+        Output = \CH3_Timer:TimerUDB:capt_int_temp\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\CH3_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \CH3_Timer:TimerUDB:per_zero\ * ClockBlock_BUS_CLK_local
+        );
+        Output = \CH3_Timer:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u3\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+        z0_comb => \CH1_Timer:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \CH1_Timer:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \CH1_Timer:TimerUDB:status_2\ ,
+        chain_in => \CH1_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u2\
+
+statusicell: Name =\CH3_Timer:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        status_3 => \CH3_Timer:TimerUDB:status_3\ ,
+        status_2 => \CH3_Timer:TimerUDB:status_2\ ,
+        status_1 => \CH3_Timer:TimerUDB:capt_int_temp\ ,
+        status_0 => \CH3_Timer:TimerUDB:status_tc\ ,
+        interrupt => Net_148 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,5)] contents:
+datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_out => \CH1_Timer:TimerUDB:sT32:timerdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u1\
+
+UDB [UDB=(3,0)] contents:
+datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH4_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+        chain_out => \CH4_Timer:TimerUDB:sT32:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u0\
+    Next in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u2\
+
+UDB [UDB=(3,1)] contents:
+datapathcell: Name =\CH4_Timer:TimerUDB:sT32:timerdp:u2\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH4_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH4_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH4_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+        chain_out => \CH4_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u1\
+    Next in chain : \CH4_Timer:TimerUDB:sT32:timerdp:u3\
+
+UDB [UDB=(3,2)] contents:
+datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u2\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH3_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+        chain_out => \CH3_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u1\
+    Next in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u3\
+
+UDB [UDB=(3,3)] contents:
+datapathcell: Name =\CH3_Timer:TimerUDB:sT32:timerdp:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH3_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH3_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH3_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+        chain_out => \CH3_Timer:TimerUDB:sT32:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u0\
+    Next in chain : \CH3_Timer:TimerUDB:sT32:timerdp:u2\
+
+UDB [UDB=(3,4)] contents:
+datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u2\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH1_Timer:TimerUDB:sT32:timerdp:carry1\ ,
+        chain_out => \CH1_Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u1\
+    Next in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u3\
+
+UDB [UDB=(3,5)] contents:
+datapathcell: Name =\CH1_Timer:TimerUDB:sT32:timerdp:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => ClockBlock_BUS_CLK_local ,
+        cs_addr_0 => \CH1_Timer:TimerUDB:per_zero\ ,
+        f0_load => \CH1_Timer:TimerUDB:capt_fifo_load\ ,
+        chain_in => \CH1_Timer:TimerUDB:sT32:timerdp:carry0\ ,
+        chain_out => \CH1_Timer:TimerUDB:sT32:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u0\
+    Next in chain : \CH1_Timer:TimerUDB:sT32:timerdp:u2\
+
+Intr container @ [IntrContainer=(0)]: 
+  Intr@ [IntrContainer=(0)][IntrId=(0)] 
+    interrupt: Name =isr_1
+        PORT MAP (
+            interrupt => Net_24 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(1)] 
+    interrupt: Name =isr_2
+        PORT MAP (
+            interrupt => Net_137 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(2)] 
+    interrupt: Name =isr_3
+        PORT MAP (
+            interrupt => Net_148 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(3)] 
+    interrupt: Name =isr_4
+        PORT MAP (
+            interrupt => Net_160 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+Drq container @ [DrqContainer=(0)]: empty
+Port 0 contains the following IO cells:
+[IoId=1]: 
+Pin : Name = CH1_Pin(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilities: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => CH1_Pin(0)__PA ,
+        fb => Net_21 ,
+        pad => CH1_Pin(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=2]: 
+Pin : Name = CH3_Pin(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilities: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => CH3_Pin(0)__PA ,
+        fb => Net_145 ,
+        pad => CH3_Pin(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=6]: 
+Pin : Name = CH2_Pin(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilities: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => CH2_Pin(0)__PA ,
+        fb => Net_134 ,
+        pad => CH2_Pin(0)_PAD );
+    Properties:
+    {
+    }
+
+Port 1 contains the following IO cells:
+Port 2 contains the following IO cells:
+Port 3 contains the following IO cells:
+Port 12 contains the following IO cells:
+Port 15 contains the following IO cells:
+[IoId=1]: 
+Pin : Name = CH4_Pin(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilities: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => CH4_Pin(0)__PA ,
+        fb => Net_157 ,
+        pad => CH4_Pin(0)_PAD );
+    Properties:
+    {
+    }
+
+ARM group 0: empty
+CAN group 0: empty
+Cache group 0: empty
+CapSense group 0: empty
+Clock group 0: 
+    Clock Block @ F(Clock,0): 
+    clockblockcell: Name =ClockBlock
+        PORT MAP (
+            imo => ClockBlock_IMO ,
+            pllout => ClockBlock_PLL_OUT ,
+            ilo => ClockBlock_ILO ,
+            clk_100k => ClockBlock_100k ,
+            clk_1k => ClockBlock_1k ,
+            clk_32k => ClockBlock_32k ,
+            xtal => ClockBlock_XTAL ,
+            clk_32k_xtal => ClockBlock_XTAL_32KHZ ,
+            clk_sync => ClockBlock_MASTER_CLK ,
+            clk_bus_glb => ClockBlock_BUS_CLK ,
+            clk_bus => ClockBlock_BUS_CLK_local );
+        Properties:
+        {
+        }
+Comparator group 0: empty
+DFB group 0: empty
+DSM group 0: empty
+Decimator group 0: empty
+EMIF group 0: empty
+I2C group 0: empty
+LCD group 0: empty
+LVD group 0: empty
+PICU group 0: empty
+PM group 0: empty
+SC group 0: empty
+SPC group 0: empty
+Timer group 0: empty
+USB group 0: empty
+VIDAC group 0: empty
+OpAmp group 0: empty
+CsAbuf group 0: empty
+Vref group 0: empty
+LPF group 0: empty
+SAR group 0: empty
+ANAIF group 0: empty
+PHUB group 0: empty
+</CYPRESSTAG>
+<CYPRESSTAG name="Port Configuration Details">
+
+------------------------------------------------------------
+Port Configuration report
+------------------------------------------------------------
+     |     |       | Interrupt |                  |            | 
+Port | Pin | Fixed |      Type |       Drive Mode |       Name | Connections
+-----+-----+-------+-----------+------------------+------------+------------
+   0 |   1 |       |      NONE |     HI_Z_DIGITAL | CH1_Pin(0) | FB(Net_21)
+     |   2 |       |      NONE |     HI_Z_DIGITAL | CH3_Pin(0) | FB(Net_145)
+     |   6 |       |      NONE |     HI_Z_DIGITAL | CH2_Pin(0) | FB(Net_134)
+-----+-----+-------+-----------+------------------+------------+------------
+  15 |   1 |       |      NONE |     HI_Z_DIGITAL | CH4_Pin(0) | FB(Net_157)
+----------------------------------------------------------------------------
+</CYPRESSTAG>
+</CYPRESSTAG>
+</CYPRESSTAG>
+Digital component placer commit/Report: Elapsed time ==> 0s.025ms
+Digital Placement phase: Elapsed time ==> 1s.403ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Digital Routing">
+"C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "ExpressLRS_PWM_Receiver_r.vh2" --pcf-path "ExpressLRS_PWM_Receiver.pco" --des-name "ExpressLRS_PWM_Receiver" --dsf-path "ExpressLRS_PWM_Receiver.dsf" --sdc-path "ExpressLRS_PWM_Receiver.sdc" --lib-path "ExpressLRS_PWM_Receiver_r.lib"
+Routing successful.
+Digital Routing phase: Elapsed time ==> 1s.090ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Bitstream Generation">
+Bitstream Generation phase: Elapsed time ==> 0s.085ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Bitstream Verification">
+Bitstream Verification phase: Elapsed time ==> 0s.020ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Static timing analysis">
+Warning: sta.M0021: ExpressLRS_PWM_Receiver_timing.html: Warning-1350: Asynchronous path(s) exist from "CyBUS_CLK(routed)" to "CyBUS_CLK". See the timing report for details. (File=C:\Users\daan1\Documents\Robo-dagoe\firmware\platform\PSoC\PSoC-workspace\ExpressLRS_PWM_Receiver.cydsn\ExpressLRS_PWM_Receiver_timing.html)
+Timing report is in ExpressLRS_PWM_Receiver_timing.html.
+Static timing analysis phase: Elapsed time ==> 0s.317ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Data reporting">
+Data reporting phase: Elapsed time ==> 0s.000ms
+</CYPRESSTAG>
+<CYPRESSTAG name="Database update...">
+Design database save phase: Elapsed time ==> 0s.139ms
+</CYPRESSTAG>
+cydsfit: Elapsed time ==> 3s.406ms
+</CYPRESSTAG>
+Fitter phase: Elapsed time ==> 3s.407ms
+API generation phase: Elapsed time ==> 0s.830ms
+Dependency generation phase: Elapsed time ==> 0s.005ms
+Cleanup phase: Elapsed time ==> 0s.000ms
