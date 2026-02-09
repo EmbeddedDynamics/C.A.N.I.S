@@ -69,11 +69,12 @@
 //      Memory Management
 //========================================================
 
+#define IK_ENABLE_HEAP
 #if defined(IK_ENABLE_HEAP)
     #include <stdlib.h>
 
     #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= IK_C11)
-        #define IK_MALLOC(size, align) (_aligned_malloc(size, align))
+        #define IK_MALLOC(size, align) (malloc(size))
     #else
         #define IK_MALLOC(size, align) (malloc(size))
     #endif
@@ -86,7 +87,7 @@
 //========================================================
 
 #define IK_MATH_MAJOR 0
-#define IK_MATH_MAJOR 0
+#define IK_MATH_MINOR 1
 #define IK_MATH_PATCH 1
 
 /* ABI version for the vtable contract. Increment ONLY when breaking binary/API compatibility. */

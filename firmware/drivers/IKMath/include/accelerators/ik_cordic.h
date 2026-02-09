@@ -197,6 +197,11 @@ typedef enum {
     IK_ANGLE_RADIANS,
 } ik_angle_unit_t;
 
+typedef enum {
+    IK_CORDIC_FORMAT_VECTOR,
+    IK_CORDIC_FORMAT_UNIT,
+} ik_format_t;
+
 //========================================================
 //      CORDIC Configuration
 //========================================================
@@ -242,6 +247,8 @@ ik_result_t ik_cordic_create_backend(
     ik_cordic_h* handle
 );
 
+ik_result_t ik_cordic_start(ik_cordic_h handle);
+
 //========================================================
 //      CORDIC Synchronus API's
 //========================================================
@@ -263,6 +270,7 @@ ik_result_t ik_cordic_create_backend(
 ik_result_t ik_cordic_vec_sync(
     ik_cordic_h handle,
     ik_cordic_coord_t coord,
+    ik_format_t format,
     const ik_vector3f_t* vec_in,
     ik_vector3f_t* out
 );
@@ -285,6 +293,7 @@ ik_result_t ik_cordic_vec_sync(
 ik_result_t ik_cordic_rot_sync(
     ik_cordic_h handle,
     ik_cordic_coord_t coord,
+    ik_format_t format,
     const ik_vector3f_t* vec_in,
     ik_vector3f_t* out
 );
