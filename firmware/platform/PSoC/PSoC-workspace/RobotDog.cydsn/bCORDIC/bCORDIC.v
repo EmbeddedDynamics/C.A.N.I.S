@@ -80,8 +80,9 @@ module bCORDIC (
     /* FIFO status wires */
     wire F0_x_lsb_empty, F0_x_msb_empty;
     wire F0_y_lsb_empty, F0_y_msb_empty;
+    wire F0_z_lsb_empty, F0_z_msb_empty;
 
-    wire fifo_empty = |{F0_x_lsb_empty, F0_x_msb_empty, F0_y_lsb_empty, F0_y_msb_empty};
+    wire fifo_empty = |{F0_x_lsb_empty, F0_x_msb_empty, F0_y_lsb_empty, F0_y_msb_empty, F0_z_lsb_empty, F0_z_msb_empty};
     
     wire F1_x_lsb_filled, F1_x_msb_filled;
     wire F1_z_lsb_filled, F1_z_msb_filled;
@@ -198,9 +199,9 @@ module bCORDIC (
     //======================================================================================================
     
     wire [7:0] ctrl;
-    localparam  MDIO_CTRL_ENABLE = 3'd0;
-    localparam  MDIO_CTRL_RESET  = 3'd1;
-    localparam  MDIO_CTRL_OPERATION  = 3'd2;
+    localparam  MDIO_CTRL_ENABLE = 2'h00;
+    localparam  MDIO_CTRL_RESET  = 2'h01;
+    localparam  MDIO_CTRL_OPERATION  = 2'h02;
     
     cy_psoc3_control #(.cy_force_order(`TRUE)) CtlReg
     (
@@ -856,7 +857,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  output                  */  .cmsb(),
         /*  output                  */  .so(),
         /*  output                  */  .f0_bus_stat(), //.f0_bus_stat(F0_z_msb_full),
-        /*  output                  */  .f0_blk_stat(), //.f0_blk_stat(F0_z_msb_empty),
+        /*  output                  */  .f0_blk_stat(F0_z_lsb_empty), //.f0_blk_stat(F0_z_msb_empty),
         /*  output                  */  .f1_bus_stat(F1_z_lsb_filled),
         /*  output                  */  .f1_blk_stat(F1_z_lsb_full),
         
@@ -957,7 +958,7 @@ cy_psoc3_dp #(.d0_init(8'b00000000),
         /*  output                  */  .cmsb(),
         /*  output                  */  .so(),
         /*  output                  */  .f0_bus_stat(), //.f0_bus_stat(F0_z_msb_full),
-        /*  output                  */  .f0_blk_stat(), //.f0_blk_stat(F0_z_msb_empty),
+        /*  output                  */  .f0_blk_stat(F0_z_msb_empty), //.f0_blk_stat(F0_z_msb_empty),
         /*  output                  */  .f1_bus_stat(F1_z_msb_filled),
         /*  output                  */  .f1_blk_stat(F1_z_msb_full),
         

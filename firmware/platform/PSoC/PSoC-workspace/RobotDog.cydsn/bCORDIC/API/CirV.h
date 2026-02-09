@@ -38,7 +38,7 @@
     
 #define `$INSTANCE_NAME`_MAJOR 1u
 #define `$INSTANCE_NAME`_MINOR 1u
-#define `$INSTANCE_NAME`_PATCH 0u
+#define `$INSTANCE_NAME`_PATCH 1u
     
 //========================================================
 //      CORDIC Custom Types
@@ -362,10 +362,6 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 //========================================================
 //      CORDIC Constans
 //========================================================
-
-#define `$INSTANCE_NAME`_ROTATING_OPER  (0x00)
-    
-#define `$INSTANCE_NAME`_VECTORING_OPER (0x01)
     
 /**
  * @brief BAMS angle sign bit.
@@ -406,6 +402,9 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 #define `$INSTANCE_NAME`_EN             (0x01u)
 #define `$INSTANCE_NAME`_RST            (0x02u)
 #define `$INSTANCE_NAME`_OPER_MODE      (0x04u)
+    
+#define `$INSTANCE_NAME`_ROTATING_OPER  (0x00)
+#define `$INSTANCE_NAME`_VECTORING_OPER (`$INSTANCE_NAME`_OPER_MODE)
 
 //========================================================
 //      Optimized KC-Embedded Conversions (16 iterations)
