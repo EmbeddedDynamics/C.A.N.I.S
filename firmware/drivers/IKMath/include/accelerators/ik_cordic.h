@@ -26,6 +26,7 @@
 /* Internal headers */
 #include <stdint.h>
 #include <stdbool.h>
+#include <math.h>
     
 /* Project headers */
 #include "ik_results.h"
@@ -41,6 +42,9 @@
 
 #define IK_CORDIC_INVALID_JOB_ID 0xFFu
 
+#define IK_CORDIC_KC            (1.64676f)
+#define IK_CORDIC_KC_INVERSE    (0.60725f)
+
 //========================================================
 //      CORDIC FPU Support
 //========================================================
@@ -51,13 +55,75 @@
 
 #if (IK_CORDIC_SUPPORT_FPU == 0)
 
-static inline int32_t ik_float_to_fixed_i32_fast(float x, ik_fixed_fmt_t fmt)
-{
-    // Multiply by 2^frac_bits and round
-    // This compiles to: float mul + add + cast
-    return (int32_t)(x * (float)(1u << fmt.frac_bits)
-                     + (x >= 0.0f ? 0.5f : -0.5f));
-}
+//========================================================
+//      BAMS Constants
+//========================================================
+
+#define IK_BAMS8_FULL_TURN_U32    (256u)
+#define IK_BAMS16_FULL_TURN_U32   (65536u)
+#define IK_BAMS32_FULL_TURN_U64   (4294967296ull)
+
+#define IK_BAMS8_QUARTER_TURN   (64)
+#define IK_BAMS8_HALF_TURN      (128)
+
+#define IK_BAMS16_QUARTER_TURN  (16384)
+#define IK_BAMS16_HALF_TURN     (32768)
+
+#define IK_BAMS32_QUARTER_TURN  (1073741824ll)
+#define IK_BAMS32_HALF_TURN     (2147483648ll)
+
+#define IK_BAMS8_DEG_PER_LSB_F    (360.0f / 256.0f)
+#define IK_BAMS16_DEG_PER_LSB_F   (360.0f / 65536.0f)
+#define IK_BAMS32_DEG_PER_LSB_F   (360.0f / 4294967296.0f)
+
+#define IK_BAMS8_RAD_PER_LSB_F    (6.2831853071795864769f / 256.0f)
+#define IK_BAMS16_RAD_PER_LSB_F   (6.2831853071795864769f / 65536.0f)
+#define IK_BAMS32_RAD_PER_LSB_F   (6.2831853071795864769f / 4294967296.0f)
+
+#define IK_BAMS8_TURNS_PER_LSB_F    (1.0f / 256.0f)
+#define IK_BAMS16_TURNS_PER_LSB_F   (1.0f / 65536.0f)
+#define IK_BAMS32_TURNS_PER_LSB_F   (1.0f / 4294967296.0f)
+
+//========================================================
+//      BAMS Float conversions
+//========================================================
+
+#define IK_DEG_TO_BAMS8_F(deg_f)   ((ik_bams8_t) ((deg_f) * (256.0f / 360.0f)))
+#define IK_DEG_TO_BAMS16_F(deg_f)  ((ik_bams16_t)((deg_f) * (65536.0f / 360.0f)))
+#define IK_DEG_TO_BAMS32_F(deg_f)  ((ik_bams32_t)((deg_f) * (4294967296.0f / 360.0f)))
+
+#define IK_RAD_TO_BAMS8_F(rad_f)   ((ik_bams8_t) ((rad_f) * (256.0f / 6.2831853071795864769f)))
+#define IK_RAD_TO_BAMS16_F(rad_f)  ((ik_bams16_t)((rad_f) * (65536.0f / 6.2831853071795864769f)))
+#define IK_RAD_TO_BAMS32_F(rad_f)  ((ik_bams32_t)((rad_f) * (4294967296.0f / 6.2831853071795864769f)))
+
+#define IK_TURNS_TO_BAMS8_F(rad_f)   ((ik_bams8_t) ((rad_f) * (256.0f / 1.0f)))
+#define IK_TURNS_TO_BAMS16_F(rad_f)  ((ik_bams16_t)((rad_f) * (65536.0f / 1.0f)))
+#define IK_TURNS_TO_BAMS32_F(rad_f)  ((ik_bams32_t)((rad_f) * (4294967296.0f / 1.0f)))
+
+#define IK_BAMS8_TO_DEG_F(b)    ((float)(b) * IK_BAMS8_DEG_PER_LSB_F)
+#define IK_BAMS16_TO_DEG_F(b)   ((float)(b) * IK_BAMS16_DEG_PER_LSB_F)
+#define IK_BAMS32_TO_DEG_F(b)   ((float)(b) * IK_BAMS32_DEG_PER_LSB_F)
+
+#define IK_BAMS8_TO_RAD_F(b)    ((float)(b) * IK_BAMS8_RAD_PER_LSB_F)
+#define IK_BAMS16_TO_RAD_F(b)   ((float)(b) * IK_BAMS16_RAD_PER_LSB_F)
+#define IK_BAMS32_TO_RAD_F(b)   ((float)(b) * IK_BAMS32_RAD_PER_LSB_F)
+
+#define IK_BAMS8_TO_TURNS_F(b)    ((float)(b) * IK_BAMS8_TURNS_PER_LSB_F)
+#define IK_BAMS16_TO_TURNS_F(b)   ((float)(b) * IK_BAMS16_TURNS_PER_LSB_F)
+#define IK_BAMS32_TO_TURNS_F(b)   ((float)(b) * IK_BAMS32_TURNS_PER_LSB_F)
+
+//========================================================
+//      BAMS Cross-width conversions
+//========================================================
+
+#define IK_BAMS8_TO_BAMS16(b8)   ((ik_bams16_t)((int16_t)(b8) << 8))
+#define IK_BAMS16_TO_BAMS8(b16)  ((ik_bams8_t)((int16_t)(b16) >> 8))
+
+#define IK_BAMS16_TO_BAMS32(b16) ((ik_bams32_t)((int32_t)(b16) << 16))
+#define IK_BAMS32_TO_BAMS16(b32) ((ik_bams16_t)((int32_t)(b32) >> 16))
+
+#define IK_BAMS8_TO_BAMS32(b8)   ((ik_bams32_t)((int32_t)(b8) << 24))
+#define IK_BAMS32_TO_BAMS8(b32)  ((ik_bams8_t)((int32_t)(b32) >> 24))
 
 #endif
 
@@ -81,9 +147,9 @@ typedef enum {
 //========================================================
 
 enum {
-    IK_CORDIC_OP_CAP_NONE = 0u,
-    IK_CORDIC_OP_CAP_ROTATION = IK_BIT(0u), // theta -> (s,c) or rotated vector
-    IK_CORDIC_OP_CAP_VECTORING = IK_BIT(1u), // (x,y) -> (r,theta)
+    IK_CORDIC_OP_CAP_NONE = IK_BIT(0u),
+    IK_CORDIC_OP_CAP_ROTATION = IK_BIT(1u), // theta -> (s,c) or rotated vector
+    IK_CORDIC_OP_CAP_VECTORING = IK_BIT(2u), // (x,y) -> (r,theta)
 };
 typedef ik_flags8_t ik_cordic_op_caps_t;
 
@@ -99,14 +165,6 @@ typedef struct {
 
 #if (IK_CORDIC_SUPPORT_FPU == 0)
 
-static inline int32_t ik_float_to_fixed_i32_fast(float x, ik_fixed_fmt_t fmt)
-{
-    // Multiply by 2^frac_bits and round
-    // This compiles to: float mul + add + cast
-    return (int32_t)(x * (float)(1u << fmt.frac_bits)
-                     + (x >= 0.0f ? 0.5f : -0.5f));
-}
-
 typedef struct {
     uint8_t total_bits;
     uint8_t frac_bits;
@@ -114,6 +172,17 @@ typedef struct {
 } ik_fixed_fmt_t;
 
 #define IK_QFMT(bits, frac) ((ik_fixed_fmt_t){ .total_bits=bits, .frac_bits=(frac), .is_signed=1 })
+
+#define IK_QSCALE(fmt)   ((float)(1u << ((fmt).frac_bits)))
+#define IK_QINV(fmt)     (1.0f / IK_QSCALE(fmt))
+
+#define IK_QFMT_TO_I8(f,  fmt)  ((int8_t) ((f)  * IK_QSCALE(fmt)))
+#define IK_QFMT_TO_I16(f, fmt)  ((int16_t)((f)  * IK_QSCALE(fmt)))
+#define IK_QFMT_TO_I32(f, fmt)  ((int32_t)((f)  * IK_QSCALE(fmt)))
+
+#define IK_I8_TO_QFMT_F(i,  fmt)  ((float)(int8_t)(i)  *  IK_QINV(fmt))
+#define IK_I16_TO_QFMT_F(i, fmt)  ((float)(int16_t)(i) *  IK_QINV(fmt))
+#define IK_I32_TO_QFMT_F(i, fmt)  ((float)(int32_t)(i) *  IK_QINV(fmt))
 
 #endif
 
@@ -129,73 +198,6 @@ typedef enum {
 } ik_angle_unit_t;
 
 //========================================================
-//      BAMS Constants
-//========================================================
-
-typedef int8_t  ik_bams8_t;
-typedef int16_t ik_bams16_t;
-typedef int32_t ik_bams32_t;
-
-// ---------- Full turn counts ----------
-#define IK_BAMS8_FULL_TURN_U32    (256u)
-#define IK_BAMS16_FULL_TURN_U32   (65536u)
-#define IK_BAMS32_FULL_TURN_U64   (4294967296ull) // 2^32
-
-// ---------- Handy fractions (signed) ----------
-#define IK_BAMS8_QUARTER_TURN_I32   (64)
-#define IK_BAMS8_HALF_TURN_I32      (128)
-
-#define IK_BAMS16_QUARTER_TURN_I32  (16384)
-#define IK_BAMS16_HALF_TURN_I32     (32768)
-
-#define IK_BAMS32_QUARTER_TURN_I64  (1073741824ll)
-#define IK_BAMS32_HALF_TURN_I64     (2147483648ll)
-
-// ---------- LSB sizes (float) ----------
-#define IK_BAMS8_DEG_PER_LSB_F    (360.0f / 256.0f)
-#define IK_BAMS16_DEG_PER_LSB_F   (360.0f / 65536.0f)
-#define IK_BAMS32_DEG_PER_LSB_F   (360.0f / 4294967296.0f)
-
-#define IK_BAMS8_RAD_PER_LSB_F    (6.2831853071795864769f / 256.0f)
-#define IK_BAMS16_RAD_PER_LSB_F   (6.2831853071795864769f / 65536.0f)
-#define IK_BAMS32_RAD_PER_LSB_F   (6.2831853071795864769f / 4294967296.0f)
-
-//========================================================
-//      Float conversions
-//========================================================
-
-// Degrees/radians -> BAMS
-#define IK_DEG_TO_BAMS8_F(deg_f)   ((ik_bams8_t) ((deg_f) * (256.0f / 360.0f)))
-#define IK_DEG_TO_BAMS16_F(deg_f)  ((ik_bams16_t)((deg_f) * (65536.0f / 360.0f)))
-#define IK_DEG_TO_BAMS32_F(deg_f)  ((ik_bams32_t)((deg_f) * (4294967296.0f / 360.0f)))
-
-#define IK_RAD_TO_BAMS8_F(rad_f)   ((ik_bams8_t) ((rad_f) * (256.0f / 6.2831853071795864769f)))
-#define IK_RAD_TO_BAMS16_F(rad_f)  ((ik_bams16_t)((rad_f) * (65536.0f / 6.2831853071795864769f)))
-#define IK_RAD_TO_BAMS32_F(rad_f)  ((ik_bams32_t)((rad_f) * (4294967296.0f / 6.2831853071795864769f)))
-
-// BAMS -> Degrees/radians
-#define IK_BAMS8_TO_DEG_F(b)    ((float)(b) * IK_BAMS8_DEG_PER_LSB_F)
-#define IK_BAMS16_TO_DEG_F(b)   ((float)(b) * IK_BAMS16_DEG_PER_LSB_F)
-#define IK_BAMS32_TO_DEG_F(b)   ((float)(b) * IK_BAMS32_DEG_PER_LSB_F)
-
-#define IK_BAMS8_TO_RAD_F(b)    ((float)(b) * IK_BAMS8_RAD_PER_LSB_F)
-#define IK_BAMS16_TO_RAD_F(b)   ((float)(b) * IK_BAMS16_RAD_PER_LSB_F)
-#define IK_BAMS32_TO_RAD_F(b)   ((float)(b) * IK_BAMS32_RAD_PER_LSB_F)
-
-//========================================================
-//      Cross-width conversions
-//========================================================
-
-#define IK_BAMS8_TO_BAMS16(b8)   ((ik_bams16_t)((int16_t)(b8) << 8))
-#define IK_BAMS16_TO_BAMS8(b16)  ((ik_bams8_t)((int16_t)(b16) >> 8))
-
-#define IK_BAMS16_TO_BAMS32(b16) ((ik_bams32_t)((int32_t)(b16) << 16))
-#define IK_BAMS32_TO_BAMS16(b32) ((ik_bams16_t)((int32_t)(b32) >> 16))
-
-#define IK_BAMS8_TO_BAMS32(b8)   ((ik_bams32_t)((int32_t)(b8) << 24))
-#define IK_BAMS32_TO_BAMS8(b32)  ((ik_bams8_t)((int32_t)(b32) >> 24))
-
-//========================================================
 //      CORDIC Configuration
 //========================================================
 
@@ -205,13 +207,10 @@ typedef struct {
     ik_cordic_caps_t supported_caps;
 
 #if (IK_CORDIC_SUPPORT_FPU == 0)    
-    ik_fixed_fmt_t vec_xy_fmt; // x,y format for vectoring inputs
-    ik_fixed_fmt_t mag_fmt; // r output format
+    ik_fixed_fmt_t vec_fmt; // x,y format for vectoring inputs
     ik_fixed_fmt_t unit_fmt; // scalars in [-1,1] (asin/acos input)
-    ik_fixed_fmt_t ang_fmt; // angle output format (atan2, asin, acos)
+    //ik_fixed_fmt_t ang_fmt; // angle output format (atan2, asin, acos)
 #endif
-
-    ik_angle_unit_t angle_unit;
 
     uint16_t timeout;
     
@@ -264,8 +263,8 @@ ik_result_t ik_cordic_create_backend(
 ik_result_t ik_cordic_vec_sync(
     ik_cordic_h handle,
     ik_cordic_coord_t coord,
-    const ik_vector2f_t* vec_in,
-    ik_vector2f_t* out
+    const ik_vector3f_t* vec_in,
+    ik_vector3f_t* out
 );
 
 /**
@@ -286,8 +285,8 @@ ik_result_t ik_cordic_vec_sync(
 ik_result_t ik_cordic_rot_sync(
     ik_cordic_h handle,
     ik_cordic_coord_t coord,
-    float theta,
-    ik_vector2f_t* out
+    const ik_vector3f_t* vec_in,
+    ik_vector3f_t* out
 );
 
 //========================================================

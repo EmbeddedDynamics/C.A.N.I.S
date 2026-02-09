@@ -53,8 +53,8 @@ static inline ik_cordic_op_caps_t ik_cordic_coord_caps(ik_cordic_caps_t* caps, i
 ik_result_t ik_cordic_vec_sync(
     ik_cordic_h handle,
     ik_cordic_coord_t coord,
-    const ik_vector2f_t* vec_in,
-    ik_vector2f_t* out)
+    const ik_vector3f_t* vec_in,
+    ik_vector3f_t* out)
 {
     if (!handle || !vec_in || !out)
         return IK_ERROR_NULL_POINTER;
@@ -68,14 +68,16 @@ ik_result_t ik_cordic_vec_sync(
     if (handle->state != CORDIC_STATE_RUNNING)
         return IK_ERROR_CORDIC_INVALID_STATE;
 
-    ik_cordic_job_t *job = NULL;
-    uint8_t job_id = ik_cordic_acquire_job(handle, &job);
-    if (job_id == IK_CORDIC_INVALID_JOB_ID || job == NULL)
+    uint8_t job_id;
+    ik_cordic_acquire_job(handle, &job_id);
+    if (job_id == IK_CORDIC_INVALID_JOB_ID)
         return IK_ERROR_CORDIC_QUEUE_FULL; // or INVALID_JOB_ID
+    
+    ik_cordic_job_t* job = &handle->jobs[job_id];
 
     job->coord = coord;
     job->operation = IK_CORDIC_OPERATION_VECTORING;
-    job->input.vec = *vec_in;
+    job->input = *vec_in;
     job->output = out;
 
     IK_CHECK(ik_cordic_queue_job(handle, job_id));
@@ -113,8 +115,8 @@ ik_result_t ik_cordic_vec_sync(
 ik_result_t ik_cordic_rot_sync(
     ik_cordic_h handle,
     ik_cordic_coord_t coord,
-    float theta,
-    ik_vector2f_t* out
+    const ik_vector3f_t* vec_in,
+    ik_vector3f_t* out
 );
 
 //========================================================
@@ -147,9 +149,6 @@ ik_result_t ik_cordic_acquire_job(ik_cordic_h h, uint8_t *job_id)
 
 ik_result_t ik_cordic_queue_job(ik_cordic_h h, uint8_t job_id)
 {
-    if (!h) 
-        return IK_ERROR_NULL_POINTER;
-        
     if (job_id >= h->job_size) 
         return IK_ERROR_CORDIC_INVALID_JOB_ID;
 
@@ -162,9 +161,6 @@ ik_result_t ik_cordic_queue_job(ik_cordic_h h, uint8_t job_id)
 
 ik_result_t ik_cordic_release_job(ik_cordic_h h, uint8_t job_id)
 {
-    if (!h) 
-        return IK_ERROR_NULL_POINTER;
-
     if (job_id >= h->job_size) 
         return IK_ERROR_CORDIC_INVALID_JOB_ID;
 
@@ -176,8 +172,22 @@ ik_result_t ik_cordic_release_job(ik_cordic_h h, uint8_t job_id)
         return IK_ERROR_CORDIC_INVALID_JOB_STATE;
 
     h->jobs[job_id].state = CORDIC_JOB_STATE_FREE;
-    h->job_out_idx = (uint8_t)((h->job_out_idx + 1u) & (h->job_size - 1u));
+    //h->job_out_idx = (uint8_t)((h->job_out_idx + 1u) & (h->job_size - 1u));
     h->job_count--;
+
+    return IK_RESULT_OK;
+}
+
+ik_result_t ik_cordic_finish_head(ik_cordic_h h)
+{
+    if (h->job_count <= 0)
+        return IK_ERROR_CORDIC_NO_AVAILABLE_JOB;
+
+    if (h->jobs[h->job_out_idx].state != CORDIC_JOB_STATE_QUEUED)
+        return IK_ERROR_CORDIC_INVALID_JOB_STATE;
+
+    h->jobs[h->job_out_idx].state = CORDIC_JOB_STATE_FINISHED;
+    h->job_out_idx = (uint8_t)((h->job_out_idx + 1u) & (h->job_size - 1u));
 
     return IK_RESULT_OK;
 }

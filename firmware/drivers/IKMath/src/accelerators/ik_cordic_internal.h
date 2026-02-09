@@ -59,10 +59,6 @@ typedef ik_flags8_t ik_cordic_job_state_t;
 //      CORDIC Job Structure
 //========================================================
 
-typedef union {
-    ik_vector3f_t vec;
-} ik_cordic_job_input_t;
-
 typedef struct {
     ik_cordic_job_state_t state;
 
@@ -70,9 +66,9 @@ typedef struct {
 
     ik_cordic_operation_t operation;
 
-    ik_cordic_job_input_t input;
+    ik_vector3f_t input;
 
-    ik_vector2f_t* output;
+    ik_vector3f_t* output;
 } ik_cordic_job_t;
 
 //========================================================
@@ -143,6 +139,8 @@ ik_result_t ik_cordic_acquire_job(ik_cordic_h h, uint8_t *job_id);
 ik_result_t ik_cordic_queue_job(ik_cordic_h h, uint8_t job_id);
 
 ik_result_t ik_cordic_release_job(ik_cordic_h h, uint8_t job_id);
+
+ik_result_t ik_cordic_finish_head(ik_cordic_h h);
 
 //========================================================
 //      End of File
