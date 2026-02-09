@@ -49,9 +49,10 @@ typedef enum {
 enum {
     CORDIC_JOB_STATE_FREE = 0x00,
     CORDIC_JOB_STATE_RESERVED = 0x01,
-    CORDIC_JOB_STATE_QUEUED = 0x02,
-    CORDIC_JOB_STATE_FINISHED = 0x03,
-    CORDIC_JOB_STATE_CANCELLED = 0x04,
+    CORDIC_JOB_STATE_WAITING = 0x02,
+    CORDIC_JOB_STATE_QUEUED = 0x03,
+    CORDIC_JOB_STATE_FINISHED = 0x04,
+    CORDIC_JOB_STATE_CANCELLED = 0x05,
 };
 typedef ik_flags8_t ik_cordic_job_state_t;
 
@@ -65,6 +66,10 @@ typedef struct {
     ik_cordic_coord_t coord;
 
     ik_cordic_operation_t operation;
+    
+    float z_offset_rad;
+    
+    ik_fixed_fmt_t fmt;
 
     ik_vector3f_t input;
 
@@ -82,6 +87,11 @@ typedef ik_result_t (*ik_cordic_submit_fn_t) (
 
 typedef uint8_t (*ik_cordic_available_fn_t) (
     ik_ctx_t ctx
+);
+
+typedef ik_result_t (*ik_cordic_acquire_fn_t) (
+    ik_ctx_t ctx,
+    ik_cordic_job_t* job
 );
 
 //========================================================
@@ -115,6 +125,8 @@ struct ik_cordic_T {
     ik_cordic_submit_fn_t submit;
 
     ik_cordic_available_fn_t available;
+
+    ik_cordic_acquire_fn_t acquire;
 
     ik_ctx_t hw_ctx;
 };
