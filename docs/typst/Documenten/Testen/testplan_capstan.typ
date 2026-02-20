@@ -6,7 +6,7 @@
 #import "@preview/numbly:0.1.0": numbly
 
 #import "../template.typ": *
-#import "../Config/config.typ": *
+#import "../Config/GeneralConfig.typ": *
 
 #import "@local/academic-tools:0.1.10": *
 #set text(lang: "Nl")

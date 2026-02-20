@@ -1,67 +1,14 @@
-// Import Templates
-#import "@local/academic-tools:0.1.10": *
-#import "../template.typ": *
+// ============================================
+// PvE and MoSCoW database and helper functions
+// ============================================
+
+// Import Templates for Acronyms
 #import "GeneralConfig.typ": *
 
-// ============================================
-// Academic page for Acronym usage
-// ============================================
 
-#show: academic-frontpage.with(
-  title: [Embedded Systems Project\ Robothond],
-  authors: students.map(s => s.name).join(", "),
-  degree: [#degree],
-  degree-goal: [Onderzoek voor het realiseren van een Robothond],
-  department: [#department],
-  university: [#university, #universitydesc],
-  program-type: [#program],
-  degree-year: [#year],
-  location: [#city, #country],
-  supervisor: [#supervisor],
-  tutor: [#tutor],
-  logo: "/Documenten/Assets/NHL_logo.jpg",
-  project-logo: "/Documenten/Assets/NHL_logo.jpg",
-  //month: [#month],
-  //year: [#year],
-  date: datetime.today(),
-  abstract: [],
-  keywords: [],
-  acknowledgments: [],
-  acronyms: (
-    "PvE": ("Pakket van Eisen","Pakket van Eisen"),
-    "MVP": ("Minimum Viable Product","Minimum Viable Product"),
-    "PvA": ("Plan van Aanpak","Plan van Aanpak"),
-    "IK": ("Inverse Kinematics"),
-    "PSoC5": ("Programmable System on a Chip 5"),
-    "RTOS": ("Real-Time Operating System"),
-    "MoSCoW": ("Must have, Should have, Could have, Won’t have"),
-    "PCB": ("Printed Circuit Board"),
-    "CAD": ("Computer Aided Design"),
-    "AI": ("Artificial Intelligence"),
-    "PoC": ("Proof of Concept"),
-    "LiDAR": "Light Detection And Ranging",
-    "ESD": ("ElectroStatic Discharge"),
-    "GPS": ("Global Positioning System"),
-    "ELRS": ("Express Long Range System"),
-    "FPV": ("First-Person View"),
-    "HDL": ("Hardware Description Language"),
-    "IMU": ("Inertial Measurement Uni"),
-    "PID": ("Proportional–Integral–Derivative"),
-  ),
-  versions: (
-    version(
-      committee: [R. van der Veen\ D. Smit],
-      description: [Initiële commit],
-      date: "2025-12-19",
-      level: 3,
-    ),
-  )
-)
 
 // ============================================
-// PvE + MoSCoW database
-// How to use:
-// moscow = ( (title: [..], items: ( (text: [..], prio: p1), ... )), ... )
+// Helper functions
 // ============================================
 
 // Priority cells
@@ -71,7 +18,7 @@
 #let p4 = table.cell(fill: rgb(255, 150, 150))[4] // Won't
 
 
-// PvE and MoSCoW Functions
+// Slice Database
 #let slice_db(db, start_id, end_id) = {
   let out = ()
   let take = false
@@ -88,6 +35,7 @@
   out
 }
 
+// Render function for PvE
 #let pve_render(db, headerlevel) = {
   for sec in db {
     v(1em)
@@ -104,14 +52,16 @@
   }
 }
 
+// Select PvE range to render
 #let pve_range(db, start_id, end_id, headerlevel) = {
   pve_render(slice_db(db, start_id, end_id), headerlevel)
 }
 
+// Cells to hold in MoSCoW table
 #let moscow_cells(db) = {
   let cells = ([*Eis / Beschrijving*], [*Prioriteit*],)
   for sec in db {
-    cells = cells + ([*#sec.ID #sec.title*], [])
+    cells = cells + ([*#sec.title*], [])
     for it in sec.items {
       cells = cells + (it.text, it.prio)
     }
@@ -119,6 +69,7 @@
   cells
 }
 
+// Render MoSCoW table with predefined cells
 #let moscow_table(db) = table(
   columns: (auto, auto),
   align: (left, center),
@@ -127,19 +78,22 @@
   ..moscow_cells(db),
 )
 
-
+// Select MoSCoW range to render
 #let moscow_range(db, start_id, end_id) = {
   let part = slice_db(db, start_id, end_id)
   moscow_table(part)
 }
 
 
-// PvE_MoSCoW Data
+// ============================================
+// PvE and Moscow Database
+// ============================================
+
 #let pve_moscow = (
 
-  // ===== 2.3.1 Verplichte eisen =====
+  // ===== Verplichte eisen =====
   (
-    ID: "2.3.1",
+    ID: "mandatory",
     label: <verplichte-eisen>,
     title: [Verplichte eisen],
     items: (
@@ -153,23 +107,24 @@
     ),
   ),
 
-  // ===== 2.3.2 Functionele eisen =====
+  // ===== Functionele eisen =====
   (
-    ID: "2.3.2.1",
+    ID: "functional.1",
     label: none,
     title: [Bewegingsfuncties],
     items: (
       (text: [De robot zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ± 50 centimeter.], prio: p2),
       (text: [De robot zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ± 50 centimeter.], prio: p2),
       (text: [De robot zal minimaal 1 meter zijwaarts kunnen lopen, met een afwijking van ± 50 centimeter.], prio: p2),
-      (text: [De robot zal een extra DOF beschikken in de roll-as.], prio: p2),
+      (text: [De robot zal een extra #acr("DOF") beschikken in de roll-as.], prio: p2),
       (text: [De robot zal 360 graden om zijn eigen as heen kunnen draaien.], prio: p2),
-      (text: [De robot zal 5 millimeter kunnen springen in de lucht.], prio: p2),
+      (text: [De robot zal 15 millimeter kunnen springen in de lucht.], prio: p2),
+      (text: [De robot zal zichzelf kunnen balanceren wanneer deze op een hoek van 30 graden of lager staat, d.m.v. een #acr("IMU").], prio: p2),
       (text: [De robothond zal een eigen persoonlijkheid hebben d.m.v. unieke bewegingen.], prio: p3),
     ),
   ),
   (
-    ID: "2.3.2.2",
+    ID: "functional.2",
     label: none,
     title: [AI en autonomie],
     items: (
@@ -181,7 +136,7 @@
     ),
   ),
   (
-    ID: "2.3.2.3",
+    ID: "functional.3",
     label: none,
     title: [Modulaire functies],
     items: (
@@ -191,9 +146,9 @@
     ),
   ),
 
-  // ===== 2.3.3 Energie en performance =====
+  // ===== Energie en performance =====
   (
-    ID: "2.3.3",
+    ID: "energy",
     label: <energie-eisen>,
     title: [Energie en performance],
     items: (
@@ -204,9 +159,9 @@
     ),
   ),
 
-  // ===== 2.3.4 Gebruikersgerichtheid en betrouwbaarheid =====
+  // ===== Gebruikersgerichtheid en betrouwbaarheid =====
   (
-    ID: "2.3.4",
+    ID: "userusability",
     label: none,
     title: [Gebruikersgerichtheid en betrouwbaarheid],
     items: (
@@ -217,9 +172,9 @@
     ),
   ),
 
-  // ===== 2.3.5 Documentatie =====
+  // ===== Documentatie =====
   (
-    ID: "2.3.5",
+    ID: "documentation",
     label: none,
     title: [Documentatie],
     items: (
@@ -232,9 +187,9 @@
     ),
   ),
 
-  // ===== 2.3.6 Eisen aan het ontwikkelproces =====
+  // ===== Eisen aan het ontwikkelproces =====
   (
-    ID: "2.3.6",
+    ID: "development",
     label: none,
     title: [Eisen aan het ontwikkelproces],
     items: (
@@ -251,9 +206,9 @@
     ),
   ),
 
-  // ===== 2.4 Pakket van Wensen =====
+  // ===== Pakket van Wensen =====
   (
-    ID: "2.4",
+    ID: "wishes",
     label: none,
     title: [Pakket van Wensen],
     items: (
@@ -266,22 +221,22 @@
     ),
   ),
 
-  // ===== 2.5 Buiten scope =====
+  // ===== Buiten scope =====
   (
-    ID: "2.5",
+    ID: "wonthaves",
     label: none,
     title: [Buiten de scope van het project],
     items: (
-      (text: [De Robothond zal een geavanceerde #acr("LiDAR")-systemen.], prio: p4),
+      (text: [De Robothond zal een geavanceerde #acr("LiDAR")-systeem bevatten.], prio: p4),
       (text: [De Robothond zal voorzien zijn van een Smartphone-app of cloudkoppelingen.], prio: p4),
       (text: [De Robothond zal langdurig getest worden over een periode van een paar maanden.], prio: p4),
       (text: [De Robothond zal waterdicht zijn.], prio: p4),
     ),
   ),
   
-  // ===== 2.6 Minimal Viable Product =====
+  // ===== Minimal Viable Product =====
   (
-    ID: "2.6.1",
+    ID: "mvp.1",
     label: none,
     title: [MVP — Beweging],
     items: (
@@ -291,7 +246,7 @@
     ),
   ),
   (
-    ID: "2.6.2",
+    ID: "mvp.2",
     label: none,
     title: [MVP — Embedded firmware],
     items: (
@@ -300,15 +255,15 @@
     ),
   ),
   (
-    ID: "2.6.3",
+    ID: "mvp.3",
     label: none,
     title: [MVP — Draadloze communicatie en regelsystemen],
     items: (
-      (text: [De robothond zal bestuurbaar zijn via een Bluetooth Xbox of Playstation controller], prio: p1),
+      (text: [De robothond zal bestuurbaar zijn via een Bluetooth Xbox of Playstation controller.], prio: p1),
     ),
   ),
   (
-    ID: "2.6.4",
+    ID: "mvp.4",
     label: none,
     title: [MVP — Mechanica],
     items: (
@@ -316,3 +271,5 @@
     ),
   ),
 )
+
+

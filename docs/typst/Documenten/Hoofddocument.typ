@@ -1,14 +1,21 @@
+// ============================================
+// Main document
+// ============================================
+
 // Import list
 #import "Config/_Imports.typ": *
 
+// Set parameters for the document
 #set text(lang: "Nl")
 #set par(justify: true)
 #set text(costs: (hyphenation: 500%))
 #show link: underline
 
+
 // ============================================
 // Front Page en general definitions
 // ============================================
+
 #show: academic-frontpage.with(
   title: [Embedded Systems Project\ Robothond],
   authors: students.map(s => s.name).join(", "),
@@ -29,27 +36,7 @@
   abstract: [In dit project ontwikkelen wij als bachelorstudenten van NHL Stenden een embedded systeem in de vorm van een Robothond. Het apparaat is bedoeld als demonstrator op opendagen om de mogelijkheden van technische innovatie aan toekomstige studenten uit te leggen. We volgen hiervoor de Design-Thinking methodologie met nadruk op iteratieve prototyping en uitvoerige testen. Het doel is een volledig functioneel product te realiseren dat voldoet aan de stakeholder-eisen en markt-gereed is.],
   keywords: [],
   acknowledgments: [],
-  acronyms: (
-    "PvE": ("Pakket van Eisen","Pakket van Eisen"),
-    "MVP": ("Minimum Viable Product","Minimum Viable Product"),
-    "PvA": ("Plan van Aanpak","Plan van Aanpak"),
-    "IK": ("Inverse Kinematics"),
-    "PSoC5": ("Programmable System on a Chip 5"),
-    "RTOS": ("Real-Time Operating System"),
-    "MoSCoW": ("Must have, Should have, Could have, Won’t have"),
-    "PCB": ("Printed Circuit Board"),
-    "CAD": ("Computer Aided Design"),
-    "AI": ("Artificial Intelligence"),
-    "PoC": ("Proof of Concept"),
-    "LiDAR": "Light Detection And Ranging",
-    "ESD": ("ElectroStatic Discharge"),
-    "GPS": ("Global Positioning System"),
-    "ELRS": ("Express Long Range System"),
-    "FPV": ("First-Person View"),
-    "HDL": ("Hardware Description Language"),
-    "IMU": ("Inertial Measurement Uni"),
-    "PID": ("Proportional–Integral–Derivative"),
-  ),
+  acronyms: (acronyms_db),
   versions: (
     version(
       committee: [R. van der Veen\ D. Smit\ P. Huijser],
@@ -84,9 +71,11 @@
   )
 )
 
+
 // ============================================
 // Document contents
 // ============================================
+
 = Organisatie
 
 Voor het project "Embedded Systems" moet er een embedded systeem gerealiseerd worden. Voordat wij gaan beginnen met het realiseren van een apparaat gaan wij extensief onderzoek uitvoeren. Als aller eerst is er een organisatie definitie vereist. Hierin gaan wij onze organisatie definiëren voor een goed structuur en efficiënte samenwerking.
@@ -169,7 +158,7 @@ De Git Master is verantwoordelijk voor het beheren van de git repository. Hierbi
 - Pull requests reviewen en goedkeuren voordat ze worden gemerged naar de main branch
 - Verzekeren dat alle commits duidelijk gedocumenteerd zijn met beschrijvende berichten
 - De repository beschermen tegen conflicting merges en ongestructureerde commits
-- Een consistent branching strategy hanteren (bijv... Git Flow of trunk-based development)
+- Een consistent branching strategy hanteren (bijvoorbeeld: Git Flow of trunk-based development)
 - Merge conflicts oplossen en escaleren indien nodig
 - Toegangsrechten en repository-instellingen beheren
 
@@ -337,40 +326,46 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 #pagebreak()
 
 
+= Definitie
+
 == Pakket van Eisen
 In het #acr("PvE") worden de eisen voor dit project vastgelegd. Deze eisen zijn grofweg te verdelen in twee groepen, eisen van de opdrachtgever en eisen die door het projectteam zelf zijn opgesteld. De verplichte eisen van de opdrachtgever zijn te vinden in @verplichte-eisen. Naast de verplichte eisen zijn de eisen aanvullend geformuleerd door het projectteam.
 #v(1em)
 
-// PvE from Documenten/Config/PvE_MoSCoW.typ
-#pve_range(pve_moscow, "2.3.1", "2.3.1", 3)
+// ============================================
+// PvE
+// Data from /Documenten/Config/PvE_MoSCoW.typ
+// ============================================
+
+#pve_range(pve_moscow, "mandatory", "mandatory", 3)
 #pagebreak()
 
 === Functionele eisen
-#pve_range(pve_moscow, "2.3.2.1", "2.3.2.3", 4)
+#pve_range(pve_moscow, "functional.1", "functional.3", 4)
 #pagebreak()
 
-#pve_range(pve_moscow, "2.3.3", "2.3.5", 3)
+#pve_range(pve_moscow, "energy", "documentation", 3)
 #pagebreak()
 
-#pve_range(pve_moscow, "2.3.6", "2.3.6", 3)
-#pve_range(pve_moscow, "2.4", "2.4", 2)
+#pve_range(pve_moscow, "development", "development", 3)
+#pve_range(pve_moscow, "wishes", "wishes", 2)
 #pagebreak()
 
-#pve_range(pve_moscow, "2.5", "2.5", 2)
+#pve_range(pve_moscow, "wonthaves", "wonthaves", 2)
 #v(1em)
 
 == Minimal Viable Product
 Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigenschappen die minimaal aanwezig zouden moeten zijn voor een werkend, goed product.
 
-#pve_range(pve_moscow, "2.6.1", "2.6.4", 3)
+#pve_range(pve_moscow, "mvp.1", "mvp.4", 3)
 #pagebreak()
 
 
-== MoSCoW-analyse
+== MoSCoW-analyse <moscow>
 
 // ============================================
-// MoSCoW
-// Data from /Documents/Config/config.typ
+// MoSCoW-analysis
+// Data from /Documenten/Config/PvE_MoSCoW.typ
 // ============================================
 
 // Legend
@@ -389,19 +384,22 @@ Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigensc
 #v(1em)
 
 // MoSCoW
-#moscow_range(pve_moscow, "2.3.1", "2.3.2.1")
+#moscow_range(pve_moscow, "mandatory", "functional.1")
 #pagebreak()
 
-#moscow_range(pve_moscow, "2.3.2.2", "2.3.4")
+#moscow_range(pve_moscow, "functional.2", "userusability")
 #pagebreak()
 
-#moscow_range(pve_moscow, "2.3.5", "2.3.6")
+#moscow_range(pve_moscow, "documentation", "development")
 #pagebreak()
 
-#moscow_range(pve_moscow, "2.4", "2.5")
+#moscow_range(pve_moscow, "wishes", "wonthaves")
 #pagebreak()
 
-#moscow_range(pve_moscow, "2.6.1", "2.6.4")
+#moscow_range(pve_moscow, "mvp.1", "mvp.4")
+
+#acr("FOC")
+
 #pagebreak()
 
 #set page(flipped: true)
@@ -416,7 +414,7 @@ Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigensc
 
 #set page(flipped: false)
 
-= Definitie
+= Ideeën genereren
 
 == Feature lijst
 
@@ -449,12 +447,35 @@ Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigensc
 
 == Plan van Aanpak
 
+// Heading offset to embed PvA properly
 #set heading(offset: 2)
 
-// Plan van aanpak importeren zonder voorpagina:
+// Import PvA without front page
 #PvA_body()
 
+// Heading offset to return heading usage to normal
 #set heading(offset: 0)
+
+#pagebreak()
+
+
+== Literatuuronderzoeken
+
+
+
+#pagebreak()
+
+
+= Prototype
+
+
+
+#pagebreak()
+
+
+= Test
+
+
 
 #pagebreak()
 
@@ -510,5 +531,5 @@ Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigensc
 
 #pagebreak()
 
-
+// Inserting the complete contract
 #Samenwerkingscontract

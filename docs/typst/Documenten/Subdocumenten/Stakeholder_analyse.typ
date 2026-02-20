@@ -1,7 +1,5 @@
-
 #import "../Config/GeneralConfig.typ": *
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3": chart
+#import "../Config/StakeholderConfig.typ": *
 
 == Stakeholder analyse
 
@@ -10,10 +8,10 @@
 === De Stakeholders <stakeholder-analyse>
 
 *Stakeholder 1: Projecteigenaar* \
-Meneer Rieno Moedt is de projecteigenaar van dit project. Hij bepaalt de spelregels en acceptatiecriteria. Verder stelt hij de eisen vast en beoordeeld hij het eindresultaat. Zijn voornaamste belangen zijn een goed werkend proof-of-concept en high-fidelity prototype, naleving van alle eisen, en een eindproduct dat geschikt is voor open dagen en toekomstige studenten die enthousiast worden gemaakt. Zijn invloed is zeer hoog: hij bepaalt het uiteindelijke cijfer. De strategie is regelmatig, open overleg met duidelijke verwachtingen en directe feedback.
+Meneer Rieno Moedt is de projecteigenaar van dit project. Hij bepaalt de spelregels en acceptatiecriteria. Verder stelt hij de eisen vast en beoordeeld hij het eindresultaat. Zijn voornaamste belangen zijn een goed werkend #acr("PoC") en high-fidelity prototype, naleving van alle eisen, en een eindproduct dat geschikt is voor open dagen en toekomstige studenten die enthousiast worden gemaakt. Zijn invloed is zeer hoog: hij bepaalt het uiteindelijke cijfer. De strategie is regelmatig, open overleg met duidelijke verwachtingen en directe feedback.
 
 *Stakeholder 2: Leerlingen/Studenten* \
-De leerlingen en studenten die het robothondproject op de open dag zullen zien, zijn de primaire eindgebruikers. Zij vormen de doelgroep waarvan zij enthousiast moeten worden wanneer zij het product aanraken en gebruiken. Hun belangen zijn duidelijk: zij willen een aantrekkelijke en interactieve demonstratie die hen enthousiast maakt en inzicht geeft in wat elektrotechniek te bieden heeft. Hun invloed is matig tot hoog. De leerlingen/Studenten bepalen via hun ervaringen en feedback of het project succesvol is in het aantrekken van toekomstige studenten, wat indirect van invloed is op de perceptie van de opleiding. De communicatie is vooral op de opendagen zelf. Huidige jaar 1 elektrostudenten kunnen wel ondervraagd worden over wat zij willen zien in het project. De strategie is het product intuïtief maken met een betrouwbare en interactieve werking.
+De leerlingen en studenten die het robothond project op de open dag zullen zien, zijn de primaire eindgebruikers. Zij vormen de doelgroep waarvan zij enthousiast moeten worden wanneer zij het product aanraken en gebruiken. Hun belangen zijn duidelijk: zij willen een aantrekkelijke en interactieve demonstratie die hen enthousiast maakt en inzicht geeft in wat elektrotechniek te bieden heeft. Hun invloed is matig tot hoog. De leerlingen/Studenten bepalen via hun ervaringen en feedback of het project succesvol is in het aantrekken van toekomstige studenten, wat indirect van invloed is op de perceptie van de opleiding. De communicatie is vooral op de opendagen zelf. Huidige jaar 1 elektrostudenten kunnen wel ondervraagd worden over wat zij willen zien in het project. De strategie is het product intuïtief maken met een betrouwbare en interactieve werking.
 
 #pagebreak()
 
@@ -35,288 +33,146 @@ Hun invloed is laag tot matig. Zij beslissen niet over eisen of cijfers, maar hu
 
 #pagebreak()
 
-#let stakeholder-matrix() = {
-  align(center)[
-    #text(size: 20pt, weight: "bold")[4 Typen Stakeholders]
-    
-    // Grid: Y-as label LINKS, tabel RECHTS
-    #grid(
-      columns: (32pt, 1fr),
-      gutter: 16pt,
-      align: (center, left),
-
-      // Y-as label (linkerkant, verticaal geroteerd)
-      [
-        #v(80pt)
-        #rotate(-90deg, origin: center)[
-          #text(size: 11pt, fill: gray, weight: "bold")[Invloed Stakeholder]
-        ]
-      ],
-
-      // Tabel 2x2 (rechterkant)
-      table(
-        columns: (1fr, 1fr),
-        rows: (auto, auto),
-        stroke: none,
-        gutter: 12pt,
-        inset: 0pt,
-
-        // Toeschouwer (geel)
-        rect(width: 100%, height: 80pt, fill: rgb("#FFD65C"), radius: 8pt, inset: 10pt,
-          align(center + horizon)[
-            #text(size: 13pt, weight: "bold", fill: rgb("#333333"))[Toeschouwer]
-            #linebreak()
-            #text(size: 10pt, fill: rgb("#333333"))[Weinig aandacht]
-          ]
-        ),
-
-        // Beïnvloeder (groen)
-        rect(width: 100%, height: 80pt, fill: rgb("#5CB85C"), radius: 8pt, inset: 10pt,
-          align(center + horizon)[
-            #text(size: 13pt, weight: "bold", fill: white)[Beïnvloeder]
-            #linebreak()
-            #text(size: 10pt, fill: white)[Tevreden houden]
-          ]
-        ),
-
-        // Sleutelfiguur (oranje)
-        rect(width: 100%, height: 80pt, fill: rgb("#F27E39"), radius: 8pt, inset: 10pt,
-          align(center + horizon)[
-            #text(size: 13pt, weight: "bold", fill: white)[Sleutelfiguur]
-            #linebreak()
-            #text(size: 10pt, fill: white)[Samenwerken]
-          ]
-        ),
-
-        // Geïnteresseerde (blauw)
-        rect(width: 100%, height: 80pt, fill: rgb("#4589C9"), radius: 8pt, inset: 10pt,
-          align(center + horizon)[
-            #text(size: 13pt, weight: "bold", fill: white)[Geïnteresseerde]
-            #linebreak()
-            #text(size: 10pt, fill: white)[Informeren]
-          ]
-        ),
-      )
-    )
-
-    #v(20pt)
-
-    // X-as labels
-    #grid(
-      columns: (1fr, 1fr),
-      gutter: 12pt,
-      align(center)[#text(size: 11pt, fill: gray)[Laag — Matig]],
-      align(center)[#text(size: 11pt, fill: gray)[Hoog — Zeer hoog]]
-    )
-
-    #text(size: 12pt, fill: gray, weight: "bold")[Belang Stakeholder]
-  ]
-}
-
-#stakeholder-matrix()
-
-#let yellow = rgb("#FFD65C")
-#let green = rgb("#5CB85C")
-#let orange = rgb("#F27E39")
-#let blue = rgb("#4589C9")
-
-#let cel(color, body) = table.cell(fill: color)[body]
-
-
-#table(
-  columns: (3cm, 3.5cm, 3.5cm, 3.5cm, 3.5cm),
-  rows: (2.5cm, 2cm, 2cm, 2cm, 2cm),
-  align: center + horizon,
-  stroke: 0.8pt + gray,
-  fill: (col, row) => {
-    if row == 0 or col == 0 { luma(220) }
-    else { white }
-  },
-  
-  // Rij 0 (koppen)
-  table.cell(rowspan: 1, colspan: 1)[
-    #set align(left + top)
-    #v(0.3em)
-    #h(0.3em)
-    *Invloed* →
-    #v(0.8em)
-    #h(2.5em)
-    ↓
-    #v(0.5em)
-    #align(right + bottom)[
-      #h(0.3em)
-      *Belang*
-      #v(0.3em)
-    ]
-  ],
-  [*Laag*], [*Matig*], [*Hoog*], [*Zeer hoog*],
-  
-  [*Zeer hoog*],
-  table.cell(fill: rgb("#FFD65C"))[],  
-  table.cell(fill: rgb("#FFD65C"))[], 
-  table.cell(fill: rgb("#5CB85C"))[MBO studenten/Havo studenten], 
-  table.cell(fill: rgb("#5CB85C"))[Project eigenaar],
-  
-  [*Hoog*], 
-  table.cell(fill: rgb("#FFD65C"))[], 
-  table.cell(fill: rgb("#FFD65C"))[], 
-  table.cell(fill: rgb("#5CB85C"))[], 
-  table.cell(fill: rgb("#5CB85C"))[],
-  
-  [*Matig*], 
-  table.cell(fill: rgb("#F27E39"))[Docenten van Eletrotechniek], 
-  table.cell(fill: rgb("#F27E39"))[Ouders/Verzorgers], 
-  table.cell(fill: rgb("#4589C9"))[], 
-  table.cell(fill: rgb("#4589C9"))[Tutor],
-
-  [*Laag*], 
-  table.cell(fill: rgb("#F27E39"))[Overige Bezoekers], 
-  table.cell(fill: rgb("#F27E39"))[], 
-  table.cell(fill: rgb("#4589C9"))[], 
-  table.cell(fill: rgb("#4589C9"))[],
-)
-
-#pagebreak()
-
-
-=== Analyse Enquete
-Hier worden alle vragen die in de enquete worden gevraagd geanalyseert.
-
-*Tot welke groep behoort u?*
-
-#cetz.canvas({
-  import cetz.draw: *
-  
-  chart.piechart(
-    (
-      ("Leerling/Student", 18),
-      ("Docent", 4)
-    ),
-    value-key: 1,
-    label-key: 0,
-    radius: 3,
-    slice-style: (
-      (fill: blue),
-      (fill: yellow)
-    ),
-    inner-label: (
-      content: "%",
-      radius: 120%
-    ),
-  )
-})
+=== Visuele spreiding
 
 #v(1em)
 
-*Wat is je huidige opleidingsniveau?*
+#stakeholder-matrix()
+#stakeholder-table()
 
+#pagebreak()
+
+=== Analyse Enquête
+Hier worden alle vragen die in de enquête worden gevraagd weergegeven en geanalyseerd.
+
+*Tot welke groep behoort u?*
+
+#let group_items = stakeholdercharts_db.doelgroep.items
 #cetz.canvas({
   import cetz.draw: *
-  
   chart.piechart(
     (
-      ("HBO", 14),
-      ("MBO", 5),
-      ("VWO", 1),
-      ("HAVO", 1),
-      ("Anders", 1)
+      group_items.map(it => (it.name, it.value))
     ),
     value-key: 1,
-    label-key: 0,
+    label-key: none,
     radius: 3,
-    slice-style: (
-      (fill: rgb(147, 51, 234)),   // paars (HBO)
-      (fill: rgb(34, 197, 94)),     // groen (MBO)
-      (fill: rgb(239, 68, 68)),     // rood (VWO)
-      (fill: rgb(249, 115, 22)),    // oranje (HAVO)
-      (fill: rgb(59, 130, 246))     // lichtblauw (Anders)
+    slice-style: group_items.map(it => (fill: COL.at(it.color))),
+    inner-label: (
+      content: "%",
+      radius: 110%,
     ),
+    legend: (label: none),
+  )
+})
+
+#stack(spacing: 3pt)[
+  #for it in group_items {
+    legend-line(COL.at(it.color), it.value, it.name)
+  }
+]
+
+*Wat is uw huidige opleidingsniveau?*
+
+#let educationlevel_items = stakeholdercharts_db.educationlevel.items
+#cetz.canvas({
+  import cetz.draw: *
+  chart.piechart(
+    (
+      educationlevel_items.map(it => (it.name, it.value))
+    ),
+    value-key: 1,
+    label-key: none,
+    radius: 3,
+    slice-style: educationlevel_items.map(it => (fill: COL.at(it.color))),
     inner-label: (
       content: "%",
       radius: 150%
     ),
   )
 })
+
+#stack(spacing: 3pt)[
+  #for it in educationlevel_items {
+    legend-line(COL.at(it.color), it.value, it.name)
+  }
+]
 
 #pagebreak()
 
 *Welke eigenschappen maakt een project volgens u het meest aantrekkelijk om te bekijken?*
 
+#let attractiveness_items = stakeholdercharts_db.attractiveness.items
 #cetz.canvas({
   import cetz.draw: *
-  
   chart.piechart(
     (
-      ("Interactief, waarbij je iets ziet bewegen of reageren", 13),
-      ("Technisch indrukwekkend", 6),
-      ("Visueel aantrekkelijk", 3)
+      attractiveness_items.map(it => (it.name, it.value))
     ),
     value-key: 1,
-    label-key: 0,
+    label-key: none,
     radius: 3,
-    slice-style: (
-      (fill: rgb(249, 115, 22)),    // oranje (Interactief)
-      (fill: rgb(239, 68, 68)),     // rood (Technisch)
-      (fill: rgb(59, 130, 246))     // blauw (Visueel)
-    ),
+    slice-style: attractiveness_items.map(it => (fill: COL.at(it.color))),
     inner-label: (
       content: "%",
-      radius: 120%
+      radius: 120%,
     ),
+    legend: (label: none),
   )
 })
+
+#stack(spacing: 3pt)[
+  #for it in attractiveness_items {
+    legend-line(COL.at(it.color), it.value, it.name)
+  }
+]
 
 #v(1em)
 
 *Moet het project vooral gericht zijn op vermaak, of op het laten zien van technische vaardigheden?*
 
+#let focus_items = stakeholdercharts_db.focus.items
 #cetz.canvas({
   import cetz.draw: *
-  
   chart.piechart(
     (
-      ("Een goede mix van beide", 17),
-      ("Meer techniek en vaardigheden", 4),
-      ("Meer vermaak", 1)
+      focus_items.map(it => (it.name, it.value))
     ),
     value-key: 1,
-    label-key: 0,
+    label-key: none,
     radius: 3,
-    slice-style: (
-      (fill: rgb(249, 115, 22)),    // oranje (Interactief)
-      (fill: rgb(239, 68, 68)),     // rood (Technisch)
-      (fill: rgb(59, 130, 246))     // blauw (Visueel)
-    ),
+    slice-style: focus_items.map(it => (fill: COL.at(it.color))),
     inner-label: (
       content: "%",
       radius: 150%
     ),
+    legend: (label: none),
   )
 })
+
+#stack(spacing: 3pt)[
+  #for it in focus_items {
+    legend-line(COL.at(it.color), it.value, it.name)
+  }
+]
 
 #pagebreak()
 
 *Wat vind u interessant? (Beide antwoorden mogen aangevinkt worden)*
 
-#v(1em)
-
+#let interest_items = stakeholdercharts_db.interest.items
+#let interest_data = interest_items.map(it => (it.name, it.value))
 #cetz.canvas({
   import cetz.draw: *
-  
-  let data = (
-    ("AI functionaliteit", 13,),
-    ("Afstandbestuurbaar", 11),
-    ("Autonome navigatie en\nobstakelvermijding", 19),
-  )
-  
   chart.barchart(
     mode: "basic",
     size: (10, 4),
     label-key: 0,
     value-key: 1,
-    bar-width: 0.6,
+    bar-width: 0.7,
     x-tick-step: 5,
-    data,
+    bar-style: i => (fill: COL.at(interest_items.at(i).color)),
+    interest_data,
     axes: (
       left: (
         tick: (
@@ -326,7 +182,7 @@ Hier worden alle vragen die in de enquete worden gevraagd geanalyseert.
       bottom: (
         min: 0,
         max: 22,
-        tick: (step: 5)
+        tick: (step: 1)
       )
     )
   )
@@ -336,31 +192,30 @@ Hier worden alle vragen die in de enquete worden gevraagd geanalyseert.
 
 *Wat is volgens u het belangrijkste doel van het project dat wij laten zien?*
 
+#let project_goal_items = stakeholdercharts_db.project_goal.items
 #cetz.canvas({
   import cetz.draw: *
-  
   chart.piechart(
     (
-      ("Interesse wekken voor de studie Elektrotechniek", 10),
-      ("Laten zien wat studenten kunnen maken", 6),
-      ("Toekomstmogelijkheden in techniektonen", 5),
-      ("hond", 1)
+      project_goal_items.map(it => (it.name, it.value))
     ),
     value-key: 1,
-    label-key: 0,
+    label-key: none,
     radius: 3,
-    slice-style: (
-      (fill: rgb(59, 130, 246)),    // blauw (Interesse wekken)
-      (fill: rgb(239, 68, 68)),     // rood (Laten zien)
-      (fill: rgb(249, 115, 22)),    // oranje (Toekomstmogelijkheden)
-      (fill: rgb(34, 197, 94))      // groen (hond)
-    ),
+    slice-style: project_goal_items.map(it => (fill: COL.at(it.color))),
     inner-label: (
       content: "%",
-      radius: 150%
+      radius: 150%,
     ),
+    legend: (label: none),
   )
 })
+
+#stack(spacing: 3pt)[
+  #for it in project_goal_items {
+    legend-line(COL.at(it.color), it.value, it.name)
+  }
+]
 
 #pagebreak()
 
@@ -441,5 +296,7 @@ antwoorden:
 *Fase 2:* Autonome navigatie + interactie\
 *Fase 3:* Geavanceerde sensoren zoals object herkenning\
 
-== Uitwerking conclusie
+#v(1em)
+
+=== Uitwerking conclusie
 De uitkomsten van de enquête worden rechtstreeks omgezet in concrete functies voor het ontwerp. De hond krijgt daarom een geprogrammeerde dansmodus gecombineerd met een soundboard dat verschillende geluiden kan afspelen. Ook wordt er een AI gestuurde functie toegevoegd voor autonome navigatie en obstakelvermijding, omdat veel mensen dit technisch interessant vinden. Zo sluit het ontwerp goed aan bij de behoefte van de stakeholders en laat het op een duidelijke manier de techniek achter de robothond zien tijdens open dagen.

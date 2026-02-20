@@ -1,3 +1,4 @@
+/*
 #import "planning-lib.typ": planning-document, task, resource, phase, default-config
 
 // ============================================================

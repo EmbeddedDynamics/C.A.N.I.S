@@ -7,7 +7,7 @@
 
 // Import Templates
 #import "@local/academic-tools:0.1.10": *
-#import "../template.typ": *
+//#import "../template.typ": *
 
 // Import Configuration files
 #import "GeneralConfig.typ": *

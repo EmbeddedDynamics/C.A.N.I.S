@@ -59,7 +59,7 @@ van #startdate tot #enddate.
 #v(18pt)
 #pagebreak()
 
-*Getekend door*
+*Getekend door:*
 
 #let ondertekenaars = students.map(s => ([#s.name]))
 

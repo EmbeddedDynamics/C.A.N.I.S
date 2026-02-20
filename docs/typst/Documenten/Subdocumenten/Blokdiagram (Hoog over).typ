@@ -1,7 +1,9 @@
+// General data import
+#import "../Config/GeneralConfig.typ": *
+
+// Functions import
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
-
 #import "@preview/oxifmt:0.2.1": strfmt
-
 #import "@preview/tablem:0.1.0": tablem
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/gantty:0.5.1": gantt
@@ -36,16 +38,16 @@
   
   node((6.25,3.25), [*Embedded\ firmware*], name: <embedded-firmware-block>),
   node((9,3.25), [*Regel\ systemen*], name: <regel-systemen-block>),
-  node((11.5,3.25), [*AI\ functies*], name: <AI-block>),
+  node((11.5,3.25), [*#acr("AI")\ functies*], name: <AI-block>),
 
-  node((8.5,4.5), [*FOC*], name: <foc-block>),
-  node((9.5,4.5), [*IMU*], name: <imu-block>),
+  node((8.5,4.5), [*#acr("FOC")*], name: <foc-block>),
+  node((9.5,4.5), [*#acr("IMU")*], name: <imu-block>),
 
   node((11,4.75), [*Omgevings\ herkening*], name: <omgeving-block>),
   node((12,4.75), [*Persoonlijkheid*], name: <persoonlijkheid-block>),
 
-  node((4.5,4.50), [*IK*], name: <IK-block>),
-  node((5.8,4.50), [*RTOS*], name: <rtos-block>),
+  node((4.5,4.50), [*#acr("IK")*], name: <IK-block>),
+  node((5.8,4.50), [*#acr("RTOS")*], name: <rtos-block>),
   node((6.9,4.5), [*Protocolen*], name: <protocolen-block>),
 
   node((6.25,5.75), [*Draadloos*], name: <draadloos-block>),

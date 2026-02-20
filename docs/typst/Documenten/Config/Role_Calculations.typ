@@ -1,3 +1,8 @@
+// ============================================
+// Config for the individual role calculations
+// with helper functions
+// ============================================
+
 #import "@preview/elembic:1.1.1" as e
 
 // Define the role type
