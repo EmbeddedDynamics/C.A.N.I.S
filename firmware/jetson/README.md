@@ -22,6 +22,50 @@ This directory contains code and configuration for the Jetson Orin Nano Super, r
 - Interface: USB 2.0 (USB-A to Type-C)
 - Power: 5V via USB
 
+## Scripts
+
+| Script | Description |
+|---|---|
+| `depth_zones.py` | Stereo depth perception — sends zone disparity values to PSoC5 over USB serial |
+| `robot_dog_ai.py` | Voice command recognition + context-aware soundboard — listens for commands, sends them to PSoC5, reacts with sounds based on what it hears |
+
+## Dependencies
+
+### System packages
+```bash
+sudo apt install -y python3-pip espeak espeak-data libespeak1 portaudio19-dev libportaudio2
+```
+
+### Python packages
+
+#### `depth_zones.py`
+| Package | Install | Notes |
+|---|---|---|
+| `opencv-python` | `pip3 install opencv-python` | Stereo capture and disparity |
+| `numpy` | `pip3 install numpy` | Array math |
+| `pyserial` | `pip3 install pyserial` | USB serial to PSoC5 |
+
+#### `robot_dog_ai.py`
+| Package | Install | Notes |
+|---|---|---|
+| `faster-whisper` | `pip3 install faster-whisper` | Speech recognition (pulls in CTranslate2) |
+| `sounddevice` | `pip3 install sounddevice` | Microphone capture (requires `libportaudio2`) |
+| `numpy` | `pip3 install numpy` | Audio buffer math |
+| `pyserial` | `pip3 install pyserial` | USB serial to PSoC5 |
+| `pyttsx3` | `pip3 install pyttsx3` | TTS fallback via espeak |
+| `pygame` | `pip3 install pygame` | WAV soundboard playback (optional) |
+
+Install all at once:
+```bash
+pip3 install faster-whisper sounddevice numpy pyserial pyttsx3 pygame
+```
+
+> **Note on `faster-whisper` on Jetson/ARM64:** if the install fails, try:
+> ```bash
+> pip3 install ctranslate2 --extra-index-url https://pypi.nvidia.com
+> pip3 install faster-whisper
+> ```
+
 ## Notes
 
 ### Audio signal sharing
