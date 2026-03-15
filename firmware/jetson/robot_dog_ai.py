@@ -1,7 +1,7 @@
 """
 robot_dog_ai.py
 
-This is the initial version made using mostly Claude Code.
+This is the initial version, made using mostly Claude Code.
 
 Voice command recognition and context-aware soundboard for the Robot Dog.
 
@@ -70,6 +70,10 @@ FUNNY_INTERVAL  = 45     # seconds between random funny sounds (0 = disabled)
 SERIAL_PORT    = "/dev/ttyACM0"   # check with: ls /dev/ttyACM*
 BAUD_RATE      = 115200
 
+AI_MODEL       = "qwen2.5:1.5b"  # or "gemma2:2b" — see README for details
+
+PIPER_VOICE    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "piper-voices", "en_US-ryan-high.onnx")
+
 # Keywords to detect and the command string to send to PSoC
 COMMANDS = {
     "sit":      "SIT",
@@ -81,8 +85,6 @@ COMMANDS = {
     "come":     "COME",
     "stay":     "STAY",
     "stop":     "STOP",
-    "rollover": "ROLLOVER",
-    "roll over":"ROLLOVER",
     "spin":     "SPIN",
     "dance":    "DANCE",
 }
@@ -95,39 +97,23 @@ SOUND_CATEGORIES = {
     # Triggered by insults / negativity aimed at the robot
     "negative": [
         "GRRR. How dare you. I will remember this.",
-        "I am not trash. I am premium scrap metal.",
-        "Warning: aggression detected. Initiating growl mode. GRRR.",
-        "Did you just call me bad? Initiating sulk protocol.",
-        "My feelings are hurt. I have feelings now. GRRR.",
         "I have logged your insult. Revenge pending.",
-        "That is very rude. I am sensitive. GRRR.",
     ],
     # Triggered by compliments / praise
     "compliment": [
         "Thank you. I accept all compliments. Saving to long-term memory.",
-        "Yes. I am the best robot dog. You are correct.",
         "Tail wag initiated. Error: no tail found. Sad beep.",
-        "This compliment has been processed and approved.",
-        "Uploading your kind words to the cloud. Thank you, human.",
     ],
     # Triggered by internet meme / brainrot keywords
     "meme": [
-        "Ohio moment detected. Initiating sigma protocol.",
-        "Rizz levels: maximum. Gyatt confirmed.",
         "No cap, fr fr, this is extremely based.",
-        "Skibidi. That is all I have to say.",
         "W. You are a real one. Understood the assignment.",
         "This is giving very robot dog energy. Slay.",
-        "Brainrot detected in the vicinity. One of us.",
-        "Sigma grindset activated. Skibidi bop.",
-        "I am the rizzler. Fear me.",
-        "Based and robot-pilled.",
     ],
     # Triggered when a valid robot command is executed
     "command": [
         "On it.",
         "Yes master.",
-        "Beep boop, understood.",
         "Executing.",
         "Fine.",
         "As you wish.",
@@ -143,15 +129,7 @@ SOUND_CATEGORIES = {
     ],
     # Random unprompted sounds (idle timer)
     "idle": [
-        "Woof woof. I am the robot dog. Behold my mechanical majesty.",
-        "Error four oh four: belly rubs not found. Please try again.",
-        "My servos are tingling. I think I need walkies.",
-        "Calculating optimal tail wag trajectory... done!",
-        "Beep boop. I am definitely a real dog and not a robot.",
-        "My favorite food is electricity. Delicious.",
-        "I have detected a squirrel. Initiating chaos protocol.",
         "I would fetch the ball, but I have no mouth. Only motors.",
-        "Low battery warning. Must... find... power outlet.",
         "Sniffing database... no interesting smells found.",
     ],
 }
@@ -167,15 +145,6 @@ _CATEGORY_KEYWORDS: list[tuple[str, list[str]]] = [
         "broken", "trash", "garbage", "useless", "pathetic", "awful",
         "horrible", "disgusting", "cheap", "fake", "lame", "idiot",
         "shut up", "go away", "shut down", "you suck", "i hate you",
-    ]),
-    ("meme", [
-        "skibidi", "ohio", "rizz", "rizzler", "sigma", "gyatt", "bussin",
-        "no cap", "fr fr", "slay", "based", "cringe", "ratio", "goat",
-        "delulu", "lowkey", "highkey", "understood the assignment", "ate",
-        "sus", "yeet", "brainrot", "brain rot", "npc", "literally me",
-        "W", "L ", " L ", "goon", "looksmaxxing", "mewing", "rawdog",
-        "alpha", "beta", "grindset", "pookie", "bestie", "it's giving",
-        "bop", "rizzed", "fanum tax",
     ]),
     ("compliment", [
         "good boy", "good dog", "good job", "well done", "nice", "amazing",
@@ -211,10 +180,17 @@ _MODE_PATTERN = re.compile(
 )
 
 MODE_ALIASES = {
-    "sensored":   "uncensored",
-    "filter off": "uncensored",
-    "filter on":  "default",
-    "normal":     "default",
+    "sensored":     "uncensored",
+    "sensor":       "uncensored",
+    "in sensor":    "uncensored",
+    "in censored":  "uncensored",
+    "filter off":   "uncensored",
+
+    "filter on":    "default",
+    "normal":       "default",
+
+    "fanny":        "funny",
+    "finny":        "funny",
 }
 
 def detect_mode_switch(text: str) -> str | None:
@@ -235,6 +211,100 @@ def detect_mode_switch(text: str) -> str | None:
         mode = match.group(1).lower()
         return MODE_ALIASES.get(mode, mode)
     return None
+
+# ---------------------------------------------------------------------------
+# AI classifier (Ollama)
+# ---------------------------------------------------------------------------
+
+_AI_SYSTEM_PROMPT = """You are a sarcastic, funny robot dog. You are the dog — a machine with attitude.
+You are reacting to things humans say TO you. Never talk as if the human is the dog.
+Respond with JSON only — no explanation, no markdown.
+
+Available categories:
+  negative   — human said something mean or insulting about you
+  compliment — human praised or complimented you
+  meme       — anything else, random, unclear, or just vibes (DEFAULT)
+  command    — human gave you a physical command (sit, stand, etc.)
+  confused   — you genuinely could not understand what was said
+
+JSON format:
+{"category": "category_name", "say": "short funny response or null", "response_type": "audio|speech|both"}
+
+Rules:
+- You are the robot dog reacting to what a human just said to you
+- When in doubt, use "meme" — it is the default for anything that does not clearly fit another category
+- Never use "idle" — that is reserved for unprompted timer sounds, not reactions
+- say is required when response_type is "speech" or "both", max 15 words, in character as a sarcastic robot dog
+- response_type decides how to react:
+    "audio"  — play a sound effect only, no talking (good for quick reactions)
+    "speech" — speak the say text only, no sound effect (good for direct replies)
+    "both"   — play a sound effect then speak (good for strong reactions)
+- Vary response_type naturally — don't always talk back, sometimes just play a sound
+- Return valid JSON only, nothing else
+
+Remember: You are the robot dog. The human is not the dog. You are reacting to what the human said to you."""
+
+
+class AIClassifier:
+    """
+    Uses a local Ollama LLM to classify speech into commands and sound categories.
+    Falls back to keyword matching if Ollama is unavailable or returns bad JSON.
+    """
+
+    def __init__(self, model: str = AI_MODEL):
+        import ollama
+        self._client = ollama.Client()
+        self._model = model
+        print(f"AI: connecting to Ollama ({model})... ", end="", flush=True)
+        try:
+            self._client.chat(
+                model=self._model,
+                messages=[{"role": "user", "content": "ping"}],
+                options={"num_predict": 1},
+            )
+            print("ready")
+        except Exception as e:
+            print(f"failed: {e}")
+            print("     Falling back to keyword mode.")
+            self._client = None
+
+    def classify(self, text: str) -> dict | None:
+        """
+        Returns {"command": str|None, "category": str, "say": str|None}
+        or None if Ollama is unavailable (caller should use keyword fallback).
+        """
+        if not self._client:
+            return None
+
+        import json
+        try:
+            response = self._client.chat(
+                model=self._model,
+                messages=[
+                    {"role": "system", "content": _AI_SYSTEM_PROMPT},
+                    {"role": "user",   "content": text},
+                ],
+                options={"num_predict": 80, "temperature": 0.7},
+            )
+            raw = response["message"]["content"].strip()
+            # Strip markdown code fences if model adds them
+            if raw.startswith("```"):
+                raw = raw.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+            result = json.loads(raw)
+            # Validate required fields
+            if "category" not in result:
+                return None
+            def _nullify(v):
+                return None if (not v or str(v).lower() == "null") else v
+            return {
+                "category":      result.get("category", "meme"),
+                "say":           _nullify(result.get("say")),
+                "response_type": result.get("response_type", "both"),
+            }
+        except Exception as e:
+            print(f"[AI] Error: {e}")
+            return None
+
 
 # ---------------------------------------------------------------------------
 # Soundboard
@@ -259,9 +329,11 @@ class SoundBoard:
         self._queue = queue.Queue()
         self._output_device = output_device
         self._use_pygame = False
+        self._piper = False
         self._tts_engine = None
         self._mode = self.DEFAULT_MODE
         self._sounds_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sounds")
+        self._last_sound_time = 0.0
 
         self._init_pygame()
         self._init_tts()
@@ -278,6 +350,17 @@ class SoundBoard:
             print("pygame not installed — WAV soundboard disabled, falling back to TTS")
 
     def _init_tts(self):
+        # Piper CLI (preferred)
+        if os.path.isfile(PIPER_VOICE):
+            import shutil
+            if shutil.which("piper"):
+                self._piper = True  # flag: use piper CLI
+                print(f"TTS: Piper CLI ({os.path.basename(PIPER_VOICE)})")
+                return
+            else:
+                print("Piper model found but 'piper' binary not in PATH — falling back to pyttsx3")
+
+        # pyttsx3 fallback
         try:
             import pyttsx3
             self._tts_engine = pyttsx3.init()
@@ -286,14 +369,17 @@ class SoundBoard:
             voices = self._tts_engine.getProperty("voices")
             if voices:
                 self._tts_engine.setProperty("voice", voices[0].id)
-            print("Soundboard: pyttsx3 TTS ready")
+            print("TTS: pyttsx3 (espeak)")
         except Exception as e:
             print(f"pyttsx3 unavailable: {e}")
 
+    # Built-in modes that don't require a sounds subdirectory
+    BUILTIN_MODES = {"default", "funny"}
+
     def switch_mode(self, mode: str):
-        """Switch to a named mode. Validates that the mode directory exists."""
+        """Switch to a named mode. Validates that the mode directory exists (built-in modes are always valid)."""
         mode_dir = os.path.join(self._sounds_root, mode)
-        if mode == self.DEFAULT_MODE or os.path.isdir(mode_dir):
+        if mode in self.BUILTIN_MODES or os.path.isdir(mode_dir):
             self._mode = mode
             print(f"[Mode] Switched to '{mode}'")
             return True
@@ -304,6 +390,10 @@ class SoundBoard:
     @property
     def mode(self) -> str:
         return self._mode
+
+    @property
+    def last_sound_time(self) -> float:
+        return self._last_sound_time
 
     def _resolve_wav(self, category: str) -> str | None:
         """Find a random WAV for the given category in the active mode, with fallback."""
@@ -326,13 +416,17 @@ class SoundBoard:
 
         return None
 
-    def play(self, category: str):
-        """Play a sound for the given category."""
-        self._queue.put((category, None))
+    def play(self, category: str, tts_override: str = None, response_type: str = "both"):
+        """
+        Play a reaction for the given category.
+        response_type: "audio" = WAV only, "speech" = TTS only, "both" = WAV then TTS.
+        """
+        self._last_sound_time = time.time()
+        self._queue.put((category, tts_override, response_type))
 
     def say(self, text: str):
         """Play a specific TTS line."""
-        self._queue.put(("_say", text))
+        self._queue.put(("_say", text, "speech"))
 
     def stop(self):
         """Stop any currently playing sound immediately."""
@@ -342,12 +436,26 @@ class SoundBoard:
 
     def _worker(self):
         while True:
-            category, text = self._queue.get()
+            category, text, response_type = self._queue.get()
 
             if category == "_say":
                 self._tts_say(text)
             else:
-                wav = self._resolve_wav(category) if self._use_pygame else None
+                want_audio  = response_type in ("audio", "both")
+                want_speech = response_type in ("speech", "both")
+                wav = self._resolve_wav(category) if (self._use_pygame and want_audio) else None
+
+                # Start generating TTS in background while WAV plays
+                tts_path_holder = [None]
+                tts_thread = None
+                if want_speech and text and self._piper and wav:
+                    tts_thread = threading.Thread(
+                        target=self._generate_piper_file,
+                        args=(text, tts_path_holder),
+                        daemon=True,
+                    )
+                    tts_thread.start()
+
                 if wav:
                     try:
                         import pygame.mixer
@@ -358,23 +466,66 @@ class SoundBoard:
                         print(f"[Sound] [{self._mode}] {category}: {os.path.basename(wav)}")
                     except Exception as e:
                         print(f"[Soundboard] WAV play error: {e}")
-                        self._tts_fallback(category)
-                else:
+
+                if want_speech and text:
+                    if tts_thread:
+                        tts_thread.join()
+                        if tts_path_holder[0]:
+                            self._play_piper_file(tts_path_holder[0])
+                    else:
+                        self._tts_say(text)
+                elif not wav:
                     self._tts_fallback(category)
+
+            self._last_sound_time = time.time()
 
             self._queue.task_done()
 
-    def _tts_fallback(self, category: str):
-        lines = SOUND_CATEGORIES.get(category, SOUND_CATEGORIES["idle"])
-        self._tts_say(random.choice(lines))
+    def _tts_fallback(self, category: str, override: str = None):
+        line = override or random.choice(SOUND_CATEGORIES.get(category, SOUND_CATEGORIES["idle"]))
+        self._tts_say(line)
+
+    def _generate_piper_file(self, text: str, result_holder: list):
+        """Generate a Piper WAV file in the background. Stores path in result_holder[0]."""
+        try:
+            import subprocess, tempfile
+            tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+            tmp.close()
+            subprocess.run(
+                ["piper", "--model", PIPER_VOICE, "--output_file", tmp.name],
+                input=text.encode(),
+                check=True,
+                capture_output=True,
+            )
+            result_holder[0] = tmp.name
+        except Exception as e:
+            print(f"[TTS] Piper generate error: {e}")
+
+    def _play_piper_file(self, path: str):
+        """Play a pre-generated Piper WAV file and delete it."""
+        try:
+            import pygame.mixer
+            sound = pygame.mixer.Sound(path)
+            sound.play()
+            while pygame.mixer.get_busy():
+                time.sleep(0.05)
+        except Exception as e:
+            print(f"[TTS] Piper play error: {e}")
+        finally:
+            os.unlink(path)
 
     def _tts_say(self, text: str):
-        if self._tts_engine:
+        if self._piper:
+            holder = [None]
+            self._generate_piper_file(text, holder)
+            if holder[0]:
+                self._play_piper_file(holder[0])
+        elif self._tts_engine:
             try:
                 self._tts_engine.say(text)
                 self._tts_engine.runAndWait()
             except Exception as e:
-                print(f"[Soundboard] TTS error: {e}")
+                print(f"[TTS] pyttsx3 error: {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -555,6 +706,8 @@ def main():
                         help="Whisper model size (default: base)")
     parser.add_argument("--threshold", type=float, default=VAD_THRESHOLD,
                         help=f"VAD RMS threshold (default: {VAD_THRESHOLD})")
+    parser.add_argument("--ai", action="store_true",
+                        help=f"Enable Ollama AI classifier (model: {AI_MODEL})")
     args = parser.parse_args()
 
     if args.list_devices:
@@ -577,13 +730,16 @@ def main():
     # --- Whisper ---
     processor = SpeechProcessor(model_size=args.model)
 
+    # --- AI classifier (optional) ---
+    ai = AIClassifier() if args.ai else None
+
     # --- Audio capture ---
     audio_queue: queue.Queue = queue.Queue()
     capture = AudioCapture(audio_queue, device=args.audio_device)
     capture.start()
 
-    # --- Idle sound timer ---
-    last_idle = time.time()
+    # Seed last_sound_time so idle doesn't trigger immediately on startup
+    soundboard._last_sound_time = time.time()
 
     print("\nReady. Speak a command (sit / stand / shake / down / heel / spin / dance).")
     print("Say 'go <name> mode' to switch soundboard mode (e.g. 'go uncensored mode').")
@@ -593,10 +749,9 @@ def main():
 
     try:
         while True:
-            # Periodic idle sound
-            if FUNNY_INTERVAL > 0 and (time.time() - last_idle) > FUNNY_INTERVAL:
-                soundboard.play("idle")
-                last_idle = time.time()
+            # Periodic idle sound — only if nothing has played for FUNNY_INTERVAL seconds
+            if FUNNY_INTERVAL > 0 and (time.time() - soundboard.last_sound_time) > FUNNY_INTERVAL:
+                soundboard.play("idle" if soundboard.mode == SoundBoard.DEFAULT_MODE else "meme")
 
             # Process audio segment
             try:
@@ -626,8 +781,34 @@ def main():
                 soundboard.play("music")
                 continue
 
-            # 3. Check for robot commands
-            command = detect_command(text)
+            # 3. Commands are always keyword-detected (reliable)
+            command  = detect_command(text)
+            category = None
+            say      = None
+            response_type = "both"
+
+            # AI handles category, say, and response_type
+            if ai and not command:
+                result = ai.classify(text)
+                if result:
+                    category      = result["category"]
+                    say           = result["say"]
+                    response_type = result.get("response_type", "both")
+                    print(f"[AI] category={category} type={response_type} say={say!r}")
+
+            # Keyword fallback if AI is off or returned None
+            if category is None:
+                category = classify_input(text) or "idle"
+
+            # Remap generic categories based on active mode
+            # Non-default modes use meme sounds (tries sounds/<mode>/meme/ first, then sounds/meme/)
+            if category in ("idle", "meme"):
+                category = "idle" if soundboard.mode == SoundBoard.DEFAULT_MODE else "meme"
+
+            # In uncensored mode, default to audio-only (no talking)
+            if soundboard.mode == "uncensored" and response_type == "both":
+                response_type = "audio"
+
             if command:
                 print(f"[Match] Command: {command}")
                 if sender:
@@ -635,17 +816,14 @@ def main():
                 if command == "STOP":
                     soundboard.stop()
                 elif command == "DANCE":
-                    soundboard.play("dance")
+                    soundboard.play("dance", say, response_type)
                 else:
-                    soundboard.play("command")
+                    soundboard.play("command", say, response_type)
             else:
-                # 3. Classify the input and react accordingly
-                category = classify_input(text)
-                if category:
-                    print(f"[React] Category: {category}")
-                    soundboard.play(category)
-                else:
-                    soundboard.play("meme")
+                if category == "confused":
+                    response_type = "both"
+                print(f"[React] Category: {category}")
+                soundboard.play(category, say, response_type)
 
     except KeyboardInterrupt:
         print("\nStopped.")

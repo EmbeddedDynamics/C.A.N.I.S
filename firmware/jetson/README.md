@@ -66,6 +66,88 @@ pip3 install faster-whisper sounddevice numpy pyserial pyttsx3 pygame
 > pip3 install faster-whisper
 > ```
 
+### Piper TTS (optional, replaced espeak)
+
+Piper is a neural TTS engine that sounds significantly more natural than espeak.
+It runs fully offline and is fast enough for real-time use on the Jetson.
+
+**Install:**
+```bash
+pip3 install piper-tts
+```
+
+**Download a voice** (each voice is an `.onnx` + `.onnx.json` file pair).
+Voices are stored in `firmware/jetson/piper-voices/` inside the project:
+```bash
+cd firmware/jetson/piper-voices
+
+# en_US-ryan-high (currently configured in robot_dog_ai.py)
+wget https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/ryan/high/en_US-ryan-high.onnx
+wget https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/ryan/high/en_US-ryan-high.onnx.json
+```
+
+**Other recommended voices:**
+
+| Voice | Style | Download path |
+|---|---|---|
+| `en_US-ryan-high` | American male, natural | `en/en_US/ryan/high/` |
+| `en_US-amy-medium` | American female, natural | `en/en_US/amy/medium/` |
+| `en_US-lessac-high` | American female, high quality | `en/en_US/lessac/high/` |
+| `en_GB-alan-medium` | British male | `en/en_GB/alan/medium/` |
+
+All voice files follow the same URL pattern:
+```
+https://huggingface.co/rhasspy/piper-voices/resolve/main/<path>/<voice>.onnx
+https://huggingface.co/rhasspy/piper-voices/resolve/main/<path>/<voice>.onnx.json
+```
+
+**Switch voices** by updating `PIPER_VOICE` at the top of `robot_dog_ai.py`:
+```python
+PIPER_VOICE = os.path.expanduser("~/piper-voices/en_US-amy-medium.onnx")
+```
+
+The script automatically uses Piper if the `.onnx` file exists, and falls back to espeak if not.
+
+### Ollama (optional, for `--ai` mode)
+
+Ollama runs a local LLM on the Jetson to replace keyword-based classification with
+context-aware intent detection. Required only when running `robot_dog_ai.py --ai`.
+
+**Install Ollama:**
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Ollama runs as a systemd service and starts automatically on boot. It listens on `localhost:11434`.
+
+**Recommended models:**
+
+| Model | Size | Speed on Jetson | Notes |
+|---|---|---|---|
+| `qwen2.5:1.5b` | ~1GB | ~0.5–1s | Recommended — fastest, sufficient for classification |
+| `gemma2:2b` | ~1.6GB | ~1–2s | Backup — better reasoning, slightly slower |
+
+```bash
+# Pull recommended model
+ollama pull qwen2.5:1.5b
+
+# Pull backup model
+ollama pull gemma2:2b
+```
+
+**Switch models** by changing the `AI_MODEL` constant at the top of `robot_dog_ai.py`:
+```python
+AI_MODEL = "qwen2.5:1.5b"   # or "gemma2:2b"
+```
+
+**Manage Ollama:**
+```bash
+ollama list                  # list downloaded models
+ollama ps                    # show currently loaded model
+sudo systemctl status ollama # check service status
+sudo systemctl restart ollama
+```
+
 ## Notes
 
 ### Audio signal sharing
