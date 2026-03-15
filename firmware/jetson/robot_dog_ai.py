@@ -210,14 +210,30 @@ _MODE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+MODE_ALIASES = {
+    "sensored":   "uncensored",
+    "filter off": "uncensored",
+    "filter on":  "default",
+    "normal":     "default",
+}
+
 def detect_mode_switch(text: str) -> str | None:
     """
     Detect a mode switch command like 'go uncensored mode' or 'default mode'.
-    Returns the mode name (lowercase), or None if not a mode command.
+    Applies MODE_ALIASES to handle Whisper mishearing or shorthand phrases.
+    Returns the resolved mode name (lowercase), or None if not a mode command.
     """
+    lower = text.lower()
+
+    # Check aliases first (exact phrase anywhere in text)
+    for phrase, target in MODE_ALIASES.items():
+        if phrase in lower:
+            return target
+
     match = _MODE_PATTERN.search(text)
     if match:
-        return match.group(1).lower()
+        mode = match.group(1).lower()
+        return MODE_ALIASES.get(mode, mode)
     return None
 
 # ---------------------------------------------------------------------------
