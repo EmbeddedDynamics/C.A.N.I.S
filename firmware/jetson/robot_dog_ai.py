@@ -70,6 +70,8 @@ FUNNY_INTERVAL  = 45     # seconds between random funny sounds (0 = disabled)
 SERIAL_PORT    = "/dev/ttyACM0"   # check with: ls /dev/ttyACM*
 BAUD_RATE      = 115200
 
+OUTPUT_DEVICE  = 0       # USB audio adapter (AB13X) — set to None for system default
+
 AI_MODEL       = "qwen2.5:1.5b"  # or "gemma2:2b" — see README for details
 
 PIPER_VOICE    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "piper-voices", "en_US-ryan-high.onnx")
@@ -725,7 +727,7 @@ def main():
         sender = CommandSender(port, BAUD_RATE)
 
     # --- Soundboard ---
-    soundboard = SoundBoard(output_device=args.output_device)
+    soundboard = SoundBoard(output_device=args.output_device if args.output_device is not None else OUTPUT_DEVICE)
 
     # --- Whisper ---
     processor = SpeechProcessor(model_size=args.model)

@@ -6,7 +6,9 @@ This directory contains code and configuration for the Jetson Orin Nano Super, r
 
 | Component | Model | Notes |
 |---|---|---|
-| SBC | NVIDIA Jetson Orin Nano Super | Main compute platform |
+| SBC | NVIDIA Jetson Orin Nano Super | Main compute platform — powered via LM2596 buck converter at 12V |
+| Power supply | Parkside 20V Li-ion battery | Direct connection not safe (up to 21V fully charged, Jetson max 20V) |
+| Voltage regulator | LM2596-based DC-DC buck converter | Steps down battery voltage to 12V, max 3A output |
 | Stereo camera | Waveshare IMX219-83 | Depth perception |
 | Microphone | USB omnidirectional (AliExpress) | See specs below |
 | USB audio adapter | USB to 3.5mm dongle | Provides analog audio out (Jetson dev kit has no onboard jack) |
@@ -28,6 +30,89 @@ This directory contains code and configuration for the Jetson Orin Nano Super, r
 |---|---|
 | `depth_zones.py` | Stereo depth perception — sends zone disparity values to PSoC5 over USB serial |
 | `robot_dog_ai.py` | Voice command recognition + context-aware soundboard — listens for commands, sends them to PSoC5, reacts with sounds based on what it hears |
+
+### robot_dog_ai.py — Usage
+
+```bash
+python3 robot_dog_ai.py                       # auto-detect serial, default mic
+python3 robot_dog_ai.py --no-serial           # test without PSoC connected
+python3 robot_dog_ai.py --list-devices        # list audio device indices and exit
+python3 robot_dog_ai.py --audio-device 2      # use mic at device index 2
+python3 robot_dog_ai.py --output-device 3     # use speaker at device index 3
+python3 robot_dog_ai.py --serial /dev/ttyACM1 # override serial port
+python3 robot_dog_ai.py --model tiny          # faster but less accurate Whisper model
+python3 robot_dog_ai.py --ai                  # enable Ollama AI classifier
+python3 robot_dog_ai.py --threshold 0.02      # adjust mic sensitivity
+```
+
+### robot_dog_ai.py — Workflow
+
+```
+Microphone (USB)
+      │
+      ▼
+VAD (RMS threshold)          ← filters silence, only captures speech
+      │
+      ▼
+faster-whisper (Whisper STT) ← transcribes speech segment to text
+      │
+      ▼
+┌──────────────────────────────────────────────────┐
+│               Intent classification              │
+│                                                  │
+│  1. Mode switch?   → switch_mode()               │
+│     e.g. "go funny mode"                         │
+│                                                  │
+│  2. Robot command? → detect_command()            │
+│     e.g. "sit", "dance", "spin"                  │
+│     (always keyword-based, reliable)             │
+│                                                  │
+│  3. AI classifier  → Ollama LLM  (--ai flag)     │
+│     or keyword fallback → classify_input()       │
+│     → category: negative / compliment /          │
+│                 meme / command / confused        │
+└──────────────────────────────────────────────────┘
+      │                          │
+      ▼                          ▼
+Serial → PSoC5              SoundBoard
+CMD:SIT\n                        │
+                     ┌───────────┴───────────┐
+                     ▼                       ▼
+              WAV playback             Piper TTS
+          sounds/<mode>/<cat>/      (neural voice)
+          (pygame.mixer)            or espeak fallback
+```
+
+**Response types** (decided per-reaction by the AI, or by mode rules):
+
+| Type | Behavior |
+|---|---|
+| `audio` | Play WAV sound effect only |
+| `speech` | Speak TTS response only |
+| `both` | Play WAV, then speak TTS response |
+
+**Sound categories:**
+
+| Category | Trigger |
+|---|---|
+| `negative` | Insults or mean comments directed at the robot |
+| `compliment` | Praise or kind words |
+| `meme` | Brainrot / internet meme keywords; also used as generic reaction in non-default modes |
+| `command` | Acknowledgment after a movement command is sent |
+| `confused` | Input not understood |
+| `idle` | Periodic unprompted sounds (every 45s by default) |
+
+### robot_dog_ai.py — Modes
+
+Switch mode by saying `"go <name> mode"` (e.g. `"go funny mode"`, `"go default mode"`).
+
+| Mode | Generic reactions use | Talking |
+|---|---|---|
+| `default` | `sounds/idle/` | Yes (TTS enabled) |
+| `funny` | `sounds/meme/` | Yes (TTS enabled) |
+| `uncensored` | `sounds/uncensored/meme/` → `sounds/meme/` | No (audio only by default) |
+
+Custom modes can be added by creating a `sounds/<name>/` directory with category subdirectories inside.
 
 ## Dependencies
 
@@ -54,10 +139,12 @@ sudo apt install -y python3-pip espeak espeak-data libespeak1 portaudio19-dev li
 | `pyserial` | `pip3 install pyserial` | USB serial to PSoC5 |
 | `pyttsx3` | `pip3 install pyttsx3` | TTS fallback via espeak |
 | `pygame` | `pip3 install pygame` | WAV soundboard playback (optional) |
+| `piper-tts` | `pip3 install piper-tts` | Neural TTS (preferred over pyttsx3, optional) |
+| `ollama` | `pip3 install ollama` | LLM integration, required for `--ai` mode (optional) |
 
 Install all at once:
 ```bash
-pip3 install faster-whisper sounddevice numpy pyserial pyttsx3 pygame
+pip3 install faster-whisper sounddevice numpy pyserial pyttsx3 pygame piper-tts ollama
 ```
 
 > **Note on `faster-whisper` on Jetson/ARM64:** if the install fails, try:
