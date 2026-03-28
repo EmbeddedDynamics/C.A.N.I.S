@@ -325,6 +325,10 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 
 #pagebreak()
 
+#Persona_content
+
+#pagebreak()
+
 
 = Definitie
 
@@ -468,7 +472,7 @@ Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigensc
 
 = Prototype
 
-
+#Prototype_content
 
 #pagebreak()
 

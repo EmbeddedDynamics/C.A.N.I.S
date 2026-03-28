@@ -25,3 +25,5 @@
 #let Blokdiagram = include "../Subdocumenten/Blokdiagram (Hoog over).typ"
 #let stakeholder_content = include "../Subdocumenten/Stakeholder_analyse.typ"
 #let Samenwerkingscontract = include "../Subdocumenten/Samenwerkingscontract.typ"
+#let Prototype_content = include "../Subdocumenten/Prototype.typ"
+#let Persona_content = include "../Subdocumenten/Persona_Onderzoek.typ"
