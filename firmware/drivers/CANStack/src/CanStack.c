@@ -30,7 +30,7 @@
 
 /* Project headers */
 #if defined(CANSTACK_PLATFORM_PSOC5)
-    #include "CanStackPSoC5.h"
+    #include "platform/CanStackPSoC5.h"
 #endif
 
 //========================================================
