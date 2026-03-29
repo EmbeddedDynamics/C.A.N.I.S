@@ -1,8 +1,24 @@
-/* ========================================
- * main.c
- * Simple implementation - Arduino style
- * ======================================== */
+//Project Title: Complentary Filter
+//Author: Daan Smit
+//Date: 25-3-2026
+//Version: 1
 
+ /* Description:
+ * Creating a Complentary Filter with a MPU6050 using sensor fusion between the accelerometer and gyroscope
+ * 
+ *
+ * Hardware:
+ *   - PSoC5
+ *   - MPU6050
+ *
+ * Software/Libraries:
+ *  - math.h
+ *
+ * Credits/References:
+ *
+ * License:
+ *   - non
+ */
 //========================================================================================================================//
 //                                                 Includes                                                               //                                                                 
 //========================================================================================================================//
