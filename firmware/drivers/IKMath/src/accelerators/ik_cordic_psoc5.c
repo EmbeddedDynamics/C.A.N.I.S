@@ -97,9 +97,17 @@
 
 static ik_cordic_h g_cordic = NULL;
 
+static const ik_cordic_caps_t psoc5_cordic_caps = {
+    .linear_ops = IK_CORDIC_OP_CAP_NONE,
+    .circular_ops = IK_CORDIC_OP_CAP_ROTATION | IK_CORDIC_OP_CAP_VECTORING,
+    .hyperbolic_ops = IK_CORDIC_OP_CAP_NONE
+};
+
 //========================================================
 //      PSoC5 CORDIC Callbacks
 //========================================================
+
+static volatile uint32_t finish_errs;
 
 #if (IK_PSOC5_CONST(DONE_CALLBACK))
             
@@ -107,8 +115,13 @@ void CORDIC_done_callback(void)
 {
     if (g_cordic == NULL)
         return;
-
-    ik_cordic_finish_head(g_cordic);
+    
+    uint8 interrupt_state = CyEnterCriticalSection();
+  
+    if (ik_cordic_finish_head(g_cordic) != IK_RESULT_OK)
+        finish_errs++;
+    
+    CyExitCriticalSection( interrupt_state );
 }
         
 #endif
@@ -133,10 +146,13 @@ ik_result_t ik_cordic_psoc5_submit(ik_ctx_t ctx, ik_cordic_job_t* job)
     {
         // Wait until the X-fifo is empty
         ik_result_t res;
-        CORDIC_WAIT_UNTIL_EMPTY(5000u, res);
+        CORDIC_WAIT_UNTIL_EMPTY(500u, res);
 
         // Write mode field (clear then set)
         IK_PSOC5_CONST(CONTROL_REG) = (IK_PSOC5_CONST(CONTROL_REG) & (uint8_t)~ IK_PSOC5_CONST(OPER_MODE)) | desired_mode;
+        CORDIC_COMMIT_CTRL;
+        
+        CyDelayUs(1);
         //CORDIC_CONTROL_REG |= CORDIC_OPER_MODE;
         
         while ((IK_PSOC5_CONST(CONTROL_REG) & IK_PSOC5_CONST(OPER_MODE)) != desired_mode) {}
@@ -163,8 +179,8 @@ ik_result_t ik_cordic_psoc5_submit(ik_ctx_t ctx, ik_cordic_job_t* job)
     /* X/Y packing (FIX: handle both branches) */
     if (h->config.use_gain_compensation)
     {
-        v.x = IK_QFMT_TO_I16(xin * CORDIC_KC_INVERSE, job->fmt); //h->config.vec_fmt);
-        v.y = IK_QFMT_TO_I16(yin * CORDIC_KC_INVERSE, job->fmt); //h->config.vec_fmt);
+        v.x = IK_QFMT_TO_I16(xin * IK_PSOC5_CONST(KC_INVERSE), job->fmt); //h->config.vec_fmt);
+        v.y = IK_QFMT_TO_I16(yin * IK_PSOC5_CONST(KC_INVERSE), job->fmt); //h->config.vec_fmt);
     }
     else
     {
@@ -174,11 +190,15 @@ ik_result_t ik_cordic_psoc5_submit(ik_ctx_t ctx, ik_cordic_job_t* job)
 
     float zin = (desired_mode == IK_PSOC5_CONST(ROTATING_OPER)) ? IK_VEC3_Z(job->input) : 0.0f;
     v.z = IK_RAD_TO_BAMS16_F(zin);
-
+    
+    job->state = CORDIC_JOB_STATE_QUEUED;
+    
     if (IK_PSOC5_CALL(queue_data, &v) != CYRET_SUCCESS)
         return IK_ERROR_CORDIC_HARDWARE_ERROR;
     
-    job->state = CORDIC_JOB_STATE_QUEUED;
+    //uint8_t intr = CyEnterCriticalSection();
+
+    //CyExitCriticalSection(intr);
 
     return IK_RESULT_OK;
 };
@@ -195,10 +215,11 @@ ik_result_t ik_cordic_psoc5_acquire(
     if (!ctx || !job)
         return IK_ERROR_NULL_POINTER;
 
-    uint8_t used_mode = IK_PSOC5_CONST(CONTROL_REG) & IK_PSOC5_CONST(OPER_MODE);
+    //uint8_t used_mode = IK_PSOC5_CONST(CONTROL_REG) & IK_PSOC5_CONST(OPER_MODE);
     
     IK_PSOC5_TYPE(vector_t) vector;
-    if (CORDIC_get_data(&vector) != CYRET_SUCCESS)
+    
+    if (IK_PSOC5_CALL(get_data, &vector) != CYRET_SUCCESS)
         return IK_ERROR_CORDIC_HARDWARE_ERROR;
     
     ik_cordic_h h = (ik_cordic_h) ctx;
@@ -266,6 +287,15 @@ ik_result_t ik_cordic_create_backend(
 
     return IK_RESULT_OK;
 };
+
+//========================================================
+//      CORDIC General API's
+//========================================================
+
+ik_cordic_caps_t ik_get_cordic_caps(void)
+{
+    return psoc5_cordic_caps;
+}
 
 //========================================================
 //      End of File
