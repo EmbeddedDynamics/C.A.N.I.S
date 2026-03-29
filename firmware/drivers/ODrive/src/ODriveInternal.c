@@ -21,11 +21,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
+#include <stdio.h>
 #include <string.h>
     
 /* Project headers */
 #include "ODriveInternal.h"
+
+#include "USBUART.h"
 
 #define COPY_CAN_PAYLOAD(dst, dst_size)            \
     do {                                           \
@@ -90,6 +92,9 @@ odrive_result_t odrive_start_driver(odrive_driver driver)
         return ODRIVE_RESULT_OK;  // Already running
 
     driver->state = DRIVER_STATE_RUNNING;
+    
+    driver->sys_tick = 0u;
+    driver->log_tick = 0u;
 
     return ODRIVE_RESULT_OK;
 }
@@ -120,6 +125,8 @@ odrive_result_t odrive_poll_driver(odrive_driver driver,
 
     if (driver->state != DRIVER_STATE_RUNNING)
         return ODRIVE_ERROR_NOT_INITIALIZED;
+    
+    driver->sys_tick = current_time;
 
     uint8_t rx_count = driver->config.backend->ops.can_ops.get_rx_count(
         driver->config.backend->hw_ctx
@@ -278,6 +285,43 @@ odrive_result_t odrive_poll_driver(odrive_driver driver,
             }
         }
     }
+    
+    /*if (driver->sys_tick >= (driver->log_tick + 200))
+    {
+        driver->log_tick = driver->sys_tick;
+        
+        char buffer[128] = {0u};
+        char format[] = "%.8f,%.8f,";
+        
+        uint16_t written = 0u;
+        
+        for (uint8_t slot = 0; slot < ODRIVE_MAX_AXES; slot++)
+        {
+            odrive_node_id node_id = driver->node_map[slot];
+            if (node_id == ODRIVE_NODE_ID_UNUSED)
+                continue;  // Skip unused slots
+
+            odrive_axis axis = &driver->axes[node_id];
+            
+            int n = snprintf(buffer + written, 128 - written ,format, axis->bus.current, axis->bus.voltage);
+            if (n < 0) break;
+            if ((size_t)n >= sizeof(buffer) - written) { written = sizeof(buffer) - 1; break; }
+            written += (uint16_t)n;
+            
+            //USBUART_1_PutString(buffer);*/
+        /*}
+        
+        // replace trailing comma with newline if we wrote something
+        if (written > 0 && buffer[written - 1] == ',') {
+            buffer[written - 1] = '\n';
+        } else if (written < sizeof(buffer) - 1) {
+            buffer[written++] = '\n';
+        }
+
+        buffer[written] = '\0';
+        
+        USBUART_PutString(buffer);
+    }*/
 
     return ODRIVE_RESULT_OK;
 }
