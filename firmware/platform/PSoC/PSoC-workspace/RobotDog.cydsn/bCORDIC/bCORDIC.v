@@ -43,6 +43,7 @@
 //`#end` -- edit above this line, do not edit this line
 module bCORDIC (
 	input   clock,
+    input   bus_clock,
 	input   en,
 	input   rst,
    
@@ -68,6 +69,7 @@ module bCORDIC (
     wire cordic_enable;
     wire cordic_reset;
     wire cordic_operation;
+    wire cordic_done_clr;
     
     wire core_init;
     wire hold_reset = 0;
@@ -155,12 +157,14 @@ module bCORDIC (
     
     wire op_clock;
 
-    cy_psoc3_udb_clock_enable_v1_0 #(.sync_mode(`TRUE)) ClkSync
+    /*cy_psoc3_udb_clock_enable_v1_0 #(.sync_mode(`TRUE)) ClkSync
     (
         .clock_in(clock),
         .enable(1'b1),
         .clock_out(op_clock)
-    );
+    );*/
+    
+    assign op_clock = clock;
 
     //======================================================================================================
     //      ATAN LOOKUP TABLE (16-bit BAMS format)
@@ -198,7 +202,50 @@ module bCORDIC (
     //      CONTROL REGISTER
     //======================================================================================================
     
-    wire [7:0] ctrl;
+    localparam  MDIO_CTRL_ENABLE = 2'h00;
+    localparam  MDIO_CTRL_RESET  = 2'h01;
+    localparam  MDIO_CTRL_OPERATION  = 2'h02;
+    localparam  MDIO_CTRL_DONE_CLR = 2'h03;
+    
+    // BUS domain control reg
+    wire [7:0] ctrl_bus;
+    cy_psoc3_control #(.cy_force_order(`TRUE)) CtlReg (
+      .control(ctrl_bus),
+      .clock(bus_clock)
+    );
+    
+    reg [7:0] ctrl_cordic;
+
+    wire start_tgl_bus = ctrl_bus[7];
+    
+    reg st_s1, st_s2, st_seen;
+    reg done_clr_seen;
+    
+    wire start_edge = st_s2 ^ st_seen;
+    always @(posedge op_clock or posedge rst) begin
+      if (rst) begin
+        st_s1 <= 1'b0; st_s2 <= 1'b0; st_seen <= 1'b0;
+        done_clr_seen <= 1'b0;
+      end else begin
+        st_s1 <= start_tgl_bus;
+        st_s2 <= st_s1;
+        st_seen <= st_s2;
+        done_clr_seen <= ctrl_cordic[MDIO_CTRL_DONE_CLR];
+      end
+    end 
+
+    // Latch full control word only on start_edge
+    always @(posedge op_clock or posedge rst) begin
+      if (rst) ctrl_cordic <= 8'h00;
+      else if (start_edge) ctrl_cordic <= ctrl_bus; // snapshot
+    end
+
+    assign cordic_enable    = ctrl_cordic[MDIO_CTRL_ENABLE] & en;
+    assign cordic_reset     = ctrl_cordic[MDIO_CTRL_RESET]  | rst;
+    assign cordic_operation = ctrl_cordic[MDIO_CTRL_OPERATION];
+    assign cordic_done_clr  = ctrl_cordic[MDIO_CTRL_DONE_CLR] ^ done_clr_seen;
+    
+    /*wire [7:0] ctrl;
     localparam  MDIO_CTRL_ENABLE = 2'h00;
     localparam  MDIO_CTRL_RESET  = 2'h01;
     localparam  MDIO_CTRL_OPERATION  = 2'h02;
@@ -207,11 +254,35 @@ module bCORDIC (
     (
         .control(ctrl),
         .clock(op_clock)
-    );        
+    );
     
-    assign cordic_enable = ctrl[MDIO_CTRL_ENABLE] & en;
-    assign cordic_reset = ctrl[MDIO_CTRL_RESET] | rst;
-    assign cordic_operation = ctrl[MDIO_CTRL_OPERATION];
+    // sync into op_clock domain
+    reg [7:0] ctrl_s1, ctrl_s2;
+
+    always @(posedge op_clock or posedge rst) begin
+        if (rst) begin
+            ctrl_s1 <= 8'h00;
+            ctrl_s2 <= 8'h00;
+        end else begin
+            ctrl_s1 <= ctrl;
+            ctrl_s2 <= ctrl_s1;
+        end
+    end
+
+    assign cordic_enable    = ctrl_s2[MDIO_CTRL_ENABLE] & en;
+    assign cordic_reset     = ctrl_s2[MDIO_CTRL_RESET]  | rst;
+    assign cordic_operation = ctrl_s2[MDIO_CTRL_OPERATION];*/
+    
+    reg fifo_empty_q, out_fifo_full_q;
+    always @(posedge op_clock or posedge cordic_reset) begin
+      if (cordic_reset) begin
+        fifo_empty_q <= 1'b1;
+        out_fifo_full_q <= 1'b0;
+      end else begin
+        fifo_empty_q <=  |{F0_x_lsb_empty, F0_x_msb_empty, F0_y_lsb_empty, F0_y_msb_empty, F0_z_lsb_empty, F0_z_msb_empty};
+        out_fifo_full_q <= &{F1_x_lsb_full, F1_x_msb_full, F1_z_lsb_full, F1_z_msb_full};
+      end
+    end
     
     //======================================================================================================
     //      STATUS REGISTER
@@ -267,7 +338,7 @@ module bCORDIC (
     always @(posedge op_clock) begin
       if (cordic_reset) cordic_done <= 1'b0;
       else if (state == S_DONE) cordic_done <= 1'b1;
-      else if (state == S_IDLE) cordic_done <= 1'b0; // auto-clear for now
+      else if (cordic_done_clr) cordic_done <= 1'b0; // auto-clear for now
     end
     
     //======================================================================================================
@@ -291,7 +362,7 @@ module bCORDIC (
                     dp_op    <= OP_IDLE;
                     load_out <= 1'b0;
 
-                    if (!fifo_empty & !out_fifo_full) begin
+                    if (!fifo_empty_q & !out_fifo_full_q & !cordic_done) begin
                         iter   <= 4'd0;
                         state  <= S_LOAD_A0;
                     end
