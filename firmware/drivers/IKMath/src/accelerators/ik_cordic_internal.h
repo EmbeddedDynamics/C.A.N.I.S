@@ -61,11 +61,13 @@ typedef ik_flags8_t ik_cordic_job_state_t;
 //========================================================
 
 typedef struct {
-    ik_cordic_job_state_t state;
+    volatile ik_cordic_job_state_t state;
 
     ik_cordic_coord_t coord;
 
     ik_cordic_operation_t operation;
+    
+    uint32_t tick;
     
     float z_offset_rad;
     
@@ -116,11 +118,9 @@ struct ik_cordic_T {
 
 #endif
 
-    uint8_t job_count;
-
-    uint8_t job_in_idx;
-
-    uint8_t job_out_idx;
+    volatile uint8_t job_count;
+    volatile uint8_t job_in_idx;
+    volatile uint8_t job_out_idx; 
 
     ik_cordic_submit_fn_t submit;
 

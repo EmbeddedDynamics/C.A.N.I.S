@@ -100,12 +100,16 @@ ik_result_t ik_cordic_vec_sync(
     IK_CHECK(ik_cordic_queue_job(handle, job_id));
 
     // timeout guard (choose a limit appropriate for your system)
-    uint32_t guard = 100000u;
-
-    while (job->state != CORDIC_JOB_STATE_FINISHED) {
+    uint32_t t0 = handle->config.tick();
+    while (job->state != CORDIC_JOB_STATE_FINISHED &&
+       (uint32_t)(handle->config.tick() - t0) < 40u) {
         IK_CHECK(ik_cordic_poll(handle));
-        if (guard-- == 0u)
-            return IK_ERROR_CORDIC_TIMEOUT;
+    }
+    
+    if (job->state != CORDIC_JOB_STATE_FINISHED) {
+        IK_CHECK(ik_cordic_release_job(handle, job_id));
+        
+        return IK_ERROR_CORDIC_TIMEOUT;
     }
 
     // FIFO enforcement should be inside release_job():
@@ -196,8 +200,10 @@ ik_result_t ik_cordic_poll(ik_cordic_h handle)
     for (uint8_t i = 0; i < handle->job_size; i++)
     {
         ik_cordic_job_t* job = &handle->jobs[i];
+        
         if (job->state == CORDIC_JOB_STATE_WAITING) {
             handle->submit(handle, job);
+            break;
         }
     }
     
@@ -253,11 +259,13 @@ ik_result_t ik_cordic_release_job(ik_cordic_h h, uint8_t job_id)
     //if (job_id != h->job_out_idx) 
     //    return IK_ERROR_CORDIC_OUT_OF_ORDER_RELEASE;
 
-    if (h->jobs[job_id].state != CORDIC_JOB_STATE_FINISHED)
-        return IK_ERROR_CORDIC_INVALID_JOB_STATE;
+    // if (h->jobs[job_id].state != CORDIC_JOB_STATE_FINISHED)
+    //     return IK_ERROR_CORDIC_INVALID_JOB_STATE;
 
     ik_cordic_job_t* job = &h->jobs[job_id];
-    IK_CHECK(h->acquire(h->hw_ctx, job));
+    
+    if (job->state == CORDIC_JOB_STATE_FINISHED)
+        IK_CHECK(h->acquire(h->hw_ctx, job));
     
     h->jobs[job_id].state = CORDIC_JOB_STATE_FREE;
     //h->job_out_idx = (uint8_t)((h->job_out_idx + 1u) & (h->job_size - 1u));

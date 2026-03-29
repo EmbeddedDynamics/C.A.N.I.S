@@ -63,19 +63,6 @@ typedef enum {
 } ik_numerical_solver_t;
 
 //========================================================
-//      IK Model Feature flags
-//========================================================
-
-enum {
-    IK_FEATURE_NONE               = 0u,
-    IK_FEATURE_FORWARD_KINEMATICS = IK_BIT(0),
-    IK_FEATURE_JOINT_LIMITS       = IK_BIT(1),
-    IK_FEATURE_ANALYTIC_IK        = IK_BIT(2),
-    IK_FEATURE_NUMERIC_IK         = IK_BIT(3),
-};
-typedef ik_flags32_t ik_feature_flags_t;
-
-//========================================================
 //      IK Model Capabilities
 //========================================================
 
@@ -86,15 +73,16 @@ typedef ik_flags32_t ik_feature_flags_t;
  * flags are used to to what the model can be capable of.
  */
 enum {
-    IK_CAP_NONE             = 0u,
-    IK_CAP_FK               = IK_BIT(0),
-    IK_CAP_JACOBIAN         = IK_BIT(1),
-    IK_CAP_ANALYTIC_IK      = IK_BIT(2),
-    IK_CAP_LIMITS           = IK_BIT(3),
-    IK_CAP_CORDIC_SUPPORT   = IK_BIT(4),
-    IK_CAP_DMA_SUPPORT      = IK_BIT(5),
+    IK_FEAT_NONE             = 0u,
+    IK_FEAT_FK               = IK_BIT(0),
+    IK_FEAT_JACOBIAN         = IK_BIT(1),
+    IK_FEAT_ANALYTIC_IK      = IK_BIT(2),
+    IK_FEAT_LIMITS           = IK_BIT(3),
+    IK_FEAT_CORDIC_SUPPORT   = IK_BIT(4),
+    IK_FEAT_DMA_SUPPORT      = IK_BIT(5),
+    IK_FEAT_BATCHING_SUPPORT = IK_BIT(6),
 };
-typedef ik_flags32_t ik_cap_flags_t;
+typedef ik_flags32_t ik_feature_flags_t;
 
 //========================================================
 //      IK Model Configuration
@@ -105,17 +93,10 @@ typedef struct {
 
     /* Numeric solver selection and parameters (used when numeric is selected). */
     ik_numerical_solver_t numerical_solver;
+
     uint16_t max_iters;
 
-    /* Tolerances (units depend on your pose conventions; typically meters/radians). */
-    //ik_real_t tol_pos;
-    //ik_real_t tol_rot;
-
-    /* Optional numeric tuning (e.g. DLS lambda, step limiting). */
-    //ik_real_t damping;          /* used by DLS; 0 = disable */
-    //ik_real_t step_limit;       /* 0 = disable */
-
-#if defined(IK_ENABLE_HEAP)
+#if !defined(IK_ENABLE_HEAP)
 
     /**
      * @brief Buffer used for no-heap builds
@@ -131,7 +112,20 @@ typedef struct {
 
     // Model feature flags
     ik_feature_flags_t features;
+
+    ik_tick_fn_t tick;
+
+    /**
+     * @brief Extra configuration context for the model
+     */
+    ik_ctx_t ctx;
 } ik_model_cfg_t;
+
+//========================================================
+//      IK Model Handle
+//========================================================
+
+IK_HANDLE(ik_model); 
 
 //========================================================
 //      End of File

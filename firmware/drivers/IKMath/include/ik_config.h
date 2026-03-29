@@ -88,7 +88,7 @@
 
 #define IK_MATH_MAJOR 0
 #define IK_MATH_MINOR 1
-#define IK_MATH_PATCH 1
+#define IK_MATH_PATCH 2
 
 /* ABI version for the vtable contract. Increment ONLY when breaking binary/API compatibility. */
 #define IK_ABI_VERSION     (1u)
