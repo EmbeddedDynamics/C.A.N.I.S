@@ -364,23 +364,18 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 //========================================================
     
 /**
- * @brief BAMS angle sign bit.
- */
-#define `$INSTANCE_NAME`_ANGLE_SIGN     (0x80000u)
-
-/**
- * @brief Accumulative cosine term for circular vectoring mode.
- *
- * @details This term approximates the accumulative gain (Kc) for circular
- * vectoring mode with n = 16 iterations.
- */
+* @brief Accumulative cosine term for circular vectoring mode.
+*
+* @details This term approximates the accumulative gain (Kc) for circular
+* vectoring mode with n = 16 iterations.
+*/
 #define `$INSTANCE_NAME`_KC             (1.64676f)
 
 /**
- * @brief Inverse accumulative cosine term.
- *
- * @details This is approximately 1 / `$INSTANCE_NAME`_KC for n = 16 iterations.
- */
+* @brief Inverse accumulative cosine term.
+*
+* @details This is approximately 1 / `$INSTANCE_NAME`_KC for n = 16 iterations.
+*/
 #define `$INSTANCE_NAME`_KC_INVERSE     (0.60725f)
 
 /* Status register constants */
@@ -393,6 +388,7 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 #define `$INSTANCE_NAME`_STS_DONE           (0x40u)
 #define `$INSTANCE_NAME`_STS_OUT_FIFO_FULL  (0x80u)
     
+// Output FIFO's filled status bits
 #define `$INSTANCE_NAME`_STS_PENDING    (0x30u)
 
 /* Interrupt constants */
@@ -402,15 +398,24 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 #define `$INSTANCE_NAME`_EN             (0x01u)
 #define `$INSTANCE_NAME`_RST            (0x02u)
 #define `$INSTANCE_NAME`_OPER_MODE      (0x04u)
+#define `$INSTANCE_NAME`_CLR_DONE       (0x08u)
+#define `$INSTANCE_NAME`_CONTROL_MASK   (0x7Fu)
+    
+/* Toggle the commit bit to the CORDIC.
+   This mechanism must be used to prevent CDC with different clocks
+*/
+#define `$INSTANCE_NAME`_COMMIT_BM      (0x80u)
+
+#define `$INSTANCE_NAME`_WRITE_CTRL(val) {
+    `$INSTANCE_NAME`_CONTROL_REG |= (val & `$INSTANCE_NAME`_CONTROL_MASK) \
+}
+#define `$INSTANCE_NAME`_COMMIT_CTRL { \
+    `$INSTANCE_NAME`_CONTROL_REG ^= `$INSTANCE_NAME`_COMMIT_BM; \
+    CyDelayUs(1u); \
+}
     
 #define `$INSTANCE_NAME`_ROTATING_OPER  (0x00)
 #define `$INSTANCE_NAME`_VECTORING_OPER (`$INSTANCE_NAME`_OPER_MODE)
-
-//========================================================
-//      Optimized KC-Embedded Conversions (16 iterations)
-//========================================================
-    
-#define `$INSTANCE_NAME`_BAMS_SCALE      (182.044444f)   // 65536/360
 
 //========================================================
 //      CORDIC Structures
