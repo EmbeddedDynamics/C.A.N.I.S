@@ -406,7 +406,7 @@ typedef uint32_t `$INSTANCE_NAME`_job_id_t;
 */
 #define `$INSTANCE_NAME`_COMMIT_BM      (0x80u)
 
-#define `$INSTANCE_NAME`_WRITE_CTRL(val) {
+#define `$INSTANCE_NAME`_WRITE_CTRL(val) {\
     `$INSTANCE_NAME`_CONTROL_REG |= (val & `$INSTANCE_NAME`_CONTROL_MASK) \
 }
 #define `$INSTANCE_NAME`_COMMIT_CTRL { \
