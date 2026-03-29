@@ -29,31 +29,27 @@
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//DEFINES
-#define PSOC_ADDR 0x20
-#define SDA_PIN 8
-#define SCL_PIN 9
+//DEFINES 
+//#define SDA_PIN 8
+//#define SCL_PIN 9
+
+#define SDA_PIN 21
+#define SCL_PIN 22
+
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-typedef struct {
-    // Joysticks (8 bytes)
-    int16_t leftX;       // Left stick X-as (-511 tot +512)
-    int16_t leftY;       // Left stick Y-as (-511 tot +512)
-    int16_t rightX;      // Right stick X-as (-511 tot +512)
-    int16_t rightY;      // Right stick Y-as (-511 tot +512)
-    
-    // Triggers (4 bytes)
-    int16_t brake;       // Left trigger L2 (0-1023)
-    int16_t throttle;    // Right trigger R2 (0-1023)
-    
-    // Buttons & D-pad (3 bytes)
-    uint16_t buttons;    // Button bitmask (A/B/X/Y/LB/RB/start/select/etc)
-    uint8_t dpad;        // D-pad (up/down/left/right als bits)
-    
-    // Extra (1 byte)
-    uint8_t misc;
-
+typedef struct __attribute__((packed)) {
+    int16_t  leftX;
+    int16_t  leftY;
+    int16_t  rightX;
+    int16_t  rightY;
+    int16_t  brake;
+    int16_t  throttle;
+    uint16_t buttons;
+    uint8_t  dpad;
+    uint8_t  misc;
 } RobotControllerData;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,12 +58,9 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 RobotControllerData DataController;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// I2C sendfunction
 
-void sendControllerI2C() {
-    Wire.beginTransmission(PSOC_ADDR);
+void onI2CRequest() {
     Wire.write((uint8_t*)&DataController, sizeof(DataController));
-    Wire.endTransmission();
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,9 +148,6 @@ void processGamepad(ControllerPtr ctl) {
     DataController.dpad    = ctl->dpad();
     DataController.misc    = ctl->miscButtons();
 
-    // Verstuur naar PSoC
-    sendControllerI2C();
-
     // Debug print
     dumpGamepad(ctl);
 }
@@ -184,8 +174,8 @@ void processControllers() {
 void setup() {
     Serial.begin(115200);
 
-    Wire.begin(SDA_PIN, SCL_PIN);
-    Wire.setClock(400000);
+    Wire.begin(0x20, SDA_PIN, SCL_PIN);
+    Wire.onRequest(onI2CRequest);
     
 
     Serial.printf("Firmware: %s\n", BP32.firmwareVersion());
@@ -195,7 +185,7 @@ void setup() {
     // Setup the Bluepad32 callbacks
     BP32.setup(&onConnectedController, &onDisconnectedController);
 
-    // "forgetBluetoothKeys()" should be called when the user performs
+    // "forgetBluetoothKeys()" should be called when the user
     // a "device factory reset", or similar.
     // Calling "forgetBluetoothKeys" in setup() just as an example.
     // Forgetting Bluetooth keys prevents "paired" gamepads to reconnect.
