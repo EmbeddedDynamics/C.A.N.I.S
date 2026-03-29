@@ -27,8 +27,7 @@
 //      CORDIC Globals
 //========================================================
 
-static `$INSTANCE_NAME`_job_id_t queue_cntr;
-static `$INSTANCE_NAME`_job_id_t output_cntr;
+static uint8_t init_var = 0u;
 
 //========================================================
 //      CORDIC Enable functions
@@ -36,18 +35,31 @@ static `$INSTANCE_NAME`_job_id_t output_cntr;
 
 void `$INSTANCE_NAME`_enable(void) `=ReentrantKeil($INSTANCE_NAME . "_enable")`
 {
+    uint8 interrupt_state = CyEnterCriticalSection();
+  
+    // Stage the enable bit high
     `$INSTANCE_NAME`_CONTROL_REG |= `$INSTANCE_NAME`_EN;
+    
+    `$INSTANCE_NAME`_COMMIT_CTRL;
+    
+    CyExitCriticalSection( interrupt_state );
 }
 
 void `$INSTANCE_NAME`_disable(void) `=ReentrantKeil($INSTANCE_NAME . "_disable")`
 {
+    uint8 interrupt_state = CyEnterCriticalSection();
+  
     // Mask the control register with the intervese value of the enable bit mask
     `$INSTANCE_NAME`_CONTROL_REG &= ((uint8_t) ~`$INSTANCE_NAME`_EN);
+    
+    `$INSTANCE_NAME`_COMMIT_CTRL;
+    
+    CyExitCriticalSection( interrupt_state );
 }
 
 bool `$INSTANCE_NAME`_has_pending(void) `=ReentrantKeil($INSTANCE_NAME . "_has_pending")`
 {
-    return (`$INSTANCE_NAME`_STATUS_REG & `$INSTANCE_NAME`_STS_PENDING);
+    return (`$INSTANCE_NAME`_STATUS_REG & `$INSTANCE_NAME`_STS_PENDING) == `$INSTANCE_NAME`_STS_PENDING;
 }
 
 //========================================================
@@ -56,6 +68,9 @@ bool `$INSTANCE_NAME`_has_pending(void) `=ReentrantKeil($INSTANCE_NAME . "_has_p
 
 void `$INSTANCE_NAME`_init(void) `=ReentrantKeil($INSTANCE_NAME . "_init")`
 {
+    if (init_var)
+        return;
+    
     /* For all we know the interrupt is active. */
     `$INSTANCE_NAME`_ISR_Disable();
 
@@ -65,18 +80,23 @@ void `$INSTANCE_NAME`_init(void) `=ReentrantKeil($INSTANCE_NAME . "_init")`
     /* Set the priority. */
     `$INSTANCE_NAME`_ISR_SetPriority((uint8)`$INSTANCE_NAME`_ISR_INTC_PRIOR_NUMBER);
     
-    //queue_cntr = 0u;
-    //output_cntr = 0u;
+    init_var = 1u;
 }
 
 uint8_t `$INSTANCE_NAME`_start(void) `=ReentrantKeil($INSTANCE_NAME . "_start")`
 {
+    if (!init_var)
+        `$INSTANCE_NAME`_init();
+    
     uint16_t timeout = 1000u;
     
     /* Disable the CORDIC engine temporarly */
     `$INSTANCE_NAME`_disable();
     
     `$INSTANCE_NAME`_CONTROL_REG |= `$INSTANCE_NAME`_RST;
+    
+    `$INSTANCE_NAME`_COMMIT_CTRL;
+    
     while((timeout--) && (timeout != 0u) && !(`$INSTANCE_NAME`_CONTROL_REG & `$INSTANCE_NAME`_RST))
     {
         CyDelayUs(1);
@@ -85,6 +105,9 @@ uint8_t `$INSTANCE_NAME`_start(void) `=ReentrantKeil($INSTANCE_NAME . "_start")`
     
     timeout = 1000u;
     `$INSTANCE_NAME`_CONTROL_REG &= ((uint8_t) ~`$INSTANCE_NAME`_RST);
+    
+    `$INSTANCE_NAME`_COMMIT_CTRL;
+    
     while((timeout--) && (timeout != 0u) && (`$INSTANCE_NAME`_CONTROL_REG & `$INSTANCE_NAME`_RST))
     {
         CyDelayUs(1);
@@ -103,6 +126,9 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`
     `$INSTANCE_NAME`_disable();
     
     `$INSTANCE_NAME`_CONTROL_REG |= `$INSTANCE_NAME`_RST;
+    
+    `$INSTANCE_NAME`_COMMIT_CTRL;
+    
     while((timeout--) && !(`$INSTANCE_NAME`_STATUS_REG & `$INSTANCE_NAME`_RST))
     {
         CyDelayUs(1);
@@ -111,6 +137,9 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`
     
     timeout = 1000u;
     `$INSTANCE_NAME`_CONTROL_REG &= ((uint8_t) ~`$INSTANCE_NAME`_RST);
+    
+    `$INSTANCE_NAME`_COMMIT_CTRL;
+    
     while((timeout--) && (`$INSTANCE_NAME`_STATUS_REG & `$INSTANCE_NAME`_RST))
     {
         CyDelayUs(1);
@@ -120,7 +149,6 @@ uint8_t `$INSTANCE_NAME`_stop(void) `=ReentrantKeil($INSTANCE_NAME . "_stop")`
     return CYRET_SUCCESS;
 }
 
-//`$INSTANCE_NAME`_job_id_t* job_id
 uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=ReentrantKeil($INSTANCE_NAME . "_get_data")`
 {
     if (!result)
@@ -133,24 +161,21 @@ uint8_t `$INSTANCE_NAME`_get_data(`$INSTANCE_NAME`_vector_t* result) `=Reentrant
     result->y = `$INSTANCE_NAME`_Y_ENGINE_F1_REG;
     result->z = `$INSTANCE_NAME`_Z_ENGINE_F1_REG;
     
-    //*job_id = output_cntr;
-    //output_cntr++;
-    
     return CYRET_SUCCESS;
 }
 
-//, `$INSTANCE_NAME`_job_id_t* job_id
 uint8_t `$INSTANCE_NAME`_queue_data(const `$INSTANCE_NAME`_vector_t* vector) `=ReentrantKeil($INSTANCE_NAME . "_queue_data")`
 {
     if (!vector)
         return CYRET_BAD_PARAM;
 
+    uint8 interrupt_state = CyEnterCriticalSection();
+    
     CY_SET_REG16(`$INSTANCE_NAME`_X_ENGINE_F0_PTR, (int16_t) vector->x); //(int16_t) 0xF000);
     CY_SET_REG16(`$INSTANCE_NAME`_Y_ENGINE_F0_PTR, (int16_t) vector->y);
     CY_SET_REG16(`$INSTANCE_NAME`_Z_ENGINE_F0_PTR, (int16_t) vector->z);
     
-    //*job_id = queue_cntr;
-    //queue_cntr++;
+    CyExitCriticalSection( interrupt_state );
     
     return CYRET_SUCCESS;
 }
@@ -173,15 +198,19 @@ void  `$INSTANCE_NAME`_disable_interrupt(void) `=ReentrantKeil($INSTANCE_NAME . 
     `$INSTANCE_NAME`_ISR_Disable();
 }
 
-CY_ISR(CORDIC_ISR_Handler)
+CY_ISR(`$INSTANCE_NAME`_ISR_Handler)
 {   
-    uint8_t int_status = CORDIC_INT_STATUS_REG;
+    uint8_t int_status = `$INSTANCE_NAME`_INT_STATUS_REG;
     
     if (int_status & `$INSTANCE_NAME`_STS_DONE)
     {
         #if defined(`$INSTANCE_NAME`_DONE_CALLBACK)
             
         `$INSTANCE_NAME`_done_callback();
+        
+        `$INSTANCE_NAME`_CONTROL_REG ^= `$INSTANCE_NAME`_CLR_DONE;
+    
+        `$INSTANCE_NAME`_COMMIT_CTRL;
         
         #endif
     }
