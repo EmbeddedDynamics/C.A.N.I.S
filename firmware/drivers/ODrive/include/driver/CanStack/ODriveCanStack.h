@@ -156,6 +156,13 @@ ODRIVE_STATIC_ASSERT(offsetof(odrive_can_message_t, data) ==
         /* ACR: full pattern with specified node */ \
         (acr) = ((uint32_t)canonical_id << 21u) | ((uint32_t)0x3FFFFu << 3u); \
     } while(0)
+    
+    #define CANSTACK_ODRIVE_REGISTER_FILTER(canstack, cmd, mb) { \
+        uint32_t amr, acr; \
+        CANSTACK_ODRIVE_FILTER_CMD(cmd, amr, acr); \
+        canstack_mb_filter_t rx_filter = {.amr = amr, .acr = acr}; \
+        CANSTACK_ERROR_CHECK(canstack_configure_rx_filter(canstack, mb, &rx_filter)); \
+    }
 
 #endif 
 
@@ -172,9 +179,24 @@ typedef struct {
 //      CanStack Methods
 //========================================================
 
-odrive_result_t odrive_create_canstack_backend(const odrive_canstack_config_t *cfg,
-                                               odrive_backend* backend);
+/**
+ * @brief Create a new ODrive backend using a CanStack driver
+ * 
+ * @param[in] cfg - Configuration for the CANStack backend
+ * @param[out] backend - Pointer to output ODrive backend handle
+ * 
+ * @retval ODRIVE_RESULT_OK - Backend created successfully
+ * @retval ODRIVE_ERROR_NULL_POINTER - If @p cfg or @p backend is
+ * 
+ */
+odrive_result_t odrive_create_canstack_backend(
+    const odrive_canstack_config_t *cfg,
+    odrive_backend* backend);
 
+odrive_result_t odrive_canstack_filter_cmd(
+    odrive_backend backend,
+    odrive_can_command_t cmd_id);
+  
 //========================================================
 //      End of File
 //========================================================

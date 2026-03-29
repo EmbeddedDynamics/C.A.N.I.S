@@ -184,6 +184,9 @@ struct odrive_driver_T {
     odrive_node_id node_map[ODRIVE_AXES_ID_RANGE]; 
 
     odrive_driver_state_t state;
+    
+    uint32_t sys_tick;
+    uint32_t log_tick;
 };  
 
 //========================================================
