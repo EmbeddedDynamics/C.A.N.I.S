@@ -214,12 +214,13 @@ typedef struct {
 #if (IK_CORDIC_SUPPORT_FPU == 0)    
     ik_fixed_fmt_t vec_fmt; // x,y format for vectoring inputs
     ik_fixed_fmt_t unit_fmt; // scalars in [-1,1] (asin/acos input)
-    //ik_fixed_fmt_t ang_fmt; // angle output format (atan2, asin, acos)
 #endif
 
     uint16_t timeout;
     
     uint8_t iterations;
+    
+    ik_tick_fn_t tick;
 
 } ik_cordic_cfg_t;
 
@@ -240,14 +241,33 @@ IK_HANDLE(ik_cordic);
  * @param[inout] handle - CORDIC backend handle
  * 
  * @retval IK_RESULT_OK : CORDIC backend created
- * 
+ * @retval IK_ERROR_NULL_POINTER : Either @p cfg or @p handle is a NULL pointer
  */
 ik_result_t ik_cordic_create_backend(
     ik_cordic_cfg_t* cfg,
     ik_cordic_h* handle
 );
 
+//========================================================
+//      CORDIC General API's
+//========================================================
+
+/**
+ * @brief Start the CORDIC backend
+ * 
+ * @param[in] handle - CORDIC backend handle
+ * 
+ * @retval IK_RESULT_OK : CORDIC backend started
+ * @retval IK_ERROR_NULL_POINTER : The @p handle is a NULL pointer
+ */
 ik_result_t ik_cordic_start(ik_cordic_h handle);
+
+/**
+ * @brief Get the CORDIC capabilities
+ * 
+ * @return ik_cordic_caps_t - The capabilities of the CORDIC backend
+ */
+ik_cordic_caps_t ik_get_cordic_caps(void);
 
 //========================================================
 //      CORDIC Synchronus API's
@@ -261,6 +281,7 @@ ik_result_t ik_cordic_start(ik_cordic_h handle);
  *
  * @param[in]  handle   CORDIC instance handle.
  * @param[in]  coord    Coordinate system to use.
+ * @param[in]  format   Fixed-point format of the inputs.
  * @param[in]  vec_in   Input vector.
  * @param[out] out      Pointer to the output vector.
  *
@@ -283,6 +304,7 @@ ik_result_t ik_cordic_vec_sync(
  *
  * @param[in]  handle   CORDIC instance handle.
  * @param[in]  coord    Coordinate system to use.
+ * @param[in]  format   Fixed-point format of the inputs.
  * @param[in]  theta    Rotation angle (radians unless otherwise specified).
  * @param[out] out      Pointer to the output vector.
  *
@@ -323,10 +345,10 @@ ik_result_t ik_cordic_poll(ik_cordic_h handle);
  * @note The CORDIC won't take ownership of @p job the structure must stay valid
  * in it's lifespan of the CORDIC statemachine.
  */
-// ik_result_t ik_cordic_submit_job(
-//     ik_cordic_h handle,
-//     ik_cordic_job_t* job
-// );
+//ik_result_t ik_cordic_submit_job(
+//    ik_cordic_h handle,
+//    ik_cordic_job_t* job
+//);
 
 //========================================================
 //      End of File

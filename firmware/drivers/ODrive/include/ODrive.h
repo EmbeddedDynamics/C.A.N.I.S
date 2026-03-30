@@ -287,16 +287,6 @@ odrive_result_t odrive_register_axis(odrive_driver driver,
 odrive_result_t odrive_reboot_all(odrive_driver driver, 
                                   odrive_reboot_action_t action);
 
-
-/**
- * @brief Calculate the used power by the motors
- * 
- * @param[in] driver - The ODrive handle
- * 
- * @return float - Power in Watts
- */
-float odrive_max_power(odrive_driver driver);
-
 //========================================================
 //      End of File
 //========================================================

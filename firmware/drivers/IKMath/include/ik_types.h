@@ -32,6 +32,8 @@
 #include "ik_results.h"
 #include "ik_config.h"
 
+typedef uint32_t (*ik_tick_fn_t) (void);
+
 //========================================================
 //      IK Custom Types
 //========================================================
