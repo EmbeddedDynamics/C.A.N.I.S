@@ -3,9 +3,10 @@
 // of data used throughout the document
 // ============================================
 
-// Imports
-#import "@local/academic-tools:0.1.10": *
-#import "../template.typ": *
+// Import Templates for Acronyms
+#import "@local/academic-tools:0.1.19": *
+#import "../template.typ": * // can be removed when academic-tools covers this.
+
 
 // ============================================
 // General Data
@@ -47,7 +48,7 @@
 
 #let startdate = "11-11-2025"
 #let enddate  = "03-04-2026"
-#let month = "November"
+#let month = "April"
 #let year = "2026"
 
 #let supervisor = "Rieno Moedt"
@@ -59,9 +60,9 @@
 // ============================================
 
 #let acronyms_db = (
-  "PvE":   ("Pakket van Eisen", "Pakket van Eisen"),
-  "MVP":   ("Minimum Viable Product", "Minimum Viable Product"),
-  "PvA":   ("Plan van Aanpak", "Plan van Aanpak"),
+  "PvE":   ("Pakket van Eisen"),
+  "MVP":   ("Minimum Viable Product"),
+  "PvA":   ("Plan van Aanpak"),
   "IK":    ("Inverse Kinematics"),
   "PSoC5": ("Programmable System on a Chip 5"),
   "RTOS":  ("Real-Time Operating System"),
@@ -72,7 +73,7 @@
   "DOF":   ("Degree of Freedom"),
   "FOC":   ("Field-Orientaded Control"),
   "PoC":   ("Proof of Concept"),
-  "LiDAR": "Light Detection And Ranging",
+  "LiDAR": ("Light Detection And Ranging"),
   "ESD":   ("ElectroStatic Discharge"),
   "GPS":   ("Global Positioning System"),
   "ELRS":  ("Express Long Range System"),
@@ -80,6 +81,13 @@
   "HDL":   ("Hardware Description Language"),
   "IMU":   ("Inertial Measurement Uni"),
   "PID":   ("Proportional–Integral–Derivative"),
+  "CAN":   ("Controller Area Network"),
+  "FSM":   ("Finite State Machine"),
+  "I2C":   ("Inter-Integrated Circuit"),
+  "UART":  ("Universal Asynchronous Receiver-Transmitter"),
+  "CORDIC": ("COordinate Rotational Digital Computer"),
+  "BLDC": ("Brushless Direct Current"),
+  "SVPWM": ("Space Vector Pulse Width Modulation")
 )
 
 
@@ -129,8 +137,8 @@
   location: [#city, #country],
   supervisor: [#supervisor],
   tutor: [#tutor],
-  logo: "/Documenten/Assets/NHL_logo.jpg",
-  project-logo: "/Documenten/Assets/NHL_logo.jpg",
+  logo: "/Documenten/Assets/Logo/NHL_logo.jpg",
+  project-logo: "/Documenten/Assets/Logo/NHL_logo.jpg",
   //month: [#month],
   //year: [#year],
   date: datetime.today(),

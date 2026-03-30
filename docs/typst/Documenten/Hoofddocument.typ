@@ -11,6 +11,7 @@
 #set text(costs: (hyphenation: 500%))
 #show link: underline
 
+#set math.equation(numbering: "(1)")
 
 // ============================================
 // Front Page en general definitions
@@ -20,7 +21,7 @@
   title: [Embedded Systems Project\ Robothond],
   authors: students.map(s => s.name).join(", "),
   degree: [#degree],
-  degree-goal: [Onderzoek voor het realiseren van een Robothond],
+  degree-goal: [Het realiseren van een Robothond],
   department: [#department],
   university: [#university, #universitydesc],
   program-type: [#program],
@@ -28,8 +29,8 @@
   location: [#city, #country],
   supervisor: [#supervisor],
   tutor: [#tutor],
-  logo: "/Documenten/Assets/NHL_logo.jpg",
-  project-logo: "/Documenten/Assets/ED_Logo.png",
+  logo: "/Documenten/Assets/Logo/NHL_logo.jpg",
+  project-logo: "/Documenten/Assets/Logo/ED_Logo.png",
   //month: [#month],
   //year: [#year],
   date: datetime.today(),
@@ -67,6 +68,12 @@
       description: [MoSCoW Herschreven op basis van het bijgewerkte PvE. Een aantal punten die buiten de scope vallen toegevoegd. Versies van het document ingevuld.],
       date: "2026-01-08",
       level: 3,
+    ),
+    version(
+      committee: [R. van der Veen\ D. Smit\ P. Huijser],
+      description: [MoSCoW Herschreven op basis van het bijgewerkte PvE. Een aantal punten die buiten de scope vallen toegevoegd. Versies van het document ingevuld.],
+      date: "2026-03-30",
+      level: 1,
     ),
   )
 )
@@ -325,7 +332,7 @@ Voor snelle en effectieve besluitvorming hanteren wij het volgende proces:
 
 #pagebreak()
 
-#Persona_content
+#persona_body()
 
 #pagebreak()
 
@@ -472,14 +479,78 @@ Voor het project moet er een #acr("MVP") gedefineerd worden. Dit zijn de eigensc
 
 = Prototype
 
-#Prototype_content
+#prototype_body()
 
 #pagebreak()
 
 
 = Test
 
+In de testfase zijn de kritieke subsystemen van de Robothond individueel getest op functionaliteit en mechanische robuustheid. Vanwege tijdsdruk zijn niet alle testcases uit de testplannen formeel gedocumenteerd. De uitgevoerde tests richten zich op de onderdelen die direct bepalend zijn voor de demo-gereedheid: de capstan-aandrijving en de robotpoot.
 
+== Capstan-aandrijving
+
+De capstan-aandrijving is getest op slijtage en mechanische betrouwbaarheid. De aandrijving heeft tien uur continu gedraaid onder nominale belasting. Na afloop is de trommel, de DM-20 kabel en de bevestiging visueel geïnspecteerd.
+
+#figure(
+  table(
+    columns: (auto, auto, auto),
+    stroke: 0.7pt,
+    inset: 6pt,
+    align: (left, left, left),
+    [*Test*], [*Bevinding*], [*Resultaat*],
+    [Slijtage-inspectie na 10 uur],   [Geen zichtbare slijtage op trommel, kabel of bevestiging],  [*Geslaagd*],
+    [Krachtoverbrenging zonder slip],  [Geen slip geconstateerd bij nominale belasting],              [*Geslaagd*],
+    [Geluid en vibratie],             [Aandrijving werkt geruisloos; geen storende vibraties],       [*Geslaagd*],
+  ),
+  caption: [Testresultaten capstan-aandrijving.]
+)
+
+== Robotpoot
+
+De robotpoot is getest op bewegingsbereik, positioneringsnauwkeurigheid en mechanische integriteit. Tijdens de eerste testrun werd een probleem geconstateerd waarbij de kabel bij een hoek van circa 80° mechanisch aanliep, waardoor het volledige bewegingsbereik niet gehaald werd (TC-201). Dit is opgelost door de kabelspanning opnieuw in te stellen. Na deze correctie functioneert de poot correct over het volledige bereik.
+
+#figure(
+  table(
+    columns: (auto, auto, auto),
+    stroke: 0.7pt,
+    inset: 6pt,
+    align: (left, left, left),
+    [*Test*], [*Bevinding*], [*Resultaat*],
+    [Bewegingsbereik joints (TC-201)],  [Na hertensionering: volledig bereik gehaald zonder aanlopen],  [*Geslaagd*],
+    [Positioneringsnauwkeurigheid],     [Poot bereikt doelposities nauwkeurig; weinig interne wrijving],  [*Geslaagd*],
+    [Slijtage-inspectie],               [Geen zichtbare slijtage na meerdere uren cyclisch bewegen],      [*Geslaagd*],
+    [E-Stop functionaliteit (TC-801)],  [Actuatie stopt direct; systeem gaat naar veilige toestand],     [*Geslaagd*],
+  ),
+  caption: [Testresultaten robotpoot.]
+)
+
+== Firmware en communicatie
+
+Naast de mechanische tests zijn de firmware-componenten afzonderlijk gevalideerd. FreeRTOS draait stabiel op beide PSoC5 microcontrollers. De ODrive C-driver is end-to-end getest met de fysieke motoren in position control modus en communiceert correct via de CanStack-bibliotheek over de CAN-bus. De Jetson AI-pipeline met spraakherkenning en diepteperceptie is operationeel getest op de hardware.
+
+#pagebreak()
+
+
+= Conclusie
+
+Het project Embedded Systems 2025–2026 had als doel het realiseren van een functionele robothond als demonstratieplatform voor open dagen van NHL Stenden. Het team heeft gedurende het traject een volledig embedded systeem ontwikkeld dat bestaat uit mechanica, elektronica, firmware en AI-perceptie.
+
+Op het moment van oplevering zijn alle kernsubsystemen individueel getest en functioneel bevonden. De capstan-aandrijving en het robotpootmechanisme werken naar behoren; de firmware draait stabiel op beide PSoC5-controllers; de ODrive motorcontrollers communiceren correct over de CAN-bus; en de Jetson verwerkt spraakcommando's en dieptedata. De demonstratie is gepland op 2 april 2026 en het systeem is hier klaar voor.
+
+Het project is daarmee grotendeels geslaagd. Niet alles wat oorspronkelijk beoogd was is volledig afgerond, de volledige integratie van alle twaalf motoren tegelijk en de aansturing van de schoudermodules zijn nog niet volledig getest als geheel. Maar de technische basis is solide en de realisatie ligt ver boven wat bij aanvang realistisch leek voor een project van deze omvang.
+
+== Aanbevelingen
+
+Op basis van de ervaringen tijdens dit project worden de volgende aanbevelingen meegegeven voor verdere ontwikkeling:
+
+- *Beter vastleggen van testresultaten*: Tests zijn uitgevoerd maar niet altijd formeel gedocumenteerd. In een volgend project verdient het de voorkeur om testresultaten direct vast te leggen, zodat bevindingen en aanpassingen traceerbaar blijven.
+
+- *Scopebewaking*: Het project heeft veel tijd gevraagd. De technische ambities waren hoog en de complexiteit van de integratie werd onderschat. Een striktere scopedefinitie in een vroeg stadium, met heldere prioriteiten per fase, had tijdsverlies kunnen voorkomen.
+
+- *Integratie eerder starten*: De subsystemen zijn afzonderlijk goed getest, maar de volledige systeemintegratie (alle motoren, schoudermodules, Jetson-PSoC communicatie) is laat in het project gestart. Eerder integreren geeft meer ruimte voor het oplossen van onverwachte problemen.
+
+- *Diepteperceptie verder verbeteren*: De stereovisiepipeline werkt, maar de nauwkeurigheid van de dieptemeting kan verder worden verbeterd, met name voor texturarme vloeroppervlakken. Een finetuned Nederlandstalig Whisper-model kan bovendien de spraakherkenningsnauwkeurigheid verhogen.
 
 #pagebreak()
 

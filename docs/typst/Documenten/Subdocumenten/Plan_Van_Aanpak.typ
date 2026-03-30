@@ -1,18 +1,24 @@
-#import "@preview/gantty:0.5.1": gantt
+// ============================================
+// PvA document
+// ============================================
 
+// Import Packages
+#import "@preview/gantty:0.5.1": gantt
 #import "@local/academic-tools:0.1.10": *
 
-#import "/Documenten/template.typ": *
+// Import general data and project planning
 #import "/Documenten/Config/GeneralConfig.typ": *
 #import "/Documenten/Config/Planning.typ": *
 
+// Set parameters for the document
 #set text(lang: "Nl")
-
 #show link: underline
 
-//---------------------------------------
-// Front page and general definitions
-//---------------------------------------
+
+// ============================================
+// Front Page en general definitions
+// ============================================
+
 #show: academic-frontpage.with(
   title: [Embedded Systems Project\ Plan van Aanpak],
   authors: students.map(s => s.name).join(", "),
@@ -25,7 +31,7 @@
   location: [#city, #country],
   supervisor: [#supervisor],
   tutor: [#tutor],
-  logo: "/Documenten/Assets/NHL_logo.jpg",
+  logo: "/Documenten/Assets/Logo/NHL_logo.jpg",
   project-logo: none,
   //month: [#month],
   //year: [#year],
@@ -67,9 +73,9 @@
   )
 ) 
 
-//---------------------------------------
+// ============================================
 // Document contents
-//---------------------------------------
+// ============================================
 #let PvA_body() = [
 = Project achtergrond
 

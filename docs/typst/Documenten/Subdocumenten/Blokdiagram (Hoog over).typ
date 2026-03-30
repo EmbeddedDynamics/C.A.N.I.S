@@ -1,12 +1,21 @@
-// General data import
+// ============================================
+// Import list for the main document
+// ============================================
+
+// Import general data
 #import "../Config/GeneralConfig.typ": *
 
-// Functions import
+// Import Packages
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 #import "@preview/oxifmt:0.2.1": strfmt
 #import "@preview/tablem:0.1.0": tablem
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/gantty:0.5.1": gantt
+
+
+// ============================================
+// Document contents
+// ============================================
 
 #let bent-edge(from, to, ..args) = {
   let midpoint = (from, 50%, to)

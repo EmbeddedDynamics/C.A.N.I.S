@@ -1,11 +1,20 @@
-#set text(lang: "Nl")
+// ============================================
+// Reaction to the peerreview done on our 
+// documentation by Paasei-automaat
+// ============================================
 
+// Import Template and general data
+#import "@local/academic-tools:0.1.10": *
+#import "/Documenten/Config/GeneralConfig.typ": *
+
+// Set parameters for the document
+#set text(lang: "Nl")
 #show link: underline
 
-#import "@local/academic-tools:0.1.10": *
 
-#import "/Documenten/template.typ": *
-#import "/Documenten/Config/config.typ": *
+// ============================================
+// Front Page en general definitions
+// ============================================
 
 #show: academic-frontpage.with(
   title: [Embedded Systems Project\ Peer Reviews],
@@ -37,6 +46,11 @@
     ),
   )
 )
+
+
+// ============================================
+// Document contents
+// ============================================
 
 = Pakket van Eisen
 

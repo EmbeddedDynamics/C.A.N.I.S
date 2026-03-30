@@ -3,10 +3,10 @@
 // and complete database
 // ============================================
 
-// General data used
+// Import general data
 #import "GeneralConfig.typ": *
 
-// Used to make charts
+// Import Packages
 #import "@preview/cetz:0.4.2"
 #import "@preview/cetz-plot:0.1.3": chart
 
@@ -84,8 +84,8 @@
     #grid(
       columns: (1fr, 1fr),
       gutter: 12pt,
-      align(center)[#text(size: 11pt, fill: gray)[Laag — Matig]],
-      align(center)[#text(size: 11pt, fill: gray)[Hoog — Zeer hoog]]
+      align(center)[#text(size: 11pt, fill: gray)[Laag - Matig]],
+      align(center)[#text(size: 11pt, fill: gray)[Hoog - Zeer hoog]]
     )
 
     #text(size: 12pt, fill: gray, weight: "bold")[Invloed Stakeholder ]

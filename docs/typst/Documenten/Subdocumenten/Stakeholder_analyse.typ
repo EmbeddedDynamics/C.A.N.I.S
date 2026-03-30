@@ -1,5 +1,15 @@
+// ============================================
+// Stakeholder analysis
+// ============================================
+
+// Import general data and stakeholder specific data
 #import "../Config/GeneralConfig.typ": *
 #import "../Config/StakeholderConfig.typ": *
+
+
+// ============================================
+// Document contents
+// ============================================
 
 == Stakeholder analyse
 

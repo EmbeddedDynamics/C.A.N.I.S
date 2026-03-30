@@ -1,6 +1,6 @@
 // ============================================
 // Complete config for the planning of 
-// the project
+// the project with helper functions
 // ============================================
 
 // Import Templates for Acronyms

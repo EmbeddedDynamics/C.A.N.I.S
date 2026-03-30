@@ -1,7 +1,19 @@
 // ============================================
-// Persona Onderzoek — Empathize fase
+// Persona Onderzoek - Empathize fase
 // ============================================
 
+// General data import
+#import "../Config/GeneralConfig.typ": *
+
+// Set parameters for the document
+#set text(lang: "Nl")
+#show link: underline
+
+
+// ============================================
+// Document contents
+// ============================================
+#let persona_body() = [
 == Persona Onderzoek
 
 In de Empathize-fase van het Design Thinking proces stellen we een persona op. Een persona is een fictief maar realistisch persoon die een representatief deel van de doelgroep beschrijft. In dit geval is de doelgroep: een bezoeker van de open dag van NHL Stenden die kennismaakt met de Robothond als demonstrator.
@@ -10,7 +22,7 @@ Door ons in te leven in deze persoon kunnen we beter begrijpen wat de Robothond 
 
 #v(1em)
 
-// ─── Persona kaart ────────────────────────────────────────────────────────────
+// Persona card
 #block(
   stroke: 0.7pt,
   radius: 4pt,
@@ -24,7 +36,7 @@ Door ons in te leven in deze persoon kunnen we beter begrijpen wat de Robothond 
       // Avatar placeholder
       rect(width: 90pt, height: 90pt, radius: 4pt, fill: luma(220))[
         #align(center + horizon)[
-          #text(size: 10pt, fill: luma(100))[Foto\ Lars]
+          #image("../Assets/Persona/lars.png")
         ]
       ],
 
@@ -36,12 +48,12 @@ Door ons in te leven in deze persoon kunnen we beter begrijpen wat de Robothond 
           columns: (80pt, 1fr),
           gutter: 4pt,
           [*Leeftijd*], [17 jaar],
-          [*Opleiding*], [5e jaar VWO — profiel N&T],
+          [*Opleiding*], [5e jaar VWO - profiel N&T],
           [*Woonplaats*], [Drachten],
           [*Interesses*], [Elektronica, gaming, 3D-printen, robotica],
         )
         #v(6pt)
-        #emph["Ik wil weten wat ik écht ga doen op een technische opleiding — niet alleen theorie, maar ook zelf iets maken dat werkt."]
+        #emph["Ik wil weten wat ik echt ga doen op een technische opleiding. Niet alleen theorie, maar ook zelf iets maken dat werkt."]
       ]
     )
   ]
@@ -54,6 +66,8 @@ Door ons in te leven in deze persoon kunnen we beter begrijpen wat de Robothond 
 Lars is een 17-jarige VWO-scholier uit Drachten met het profiel Natuur & Techniek. Hij knutselt thuis graag met Arduino's en heeft al een paar kleine projectjes gebouwd: een temperatuurmeter en een LED-strip-controller. Hij wil later iets doen met elektronica of software, maar twijfelt nog tussen een hbo-opleiding en een universitaire studie.
 
 Zijn ouders zijn praktisch ingesteld en vinden het belangrijk dat Lars een opleiding kiest waarbij hij ook daadwerkelijk iets leert maken. Lars zelf wil begrijpen wat hij de komende vier jaar gaat doen voordat hij een keuze maakt.
+
+#pagebreak()
 
 === Doelen
 
@@ -75,14 +89,16 @@ Lars bezoekt de open dag van NHL Stenden samen met zijn moeder. Hij heeft online
 
 Lars stelt vragen over de code, de motoren en hoe moeilijk het was om alles te laten samenwerken. De studenten laten kort de code zien op een laptop. Zijn moeder vraagt wat je ermee kunt doen na de studie.
 
+#pagebreak()
+
 === Gebruikersscenario
 
-+ Lars staat voor de Robothond-stand en ziet de robot bewegen.
++ Lars loopt door de school en ziet de robot bewegen.
 + Een student vraagt of Lars iets wil zeggen tegen de robot.
-+ Lars zegt "goed zo" — de robot speelt een enthousiast geluid af en kwispelt (indien aanwezig).
-+ De student legt uit: de Jetson herkent spraak met Whisper, de PSoC verwerkt het commando.
-+ Lars vraagt hoe de poten werken. De student tekent snel de diamant-kinematica op een whiteboard.
-+ Lars ziet dat de studenten dit zelf hebben gebouwd en geprogrammeerd — van PCB tot firmware.
++ Lars zegt "hallo" - de robot speelt een grappig geluid af en praat terug.
++ De student legt uit: de Jetson herkent spraak en speelt geluidjes, de #acr("PSoC5") verwerkt het commando.
++ Lars vraagt hoe de poten werken. De student tekent snel de diamant-kinematica op een tablet.
++ Lars ziet dat de studenten dit zelf hebben gebouwd en geprogrammeerd. Van PCB tot firmware.
 + Na 10 minuten vraagt Lars of er een brochure is over de opleiding Elektrotechniek.
 
 === Inzichten voor het ontwerp
@@ -93,8 +109,9 @@ Lars stelt vragen over de code, de motoren en hoe moeilijk het was om alles te l
   inset: 8pt,
   [*Wat Lars verwacht*], [*Vertaling naar de Robothond*],
   [Iets aanraken of besturen], [Spraakbesturing en live beweging zichtbaar houden],
-  [Begrijpelijke uitleg zonder jargon], [Demonstratie is intuïtief: input → zichtbare actie],
+  [Begrijpelijke uitleg zonder onzin], [Demonstratie is intuïtief:\ input met zichtbare actie],
   [Zien dat studenten het zelf hebben gemaakt], [Laat de PCB's en code zien als onderdeel van de demo],
   [Iets dat indruk maakt op zijn moeder], [Betrouwbare werking, nette afwerking van het systeem],
-  [Niet saai — liefst interactief], [Soundboard reageert op trefwoorden, maakt de robot persoonlijk],
+  [Niet saai / het liefst interactief], [De hond reageert d.m.v. AI. Met woorden of een geluidje.\ Dat maakt de robot persoonlijk],
 )
+]

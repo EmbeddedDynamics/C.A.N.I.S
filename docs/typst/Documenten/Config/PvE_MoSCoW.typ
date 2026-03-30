@@ -6,7 +6,6 @@
 #import "GeneralConfig.typ": *
 
 
-
 // ============================================
 // Helper functions
 // ============================================
@@ -238,7 +237,7 @@
   (
     ID: "mvp.1",
     label: none,
-    title: [MVP — Beweging],
+    title: [MVP - Beweging],
     items: (
       (text: [De robothond zal minimaal 1 meter naar voren kunnen lopen, met een afwijking van ± 1 meter.], prio: p1),
       (text: [De robothond zal minimaal 1 meter naar achteren kunnen lopen, met een afwijking van ± 1 meter.], prio: p1),
@@ -248,7 +247,7 @@
   (
     ID: "mvp.2",
     label: none,
-    title: [MVP — Embedded firmware],
+    title: [MVP - Embedded firmware],
     items: (
       (text: [De robothond heeft minimaal een eigen geschreven library voor een communicatie protocol.], prio: p1),
       (text: [De robothond beschikt over een #acr("RTOS") die werkt op de #acr("PSoC5") architectuur.], prio: p1),
@@ -257,7 +256,7 @@
   (
     ID: "mvp.3",
     label: none,
-    title: [MVP — Draadloze communicatie en regelsystemen],
+    title: [MVP - Draadloze communicatie en regelsystemen],
     items: (
       (text: [De robothond zal bestuurbaar zijn via een Bluetooth Xbox of Playstation controller.], prio: p1),
     ),
@@ -265,7 +264,7 @@
   (
     ID: "mvp.4",
     label: none,
-    title: [MVP — Mechanica],
+    title: [MVP - Mechanica],
     items: (
       (text: [De robothond bevat een betrouwbaar en getest mechanisch frame volgens testplan.], prio: p1),
     ),

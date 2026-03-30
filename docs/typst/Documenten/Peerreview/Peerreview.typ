@@ -1,11 +1,20 @@
-#set text(lang: "Nl")
+// ============================================
+// Peerreview of the PvE and block-diagram of
+// the Paasei-automaat project
+// ============================================
 
+// Import Template and general data
+#import "@local/academic-tools:0.1.10": *
+#import "/Documenten/Config/GeneralConfig.typ": *
+
+// Set parameters for the document
+#set text(lang: "Nl")
 #show link: underline
 
-#import "@local/academic-tools:0.1.10": *
 
-#import "/Documenten/template.typ": *
-#import "/Documenten/Config/config.typ": *
+// ============================================
+// Front Page en general definitions
+// ============================================
 
 #show: academic-frontpage.with(
   title: [Embedded Systems Project\ Peer Reviews],
@@ -19,8 +28,8 @@
   location: [#city, #country],
   supervisor: [#supervisor],
   tutor: [#tutor],
-  logo: "/Documenten/Assets/NHL_logo.jpg",
-  project-logo: "/Documenten/Assets/ED_Logo.png",
+  logo: "/Documenten/Assets/Logo/NHL_logo.jpg",
+  project-logo: "/Documenten/Assets/Logo/ED_Logo.png",
   //month: [#month],
   //year: [#year],
   date: datetime.today(),
@@ -38,8 +47,12 @@
   )
 )
 
-= Pakket van Eisen
 
+// ============================================
+// Document contents
+// ============================================
+
+= Pakket van Eisen
 
 == Sterke Punten
 Het Pakket van Eisen heeft een duidelijke structuur en is voorzien van een inhoudsopgave. Het voorblad ziet er netjes uit. Het PvE is goed georganiseerd met vier duidelijke categorieën zoals de Mechanische werking, Codering & AI-functionaliteit, Behuizing & Fysieke Omkasting en Algemene projecteisen. Dit maakt het makkelijk voor ons en de stakeholders om de specifieke eisen te vinden. De ID's van de eisen zijn erg handig zodat je weet welke eis bij welke categorie hoort. De indeling van de eisen in een blok samen met het ID en prioriteit ziet er professioneel uit. 
@@ -66,6 +79,8 @@ Het Pakket van Eisen heeft een duidelijke structuur en is voorzien van een inhou
 + Eis ALG-001 is al eerder vernoemd in CODE-003 en is dus redundant. 
 
 + Eis ALG-003 is ongelukkig geformuleerd. Verschillende interpretaties zijn mogelijk voor wezenlijke onderdelen.
+
+#pagebreak()
 
 = Blokdiagram (hoog over)
 

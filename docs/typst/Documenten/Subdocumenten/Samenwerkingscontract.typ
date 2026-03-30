@@ -1,7 +1,12 @@
-#import "../Config/GeneralConfig.typ": *
+// ============================================
+// Contract
+// ============================================
 
 // THIS DOCUMENT DOESNT FUNCTION AS A STANDALONE
-// DOCUMENT AND CAN ONLY BE USED IN "Hoofddocument.typ
+// DOCUMENT AND CAN ONLY BE USED IN Hoofddocument.typ
+
+// Import general data
+#import "../Config/GeneralConfig.typ": *
 
 == Samenwerkingscontract
 
