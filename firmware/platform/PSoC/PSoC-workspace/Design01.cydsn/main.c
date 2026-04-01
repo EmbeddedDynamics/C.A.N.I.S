@@ -1,26 +1,14 @@
-//Project Title: Express ELRS PWM Receiver with FreeRTOS
-//Author: Daan Smit
-//Date: 25-3-2026
-//Version: 2
-
- /* Description:
- * PWM receiver using FreeRTOS for task management
- * 
- * Hardware:
- *   - PSoC5
- *   - ER5A
- *   - Radiomaster pocket
+/* ========================================
  *
- * Software/Libraries:
- *  - stdbool.h
- *  - FreeRTOS
+ * Copyright YOUR COMPANY, THE YEAR
+ * All Rights Reserved
+ * UNPUBLISHED, LICENSED SOFTWARE.
  *
- * Credits/References:
+ * CONFIDENTIAL AND PROPRIETARY INFORMATION
+ * WHICH IS THE PROPERTY OF your company.
  *
- * License:
- *   - non
- */
-
+ * ========================================
+*/
 
 //========================================================================================================================//
 //                                                 Includes                                                               //                                                                 
@@ -28,20 +16,14 @@
 
 #include "project.h"
 #include <stdbool.h>
-#include <string.h>
-#include "FreeRTOS.h"
-#include "task.h"
-#include "timers.h"
-
-
-extern void RTOS_Start(void);
 
 //========================================================================================================================//
-//                                                 Global Variables                                                       //                                                                 
+//                                                 Global Variabeles                                                      //                                                                 
 //========================================================================================================================//
 
 volatile uint32_t CH1_rising_edge_start = 0, CH2_rising_edge_start = 0, CH3_rising_edge_start = 0, CH4_rising_edge_start = 0;
 volatile uint32_t CH1_Width = 0, CH2_Width = 0, CH3_Width = 0, CH4_Width = 0;
+
 
 CY_ISR_PROTO(CH1_Handler);
 CY_ISR_PROTO(CH2_Handler);
@@ -50,95 +32,54 @@ CY_ISR_PROTO(CH4_Handler);
 
 uint32_t getRadioPWM(int CH_Number);
 
-
-
-
-//========================================================================================================================//
-//                                                 Function Prototypes                                                    //                                                                 
-//========================================================================================================================//
-
-void PWM_Read_Task(void *arg);
-
-
-//========================================================================================================================//
-//                                                 MAIN                                                                   //                                                                 
-//========================================================================================================================//
-
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
     
-    // Start all timers (do this BEFORE starting RTOS)
+    //=========================================================================================================================//
+    //                                                 Setup                                                                   //                                                                 
+    //======================================================================================================================== //
+    
+    
+    CyGlobalIntEnable; /* Enable global interrupts. */
+
+    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    
+    // Start all timers
     CH1_Timer_Start();
     CH2_Timer_Start();
     CH3_Timer_Start();
     CH4_Timer_Start();
     
-    // Start all interrupt handlers
+    // Start all interrupt handlers with custom names
     isr_1_StartEx(CH1_Handler);
     isr_2_StartEx(CH2_Handler);
     isr_3_StartEx(CH3_Handler);
     isr_4_StartEx(CH4_Handler);
     
-    I2C_1_Start();
 
+    //=========================================================================================================================//
+    //                                                 Main Loop                                                               //                                                                 
+    //======================================================================================================================== //
     
-    // Initialize FreeRTOS
-    RTOS_Start();
-    
-    
-    // Create tasks
-    xTaskCreate(PWM_Read_Task, "PWM Read", configMINIMAL_STACK_SIZE, 0, 2, 0);
-
-    
-    // Start scheduler
-    vTaskStartScheduler();
-    
-    // Should never reach here
     for(;;)
     {
-        // If scheduler fails, loop here
-    }
-}
-
-//========================================================================================================================//
-//                                                 RTOS TASKS                                                             //                                                                 
-//========================================================================================================================//
-
-void PWM_Read_Task(void *arg)
-{
-    (void)arg;
-    
-    while(1)
-    {
-        // Read all channels
-        uint32_t ch1 = getRadioPWM(1);
-        uint32_t ch2 = getRadioPWM(2);
-        uint32_t ch3 = getRadioPWM(3);
-        uint32_t ch4 = getRadioPWM(4);
+        int32_t ch1 = getRadioPWM(1);
+        int32_t ch2 = getRadioPWM(2);
+        int32_t ch3 = getRadioPWM(3);
+        int32_t ch4 = getRadioPWM(4);
         
-        // You can add processing here, like filtering or scaling
-        // Or store to global variables for other tasks to use
-        if (ch2 > 1600) {
+        CyDelay(10);  // Small delay
+        if (ch3 > 1600) {
             LED_BUILDIN_Write(1);
         }
-        else if (ch2 < 1400) {
-            LED_BUILDIN_Write(1);
-        }
-        else if (ch1 > 1600) {
-            LED_BUILDIN_Write(1);
-        }
-        else if (ch1 < 1400) {
+        else if (ch3 < 1400) {
             LED_BUILDIN_Write(1);
         }
         else {
             LED_BUILDIN_Write(0);
         }
-        
-        vTaskDelay(pdMS_TO_TICKS(10));  // 10ms delay
     }
 }
-
 
 //=========================================================================================================================//
 //                                                 getRadioPWM function                                                    //                                                                 
@@ -165,14 +106,17 @@ uint32_t getRadioPWM(int CH_Number) {
 //                                                 INTERRUPT HANDLERS                                                     //                                                                 
 //========================================================================================================================//
 
+
 CY_ISR(CH1_Handler) {
     int state = CH1_Pin_Read();
     uint32_t current_time = CH1_Timer_ReadCounter();
     
     if(state == 1) {
+        // Rising edge
         CH1_rising_edge_start = current_time;
     } 
     else {
+        // Falling edge - DOWN counting timer
         CH1_Width = CH1_rising_edge_start - current_time;
     }
     
@@ -184,9 +128,11 @@ CY_ISR(CH2_Handler) {
     uint32_t current_time = CH2_Timer_ReadCounter();
     
     if(state == 1) {
+        // Rising edge
         CH2_rising_edge_start = current_time;
     } 
     else {
+        // Falling edge - DOWN counting timer
         CH2_Width = CH2_rising_edge_start - current_time;
     }
     
@@ -198,9 +144,11 @@ CY_ISR(CH3_Handler) {
     uint32_t current_time = CH3_Timer_ReadCounter();
     
     if(state == 1) {
+        // Rising edge
         CH3_rising_edge_start = current_time;
     } 
     else {
+        // Falling edge - DOWN counting timer
         CH3_Width = CH3_rising_edge_start - current_time;
     }
     
@@ -212,13 +160,17 @@ CY_ISR(CH4_Handler) {
     uint32_t current_time = CH4_Timer_ReadCounter();
     
     if(state == 1) {
+        // Rising edge
         CH4_rising_edge_start = current_time;
     } 
     else {
+        // Falling edge - DOWN counting timer
         CH4_Width = CH4_rising_edge_start - current_time;
     }
     
     CH4_Pin_ClearInterrupt();
 }
+
+
 
 /* [] END OF FILE */
